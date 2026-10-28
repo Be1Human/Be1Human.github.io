@@ -1,0 +1,66 @@
+[
+  {
+    "file": "assets/images/blue-sky-train.png",
+    "repository": "https://github.com/Be1Human/starry-night-train",
+    "revision": "e380e56299bb27e23ad7f63f047cb4fdd3c0dc24",
+    "sourcePath": "docs/images/blue-sky-lake.png",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/starry-night-train/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/docs/images/blue-sky-lake.png",
+    "bytes": 1615040
+  },
+  {
+    "file": "assets/images/starry-night.png",
+    "repository": "https://github.com/Be1Human/starry-night-train",
+    "revision": "e380e56299bb27e23ad7f63f047cb4fdd3c0dc24",
+    "sourcePath": "docs/images/starry-night.png",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/starry-night-train/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/docs/images/starry-night.png",
+    "bytes": 1175070
+  },
+  {
+    "file": "assets/images/hades-combat.png",
+    "repository": "https://github.com/Be1Human/hades-learning-demo",
+    "revision": "20ffe7ca2a17662e124af8d3d8307cc9c1022fe6",
+    "sourcePath": "docs/public-demo/media/tartarus-combat.png",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/hades-learning-demo/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/docs/public-demo/media/tartarus-combat.png",
+    "bytes": 1003024
+  },
+  {
+    "file": "assets/images/titan-town.png",
+    "repository": "https://github.com/Be1Human/titan-town",
+    "revision": "019dc53d330a5598411ba518e207ad2f0e33ea6c",
+    "sourcePath": "screenshots/ingame.png",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/titan-town/019dc53d330a5598411ba518e207ad2f0e33ea6c/screenshots/ingame.png",
+    "bytes": 358208
+  },
+  {
+    "file": "assets/images/network-diary.png",
+    "repository": "https://github.com/Be1Human/claude-ojousama-network",
+    "revision": "19a1470614f38e99b7dafdaddd4603095919c244",
+    "sourcePath": "docs/assets/application-demo.png",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/claude-ojousama-network/19a1470614f38e99b7dafdaddd4603095919c244/docs/assets/application-demo.png",
+    "bytes": 2413330
+  },
+  {
+    "file": "assets/images/mineclaw.jpg",
+    "repository": "https://github.com/Be1Human/MineClaw",
+    "revision": "6674882648e1d45df7ad40429c06a3a28ccb3674",
+    "sourcePath": "apps/minefriend-site/public/media/images/live-perception.jpg",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/MineClaw/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minefriend-site/public/media/images/live-perception.jpg",
+    "bytes": 108867
+  },
+  {
+    "file": "assets/images/animation.jpg",
+    "repository": "https://github.com/Be1Human/video-to-game-animation",
+    "revision": "e7109e157facc2e174d67e6567893d460ced9ea1",
+    "sourcePath": "docs/showcase/shoulder-same-pose.jpg",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/video-to-game-animation/e7109e157facc2e174d67e6567893d460ced9ea1/docs/showcase/shoulder-same-pose.jpg",
+    "bytes": 117559
+  },
+  {
+    "file": "assets/images/clawpm-logo.png",
+    "repository": "https://github.com/Be1Human/clawpm",
+    "revision": "16eb182d435cd4f88af5e94a8199c2cbe406beb7",
+    "sourcePath": "web/src/assets/logo.png",
+    "sourceUrl": "https://raw.githubusercontent.com/Be1Human/clawpm/16eb182d435cd4f88af5e94a8199c2cbe406beb7/web/src/assets/logo.png",
+    "bytes": 22495
+  }
+]

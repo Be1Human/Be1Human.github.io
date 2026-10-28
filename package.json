@@ -1,0 +1,13 @@
+{
+  "name": "cloud-boy-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CLOUD BOY 的个人作品集 · 游戏、动态视觉与 AI 工具",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node --check assets/app.js && node --check scripts/serve.mjs && node scripts/build.mjs --check"
+  }
+}
