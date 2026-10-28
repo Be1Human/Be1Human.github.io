@@ -32,7 +32,7 @@ const filters = Object.entries(categories).map(([id, name]) => {
 }).join('\n');
 const cards = projects.map((project, index) => {
   const p = Object.fromEntries(Object.entries(project).map(([key, value]) => [key, typeof value === 'string' ? escape(value) : value]));
-  return `<article class="project-card" data-category="${p.category}" data-project="${p.id}"${p.artwork ? ` data-artwork="${p.artwork}"` : ''}>
+  return `<article class="project-card" id="${p.id}" data-category="${p.category}" data-project="${p.id}"${p.artwork ? ` data-artwork="${p.artwork}"` : ''}>
         <a class="project-image-link" href="${p.url}" ${external} aria-label="${p.name}：${p.action}（新窗口）">
           <img class="project-image" src="${p.image}" width="1200" height="706" alt="${p.imageAlt}" loading="lazy" decoding="async">
           ${project.artwork === 'clawpm' ? '<span class="clawpm-art-title" aria-hidden="true">ClawPM</span><span class="clawpm-art-subtitle" aria-hidden="true">IDEAS → TASKS → DONE</span>' : ''}

@@ -15,6 +15,8 @@ GitHub Pages 从 `main` 分支的根目录发布，推送后自动更新。仓�
 
 类别为 `games`（游戏实验）、`visuals`（动态视觉）、`tools`（AI 与工具）。数组顺序就是展示顺序；首页分类数量由构建脚本计算。文案和布局在 `src/index.template.html`，样式在 `assets/styles.css`，筛选逻辑在 `assets/app.js`。不要直接编辑生成的 `index.html`。
 
+每件作品也可用 `#作品ID` 直达，例如 [MineClaw](https://be1human.github.io/portfolio/#mineclaw)。
+
 ## 本地预览
 
 安装 Node.js 22 或更高版本，无第三方 npm 依赖。

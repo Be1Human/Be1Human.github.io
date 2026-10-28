@@ -1,5 +1,21 @@
 [
   {
+    "id": "mineclaw",
+    "title": "MineClaw · Minecraft AI 伙伴",
+    "name": "MineClaw",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "一个 Minecraft 具身 AI 伙伴实验：聊天、理解目标、采取行动，再用世界里的真实状态核对结果。持续开发中。",
+    "image": "assets/images/mineclaw.jpg",
+    "imageAlt": "MineClaw 本地控制台展示 Minecraft 世界的实时感知",
+    "imageNote": "项目控制台截图",
+    "tags": ["TypeScript", "Minecraft", "AI Agent"],
+    "url": "https://github.com/Be1Human/MineClaw#quick-start",
+    "action": "了解项目",
+    "repository": "https://github.com/Be1Human/MineClaw",
+    "accent": "green"
+  },
+  {
     "id": "wallpaper-workshop",
     "title": "让风景，动起来。",
     "name": "AI Wallpaper Workshop",
@@ -46,22 +62,6 @@
     "action": "下载试玩",
     "repository": "https://github.com/Be1Human/hades-learning-demo",
     "accent": "red"
-  },
-  {
-    "id": "mineclaw",
-    "title": "AI 也可以住进世界。",
-    "name": "MineClaw",
-    "category": "tools",
-    "label": "AI 与工具",
-    "description": "一个 Minecraft 具身 AI 伙伴实验：聊天、理解目标、采取行动，再用世界里的真实状态核对结果。持续开发中。",
-    "image": "assets/images/mineclaw.jpg",
-    "imageAlt": "MineClaw 本地控制台展示 Minecraft 世界的实时感知",
-    "imageNote": "项目控制台截图",
-    "tags": ["TypeScript", "Minecraft", "AI Agent"],
-    "url": "https://github.com/Be1Human/MineClaw#quick-start",
-    "action": "了解项目",
-    "repository": "https://github.com/Be1Human/MineClaw",
-    "accent": "green"
   },
   {
     "id": "network-diary",
