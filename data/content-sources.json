@@ -1,0 +1,148 @@
+{
+  "reviewedAt": "2026-10-28T16:01:31+00:00",
+  "method": "逐项阅读固定提交版本的公开项目说明、配置文件及相关发行附件；未在本次文案核对中运行产品。",
+  "productRuntimeTestedInThisReview": false,
+  "projects": [
+    {
+      "projectId": "mineclaw",
+      "repository": "https://github.com/Be1Human/MineClaw",
+      "revision": "6674882648e1d45df7ad40429c06a3a28ccb3674",
+      "documents": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
+        },
+        {
+          "path": "apps/minecraft-companion/package.json",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/package.json"
+        }
+      ],
+      "descriptionBasis": [
+        "README：为什么是 MineClaw、核心能力、快速开始、开发状态",
+        "运行时 package.json：Mineflayer 依赖与应用目录"
+      ]
+    },
+    {
+      "projectId": "wallpaper-workshop",
+      "repository": "https://github.com/Be1Human/starry-night-train",
+      "revision": "e380e56299bb27e23ad7f63f047cb4fdd3c0dc24",
+      "documents": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/package.json"
+        }
+      ],
+      "descriptionBasis": [
+        "README：两份 Skill、两个案例、TA 拆解、运行与导出",
+        "package.json：启动、质量检查与导出入口"
+      ]
+    },
+    {
+      "projectId": "titan-town",
+      "repository": "https://github.com/Be1Human/titan-town",
+      "revision": "019dc53d330a5598411ba518e207ad2f0e33ea6c",
+      "documents": [
+        {
+          "path": "README.zh-CN.md",
+          "url": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/package.json"
+        }
+      ],
+      "descriptionBasis": [
+        "中文 README：可破坏体素、钩索与喷气、7 个任务、中英文、本地运行",
+        "package.json：Node 本地服务入口"
+      ]
+    },
+    {
+      "projectId": "hades-study",
+      "repository": "https://github.com/Be1Human/hades-learning-demo",
+      "revision": "20ffe7ca2a17662e124af8d3d8307cc9c1022fe6",
+      "documents": [
+        {
+          "path": "README.zh-CN.md",
+          "url": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md"
+        },
+        {
+          "path": "project.godot",
+          "url": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/project.godot"
+        }
+      ],
+      "descriptionBasis": [
+        "中文 README：三房间流程、战斗、奖励与祝福、中文界面、Windows、非商业学习用途",
+        "project.godot：应用描述、主场景与 Godot 配置",
+        "发行页 v0.1.1：Windows ZIP 附件"
+      ],
+      "releaseUrl": "https://github.com/Be1Human/hades-learning-demo/releases/tag/v0.1.1"
+    },
+    {
+      "projectId": "network-diary",
+      "repository": "https://github.com/Be1Human/claude-ojousama-network",
+      "revision": "19a1470614f38e99b7dafdaddd4603095919c244",
+      "documents": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/package.json"
+        }
+      ],
+      "descriptionBasis": [
+        "README：Claude Code 候选出口、同一非 CN/HK IP 的连续采样计时、本地历史、托盘与 CSV",
+        "package.json：Electron 桌面应用",
+        "发行页 v0.2.0：macOS arm64/x64 和 Windows x64 附件"
+      ],
+      "releaseUrl": "https://github.com/Be1Human/claude-ojousama-network/releases/tag/v0.2.0"
+    },
+    {
+      "projectId": "animation-workflow",
+      "repository": "https://github.com/Be1Human/video-to-game-animation",
+      "revision": "e7109e157facc2e174d67e6567893d460ced9ea1",
+      "documents": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
+        },
+        {
+          "path": "SKILL.md",
+          "url": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/SKILL.md"
+        }
+      ],
+      "descriptionBasis": [
+        "README：可安装 Skill、示例、修订对比与测量数据",
+        "SKILL.md：姿态估计、重定向、步态、蒙皮、Blender 复验及工具适用边界"
+      ]
+    },
+    {
+      "projectId": "clawpm",
+      "repository": "https://github.com/Be1Human/clawpm",
+      "revision": "16eb182d435cd4f88af5e94a8199c2cbe406beb7",
+      "documents": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/package.json"
+        },
+        {
+          "path": "server/package.json",
+          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/server/package.json"
+        }
+      ],
+      "descriptionBasis": [
+        "README：自托管项目管理、思维导图、看板、任务列表、甘特图、迭代与 MCP",
+        "server/package.json：Fastify、SQLite 与 MCP 服务依赖"
+      ]
+    }
+  ]
+}

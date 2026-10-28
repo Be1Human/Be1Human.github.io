@@ -1,115 +1,157 @@
 [
   {
     "id": "mineclaw",
-    "title": "MineClaw · Minecraft AI 伙伴",
+    "title": "MineClaw",
     "name": "MineClaw",
+    "kind": "Minecraft AI 伙伴",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "一个 Minecraft 具身 AI 伙伴实验：聊天、理解目标、采取行动，再用世界里的真实状态核对结果。持续开发中。",
+    "description": "面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。",
     "image": "assets/images/mineclaw.jpg",
     "imageAlt": "MineClaw 本地控制台展示 Minecraft 世界的实时感知",
     "imageNote": "项目控制台截图",
-    "tags": ["TypeScript", "Minecraft", "AI Agent"],
+    "tags": [
+      "TypeScript",
+      "Minecraft",
+      "AI Agent"
+    ],
     "url": "https://github.com/Be1Human/MineClaw#quick-start",
     "action": "了解项目",
     "repository": "https://github.com/Be1Human/MineClaw",
-    "accent": "green"
+    "accent": "green",
+    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
   },
   {
     "id": "wallpaper-workshop",
-    "title": "让风景，动起来。",
+    "title": "AI Wallpaper Workshop",
     "name": "AI Wallpaper Workshop",
+    "kind": "动态壁纸案例与 Skill",
     "category": "visuals",
     "label": "动态视觉",
-    "description": "蓝天湖景与星空列车，把一幅画变成有视差、倒影和微风的动态世界。附分层制作工作流与离线导出。",
+    "description": "包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。",
     "image": "assets/images/starry-night.png",
     "imageAlt": "星空、云层、列车与水面倒影的实际 Shader 渲染",
     "imageNote": "实际渲染截图",
-    "tags": ["WebGL", "GLSL", "动态壁纸"],
+    "tags": [
+      "WebGL",
+      "GLSL",
+      "动态壁纸"
+    ],
     "url": "https://be1human.github.io/starry-night-train/",
-    "action": "打开工作坊",
+    "action": "查看案例",
     "repository": "https://github.com/Be1Human/starry-night-train",
-    "accent": "blue"
+    "accent": "blue",
+    "documentation": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
   },
   {
     "id": "titan-town",
-    "title": "一座可以拆掉的城。",
+    "title": "Titan Town · 墙内小镇",
     "name": "Titan Town",
+    "kind": "浏览器游戏",
     "category": "games",
-    "label": "游戏实验",
-    "description": "巨人、钩索与会倒塌的体素城镇。在浏览器里探索物理破坏、立体移动和七项城墙任务。",
+    "label": "游戏项目",
+    "description": "浏览器中的可破坏体素围城游戏。玩家使用钩索和喷气装备在小镇移动、破坏建筑、应对巨人并完成 7 个任务；支持中英文，需本地启动网页服务。",
     "image": "assets/images/titan-town.png",
     "imageAlt": "Titan Town 的实际游戏画面，体素城镇和高墙",
     "imageNote": "实际游戏截图",
-    "tags": ["Three.js", "Rapier", "体素破坏"],
+    "tags": [
+      "Three.js",
+      "Rapier",
+      "体素破坏"
+    ],
     "url": "https://github.com/Be1Human/titan-town#run",
-    "action": "查看运行方式",
+    "action": "本地运行说明",
     "repository": "https://github.com/Be1Human/titan-town",
-    "accent": "green"
+    "accent": "green",
+    "documentation": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md"
   },
   {
     "id": "hades-study",
-    "title": "在冥界，练习做游戏。",
+    "title": "Hades 学习 Demo · 冥界试炼",
     "name": "Hades · Learning Demo",
+    "kind": "非商业学习 Demo",
     "category": "games",
-    "label": "游戏实验",
-    "description": "用 Godot 制作的三房间动作 Demo，串起战斗、角色动画、灯光与奖励。非官方、非商业的学习作品。",
+    "label": "游戏项目",
+    "description": "基于 Godot 的三房间动作游戏学习 Demo，包含战斗、奖励与祝福选择、Boss 波次及胜负结算。提供 Windows 版本和中文游戏界面；项目非官方，仅限非商业学习。",
     "image": "assets/images/hades-combat.png",
     "imageAlt": "学习 Demo 的实际战斗截图，角色在双坑房间施展剑击",
     "imageNote": "学习 Demo 实际截图 · 非原作画面",
-    "tags": ["Godot", "动作战斗", "Windows"],
+    "tags": [
+      "Godot",
+      "动作战斗",
+      "Windows"
+    ],
     "url": "https://github.com/Be1Human/hades-learning-demo/releases",
-    "action": "下载试玩",
+    "action": "下载 Windows 版",
     "repository": "https://github.com/Be1Human/hades-learning-demo",
-    "accent": "red"
+    "accent": "red",
+    "documentation": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md"
   },
   {
     "id": "network-diary",
-    "title": "把网络的来去，记下来。",
+    "title": "大小姐的网络手账",
     "name": "大小姐的网络手账",
+    "kind": "macOS / Windows 应用",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "带一点二次元气息的桌面网络观察工具。记录出口 IP、变化历史和连接诊断，数据保存在本机。",
+    "description": "面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。",
     "image": "assets/images/network-diary.png",
     "imageAlt": "大小姐的网络手账实际应用界面，截图使用演示数据",
     "imageNote": "实际应用截图 · 演示数据",
-    "tags": ["Electron", "macOS / Windows", "本地优先"],
+    "tags": [
+      "Electron",
+      "macOS / Windows",
+      "本地优先"
+    ],
     "url": "https://github.com/Be1Human/claude-ojousama-network/releases/latest",
-    "action": "下载安装",
+    "action": "下载桌面版",
     "repository": "https://github.com/Be1Human/claude-ojousama-network",
-    "accent": "orange"
+    "accent": "orange",
+    "documentation": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
   },
   {
     "id": "animation-workflow",
-    "title": "从视频，到角色的一步。",
+    "title": "Video to Game Animation",
     "name": "Video to Game Animation",
+    "kind": "动画制作与评审 Skill",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "把姿态捕捉、动作重定向、蒙皮修复与 Blender 验证整理成可复用 Skill，保留真实修订前后的证据。",
+    "description": "面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。",
     "image": "assets/images/animation.jpg",
     "imageAlt": "同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面",
     "imageNote": "角色肩袖修正前后对比",
-    "tags": ["Blender", "动画", "Agent Skill"],
+    "tags": [
+      "Blender",
+      "动画",
+      "Agent Skill"
+    ],
     "url": "https://github.com/Be1Human/video-to-game-animation#实际效果与过程",
-    "action": "查看制作过程",
+    "action": "查看 Skill",
     "repository": "https://github.com/Be1Human/video-to-game-animation",
-    "accent": "gray"
+    "accent": "gray",
+    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
   },
   {
     "id": "clawpm",
-    "title": "让想法，走到完成。",
+    "title": "ClawPM",
     "name": "ClawPM",
+    "kind": "自托管项目管理",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "可自托管的项目管理中枢，把需求、任务和进度放在一起，通过 MCP 连接 AI Agent 的实际工作。",
+    "description": "可自托管的项目管理 Web 应用，提供需求节点、思维导图、看板、任务列表、甘特图和迭代管理。通过 MCP 让 AI Agent 领取任务、上报进度；使用前需自行部署服务。",
     "image": "assets/images/clawpm-logo.png",
     "imageAlt": "ClawPM 项目标志",
     "imageNote": "项目标志",
-    "tags": ["MCP", "TypeScript", "项目管理"],
+    "tags": [
+      "MCP",
+      "TypeScript",
+      "项目管理"
+    ],
     "url": "https://github.com/Be1Human/clawpm#features",
     "action": "了解项目",
     "repository": "https://github.com/Be1Human/clawpm",
     "accent": "violet",
-    "artwork": "clawpm"
+    "artwork": "clawpm",
+    "documentation": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md"
   }
 ]
