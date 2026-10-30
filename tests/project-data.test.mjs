@@ -31,7 +31,7 @@ test('every showcased project opens a complete local overview and can return to 
     const html = await read(path);
     assert.ok(works.includes(`id="${project.id}"`));
     assert.ok(works.includes(`href="${path}"`));
-    assert.ok(sitemap.includes(`/portfolio/${path}`));
+    assert.ok(sitemap.includes(`https://be1human.github.io/${path}`));
     assert.ok(html.includes(`href="../works.html#${project.id}"`));
     assert.ok(html.includes(project.detail.status));
     assert.ok(html.includes(project.detail.sections[0].paragraphs[0]));

@@ -12,7 +12,7 @@ const [projects, posts, news, evidence, template, updates] = await Promise.all([
   readJSON('data/projects.json'), readJSON('data/posts.json'), readJSON('data/news.json'), readJSON('data/content-sources.json'), readFile(resolve(root, 'src/page.template.html'), 'utf8'),
   readJSON('data/updates.json'),
 ]);
-const origin = 'https://be1human.github.io/portfolio/';
+const origin = 'https://be1human.github.io/';
 const styleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/styles.css'))).digest('hex').slice(0, 12);
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
@@ -55,6 +55,7 @@ for (const edition of news.editions) {
 }
 news.editions.sort((a, b) => b.id.localeCompare(a.id));
 const latest = news.editions[0];
+const redirectVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/legacy-redirect.js'))).digest('hex').slice(0, 12);
 
 function render(path, title, description, active, content, ogtype = 'website') {
   const base = path.includes('/') ? '../' : '';
@@ -148,6 +149,18 @@ for (const [path, html] of pages) {
     if (!pages.has(localPath)) await access(target);
   }
 }
+// The user site also owns the old /portfolio/ URLs after that project's Pages
+// deployment is disabled. Generate aliases with each build, including new news.
+const canonicalPages = [...pages.keys()].filter(path => path.endsWith('.html'));
+for (const path of canonicalPages) {
+  const target = origin + (path === 'index.html' ? '' : path);
+  pages.set(`portfolio/${path}`, `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>正在前往云上男孩的博客</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script><noscript><meta http-equiv="refresh" content="0;url=${target}"></noscript></head><body><p>博客已迁到新地址。<a href="${target}">继续阅读 →</a></p></body></html>\n`);
+}
+// Feed readers do not execute JavaScript; keep their existing subscription live.
+pages.set('portfolio/feed.xml', pages.get('feed.xml'));
+pages.set('portfolio/sitemap.xml', pages.get('sitemap.xml'));
+pages.set('404.html', `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>页面未找到 — 云上男孩</title><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script></head><body><p>这个页面暂时没有找到。<a href="${origin}">返回博客主页 →</a></p></body></html>\n`);
+
 for (const [path, content] of pages) {
   const target = resolve(root, path);
   if (process.argv.includes('--check')) {

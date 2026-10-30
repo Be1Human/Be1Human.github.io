@@ -24,6 +24,6 @@
 2. 按用户明确指定的类型新增或修改内容。若要求修改或删除既有内容，先定位对应 ID。
 3. 运行 `npm run build`、`npm run check` 和 `git diff --check`；查看手机排版、文字完整性与文章入口。
 4. 仅提交本次内容及生成页面，正常推送 `main`，不强推、不覆盖他人提交。
-5. 等待对应 GitHub Pages 提交构建成功，核对受影响的公开页面，再给用户发布链接。动态链接使用 `https://be1human.github.io/portfolio/#status-<id>`。
+5. 等待对应 GitHub Pages 提交构建成功，核对受影响的公开页面，再给用户发布链接。动态链接使用 `https://be1human.github.io/#status-<id>`。
 
 网站不需要访客登录，也没有公开写入接口。发布借助当前聊天已有的 GitHub 连接完成。新闻同步独立运行，不应因为发布动态而修改资讯源或同步配置。

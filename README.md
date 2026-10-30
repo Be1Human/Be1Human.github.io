@@ -1,6 +1,6 @@
 # CLOUD BOY · 云上男孩
 
-[个人博客](https://be1human.github.io/portfolio/) · [作品集](https://be1human.github.io/portfolio/works.html) · [博客时间线](https://be1human.github.io/portfolio/journal.html) · [科技新闻](https://be1human.github.io/portfolio/news.html)
+[个人博客](https://be1human.github.io/) · [作品集](https://be1human.github.io/works.html) · [博客时间线](https://be1human.github.io/journal.html) · [科技新闻](https://be1human.github.io/news.html)
 
 一个零依赖的中文个人博客：作品展示、创作记录，以及从 Dot「AI 热门 20 · 每日精选」同步的日期归档。全站统一暖色纸感：米白底、柔和墨色与书页式排版，适配手机；全部主要内容在 HTML 中，关闭 JavaScript 也能阅读。
 
@@ -14,7 +14,7 @@ npm run check
 npm start
 ```
 
-打开 <http://127.0.0.1:4174/portfolio/>。GitHub Pages 从 `main` 分支根目录发布；构建生成的 HTML、RSS 和 sitemap 都随代码提交。
+打开 <http://127.0.0.1:4174/>。GitHub Pages 从 `main` 分支根目录发布；构建生成的 HTML、RSS 和 sitemap 都随代码提交。
 
 ## 更新作品
 
@@ -54,10 +54,14 @@ npm run check
 - `scripts/news-data.mjs`：公开字段白名单、来源校验和重复导入处理。
 - `scripts/publish-news.mjs`：自动同步的构建、检查和受限提交发布。
 
-请编辑源数据和模板，不直接编辑生成的 HTML。所有站内资源使用相对路径，适用于 GitHub Pages 的 `/portfolio/` 子目录。
+请编辑源数据和模板，不直接编辑生成的 HTML。所有站内资源使用相对路径，部署在 GitHub Pages 个人根站 `https://be1human.github.io/`。
 
 ## 隐私与来源
 
 不使用访客账号、表单或第三方统计，不保存访客搜索内容；搜索词只反映在当前地址栏。没有远程字体。新闻预览使用原帖图片地址，打开原帖可查看完整媒体，版权归原作者。Dot 原始阅览室保持私有，博客页面不包含源站令牌。
 
 作品说明依据固定版本的公开文档，资讯摘要沿用每日精选，不代表已经运行或独立验证所有产品。保留来源链接与必要的项目适用范围。
+
+## 根站与旧链接
+
+维护目录为 `/Users/guotengtao/Documents/cloudboy/blog`，远程仓库为 `Be1Human/Be1Human.github.io`。`/portfolio/` 已作为兼容入口：页面跳转到对应根地址，保留筛选参数与段落锚点；旧 RSS 仍随构建更新。旧 `Be1Human/portfolio` 仓库保留历史，但不再启用 GitHub Pages 或接收新闻同步。

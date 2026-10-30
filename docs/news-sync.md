@@ -5,7 +5,9 @@
 - 来源：`https://ai-hot20-daily.next-ace-help.chatgpt.site`
 - Sites 项目：`appgprj_6acdd345a22c819182154b950d3994f3`
 - 数据目录：已发布源代码中的 `dist/data/editions.json` 与每期 JSON。
-- 目的地：`Be1Human/portfolio`，`main` 分支，根目录发布。
+- 本地博客目录：`/Users/guotengtao/Documents/cloudboy/blog`。
+- 公开新闻页：`https://be1human.github.io/news.html`。
+- 目的地：`Be1Human/Be1Human.github.io`，`main` 分支，根目录发布。
 
 ## 每次自动同步
 
@@ -15,13 +17,13 @@
    可与本机 `.qa/news-sync-receipt.json` 中**已确认成功发布**的源提交比较，无变化且没有待完成发布时直接结束。回执不包含凭据，保持在 Git 忽略目录内。没有回执时执行完整核对；不得仅凭最新日期相同跳过。
 2. 为该源站取得新的临时源代码访问凭据。按 Sites 技能的 source helper 流程打开独立的源代码目录。凭据仅存在于本次进程内，通过隐藏 stdin 传入，不写文件、不写 Git remote、不输出到日志。
 3. 确认源代码工作区干净。必要时以非强制 `git checkout --detach` 切到步骤 1 的已部署提交；不要在源站工作区改动文件或推送。读取数据前核对提交一致。
-4. 在干净的博客 `main` 工作区运行：
+4. 在 `/Users/guotengtao/Documents/cloudboy/blog` 的干净 `main` 工作区运行；不得回到旧 `portfolio` 仓库发布：
 
    ```sh
    npm run news:publish -- /absolute/path/to/source-checkout
    ```
 
-   脚本会快进到远程最新版、导入资讯、构建静态页面、运行校验，并仅提交资讯数据和对应生成文件。重复运行没有变化时不写文件、不提交。源站缺失历史、字段不合法、出现本地修改或远程冲突时停止并保留文件，不强推、不重置用户改动。
+   脚本会核对根站仓库、快进到远程最新版、导入资讯、构建静态页面、运行校验，并仅提交资讯数据和对应生成文件（包含 `/portfolio/` 旧链接的兼容页与 RSS）。重复运行没有变化时不写文件、不提交。源站缺失历史、字段不合法、出现本地修改或远程冲突时停止并保留文件，不强推、不重置用户改动。
 
 5. 推送成功后，用 GitHub Pages 的构建状态确认对应提交完成发布，并读取公开新闻页核对最新日期。失败时保留已导入数据、报告具体错误，不把旧版本当作成功。
    同期更正还要核对受影响日期的内容。确认发布成功后，在本机 `.qa/news-sync-receipt.json` 记录 `sourceRevision`、`blogCommit` 和 `verifiedAt`。中途失败时不得提前更新回执；下一轮先检查上次发布是否已完成，再处理后续版本。
@@ -41,3 +43,9 @@ npm run check
 ```
 
 自动运行由桌面聊天的持续检查任务触发；运行时电脑需要联网且桌面应用保持运行。源站自己的每日搜集安排独立存在，本流程不创建、修改或重复执行源站的搜集任务。
+
+## 根域名迁移后的兼容
+
+当前博客与全部新闻统一发布到 `Be1Human/Be1Human.github.io` 的 `main` 分支。旧 `Be1Human/portfolio` 的 Pages 发布需保持关闭；根站构建生成 `portfolio/` 兼容目录，旧首页、作品、文章与新闻链接自动跳转到对应根地址，并保留查询参数和锚点。旧 RSS 地址提供每次构建更新的相同订阅内容。
+
+回执属于当前根站发布，核验 GitHub Pages 时使用 `repos/Be1Human/Be1Human.github.io/pages/builds/latest`，不要沿用旧仓库的构建结果。

@@ -9,8 +9,7 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=
 const server = createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, `http://127.0.0.1:${port}`).pathname);
-    if (path === '/portfolio') { res.writeHead(302, { Location: '/portfolio/' }); res.end(); return; }
-    if (path.startsWith('/portfolio/')) path = path.slice('/portfolio'.length);
+    if (path === '/portfolio') { res.writeHead(302, { Location: `/portfolio/${new URL(req.url, 'http://localhost').search}` }); res.end(); return; }
     if (path.endsWith('/')) path += 'index.html';
     const target = resolve(root, `.${path}`);
     const relative = target.slice(root.length);
@@ -27,5 +26,5 @@ const server = createServer(async (req, res) => {
     res.end('404 · 页面不存在');
   }
 });
-server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/portfolio/`));
+server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/`));
 process.on('SIGINT', () => server.close(() => process.exit(0)));

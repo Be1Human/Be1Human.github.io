@@ -10,7 +10,7 @@ const run = (command, args, capture = false) => execFileSync(command, args, {cwd
 const git = (...args) => run('git', args, true).trim();
 if (git('status', '--porcelain')) throw new Error('Blog checkout has local changes. Preserve them; sync did not start.');
 if (git('branch', '--show-current') !== 'main') throw new Error('Publish from the main checkout only.');
-if (!['https://github.com/Be1Human/portfolio.git', 'git@github.com:Be1Human/portfolio.git'].includes(git('remote', 'get-url', 'origin'))) throw new Error('Unexpected destination repository.');
+if (!['https://github.com/Be1Human/Be1Human.github.io.git', 'git@github.com:Be1Human/Be1Human.github.io.git'].includes(git('remote', 'get-url', 'origin'))) throw new Error('Unexpected destination repository. Publish news to Be1Human/Be1Human.github.io only.');
 run('git', ['fetch', 'origin', 'main']);
 if (git('rev-list', '--count', 'origin/main..HEAD') !== '0') throw new Error('Unpublished local commits found. Preserve them; do not include them in a news update.');
 run('git', ['merge', '--ff-only', 'origin/main']);
@@ -18,7 +18,7 @@ run(process.execPath, ['scripts/sync-news.mjs', resolve(source)]);
 if (!git('status', '--porcelain')) { console.log('No changes. No commit or push.'); process.exit(0); }
 run('npm', ['run', 'build']);
 run('npm', ['run', 'check']);
-const allowed = path => ['data/news.json', 'index.html', 'news.html', 'feed.xml', 'sitemap.xml'].includes(path) || /^news\/\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.html$/.test(path);
+const allowed = path => ['data/news.json', 'index.html', 'news.html', 'feed.xml', 'sitemap.xml', 'portfolio/index.html', 'portfolio/news.html', 'portfolio/feed.xml', 'portfolio/sitemap.xml'].includes(path) || /^(?:portfolio\/)?news\/\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.html$/.test(path);
 const tracked = git('diff', '--name-only').split('\n').filter(Boolean);
 const untracked = git('ls-files', '--others', '--exclude-standard').split('\n').filter(Boolean);
 const changed = [...new Set([...tracked, ...untracked])];
