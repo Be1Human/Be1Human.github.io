@@ -64,8 +64,8 @@ function render(path, title, description, active, content, ogtype = 'website') {
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
   // Keep the blog index focused on reading, with compact navigation and footer.
   if (active === 'home') {
-    html = html.replace(/  <header class="site-header">[\s\S]*?<\/header>/, `<header class="blog-header"><a class="blog-brand" href="index.html" aria-label="云上男孩的博客"><span aria-hidden="true">☁</span>云上男孩</a><nav aria-label="主导航">${nav}</nav></header>`);
-    html = html.replace(/  <footer class="site-footer wrap">[\s\S]*?<\/footer>/, `<footer class="blog-footer"><p>© 2026 云上男孩</p><nav aria-label="更多链接"><a href="https://github.com/Be1Human" ${external}>GitHub ↗</a><a href="feed.xml">RSS ↗</a></nav></footer>`);
+    html = html.replace(/  <header class="site-header">[\s\S]*?<\/header>/, `<header class="blog-header"><a class="blog-brand" href="index.html" aria-label="云上男孩的博客"><svg class="blog-mark" viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x=".5" y=".5" width="47" height="47" rx="14" fill="#edf3fc" stroke="#dfe8f7"/><path d="M15 33a7 7 0 0 1-1-14 10 10 0 0 1 19-2 8 8 0 0 1 0 16Z" fill="#416dbe"/><path d="M20 24h.1M29 24h.1" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/><path d="M22 28q2.5 2 5 0" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg><span>云上男孩<small>CLOUD BOY</small></span></a><nav aria-label="主导航">${nav}</nav></header>`);
+    html = html.replace(/  <footer class="site-footer wrap">[\s\S]*?<\/footer>/, `<footer class="blog-footer"><p>© 2026 云上男孩<span>保持好奇，慢慢创造。</span></p><nav aria-label="更多链接"><a href="https://github.com/Be1Human" ${external}>GitHub ↗</a><a href="feed.xml">RSS ↗</a></nav></footer>`);
   }
   if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
@@ -87,13 +87,15 @@ function controls(labels, searchLabel, count, noun) {
 }
 const empty = '<div class="empty-state" data-empty hidden><span aria-hidden="true">⌕</span><h2>暂时没有找到</h2><p>换个关键词，或试试其他分类。</p><button class="button button-light" type="button" data-clear>清除筛选</button></div>';
 
+function blogEntry(post, index) {
+  const featured = index === 0;
+  const cover = post.image ? `<div class="blog-cover"><img src="${e(post.image)}" alt="${e(post.imageAlt)}" width="1200" height="750" loading="${featured ? 'eager' : 'lazy'}"${featured ? ' fetchpriority="high"' : ''}></div>` : '';
+  const copy = `<div class="blog-entry-copy"><div class="blog-meta"><span>${e(post.category)}</span><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time></div><h2 id="home-post-${post.id}">${e(post.title).replaceAll('：', '：<wbr>')}</h2><p>${e(post.summary)}</p><div class="blog-readline"><span>${minutes(post)} 分钟阅读</span><span class="blog-read">阅读全文 <span aria-hidden="true">→</span></span></div></div>`;
+  return `<article class="blog-entry${featured ? ' blog-entry--featured' : ''}${post.image ? ' blog-entry--illustrated' : ''}"><a class="blog-entry-link" href="posts/${post.id}.html" aria-labelledby="home-post-${post.id}">${featured ? cover + copy : copy + cover}</a></article>`;
+}
 const home = `<section class="blog-home" aria-labelledby="home-title">
-  <h1 id="home-title">博客</h1>
-  <div class="blog-posts">${posts.map(post => `<article class="blog-entry">
-    <div class="blog-meta"><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time><span>${e(post.category)}</span></div>
-    <h2><a href="posts/${post.id}.html">${e(post.title)}</a></h2>
-    <p>${e(post.summary)}</p>
-  </article>`).join('')}</div>
+  <header class="blog-heading"><div><p class="blog-kicker">THE JOURNAL</p><h1 id="home-title">博客<span aria-hidden="true">.</span></h1></div><p class="blog-introduction">记录想法，也记录<br>把它们做出来的过程。</p></header>
+  <div class="blog-posts">${posts.map(blogEntry).join('')}</div>
 </section>`;
 render('index.html', '博客 — CLOUD BOY · 云上男孩', '按时间阅读云上男孩的博客：创作手记、项目记录与想法。', 'home', home);
 
