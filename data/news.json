@@ -2,9 +2,343 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "bbeb142a8f487f77b29b601e1d59ac68ba9ccce1",
-  "syncedAt": "2026-10-30T08:34:00.421Z",
+  "sourceRevision": "ffb1b972f91259ad4c66a1e156ce2b48d3f23bd8",
+  "syncedAt": "2026-10-30T11:34:23.691Z",
   "editions": [
+    {
+      "id": "2026-10-30",
+      "date": "2026-10-30",
+      "label": "10 月 30 日 · 14 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-30",
+      "items": [
+        {
+          "id": "306fd8fd45fa4e83",
+          "rank": 1,
+          "title": "Unreal Sensei：UE5 与 AI 游戏制作长教程",
+          "summary": "Unreal Sensei 发布了在 Unreal Engine 5 中使用 AI 制作游戏的教程，X 内嵌视频约 2 小时 22 分钟。作者在回复给出同名 YouTube 版本。这里只核对标题、视频长度与作者回复，未完整观看，不推断具体模型、插件、版本要求或课程承诺。",
+          "category": "AI 游戏开发",
+          "author": "Unreal Sensei",
+          "url": "https://x.com/UnrealSensei/status/2115858853862777258",
+          "sources": [
+            {
+              "title": "X 原帖及可见作者说明",
+              "url": "https://x.com/UnrealSensei/status/2115858853862777258"
+            },
+            {
+              "title": "作者提供 YouTube 版本的回复",
+              "url": "https://x.com/UnrealSensei/status/2115863886440353944"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T17:30:36.000Z",
+          "observedAt": "2026-10-30T11:24:53.102Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115607930645225472/img/S10kyy_rlu5m1vYU.jpg",
+            "alt": "Unreal Sensei：UE5 与 AI 游戏制作长教程：原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "d63d68cd7652e29e",
+          "rank": 2,
+          "title": "Blender 角色动画：固定审片场景逐段检查",
+          "summary": "rewind 分享红斗篷角色的 23 段动画制作流程：先按概念图分部件建模，单独绑定披风及辫子骨骼，再逐段处理待机、移动与战斗。在固定灯光、地面与镜头中对照概念图审片，最后合并导出 FBX。属于作者操作说明与展示，不代表模型独立完成质量已被验证。",
+          "category": "AI 游戏开发",
+          "author": "rewind",
+          "url": "https://x.com/rewind02/status/2115779810932728259",
+          "sources": [
+            {
+              "title": "X 原帖及可见作者说明",
+              "url": "https://x.com/rewind02/status/2115779810932728259"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T12:16:30.000Z",
+          "observedAt": "2026-10-30T11:24:43.108Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115779685216894976/img/y_yvTD4hoV08pEt-.jpg",
+            "alt": "Blender 角色动画：固定审片场景逐段检查：原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "45f3c2c04563551c",
+          "rank": 3,
+          "title": "Effekseer VFX Skill：程序化与视频序列帧特效",
+          "summary": "KANA 的 effekseer-vfx-skill 把 AI 编程助手、Effekseer 与游戏引擎串联。官方README核实三种模式：程序化、视频flipbook及组合；支持Godot与Unity URP。Unity要求6/URP17，Python3.11+；Linux仅作者模式已支持，构建路径未验证。项目MIT不覆盖视频模型条款、品牌角色或宣传视频。未安装或复现。 原文语言由 X 的日文翻译标识确认；本次依据其显示译文整理，未能切回日文原文。",
+          "category": "AI 游戏开发",
+          "author": "KANA (@KanaWorks_AI)",
+          "url": "https://x.com/KanaWorks_AI/status/2115671131432906758",
+          "sources": [
+            {
+              "title": "X原帖",
+              "url": "https://x.com/KanaWorks_AI/status/2115671131432906758"
+            },
+            {
+              "title": "官方README",
+              "url": "https://github.com/kanaworksai-hue/effekseer-vfx-skill?v=3"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T05:04:39.000Z",
+          "observedAt": "2026-10-30T11:23:43.997Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115669606841135105/img/8LAmsfXdLFbccw7d.jpg",
+            "alt": "Effekseer VFX Skill：程序化与视频序列帧特效：原帖视频真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "d371d6b81abd94a0",
+          "rank": 4,
+          "title": "Reachy Mini：移动底座与手机控制",
+          "summary": "作者原帖介绍移动底座、手机应用与 NFC 配件，并补充 JavaScript 应用和浏览器远程音视频控制。没有核对硬件售价、续航或远程控制的网络前提。",
+          "category": "硬件创客",
+          "author": "Remi Fabre @RemiFabreRobot",
+          "url": "https://x.com/RemiFabreRobot/status/2115803822450774422",
+          "sources": [
+            {
+              "title": "X 原帖",
+              "url": "https://x.com/RemiFabreRobot/status/2115803822450774422"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T13:51:55.000Z",
+          "observedAt": "2026-10-30T11:22:48.677Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/ext_tw_video_thumb/2115803649565671424/pu/img/g0qWiEbwu12JWtqq.jpg",
+            "alt": "Reachy Mini：移动底座与手机控制：X 原帖真实视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "3849b3781a4d35a2",
+          "rank": 5,
+          "title": "ffmpeg-skill：给编码代理接入本地视频工具",
+          "summary": "Tom Dörr 分享的本地 FFmpeg 编辑工具，功能和 MIT 许可证已对照项目仓库。代理模型本身可能另有费用；未安装或实测。",
+          "category": "内容制作",
+          "author": "Tom Dörr @tom_doerr",
+          "url": "https://x.com/tom_doerr/status/2115405924646985924",
+          "sources": [
+            {
+              "title": "X 原帖",
+              "url": "https://x.com/tom_doerr/status/2115405924646985924"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/kajisho5/ffmpeg-skill"
+            }
+          ],
+          "publishedAtISO": "2026-10-28T11:30:49.000Z",
+          "observedAt": "2026-10-30T11:22:51.854Z"
+        },
+        {
+          "id": "7410fcf2e095f4e5",
+          "rank": 6,
+          "title": "Zill：AI 游戏开发的上下文与质量限制",
+          "summary": "Zill 结合未完成游戏 Weird Battlefield 分享将参考资料、UI知识整理成技能和工作流的经验。作者认为保留上下文并不保证跨任务稳定执行，自己仍主要推进表层动画、规则表达待完善。月费6万日元是作者个人自述，并非普遍费用；结论是个人经验，没有受控测试。 原文语言由 X 的日文翻译标识确认；本次依据其显示译文整理，未能切回日文原文。",
+          "category": "AI 游戏开发",
+          "author": "Zill (@zin257856782)",
+          "url": "https://x.com/zin257856782/status/2115968923053195523",
+          "sources": [
+            {
+              "title": "X原帖",
+              "url": "https://x.com/zin257856782/status/2115968923053195523"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T00:47:58.000Z",
+          "observedAt": "2026-10-30T11:23:07.967Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115968575446056960/img/5PVs34MLeiW0h3q3.jpg",
+            "alt": "Zill：AI 游戏开发的上下文与质量限制：原帖视频真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "145b71dc42609981",
+          "rank": 7,
+          "title": "Lightpanda：面向 AI 自动化的无头浏览器",
+          "summary": "Tech with Mak 介绍的浏览器项目，仓库核对了 Zig 实现、AGPL-3.0 和特定工作负载的基准。未实测速度或网站兼容性，不作为规避访问限制的工具建议。",
+          "category": "实用工作流",
+          "author": "Tech with Mak @techNmak",
+          "url": "https://x.com/techNmak/status/2115725777622925745",
+          "sources": [
+            {
+              "title": "X 原帖",
+              "url": "https://x.com/techNmak/status/2115725777622925745"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/lightpanda-io/browser"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T08:41:48.000Z",
+          "observedAt": "2026-10-30T11:23:22.820Z"
+        },
+        {
+          "id": "7e97a1f56b4e0c86",
+          "rank": 8,
+          "title": "BIMCraft：经 MCP 创建与编辑建筑模型",
+          "summary": "Sadao Tokuyama 介绍 Rust 编写的 BIMCraft：无需 Revit 即可读取 .rvt，并通过 MCP 让 AI 创建、编辑建筑模型。作者明确表示并非完整兼容 Revit；未取得可复现工程，未实测生产文件兼容性。 原文语言由 X 的日文翻译标识确认；本次依据其显示译文整理，未能切回日文原文。",
+          "category": "实用工作流",
+          "author": "Sadao Tokuyama (@tokufxug)",
+          "url": "https://x.com/tokufxug/status/2115632446385668508",
+          "sources": [
+            {
+              "title": "X原帖",
+              "url": "https://x.com/tokufxug/status/2115632446385668508"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T02:30:56.000Z",
+          "observedAt": "2026-10-30T11:22:55.430Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115632410289389568/img/yDrP6yDqOEkWsIGX.jpg",
+            "alt": "BIMCraft：经 MCP 创建与编辑建筑模型：原帖视频真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a5f0f65edacfe97b",
+          "rank": 9,
+          "title": "Muse 远程调度本地 ComfyUI",
+          "summary": "りのま分享用 Muse 经 Tailscale 与 SSH 连接个人电脑、启动本地 ComfyUI 的日文流程。需先在电脑安装并登录 Tailscale，再向 Muse 提供电脑名及 ComfyUI 目录；作者称可用日文指示选 LoRA、导入工作流和生成通配词。未核实 Muse 产品身份、额度、支持系统及权限配置，未采用“免费额度不减少”说法。",
+          "category": "实用工作流",
+          "author": "りのま",
+          "url": "https://x.com/rinomaw/status/2116017353158963280",
+          "sources": [
+            {
+              "title": "X 原帖及可见作者说明",
+              "url": "https://x.com/rinomaw/status/2116017353158963280"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T04:00:25.000Z",
+          "observedAt": "2026-10-30T11:24:24.625Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HV2aS_SbsAALZVa?format=jpg&name=small",
+            "alt": "Muse 远程调度本地 ComfyUI：原帖图片",
+            "type": "image"
+          }
+        },
+        {
+          "id": "49c5ccfc97d188ba",
+          "rank": 10,
+          "title": "Live2D 动作工具：摄像头录制与 OBS 输出",
+          "summary": "shinshin86 展示为既有 Live2D 模型补充动作的工具：复用表情、说话期间循环动作、用摄像头记录身体动作、输出OBS并由其他应用切换动作。作者说可向 Claude Code/Codex 指明模型路径后操作。未核实项目许可证、完整模型兼容范围或本地安装，不混同此前的 Mesh Avatar Studio。 原文语言由 X 的日文翻译标识确认；本次依据其显示译文整理，未能切回日文原文。",
+          "category": "内容制作",
+          "author": "shinshin86 (@shinshin86)",
+          "url": "https://x.com/shinshin86/status/2115706645762420968",
+          "sources": [
+            {
+              "title": "X原帖",
+              "url": "https://x.com/shinshin86/status/2115706645762420968"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T07:25:46.000Z",
+          "observedAt": "2026-10-30T11:23:15.211Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115706401062547456/img/qClidXIbjSsD3Oj7.jpg",
+            "alt": "Live2D 动作工具：摄像头录制与 OBS 输出：原帖视频真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "1c7569407810c800",
+          "rank": 11,
+          "title": "Coucou：在 Mac 刘海区查看 Agent 任务",
+          "summary": "作者介绍 Coucou 将 Claude Code、Codex、Cursor、Gemini CLI 任务集中到 macOS 刘海区，并为 Claude Code 显示权限审批与终端跳转。iPhone Face ID 远程批准及MIT许可仅见原帖介绍，未取得上游文档交叉验证，因此短稿不扩写该功能、不承诺无需配置。 原文语言由 X 的日文翻译标识确认；本次依据其显示译文整理，未能切回日文原文。",
+          "category": "实用工作流",
+          "author": "オープンソース研究所 (@opensourcelab9)",
+          "url": "https://x.com/opensourcelab9/status/2115692620999725338",
+          "sources": [
+            {
+              "title": "X原帖",
+              "url": "https://x.com/opensourcelab9/status/2115692620999725338"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T06:30:03.000Z",
+          "observedAt": "2026-10-30T11:23:23.420Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115692612715986944/img/UQihgNof62_kjSWL.jpg",
+            "alt": "Coucou：在 Mac 刘海区查看 Agent 任务：原帖视频真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "47423c62fc2313b8",
+          "rank": 12,
+          "title": "AdvancedLivePortrait：为人物照片编辑表情",
+          "summary": "Imaginal Domain 分享通过 Claude 配置 ComfyUI AdvancedLivePortrait 后调整人物表情的例子。官方仓库支持照片表情编辑、向视频插入表情、多个表情组合动画，以及保存和载入表情数据。这是既有开源节点的近期使用分享，不是 Claude 新增原生功能；不采纳“不损画质”或“任意图都适用”的泛化说法。",
+          "category": "内容制作",
+          "author": "空想圏域 / Imaginal Domain",
+          "url": "https://x.com/imaginaldomain/status/2116047589271339360",
+          "sources": [
+            {
+              "title": "X 原帖及可见作者说明",
+              "url": "https://x.com/imaginaldomain/status/2116047589271339360"
+            },
+            {
+              "title": "官方仓库 README：功能、安装及表情数据",
+              "url": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T06:00:34.000Z",
+          "observedAt": "2026-10-30T11:23:49.063Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HV22EI5bQAALc34?format=jpg&name=large",
+            "alt": "AdvancedLivePortrait：为人物照片编辑表情：原帖图片",
+            "type": "image"
+          }
+        },
+        {
+          "id": "cb2c73b0f3009412",
+          "rank": 13,
+          "title": "Framer MCP：从 AI 客户端修改网站项目",
+          "summary": "原帖演示无需随身电脑的站点修改场景；功能和授权机制已对照 Framer 官方文档。未连接用户网站或测试发布，未核对各套餐费用。",
+          "category": "实用工作流",
+          "author": "Framer @framer",
+          "url": "https://x.com/framer/status/2115830498173899095",
+          "sources": [
+            {
+              "title": "X 原帖",
+              "url": "https://x.com/framer/status/2115830498173899095"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://www.framer.com/mcp/"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T15:37:55.000Z",
+          "observedAt": "2026-10-30T11:23:27.395Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HVzuSb0XUAEOXxr.jpg",
+            "alt": "Framer MCP：从 AI 客户端修改网站项目：X 原帖真实视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9a946a4b2c19a7a5",
+          "rank": 14,
+          "title": "FACT：把触觉力反馈加入机器人精细操作",
+          "summary": "作者与论文均描述两级规划/精修模型，将人类动作与接触力数据用于机器人训练。未复现结果，不沿用“首个小脑”等宣传表述；原帖明确代码与数据集尚待发布。",
+          "category": "硬件创客",
+          "author": "Zhi Cao @ZhiCao01756604",
+          "url": "https://x.com/ZhiCao01756604/status/2115563680788086947",
+          "sources": [
+            {
+              "title": "X 原帖",
+              "url": "https://x.com/ZhiCao01756604/status/2115563680788086947"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://arxiv.org/abs/2610.19155"
+            }
+          ],
+          "publishedAtISO": "2026-10-28T21:57:41.000Z",
+          "observedAt": "2026-10-30T11:23:15.565Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115561542724812800/img/EZeyCS775OfgaQ20.jpg",
+            "alt": "FACT：把触觉力反馈加入机器人精细操作：X 原帖真实视频预览",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-10-29",
       "date": "2026-10-29",
