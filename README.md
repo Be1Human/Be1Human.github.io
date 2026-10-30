@@ -2,7 +2,7 @@
 
 [个人博客](https://be1human.github.io/portfolio/) · [作品集](https://be1human.github.io/portfolio/works.html) · [博客时间线](https://be1human.github.io/portfolio/journal.html) · [科技新闻](https://be1human.github.io/portfolio/news.html)
 
-一个零依赖的中文个人博客：作品展示、创作记录，以及从 Dot「AI 热门 20 · 每日精选」同步的日期归档。浅色阅读布局，适配手机；全部主要内容在 HTML 中，关闭 JavaScript 也能阅读。
+一个零依赖的中文个人博客：作品展示、创作记录，以及从 Dot「AI 热门 20 · 每日精选」同步的日期归档。全站统一暖色纸感：米白底、柔和墨色与书页式排版，适配手机；全部主要内容在 HTML 中，关闭 JavaScript 也能阅读。
 
 ## 本地运行
 
