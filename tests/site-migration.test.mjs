@@ -46,3 +46,13 @@ test('all current pages have matching legacy aliases and root canonical URLs', a
   assert.equal(await read('portfolio/feed.xml'), await read('feed.xml'));
   assert.equal(await read('portfolio/sitemap.xml'), sitemap);
 });
+
+test('date-style news links retain search filters and the selected item after redirecting', async () => {
+  const script = await read('assets/app.js');
+  const current = new URL('https://be1human.github.io/news.html?date=2026-10-30&q=AI&category=tools#item-306fd8fd45fa4e83');
+  let destination;
+  const location = {href: current.href, search: current.search, hash: current.hash, replace: value => { destination = value; }};
+  const editionSelect = {addEventListener() {}, options: [{value: 'news/2026-10-30.html'}]};
+  runInNewContext(script, {URL, location, window: {location}, document: {body: {dataset: {page: 'news'}}, querySelectorAll: () => [], querySelector: () => editionSelect}});
+  assert.equal(destination, 'https://be1human.github.io/news/2026-10-30.html?q=AI&category=tools#item-306fd8fd45fa4e83');
+});

@@ -46,7 +46,13 @@ if (editionSelect) {
   const requestedDate = new URL(location.href).searchParams.get('date');
   if (requestedDate) {
     const selected = [...editionSelect.options].find(option => option.value.endsWith(`/${requestedDate}.html`));
-    if (selected) window.location.replace(selected.value);
+    if (selected) {
+      const target = new URL(selected.value, location.href);
+      target.search = location.search;
+      target.searchParams.delete('date');
+      target.hash = location.hash;
+      if (target.href !== location.href) window.location.replace(target.href);
+    }
   }
 }
 for (const image of document.querySelectorAll('.news-preview img')) {

@@ -14,6 +14,7 @@ const [projects, posts, news, evidence, template, updates] = await Promise.all([
 ]);
 const origin = 'https://be1human.github.io/';
 const styleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/styles.css'))).digest('hex').slice(0, 12);
+const scriptVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/app.js'))).digest('hex').slice(0, 12);
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -62,7 +63,7 @@ function render(path, title, description, active, content, ogtype = 'website') {
   const navActive = active === 'journal' ? 'home' : active;
   const nav = [['index.html', 'home', '主页'], ['works.html', 'works', '作品集'], ['news.html', 'news', '科技新闻']].map(([href, key, name]) => `<a href="${base}${href}"${key === navActive ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   let html = template;
-  const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, NAV: nav, CONTENT: content};
+  const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, NAV: nav, CONTENT: content};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
   if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
