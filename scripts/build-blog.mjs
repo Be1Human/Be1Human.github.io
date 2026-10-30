@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { httpsUrl, validateEditionId } from './news-data.mjs';
 import { buildFeed, renderStatusText } from './blog-feed.mjs';
+import { projectCategories, projectPagePath, validateProject } from './project-data.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const readJSON = async path => JSON.parse(await readFile(resolve(root, path), 'utf8'));
@@ -18,7 +19,7 @@ const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
 const dateLabel = date => `${Number(date.slice(5, 7))} 月 ${Number(date.slice(8, 10))} 日`;
 const minutes = post => Math.max(1, Math.ceil(post.sections.reduce((n, section) => n + section.paragraphs.join('').length, 0) / 400));
-const categories = {all: '全部作品', games: '游戏项目', visuals: '动态视觉', tools: 'AI 与工具'};
+const categories = projectCategories;
 const pages = new Map();
 
 function unique(items, key) {
@@ -26,13 +27,9 @@ function unique(items, key) {
 }
 unique(projects, 'id'); unique(posts, 'id'); unique(news.editions, 'id');
 for (const project of projects) {
-  if (!/^[a-z0-9-]+$/.test(project.id) || !categories[project.category] || project.category === 'all') throw new Error('Invalid project');
-  for (const key of ['title', 'description', 'imageAlt', 'imageNote', 'kind', 'action', 'label']) if (!project[key]) throw new Error(`Missing project ${key}`);
-  if (!/^assets\/images\/[\w.-]+$/.test(project.image)) throw new Error('Invalid local image');
-  await access(resolve(root, project.image));
-  for (const field of ['url', 'documentation', 'repository']) httpsUrl(project[field]);
   const source = evidence.projects.find(source => source.projectId === project.id);
-  if (!source || !project.documentation.startsWith(`${project.repository}/blob/${source.revision}/`) || !source.documents.some(doc => doc.url === project.documentation)) throw new Error('Project documentation does not match its recorded source');
+  validateProject(project, source);
+  await access(resolve(root, project.image));
 }
 for (const post of posts) {
   if (!/^[a-z0-9-]+$/.test(post.id)) throw new Error('Invalid article ID');
@@ -74,10 +71,13 @@ function heading(id, title, description, extra = '') {
   return `<header class="panel-heading"><div><h1 id="${id}">${title}</h1><p>${description}</p></div>${extra}</header>`;
 }
 
-function projectCard(project, compact = false, base = '') {
-  return `<article class="project-card${compact ? ' compact' : ''}" id="${e(project.id)}" data-filter-item data-category="${e(project.category)}" data-search="${e([project.title, project.description, ...project.tags].join(' '))}">
-    <a class="project-image-link ${project.artwork === 'clawpm' ? 'logo-art' : ''}" href="${e(project.url)}" ${external} aria-label="${e(project.title)}：${e(project.action)}（新窗口）"><img src="${base}${e(project.image)}" alt="${e(project.imageAlt)}" loading="lazy" width="1200" height="706"><span class="image-note">${e(project.imageNote)}</span><span class="image-arrow" aria-hidden="true">↗</span></a>
-    <div class="project-body"><div class="meta"><span class="category-label">${e(project.label)}</span><span>${e(project.kind)}</span></div><h2><a href="${e(project.url)}" ${external}>${e(project.title)} <span aria-hidden="true">↗</span></a></h2><p>${e(project.description)}</p><div class="project-bottom"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div>${compact ? '' : `<a class="subtle-link" href="${e(project.documentation)}" ${external}>项目说明 ↗</a>`}</div></div>
+function projectCard(project) {
+  const local = project.presentation === 'showcase';
+  const linkAttributes = local ? '' : external;
+  const arrow = local ? '→' : '↗';
+  return `<article class="project-card" id="${e(project.id)}" data-filter-item data-category="${e(project.category)}" data-search="${e([project.title, project.description, project.kind, ...project.tags].join(' '))}">
+    <a class="project-image-link ${project.artwork === 'clawpm' ? 'logo-art' : ''}" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}"><img src="${e(project.image)}" alt="${e(project.imageAlt)}" loading="lazy" width="1200" height="706"><span class="image-note">${e(project.imageNote)}</span><span class="image-arrow" aria-hidden="true">${arrow}</span></a>
+    <div class="project-body"><div class="meta"><span class="category-label">${e(project.label)}</span><span>${e(project.kind)}</span></div><h2><a href="${e(project.url)}" ${linkAttributes}>${e(project.title)} <span aria-hidden="true">${arrow}</span></a></h2><p>${e(project.description)}</p><div class="project-bottom"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="subtle-link" href="${e(project.documentation)}" ${linkAttributes}>${local ? '查看项目' : '项目说明'} ${arrow}</a></div></div>
   </article>`;
 }
 
@@ -97,7 +97,12 @@ function feedEntry(entry) {
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
 render('index.html', '云上男孩 · 动态与文章', '云上男孩的个人时间流。随手记录的文字动态，以及关于游戏、技术与创作的长文章。', 'home', home);
 
-render('works.html', '作品集 — CLOUD BOY · 云上男孩', '游戏、动态视觉与 AI 工具：CLOUD BOY 的 7 件公开作品及项目说明。', 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '游戏、动态视觉，还有一些小工具。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>还有一些正在做的尝试</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>全部 GitHub 项目 ↗</a></div></div></section>`);
+render('works.html', '作品集 — CLOUD BOY · 云上男孩', `游戏、视觉、工具与研究实验：CLOUD BOY 的 ${projects.length} 件作品及项目记录。`, 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
+
+for (const project of projects.filter(project => project.presentation === 'showcase')) {
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header><figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure><div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article');
+}
 
 render('journal.html', '云上男孩 · 动态与文章', '云上男孩的文字动态与长文章，按发布时间排列。', 'home', home);
 

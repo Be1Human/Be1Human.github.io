@@ -1,6 +1,6 @@
 {
-  "reviewedAt": "2026-10-28T16:01:31+00:00",
-  "method": "逐项阅读固定提交版本的公开项目说明、配置文件及相关发行附件；未在本次文案核对中运行产品。",
+  "reviewedAt": "2026-10-30T10:30:26.768Z",
+  "method": "公开项目依据固定提交的说明与配置；作者授权展示的项目依据私有工程资料整理独立简介，仅发布经过筛选的介绍，不发布原始内部资料。",
   "productRuntimeTestedInThisReview": false,
   "projects": [
     {
@@ -143,6 +143,114 @@
         "README：自托管项目管理、思维导图、看板、任务列表、甘特图、迭代与 MCP",
         "server/package.json：Fastify、SQLite 与 MCP 服务依赖"
       ]
+    },
+    {
+      "projectId": "rain-city",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "duomind",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "clawphone",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "app-control",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "agentmem",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "petgo",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "workflow-skills",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "codebuddy-memory",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "voxelspace",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "interactive-cube",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "network-lab",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "game-system-notes",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者授权整理的项目介绍",
+        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
     }
   ]
 }

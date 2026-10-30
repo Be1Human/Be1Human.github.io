@@ -7,11 +7,13 @@ const read = path => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 test('every public route shares the site navigation, identity, footer and stylesheet', async () => {
   const posts = JSON.parse(await read('data/posts.json'));
   const news = JSON.parse(await read('data/news.json'));
+  const projects = JSON.parse(await read('data/projects.json'));
   const routes = [
     ['index.html', 'index.html'], ['journal.html', 'index.html'],
     ['works.html', 'works.html'], ['news.html', 'news.html'],
     ...posts.map(post => [`posts/${post.id}.html`, 'index.html']),
     ...news.editions.map(edition => [`news/${edition.id}.html`, 'news.html']),
+    ...projects.filter(project => project.presentation === 'showcase').map(project => [project.url, 'works.html']),
   ];
   const home = await read('index.html');
   const extract = (html, tag, name) => html.match(new RegExp(`<${tag} class="${name}">[\\s\\S]*?</${tag}>`))?.[0];

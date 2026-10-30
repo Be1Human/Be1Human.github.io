@@ -1,5 +1,51 @@
 [
   {
+    "id": "rain-city",
+    "title": "雨之城",
+    "name": "雨之城",
+    "kind": "城市驾驶游戏原型",
+    "category": "games",
+    "label": "游戏项目",
+    "description": "从城市驾驶到下车步行，把一段旅程做成可玩的场景。保留了 Godot 历史原型，并继续探索角色动画、场景重建与 UE 迁移。",
+    "image": "assets/images/rain-city-cover.svg",
+    "imageAlt": "雨之城的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "Godot",
+      "城市驾驶",
+      "3DGS"
+    ],
+    "url": "projects/rain-city.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/rain-city.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "原型开发与迁移探索",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "从驾驶到自由行动",
+          "paragraphs": [
+            "围绕城市街道、车辆和人物之间的切换展开：驾驶、停车、下车步行，再回到车上。历史 Godot 原型已包含这条基础交互链路，以及暂停、重开、角色和车辆碰撞等工程内容。",
+            "场景制作把路线、停车区域、角色动画和画面效果拆开推进，再逐步集成到同一个可玩的世界里。"
+          ]
+        },
+        {
+          "heading": "把场景与动作一起打磨",
+          "paragraphs": [
+            "制作过程同时涉及角色动作重定向、蒙皮修整、上下车动画和场景照明。独立的 3D Gaussian Splatting 驾驶实验尝试把视频中的局部空间变成可以观察和行驶的场景。"
+          ]
+        },
+        {
+          "heading": "当前进度",
+          "paragraphs": [
+            "Godot 工程是保留的历史可玩原型；UE 迁移仍处于准备阶段，尚未完成 UE 实机运行与画面验收。3DGS 已做过局部技术试玩，仍存在模糊和侧视拉丝，不能视为整座城市或完整路线已经完成。"
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "mineclaw",
     "title": "MineClaw",
     "name": "MineClaw",
@@ -20,6 +66,277 @@
     "repository": "https://github.com/Be1Human/MineClaw",
     "accent": "green",
     "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
+  },
+  {
+    "id": "duomind",
+    "title": "DuoMind · 双脑搭档",
+    "name": "DuoMind · 双脑搭档",
+    "kind": "人机同屏合作 Demo",
+    "category": "games",
+    "label": "游戏项目",
+    "description": "玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。",
+    "image": "assets/images/duomind-cover.svg",
+    "imageAlt": "DuoMind · 双脑搭档的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "LittleJS",
+      "Pi Agent",
+      "协作 NPC"
+    ],
+    "url": "projects/duomind.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/duomind.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "教学 MVP",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "两位队员，一次合作",
+          "paragraphs": [
+            "玩家操作一位角色，另一位由 AI 控制。目标是清除敌人，并让双方一起抵达关卡出口。项目基于 LittleJS 的传统 NPC 示例，加入指令面板、世界状态上报和 AI 队友控制。"
+          ]
+        },
+        {
+          "heading": "让规划真正接到游戏里",
+          "paragraphs": [
+            "语言模型负责选择跟随、掩护、推进、撤退或等待等技能，逐帧控制器负责实际移动、跳跃和射击。每轮动作把位置、受伤和成功或失败结果交回规划器。",
+            "危险发生时，本地即时反应优先；版本检查阻止过期模型响应重新接管角色。离线规则模式与真实模型模式分别呈现，调用失败不会被隐藏成一次成功的智能决策。"
+          ]
+        },
+        {
+          "heading": "一个有明确边界的实验",
+          "paragraphs": [
+            "目前是单关、同屏合作的教学原型，未包含强化学习、语音或网络多人。基于 adamfk/game-fsm-examples 的 Apache-2.0 示例，并使用 LittleJS 与 Pi SDK；本项目展示的是在这些基础上的协作控制实验。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "clawphone",
+    "title": "ClawPhone",
+    "name": "ClawPhone",
+    "kind": "AI 手机桥接服务",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "把 Android 手机接入 OpenClaw，让 Agent 通过桥接服务观察屏幕、调用手机操作，并获得动作结果。与 App-Control 手机端配合使用。",
+    "image": "assets/images/clawphone-cover.svg",
+    "imageAlt": "ClawPhone的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "OpenClaw",
+      "WebSocket",
+      "MCP"
+    ],
+    "url": "projects/clawphone.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/clawphone.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "桥接与工具集成",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "让手机成为 Agent 的操作端",
+          "paragraphs": [
+            "ClawPhone 负责服务器侧的桥接、安装和兼容层，Android 执行端由 App-Control 提供。手机主动建立长连接，桥接层维护设备状态并转发工具调用。"
+          ]
+        },
+        {
+          "heading": "工具之外，还需要操作经验",
+          "paragraphs": [
+            "工程整理了屏幕信息、文字定位、点击、输入、启动应用、滚动和批量操作等工具。配套的能力索引与 Skill 说明操作顺序、文字节点与坐标的选择，以及动作后的结果确认。"
+          ]
+        },
+        {
+          "heading": "工程边界",
+          "paragraphs": [
+            "这是需要手机端、设备授权和自行部署服务配合的集成项目。桥接服务与手机执行端分工，工具层负责能力调用，经验层负责操作方法。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "app-control",
+    "title": "App-Control",
+    "name": "App-Control",
+    "kind": "Android 自动化原型",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "在手机上接收任务，通过无障碍服务连接页面识别与动作执行，并在界面中观察任务、服务状态和日志。重点是单设备流程与调试。",
+    "image": "assets/images/app-control-cover.svg",
+    "imageAlt": "App-Control的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "Kotlin",
+      "Android",
+      "无障碍服务"
+    ],
+    "url": "projects/app-control.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/app-control.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "单设备 MVP",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "把任务送到手机上",
+          "paragraphs": [
+            "项目以 Android 手机为执行端，控制端通过任务入口发出请求。手机端工程包含任务仓库、无障碍服务、执行协调器、页面识别器和本地 HTTP 接口。"
+          ]
+        },
+        {
+          "heading": "让执行过程可以观察",
+          "paragraphs": [
+            "原型将任务入口、流程编排、页面识别、动作执行和状态展示分开。调试重点是确认权限与服务是否就绪、目标页面是否识别，以及某一步操作实际发生了什么。"
+          ]
+        },
+        {
+          "heading": "当前范围",
+          "paragraphs": [
+            "工程处于单设备自动化 MVP 阶段，部分业务流程仍是骨架和待补齐的分支。页面识别、异常回退与具体应用适配需要逐项验证，尚不是通用多设备控制产品。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "agentmem",
+    "title": "AgentMem",
+    "name": "AgentMem",
+    "kind": "跨设备 AI 编程记忆",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "将不同设备与 IDE 的编码记忆汇总到一处。服务端围绕同步、聚合、导出和管理组织，使用 SQLite 保存数据，并提供部署与维护入口。",
+    "image": "assets/images/agentmem-cover.svg",
+    "imageAlt": "AgentMem的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "TypeScript",
+      "SQLite",
+      "记忆同步"
+    ],
+    "url": "projects/agentmem.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/agentmem.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "服务端工程",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "让上下文跟着工作流走",
+          "paragraphs": [
+            "项目面向跨设备的 AI 编程记忆聚合：客户端把编码过程中留下的记忆同步到同一个服务，减少工作环境切换时的上下文割裂。"
+          ]
+        },
+        {
+          "heading": "同步、整理与导出",
+          "paragraphs": [
+            "服务端包含同步、聚合、Markdown 导出和管理相关模块。SQLite 让持久化数据集中在本地数据库中，配套管理页面处理服务设置和访问管理。"
+          ]
+        },
+        {
+          "heading": "围绕日常维护设计",
+          "paragraphs": [
+            "工程提供 Linux 安装脚本与 Docker Compose 部署方式，并整理了状态查看、日志、升级、备份和卸载命令。客户端、聚合服务和本地数据库共同组成跨设备记忆的工作链路。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "petgo",
+    "title": "PetGo · 宠物梦视",
+    "name": "PetGo · 宠物梦视",
+    "kind": "AI 宠物影像产品设计",
+    "category": "visuals",
+    "label": "视觉与设计",
+    "description": "围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。",
+    "image": "assets/images/petgo-cover.svg",
+    "imageAlt": "PetGo · 宠物梦视的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "AI 影像",
+      "产品设计",
+      "多模态"
+    ],
+    "url": "projects/petgo.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/petgo.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "产品与技术设计记录",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "从一张照片开始创作",
+          "paragraphs": [
+            "产品围绕“浏览模板、选择同款、上传宠物素材、生成并保存结果”展开，希望让用户不用从空白提示词开始制作宠物图片或短视频。"
+          ]
+        },
+        {
+          "heading": "连接创意与生成任务",
+          "paragraphs": [
+            "设计资料覆盖多模态输入、生成任务、模板参数、模型供应商抽象，以及结果预览和历史作品管理。客户端体验与后台任务状态共同构成创作链路。"
+          ]
+        },
+        {
+          "heading": "当前阶段",
+          "paragraphs": [
+            "这份记录覆盖产品构想与技术设计，其中部分需求仍处于草案阶段。已经整理的设计包括多模态输入、任务调度和模板组织，完成的文档范围不等于功能已经全部上线。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "workflow-skills",
+    "title": "个人工作流 Skill 库",
+    "name": "个人工作流 Skill 库",
+    "kind": "可检索的工作方法库",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "把设计、研发、动画、游戏制作和搜索研究中的方法整理成可复用的 Skill。通过分类、关键词和统一目录，找到当前任务需要的完整工作流程。",
+    "image": "assets/images/workflow-skills-cover.svg",
+    "imageAlt": "个人工作流 Skill 库的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "Agent Skill",
+      "工作流",
+      "Python"
+    ],
+    "url": "projects/workflow-skills.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/workflow-skills.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "持续维护",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "把经验变成可复用的方法",
+          "paragraphs": [
+            "这份库集中维护工作流技能、参考资料与协作规范，覆盖设计与文档、研发与运维、动画质量、游戏制作、搜索与研究。当前目录整理了 19 项技能。"
+          ]
+        },
+        {
+          "heading": "先找到，再完整使用",
+          "paragraphs": [
+            "检索脚本按关键词或类别定位候选技能，再读取对应的完整说明和参考文件。机器可读目录、分类索引与技能正文分开维护，避免同一方法出现多个互相冲突的副本。"
+          ]
+        },
+        {
+          "heading": "维护也是工作流的一部分",
+          "paragraphs": [
+            "库中包含索引生成和一致性检查。带依赖的技能组需要一起迁移；技能文件本身不会自动安装工具、连接插件或启用账户权限。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "wallpaper-workshop",
@@ -110,6 +427,51 @@
     "documentation": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
   },
   {
+    "id": "codebuddy-memory",
+    "title": "CodeBuddy Memory · 发布站",
+    "name": "CodeBuddy Memory · 发布站",
+    "kind": "桌面应用发布工作台",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "把产品介绍、安装包下载、更新日志和构建发布放到一个网站中。管理端将拉取代码、应用打包和版本发布组织成一条流程。",
+    "image": "assets/images/codebuddy-memory-cover.svg",
+    "imageAlt": "CodeBuddy Memory · 发布站的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "Node.js",
+      "Express",
+      "应用发布"
+    ],
+    "url": "projects/codebuddy-memory.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/codebuddy-memory.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "网站与发布工具",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "把发布过程串起来",
+          "paragraphs": [
+            "网站承担产品介绍、下载和更新日志展示；管理端可以发起构建，将拉取应用源码、安装依赖、打包和整理更新内容连接起来。"
+          ]
+        },
+        {
+          "heading": "既能自动构建，也能管理版本",
+          "paragraphs": [
+            "工程包含构建日志查看、安装包上传、更新日志编辑和版本管理。自动构建依赖桌面应用源码和对应平台的打包环境，手动上传用于补充发布流程。"
+          ]
+        },
+        {
+          "heading": "项目的职责",
+          "paragraphs": [
+            "这是围绕 CodeBuddy Memory 建立的介绍与发布网站，与客户端本体、记忆聚合服务分别承担不同职责。构建和发布能力需要部署环境与应用源码配合。"
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "animation-workflow",
     "title": "Video to Game Animation",
     "name": "Video to Game Animation",
@@ -153,5 +515,185 @@
     "accent": "violet",
     "artwork": "clawpm",
     "documentation": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md"
+  },
+  {
+    "id": "voxelspace",
+    "title": "VoxelSpace",
+    "name": "VoxelSpace",
+    "kind": "游戏引擎学习工程",
+    "category": "games",
+    "label": "游戏项目",
+    "description": "从窗口、输入和渲染循环开始，搭建自己的游戏引擎骨架。已保存的早期实现主要围绕 2D 精灵、动画、组件和游戏世界展开。",
+    "image": "assets/images/voxelspace-cover.svg",
+    "imageAlt": "VoxelSpace的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "C++",
+      "OpenGL",
+      "GLFW"
+    ],
+    "url": "projects/voxelspace.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/voxelspace.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "早期学习原型",
+      "period": "2021",
+      "sections": [
+        {
+          "heading": "从底层循环理解游戏",
+          "paragraphs": [
+            "项目把初始化、输入处理、逐帧更新和绘制拆成引擎的基础循环，并通过窗口、Shader、纹理和顶点数组组织渲染。"
+          ]
+        },
+        {
+          "heading": "组件与游戏世界",
+          "paragraphs": [
+            "代码包含 Actor、组件、移动、输入、精灵和动画精灵等结构，以及独立的游戏世界与关卡实验。项目希望从这些小模块逐步理解引擎如何支撑一段可玩的内容。"
+          ]
+        },
+        {
+          "heading": "保留早期尝试的真实样子",
+          "paragraphs": [
+            "仓库名称提出了体素引擎与编辑器的方向，但已记录的阶段成果主要是基础 2D 渲染和引擎框架。这里按学习原型展示，不将其描述为已经完成的体素编辑器。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "interactive-cube",
+    "title": "交互认知魔方",
+    "name": "交互认知魔方",
+    "kind": "传感器与反馈实验",
+    "category": "experiments",
+    "label": "研究与实验",
+    "description": "将姿态传感器、按键、OLED 和语音反馈组合起来：转动方块、辨认朝向，再通过声音提示完成简单的匹配小游戏。",
+    "image": "assets/images/interactive-cube-cover.svg",
+    "imageAlt": "交互认知魔方的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "Raspberry Pi",
+      "Python",
+      "IMU"
+    ],
+    "url": "projects/interactive-cube.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/interactive-cube.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "历史硬件原型",
+      "period": "2021",
+      "sections": [
+        {
+          "heading": "让物理动作参与交互",
+          "paragraphs": [
+            "早期原型把树莓派、姿态传感器、OLED、按键与语音模块连接起来。传感器读取方块的朝向，屏幕和声音提供反馈，让交互从屏幕里的按钮延伸到手中的动作。"
+          ]
+        },
+        {
+          "heading": "一个声音匹配小游戏",
+          "paragraphs": [
+            "游戏模块播放动物提示音，再读取方块朝上的面并比对答案。工程另保留了姿态估计、蓝牙与通信、震动电机和显示模块的实验代码。"
+          ]
+        },
+        {
+          "heading": "保留一次硬件尝试",
+          "paragraphs": [
+            "这份记录主要保存硬件交互和软件组织方式，包含传感器读取、声音与显示反馈、小游戏逻辑等模块。它是一份 2021 年的历史原型，本次整理没有重新接线或验证实物。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "network-lab",
+    "title": "OVS 网络实验",
+    "name": "OVS 网络实验",
+    "kind": "网络资源管理原型",
+    "category": "experiments",
+    "label": "研究与实验",
+    "description": "用 Python 与 gRPC 探索网卡、虚拟交换机和资源管理接口。保留了 Open vSwitch 网桥操作、计算与存储协议等早期实验代码。",
+    "image": "assets/images/network-lab-cover.svg",
+    "imageAlt": "OVS 网络实验的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "Python",
+      "gRPC",
+      "Open vSwitch"
+    ],
+    "url": "projects/network-lab.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/network-lab.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "历史技术实验",
+      "period": "2020–2021",
+      "sections": [
+        {
+          "heading": "给网络操作一个接口",
+          "paragraphs": [
+            "工程探索把网卡与 Open vSwitch 操作放到可调用的服务接口中，包含网卡配置、网桥信息读取和相关管理函数。"
+          ]
+        },
+        {
+          "heading": "从单项脚本到服务协议",
+          "paragraphs": [
+            "仓库整理了 Network、Compute 和 Storage 的协议定义与 Python 服务模块，尝试将网络、计算和存储相关操作组织在同一套调用结构下。"
+          ]
+        },
+        {
+          "heading": "按原型保存",
+          "paragraphs": [
+            "部分协议定义和实现仍不完整，这是一份早期技术实验记录。它保留了从单项网络脚本逐步走向服务接口的过程，而不是已经验收的生产运维系统。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "game-system-notes",
+    "title": "游戏系统设计图集",
+    "name": "游戏系统设计图集",
+    "kind": "结构图与学习笔记",
+    "category": "visuals",
+    "label": "视觉与设计",
+    "description": "用结构图记录游戏 UI、角色系统与编辑器扩展的思考。把类之间的关系、资源打开流程和模块边界画出来，作为后续实现时的参照。",
+    "image": "assets/images/game-system-notes-cover.svg",
+    "imageAlt": "游戏系统设计图集的项目示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "tags": [
+      "draw.io",
+      "游戏架构",
+      "Unreal 学习"
+    ],
+    "url": "projects/game-system-notes.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/game-system-notes.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "设计与学习归档",
+      "period": "2023",
+      "sections": [
+        {
+          "heading": "先把关系画清楚",
+          "paragraphs": [
+            "这组图集用于整理游戏开发中的模块关系与交互流程。保存的游戏相关图包含 UI 布局、角色、编辑器插件以及部分玩法系统的结构记录。"
+          ]
+        },
+        {
+          "heading": "从资源到编辑器窗口",
+          "paragraphs": [
+            "其中的编辑器学习图追踪了 DataTable 资源从类型操作入口到模块创建编辑器，再到具体编辑窗口与控件的关系。图中的类名用于理解框架结构，并不代表整套编辑器由本项目实现。"
+          ]
+        },
+        {
+          "heading": "一份持续可回看的笔记",
+          "paragraphs": [
+            "结构图帮助把阅读框架源码、理解调用流程和设计自己的模块连接起来。本页的配图重新绘制为结构示意，记录这套学习与设计方法。"
+          ]
+        }
+      ]
+    }
   }
 ]

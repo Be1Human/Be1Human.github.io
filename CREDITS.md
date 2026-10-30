@@ -1,8 +1,8 @@
 # 内容与素材来源
 
-主页的项目介绍根据 Be1Human 已公开仓库的 README、相关配置与发行附件整理。文字依据、固定版本和说明链接保存在 `data/content-sources.json`；卡片的“项目说明”链接可直接核对原文。此次文案核对未重新运行全部产品。
+作品集的公开项目介绍根据 Be1Human 已公开仓库的 README、相关配置与发行附件整理。文字依据、固定版本和说明链接保存在 `data/content-sources.json`；卡片的“项目说明”链接可直接核对原文。其余项目经作者授权，根据工程说明、结构或设计资料整理为独立站内简介；原始私有资料没有随网站发布，源仓库权限保持不变。此次整理未重新运行全部产品，阶段说明不代表新的运行验收。
 
-配图从同一账号的公开项目中选取，未经生成替换。每张图片的原始路径、固定提交版本与下载地址保存在 `data/sources.json`。
+原有项目的配图从同一账号的公开项目中选取，未替换为生成截图。新增的 12 张概念封面在本仓库以 SVG 绘制，并标注“项目示意图 · 非运行截图”。素材来源与类型保存在 `data/sources.json`。
 
 - **AI Wallpaper Workshop**：蓝天湖景与星空实际渲染截图，来自 [starry-night-train](https://github.com/Be1Human/starry-night-train)。该项目的生成素材、Shader 和第三方来源见其 CREDITS.md。
 - **Titan Town**：实际游戏截图，来自 [titan-town](https://github.com/Be1Human/titan-town)。项目内第三方组件与素材声明继续适用。

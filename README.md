@@ -18,7 +18,9 @@ npm start
 
 ## 更新作品
 
-编辑 `data/projects.json`，把图片放在 `assets/images/`。项目介绍必须有对应的公开来源，记录在 `data/content-sources.json`。图片来源见 [CREDITS.md](CREDITS.md)。构建会检查图片、项目来源与链接。
+编辑 `data/projects.json`，把图片放在 `assets/images/`。当前展示 19 个项目：7 个原有公开项目，以及 12 个经作者授权整理的项目介绍。公开项目保留固定提交的来源链接；源码私有的项目使用 `presentation: "showcase"`，生成 `projects/<id>.html` 站内详情页，只包含整理后的公开介绍。项目资料依据记录在 `data/content-sources.json`，私有工程的原文与核对记录留在本地忽略目录，不进入公开数据。图片来源见 [CREDITS.md](CREDITS.md)。
+
+用户只授权在博客展示项目，所有源仓库维持原有权限。不要将“展示作品”解释为公开源码、内部文档或部署配置，也不要给访客提供无法访问的私有仓库链接。原型、设计稿与历史实验需注明实际阶段；概念封面必须标明示意图，不冒充运行截图。
 
 ## 写博客
 
@@ -46,6 +48,7 @@ npm run check
 
 - `src/page.template.html`：共享导航、页面头部和页脚。
 - `scripts/build-blog.mjs`：页面渲染、内容验证、RSS、站内链接检查。
+- `scripts/project-data.mjs`：作品字段校验、公开源码与站内项目介绍的边界。
 - `assets/styles.css`：桌面与手机布局。
 - `assets/app.js`：筛选、搜索、日期切换和旧作品锚点兼容。
 - `scripts/news-data.mjs`：公开字段白名单、来源校验和重复导入处理。

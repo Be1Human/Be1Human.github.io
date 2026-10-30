@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <title>DuoMind · 双脑搭档 — CLOUD BOY</title>
+  <meta name="description" content="玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。">
+  <link rel="canonical" href="https://be1human.github.io/portfolio/projects/duomind.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="DuoMind · 双脑搭档 — CLOUD BOY">
+  <meta property="og:description" content="玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。">
+  <meta property="og:url" content="https://be1human.github.io/portfolio/projects/duomind.html">
+  <meta property="og:image" content="https://be1human.github.io/portfolio/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/mark.svg?v=a832a4e1a06d" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/styles.css?v=a832a4e1a06d">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body id="top" data-page="works">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html" aria-label="云上男孩的博客"><img class="blog-mark" src="../assets/mark.svg?v=a832a4e1a06d" width="42" height="42" alt=""><span>云上男孩<small>CLOUD BOY</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html">主页</a><a href="../works.html" aria-current="page">作品集</a><a href="../news.html">科技新闻</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#duomind">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>2026</span></strong><p>人机同屏合作 Demo<span>·</span>教学 MVP</p></div></div><h1>DuoMind · 双脑搭档</h1><p class="article-lede">玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。</p></header><figure class="article-cover"><img src="../assets/images/duomind-cover.svg" alt="DuoMind · 双脑搭档的项目示意图，非运行截图" width="1200" height="706"><figcaption>项目示意图 · 非运行截图</figcaption></figure><div class="prose"><section id="section-1"><h2>两位队员，一次合作</h2><p>玩家操作一位角色，另一位由 AI 控制。目标是清除敌人，并让双方一起抵达关卡出口。项目基于 LittleJS 的传统 NPC 示例，加入指令面板、世界状态上报和 AI 队友控制。</p></section><section id="section-2"><h2>让规划真正接到游戏里</h2><p>语言模型负责选择跟随、掩护、推进、撤退或等待等技能，逐帧控制器负责实际移动、跳跃和射击。每轮动作把位置、受伤和成功或失败结果交回规划器。</p><p>危险发生时，本地即时反应优先；版本检查阻止过期模型响应重新接管角色。离线规则模式与真实模型模式分别呈现，调用失败不会被隐藏成一次成功的智能决策。</p></section><section id="section-3"><h2>一个有明确边界的实验</h2><p>目前是单关、同屏合作的教学原型，未包含强化学习、语音或网络多人。基于 adamfk/game-fsm-examples 的 Apache-2.0 示例，并使用 LittleJS 与 Pi SDK；本项目展示的是在这些基础上的协作控制实验。</p></section></div><footer class="article-end"><div class="tags"><span>LittleJS</span><span>Pi Agent</span><span>协作 NPC</span></div><a class="back-link" href="../works.html#duomind">← 返回作品集</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 云上男孩<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

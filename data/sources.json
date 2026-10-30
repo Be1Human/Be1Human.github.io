@@ -62,5 +62,77 @@
     "sourcePath": "web/src/assets/logo.png",
     "sourceUrl": "https://raw.githubusercontent.com/Be1Human/clawpm/16eb182d435cd4f88af5e94a8199c2cbe406beb7/web/src/assets/logo.png",
     "bytes": 22495
+  },
+  {
+    "file": "assets/images/rain-city-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 2268
+  },
+  {
+    "file": "assets/images/duomind-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 2188
+  },
+  {
+    "file": "assets/images/clawphone-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1356
+  },
+  {
+    "file": "assets/images/app-control-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1545
+  },
+  {
+    "file": "assets/images/agentmem-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1530
+  },
+  {
+    "file": "assets/images/petgo-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 2266
+  },
+  {
+    "file": "assets/images/workflow-skills-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1443
+  },
+  {
+    "file": "assets/images/codebuddy-memory-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1621
+  },
+  {
+    "file": "assets/images/voxelspace-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1278
+  },
+  {
+    "file": "assets/images/interactive-cube-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1379
+  },
+  {
+    "file": "assets/images/network-lab-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1746
+  },
+  {
+    "file": "assets/images/game-system-notes-cover.svg",
+    "type": "original-svg-concept",
+    "description": "为项目展示绘制的概念插图，非运行截图。",
+    "bytes": 1646
   }
 ]
