@@ -30,6 +30,8 @@ npm start
 
 完整工作流程见 [docs/news-sync.md](docs/news-sync.md)。资讯导入使用字段白名单，只保留可公开的标题、摘要和出处，不搬运转发草稿或内部笔记。
 
+持续同步每 15 分钟检查一次 Dot 已发布版本。新增一期、同一天再次更新、历史资讯更正都会自动同步；没有变化时不提交。电脑与桌面应用恢复运行后会补齐期间的更新。
+
 ```sh
 npm run news:sync -- /absolute/path/to/verified-source-checkout
 npm run build

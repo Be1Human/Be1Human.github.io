@@ -39,6 +39,28 @@ test('unexpected archive shrinkage retains the previous archive', () => {
   assert.throws(() => buildArchive([latest], previous, 'b'.repeat(40)));
   assert.equal(previous.editions.length, 2);
 });
+test('same-day corrections replace existing summaries without creating a second edition', () => {
+  const raw = fixture();
+  const previous = buildArchive([normalizeEdition(raw, raw.date)], null, 'a'.repeat(40), '2026-10-30T08:00:00Z');
+  raw.items[0].summary = '同一期更新后的摘要';
+  const next = buildArchive([normalizeEdition(raw, raw.date)], previous, 'b'.repeat(40), '2026-10-30T09:00:00Z');
+  assert.equal(next.editions.length, 1);
+  assert.equal(next.editions[0].items[0].id, previous.editions[0].items[0].id);
+  assert.equal(next.editions[0].items[0].summary, '同一期更新后的摘要');
+  assert.equal(previous.editions[0].items[0].summary, '公开资讯摘要');
+  assert.equal(next.sourceRevision, 'b'.repeat(40));
+  assert.equal(next.syncedAt, '2026-10-30T09:00:00Z');
+});
+test('updates in an older edition sync even when the newest edition date is unchanged', () => {
+  const raw = {...fixture(), date: '2026-10-28'};
+  const latest = normalizeEdition(fixture(), '2026-10-29');
+  const previous = buildArchive([normalizeEdition(raw, raw.date), latest], null, 'a'.repeat(40));
+  raw.items[0].title = '更正后的历史标题';
+  const next = buildArchive([normalizeEdition(raw, raw.date), latest], previous, 'b'.repeat(40));
+  assert.notEqual(next, previous);
+  assert.equal(next.editions[0].id, previous.editions[0].id);
+  assert.equal(next.editions[1].items[0].title, '更正后的历史标题');
+});
 test('the real public archive contains only public fields and every issue has an output page', async () => {
   const archive = JSON.parse(await readFile(new URL('../data/news.json', import.meta.url)));
   assert(archive.editions.length > 0);
