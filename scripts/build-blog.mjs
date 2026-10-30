@@ -59,16 +59,17 @@ function render(path, title, description, active, content, ogtype = 'website') {
   let html = template;
   const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, NAV: nav, CONTENT: content};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
+  // The landing page has one set of destinations and a compact footer.
+  if (active === 'home') {
+    html = html.replace(/  <header class="site-header">[\s\S]*?<\/header>\n/, '');
+    html = html.replace(/  <footer class="site-footer wrap">[\s\S]*?<\/footer>/, `<footer class="simple-footer"><p>© 2026 云上男孩</p><nav aria-label="更多链接"><a href="https://github.com/Be1Human" ${external}>GitHub ↗</a><a href="feed.xml">RSS ↗</a></nav></footer>`);
+  }
   if (/\{\{[A-Z]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
 }
 
 function heading(kicker, title, description, extra = '') {
   return `<header class="page-heading wrap"><p class="eyebrow">${kicker}</p><div class="page-title-row"><div><h1>${title}<span class="blue">.</span></h1><p class="page-description">${description}</p></div>${extra}</div></header>`;
-}
-
-function sectionTitle(english, title, href, label) {
-  return `<div class="section-title"><div><p class="eyebrow">${english}</p><h2>${title}</h2></div>${href ? `<a class="text-link" href="${href}">${label} <span aria-hidden="true">↗</span></a>` : ''}</div>`;
 }
 
 function projectCard(project, compact = false, base = '') {
@@ -78,19 +79,23 @@ function projectCard(project, compact = false, base = '') {
   </article>`;
 }
 
-function postRow(post, feature = false, base = '') {
-  return `<article class="post-row${feature ? ' featured-post' : ''}"><div class="post-row-copy"><div class="meta"><span class="category-label">${e(post.category)}</span><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time><span>${minutes(post)} 分钟阅读</span></div><h3><a href="${base}posts/${post.id}.html">${e(post.title)} <span aria-hidden="true">↗</span></a></h3><p>${e(post.summary)}</p>${feature ? `<a class="read-link" href="${base}posts/${post.id}.html">继续阅读 <span aria-hidden="true">→</span></a>` : ''}</div>${post.image ? `<a class="post-thumbnail" href="${base}posts/${post.id}.html" tabindex="-1" aria-hidden="true"><img src="${base}${post.image}" alt="" width="240" height="180" loading="lazy"></a>` : ''}</article>`;
-}
-
 function controls(labels, searchLabel, count, noun) {
   return `<div class="filter-toolbar" data-controls hidden><div class="filters" role="group" aria-label="分类筛选">${labels.map(([id, label]) => `<button type="button" data-filter="${e(id)}" aria-pressed="${id === 'all'}">${e(label)}</button>`).join('')}</div><label class="search-box"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" placeholder="${searchLabel}" aria-label="${searchLabel}" data-search-input></label></div><p class="result-count" data-count data-noun="${noun}" aria-live="polite" aria-atomic="true">共 ${count} ${noun}</p>`;
 }
 const empty = '<div class="empty-state" data-empty hidden><span aria-hidden="true">⌕</span><h2>暂时没有找到</h2><p>换个关键词，或试试其他分类。</p><button class="button button-light" type="button" data-clear>清除筛选</button></div>';
 
-const home = `<section class="hero wrap"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> A SMALL CORNER OF THE INTERNET</p><p class="hero-greeting">你好，我是 CLOUD BOY <span aria-hidden="true">✳</span></p><h1>在云端思考，<br>在此刻<span class="hand-underline">创造<svg viewBox="0 0 180 14" aria-hidden="true"><path d="M3 10Q80 0 176 7"/></svg></span>。</h1><p class="hero-description">一个喜欢游戏、视觉与 AI 的创作者。<br>这里收藏我的作品，记录沿途的想法，<br>也分享每天值得读的科技新鲜事。</p><div class="hero-actions"><a class="button button-blue" href="journal.html">翻开我的博客 <span aria-hidden="true">↗</span></a><a class="text-link" href="works.html">看看作品 <span aria-hidden="true">→</span></a></div><p class="hero-footnote"><span class="tiny-cross" aria-hidden="true">＋</span> BUILD THINGS. WRITE STORIES. STAY CURIOUS.</p></div><figure class="hero-visual"><div class="visual-heading"><span>SCENES FROM MY WORK</span><span>01 / 07</span></div><a class="hero-art" href="https://be1human.github.io/starry-night-train/" ${external} aria-label="打开云间列车动态壁纸作品（新窗口）"><img src="assets/images/blue-sky-train.png" width="2048" height="768" alt="蓝天和云朵下，列车穿过湖畔高架桥。动态壁纸实际渲染截图。" fetchpriority="high"><div class="hero-art-caption"><span>往云的方向去。<small>BLUE SKY TRAIN · WEBGL</small></span><span class="art-circle" aria-hidden="true">↗</span></div></a><figcaption><span><i class="caption-dot"></i> 蓝天湖景列车 · 动态壁纸作品</span><span>MADE WITH CURIOSITY</span></figcaption><span class="orbit-stamp" aria-hidden="true">keep<br><b>curious ✳</b></span></figure></section>
-  <div class="chapter-nav wrap"><a href="works.html"><span class="chapter-number">01</span><div><strong>作品集 <span>SELECTED WORKS</span></strong><p>游戏、动态视觉与 AI 实验</p></div><span class="chapter-arrow">↗</span></a><a href="journal.html"><span class="chapter-number">02</span><div><strong>博客时间线 <span>THE JOURNAL</span></strong><p>写下过程，让想法慢慢生长</p></div><span class="chapter-arrow">↗</span></a><a href="news.html"><span class="chapter-number">03</span><div><strong>科技新闻 <span>DAILY SIGNAL</span></strong><p>来自 Dot 的每日科技精选</p></div><span class="chapter-arrow">↗</span></a></div>
-  <div class="home-content wrap"><div class="home-main"><section>${sectionTitle('NOTES & THOUGHTS', '最近写下的', 'journal.html', '全部文章')}${posts.map((post, index) => postRow(post, index === 0)).join('')}</section><section class="home-works">${sectionTitle('IDEAS INTO REALITY', '把想法做成作品', 'works.html', '全部 7 件作品')}<div class="project-grid home-projects">${[projects[1], projects[0]].map(project => projectCard(project, true)).join('')}</div></section></div><aside class="home-aside"><section class="daily-panel"><div class="daily-heading"><span class="signal-icon" aria-hidden="true">◉</span><span>DAILY SIGNAL</span><span class="live-dot" aria-hidden="true"></span></div><h2>科技，每日一读。</h2><p>AI、游戏开发与创造工具，<br>留住每天值得关注的新想法。</p><div class="edition-label"><time datetime="${latest.date}">${dateLabel(latest.date)}</time><span>最新一期 · ${latest.items.length} 条</span></div><ol class="mini-news">${latest.items.slice(0, 4).map((item, i) => `<li><span>${number(i + 1)}</span><div><a href="news.html#item-${item.id}">${e(item.title)}</a><small>${e(item.category)}</small></div></li>`).join('')}</ol><a class="button button-outline" href="news.html">阅读本期精选 <span aria-hidden="true">↗</span></a><div class="sync-caption"><span class="status-dot"></span> 从 Dot 同步 · 已归档 ${news.editions.length} 期</div></section><section class="about-note"><p class="eyebrow">A NOTE ABOUT ME</p><h2>你好，过路的朋友。</h2><p>我是云上男孩。做一点游戏，试一点 AI，也为有趣的画面停留。</p><p>这个小站，把做出来的东西和还在生长的想法放在一起。</p><a class="subtle-link" href="https://github.com/Be1Human" ${external}>在 GitHub 找到我 ↗</a><span class="hand-signature">Cloud Boy</span></section></aside></div>
-  <section class="closing-note wrap"><span aria-hidden="true">☁</span><p>想法很多，时间很长。<br><strong>慢慢做，慢慢记录。</strong></p><a href="feed.xml">通过 RSS 关注更新 ↗</a></section>`;
+const home = `<section class="simple-home" aria-labelledby="home-title">
+  <div class="simple-intro">
+    <p class="simple-kicker"><span aria-hidden="true">☁</span> CLOUD BOY</p>
+    <h1 id="home-title">云上男孩</h1>
+    <p class="simple-description">写代码，做游戏，记录有趣的事。</p>
+  </div>
+  <nav class="simple-routes" aria-label="博客栏目">
+    <a href="works.html"><div><h2>作品集</h2><p>游戏、视觉与 AI 实验</p></div><span aria-hidden="true">↗</span></a>
+    <a href="journal.html"><div><h2>博客时间线</h2><p>想法与创作记录</p></div><span aria-hidden="true">↗</span></a>
+    <a href="news.html"><div><h2>科技新闻</h2><p>来自 Dot 的每日科技精选</p></div><span aria-hidden="true">↗</span></a>
+  </nav>
+</section>`;
 render('index.html', 'CLOUD BOY · 云上男孩 — 作品、文字与每日科技精选', '云上男孩的个人博客。游戏、动态视觉与 AI 作品，创作手记，以及从 Dot 同步的每日科技精选。', 'home', home);
 
 render('works.html', '作品集 — CLOUD BOY · 云上男孩', '游戏、动态视觉与 AI 工具：CLOUD BOY 的 7 件公开作品及项目说明。', 'works', `${heading('01 / SELECTED WORKS', '让想法，有个形状', '游戏、动态视觉、AI 与工具。这里是我做过的一些尝试。', '<span class="page-doodle" aria-hidden="true">✳</span>')}<section class="wrap page-body" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多正在生长的项目</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>查看全部 GitHub 仓库 ↗</a></div></section>`);
