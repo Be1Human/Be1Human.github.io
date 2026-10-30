@@ -22,6 +22,8 @@ npm start
 
 ## 写博客
 
+首页是类似 X 的个人时间流，混合显示短动态和文章摘要。用户在聊天里说「发一条动态」或「发布一篇文章」即可提供发布内容；具体流程见 [docs/blog-publishing.md](docs/blog-publishing.md)。短动态存放在 `data/updates.json`，完整显示正文；长文章点击卡片进入全文页。原有 `journal.html` 地址也进入同一条时间流。
+
 在 `data/posts.json` 添加一篇文章，填写唯一的 `id`、真实的发布日期 `date`、标题、摘要、分类、标签，以及由小节和段落组成的 `sections`。可选 `image`、`imageAlt`；参考资料写在 `links` 中。
 
 运行 `npm run build` 后会生成 `posts/<id>.html`，并自动更新首页、时间线、RSS 和 sitemap。文章列表按日期倒序，同日保持输入顺序。首批三篇文章是本次改版的站点记录和基于现有公开项目说明整理的项目手记，没有虚构历史发布日期。
