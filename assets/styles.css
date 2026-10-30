@@ -20,23 +20,26 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .sr-only,.skip-link:not(:focus){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip-link:focus{position:fixed;z-index:100;top:12px;left:12px;padding:10px 20px;background:var(--white);color:var(--blue)}
 body[data-page="home"]{min-height:100svh;display:flex;flex-direction:column}
-body[data-page="home"] main{flex:1;display:grid;place-items:center;width:100%}
-.simple-home{width:min(560px,calc(100% - 48px));padding:56px 0}
-.simple-kicker{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:2px;color:var(--blue)}
-.simple-kicker>span{font:31px/1 Georgia,serif;letter-spacing:0}
-.simple-home h1{font-size:48px;line-height:1.35;font-weight:600;letter-spacing:-1.8px;margin-top:24px}
-.simple-description{font-size:15px;color:var(--muted);margin-top:14px}
-.simple-routes{margin-top:42px;border-top:1px solid var(--line)}
-.simple-routes>a{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
-.simple-routes h2{font-size:18px;font-weight:550;line-height:1.6}
-.simple-routes p{font-size:12px;color:var(--muted);margin-top:3px}
-.simple-routes>a>span{font-size:22px;color:#8c9bb2;transition:color .18s,transform .18s}
-.simple-routes>a:hover h2,.simple-routes>a:hover>span{color:var(--blue)}
-.simple-routes>a:hover>span{transform:translate(2px,-2px)}
-.simple-footer{width:min(560px,calc(100% - 48px));margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:11px;color:var(--muted)}
-.simple-footer nav{display:flex;gap:22px}
-.simple-footer a:hover{color:var(--blue)}
-@media(max-width:640px){.simple-home{padding:36px 0}.simple-home h1{font-size:40px;letter-spacing:-1px;margin-top:22px}.simple-description{font-size:14px}.simple-routes{margin-top:34px}.simple-routes>a{padding:19px 0}.simple-footer{padding:20px 0}}
+body[data-page="home"] main{flex:1;width:100%}
+.blog-header,.blog-home,.blog-footer{width:min(720px,calc(100% - 48px));margin-inline:auto}
+.blog-header{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px;border-bottom:1px solid var(--line)}
+.blog-brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;white-space:nowrap}
+.blog-brand>span{font:29px/1 Georgia,serif;color:var(--blue)}
+.blog-header nav{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--muted)}
+.blog-header nav a{padding-block:10px;white-space:nowrap}
+.blog-header nav a[aria-current]{color:var(--blue);font-weight:600}
+.blog-header a:hover,.blog-entry a:hover,.blog-footer a:hover{color:var(--blue)}
+.blog-home{padding:42px 0 34px}
+.blog-home h1{font-size:30px;line-height:1.4;font-weight:600;letter-spacing:-.6px;margin-bottom:10px}
+.blog-entry{padding:28px 0;border-bottom:1px solid var(--line)}
+.blog-entry:last-child{border-bottom:0}
+.blog-meta{display:flex;flex-wrap:wrap;gap:15px;font-size:11px;color:var(--muted)}
+.blog-meta time{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.blog-entry h2{font-size:22px;line-height:1.65;font-weight:550;margin:9px 0}
+.blog-entry p{font-size:14px;line-height:1.95;color:var(--muted)}
+.blog-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 0;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+.blog-footer nav{display:flex;gap:22px}
+@media(max-width:640px){.blog-header{min-height:110px;flex-wrap:wrap;gap:5px;padding-block:17px 10px}.blog-header nav{width:100%;gap:27px;font-size:12px}.blog-header nav a{padding-block:5px}.blog-home{padding:30px 0 25px}.blog-home h1{font-size:27px;margin-bottom:7px}.blog-entry{padding:24px 0}.blog-entry h2{font-size:20px}.blog-entry p{font-size:13px}.blog-footer{padding:20px 0}}
 .site-header{background:rgba(248,249,251,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;backdrop-filter:blur(16px)}
 .header-inner{height:92px;display:flex;align-items:center;justify-content:space-between;gap:28px}
 .brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:780;letter-spacing:1.3px;line-height:1.4;flex-shrink:0}

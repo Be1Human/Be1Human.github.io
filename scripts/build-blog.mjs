@@ -57,14 +57,15 @@ const latest = news.editions[0];
 
 function render(path, title, description, active, content, ogtype = 'website') {
   const base = path.includes('/') ? '../' : '';
-  const nav = [['index.html', 'home', '首页'], ['works.html', 'works', '作品集'], ['journal.html', 'journal', '博客时间线'], ['news.html', 'news', '科技新闻']].map(([href, key, name]) => `<a href="${base}${href}"${key === active ? ' aria-current="page"' : ''}>${name}${key === 'news' ? '<span class="nav-dot" aria-hidden="true"></span>' : ''}</a>`).join('');
+  const navActive = active === 'journal' ? 'home' : active;
+  const nav = [['index.html', 'home', '博客'], ['works.html', 'works', '作品集'], ['news.html', 'news', '科技新闻']].map(([href, key, name]) => `<a href="${base}${href}"${key === navActive ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   let html = template;
   const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, NAV: nav, CONTENT: content};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
-  // The landing page has one set of destinations and a compact footer.
+  // Keep the blog index focused on reading, with compact navigation and footer.
   if (active === 'home') {
-    html = html.replace(/  <header class="site-header">[\s\S]*?<\/header>\n/, '');
-    html = html.replace(/  <footer class="site-footer wrap">[\s\S]*?<\/footer>/, `<footer class="simple-footer"><p>© 2026 云上男孩</p><nav aria-label="更多链接"><a href="https://github.com/Be1Human" ${external}>GitHub ↗</a><a href="feed.xml">RSS ↗</a></nav></footer>`);
+    html = html.replace(/  <header class="site-header">[\s\S]*?<\/header>/, `<header class="blog-header"><a class="blog-brand" href="index.html" aria-label="云上男孩的博客"><span aria-hidden="true">☁</span>云上男孩</a><nav aria-label="主导航">${nav}</nav></header>`);
+    html = html.replace(/  <footer class="site-footer wrap">[\s\S]*?<\/footer>/, `<footer class="blog-footer"><p>© 2026 云上男孩</p><nav aria-label="更多链接"><a href="https://github.com/Be1Human" ${external}>GitHub ↗</a><a href="feed.xml">RSS ↗</a></nav></footer>`);
   }
   if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
@@ -86,19 +87,15 @@ function controls(labels, searchLabel, count, noun) {
 }
 const empty = '<div class="empty-state" data-empty hidden><span aria-hidden="true">⌕</span><h2>暂时没有找到</h2><p>换个关键词，或试试其他分类。</p><button class="button button-light" type="button" data-clear>清除筛选</button></div>';
 
-const home = `<section class="simple-home" aria-labelledby="home-title">
-  <div class="simple-intro">
-    <p class="simple-kicker"><span aria-hidden="true">☁</span> CLOUD BOY</p>
-    <h1 id="home-title">云上男孩</h1>
-    <p class="simple-description">写代码，做游戏，记录有趣的事。</p>
-  </div>
-  <nav class="simple-routes" aria-label="博客栏目">
-    <a href="works.html"><div><h2>作品集</h2><p>游戏、视觉与 AI 实验</p></div><span aria-hidden="true">↗</span></a>
-    <a href="journal.html"><div><h2>博客时间线</h2><p>想法与创作记录</p></div><span aria-hidden="true">↗</span></a>
-    <a href="news.html"><div><h2>科技新闻</h2><p>来自 Dot 的每日科技精选</p></div><span aria-hidden="true">↗</span></a>
-  </nav>
+const home = `<section class="blog-home" aria-labelledby="home-title">
+  <h1 id="home-title">博客</h1>
+  <div class="blog-posts">${posts.map(post => `<article class="blog-entry">
+    <div class="blog-meta"><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time><span>${e(post.category)}</span></div>
+    <h2><a href="posts/${post.id}.html">${e(post.title)}</a></h2>
+    <p>${e(post.summary)}</p>
+  </article>`).join('')}</div>
 </section>`;
-render('index.html', 'CLOUD BOY · 云上男孩 — 作品、文字与每日科技精选', '云上男孩的个人博客。游戏、动态视觉与 AI 作品，创作手记，以及从 Dot 同步的每日科技精选。', 'home', home);
+render('index.html', '博客 — CLOUD BOY · 云上男孩', '按时间阅读云上男孩的博客：创作手记、项目记录与想法。', 'home', home);
 
 render('works.html', '作品集 — CLOUD BOY · 云上男孩', '游戏、动态视觉与 AI 工具：CLOUD BOY 的 7 件公开作品及项目说明。', 'works', `${heading('01 / SELECTED WORKS', '让想法，有个形状', '游戏、动态视觉、AI 与工具。这里是我做过的一些尝试。', '<span class="page-doodle" aria-hidden="true">✳</span>')}<section class="wrap page-body" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多正在生长的项目</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>查看全部 GitHub 仓库 ↗</a></div></section>`);
 
@@ -106,7 +103,7 @@ const months = [...new Set(posts.map(post => post.date.slice(0, 7)))];
 render('journal.html', '博客时间线 — CLOUD BOY · 云上男孩', '按时间翻阅云上男孩的创作手记、项目记录和想法。', 'journal', `${heading('02 / THE JOURNAL', '一路创造，一路记录', '关于游戏、技术与创作的一些文字。顺着时间，慢慢读。', `<div class="page-stat"><strong>${number(posts.length)}</strong><span>篇记录 / 持续书写</span></div>`)}<section class="wrap page-body journal-layout" data-filterable><aside class="journal-rail"><p class="eyebrow">ARCHIVE</p>${[...new Set(posts.map(post => post.date.slice(0, 4)))].map(year => `<a href="#month-${months.find(month => month.startsWith(year))}">${year}<span>${posts.filter(post => post.date.startsWith(year)).length} 篇</span></a>`).join('')}<div class="rail-note">不是每一步都有答案，<br>但每一步都值得留下。</div></aside><div class="journal-main">${controls([['all', '全部记录'], ...[...new Set(posts.map(post => post.category))].map(category => [category, category])], '搜索文章或标签…', posts.length, '篇文章')}<div class="timeline">${months.map(month => `<section class="timeline-month" data-filter-section id="month-${month}"><div class="month-marker"><span>${month.slice(0, 4)}</span><h2>${Number(month.slice(5))} 月</h2></div>${posts.filter(post => post.date.startsWith(month)).map(post => `<article class="timeline-entry" data-filter-item data-category="${e(post.category)}" data-search="${e([post.title, post.summary, ...post.tags].join(' '))}"><div class="timeline-date"><time datetime="${post.date}">${post.date.slice(8)}</time><span>${new Intl.DateTimeFormat("en", {month: "short", timeZone: "UTC"}).format(new Date(post.date)).toUpperCase()}</span></div><div class="timeline-entry-body"><div class="meta"><span class="category-label">${e(post.category)}</span><span>${minutes(post)} 分钟阅读</span></div><h3><a href="posts/${post.id}.html">${e(post.title)} <span aria-hidden="true">↗</span></a></h3><p>${e(post.summary)}</p><div class="tags">${post.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div>${post.image ? `<a class="timeline-image" href="posts/${post.id}.html" tabindex="-1" aria-hidden="true"><img src="${post.image}" alt="" loading="lazy" width="800" height="320"></a>` : ''}</div></article>`).join('')}</section>`).join('')}<p class="timeline-start">◦ &nbsp; 故事从这里开始，也还在继续。</p></div>${empty}</div></section>`);
 
 for (const post of posts) {
-  const body = `<article class="article-shell wrap"><a class="back-link" href="../journal.html">← 返回博客时间线</a><header class="article-header"><div class="meta"><span class="category-label">${e(post.category)}</span><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time><span>${minutes(post)} 分钟阅读</span></div><h1>${e(post.title)}</h1><p class="article-lede">${e(post.summary)}</p><div class="article-author"><span class="author-cloud" aria-hidden="true">☁</span><div><strong>CLOUD BOY</strong><span>云上男孩 · 创作记录</span></div></div></header>${post.image ? `<figure class="article-cover"><img src="../${post.image}" alt="${e(post.imageAlt)}" width="1200" height="600"><figcaption>${e(post.imageAlt)}</figcaption></figure>` : ''}<div class="article-layout"><div class="prose">${post.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}${post.links.length ? `<section class="article-links"><h2>继续探索</h2><ul>${post.links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>` : ''}<div class="article-end"><span>— END —</span><div class="tags">${post.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div></div></div><aside class="article-toc"><p class="eyebrow">ON THIS PAGE</p><nav aria-label="文章目录">${post.sections.map((section, index) => `<a href="#section-${index + 1}">${number(index + 1)} &nbsp; ${e(section.heading)}</a>`).join('')}</nav></aside></div><a class="button button-light" href="../journal.html">← 继续翻阅时间线</a></article>`;
+  const body = `<article class="article-shell wrap"><a class="back-link" href="../index.html">← 返回博客</a><header class="article-header"><div class="meta"><span class="category-label">${e(post.category)}</span><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time><span>${minutes(post)} 分钟阅读</span></div><h1>${e(post.title)}</h1><p class="article-lede">${e(post.summary)}</p><div class="article-author"><span class="author-cloud" aria-hidden="true">☁</span><div><strong>CLOUD BOY</strong><span>云上男孩 · 创作记录</span></div></div></header>${post.image ? `<figure class="article-cover"><img src="../${post.image}" alt="${e(post.imageAlt)}" width="1200" height="600"><figcaption>${e(post.imageAlt)}</figcaption></figure>` : ''}<div class="article-layout"><div class="prose">${post.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}${post.links.length ? `<section class="article-links"><h2>继续探索</h2><ul>${post.links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>` : ''}<div class="article-end"><span>— END —</span><div class="tags">${post.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div></div></div><aside class="article-toc"><p class="eyebrow">ON THIS PAGE</p><nav aria-label="文章目录">${post.sections.map((section, index) => `<a href="#section-${index + 1}">${number(index + 1)} &nbsp; ${e(section.heading)}</a>`).join('')}</nav></aside></div><a class="button button-light" href="../index.html">← 查看更多文章</a></article>`;
   render(`posts/${post.id}.html`, `${post.title} — CLOUD BOY`, post.summary, 'journal', body, 'article');
 }
 
