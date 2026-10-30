@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { resolve, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { httpsUrl, validateEditionId } from './news-data.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -9,6 +10,7 @@ const [projects, posts, news, evidence, template] = await Promise.all([
   readJSON('data/projects.json'), readJSON('data/posts.json'), readJSON('data/news.json'), readJSON('data/content-sources.json'), readFile(resolve(root, 'src/page.template.html'), 'utf8'),
 ]);
 const origin = 'https://be1human.github.io/portfolio/';
+const styleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/styles.css'))).digest('hex').slice(0, 12);
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -57,14 +59,14 @@ function render(path, title, description, active, content, ogtype = 'website') {
   const base = path.includes('/') ? '../' : '';
   const nav = [['index.html', 'home', '首页'], ['works.html', 'works', '作品集'], ['journal.html', 'journal', '博客时间线'], ['news.html', 'news', '科技新闻']].map(([href, key, name]) => `<a href="${base}${href}"${key === active ? ' aria-current="page"' : ''}>${name}${key === 'news' ? '<span class="nav-dot" aria-hidden="true"></span>' : ''}</a>`).join('');
   let html = template;
-  const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, NAV: nav, CONTENT: content};
+  const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, NAV: nav, CONTENT: content};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
   // The landing page has one set of destinations and a compact footer.
   if (active === 'home') {
     html = html.replace(/  <header class="site-header">[\s\S]*?<\/header>\n/, '');
     html = html.replace(/  <footer class="site-footer wrap">[\s\S]*?<\/footer>/, `<footer class="simple-footer"><p>© 2026 云上男孩</p><nav aria-label="更多链接"><a href="https://github.com/Be1Human" ${external}>GitHub ↗</a><a href="feed.xml">RSS ↗</a></nav></footer>`);
   }
-  if (/\{\{[A-Z]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
+  if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
 }
 
