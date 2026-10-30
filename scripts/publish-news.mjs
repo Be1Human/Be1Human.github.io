@@ -1,0 +1,33 @@
+import { execFileSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const source = process.argv[2];
+if (!source) throw new Error('Pass the verified daily-news Site checkout.');
+const run = (command, args, capture = false) => execFileSync(command, args, {cwd: root, encoding: 'utf8', stdio: capture ? 'pipe' : 'inherit'});
+const git = (...args) => run('git', args, true).trim();
+if (git('status', '--porcelain')) throw new Error('Blog checkout has local changes. Preserve them; sync did not start.');
+if (git('branch', '--show-current') !== 'main') throw new Error('Publish from the main checkout only.');
+if (!['https://github.com/Be1Human/portfolio.git', 'git@github.com:Be1Human/portfolio.git'].includes(git('remote', 'get-url', 'origin'))) throw new Error('Unexpected destination repository.');
+run('git', ['fetch', 'origin', 'main']);
+if (git('rev-list', '--count', 'origin/main..HEAD') !== '0') throw new Error('Unpublished local commits found. Preserve them; do not include them in a news update.');
+run('git', ['merge', '--ff-only', 'origin/main']);
+run(process.execPath, ['scripts/sync-news.mjs', resolve(source)]);
+if (!git('status', '--porcelain')) { console.log('No changes. No commit or push.'); process.exit(0); }
+run('npm', ['run', 'build']);
+run('npm', ['run', 'check']);
+const allowed = path => ['data/news.json', 'index.html', 'news.html', 'feed.xml', 'sitemap.xml'].includes(path) || /^news\/\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.html$/.test(path);
+const tracked = git('diff', '--name-only').split('\n').filter(Boolean);
+const untracked = git('ls-files', '--others', '--exclude-standard').split('\n').filter(Boolean);
+const changed = [...new Set([...tracked, ...untracked])];
+if (changed.some(path => !allowed(path))) throw new Error('Unexpected changes outside generated news outputs; files retained for review.');
+if (git('diff', '--name-only', '--diff-filter=D')) throw new Error('Unexpected deletion; files retained for review.');
+run('git', ['add', '--', ...changed]);
+const archive = JSON.parse(await readFile(resolve(root, 'data/news.json'), 'utf8'));
+run('git', ['commit', '-m', `Sync Dot news through ${archive.editions[0].id}`]);
+run('git', ['push', 'origin', 'main']);
+const published = git('ls-remote', 'origin', 'refs/heads/main').split(/\s+/)[0];
+if (published !== git('rev-parse', 'HEAD')) throw new Error('Remote advanced; verify the published version before reporting success.');
+console.log(`Pushed ${archive.editions.length} editions through ${archive.editions[0].id}. Verify GitHub Pages deployment before reporting the update live.`);

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "a-new-home-for-ideas",
+    "title": "给想法一个慢慢生长的地方",
+    "date": "2026-10-30",
+    "category": "站点记录",
+    "summary": "从一张作品清单，变成一个可以持续记录的个人博客。作品、创作过程和每天读到的新鲜事，都有了自己的位置。",
+    "tags": ["个人博客", "记录", "新的开始"],
+    "sections": [
+      {"heading": "你好，这里是云上男孩", "paragraphs": ["这个网站最初用来陈列作品：游戏 Demo、动态壁纸、AI 伙伴，还有一些帮助开发的小工具。现在，它也开始容纳作品之外的文字。", "新的主页有三个方向。作品集展示做出来的东西；博客时间线留下阶段性的记录；科技新闻归档从 Dot 每日精选同步来的资讯。"]},
+      {"heading": "把作品与过程放在一起", "paragraphs": ["作品页仍然保留项目截图、介绍、源码和使用入口。文章可以展开讲一个项目的结构、一段制作流程，或一个值得继续研究的问题。", "这里从这一天开始记录。比起一次写完所有故事，更希望让内容随着实践一点点生长。"]},
+      {"heading": "每天留一点时间看世界", "paragraphs": ["新闻页接入「AI 热门 20 · 每日精选」的日期归档，保留中文摘要和原帖链接。读到有意思的内容，可以继续沿着来源去看作者的演示与说明。", "资讯中的能力和效果以原作者及项目资料为准；同步一份精选，并不代表已经亲自验证其中的每个工具。"]}
+    ],
+    "links": []
+  },
+  {
+    "id": "a-train-through-the-clouds",
+    "title": "一列火车，两种天空：动态壁纸工作坊",
+    "date": "2026-10-30",
+    "category": "项目手记",
+    "summary": "蓝天湖景与星空列车，把场景拆成图层，再让云、水面和光线各自运动。这里是这个公开项目的阅读入口。",
+    "image": "assets/images/starry-night.png",
+    "imageAlt": "动态壁纸工作坊中的星空列车实际渲染截图",
+    "tags": ["WebGL", "Shader", "动态视觉"],
+    "sections": [
+      {"heading": "从画面到可运行的案例", "paragraphs": ["AI Wallpaper Workshop 收录了蓝天湖景列车与星空列车两个案例，配套提供分层制作、质量检查和离线导出的工作流程。", "浏览案例时，可以从整体画面进入 TA 拆解，再查看 Shader 实现。这使同一张画面既是作品，也是理解实现方法的入口。"]},
+      {"heading": "分层，是把变化讲清楚", "paragraphs": ["天空、云层、列车、山峦与水面承担不同的视觉作用。把元素分开考虑，才能分别讨论它们的位置、运动和相互遮挡。", "项目还保留本地运行和导出说明。具体参数、依赖与当前版本的操作方式，以仓库文档为准。"]}
+    ],
+    "links": [
+      {"title": "打开动态壁纸工作坊", "url": "https://be1human.github.io/starry-night-train/"},
+      {"title": "阅读项目说明", "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"}
+    ]
+  },
+  {
+    "id": "meet-mineclaw",
+    "title": "MineClaw：让 AI 伙伴走进 Minecraft",
+    "date": "2026-10-30",
+    "category": "项目手记",
+    "summary": "从聊天走向一个可观察的游戏世界：对话、目标、行动，以及本地控制台里的任务记录。",
+    "image": "assets/images/mineclaw.jpg",
+    "imageAlt": "MineClaw 本地控制台截图",
+    "tags": ["AI Agent", "Minecraft", "开发记录"],
+    "sections": [
+      {"heading": "一个有游戏世界的 AI 伙伴", "paragraphs": ["MineClaw 面向 Minecraft Java 版，让 AI 伙伴能够日常对话，并按目标在游戏中执行任务。与单纯的聊天界面相比，游戏世界提供了可以观察的环境和行动结果。", "本地控制台呈现感知和任务记录，便于回看 AI 当时面对的情况、接受的目标与执行过程。"]},
+      {"heading": "从项目说明开始", "paragraphs": ["项目仍在开发中。运行前需要准备 Minecraft 服务器，并配置模型接口；它不是无需设置即可使用的成品游戏角色。", "作品集中保留了当前介绍所依据的文档版本。安装方式、支持范围和后续进展，请沿着仓库入口继续阅读。"]}
+    ],
+    "links": [
+      {"title": "前往 MineClaw 仓库", "url": "https://github.com/Be1Human/MineClaw"},
+      {"title": "阅读项目说明", "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"}
+    ]
+  }
+]

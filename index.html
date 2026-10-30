@@ -3,167 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8f2">
-  <title>CLOUD BOY — 个人作品集</title>
-  <meta name="description" content="CLOUD BOY（Be1Human）的个人作品集，汇集公开的游戏 Demo、动态壁纸、Minecraft AI 伙伴、桌面应用与开发 Skill。">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>CLOUD BOY · 云上男孩 — 作品、文字与每日科技精选</title>
+  <meta name="description" content="云上男孩的个人博客。游戏、动态视觉与 AI 作品，创作手记，以及从 Dot 同步的每日科技精选。">
   <link rel="canonical" href="https://be1human.github.io/portfolio/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:title" content="CLOUD BOY — 个人作品集">
-  <meta property="og:description" content="公开的游戏 Demo、动态壁纸、Minecraft AI 伙伴、桌面应用与开发 Skill，附项目说明和使用入口。">
+  <meta property="og:title" content="CLOUD BOY · 云上男孩 — 作品、文字与每日科技精选">
+  <meta property="og:description" content="云上男孩的个人博客。游戏、动态视觉与 AI 作品，创作手记，以及从 Dot 同步的每日科技精选。">
   <meta property="og:url" content="https://be1human.github.io/portfolio/">
   <meta property="og:image" content="https://be1human.github.io/portfolio/assets/images/blue-sky-train.png">
-  <meta property="og:image:alt" content="CLOUD BOY 的蓝天湖景列车动态壁纸实际渲染截图">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/images/blue-sky-train.png" as="image" fetchpriority="high">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="feed.xml">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/app.js" defer></script>
 </head>
-<body id="top">
-  <a class="skip-link" href="#works">跳到作品</a>
-  <header class="site-header wrap">
-    <a class="brand" href="#top" aria-label="CLOUD BOY 首页">
-      <img src="assets/mark.svg" width="36" height="36" alt="">
-      <span>CLOUD BOY<span class="brand-dot" aria-hidden="true">✳</span></span>
-    </a>
-    <nav aria-label="主导航">
-      <a href="#works"><span class="nav-index">01</span> 作品</a>
-      <a href="#about"><span class="nav-index">02</span> 关于</a>
-      <a class="github-nav" href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a>
-    </nav>
+<body id="top" data-page="home">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" aria-label="CLOUD BOY 首页"><span class="brand-symbol" aria-hidden="true">☁</span><span>CLOUD BOY<small>云上男孩的个人博客</small></span></a>
+      <nav class="main-nav" aria-label="主导航"><a href="index.html" aria-current="page">首页</a><a href="works.html">作品集</a><a href="journal.html">博客时间线</a><a href="news.html">科技新闻<span class="nav-dot" aria-hidden="true"></span></a></nav>
+      <a class="github-link" href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer" aria-label="GitHub（新窗口）"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.86c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.64-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span>GitHub ↗</span></a>
+    </div>
   </header>
-
-  <main>
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> CLOUD BOY / PUBLIC PROJECTS</p>
-        <h1 id="hero-title">把想法，<br>做成<span class="word-mark">作品<svg viewBox="0 0 230 16" aria-hidden="true"><path d="M3 12Q105-2 226 7"/></svg></span>。</h1>
-        <p class="hero-description">我是 CLOUD BOY（@Be1Human）。<br>这里汇集我在 GitHub 公开的游戏、<br>动态壁纸、AI 伙伴和开发工具项目。</p>
-        <a class="button button-dark" href="#works">看看我的作品 <span aria-hidden="true">↘</span></a>
-        <div class="hero-note"><span class="tiny-cross" aria-hidden="true">✳</span> 项目说明、源码与使用入口。</div>
-      </div>
-      <div class="hero-visual">
-        <div class="visual-topline"><span>AI WALLPAPER WORKSHOP</span><span aria-hidden="true">↗</span></div>
-        <a class="hero-art" href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer" aria-label="打开列车动态壁纸工作坊（新窗口）">
-          <img class="hero-image" src="assets/images/blue-sky-train.png" width="2048" height="768" alt="蓝天下，列车穿过湖边高架桥，云朵与山峦倒映在水中。动态壁纸实际渲染截图。" fetchpriority="high">
-          <span class="hero-art-label"><span class="art-label-dot"></span> BLUE SKY TRAIN <span>01 / VISUAL</span></span>
-          <span class="art-open" aria-hidden="true">↗</span>
-        </a>
-        <div class="visual-bottomline"><span>蓝天湖景列车 · 分层动态壁纸案例</span><span class="preview-note">实际作品截图</span></div>
-        <div class="floating-stamp" aria-hidden="true"><svg viewBox="0 0 80 80"><path d="m40 4 6 22 20-12-12 20 22 6-22 6 12 20-20-12-6 22-6-22-20 12 12-20-22-6 22-6-12-20 20 12Z"/></svg></div>
-      </div>
-    </section>
-
-    <div class="interlude wrap" aria-hidden="true"><span>GAMES · VISUALS · TOOLS</span><div><span>游戏项目</span><span>／</span><span>动态视觉</span><span>／</span><span>AI 与工具</span></div><span>SCROLL TO EXPLORE ↓</span></div>
-
-    <section class="works wrap" id="works" aria-labelledby="works-title">
-      <div class="section-heading">
-        <div><p class="eyebrow">01 / SELECTED WORKS</p><h2 id="works-title">公开的<span class="serif-word">作品与项目</span><span class="heading-period">.</span></h2></div>
-        <p class="section-description">介绍用途、功能与项目形态。<br>运行方式与下载入口见各项目页面。</p>
-      </div>
-      <div class="work-toolbar">
-        <div class="filters" role="group" aria-label="按作品类别筛选" hidden><button class="filter" type="button" data-filter="all" aria-pressed="true">全部作品<span>07</span></button>
-<button class="filter" type="button" data-filter="games" aria-pressed="false">游戏项目<span>02</span></button>
-<button class="filter" type="button" data-filter="visuals" aria-pressed="false">动态视觉<span>01</span></button>
-<button class="filter" type="button" data-filter="tools" aria-pressed="false">AI 与工具<span>04</span></button></div>
-        <p class="work-count" aria-live="polite" aria-atomic="true">共 7 件作品</p>
-      </div>
-      <div class="project-grid" id="project-grid"><article class="project-card" id="mineclaw" data-category="tools" data-project="mineclaw">
-        <a class="project-image-link" href="https://github.com/Be1Human/MineClaw#quick-start" target="_blank" rel="noopener noreferrer" aria-label="MineClaw：了解项目（新窗口）">
-          <img class="project-image" src="assets/images/mineclaw.jpg" width="1200" height="706" alt="MineClaw 本地控制台展示 Minecraft 世界的实时感知" loading="lazy" decoding="async">
-
-          <span class="image-note">项目控制台截图</span><span class="project-number" aria-hidden="true">01</span>
-        </a>
-        <div class="project-meta"><span class="project-category">AI 与工具</span><span class="project-name">Minecraft AI 伙伴</span></div>
-        <h3><a href="https://github.com/Be1Human/MineClaw#quick-start" target="_blank" rel="noopener noreferrer">MineClaw<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>TypeScript</span><span>Minecraft</span><span>AI Agent</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://github.com/Be1Human/MineClaw#quick-start" target="_blank" rel="noopener noreferrer">了解项目 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article>
-<article class="project-card" id="wallpaper-workshop" data-category="visuals" data-project="wallpaper-workshop">
-        <a class="project-image-link" href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer" aria-label="AI Wallpaper Workshop：查看案例（新窗口）">
-          <img class="project-image" src="assets/images/starry-night.png" width="1200" height="706" alt="星空、云层、列车与水面倒影的实际 Shader 渲染" loading="lazy" decoding="async">
-
-          <span class="image-note">实际渲染截图</span><span class="project-number" aria-hidden="true">02</span>
-        </a>
-        <div class="project-meta"><span class="project-category">动态视觉</span><span class="project-name">动态壁纸案例与 Skill</span></div>
-        <h3><a href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer">AI Wallpaper Workshop<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>WebGL</span><span>GLSL</span><span>动态壁纸</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer">查看案例 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article>
-<article class="project-card" id="titan-town" data-category="games" data-project="titan-town">
-        <a class="project-image-link" href="https://github.com/Be1Human/titan-town#run" target="_blank" rel="noopener noreferrer" aria-label="Titan Town：本地运行说明（新窗口）">
-          <img class="project-image" src="assets/images/titan-town.png" width="1200" height="706" alt="Titan Town 的实际游戏画面，体素城镇和高墙" loading="lazy" decoding="async">
-
-          <span class="image-note">实际游戏截图</span><span class="project-number" aria-hidden="true">03</span>
-        </a>
-        <div class="project-meta"><span class="project-category">游戏项目</span><span class="project-name">浏览器游戏</span></div>
-        <h3><a href="https://github.com/Be1Human/titan-town#run" target="_blank" rel="noopener noreferrer">Titan Town · 墙内小镇<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">浏览器中的可破坏体素围城游戏。玩家使用钩索和喷气装备在小镇移动、破坏建筑、应对巨人并完成 7 个任务；支持中英文，需本地启动网页服务。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>Three.js</span><span>Rapier</span><span>体素破坏</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://github.com/Be1Human/titan-town#run" target="_blank" rel="noopener noreferrer">本地运行说明 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article>
-<article class="project-card" id="hades-study" data-category="games" data-project="hades-study">
-        <a class="project-image-link" href="https://github.com/Be1Human/hades-learning-demo/releases" target="_blank" rel="noopener noreferrer" aria-label="Hades · Learning Demo：下载 Windows 版（新窗口）">
-          <img class="project-image" src="assets/images/hades-combat.png" width="1200" height="706" alt="学习 Demo 的实际战斗截图，角色在双坑房间施展剑击" loading="lazy" decoding="async">
-
-          <span class="image-note">学习 Demo 实际截图 · 非原作画面</span><span class="project-number" aria-hidden="true">04</span>
-        </a>
-        <div class="project-meta"><span class="project-category">游戏项目</span><span class="project-name">非商业学习 Demo</span></div>
-        <h3><a href="https://github.com/Be1Human/hades-learning-demo/releases" target="_blank" rel="noopener noreferrer">Hades 学习 Demo · 冥界试炼<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">基于 Godot 的三房间动作游戏学习 Demo，包含战斗、奖励与祝福选择、Boss 波次及胜负结算。提供 Windows 版本和中文游戏界面；项目非官方，仅限非商业学习。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>Godot</span><span>动作战斗</span><span>Windows</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://github.com/Be1Human/hades-learning-demo/releases" target="_blank" rel="noopener noreferrer">下载 Windows 版 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article>
-<article class="project-card" id="network-diary" data-category="tools" data-project="network-diary">
-        <a class="project-image-link" href="https://github.com/Be1Human/claude-ojousama-network/releases/latest" target="_blank" rel="noopener noreferrer" aria-label="大小姐的网络手账：下载桌面版（新窗口）">
-          <img class="project-image" src="assets/images/network-diary.png" width="1200" height="706" alt="大小姐的网络手账实际应用界面，截图使用演示数据" loading="lazy" decoding="async">
-
-          <span class="image-note">实际应用截图 · 演示数据</span><span class="project-number" aria-hidden="true">05</span>
-        </a>
-        <div class="project-meta"><span class="project-category">AI 与工具</span><span class="project-name">macOS / Windows 应用</span></div>
-        <h3><a href="https://github.com/Be1Human/claude-ojousama-network/releases/latest" target="_blank" rel="noopener noreferrer">大小姐的网络手账<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>Electron</span><span>macOS / Windows</span><span>本地优先</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://github.com/Be1Human/claude-ojousama-network/releases/latest" target="_blank" rel="noopener noreferrer">下载桌面版 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article>
-<article class="project-card" id="animation-workflow" data-category="tools" data-project="animation-workflow">
-        <a class="project-image-link" href="https://github.com/Be1Human/video-to-game-animation#实际效果与过程" target="_blank" rel="noopener noreferrer" aria-label="Video to Game Animation：查看 Skill（新窗口）">
-          <img class="project-image" src="assets/images/animation.jpg" width="1200" height="706" alt="同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面" loading="lazy" decoding="async">
-
-          <span class="image-note">角色肩袖修正前后对比</span><span class="project-number" aria-hidden="true">06</span>
-        </a>
-        <div class="project-meta"><span class="project-category">AI 与工具</span><span class="project-name">动画制作与评审 Skill</span></div>
-        <h3><a href="https://github.com/Be1Human/video-to-game-animation#实际效果与过程" target="_blank" rel="noopener noreferrer">Video to Game Animation<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>Blender</span><span>动画</span><span>Agent Skill</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://github.com/Be1Human/video-to-game-animation#实际效果与过程" target="_blank" rel="noopener noreferrer">查看 Skill <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article>
-<article class="project-card" id="clawpm" data-category="tools" data-project="clawpm" data-artwork="clawpm">
-        <a class="project-image-link" href="https://github.com/Be1Human/clawpm#features" target="_blank" rel="noopener noreferrer" aria-label="ClawPM：了解项目（新窗口）">
-          <img class="project-image" src="assets/images/clawpm-logo.png" width="1200" height="706" alt="ClawPM 项目标志" loading="lazy" decoding="async">
-          <span class="clawpm-art-title" aria-hidden="true">ClawPM</span><span class="clawpm-art-subtitle" aria-hidden="true">SELF-HOSTED PROJECT MANAGEMENT</span>
-          <span class="image-note">项目标志</span><span class="project-number" aria-hidden="true">07</span>
-        </a>
-        <div class="project-meta"><span class="project-category">AI 与工具</span><span class="project-name">自托管项目管理</span></div>
-        <h3><a href="https://github.com/Be1Human/clawpm#features" target="_blank" rel="noopener noreferrer">ClawPM<span class="sr-only">（新窗口）</span></a></h3>
-        <p class="project-description">可自托管的项目管理 Web 应用，提供需求节点、思维导图、看板、任务列表、甘特图和迭代管理。通过 MCP 让 AI Agent 领取任务、上报进度；使用前需自行部署服务。</p>
-        <div class="project-bottom"><div class="project-tags" aria-label="技术与关键词"><span>MCP</span><span>TypeScript</span><span>项目管理</span></div>
-        <div class="project-links"><a href="https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md" class="source-link" target="_blank" rel="noopener noreferrer">项目说明<span class="sr-only">（新窗口）</span></a><a href="https://github.com/Be1Human/clawpm#features" target="_blank" rel="noopener noreferrer">了解项目 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div></div>
-      </article></div>
-      <div class="archive-link"><p>全部公开仓库见 GitHub。</p><a class="text-link" href="https://github.com/Be1Human?tab=repositories" target="_blank" rel="noopener noreferrer">查看 GitHub 仓库 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div>
-    </section>
-
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div class="about-inner wrap">
-        <div class="about-intro"><p class="eyebrow">02 / ABOUT THIS PORTFOLIO</p><h2 id="about-title">你好，<br>我是 CLOUD BOY<span class="lime">.</span></h2><p class="about-handle">@Be1Human <span>／</span> Follow your dream</p></div>
-        <div class="about-copy"><p class="about-lead">GitHub：@Be1Human<br>公开作品与项目索引</p><p>这个主页集中展示 Be1Human 账号下选取的公开项目，包括游戏 Demo、动态壁纸、Minecraft AI 伙伴、桌面应用和开发 Skill。</p><p>每个项目提供用途、功能概述和项目说明链接；运行环境、配置与版本信息以对应仓库的文档和发布页为准。</p><a class="button button-lime" href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口）</span></a></div>
-      </div>
-      <div class="about-wordmark wrap" aria-hidden="true">PUBLIC WORKS<span>✳</span></div>
-    </section>
-  </main>
-  <footer class="site-footer wrap"><a class="footer-brand" href="#top">CLOUD BOY<span aria-hidden="true"> ✳</span></a><p>© 2026 CLOUD BOY · 个人作品集</p><a href="#top">回到顶部 <span aria-hidden="true">↑</span></a></footer>
+  <main id="main" tabindex="-1"><section class="hero wrap"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> A SMALL CORNER OF THE INTERNET</p><p class="hero-greeting">你好，我是 CLOUD BOY <span aria-hidden="true">✳</span></p><h1>在云端思考，<br>在此刻<span class="hand-underline">创造<svg viewBox="0 0 180 14" aria-hidden="true"><path d="M3 10Q80 0 176 7"/></svg></span>。</h1><p class="hero-description">一个喜欢游戏、视觉与 AI 的创作者。<br>这里收藏我的作品，记录沿途的想法，<br>也分享每天值得读的科技新鲜事。</p><div class="hero-actions"><a class="button button-blue" href="journal.html">翻开我的博客 <span aria-hidden="true">↗</span></a><a class="text-link" href="works.html">看看作品 <span aria-hidden="true">→</span></a></div><p class="hero-footnote"><span class="tiny-cross" aria-hidden="true">＋</span> BUILD THINGS. WRITE STORIES. STAY CURIOUS.</p></div><figure class="hero-visual"><div class="visual-heading"><span>SCENES FROM MY WORK</span><span>01 / 07</span></div><a class="hero-art" href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer" aria-label="打开云间列车动态壁纸作品（新窗口）"><img src="assets/images/blue-sky-train.png" width="2048" height="768" alt="蓝天和云朵下，列车穿过湖畔高架桥。动态壁纸实际渲染截图。" fetchpriority="high"><div class="hero-art-caption"><span>往云的方向去。<small>BLUE SKY TRAIN · WEBGL</small></span><span class="art-circle" aria-hidden="true">↗</span></div></a><figcaption><span><i class="caption-dot"></i> 蓝天湖景列车 · 动态壁纸作品</span><span>MADE WITH CURIOSITY</span></figcaption><span class="orbit-stamp" aria-hidden="true">keep<br><b>curious ✳</b></span></figure></section>
+  <div class="chapter-nav wrap"><a href="works.html"><span class="chapter-number">01</span><div><strong>作品集 <span>SELECTED WORKS</span></strong><p>游戏、动态视觉与 AI 实验</p></div><span class="chapter-arrow">↗</span></a><a href="journal.html"><span class="chapter-number">02</span><div><strong>博客时间线 <span>THE JOURNAL</span></strong><p>写下过程，让想法慢慢生长</p></div><span class="chapter-arrow">↗</span></a><a href="news.html"><span class="chapter-number">03</span><div><strong>科技新闻 <span>DAILY SIGNAL</span></strong><p>来自 Dot 的每日科技精选</p></div><span class="chapter-arrow">↗</span></a></div>
+  <div class="home-content wrap"><div class="home-main"><section><div class="section-title"><div><p class="eyebrow">NOTES & THOUGHTS</p><h2>最近写下的</h2></div><a class="text-link" href="journal.html">全部文章 <span aria-hidden="true">↗</span></a></div><article class="post-row featured-post"><div class="post-row-copy"><div class="meta"><span class="category-label">站点记录</span><time datetime="2026-10-30">2026.10.30</time><span>1 分钟阅读</span></div><h3><a href="posts/a-new-home-for-ideas.html">给想法一个慢慢生长的地方 <span aria-hidden="true">↗</span></a></h3><p>从一张作品清单，变成一个可以持续记录的个人博客。作品、创作过程和每天读到的新鲜事，都有了自己的位置。</p><a class="read-link" href="posts/a-new-home-for-ideas.html">继续阅读 <span aria-hidden="true">→</span></a></div></article><article class="post-row"><div class="post-row-copy"><div class="meta"><span class="category-label">项目手记</span><time datetime="2026-10-30">2026.10.30</time><span>1 分钟阅读</span></div><h3><a href="posts/a-train-through-the-clouds.html">一列火车，两种天空：动态壁纸工作坊 <span aria-hidden="true">↗</span></a></h3><p>蓝天湖景与星空列车，把场景拆成图层，再让云、水面和光线各自运动。这里是这个公开项目的阅读入口。</p></div><a class="post-thumbnail" href="posts/a-train-through-the-clouds.html" tabindex="-1" aria-hidden="true"><img src="assets/images/starry-night.png" alt="" width="240" height="180" loading="lazy"></a></article><article class="post-row"><div class="post-row-copy"><div class="meta"><span class="category-label">项目手记</span><time datetime="2026-10-30">2026.10.30</time><span>1 分钟阅读</span></div><h3><a href="posts/meet-mineclaw.html">MineClaw：让 AI 伙伴走进 Minecraft <span aria-hidden="true">↗</span></a></h3><p>从聊天走向一个可观察的游戏世界：对话、目标、行动，以及本地控制台里的任务记录。</p></div><a class="post-thumbnail" href="posts/meet-mineclaw.html" tabindex="-1" aria-hidden="true"><img src="assets/images/mineclaw.jpg" alt="" width="240" height="180" loading="lazy"></a></article></section><section class="home-works"><div class="section-title"><div><p class="eyebrow">IDEAS INTO REALITY</p><h2>把想法做成作品</h2></div><a class="text-link" href="works.html">全部 7 件作品 <span aria-hidden="true">↗</span></a></div><div class="project-grid home-projects"><article class="project-card compact" id="wallpaper-workshop" data-filter-item data-category="visuals" data-search="AI Wallpaper Workshop 包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。 WebGL GLSL 动态壁纸">
+    <a class="project-image-link " href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer" aria-label="AI Wallpaper Workshop：查看案例（新窗口）"><img src="assets/images/starry-night.png" alt="星空、云层、列车与水面倒影的实际 Shader 渲染" loading="lazy" width="1200" height="706"><span class="image-note">实际渲染截图</span><span class="image-arrow" aria-hidden="true">↗</span></a>
+    <div class="project-body"><div class="meta"><span class="category-label">动态视觉</span><span>动态壁纸案例与 Skill</span></div><h3><a href="https://be1human.github.io/starry-night-train/" target="_blank" rel="noopener noreferrer">AI Wallpaper Workshop <span aria-hidden="true">↗</span></a></h3><p>包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。</p><div class="project-bottom"><div class="tags"><span>WebGL</span><span>GLSL</span><span>动态壁纸</span></div></div></div>
+  </article><article class="project-card compact" id="mineclaw" data-filter-item data-category="tools" data-search="MineClaw 面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。 TypeScript Minecraft AI Agent">
+    <a class="project-image-link " href="https://github.com/Be1Human/MineClaw#quick-start" target="_blank" rel="noopener noreferrer" aria-label="MineClaw：了解项目（新窗口）"><img src="assets/images/mineclaw.jpg" alt="MineClaw 本地控制台展示 Minecraft 世界的实时感知" loading="lazy" width="1200" height="706"><span class="image-note">项目控制台截图</span><span class="image-arrow" aria-hidden="true">↗</span></a>
+    <div class="project-body"><div class="meta"><span class="category-label">AI 与工具</span><span>Minecraft AI 伙伴</span></div><h3><a href="https://github.com/Be1Human/MineClaw#quick-start" target="_blank" rel="noopener noreferrer">MineClaw <span aria-hidden="true">↗</span></a></h3><p>面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。</p><div class="project-bottom"><div class="tags"><span>TypeScript</span><span>Minecraft</span><span>AI Agent</span></div></div></div>
+  </article></div></section></div><aside class="home-aside"><section class="daily-panel"><div class="daily-heading"><span class="signal-icon" aria-hidden="true">◉</span><span>DAILY SIGNAL</span><span class="live-dot" aria-hidden="true"></span></div><h2>科技，每日一读。</h2><p>AI、游戏开发与创造工具，<br>留住每天值得关注的新想法。</p><div class="edition-label"><time datetime="2026-10-29">10 月 29 日</time><span>最新一期 · 18 条</span></div><ol class="mini-news"><li><span>01</span><div><a href="news.html#item-d0801531b58f7e0f">Simulon：实拍表演驱动场景重新生成</a><small>内容制作</small></div></li><li><span>02</span><div><a href="news.html#item-6548d8df9de6f350">Kinetic Film：按节拍生成代码动效短片</a><small>内容制作</small></div></li><li><span>03</span><div><a href="news.html#item-4366a717ed574ec4">Shardmite：多视角参考到游戏生物动画</a><small>AI游戏开发</small></div></li><li><span>04</span><div><a href="news.html#item-794e7e48a819e68e">video2rig：把 AI 视频动作转回角色骨骼</a><small>AI游戏开发</small></div></li></ol><a class="button button-outline" href="news.html">阅读本期精选 <span aria-hidden="true">↗</span></a><div class="sync-caption"><span class="status-dot"></span> 从 Dot 同步 · 已归档 18 期</div></section><section class="about-note"><p class="eyebrow">A NOTE ABOUT ME</p><h2>你好，过路的朋友。</h2><p>我是云上男孩。做一点游戏，试一点 AI，也为有趣的画面停留。</p><p>这个小站，把做出来的东西和还在生长的想法放在一起。</p><a class="subtle-link" href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 ↗</a><span class="hand-signature">Cloud Boy</span></section></aside></div>
+  <section class="closing-note wrap"><span aria-hidden="true">☁</span><p>想法很多，时间很长。<br><strong>慢慢做，慢慢记录。</strong></p><a href="feed.xml">通过 RSS 关注更新 ↗</a></section></main>
+  <footer class="site-footer wrap">
+    <div><a class="footer-brand" href="index.html">CLOUD BOY <span>☁</span></a><p>保持好奇，慢慢创造。</p></div>
+    <div class="footer-right"><div><a href="journal.html">文字</a><a href="works.html">作品</a><a href="feed.xml">RSS ↗</a><a href="#top">回到顶部 ↑</a></div><p>© 2026 云上男孩 · Built with curiosity.</p></div>
+  </footer>
 </body>
 </html>

@@ -1,26 +1,12 @@
-# CLOUD BOY · 个人作品集
+# CLOUD BOY · 云上男孩
 
-[访问主页](https://be1human.github.io/portfolio/) · [GitHub](https://github.com/Be1Human)
+[个人博客](https://be1human.github.io/portfolio/) · [作品集](https://be1human.github.io/portfolio/works.html) · [博客时间线](https://be1human.github.io/portfolio/journal.html) · [科技新闻](https://be1human.github.io/portfolio/news.html)
 
-游戏、动态视觉、AI 与工具。一个独立、轻量的中文个人作品集，展示项目截图，提供分类筛选、项目说明与使用入口，适配桌面和手机。
+一个零依赖的中文个人博客：作品展示、创作记录，以及从 Dot「AI 热门 20 · 每日精选」同步的日期归档。浅色阅读布局，适配手机；全部主要内容在 HTML 中，关闭 JavaScript 也能阅读。
 
-## 添加或更新作品
+## 本地运行
 
-1. 把封面图放到 `assets/images/`。
-2. 阅读项目自己的说明和配置，再编辑 `data/projects.json`，填写真实项目名称、项目形态（`kind`）、用途与功能、类别、图片、标签、入口、仓库及说明链接（`documentation`）。
-   在 `data/content-sources.json` 记录说明文件的固定提交版本与介绍依据，说明链接必须对应该记录。
-3. 运行 `npm run build`，生成发布用的 `index.html`。
-4. 运行 `npm run check` 检查数据和页面，提交并推送到 `main`。
-
-GitHub Pages 从 `main` 分支的根目录发布，推送后自动更新。仓库内的 `index.html` 是完整静态页面，无需在 GitHub 上安装依赖或运行构建。关闭 JavaScript 时也能浏览全部作品；分类筛选需要 JavaScript。
-
-类别为 `games`（游戏项目）、`visuals`（动态视觉）、`tools`（AI 与工具）。数组顺序就是展示顺序；首页分类数量由构建脚本计算。文案和布局在 `src/index.template.html`，样式在 `assets/styles.css`，筛选逻辑在 `assets/app.js`。不要直接编辑生成的 `index.html`。
-
-每件作品也可用 `#作品ID` 直达，例如 [MineClaw](https://be1human.github.io/portfolio/#mineclaw)。
-
-## 本地预览
-
-安装 Node.js 22 或更高版本，无第三方 npm 依赖。
+需要 Node.js 22 或更高版本，无需安装 npm 依赖。
 
 ```sh
 npm run build
@@ -28,14 +14,43 @@ npm run check
 npm start
 ```
 
-打开 [本地主页](http://127.0.0.1:4174/portfolio/)。也可以用普通静态服务器提供仓库根目录。所有站内资源使用相对路径，适用于 GitHub Pages 项目子目录。
+打开 <http://127.0.0.1:4174/portfolio/>。GitHub Pages 从 `main` 分支根目录发布；构建生成的 HTML、RSS 和 sitemap 都随代码提交。
 
-## 内容与配图
+## 更新作品
 
-初始作品来自 Be1Human 的 7 个公开项目。配图来源和固定版本见 [CREDITS.md](CREDITS.md) 与 `data/sources.json`；介绍所依据的 README、配置文件、版本和相关发行页记录在 `data/content-sources.json`。
+编辑 `data/projects.json`，把图片放在 `assets/images/`。项目介绍必须有对应的公开来源，记录在 `data/content-sources.json`。图片来源见 [CREDITS.md](CREDITS.md)。构建会检查图片、项目来源与链接。
 
-产品介绍概括项目文档所述的用途与功能，区分桌面应用、浏览器游戏、学习 Demo、AI 伙伴项目和 Agent Skill。每张卡片的“项目说明”链接指向本次核对的固定版本。文案核对不等于重新运行全部产品；运行测试与可用范围以各项目的验证记录为准。
+## 写博客
 
-页面区分实际渲染、实际游戏画面、演示数据和项目标志；Hades 项目标为非官方、非商业学习 Demo。作品、商标、截图和第三方资源的权利仍以各来源项目声明为准。
+在 `data/posts.json` 添加一篇文章，填写唯一的 `id`、真实的发布日期 `date`、标题、摘要、分类、标签，以及由小节和段落组成的 `sections`。可选 `image`、`imageAlt`；参考资料写在 `links` 中。
 
-本站没有登录、表单、第三方统计、远程字体或访客数据存储。访问作品链接时会进入相应项目的站点或 GitHub 页面。
+运行 `npm run build` 后会生成 `posts/<id>.html`，并自动更新首页、时间线、RSS 和 sitemap。文章列表按日期倒序，同日保持输入顺序。首批三篇文章是本次改版的站点记录和基于现有公开项目说明整理的项目手记，没有虚构历史发布日期。
+
+## 每日科技新闻
+
+完整工作流程见 [docs/news-sync.md](docs/news-sync.md)。资讯导入使用字段白名单，只保留可公开的标题、摘要和出处，不搬运转发草稿或内部笔记。
+
+```sh
+npm run news:sync -- /absolute/path/to/verified-source-checkout
+npm run build
+npm run check
+```
+
+每期都有独立静态链接，例如 `news/2026-10-26.html`。`news.html` 显示最新一期；分类和搜索支持可分享的查询参数，`news.html?date=2026-10-26` 也会跳转到对应归档。无 JavaScript 时可使用页面下方的「全部日期归档」和上一期、下一期链接。
+
+## 结构
+
+- `src/page.template.html`：共享导航、页面头部和页脚。
+- `scripts/build-blog.mjs`：页面渲染、内容验证、RSS、站内链接检查。
+- `assets/styles.css`：桌面与手机布局。
+- `assets/app.js`：筛选、搜索、日期切换和旧作品锚点兼容。
+- `scripts/news-data.mjs`：公开字段白名单、来源校验和重复导入处理。
+- `scripts/publish-news.mjs`：自动同步的构建、检查和受限提交发布。
+
+请编辑源数据和模板，不直接编辑生成的 HTML。所有站内资源使用相对路径，适用于 GitHub Pages 的 `/portfolio/` 子目录。
+
+## 隐私与来源
+
+不使用访客账号、表单或第三方统计，不保存访客搜索内容；搜索词只反映在当前地址栏。没有远程字体。新闻预览使用原帖图片地址，打开原帖可查看完整媒体，版权归原作者。Dot 原始阅览室保持私有，博客页面不包含源站令牌。
+
+作品说明依据固定版本的公开文档，资讯摘要沿用每日精选，不代表已经运行或独立验证所有产品。保留来源链接与必要的项目适用范围。
