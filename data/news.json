@@ -2,9 +2,352 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "ffb1b972f91259ad4c66a1e156ce2b48d3f23bd8",
-  "syncedAt": "2026-10-30T11:34:23.691Z",
+  "sourceRevision": "41b8921df2ad61908e27caf47a4a233bc8a05370",
+  "syncedAt": "2026-10-31T11:24:44.477Z",
   "editions": [
+    {
+      "id": "2026-10-31",
+      "date": "2026-10-31",
+      "label": "10 月 31 日 · 14 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-31",
+      "items": [
+        {
+          "id": "c97f64ecf4c35afd",
+          "rank": 1,
+          "title": "Aura Autopilot：在游戏引擎内执行探索与测试",
+          "summary": "Aura 的开源游戏测试代理提供编辑器插件和编码代理接入，可在运行中的场景探索、检查目标并生成报告。官方仓库列出 Unreal 5.4–5.8、Unity 6、Godot 4.7+，支持 Windows/macOS，Apache-2.0；不同接入路径使用 Aura 计划或自带密钥／订阅。作者宣传的效率提升未独立复现，未纳入结论。",
+          "category": "AI 游戏开发",
+          "author": "Aura",
+          "url": "https://x.com/Aura_Assistant/status/2116191580063404100",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/Aura_Assistant/status/2116191580063404100"
+            },
+            {
+              "title": "项目官方仓库",
+              "url": "https://github.com/ramenvr/autopilot"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T15:32:44.000Z",
+          "observedAt": "2026-10-31T11:17:00.597Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116191229730082816/img/Uo143D2v4cwjCtdY.jpg",
+            "alt": "Aura Autopilot：在游戏引擎内执行探索与测试，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9b9dad2344ba8604",
+          "rank": 2,
+          "title": "Open Source Canvas：接本地 ComfyUI 的节点画布",
+          "summary": "Raphael Liu 展示独立开源的节点式图像与视频工作流界面；这不是 Higgsfield 官方源代码。仓库支持本地 ComfyUI、提示词／参考素材／模型节点和工作流 JSON。线上演示只跑占位输出，真正生成需本地部署；应用为 MIT，模型许可与外部 API 费用需另查。",
+          "category": "内容制作",
+          "author": "Raphael Liu",
+          "url": "https://x.com/RaphaelLiu10/status/2115913910075449637",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/RaphaelLiu10/status/2115913910075449637"
+            },
+            {
+              "title": "项目官方仓库",
+              "url": "https://github.com/raph651/open-source-canvas"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T21:09:22.000Z",
+          "observedAt": "2026-10-31T11:17:36.959Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115913851598495744/img/3LDM86EG5sVAHwW2.jpg",
+            "alt": "Open Source Canvas：接本地 ComfyUI 的节点画布，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "135167bfa9e8d19b",
+          "rank": 3,
+          "title": "Teachable Figures：让编码代理生成交互教学图",
+          "summary": "Yi-Yi 的教学图 skill 把二维／三维图示组织成预测、尝试、观察、解释和应用步骤，供 Claude Code/Codex 生成独立 HTML 或宿主适配输出。项目复用作者既有 Anatomy/iso-figure 渲染方向，但本次是新的教学交互流程。仓库明确不保证临床、工程模拟或物理精度，也未进行学习效果评估。",
+          "category": "实用工作流",
+          "author": "Yi-Yi",
+          "url": "https://x.com/yiyibuilds/status/2116289366784168399",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/yiyibuilds/status/2116289366784168399"
+            },
+            {
+              "title": "项目官方仓库",
+              "url": "https://github.com/ywEdAi/teachable-figures"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T22:01:18.000Z",
+          "observedAt": "2026-10-31T11:17:30.884Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116289304326705152/img/gqqeIy-M9-ldIOhr.jpg",
+            "alt": "Teachable Figures：让编码代理生成交互教学图，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "1657190622e1101a",
+          "rank": 4,
+          "title": "Tripo Agentic Canvas：可复用的 3D 节点流程",
+          "summary": "Tripo 官方介绍 Agentic Canvas 测试版：对话代理规划、连接并执行 3D 工作流，节点流程可重复运行和批处理，3D Lab 用于检查、编辑、细化和绑定。原帖称先向 MAX 与 Team 开放，其他用户逐步开放；不将其表述为人人免费可用。未实际验证生成质量、稳定性或费用。",
+          "category": "AI 游戏开发",
+          "author": "Tripo",
+          "url": "https://x.com/tripoai/status/2115820956102889539",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/tripoai/status/2115820956102889539"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T15:00:00.000Z",
+          "observedAt": "2026-10-31T11:16:48.168Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HVzUr_ebcAEpF_X?format=jpg&name=small",
+            "alt": "Tripo Agentic Canvas：可复用的 3D 节点流程，原帖预览",
+            "type": "image"
+          }
+        },
+        {
+          "id": "35b38af44509b975",
+          "rank": 5,
+          "title": "Elvar：从参考图搭建 Three.js 机械拆解动画",
+          "summary": "Elvar 展示以参考图为起点的 Three.js 机械动画流程：先重建外壳、齿轮和管线，再渲染与参考图对照迭代，最后编排拆解顺序。示例包含伺服机构的部件分离响应。它是作者演示的视觉重建，不是由单图恢复可制造 CAD 或验证机械结构；不采纳“任意机器都能重建”等泛化宣传。",
+          "category": "内容制作",
+          "author": "Elvar",
+          "url": "https://x.com/elvar_official/status/2116192984299344372",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/elvar_official/status/2116192984299344372"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T15:38:19.000Z",
+          "observedAt": "2026-10-31T11:16:35.594Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116192770503135232/img/FB9Kfa2zN7NnvS5r.jpg",
+            "alt": "Elvar：从参考图搭建 Three.js 机械拆解动画，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b0d0c520eef788d1",
+          "rank": 6,
+          "title": "Max：Tripo、Opus 与 Blender 的第一人称动画流程",
+          "summary": "Max 记录了 Tripo 网格、Opus 握持参考姿势、Blender 手部和道具渲染、Omni 1.1 动作参考，再由 Opus 在 Blender 重建动作的流程。作者明确认为人类动画师效果仍更好；所述一小时以上、22% 周配额消耗仅是这次作者案例，不可视为标准成本或稳定性能。",
+          "category": "AI 游戏开发",
+          "author": "Max",
+          "url": "https://x.com/maxt3chno/status/2116120485503082818",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/maxt3chno/status/2116120485503082818"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T10:50:14.000Z",
+          "observedAt": "2026-10-31T11:16:07.211Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116120301725454337/img/IGV6-cUeWkssk7JY.jpg",
+            "alt": "Max：Tripo、Opus 与 Blender 的第一人称动画流程，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "99d4515cbf709c8b",
+          "rank": 7,
+          "title": "Fabrika：带 3D 视口的节点式制作界面",
+          "summary": "Zvezdan 展示自制 Fabrika 节点界面，把 AI 3D 工作流和 3D 视口放在一起。原帖明确还处于早期阶段；可确认的是演示所见节点连接与模型查看，不据此声称已正式开放、支持全部模型、免费或开源。",
+          "category": "内容制作",
+          "author": "Zvezdan",
+          "url": "https://x.com/acroqube/status/2116114029911613682",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/acroqube/status/2116114029911613682"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T10:24:34.000Z",
+          "observedAt": "2026-10-31T11:16:26.185Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116113910658932736/img/IHiMo_HiQOA9SmDq.jpg",
+            "alt": "Fabrika：带 3D 视口的节点式制作界面，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9a5765f0bef0d1e0",
+          "rank": 8,
+          "title": "Forge：在 ChatGPT 内生成并调整小工具",
+          "summary": "Dash 介绍 Forge 的 ChatGPT 插件入口，用提示生成组件、工具或游戏片段，再在交互结果中调整和分享。原帖展示的是小型交互片段，不代表任意完整应用都能可靠生成；费用和账户开放范围未核实。X 标注时间为最后编辑时间，不能当成未经修改的首发时刻。",
+          "category": "实用工作流",
+          "author": "Dash",
+          "url": "https://x.com/creativedash/status/2116150387816514005",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/creativedash/status/2116150387816514005"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T12:49:03.000Z",
+          "observedAt": "2026-10-31T11:16:30.334Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116148357295194112/img/-ks5JpXkxHBBYMK4.jpg",
+            "alt": "Forge：在 ChatGPT 内生成并调整小工具，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "3c3cfcc887ef4975",
+          "rank": 9,
+          "title": "Jan：CAD 与 Houdini 结合的机器人动画",
+          "summary": "Jan 展示 Claude 用 Python/build123d 创建机器人 CAD，再在 Houdini 中辅助 APEX 绑定与动画细化。粗略动作由作者人工打关键帧，Claude 调整节奏和次级运动，Karma XPU 用于材质灯光和渲染。不能概括为全自动制作。采集时仅 70 赞，是本期因流程实质与发布时间较新保留的较低热度例外。",
+          "category": "内容制作",
+          "author": "Jan",
+          "url": "https://x.com/janhebein/status/2116452533778395307",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/janhebein/status/2116452533778395307"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T08:49:40.000Z",
+          "observedAt": "2026-10-31T11:16:20.285Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116451346182295552/img/-Xfx9ZP3a86-gUBL.jpg",
+            "alt": "Jan：CAD 与 Houdini 结合的机器人动画，原帖预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "12c9879a6d0d24dc",
+          "rank": 10,
+          "title": "mmRISC-2：Claude Code 辅助设计 RISC-V 核",
+          "summary": "圓山宗智公开了64位RV64GC处理器核mmRISC-2，报告用Claude Code辅助开发约一个月后在Arty A7 FPGA上启动Linux。仓库包含L1/L2缓存、MMU、FPU和JTAG/cJTAG调试支持，采用Apache-2.0。README明确作者负责设定目标、选择方案及实际运行Vivado和板卡，并非AI独立完成所有物理验证。启动结果为作者报告，未独立复测。",
+          "category": "硬件创客",
+          "author": "圓山宗智",
+          "url": "https://x.com/Processing_Unit/status/2115808441516322945",
+          "sources": [
+            {
+              "title": "X日文原帖（已切换原文核对）",
+              "url": "https://x.com/Processing_Unit/status/2115808441516322945"
+            },
+            {
+              "title": "项目官方资料",
+              "url": "https://github.com/munetomo-maruyama/mmRISC-2"
+            }
+          ],
+          "publishedAtISO": "2026-10-29T14:10:16.000Z",
+          "observedAt": "2026-10-31T11:17:16.041Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/card_img/2114906521071214592/kzzNt-5-?format=jpg&name=small",
+            "alt": "mmRISC-2 原帖仓库预览",
+            "type": "image"
+          }
+        },
+        {
+          "id": "e9a593dd55a49f10",
+          "rank": 11,
+          "title": "StandRig：通过 MCP 编辑二维角色绑定",
+          "summary": "絵愛さやか展示AI辅助2D绑定测试，称绑定约两小时，但分层拆图和素材制作更耗时。官方StandRig目前是早期开发的本地MCP工具：导入已分层PSD，由AI客户端编辑网格、变形器与参数，并在浏览器播放，可接OBS浏览器源。Apache-2.0；不内置自动拆图，不提供Live2D模型转换。原帖提到的Live2D导入是未来方向，不是现成功能。",
+          "category": "内容制作",
+          "author": "絵愛さやかAIArtist",
+          "url": "https://x.com/sayaka_aiart/status/2115982565056409735",
+          "sources": [
+            {
+              "title": "X日文原帖（已切换原文核对）",
+              "url": "https://x.com/sayaka_aiart/status/2115982565056409735"
+            },
+            {
+              "title": "项目官方资料",
+              "url": "https://github.com/sayaka-aiart/StandRig"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T01:42:11.000Z",
+          "observedAt": "2026-10-31T11:17:30.192Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2115975066622230528/img/d513fiazjYwo6HJL.jpg",
+            "alt": "StandRig：通过 MCP 编辑二维角色绑定：原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "44379b96367f1956",
+          "rank": 12,
+          "title": "ComfyUI：H3 长视频分段提示词试验",
+          "summary": "Photogenic Weekend试验ComfyUI的MiniMax H3 Context Windows节点，以Pika H3 Flex生成超过15秒的视频。作者按时长设置窗口数，用LLM将提示词分成总体设定和分段描述，经Conditioning Combine连接。作者同时说明：重复单一动作较容易维持，有先后顺序的动作仍不稳定，程序尚在开发。ComfyUI官方PR #17425可核对已合并的context windows支持；不把该实验当成通用60秒质量保证。",
+          "category": "内容制作",
+          "author": "Photogenic Weekend",
+          "url": "https://x.com/PhotogenicWeekE/status/2116050837482987543",
+          "sources": [
+            {
+              "title": "X日文原帖（已切换原文核对）",
+              "url": "https://x.com/PhotogenicWeekE/status/2116050837482987543"
+            },
+            {
+              "title": "项目官方资料",
+              "url": "https://github.com/Comfy-Org/ComfyUI/pull/17425"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T06:13:28.000Z",
+          "observedAt": "2026-10-31T11:18:48.200Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116049942552952833/img/FSppQ7lS2i31XG_b.jpg",
+            "alt": "ComfyUI：H3 长视频分段提示词试验：原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4c8012ee2a99c035",
+          "rank": 13,
+          "title": "VoxelKei：游戏角色的 Gaussian Splatting 试验",
+          "summary": "VoxelKei展示约39秒人物预览，介绍正在结合AI与Gaussian Splatting试作更自然的角色，人物来自其正在构想的游戏。这是创作者的角色表现试验，不是已发布的游戏或可下载工具。原帖未说明模型、引擎、生成步骤、许可或运行性能；不从视频外观推断实际游戏可用性。",
+          "category": "AI 游戏开发",
+          "author": "VoxelKei",
+          "url": "https://x.com/VoxelKei/status/2116461029370859526",
+          "sources": [
+            {
+              "title": "X日文原帖（已切换原文核对）",
+              "url": "https://x.com/VoxelKei/status/2116461029370859526"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T09:23:26.000Z",
+          "observedAt": "2026-10-31T11:19:08.710Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116460610800271360/img/BQcPVRIl6c-KRuH4.jpg",
+            "alt": "VoxelKei：游戏角色的 Gaussian Splatting 试验：原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "fd0f0e4f40421978",
+          "rank": 14,
+          "title": "Musio Studio：用本地 MCP 接入音乐制作代理",
+          "summary": "ハイボール分享Musio Studio接入Claude Code的使用过程，并在作者回复补充开启Agents、复制连接命令等步骤。官方资料确认Studio及MCP服务可免费使用，支持Mac、Windows和Linux；本地服务默认关闭，开启后需令牌连接，可编辑音轨、音色、混音与编排、导入导出。每次修改可以撤销。Musio本身不生成音乐；代理为用户自备，完整音色库另收费，不能把原帖理解为安装软件就免费自动作曲。",
+          "category": "实用工作流",
+          "author": "ハイボール",
+          "url": "https://x.com/AIillusttanosii/status/2116062601386102800",
+          "sources": [
+            {
+              "title": "X日文原帖（已切换原文核对）",
+              "url": "https://x.com/AIillusttanosii/status/2116062601386102800"
+            },
+            {
+              "title": "项目官方资料",
+              "url": "https://musio.com/mcp"
+            },
+            {
+              "title": "作者补充连接步骤",
+              "url": "https://x.com/AIillusttanosii/status/2116149447357067658"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T07:00:13.000Z",
+          "observedAt": "2026-10-31T11:19:27.235Z"
+        }
+      ]
+    },
     {
       "id": "2026-10-30",
       "date": "2026-10-30",
