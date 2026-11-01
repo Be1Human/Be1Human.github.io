@@ -2,9 +2,316 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "41b8921df2ad61908e27caf47a4a233bc8a05370",
-  "syncedAt": "2026-10-31T11:24:44.477Z",
+  "sourceRevision": "f37b0e55ab7c8e625b2d0f2c80b519b4a78725d3",
+  "syncedAt": "2026-11-01T12:38:25.917Z",
   "editions": [
+    {
+      "id": "2026-11-01",
+      "date": "2026-11-01",
+      "label": "11 月 1 日 · 13 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-01",
+      "items": [
+        {
+          "id": "3dfab2ad930e5c68",
+          "rank": 1,
+          "title": "pixelfx：代码像素特效库与 Claude Code 技能",
+          "summary": "ひろはす介绍了 patch-gg 的 pixelfx：244种代码生成的像素特效，覆盖火焰、爆炸、魔法、天气和界面效果。库可在浏览器运行，导出透明PNG精灵图及JSON后供Unity、Godot等使用。项目附Claude Code技能，支持查找、使用、导出和按渲染结果迭代新特效；MIT许可。普通运行时并不要求调用AI模型。",
+          "category": "游戏开发",
+          "author": "ひろはす@ゲーム開発情報発信",
+          "url": "https://x.com/hirohasusan/status/2116739816968823011",
+          "sources": [
+            {
+              "title": "X日文原帖",
+              "url": "https://x.com/hirohasusan/status/2116739816968823011"
+            },
+            {
+              "title": "作者链接的官方项目资料",
+              "url": "https://github.com/patch-gg/pixelfx"
+            }
+          ],
+          "publishedAtISO": "2026-11-01T03:51:14.000Z",
+          "observedAt": "2026-11-01T12:21:54.520Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/tweet_video_thumb/HWArn0MacAAJSFs.jpg",
+            "alt": "pixelfx：代码像素特效库与 Claude Code 技能 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "6c494fbd1bf2381c",
+          "rank": 2,
+          "title": "MIRROR：实拍素材再布局与镜头调整",
+          "summary": "Masaki Mizuno公开短片MIRROR的幕后分解，介绍重新布置已拍摄素材和调整镜头运动的做法。原帖列出vista4D、meridian、MiniMax H3、ComfyUI、Seedance2.5、Blender和Flame，但没有逐项说明各工具承担的步骤，也没有公开完整工程。它是创作者的流程展示，不应表述为一键成片或可直接复现的完整教程。",
+          "category": "内容制作",
+          "author": "Masaki Mizuno",
+          "url": "https://x.com/MIZNOM/status/2116218152627658924",
+          "sources": [
+            {
+              "title": "X日文原帖",
+              "url": "https://x.com/MIZNOM/status/2116218152627658924"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T17:18:19.000Z",
+          "observedAt": "2026-11-01T12:22:55.419Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116213640500264960/img/HJTs1R9ve2MVDO8I.jpg",
+            "alt": "MIRROR：实拍素材再布局与镜头调整 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7ace945818fe4d96",
+          "rank": 3,
+          "title": "Herdr：集中管理多个编码代理终端",
+          "summary": "Alex Finn 展示 Herdr。官方仓库将其定义为支持编码代理的终端多路复用器，可在窗格间查看工作、阻塞、空闲状态，管理本地或SSH机器上的会话。后台服务器可在界面断开后保留进程；机器重启不保留原进程。支持 Claude Code、Codex 等工具，Apache-2.0；不采用作者的生产力夸张承诺。",
+          "category": "实用工作流",
+          "author": "Alex Finn",
+          "url": "https://x.com/AlexFinn/status/2116357855364476971",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/AlexFinn/status/2116357855364476971"
+            },
+            {
+              "title": "项目官方仓库",
+              "url": "https://github.com/herdrdev/herdr"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T02:33:27.000Z",
+          "observedAt": "2026-11-01T12:23:28.289Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116357358133903360/img/VMtYkgwjuUOjOqV9.jpg",
+            "alt": "Herdr：集中管理多个编码代理终端，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "15df7d945c4e6da4",
+          "rank": 4,
+          "title": "OpenCode 图像生成：先定多视角参考再做 3D",
+          "summary": "dax 介绍先用图像模型确定游戏模型外观、生成多角度参考，再交给编码代理据图构建3D的流程，也用参考图探索氛围与灯光。引用的 OpenCode 官方帖称2.2.3版图像工具支持 OpenAI、Gemini、Grok 等模型。未独立测试各提供商，费用依实际模型服务而定。",
+          "category": "AI 游戏开发",
+          "author": "dax",
+          "url": "https://x.com/thdxr/status/2116204573333274666",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/thdxr/status/2116204573333274666"
+            },
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/opencode/status/2116203934033354866"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T16:24:22.000Z",
+          "observedAt": "2026-11-01T12:23:48.723Z"
+        },
+        {
+          "id": "a08a198326ba18a9",
+          "rank": 5,
+          "title": "BeautifulRust：为 Rust 编码代理加入 Bevy 检查",
+          "summary": "BeautifulRust v1.5.0 增加 Bevy 游戏开发支持。官方仓库提供编写、审查和迁移 Rust 的技能与 Clippy 配置，可供 Claude Code、Codex、Cursor 等编码代理使用，代码采用 MIT。帖子展示运行时问题检查思路；不能保证发现所有缺陷，模型服务费用另计。",
+          "category": "AI 游戏开发",
+          "author": "Morgan Linton",
+          "url": "https://x.com/morganlinton/status/2116193795507441870",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/morganlinton/status/2116193795507441870"
+            },
+            {
+              "title": "项目官方仓库",
+              "url": "https://github.com/morganlinton/BeautifulRust"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T15:41:32.000Z",
+          "observedAt": "2026-11-01T12:22:55.063Z"
+        },
+        {
+          "id": "6ad59656acb402ee",
+          "rank": 6,
+          "title": "技术美术测试场景：给 AI 调整游戏画面的固定环境",
+          "summary": "Chong-U 建议在 AI 游戏开发中建立独立的技术美术测试场景，集中检查灯光、着色器、后期处理和特效。这是工作方法展示，不是新工具发布；对小模型的效率评价属于作者经验，未做独立对比。",
+          "category": "AI 游戏开发",
+          "author": "Chong-U",
+          "url": "https://x.com/chongdashu/status/2116231342807748788",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/chongdashu/status/2116231342807748788"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T18:10:44.000Z",
+          "observedAt": "2026-11-01T12:22:38.447Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116230783052738560/img/YdJ7he97czrjd2E2.jpg",
+            "alt": "技术美术测试场景：给 AI 调整游戏画面的固定环境，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9d5a89dee9f15a9e",
+          "rank": 7,
+          "title": "平台跳跃容错：把手感要求写成可执行规则",
+          "summary": "Kimo 给出让编码代理实现平台跳跃容错的三个具体规则：离开边缘后短暂允许跳跃、落地前缓存跳跃输入、擦到边角时做小幅位置修正。帖子以约6帧和4像素为参数示例；6帧约0.1秒依赖60Hz假设，实际项目需按帧率、物理更新和美术比例调整。",
+          "category": "AI 游戏开发",
+          "author": "Kimo",
+          "url": "https://x.com/asynkimo/status/2116680340542742954",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/asynkimo/status/2116680340542742954"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T23:54:53.000Z",
+          "observedAt": "2026-11-01T12:23:05.686Z"
+        },
+        {
+          "id": "bbb5ddd3e6d91042",
+          "rank": 8,
+          "title": "游戏开发词汇表：用图解概念组织 AI 提示词",
+          "summary": "Danny Limanseta 引用 Nicolas Zullo 的 gamedev-cheatsheet.com，介绍帮助 AI 游戏开发者准确描述需求的词汇表。Nicolas 的可见原文列出34个主要概念、对应图解与示例提示词，并称免费。独立打开网站未成功，功能与免费信息仅依据作者说明，未做站内实测。",
+          "category": "AI 游戏开发",
+          "author": "Danny Limanseta",
+          "url": "https://x.com/DannyLimanseta/status/2116604432339394852",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/DannyLimanseta/status/2116604432339394852"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T18:53:15.000Z",
+          "observedAt": "2026-11-01T12:24:19.169Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116599538760781824/img/QnwZuRP1mdCGmX5R.jpg",
+            "alt": "游戏开发词汇表：用图解概念组织 AI 提示词，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a7cb53ad5428fcc7",
+          "rank": 9,
+          "title": "SpriteCook × Claude Code：统一 Godot 关卡美术风格",
+          "summary": "Kimo 展示将 SpriteCook 接入 Claude Code 后制作 Godot 关卡美术的顺序：先灰盒和主角，再把主角作为图块、背景、道具的风格参考；生成 Godot terrain 图块后挑选批次、清理杂点、布置道具与灯光。作者称该案例用了16次生成、不到6分钟、约4美元额度，非通用价格或交付保证。",
+          "category": "AI 游戏开发",
+          "author": "Kimo",
+          "url": "https://x.com/asynkimo/status/2116245573581799456",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/asynkimo/status/2116245573581799456"
+            }
+          ],
+          "publishedAtISO": "2026-10-30T19:07:17.000Z",
+          "observedAt": "2026-11-01T12:26:33.251Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116239576884740096/img/G5CxXBpCbWEphdUE.jpg",
+            "alt": "SpriteCook × Claude Code：统一 Godot 关卡美术风格，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "22ede860e5d6c1c8",
+          "rank": 10,
+          "title": "MotionBricks：浏览器内操控 VRM 动作",
+          "summary": "monoradio将NVIDIA MotionBricks制作成浏览器交互演示，推荐PC版Chrome，首次模型下载约300MB。用户可按方向键控制动作，也可拖入自己的VRM。作者说明关键姿态仍需预先准备，AI补全姿态之间的运动，并不是无需预设的全自动动画系统。与历史收录的CrowdBricks批量动作项目不同。",
+          "category": "游戏开发",
+          "author": "monoradio",
+          "url": "https://x.com/monoradio102/status/2116414021180297532",
+          "sources": [
+            {
+              "title": "X日文原帖",
+              "url": "https://x.com/monoradio102/status/2116414021180297532"
+            },
+            {
+              "title": "作者链接的官方项目资料",
+              "url": "https://huggingface.co/spaces/monoradio/motionbricks-live"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T06:16:38.000Z",
+          "observedAt": "2026-11-01T12:22:28.406Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116413805865705472/img/4LiVbCyuAmQLygZ3.jpg",
+            "alt": "MotionBricks：浏览器内操控 VRM 动作 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "cba51227f7a3a787",
+          "rank": 11,
+          "title": "ComfyUI-Tessera：分块重生成视频",
+          "summary": "DeepForest展示ComfyUI-Tessera的MiniMax-H3 Ref2VA视频重生成测试，将480×864样片输出为1440×2592，并给出脸部裁切对照。官方节点通过空间分块、时间分段及流式编解码处理视频。仓库为MIT，模型和其他依赖需另行准备并遵守各自许可。画面改善是作者样片展示，不保证任意输入都能还原真实细节。",
+          "category": "内容制作",
+          "author": "DeepForest_Studio_AI",
+          "url": "https://x.com/DeepForest_Inc/status/2116780272838709394",
+          "sources": [
+            {
+              "title": "X日文原帖",
+              "url": "https://x.com/DeepForest_Inc/status/2116780272838709394"
+            },
+            {
+              "title": "作者链接的官方项目资料",
+              "url": "https://github.com/hashu786/ComfyUI-Tessera"
+            }
+          ],
+          "publishedAtISO": "2026-11-01T06:31:59.000Z",
+          "observedAt": "2026-11-01T12:22:44.617Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116778977889234944/img/U6JpjpHf3zzJqdaE.jpg",
+            "alt": "ComfyUI-Tessera：分块重生成视频 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "3fa948be4f16cb76",
+          "rank": 12,
+          "title": "Asteria V1.2.0：Windows 本地 AI 创作环境",
+          "summary": "Tea发布Windows便携式本地AI制作应用Asteria V1.2.0，整合图像、视频和音乐生成、素材整理及相关编辑功能。更新包含保存提示词、提示词与LoRA对比生成、中途分支和AI检查。初次使用需下载运行环境及模型；仓库采用MIT，但依赖和模型另有许可。AI检查可能漏报或误报，不是质量保证。",
+          "category": "实用工作流",
+          "author": "Tea",
+          "url": "https://x.com/wims_Tea/status/2116747697541787879",
+          "sources": [
+            {
+              "title": "X日文原帖",
+              "url": "https://x.com/wims_Tea/status/2116747697541787879"
+            },
+            {
+              "title": "作者链接的官方项目资料",
+              "url": "https://github.com/w-tea/Asteria-release"
+            }
+          ],
+          "publishedAtISO": "2026-11-01T04:22:33.000Z",
+          "observedAt": "2026-11-01T12:23:16.893Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HWAyF23agAAtgUu?format=jpg&name=small",
+            "alt": "Asteria V1.2.0：Windows 本地 AI 创作环境 原帖图片",
+            "type": "image"
+          }
+        },
+        {
+          "id": "92356465bccd4186",
+          "rank": 13,
+          "title": "3DGS 与 SfM 数据共同辅助 Blender 建模",
+          "summary": "kotohibi 用 Opus 5.5 high、LFS MCP 与 Blender MCP 做建模试验；输入不只有3D Gaussian Splatting，还包含 SfM 稀疏点云、立方体贴图和相机位姿。新帖发表于10月31日，引用的扫描素材帖来自3月；本条只报道新建模流程，不把旧扫描当作新发布。",
+          "category": "AI 游戏开发",
+          "author": "kotohibi",
+          "url": "https://x.com/kotohibi_3d/status/2116474855738708049",
+          "sources": [
+            {
+              "title": "X 原帖与作者说明",
+              "url": "https://x.com/kotohibi_3d/status/2116474855738708049"
+            }
+          ],
+          "publishedAtISO": "2026-10-31T10:18:22.000Z",
+          "observedAt": "2026-11-01T12:26:50.701Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116471982397202432/img/2W-hQtoLzy1t32FL.jpg",
+            "alt": "3DGS 与 SfM 数据共同辅助 Blender 建模，原帖视频封面",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-10-31",
       "date": "2026-10-31",
