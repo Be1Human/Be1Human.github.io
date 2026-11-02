@@ -134,5 +134,11 @@
     "type": "original-svg-concept",
     "description": "为项目展示绘制的概念插图，非运行截图。",
     "bytes": 1646
+  },
+  {
+    "file": "assets/images/haimian-deep-space-cover.svg",
+    "type": "original-svg-concept",
+    "description": "依据 Haimian 小屏、旋钮与按键布局绘制的设备交互示意，非实物照片或运行截图。",
+    "bytes": 2053
   }
 ]

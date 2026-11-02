@@ -1,5 +1,5 @@
 {
-  "reviewedAt": "2026-10-30T10:30:26.768Z",
+  "reviewedAt": "2026-11-02T09:50:20.522Z",
   "method": "公开项目依据固定提交的说明与配置；作者授权展示的项目依据私有工程资料整理独立简介，仅发布经过筛选的介绍，不发布原始内部资料。",
   "productRuntimeTestedInThisReview": false,
   "projects": [
@@ -249,6 +249,16 @@
       "descriptionBasis": [
         "作者授权整理的项目介绍",
         "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "haimian-deep-space",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作者提供的 Haimian 深空外设使用教程：旋钮按键交互、Windows USB 控制台、WiFi 配网与存档接续。",
+        "作品页依据教程整理功能说明；公开内容不包含网络配置值、默认服务地址或存档标识。",
+        "配图依据设备结构绘制为 SVG 示意图，并明确标注非运行截图。"
       ],
       "productRuntimeTestedInThisReview": false
     }
