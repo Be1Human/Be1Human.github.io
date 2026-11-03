@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 706" role="img" aria-labelledby="title desc">
+<title id="title">Haimian · 深空外设 · 项目示意</title><desc id="desc">桌面小屏、旋钮与确认按键的结构示意，不是实物照片或运行截图。</desc>
+<rect width="1200" height="706" fill="#e2e7e4"/>
+<g stroke="#60756e" stroke-linecap="round" stroke-linejoin="round">
+<path d="M811 131Q811 111 834 111H1050Q1074 111 1074 135L1090 513Q1091 537 1066 537H816Q792 537 794 513Z" fill="#f6f3eb" stroke-width="3"/>
+<rect x="839" y="161" width="194" height="188" rx="7" fill="#263d3b" stroke-width="3"/>
+<g stroke="#9eb6ab" stroke-width="1.6" fill="none"><circle cx="936" cy="248" r="55"/><ellipse cx="936" cy="248" rx="55" ry="19" transform="rotate(-29 936 248)"/><path d="M878 191H886M1010 293H1018M991 202V210M895 291V298"/></g>
+<g fill="#d6e3d7" stroke="none"><circle cx="883" cy="219" r="2"/><circle cx="992" cy="251" r="2"/><circle cx="914" cy="188" r="2"/></g>
+<circle cx="930" cy="433" r="54" fill="#dce0d8" stroke-width="3"/><circle cx="930" cy="433" r="45" fill="none" stroke-width="1.5"/><path d="M930 389V404" stroke-width="4"/>
+<circle cx="1036" cy="442" r="21" fill="#60756e" stroke-width="3"/><circle cx="1036" cy="442" r="12" fill="#e3e8dd" stroke="none"/>
+<g stroke-width="2.2"><path d="M827 425H849M827 434H849M827 443H849"/></g>
+<path d="M1077 485C1139 485 1115 597 1052 597" fill="none" stroke-width="3"/>
+</g>
+<g fill="#60756e"><text x="78" y="76" font-family="monospace" font-size="18" letter-spacing="3">CLOUD BOY / HARDWARE NOTES</text>
+<text x="78" y="314" font-family="Georgia,serif" font-size="69">HAIMIAN</text>
+<text x="82" y="367" font-family="monospace" font-size="27" letter-spacing="5">DEEP SPACE</text>
+<text x="82" y="424" font-family="monospace" font-size="16" letter-spacing="2">DIAL / CONFIRM / CONNECT</text>
+<text x="82" y="610" font-family="monospace" font-size="17" letter-spacing="2">2026 / DESKTOP DEVICE</text></g>
+<path d="M80 560H1120" stroke="#60756e" stroke-opacity=".3"/>
+</svg>

@@ -1,8 +1,8 @@
-# CLOUD BOY · 云上男孩
+# 克劳德梦见电子羊 · 云上男孩
 
 [个人博客](https://be1human.github.io/) · [作品集](https://be1human.github.io/works.html) · [博客时间线](https://be1human.github.io/journal.html) · [科技新闻](https://be1human.github.io/news.html)
 
-一个零依赖的中文个人博客：作品展示、创作记录，以及从 Dot「AI 热门 20 · 每日精选」同步的日期归档。全站统一暖色纸感：米白底、柔和墨色与书页式排版，适配手机；全部主要内容在 HTML 中，关闭 JavaScript 也能阅读。
+一个零依赖的中文作品集：新版首页使用复古像素场景、滚动镜头、章节卡片与扑克牌作品展示。动态、文章、项目详情和新闻日期归档保留原来的静态阅读页面；关闭 JavaScript 时可通过首页链接访问这些内容。
 
 ## 本地运行
 
@@ -24,11 +24,11 @@ npm start
 
 ## 写博客
 
-首页是类似 X 的个人时间流，混合显示短动态和文章摘要。用户在聊天里说「发一条动态」或「发布一篇文章」即可提供发布内容；具体流程见 [docs/blog-publishing.md](docs/blog-publishing.md)。短动态存放在 `data/updates.json`，完整显示正文；长文章点击卡片进入全文页。原有 `journal.html` 地址也进入同一条时间流。
+`journal.html` 保留个人时间流，混合显示短动态和文章摘要；新版首页的「手记」提供完整归档入口。用户在聊天里说「发一条动态」或「发布一篇文章」即可提供发布内容；具体流程见 [docs/blog-publishing.md](docs/blog-publishing.md)。短动态存放在 `data/updates.json`，完整显示正文；长文章点击卡片进入全文页。旧首页的 `#status-…` 和 `#article-…` 链接自动进入该时间流。
 
 在 `data/posts.json` 添加一篇文章，填写唯一的 `id`、真实的发布日期 `date`、标题、摘要、分类、标签，以及由小节和段落组成的 `sections`。可选 `image`、`imageAlt`；参考资料写在 `links` 中。
 
-运行 `npm run build` 后会生成 `posts/<id>.html`，并自动更新首页、时间线、RSS 和 sitemap。文章列表按日期倒序，同日保持输入顺序。首批三篇文章是本次改版的站点记录和基于现有公开项目说明整理的项目手记，没有虚构历史发布日期。
+运行 `npm run build` 后会生成 `posts/<id>.html`，并自动更新时间线、RSS 和 sitemap。文章列表按日期倒序，同日保持输入顺序。首批三篇文章是本次改版的站点记录和基于现有公开项目说明整理的项目手记，没有虚构历史发布日期。
 
 ## 每日科技新闻
 
@@ -46,7 +46,11 @@ npm run check
 
 ## 结构
 
-- `src/page.template.html`：共享导航、页面头部和页脚。
+- `src/experience/index.html`：新版首页源文件，构建时复制到根目录，新闻同步不会覆盖设计。
+- `app.js` / `style.css`：新版交互和样式；`content-local.json` 保存经审核的作品与手记内容，更新这两类内容时同步维护。
+- `video-manifest.json` / `assets/video/`：按需加载的正反向镜头视频。
+- 首页新闻直接读取 `data/news.json` 最新一期，配图保留来源；原帖没有图片时显示标注过的主题图解。
+- `src/page.template.html`：静态归档的共享导航、页面头部和页脚。
 - `scripts/build-blog.mjs`：页面渲染、内容验证、RSS、站内链接检查。
 - `scripts/project-data.mjs`：作品字段校验、公开源码与站内项目介绍的边界。
 - `assets/styles.css`：桌面与手机布局。

@@ -1,0 +1,949 @@
+{
+  "site": {
+    "title": "克劳德梦见电子羊",
+    "owner": "云上男孩",
+    "handle": "Be1Human",
+    "tagline": "保持好奇，慢慢创造。",
+    "original": "https://be1human.github.io/",
+    "github": "https://github.com/Be1Human",
+    "contentSource": "https://be1human.github.io/works.html"
+  },
+  "projects": [
+    {
+      "id": "haimian-deep-space",
+      "title": "Haimian · 深空外设",
+      "category": "experiments",
+      "categoryLabel": "硬件与交互",
+      "subtitle": "桌面硬件与实体交互",
+      "summary": "把「深空」带到桌面：用旋钮选择、按键确认，在实体小屏上继续游戏。配合 Windows USB 控制台切换应用与主题，也能通过 WiFi 接入服务并接续存档。",
+      "source": "https://be1human.github.io/projects/haimian-deep-space.html",
+      "image": "assets/ed988e374580.svg",
+      "imageAlt": "Haimian 桌面小屏、旋钮与确认按键的结构示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "实体交互",
+        "深空",
+        "桌面小屏"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/haimian-deep-space.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg"
+    },
+    {
+      "id": "rain-city",
+      "title": "雨之城",
+      "category": "games",
+      "categoryLabel": "游戏项目",
+      "subtitle": "城市驾驶游戏原型",
+      "summary": "从城市驾驶到下车步行，把一段旅程做成可玩的场景。保留了 Godot 历史原型，并继续探索角色动画、场景重建与 UE 迁移。",
+      "source": "https://be1human.github.io/projects/rain-city.html",
+      "image": "assets/904137f6e5d5.svg",
+      "imageAlt": "雨之城的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "Godot",
+        "城市驾驶",
+        "3DGS"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/rain-city.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/rain-city-cover.svg"
+    },
+    {
+      "id": "mineclaw",
+      "title": "MineClaw",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "Minecraft AI 伙伴",
+      "summary": "面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。",
+      "source": "https://github.com/Be1Human/MineClaw#quick-start",
+      "image": "assets/cbb91d2e0275.webp",
+      "imageAlt": "MineClaw 本地控制台展示 Minecraft 世界的实时感知",
+      "imageNote": "项目控制台截图",
+      "tags": [
+        "TypeScript",
+        "Minecraft",
+        "AI Agent"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/mineclaw.jpg"
+    },
+    {
+      "id": "duomind",
+      "title": "DuoMind · 双脑搭档",
+      "category": "games",
+      "categoryLabel": "游戏项目",
+      "subtitle": "人机同屏合作 Demo",
+      "summary": "玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。",
+      "source": "https://be1human.github.io/projects/duomind.html",
+      "image": "assets/263810aa0ad9.svg",
+      "imageAlt": "DuoMind · 双脑搭档的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "LittleJS",
+        "Pi Agent",
+        "协作 NPC"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/duomind.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/duomind-cover.svg"
+    },
+    {
+      "id": "clawphone",
+      "title": "ClawPhone",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "AI 手机桥接服务",
+      "summary": "把 Android 手机接入 OpenClaw，让 Agent 通过桥接服务观察屏幕、调用手机操作，并获得动作结果。与 App-Control 手机端配合使用。",
+      "source": "https://be1human.github.io/projects/clawphone.html",
+      "image": "assets/52a162df6140.svg",
+      "imageAlt": "ClawPhone的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "OpenClaw",
+        "WebSocket",
+        "MCP"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/clawphone.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/clawphone-cover.svg"
+    },
+    {
+      "id": "app-control",
+      "title": "App-Control",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "Android 自动化原型",
+      "summary": "在手机上接收任务，通过无障碍服务连接页面识别与动作执行，并在界面中观察任务、服务状态和日志。重点是单设备流程与调试。",
+      "source": "https://be1human.github.io/projects/app-control.html",
+      "image": "assets/99818e8d7563.svg",
+      "imageAlt": "App-Control的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "Kotlin",
+        "Android",
+        "无障碍服务"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/app-control.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/app-control-cover.svg"
+    },
+    {
+      "id": "agentmem",
+      "title": "AgentMem",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "跨设备 AI 编程记忆",
+      "summary": "将不同设备与 IDE 的编码记忆汇总到一处。服务端围绕同步、聚合、导出和管理组织，使用 SQLite 保存数据，并提供部署与维护入口。",
+      "source": "https://be1human.github.io/projects/agentmem.html",
+      "image": "assets/7edc4523b5b9.svg",
+      "imageAlt": "AgentMem的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "TypeScript",
+        "SQLite",
+        "记忆同步"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/agentmem.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/agentmem-cover.svg"
+    },
+    {
+      "id": "petgo",
+      "title": "PetGo · 宠物梦视",
+      "category": "visuals",
+      "categoryLabel": "视觉与设计",
+      "subtitle": "AI 宠物影像产品设计",
+      "summary": "围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。",
+      "source": "https://be1human.github.io/projects/petgo.html",
+      "image": "assets/fd82ba66e003.svg",
+      "imageAlt": "PetGo · 宠物梦视的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "AI 影像",
+        "产品设计",
+        "多模态"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/petgo.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/petgo-cover.svg"
+    },
+    {
+      "id": "workflow-skills",
+      "title": "个人工作流 Skill 库",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "可检索的工作方法库",
+      "summary": "把设计、研发、动画、游戏制作和搜索研究中的方法整理成可复用的 Skill。通过分类、关键词和统一目录，找到当前任务需要的完整工作流程。",
+      "source": "https://be1human.github.io/projects/workflow-skills.html",
+      "image": "assets/231e0750ef8f.svg",
+      "imageAlt": "个人工作流 Skill 库的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "Agent Skill",
+        "工作流",
+        "Python"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/workflow-skills.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/workflow-skills-cover.svg"
+    },
+    {
+      "id": "wallpaper-workshop",
+      "title": "AI Wallpaper Workshop",
+      "category": "visuals",
+      "categoryLabel": "动态视觉",
+      "subtitle": "动态壁纸案例与 Skill",
+      "summary": "包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。",
+      "source": "https://be1human.github.io/starry-night-train/",
+      "image": "assets/a5b585b46ae1.webp",
+      "imageAlt": "星空、云层、列车与水面倒影的实际 Shader 渲染",
+      "imageNote": "实际渲染截图",
+      "tags": [
+        "WebGL",
+        "GLSL",
+        "动态壁纸"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/starry-night.png"
+    },
+    {
+      "id": "titan-town",
+      "title": "Titan Town · 墙内小镇",
+      "category": "games",
+      "categoryLabel": "游戏项目",
+      "subtitle": "浏览器游戏",
+      "summary": "浏览器中的可破坏体素围城游戏。玩家使用钩索和喷气装备在小镇移动、破坏建筑、应对巨人并完成 7 个任务；支持中英文，需本地启动网页服务。",
+      "source": "https://github.com/Be1Human/titan-town#run",
+      "image": "assets/6507a8df2f67.webp",
+      "imageAlt": "Titan Town 的实际游戏画面，体素城镇和高墙",
+      "imageNote": "实际游戏截图",
+      "tags": [
+        "Three.js",
+        "Rapier",
+        "体素破坏"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/titan-town.png"
+    },
+    {
+      "id": "hades-study",
+      "title": "Hades 学习 Demo · 冥界试炼",
+      "category": "games",
+      "categoryLabel": "游戏项目",
+      "subtitle": "非商业学习 Demo",
+      "summary": "基于 Godot 的三房间动作游戏学习 Demo，包含战斗、奖励与祝福选择、Boss 波次及胜负结算。提供 Windows 版本和中文游戏界面；项目非官方，仅限非商业学习。",
+      "source": "https://github.com/Be1Human/hades-learning-demo/releases",
+      "image": "assets/8db40613c851.webp",
+      "imageAlt": "学习 Demo 的实际战斗截图，角色在双坑房间施展剑击",
+      "imageNote": "学习 Demo 实际截图 · 非原作画面",
+      "tags": [
+        "Godot",
+        "动作战斗",
+        "Windows"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/hades-combat.png"
+    },
+    {
+      "id": "network-diary",
+      "title": "大小姐的网络手账",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "macOS / Windows 应用",
+      "summary": "面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。",
+      "source": "https://github.com/Be1Human/claude-ojousama-network/releases/latest",
+      "image": "assets/afe478d1def7.webp",
+      "imageAlt": "大小姐的网络手账实际应用界面，截图使用演示数据",
+      "imageNote": "实际应用截图 · 演示数据",
+      "tags": [
+        "Electron",
+        "macOS / Windows",
+        "本地优先"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/network-diary.png"
+    },
+    {
+      "id": "codebuddy-memory",
+      "title": "CodeBuddy Memory · 发布站",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "桌面应用发布工作台",
+      "summary": "把产品介绍、安装包下载、更新日志和构建发布放到一个网站中。管理端将拉取代码、应用打包和版本发布组织成一条流程。",
+      "source": "https://be1human.github.io/projects/codebuddy-memory.html",
+      "image": "assets/8d0d1c570ac3.svg",
+      "imageAlt": "CodeBuddy Memory · 发布站的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "Node.js",
+        "Express",
+        "应用发布"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/codebuddy-memory.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/codebuddy-memory-cover.svg"
+    },
+    {
+      "id": "animation-workflow",
+      "title": "Video to Game Animation",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "动画制作与评审 Skill",
+      "summary": "面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。",
+      "source": "https://github.com/Be1Human/video-to-game-animation#实际效果与过程",
+      "image": "assets/7ffde24538c6.webp",
+      "imageAlt": "同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面",
+      "imageNote": "角色肩袖修正前后对比",
+      "tags": [
+        "Blender",
+        "动画",
+        "Agent Skill"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/animation.jpg"
+    },
+    {
+      "id": "clawpm",
+      "title": "ClawPM",
+      "category": "tools",
+      "categoryLabel": "AI 与工具",
+      "subtitle": "自托管项目管理",
+      "summary": "可自托管的项目管理 Web 应用，提供需求节点、思维导图、看板、任务列表、甘特图和迭代管理。通过 MCP 让 AI Agent 领取任务、上报进度；使用前需自行部署服务。",
+      "source": "https://github.com/Be1Human/clawpm#features",
+      "image": "assets/0dcd58a3beb3.webp",
+      "imageAlt": "ClawPM 项目标志",
+      "imageNote": "项目标志",
+      "tags": [
+        "MCP",
+        "TypeScript",
+        "项目管理"
+      ],
+      "links": [
+        {
+          "label": "项目说明",
+          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/clawpm-logo.png"
+    },
+    {
+      "id": "voxelspace",
+      "title": "VoxelSpace",
+      "category": "games",
+      "categoryLabel": "游戏项目",
+      "subtitle": "游戏引擎学习工程",
+      "summary": "从窗口、输入和渲染循环开始，搭建自己的游戏引擎骨架。已保存的早期实现主要围绕 2D 精灵、动画、组件和游戏世界展开。",
+      "source": "https://be1human.github.io/projects/voxelspace.html",
+      "image": "assets/fe2a3729d8b9.svg",
+      "imageAlt": "VoxelSpace的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "C++",
+        "OpenGL",
+        "GLFW"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/voxelspace.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/voxelspace-cover.svg"
+    },
+    {
+      "id": "interactive-cube",
+      "title": "交互认知魔方",
+      "category": "experiments",
+      "categoryLabel": "研究与实验",
+      "subtitle": "传感器与反馈实验",
+      "summary": "将姿态传感器、按键、OLED 和语音反馈组合起来：转动方块、辨认朝向，再通过声音提示完成简单的匹配小游戏。",
+      "source": "https://be1human.github.io/projects/interactive-cube.html",
+      "image": "assets/bdc88ee68c51.svg",
+      "imageAlt": "交互认知魔方的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "Raspberry Pi",
+        "Python",
+        "IMU"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/interactive-cube.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/interactive-cube-cover.svg"
+    },
+    {
+      "id": "network-lab",
+      "title": "OVS 网络实验",
+      "category": "experiments",
+      "categoryLabel": "研究与实验",
+      "subtitle": "网络资源管理原型",
+      "summary": "用 Python 与 gRPC 探索网卡、虚拟交换机和资源管理接口。保留了 Open vSwitch 网桥操作、计算与存储协议等早期实验代码。",
+      "source": "https://be1human.github.io/projects/network-lab.html",
+      "image": "assets/6f28a0abf4e4.svg",
+      "imageAlt": "OVS 网络实验的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "Python",
+        "gRPC",
+        "Open vSwitch"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/network-lab.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/network-lab-cover.svg"
+    },
+    {
+      "id": "game-system-notes",
+      "title": "游戏系统设计图集",
+      "category": "visuals",
+      "categoryLabel": "视觉与设计",
+      "subtitle": "结构图与学习笔记",
+      "summary": "用结构图记录游戏 UI、角色系统与编辑器扩展的思考。把类之间的关系、资源打开流程和模块边界画出来，作为后续实现时的参照。",
+      "source": "https://be1human.github.io/projects/game-system-notes.html",
+      "image": "assets/0599db32fdea.svg",
+      "imageAlt": "游戏系统设计图集的项目示意图，非运行截图",
+      "imageNote": "项目示意图 · 非运行截图",
+      "tags": [
+        "draw.io",
+        "游戏架构",
+        "Unreal 学习"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/game-system-notes.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/game-system-notes-cover.svg"
+    }
+  ],
+  "journal": [
+    {
+      "id": "a-train-through-the-clouds",
+      "title": "一列火车，两种天空： 动态壁纸工作坊",
+      "source": "https://be1human.github.io/posts/a-train-through-the-clouds.html",
+      "date": "2026-10-30",
+      "summary": "蓝天湖景与星空列车，把场景拆成图层，再让云、水面和光线各自运动。这里是这个公开项目的阅读入口。",
+      "image": "assets/a5b585b46ae1.webp",
+      "imageAlt": "动态壁纸工作坊中的星空列车实际渲染截图",
+      "imageNote": "动态壁纸工作坊中的星空列车实际渲染截图",
+      "sections": [
+        {
+          "title": "从画面到可运行的案例",
+          "paragraphs": [
+            "AI Wallpaper Workshop 收录了蓝天湖景列车与星空列车两个案例，配套提供分层制作、质量检查和离线导出的工作流程。",
+            "浏览案例时，可以从整体画面进入 TA 拆解，再查看 Shader 实现。这使同一张画面既是作品，也是理解实现方法的入口。"
+          ]
+        },
+        {
+          "title": "分层，是把变化讲清楚",
+          "paragraphs": [
+            "天空、云层、列车、山峦与水面承担不同的视觉作用。把元素分开考虑，才能分别讨论它们的位置、运动和相互遮挡。",
+            "项目还保留本地运行和导出说明。具体参数、依赖与当前版本的操作方式，以仓库文档为准。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "打开动态壁纸工作坊",
+          "url": "https://be1human.github.io/starry-night-train/"
+        },
+        {
+          "label": "阅读项目说明",
+          "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
+        }
+      ],
+      "tags": [
+        "WebGL",
+        "Shader",
+        "动态视觉"
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/starry-night.png"
+    },
+    {
+      "id": "meet-mineclaw",
+      "title": "MineClaw： 让 AI 伙伴走进 Minecraft",
+      "source": "https://be1human.github.io/posts/meet-mineclaw.html",
+      "date": "2026-10-30",
+      "summary": "从聊天走向一个可观察的游戏世界：对话、目标、行动，以及本地控制台里的任务记录。",
+      "image": "assets/cbb91d2e0275.webp",
+      "imageAlt": "MineClaw 本地控制台截图",
+      "imageNote": "MineClaw 本地控制台截图",
+      "sections": [
+        {
+          "title": "一个有游戏世界的 AI 伙伴",
+          "paragraphs": [
+            "MineClaw 面向 Minecraft Java 版，让 AI 伙伴能够日常对话，并按目标在游戏中执行任务。与单纯的聊天界面相比，游戏世界提供了可以观察的环境和行动结果。",
+            "本地控制台呈现感知和任务记录，便于回看 AI 当时面对的情况、接受的目标与执行过程。"
+          ]
+        },
+        {
+          "title": "从项目说明开始",
+          "paragraphs": [
+            "项目仍在开发中。运行前需要准备 Minecraft 服务器，并配置模型接口；它不是无需设置即可使用的成品游戏角色。",
+            "作品集中保留了当前介绍所依据的文档版本。安装方式、支持范围和后续进展，请沿着仓库入口继续阅读。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "前往 MineClaw 仓库",
+          "url": "https://github.com/Be1Human/MineClaw"
+        },
+        {
+          "label": "阅读项目说明",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
+        }
+      ],
+      "tags": [
+        "AI Agent",
+        "Minecraft",
+        "开发记录"
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/mineclaw.jpg"
+    }
+  ],
+  "news": {
+    "date": "2026-11-01",
+    "source": "https://be1human.github.io/news/2026-11-01.html",
+    "items": [
+      {
+        "id": "item-3dfab2ad930e5c68",
+        "title": "pixelfx：代码像素特效库与 Claude Code 技能",
+        "category": "游戏开发",
+        "summary": "ひろはす介绍了 patch-gg 的 pixelfx：244种代码生成的像素特效，覆盖火焰、爆炸、魔法、天气和界面效果。库可在浏览器运行，导出透明PNG精灵图及JSON后供Unity、Godot等使用。项目附Claude Code技能，支持查找、使用、导出和按渲染结果迭代新特效；MIT许可。普通运行时并不要求调用AI模型。",
+        "author": "ひろはす@ゲーム開発情報発信",
+        "publishedAt": "2026-11-01T03:51:14.000Z",
+        "source": "https://x.com/hirohasusan/status/2116739816968823011",
+        "image": "assets/news/item-3dfab2ad930e5c68.webp",
+        "imageAlt": "pixelfx：代码像素特效库与 Claude Code 技能 原帖视频预览",
+        "relatedLinks": [
+          {
+            "label": "作者链接的官方项目资料",
+            "url": "https://github.com/patch-gg/pixelfx"
+          }
+        ],
+        "originalImage": "https://pbs.twimg.com/tweet_video_thumb/HWArn0MacAAJSFs.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-6c494fbd1bf2381c",
+        "title": "MIRROR：实拍素材再布局与镜头调整",
+        "category": "内容制作",
+        "summary": "Masaki Mizuno公开短片MIRROR的幕后分解，介绍重新布置已拍摄素材和调整镜头运动的做法。原帖列出vista4D、meridian、MiniMax H3、ComfyUI、Seedance2.5、Blender和Flame，但没有逐项说明各工具承担的步骤，也没有公开完整工程。它是创作者的流程展示，不应表述为一键成片或可直接复现的完整教程。",
+        "author": "Masaki Mizuno",
+        "publishedAt": "2026-10-30T17:18:19.000Z",
+        "source": "https://x.com/MIZNOM/status/2116218152627658924",
+        "image": "assets/news/item-6c494fbd1bf2381c.webp",
+        "imageAlt": "MIRROR：实拍素材再布局与镜头调整 原帖视频预览",
+        "relatedLinks": [],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116213640500264960/img/HJTs1R9ve2MVDO8I.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-7ace945818fe4d96",
+        "title": "Herdr：集中管理多个编码代理终端",
+        "category": "实用工作流",
+        "summary": "Alex Finn 展示 Herdr。官方仓库将其定义为支持编码代理的终端多路复用器，可在窗格间查看工作、阻塞、空闲状态，管理本地或SSH机器上的会话。后台服务器可在界面断开后保留进程；机器重启不保留原进程。支持 Claude Code、Codex 等工具，Apache-2.0；不采用作者的生产力夸张承诺。",
+        "author": "Alex Finn",
+        "publishedAt": "2026-10-31T02:33:27.000Z",
+        "source": "https://x.com/AlexFinn/status/2116357855364476971",
+        "image": "assets/news/item-7ace945818fe4d96.webp",
+        "imageAlt": "Herdr：集中管理多个编码代理终端，原帖视频封面",
+        "relatedLinks": [
+          {
+            "label": "项目官方仓库",
+            "url": "https://github.com/herdrdev/herdr"
+          }
+        ],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116357358133903360/img/VMtYkgwjuUOjOqV9.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-15df7d945c4e6da4",
+        "title": "OpenCode 图像生成：先定多视角参考再做 3D",
+        "category": "AI 游戏开发",
+        "summary": "dax 介绍先用图像模型确定游戏模型外观、生成多角度参考，再交给编码代理据图构建3D的流程，也用参考图探索氛围与灯光。引用的 OpenCode 官方帖称2.2.3版图像工具支持 OpenAI、Gemini、Grok 等模型。未独立测试各提供商，费用依实际模型服务而定。",
+        "author": "dax",
+        "publishedAt": "2026-10-30T16:24:22.000Z",
+        "source": "https://x.com/thdxr/status/2116204573333274666",
+        "image": "assets/news/multiview.svg",
+        "imageAlt": "OpenCode 图像生成：先定多视角参考再做 3D：主题流程图解",
+        "relatedLinks": [
+          {
+            "label": "X 原帖与作者说明",
+            "url": "https://x.com/opencode/status/2116203934033354866"
+          }
+        ],
+        "imageKind": "diagram"
+      },
+      {
+        "id": "item-a08a198326ba18a9",
+        "title": "BeautifulRust：为 Rust 编码代理加入 Bevy 检查",
+        "category": "AI 游戏开发",
+        "summary": "BeautifulRust v1.5.0 增加 Bevy 游戏开发支持。官方仓库提供编写、审查和迁移 Rust 的技能与 Clippy 配置，可供 Claude Code、Codex、Cursor 等编码代理使用，代码采用 MIT。帖子展示运行时问题检查思路；不能保证发现所有缺陷，模型服务费用另计。",
+        "author": "Morgan Linton",
+        "publishedAt": "2026-10-30T15:41:32.000Z",
+        "source": "https://x.com/morganlinton/status/2116193795507441870",
+        "image": "assets/news/rust-bevy.svg",
+        "imageAlt": "BeautifulRust：为 Rust 编码代理加入 Bevy 检查：主题流程图解",
+        "relatedLinks": [
+          {
+            "label": "项目官方仓库",
+            "url": "https://github.com/morganlinton/BeautifulRust"
+          }
+        ],
+        "imageKind": "diagram"
+      },
+      {
+        "id": "item-6ad59656acb402ee",
+        "title": "技术美术测试场景：给 AI 调整游戏画面的固定环境",
+        "category": "AI 游戏开发",
+        "summary": "Chong-U 建议在 AI 游戏开发中建立独立的技术美术测试场景，集中检查灯光、着色器、后期处理和特效。这是工作方法展示，不是新工具发布；对小模型的效率评价属于作者经验，未做独立对比。",
+        "author": "Chong-U",
+        "publishedAt": "2026-10-30T18:10:44.000Z",
+        "source": "https://x.com/chongdashu/status/2116231342807748788",
+        "image": "assets/news/item-6ad59656acb402ee.webp",
+        "imageAlt": "技术美术测试场景：给 AI 调整游戏画面的固定环境，原帖视频封面",
+        "relatedLinks": [],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116230783052738560/img/YdJ7he97czrjd2E2.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-9d5a89dee9f15a9e",
+        "title": "平台跳跃容错：把手感要求写成可执行规则",
+        "category": "AI 游戏开发",
+        "summary": "Kimo 给出让编码代理实现平台跳跃容错的三个具体规则：离开边缘后短暂允许跳跃、落地前缓存跳跃输入、擦到边角时做小幅位置修正。帖子以约6帧和4像素为参数示例；6帧约0.1秒依赖60Hz假设，实际项目需按帧率、物理更新和美术比例调整。",
+        "author": "Kimo",
+        "publishedAt": "2026-10-31T23:54:53.000Z",
+        "source": "https://x.com/asynkimo/status/2116680340542742954",
+        "image": "assets/news/jump-rules.svg",
+        "imageAlt": "平台跳跃容错：把手感要求写成可执行规则：主题流程图解",
+        "relatedLinks": [],
+        "imageKind": "diagram"
+      },
+      {
+        "id": "item-bbb5ddd3e6d91042",
+        "title": "游戏开发词汇表：用图解概念组织 AI 提示词",
+        "category": "AI 游戏开发",
+        "summary": "Danny Limanseta 引用 Nicolas Zullo 的 gamedev-cheatsheet.com，介绍帮助 AI 游戏开发者准确描述需求的词汇表。Nicolas 的可见原文列出34个主要概念、对应图解与示例提示词，并称免费。独立打开网站未成功，功能与免费信息仅依据作者说明，未做站内实测。",
+        "author": "Danny Limanseta",
+        "publishedAt": "2026-10-31T18:53:15.000Z",
+        "source": "https://x.com/DannyLimanseta/status/2116604432339394852",
+        "image": "assets/news/item-bbb5ddd3e6d91042.webp",
+        "imageAlt": "游戏开发词汇表：用图解概念组织 AI 提示词，原帖视频封面",
+        "relatedLinks": [],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116599538760781824/img/QnwZuRP1mdCGmX5R.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-a7cb53ad5428fcc7",
+        "title": "SpriteCook × Claude Code：统一 Godot 关卡美术风格",
+        "category": "AI 游戏开发",
+        "summary": "Kimo 展示将 SpriteCook 接入 Claude Code 后制作 Godot 关卡美术的顺序：先灰盒和主角，再把主角作为图块、背景、道具的风格参考；生成 Godot terrain 图块后挑选批次、清理杂点、布置道具与灯光。作者称该案例用了16次生成、不到6分钟、约4美元额度，非通用价格或交付保证。",
+        "author": "Kimo",
+        "publishedAt": "2026-10-30T19:07:17.000Z",
+        "source": "https://x.com/asynkimo/status/2116245573581799456",
+        "image": "assets/news/item-a7cb53ad5428fcc7.webp",
+        "imageAlt": "SpriteCook × Claude Code：统一 Godot 关卡美术风格，原帖视频封面",
+        "relatedLinks": [],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116239576884740096/img/G5CxXBpCbWEphdUE.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-22ede860e5d6c1c8",
+        "title": "MotionBricks：浏览器内操控 VRM 动作",
+        "category": "游戏开发",
+        "summary": "monoradio将NVIDIA MotionBricks制作成浏览器交互演示，推荐PC版Chrome，首次模型下载约300MB。用户可按方向键控制动作，也可拖入自己的VRM。作者说明关键姿态仍需预先准备，AI补全姿态之间的运动，并不是无需预设的全自动动画系统。与历史收录的CrowdBricks批量动作项目不同。",
+        "author": "monoradio",
+        "publishedAt": "2026-10-31T06:16:38.000Z",
+        "source": "https://x.com/monoradio102/status/2116414021180297532",
+        "image": "assets/news/item-22ede860e5d6c1c8.webp",
+        "imageAlt": "MotionBricks：浏览器内操控 VRM 动作 原帖视频预览",
+        "relatedLinks": [
+          {
+            "label": "作者链接的官方项目资料",
+            "url": "https://huggingface.co/spaces/monoradio/motionbricks-live"
+          }
+        ],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116413805865705472/img/4LiVbCyuAmQLygZ3.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-cba51227f7a3a787",
+        "title": "ComfyUI-Tessera：分块重生成视频",
+        "category": "内容制作",
+        "summary": "DeepForest展示ComfyUI-Tessera的MiniMax-H3 Ref2VA视频重生成测试，将480×864样片输出为1440×2592，并给出脸部裁切对照。官方节点通过空间分块、时间分段及流式编解码处理视频。仓库为MIT，模型和其他依赖需另行准备并遵守各自许可。画面改善是作者样片展示，不保证任意输入都能还原真实细节。",
+        "author": "DeepForest_Studio_AI",
+        "publishedAt": "2026-11-01T06:31:59.000Z",
+        "source": "https://x.com/DeepForest_Inc/status/2116780272838709394",
+        "image": "assets/news/item-cba51227f7a3a787.webp",
+        "imageAlt": "ComfyUI-Tessera：分块重生成视频 原帖视频预览",
+        "relatedLinks": [
+          {
+            "label": "作者链接的官方项目资料",
+            "url": "https://github.com/hashu786/ComfyUI-Tessera"
+          }
+        ],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116778977889234944/img/U6JpjpHf3zzJqdaE.jpg",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-3fa948be4f16cb76",
+        "title": "Asteria V1.2.0：Windows 本地 AI 创作环境",
+        "category": "实用工作流",
+        "summary": "Tea发布Windows便携式本地AI制作应用Asteria V1.2.0，整合图像、视频和音乐生成、素材整理及相关编辑功能。更新包含保存提示词、提示词与LoRA对比生成、中途分支和AI检查。初次使用需下载运行环境及模型；仓库采用MIT，但依赖和模型另有许可。AI检查可能漏报或误报，不是质量保证。",
+        "author": "Tea",
+        "publishedAt": "2026-11-01T04:22:33.000Z",
+        "source": "https://x.com/wims_Tea/status/2116747697541787879",
+        "image": "assets/news/item-3fa948be4f16cb76.webp",
+        "imageAlt": "Asteria V1.2.0：Windows 本地 AI 创作环境 原帖图片",
+        "relatedLinks": [
+          {
+            "label": "作者链接的官方项目资料",
+            "url": "https://github.com/w-tea/Asteria-release"
+          }
+        ],
+        "originalImage": "https://pbs.twimg.com/media/HWAyF23agAAtgUu?format=jpg&name=small",
+        "imageKind": "original"
+      },
+      {
+        "id": "item-92356465bccd4186",
+        "title": "3DGS 与 SfM 数据共同辅助 Blender 建模",
+        "category": "AI 游戏开发",
+        "summary": "kotohibi 用 Opus 5.5 high、LFS MCP 与 Blender MCP 做建模试验；输入不只有3D Gaussian Splatting，还包含 SfM 稀疏点云、立方体贴图和相机位姿。新帖发表于10月31日，引用的扫描素材帖来自3月；本条只报道新建模流程，不把旧扫描当作新发布。",
+        "author": "kotohibi",
+        "publishedAt": "2026-10-31T10:18:22.000Z",
+        "source": "https://x.com/kotohibi_3d/status/2116474855738708049",
+        "image": "assets/news/item-92356465bccd4186.webp",
+        "imageAlt": "3DGS 与 SfM 数据共同辅助 Blender 建模，原帖视频封面",
+        "relatedLinks": [],
+        "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116471982397202432/img/2W-hQtoLzy1t32FL.jpg",
+        "imageKind": "original"
+      }
+    ]
+  },
+  "featuredProject": {
+    "id": "haimian-deep-space",
+    "title": "Haimian · 深空外设",
+    "source": "https://be1human.github.io/projects/haimian-deep-space.html",
+    "date": null,
+    "summary": "把「深空」带到桌面：用旋钮选择、按键确认，在实体小屏上继续游戏。配合 Windows USB 控制台切换应用与主题，也能通过 WiFi 接入服务并接续存档。",
+    "image": "assets/ed988e374580.svg",
+    "imageAlt": "Haimian 桌面小屏、旋钮与确认按键的结构示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
+    "sections": [
+      {
+        "title": "旋钮、按键与三种应用",
+        "paragraphs": [
+          "Haimian 把小屏、旋钮和确认按键放进一台桌面设备。旋转用于选择主题或选项，短按确认，长按切换功能，让屏幕中的内容通过实体操作继续展开。",
+          "配套教程展示了 Deep Space、额度屏和时钟三个应用。深空作为其中的游戏入口，可以在桌面小屏上显示内容并进行选择。"
+        ]
+      },
+      {
+        "title": "Windows USB 控制台",
+        "paragraphs": [
+          "设备通过 USB 连接 Windows 后，可在配套控制台中查看连接状态或重新检测设备，再选择应用与主题并应用到小屏。控制台同时提供启动、停止和时间同步等入口。",
+          "应用与主题切换、时间同步可以通过 USB 在本地完成。控制台与实体设备各自承担配置和显示交互，让同一块小屏可以在不同应用之间切换。"
+        ]
+      },
+      {
+        "title": "WiFi 连接与存档接续",
+        "paragraphs": [
+          "设备可进入 AP 配网模式，在配网页中选择 2.4 GHz WiFi，保存并重启后连接深空服务。游戏服务的交互需要网络连接。",
+          "配网页提供服务器设置和存档接续入口，可使用手机端已有的存档标识继续会话，让桌面外设与原有游戏进度接上。"
+        ]
+      }
+    ],
+    "links": [],
+    "tags": [
+      "实体交互",
+      "深空",
+      "桌面小屏"
+    ],
+    "sourceImage": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg"
+  },
+  "provenance": {
+    "extractedAt": "2026-11-02",
+    "method": "Parsed user portfolio HTML; descriptions copied without invented claims.",
+    "projectCount": 20,
+    "journalCount": 2,
+    "newsCount": 13,
+    "newsDisclaimer": "摘要沿用原网站的每日精选整理结果，不代表已独立实测产品；图片版权归原作者，视频在原帖观看。",
+    "portfolioImageChecks": [
+      {
+        "url": "https://be1human.github.io/assets/images/agentmem-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/animation.jpg",
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/app-control-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/clawphone-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/clawpm-logo.png",
+        "status": 200,
+        "contentType": "image/png"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/codebuddy-memory-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/duomind-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/game-system-notes-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/hades-combat.png",
+        "status": 200,
+        "contentType": "image/png"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/interactive-cube-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/mineclaw.jpg",
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/network-diary.png",
+        "status": 200,
+        "contentType": "image/png"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/network-lab-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/petgo-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/rain-city-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/starry-night.png",
+        "status": 200,
+        "contentType": "image/png"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/titan-town.png",
+        "status": 200,
+        "contentType": "image/png"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/voxelspace-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      },
+      {
+        "url": "https://be1human.github.io/assets/images/workflow-skills-cover.svg",
+        "status": 200,
+        "contentType": "image/svg+xml"
+      }
+    ]
+  }
+}

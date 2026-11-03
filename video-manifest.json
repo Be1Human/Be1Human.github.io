@@ -1,0 +1,242 @@
+{
+  "home-half": {
+    "status": "ready",
+    "url": "assets/video/home-half.mp4",
+    "reverse": "assets/video/home-half-reverse.mp4",
+    "from": "home",
+    "to": "half",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1093636,
+    "reverseBytes": 1078704,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "home-half"
+  },
+  "half-screens": {
+    "status": "ready",
+    "url": "assets/video/half-screens.mp4",
+    "reverse": "assets/video/half-screens-reverse.mp4",
+    "from": "half",
+    "to": "screens",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1148969,
+    "reverseBytes": 1109982,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "half-screens"
+  },
+  "screens-face": {
+    "status": "ready",
+    "url": "assets/video/screens-face.mp4",
+    "reverse": "assets/video/screens-face-reverse.mp4",
+    "from": "screens",
+    "to": "face",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1413431,
+    "reverseBytes": 1405876,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "screens-face"
+  },
+  "face-controller": {
+    "status": "ready",
+    "url": "assets/video/face-controller.mp4",
+    "reverse": "assets/video/face-controller-reverse.mp4",
+    "from": "face",
+    "to": "controller",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1074379,
+    "reverseBytes": 1032231,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "face-controller"
+  },
+  "entry-panels": {
+    "status": "ready",
+    "url": "assets/video/entry-panels.mp4",
+    "reverse": "assets/video/entry-panels-reverse.mp4",
+    "from": "entry",
+    "to": "panels",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1263268,
+    "reverseBytes": 1217830,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "sourceVariant": "entry-panels-v2",
+    "provider": "MiniMax H3 local / Real-ESRGAN"
+  },
+  "panels-near": {
+    "status": "ready",
+    "url": "assets/video/panels-near.mp4",
+    "reverse": "assets/video/panels-near-reverse.mp4",
+    "from": "panels",
+    "to": "near",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1490045,
+    "reverseBytes": 1384971,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "panels-near"
+  },
+  "near-street": {
+    "status": "ready",
+    "url": "assets/video/near-street.mp4",
+    "reverse": "assets/video/near-street-reverse.mp4",
+    "from": "near",
+    "to": "street",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1186647,
+    "reverseBytes": 1136962,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "sourceVariant": "near-street-v2",
+    "provider": "MiniMax H3 local / Real-ESRGAN"
+  },
+  "street-arrival": {
+    "status": "ready",
+    "url": "assets/video/street-arrival.mp4",
+    "reverse": "assets/video/street-arrival-reverse.mp4",
+    "from": "street",
+    "to": "arrival",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1586738,
+    "reverseBytes": 1549801,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "street-arrival"
+  },
+  "arrival-symbol": {
+    "status": "ready",
+    "url": "assets/video/arrival-symbol.mp4",
+    "reverse": "assets/video/arrival-symbol-reverse.mp4",
+    "from": "arrival",
+    "to": "symbol",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 1412488,
+    "reverseBytes": 1361549,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "provider": "MiniMax H3 local / Real-ESRGAN",
+    "sourceVariant": "arrival-symbol"
+  },
+  "home-idle": {
+    "status": "ready",
+    "url": "assets/video/home-idle.mp4",
+    "reverse": "assets/video/home-idle-reverse.mp4",
+    "from": "home",
+    "to": "home",
+    "frames": 124,
+    "fps": 24,
+    "duration": 5.166666666666667,
+    "bytes": 754391,
+    "reverseBytes": 738900,
+    "endpointConformSeconds": 0.25,
+    "nativeResolution": [
+      1152,
+      768
+    ],
+    "masterResolution": [
+      2560,
+      1706
+    ],
+    "native2K": false,
+    "sourceVariant": "home-idle",
+    "provider": "MiniMax H3 local / Real-ESRGAN"
+  }
+}

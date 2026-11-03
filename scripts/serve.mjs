@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const port = Number(process.env.PORT || 4174);
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.mp4': 'video/mp4' };
 const server = createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, `http://127.0.0.1:${port}`).pathname);
@@ -13,7 +13,7 @@ const server = createServer(async (req, res) => {
     if (path.endsWith('/')) path += 'index.html';
     const target = resolve(root, `.${path}`);
     const relative = target.slice(root.length);
-    if (!target.startsWith(root) || relative.split(/[\\/]/).some((part) => part.startsWith('.')) || /(^|[\\/])(data|scripts|src)([\\/]|$)/.test(relative)) {
+    if (!target.startsWith(root) || relative.split(/[\\/]/).some((part) => part.startsWith('.')) || (path !== '/data/news.json' && /(^|[\\/])(data|scripts|src)([\\/]|$)/.test(relative))) {
       res.writeHead(403); res.end('Forbidden'); return;
     }
     const info = await stat(target);

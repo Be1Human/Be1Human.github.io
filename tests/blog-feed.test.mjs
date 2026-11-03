@@ -23,8 +23,8 @@ test('a status remains full text with line breaks and escaped HTML', () => {
   assert.equal(renderStatusText(text), '<p>第一行<br>第二行</p><p>&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt; &amp; 最后一段</p>');
   assert(renderStatusText('全文'.repeat(1000)).includes('全文'.repeat(1000)));
 });
-test('the published homepage shows a status and article previews with working full articles', async () => {
-  const index = await readFile(new URL('../index.html',import.meta.url),'utf8');
+test('the preserved journal feed shows statuses and article previews with working full articles', async () => {
+  const index = await readFile(new URL('../journal.html',import.meta.url),'utf8');
   const posts = JSON.parse(await readFile(new URL('../data/posts.json',import.meta.url),'utf8'));
   const updates = JSON.parse(await readFile(new URL('../data/updates.json',import.meta.url),'utf8'));
   for (const update of updates) {

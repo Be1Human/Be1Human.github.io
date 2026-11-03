@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+    <rect width="1200" height="750" fill="#172e39"/><path d="M0 150H1200M0 600H1200M100 0V750M1100 0V750" stroke="#8bccce" stroke-opacity=".12"/>
+    <text x="70" y="75" fill="#8bccce" font-family="monospace" font-size="18" letter-spacing="4">CLOUD BOY / CONCEPT NOTES</text>
+    
+    <g fill="#243d49" stroke="#8bccce" stroke-width="2"><rect x="70" y="210" width="260" height="300" rx="12"/><rect x="460" y="210" width="260" height="300" rx="12"/><rect x="850" y="210" width="280" height="300" rx="12"/></g>
+    <g fill="#b39acb"><path d="M150 440V310L200 270L250 310V440Z"/><path d="M530 440V310L570 270L610 310V440Z"/></g><g fill="none" stroke="#e9dfcd" stroke-width="3"><path d="M630 440V310L665 290V440Z"/><path d="M920 320L990 280L1060 320V420L990 460L920 420ZM920 320L990 360L1060 320M990 360V460"/></g><path d="M355 360H430L412 342M745 360H820L802 342" fill="none" stroke="#ff918b" stroke-width="4"/><text x="70" y="657" fill="#e9dfcd" font-family="sans-serif" font-size="40" font-weight="700">REFERENCE → MULTI-VIEW → 3D</text>
+    <text x="70" y="706" fill="#b39acb" font-family="monospace" font-size="19" letter-spacing="2">OpenCode / 从视觉参考到三维构建 · 主题图解</text></svg>

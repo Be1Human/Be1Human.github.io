@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+    <rect width="1200" height="750" fill="#172e39"/><path d="M0 150H1200M0 600H1200M100 0V750M1100 0V750" stroke="#8bccce" stroke-opacity=".12"/>
+    <text x="70" y="75" fill="#8bccce" font-family="monospace" font-size="18" letter-spacing="4">CLOUD BOY / CONCEPT NOTES</text>
+    
+    <g fill="#3a5261"><path d="M80 470H420V555H80ZM770 390H1120V555H770Z"/></g><g fill="none" stroke="#8bccce" stroke-width="4" stroke-dasharray="10 12"><path d="M300 440Q555 80 850 350"/></g><g fill="#b39acb"><rect x="325" y="370" width="55" height="65" rx="5"/><rect x="550" y="235" width="55" height="65" rx="5" opacity=".65"/><rect x="810" y="305" width="55" height="65" rx="5" opacity=".35"/></g><path d="M420 470H520M770 390H690" stroke="#ff918b" stroke-width="8"/><g fill="#e9dfcd" font-family="monospace" font-size="21"><text x="100" y="340">COYOTE TIME</text><text x="475" y="180">INPUT BUFFER</text><text x="825" y="265">CORNER CORRECTION</text></g><text x="70" y="657" fill="#e9dfcd" font-family="sans-serif" font-size="40" font-weight="700">A LITTLE ROOM TO JUMP</text>
+    <text x="70" y="706" fill="#b39acb" font-family="monospace" font-size="19" letter-spacing="2">平台跳跃 / 土狼时间 · 输入缓冲 · 边角修正 · 主题图解</text></svg>

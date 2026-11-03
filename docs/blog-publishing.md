@@ -4,17 +4,17 @@
 
 ## 文字动态
 
-在 `data/updates.json` 添加唯一 `id`、`date`、`publishedAt` 和 `content`。`content` 是纯文本，保留用户的段落和换行，首页完整显示。可选 `image` / `imageAlt` 使用 `assets/images/` 中的图片。动态不需要标题或独立文章页。
+在 `data/updates.json` 添加唯一 `id`、`date`、`publishedAt` 和 `content`。`content` 是纯文本，保留用户的段落和换行，时间线完整显示。可选 `image` / `imageAlt` 使用 `assets/images/` 中的图片。动态不需要标题或独立文章页。
 
 ## 长文章
 
-在 `data/posts.json` 添加文章：唯一 `id`、`date`、`publishedAt`、`title`、`summary`、`category`、`tags`、`sections`、`links`，以及可选 `image` / `imageAlt`。沿用现有结构。首页只显示标题和摘要，卡片点击进入 `posts/<id>.html` 阅读全文。摘要应来自用户内容，不虚构经历、观点或项目成果。
+在 `data/posts.json` 添加文章：唯一 `id`、`date`、`publishedAt`、`title`、`summary`、`category`、`tags`、`sections`、`links`，以及可选 `image` / `imageAlt`。沿用现有结构。时间线只显示标题和摘要，卡片点击进入 `posts/<id>.html` 阅读全文。摘要应来自用户内容，不虚构经历、观点或项目成果。
 
-`inFeed: false` 仅保留旧文章链接而不在首页重复展示。原站点介绍已改为普通文字动态，旧文章 URL 继续可用。不要再添加单独的「想法」栏目或突出展示该介绍。
+`inFeed: false` 仅保留旧文章链接而不在时间线重复展示。原站点介绍已改为普通文字动态，旧文章 URL 继续可用。不要再添加单独的「想法」栏目或突出展示该介绍。
 
 ## 视觉与结构
 
-用户已选择暖色纸感风格：米白底、柔和墨色、舒展留白。首页保持短动态与长文章摘要混排，不仿制社交平台的头像框线布局。首页、作品集、新闻及全部详情页共用 `src/page.template.html` 和 `assets/styles.css`；修改设计时应覆盖全站，不另起一套单页导航或配色。
+用户已批准「克劳德梦见电子羊」互动作品集作为根首页，源文件为 `src/experience/index.html`，使用根目录 `app.js` 和 `style.css`。完整时间流位于 `journal.html`；作品、新闻及文章详情保留 `src/page.template.html` 和 `assets/styles.css` 的静态阅读布局。发布内容时不要用旧时间线覆盖新版首页。旧首页动态锚点自动跳转到 `journal.html`，原分享链接继续可用。
 
 ## 时间与发布
 

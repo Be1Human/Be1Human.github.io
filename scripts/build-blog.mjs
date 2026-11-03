@@ -97,7 +97,8 @@ function feedEntry(entry) {
   return `<article class="feed-entry" id="${id}" data-entry-type="${entry.type}">${meta}<div class="feed-entry-main">${content}</div></article>`;
 }
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
-render('index.html', '云上男孩 · 动态与文章', '云上男孩的个人时间流。随手记录的文字动态，以及关于游戏、技术与创作的长文章。', 'home', home);
+// Preserve the approved interactive homepage when rebuilding news and archives.
+pages.set('index.html', await readFile(resolve(root, 'src/experience/index.html'), 'utf8'));
 
 render('works.html', '作品集 — CLOUD BOY · 云上男孩', `游戏、视觉、工具与研究实验：CLOUD BOY 的 ${projects.length} 件作品及项目记录。`, 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
 
