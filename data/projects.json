@@ -7,9 +7,9 @@
     "category": "experiments",
     "label": "硬件与交互",
     "description": "把「深空」带到桌面：用旋钮选择、按键确认，在实体小屏上继续游戏。配合 Windows USB 控制台切换应用与主题，也能通过 WiFi 接入服务并接续存档。",
-    "image": "assets/images/haimian/device-game.webp",
-    "imageAlt": "设备实拍：深空对话已显示在桌面小屏上，旋钮和确认按键位于屏幕下方。",
-    "imageNote": "设备实拍：深空对话已显示在桌面小屏上，旋钮和确认按键位于屏幕下方。",
+    "image": "assets/images/haimian-deep-space-cover.svg",
+    "imageAlt": "Haimian 桌面小屏、旋钮与确认按键的结构示意图，非运行截图",
+    "imageNote": "项目示意图 · 非运行截图",
     "tags": [
       "实体交互",
       "深空",
@@ -24,146 +24,17 @@
       "period": "2026",
       "sections": [
         {
-          "heading": "把深空带到桌面",
+          "heading": "旋钮、按键与三种应用",
           "paragraphs": [
-            "深空以跨越 800 年的虫洞通信为叙事入口。Haimian 将这段对话带到实体小屏，用桌面设备承接游戏中的回复、选项与确认。",
-            "下面的实拍记录了设备显示深空对话的状态；同时保留外观建模、结构拆解与打印试装过程，展示从造型到实体的推进。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/device-angle.webp",
-              "width": 1279,
-              "height": 1706,
-              "alt": "设备实拍：从侧前方观察小屏的倾斜角度、旋钮与按键布局。",
-              "caption": "设备实拍：从侧前方观察小屏的倾斜角度、旋钮与按键布局。"
-            }
-          ]
-        },
-        {
-          "heading": "一个旋钮、一颗按键",
-          "paragraphs": [
-            "Haimian 把小屏、旋钮和确认按键放进一台桌面设备。旋转用于选择主题或选项，短按确认，长按切换功能。",
-            "配套教程展示了 Deep Space、额度屏和时钟三个应用。同一块小屏可以切换内容，实拍中也记录了蓝白时钟主题。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/device-clock.webp",
-              "width": 1279,
-              "height": 1706,
-              "alt": "设备实拍：切换到蓝白时钟主题，显示时间、日期和星期。",
-              "caption": "设备实拍：切换到蓝白时钟主题，显示时间、日期和星期。"
-            },
-            {
-              "src": "assets/images/haimian/device-side.webp",
-              "width": 1279,
-              "height": 1706,
-              "alt": "外壳实拍：白色打印壳体、倾斜屏幕面板与前置旋钮。",
-              "caption": "外壳实拍：白色打印壳体、倾斜屏幕面板与前置旋钮。"
-            }
-          ]
-        },
-        {
-          "heading": "外观与结构探索",
-          "paragraphs": [
-            "建模阶段围绕倾斜屏幕、前置旋钮、按键和前后壳体展开，使用整机视图、概念多视图与爆炸图检查空间关系。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/model-perspective.webp",
-              "width": 1394,
-              "height": 1279,
-              "alt": "外观建模：整机三分之四视角，探索屏幕、旋钮与侧边的造型关系。",
-              "caption": "外观建模：整机三分之四视角，探索屏幕、旋钮与侧边的造型关系。"
-            },
-            {
-              "src": "assets/images/haimian/design-views.webp",
-              "width": 1448,
-              "height": 1086,
-              "alt": "外观设计与尺寸规划概念板：正面、侧面、背面、顶部与底部。图中规格及标记为设计表达。",
-              "caption": "外观设计与尺寸规划概念板：正面、侧面、背面、顶部与底部。图中规格及标记为设计表达。"
-            },
-            {
-              "src": "assets/images/haimian/exploded.webp",
-              "width": 1800,
-              "height": 1109,
-              "alt": "结构建模：屏幕、旋钮、按键、后盖与底座的装配关系。",
-              "caption": "结构建模：屏幕、旋钮、按键、后盖与底座的装配关系。"
-            },
-            {
-              "src": "assets/images/haimian/internal-layout.webp",
-              "width": 1679,
-              "height": 1280,
-              "alt": "结构探索：内部主板、支撑柱和前后壳体的空间关系。",
-              "caption": "结构探索：内部主板、支撑柱和前后壳体的空间关系。"
-            }
-          ]
-        },
-        {
-          "heading": "从分件到装配",
-          "paragraphs": [
-            "壳体分为前壳、后盖和底座。结构分件和装配示意用于表达组件的进入方向，以及屏幕、PCB 与后部托架的关系。",
-            "制作过程实拍保留了未装屏幕和旋钮的壳体状态，可与完整设备对照。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/shell-parts.webp",
-              "width": 1800,
-              "height": 1000,
-              "alt": "结构分件：前壳、后盖和底座内部设计；仅展示零件结构，非实际打印朝向。",
-              "caption": "结构分件：前壳、后盖和底座内部设计；仅展示零件结构，非实际打印朝向。"
-            },
-            {
-              "src": "assets/images/haimian/assembly-sequence.webp",
-              "width": 1800,
-              "height": 908,
-              "alt": "装配示意：组件进入、屏幕与 PCB 就位、后部托架闭合。",
-              "caption": "装配示意：组件进入、屏幕与 PCB 就位、后部托架闭合。"
-            },
-            {
-              "src": "assets/images/haimian/shell-unassembled.webp",
-              "width": 810,
-              "height": 1440,
-              "alt": "制作过程实拍：屏幕和旋钮尚未装入的前壳，按键灯环已亮起。",
-              "caption": "制作过程实拍：屏幕和旋钮尚未装入的前壳，按键灯环已亮起。"
-            }
-          ]
-        },
-        {
-          "heading": "打印样件与桌面试装",
-          "paragraphs": [
-            "白色外壳样件和桌面试装照片记录了模型落地的过程。前后壳、连接线和供电设备放在一起检查，再推进到完整设备。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/printed-prototypes.webp",
-              "width": 1064,
-              "height": 983,
-              "alt": "打印样件实拍：多件白色外壳样件，记录模型到实体的制作过程。",
-              "caption": "打印样件实拍：多件白色外壳样件，记录模型到实体的制作过程。"
-            },
-            {
-              "src": "assets/images/haimian/assembly-bench.webp",
-              "width": 1013,
-              "height": 1800,
-              "alt": "桌面试装实拍：前壳、后盖、连接线与供电设备放在一起检查。",
-              "caption": "桌面试装实拍：前壳、后盖、连接线与供电设备放在一起检查。"
-            }
+            "Haimian 把小屏、旋钮和确认按键放进一台桌面设备。旋转用于选择主题或选项，短按确认，长按切换功能，让屏幕中的内容通过实体操作继续展开。",
+            "配套教程展示了 Deep Space、额度屏和时钟三个应用。深空作为其中的游戏入口，可以在桌面小屏上显示内容并进行选择。"
           ]
         },
         {
           "heading": "Windows USB 控制台",
           "paragraphs": [
-            "设备通过 USB 连接 Windows 后，可在配套控制台中查看连接状态或重新检测设备，选择应用与主题，并应用到小屏。控制台同时提供启动、停止和时间同步等入口。",
-            "应用与主题切换、时间同步可以通过 USB 在本地完成。控制台与实体设备分别承担配置和显示交互。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/pc-console.webp",
-              "width": 1088,
-              "height": 1263,
-              "alt": "Windows 控制台截图：USB 连接状态、应用切换、主题预览和设备运行控制。",
-              "caption": "Windows 控制台截图：USB 连接状态、应用切换、主题预览和设备运行控制。"
-            }
+            "设备通过 USB 连接 Windows 后，可在配套控制台中查看连接状态或重新检测设备，再选择应用与主题并应用到小屏。控制台同时提供启动、停止和时间同步等入口。",
+            "应用与主题切换、时间同步可以通过 USB 在本地完成。控制台与实体设备各自承担配置和显示交互，让同一块小屏可以在不同应用之间切换。"
           ]
         },
         {
@@ -171,19 +42,10 @@
           "paragraphs": [
             "设备可进入 AP 配网模式，在配网页中选择 2.4 GHz WiFi，保存并重启后连接深空服务。游戏服务的交互需要网络连接。",
             "配网页提供服务器设置和存档接续入口，可使用手机端已有的存档标识继续会话，让桌面外设与原有游戏进度接上。"
-          ],
-          "images": []
-        }
-      ],
-      "links": [
-        {
-          "label": "进入深空官网",
-          "url": "https://dsgame.archerpeng.com/"
+          ]
         }
       ]
-    },
-    "imageWidth": 1279,
-    "imageHeight": 1706
+    }
   },
   {
     "id": "rain-city",

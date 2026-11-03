@@ -35,7 +35,7 @@ test('every showcased project opens a complete local overview and can return to 
     assert.ok(html.includes(`href="../works.html#${project.id}"`));
     assert.ok(html.includes(project.detail.status));
     assert.ok(html.includes(project.detail.sections[0].paragraphs[0]));
-    assert.ok(html.includes(project.imageNote));
+    assert.ok(html.includes('项目示意图 · 非运行截图'));
     assert.ok(!/github\.com\/Be1Human\//.test(html), `${path}: private source link must not be exposed`);
     assert.ok(!html.includes('.qa/project-review'));
   }
