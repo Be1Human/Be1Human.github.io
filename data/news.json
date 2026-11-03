@@ -2,9 +2,258 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "2b9e4afe22acff21419b8aaf5e7b7e471fee0053",
-  "syncedAt": "2026-11-03T05:44:02.360Z",
+  "sourceRevision": "dac1fd90d077031afc4507273bcd79a180742baa",
+  "syncedAt": "2026-11-03T12:32:55.097Z",
   "editions": [
+    {
+      "id": "2026-11-03",
+      "date": "2026-11-03",
+      "label": "11 月 3 日 · 11 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-03",
+      "items": [
+        {
+          "id": "f2a80eb14cb5aa36",
+          "rank": 1,
+          "title": "ML Intern：权重空间编程复现",
+          "summary": "Niels Rogge介绍Hugging Face使用ML Intern研究框架复现Weight-Space Programming，并公开Qwen3.5-0.8B模型与演示入口。这里保留项目归属与复现方向，不采用引用帖中的性能倍率；模型卡本次未能完整读取。",
+          "category": "实用工作流",
+          "author": "Niels Rogge",
+          "url": "https://x.com/NielsRogge/status/2117541532827848972",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/NielsRogge/status/2117541532827848972"
+            }
+          ],
+          "publishedAtISO": "2026-11-03T08:56:58.000Z",
+          "observedAt": "2026-11-03T12:15:55.082Z"
+        },
+        {
+          "id": "5db78d01a3f4ac3a",
+          "rank": 2,
+          "title": "Rerun：可自托管的 AI 协作工作台",
+          "summary": "Rerun官方介绍可自托管的AI协作工作台：独立Agent具备记忆、技能、电脑和定时任务，集中在同一看板。仓库确认AGPL-3.0许可，支持自带模型接口或订阅；部署和模型使用成本另计，移动端在原帖中只是后续计划。",
+          "category": "实用工作流",
+          "author": "Rerun",
+          "url": "https://x.com/rerun_build/status/2117292634196574322",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/rerun_build/status/2117292634196574322"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/rerun-build/rerun"
+            }
+          ],
+          "publishedAtISO": "2026-11-02T16:27:56.000Z",
+          "observedAt": "2026-11-03T12:16:01.201Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2117292505230143489/img/9nDhgsfDYD94Khom.jpg",
+            "alt": "Rerun：可自托管的 AI 协作工作台 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7165b463e60cd9f9",
+          "rank": 3,
+          "title": "Open Duet：带审批的多 Agent 工作区",
+          "summary": "alex介绍Anil-matcha的Open Duet。仓库确认支持命名Agent、跨会话记忆、任务委派和定时流程，可用桌面端或自托管；桌面与自托管仍属实验阶段，模型和算力并非随开源代码免费提供。",
+          "category": "实用工作流",
+          "author": "alex",
+          "url": "https://x.com/alextalksai/status/2117282806782992875",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/alextalksai/status/2117282806782992875"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/Anil-matcha/open-duet"
+            }
+          ],
+          "publishedAtISO": "2026-11-02T15:48:53.000Z",
+          "observedAt": "2026-11-03T12:17:54.826Z"
+        },
+        {
+          "id": "54efe5f84b23bbf6",
+          "rank": 4,
+          "title": "Previs：先排三维镜头，再生成视频",
+          "summary": "BudgetPixel展示先在Previs中制作灰模三维计划，再接Seedance 2.5生成成片的示例。原帖说明文字描述用于安排镜头、时间和人物运动；作者补充这是六个三维计划通过转场组成的连续观感，并非已证实的无剪辑单次生成。",
+          "category": "实用工作流",
+          "author": "BudgetPixel AI",
+          "url": "https://x.com/budgetpixel/status/2117087946440429863",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/budgetpixel/status/2117087946440429863"
+            }
+          ],
+          "publishedAtISO": "2026-11-02T02:54:34.000Z",
+          "observedAt": "2026-11-03T12:18:29.773Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2117087898793078784/img/YT9OLwSP8QUILSuB.jpg",
+            "alt": "Previs：先排三维镜头，再生成视频 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "05cb0be0e8ce8a04",
+          "rank": 5,
+          "title": "StreamEval：评测交互式流视频生成",
+          "summary": "Inoms介绍StreamEval交互式流视频评测。项目仓库核实五类任务，包括数字人对话、表演、世界生成及两类视频编辑；测试时长15至300秒，按任务分别计分而非合并为单一总榜。代码Apache-2.0，第三方模型与素材许可另行适用。",
+          "category": "实用工作流",
+          "author": "Inoms",
+          "url": "https://x.com/Inomsxbt/status/2117550530130268290",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Inomsxbt/status/2117550530130268290"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/StreamEval/StreamEval"
+            }
+          ],
+          "publishedAtISO": "2026-11-03T09:32:43.000Z",
+          "observedAt": "2026-11-03T12:18:54.288Z"
+        },
+        {
+          "id": "d0c51564f9a71034",
+          "rank": 6,
+          "title": "Idol：本地 3D 生成演示",
+          "summary": "Kemono-chan展示本地运行Idol的3D生成过程，作者自述8GB显存也能运行、示例耗时约45秒，并在回复中给出模型权重和工作流入口。这些数字属于单次作者演示，未独立复测，也不能据此保证输出为可直接绑定的游戏网格或商用授权。",
+          "category": "内容制作",
+          "author": "Kemono-chan",
+          "url": "https://x.com/asdfg21_snivy/status/2117249450603393152",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/asdfg21_snivy/status/2117249450603393152"
+            },
+            {
+              "title": "作者回复：模型和工作流入口",
+              "url": "https://x.com/asdfg21_snivy/status/2117286996402131246"
+            }
+          ],
+          "publishedAtISO": "2026-11-02T13:36:20.000Z",
+          "observedAt": "2026-11-03T12:14:05.129Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2117249203072327681/img/0i9A-eF5HrGJA3hi.jpg",
+            "alt": "Idol：本地 3D 生成演示 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "d2acf0b8a41ea099",
+          "rank": 7,
+          "title": "agent-desktop：通过无障碍树操作桌面",
+          "summary": "Taishi介绍agent-desktop的桌面自动化思路：读取系统无障碍树，在后台让多个Agent各自工作。原帖称支持macOS、Windows和Linux，并给出npm安装命令；视频注明来自Chris Tate。兼容性与后台并发能力仍属于原帖介绍，未独立安装核验。",
+          "category": "实用工作流",
+          "author": "Taishi | AI Language Learning App",
+          "url": "https://x.com/taishiyade/status/2117487203920257241",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/taishiyade/status/2117487203920257241"
+            }
+          ],
+          "publishedAtISO": "2026-11-03T05:21:05.000Z",
+          "observedAt": "2026-11-03T12:14:26.034Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2116323117836500992/img/lyS2sGQBssVmVsx8.jpg",
+            "alt": "agent-desktop：通过无障碍树操作桌面 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "950bc9fd2da3d058",
+          "rank": 8,
+          "title": "SoundtSeparator：本地音源分离与波形编辑",
+          "summary": "Lida分享自己的SoundtSeparator项目。仓库说明其在本机运行，提供影视对白、音效、背景音乐三轨分离，以及音乐六轨分离；可先分离5至60秒片段，再决定是否处理全文件。项目还提供波形编辑和WAV/ZIP导出。网站是说明与分发入口，并非在线上传音频服务；功能依据README，未独立实测。",
+          "category": "内容制作",
+          "author": "リダ / Lida ✨ VTuber & AI Creator",
+          "url": "https://x.com/LidaMidorin/status/2117482367321534704",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/LidaMidorin/status/2117482367321534704"
+            },
+            {
+              "title": "项目 README",
+              "url": "https://github.com/Lida-V/SoundtSeparator"
+            }
+          ],
+          "publishedAtISO": "2026-11-03T05:01:51.000Z",
+          "observedAt": "2026-11-03T12:14:31.637Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2117482106054127616/img/m566j5l2R3BZit4-.jpg",
+            "alt": "SoundtSeparator：本地音源分离与波形编辑 原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b7fb74aa3e630859",
+          "rank": 9,
+          "title": "ChatGPT 限色角色图：提示词流程",
+          "summary": "A5展示以角色为主题的限色图形生成流程：作者说明先把回复中的提示词交给ChatGPT，再输入角色图片及名称。原帖提供四张效果图，并说明角色名可用汉字、片假名或字母等形式。它是提示词与示例分享，未给出通用一致性保证；使用角色素材仍应确认相应权利。",
+          "category": "内容制作",
+          "author": "A5 (把握会中)",
+          "url": "https://x.com/_a5_s_/status/2117195021556261317",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/_a5_s_/status/2117195021556261317"
+            }
+          ],
+          "publishedAtISO": "2026-11-02T10:00:03.000Z",
+          "observedAt": "2026-11-03T12:14:45.331Z"
+        },
+        {
+          "id": "562c97c38485a717",
+          "rank": 10,
+          "title": "Claude Code 压缩后：哪些项目指令会保留",
+          "summary": "StudioYebisu整理Claude Code上下文压缩后的指令保留规则。官方文档确认，根目录CLAUDE.md等内容会重新注入；已调用Skill正文每个最多保留5000 token、总计25000 token，超限优先移除较早的Skill，截断时保留开头。这些限制适合用于安排Skill内容顺序，不应理解为完整历史永久保留。",
+          "category": "实用工作流",
+          "author": "StudioYebisu",
+          "url": "https://x.com/studio_yebisu/status/2117469181927133560",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/studio_yebisu/status/2117469181927133560"
+            },
+            {
+              "title": "Claude Code 官方文档：压缩后保留内容",
+              "url": "https://code.claude.com/docs/en/context-window#what-survives-compaction"
+            }
+          ],
+          "publishedAtISO": "2026-11-03T04:09:28.000Z",
+          "observedAt": "2026-11-03T12:14:52.294Z"
+        },
+        {
+          "id": "6fb4533e8828acdc",
+          "rank": 11,
+          "title": "转台视频到 GSplats：H3 与 Houdini 工作流",
+          "summary": "Jun Ozaki展示MiniMax H3的360 Orbit LoRA生成转台视频，再用Houdini 22的ML Train GSplats转成立体GSplats的流程。原帖明确给出两阶段工具链，但未公开完整工程或稳定性指标。结果是GSplats表达，不宜直接描述为完成拓扑、绑定或可直接交付的游戏角色资产。",
+          "category": "内容制作",
+          "author": "Jun Ozaki",
+          "url": "https://x.com/O685463/status/2117292741713617045",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/O685463/status/2117292741713617045"
+            }
+          ],
+          "publishedAtISO": "2026-11-02T16:28:21.000Z",
+          "observedAt": "2026-11-03T12:15:02.899Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2117290274716356608/img/Blw0TXxH9oYiPgLe.jpg",
+            "alt": "转台视频到 GSplats：H3 与 Houdini 工作流 原帖视频预览",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-02",
       "date": "2026-11-02",
