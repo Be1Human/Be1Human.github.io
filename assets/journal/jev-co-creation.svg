@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">共生，从说清楚问题开始。</title>
+  <desc id="desc">Jev 第一章阅读手记。人定义问题，AI 提供判断，程序检查与执行。</desc>
+  <rect width="1200" height="750" fill="#10232e"/>
+
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="72" y="67" width="9" height="9" fill="#ff918b"/>
+    <text x="101" y="79" fill="#e9dfcd" font-size="17" letter-spacing="3">JEV / READING NOTE 01</text>
+    <text x="1128" y="79" fill="#8bccce" font-size="12" letter-spacing="2" text-anchor="end">CLOUD BOY</text>
+  </g>
+  <path d="M72 110H1128" stroke="#8bccce" stroke-opacity=".35"/>
+
+  <g font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" font-weight="650" letter-spacing="1">
+    <text x="72" y="260" fill="#e9dfcd" font-size="76">共生，从说清楚</text>
+    <text x="72" y="359" fill="#b39acb" font-size="76">问题开始。</text>
+  </g>
+  <path d="M78 407H148" stroke="#ff918b" stroke-width="4"/>
+  <g fill="none" stroke="#8bccce" stroke-opacity=".3">
+    <path d="M1056 228H1128V300"/>
+    <path d="M1128 358V430H1056"/>
+  </g>
+
+  <g stroke="#8bccce" stroke-opacity=".65" fill="none">
+    <path d="M372 592H450M750 592H828"/>
+    <path d="M441 587L450 592 441 597M819 587L828 592 819 597"/>
+  </g>
+  <g font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+    <rect x="72" y="532" width="300" height="120" rx="4" fill="#10232e" stroke="#8bccce" stroke-opacity=".5"/>
+    <text x="94" y="567" fill="#8bccce" font-size="14">人 / HUMAN</text>
+    <text x="94" y="615" fill="#e9dfcd" font-size="27" font-weight="600">定义问题</text>
+
+    <rect x="450" y="532" width="300" height="120" rx="4" fill="#e9dfcd"/>
+    <text x="472" y="567" fill="#10232e" font-size="14">AI / MODEL</text>
+    <text x="472" y="615" fill="#10232e" font-size="27" font-weight="600">提供判断</text>
+    <rect x="718" y="551" width="10" height="10" fill="#ff918b"/>
+
+    <rect x="828" y="532" width="300" height="120" rx="4" fill="#10232e" stroke="#8bccce" stroke-opacity=".5"/>
+    <text x="850" y="567" fill="#8bccce" font-size="14">程序 / POLICY</text>
+    <text x="850" y="615" fill="#e9dfcd" font-size="27" font-weight="600">检查与执行</text>
+  </g>
+  <text x="72" y="703" fill="#8bccce" font-family="Consolas, 'Courier New', monospace" font-size="11" letter-spacing="2">HUMAN × AI / CO-CREATION</text>
+</svg>

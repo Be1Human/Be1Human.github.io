@@ -1,0 +1,332 @@
+{
+  "id": "2026-10-19",
+  "date": "2026-10-19",
+  "label": "101 条初筛 · 17 条展开核验 · 15 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-19",
+  "items": [
+    {
+      "id": "item-c8380e05ad01e54c",
+      "title": "Groki：ESP32-S3 接入 Grok 原生语音",
+      "summary": "Groki 将 M5Stack CoreS3 等受支持 ESP32-S3 设备接成 Grok Bot 语音终端。原生语音路径仅支持 macOS，需要同网 Mac、持续运行的网关和已登录的 Grok Bot 桌面端；文档说明使用内部接口，应用更新可能使其失效。主代码为 Boost、网关为 MIT，但发布固件含 Emotion Ball 非商用数据，不能直接认定整套固件可自由商用；无需独立 xAI 语音 API Key，也不代表订阅额度无限。",
+      "category": "硬件创客",
+      "author": "JosephZhou (@openmys)",
+      "publishedAt": "2026-10-18T12:41:36.000Z",
+      "source": "https://x.com/openmys/status/2111799860651512227",
+      "relatedLinks": [
+        {
+          "label": "官方仓库",
+          "url": "https://github.com/JosssphZhou/groki-bot"
+        },
+        {
+          "label": "原生语音平台、网关与内部接口限制",
+          "url": "https://github.com/JosssphZhou/groki-bot/blob/main/docs/quick-start.md#configure-grok-bot-native-voice"
+        },
+        {
+          "label": "固件非商用数据与组件许可",
+          "url": "https://github.com/JosssphZhou/groki-bot/blob/main/THIRD_PARTY_NOTICES.md"
+        }
+      ],
+      "image": "assets/news/item-c8380e05ad01e54c.webp",
+      "imageAlt": "Groki：ESP32-S3 接入 Grok 原生语音：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111799617507782656/img/cZKKE-qAoYzXYuzG.jpg"
+    },
+    {
+      "id": "item-0b4ef38a02724051",
+      "title": "Omarchy Local Live Sub：离线中英双语字幕",
+      "summary": "Nero 的 Omarchy Local Live Sub 面向 x86_64 Omarchy / Arch Linux 的面对面交流，用 SenseVoice Small 识别语音、Hy-MT2 经 llama.cpp 做中英双向翻译，在同屏显示原文与译文。首次安装需联网下载约2.85GB模型，随后可离线；至少16GB内存，推荐32GB，明确验证的是 Intel Core Ultra 9 285H 与集显。应用代码 MIT，模型另遵循上游许可；仅输出文字，不提供译文语音，分句设置不等于端到端延迟保证。",
+      "category": "实用工具",
+      "author": "Nero (@Ner0sss)",
+      "publishedAt": "2026-10-19T07:25:09.000Z",
+      "source": "https://x.com/Ner0sss/status/2112082611258708251",
+      "relatedLinks": [
+        {
+          "label": "作者官方仓库：硬件、运行与许可",
+          "url": "https://github.com/NeroSong/omarchy-local-live-sub"
+        }
+      ],
+      "image": "assets/news/item-0b4ef38a02724051.webp",
+      "imageAlt": "Omarchy Local Live Sub：离线中英双语字幕：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112081199246319617/img/49aofXsSIdfYgnLn.jpg"
+    },
+    {
+      "id": "item-36b8c078765dd682",
+      "title": "Audio Studio MCP：本地游戏配乐与音效",
+      "summary": "Audio Studio MCP 是接入 Claude Code、Cursor 等 MCP 客户端的本地音频工具，使用 Stable Audio 3 生成配乐、乐器循环与音效，并支持局部重做、续写和 WAV／OGG／FLAC 导出。当前仓库已支持 Apple Silicon Mac 与 Windows NVIDIA GPU；Windows 建议至少8GB显存，并需 Hugging Face 账号接受模型许可。代码为 MIT，模型使用另受 Stability Community License 约束，免费商用范围有总年收入低于100万美元等条件。未安装或复现作者速度数据。",
+      "category": "内容创作",
+      "author": "KANA｜東京AI映像 (@KanaWorks_AI)",
+      "publishedAt": "2026-10-18T12:03:01.000Z",
+      "source": "https://x.com/KanaWorks_AI/status/2111790148010860860",
+      "relatedLinks": [
+        {
+          "label": "官方仓库与平台要求",
+          "url": "https://github.com/kanaworksai-hue/audio-studio-mcp"
+        },
+        {
+          "label": "Stability 官方模型卡",
+          "url": "https://huggingface.co/stabilityai/stable-audio-3-optimized"
+        },
+        {
+          "label": "模型商业许可边界",
+          "url": "https://stability.ai/license"
+        },
+        {
+          "label": "作者 Windows 版补充",
+          "url": "https://x.com/KanaWorks_AI/status/2112021893092110457"
+        }
+      ],
+      "image": "assets/news/item-36b8c078765dd682.webp",
+      "imageAlt": "Audio Studio MCP：本地游戏配乐与音效：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111789125208875008/img/BHCuL-iuQZJQcshW.jpg"
+    },
+    {
+      "id": "item-cdc4296e2348ad50",
+      "title": "海战 MOBA 开发日志：从 Git 历史生成制作视频",
+      "summary": "Nshen 展示海战 MOBA 的 Boss 制作日志，作者称 Claude 先从 Git 记录定位开发阶段，搭建可切换阶段的编辑器页面，再录屏、组织视频、剪辑和加字幕。作者查看后给出修改建议并补充旧概念图，配音另接 ElevenLabs 后合成视频。它是游戏开发过程的内容制作案例，本帖未附完整游戏工程、可复用脚本或统一许可，也不能把作者对某次免费配音效果的描述当作当前服务规格。",
+      "category": "AI游戏",
+      "author": "Nshen (@nshen121)",
+      "publishedAt": "2026-10-19T06:05:23.000Z",
+      "source": "https://x.com/nshen121/status/2112062537655300163",
+      "relatedLinks": [
+        {
+          "label": "作者解释 Git 定位、录制和人工修改流程",
+          "url": "https://x.com/nshen121/status/2112067530265370655"
+        }
+      ],
+      "image": "assets/news/item-cdc4296e2348ad50.webp",
+      "imageAlt": "海战 MOBA 开发日志：从 Git 历史生成制作视频：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112060031609061376/img/3vYIwAZqo1itYpYh.jpg"
+    },
+    {
+      "id": "item-d8347002ba96bf1e",
+      "title": "After the Wind：Godot 游戏制作流程展示",
+      "summary": "Stefan 分享 After the Wind 的 Godot 游戏原型，项目作者在回复中确认归属。转述的流程包括自定义 MCP 驱动 Godot、Tripo 资产、Opus 关键帧经 Cascadeur 修整，以及由 Agent 读取的 Obsidian 特效配方。五周制作与 token 用量是分享者陈述，本次没有工程或计费记录验证，故不据此推算开发成本。页面展示的是制作阶段原型，未核实公开试玩、发行时间、售价或源码许可。",
+      "category": "AI游戏",
+      "author": "Stefan 3D AI (@Stefan_3D_AI)",
+      "publishedAt": "2026-10-19T10:36:08.000Z",
+      "source": "https://x.com/Stefan_3D_AI/status/2112130671015874614",
+      "relatedLinks": [
+        {
+          "label": "分享者补充制作链路",
+          "url": "https://x.com/Stefan_3D_AI/status/2112130673205248437"
+        },
+        {
+          "label": "项目作者回复确认归属",
+          "url": "https://x.com/afterthewinddev/status/2112140706768904235"
+        }
+      ],
+      "image": "assets/news/item-d8347002ba96bf1e.webp",
+      "imageAlt": "After the Wind：Godot 游戏制作流程展示：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112130348800978944/img/FVfV3Qn8_-qvLb2a.jpg"
+    },
+    {
+      "id": "item-773098a6258ad8e1",
+      "title": "Harmony Strike：队伍羁绊与 AI 辅助像素制作",
+      "summary": "Harmony Strike 是 Robin the Cat 开发的 Godot 单人类幸存者游戏，玩家控制整支队伍，利用相邻英雄形成元素羁绊。X 帖转述 Claude 辅助系统与界面、PixelLab 生成素材后在 Pixquare 修帧的流程；Steam 官方也披露资产由 AI 辅助并经作者编辑，混用授权音效与美术包。官方采集时计划2027年第一季度推出，支持 Windows、macOS 和 Linux；帖中的11月初 Demo 是计划，不能写成现已可玩或免费开源。",
+      "category": "AI游戏",
+      "author": "Jurly (@jurlycat)",
+      "publishedAt": "2026-10-17T15:00:01.000Z",
+      "source": "https://x.com/jurlycat/status/2111472306203897983",
+      "relatedLinks": [
+        {
+          "label": "开发者 Steam 页面：发行计划与 AI 披露",
+          "url": "https://store.steampowered.com/app/5293880/Harmony_Strike/"
+        }
+      ],
+      "image": "assets/news/item-773098a6258ad8e1.webp",
+      "imageAlt": "Harmony Strike：队伍羁绊与 AI 辅助像素制作：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111458127149502464/img/3YoVmWuK0BTD5isl.jpg"
+    },
+    {
+      "id": "item-8c58c4e9394dab00",
+      "title": "Blender Agent Skills：22项3D制作流程",
+      "summary": "Blender Agent Skills 将建模、UV、PBR材质、烘焙、绑定、动画、游戏引擎导出和质量检查整理成编程 Agent 可用的工作流程。原帖介绍20项，当前仓库已更新到22项，增加时间氛围与天气效果。要求 Blender 5.2+，支持 Claude Code、Codex、Cursor 等客户端；Blender MCP 为可选项，没有它可后台运行 Blender。仓库采用 MIT，模型客户端的费用不包含在技能库许可中；仓库的测试与效果声明未由本次复现。",
+      "category": "内容创作",
+      "author": "Hakimi Eiqbal (@hakimieiqbal)",
+      "publishedAt": "2026-10-18T09:15:04.000Z",
+      "source": "https://x.com/hakimieiqbal/status/2111747882843873538",
+      "relatedLinks": [
+        {
+          "label": "官方仓库、22项技能与 MIT 许可",
+          "url": "https://github.com/EL4CTEO/blender-skills"
+        }
+      ],
+      "image": "assets/news/item-8c58c4e9394dab00.webp",
+      "imageAlt": "Blender Agent Skills：22项3D制作流程：原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU5vgdWXMAEHmrB?format=jpg&name=small"
+    },
+    {
+      "id": "item-24a62e6ef3b35006",
+      "title": "Codex OpenPencil：对话生成可编辑设计稿",
+      "summary": "Codex OpenPencil 是独立开发的 Codex 设计插件，连接本地 Rust OpenPencil 引擎，在可交互画布编辑图层、文字、形状并保存 .op 文件；选中元素后可继续让 Codex 局部修改。插件 MIT，支持 macOS、Windows、Linux，但需要 Node.js 22+、Git 和支持插件的近期本地 Codex 客户端；不同系统仍有运行库要求。默认图片生成可能消耗 Codex 额度，代码转换结果仍需检查，不能视为免费模型服务或 OpenAI 官方插件。",
+      "category": "实用工具",
+      "author": "Fini.Yang (@FiniYang)",
+      "publishedAt": "2026-10-18T03:47:03.000Z",
+      "source": "https://x.com/FiniYang/status/2111665335510417893",
+      "relatedLinks": [
+        {
+          "label": "独立开发者官方仓库：平台与配额",
+          "url": "https://github.com/ZSeven-W/codex-openpencil"
+        }
+      ],
+      "image": "assets/news/item-24a62e6ef3b35006.webp",
+      "imageAlt": "Codex OpenPencil：对话生成可编辑设计稿：原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU4b1hUbsAAm61q?format=jpg&name=small"
+    },
+    {
+      "id": "item-e7bfee23ea6b5950",
+      "title": "dsh-pet：从动画素材到桌面宠物",
+      "summary": "dsh-pet 是 DeepSeek Harness 的透明动画桌宠插件，支持浏览器与 Electron 桌面显示、拖拽反弹、多宠物及跟随会话状态切换动作。仓库提供绿幕视频、抠像和转码制作流程，当前演示素材采用人工 PR 抠像，不能写成全自动一键生成。代码 MIT；动画、提示词、源视频禁止商用，衍生展示与分发需链接原作者。需可用的 DSH 环境，Safari / macOS 透明素材有额外格式步骤。",
+      "category": "内容创作",
+      "author": "Vincent (@Vincent_AINotes)",
+      "publishedAt": "2026-10-19T09:19:38.000Z",
+      "source": "https://x.com/Vincent_AINotes/status/2112111420636799015",
+      "relatedLinks": [
+        {
+          "label": "官方仓库：功能与素材许可",
+          "url": "https://github.com/PC2005-cloud/dsh-pet"
+        }
+      ],
+      "image": "assets/news/item-e7bfee23ea6b5950.webp",
+      "imageAlt": "dsh-pet：从动画素材到桌面宠物：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112111365825658880/img/TJbhaVHRKzWk2R5K.jpg"
+    },
+    {
+      "id": "item-91ec9ffc37e0e0de",
+      "title": "宗主：带字幕与表情的 Grok 语音终端",
+      "summary": "宗主 Zongzhu Bot 把微雪 1.75C 圆屏或立创实战派 ESP32-S3 板接成 Grok Bot 语音终端，提供唤醒词、13种眼睛表情及完整／简洁／关闭三种字幕模式。后端通过 Bot Webhook 和本机回复文件收回文本，再发送字幕与 EdgeTTS 朗读。源码采用 MIT，但需要同一局域网内常开的电脑，后端明确验证的是 Apple Silicon macOS；不能理解为板子脱离电脑独立运行或全部服务免费。",
+      "category": "硬件创客",
+      "author": "Drunk (@Liu_zhongxisn)",
+      "publishedAt": "2026-10-19T04:09:18.000Z",
+      "source": "https://x.com/Liu_zhongxisn/status/2112033321761009921",
+      "relatedLinks": [
+        {
+          "label": "官方仓库与使用前提",
+          "url": "https://github.com/Liu-zhongxian/zongzhu-bot"
+        }
+      ],
+      "image": "assets/news/item-91ec9ffc37e0e0de.webp",
+      "imageAlt": "宗主：带字幕与表情的 Grok 语音终端：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112028793431085056/img/VKSKQha9n9IqRfjH.jpg"
+    },
+    {
+      "id": "item-87b16acfe08a50d4",
+      "title": "XIAO IPS：带传感器的小屏开发板系列",
+      "summary": "Seeed Studio 的 XIAO IPS Display 系列将 ESP32-S3 Plus 或 nRF52840 Plus 与0.96、1.14、1.47英寸屏组合，六款都带麦克风、六轴IMU和电池接口，可用 Arduino IDE 开发。只有1.47英寸款有电容触控与MicroSD，1.14英寸款提供 Grove I2C；ESP32-S3版支持Wi-Fi，nRF52840版侧重BLE。官方店列相关型号15.90—19.90美元，库存和运税另查；资料公开不等于整套硬件已获无限制开源许可。",
+      "category": "硬件创客",
+      "author": "CNX Software (@cnxsoft)",
+      "publishedAt": "2026-10-17T11:36:22.000Z",
+      "source": "https://x.com/cnxsoft/status/2111421053696381415",
+      "relatedLinks": [
+        {
+          "label": "Seeed 官方型号对比与开发资料",
+          "url": "https://wiki.seeedstudio.com/display_gadgets/"
+        },
+        {
+          "label": "官方商店价格与规格",
+          "url": "https://www.seeedstudio.com/1-47-Inch-Touch-Display-Powered-by-XIAO-nRF52840-Plus-p-6995.html"
+        }
+      ],
+      "image": "assets/news/item-87b16acfe08a50d4.webp",
+      "imageAlt": "XIAO IPS：带传感器的小屏开发板系列：原帖图片1",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU1GNx-asAA62Jx?format=jpg&name=small"
+    },
+    {
+      "id": "item-5fcad163ce7be850",
+      "title": "Juno 滑板短片：素材生成后再做代码后期",
+      "summary": "Kōda 的 Juno 是滑板角色短片案例，并非名为 Juno 的独立编辑器。作者称先取得30秒 Seedance 2.5 素材，再让 Claude 做代码后期；公开回复给出素材与剪辑提示词，涵盖镜头分析、动态文字、游戏 HUD、漫画拟声字、定格角色卡、慢动作和配乐，并要求1080p H.264与响度检查。成片效果归作者演示，提示词中的交付要求不等于本次已验证；本帖没有提供完整工程、成本或复用许可。",
+      "category": "内容创作",
+      "author": "Kōda (@aimikoda)",
+      "publishedAt": "2026-10-19T00:18:15.000Z",
+      "source": "https://x.com/aimikoda/status/2111975176854536287",
+      "relatedLinks": [
+        {
+          "label": "作者完整素材与后期提示词",
+          "url": "https://x.com/aimikoda/status/2111975795203690555"
+        }
+      ],
+      "image": "assets/news/item-5fcad163ce7be850.webp",
+      "imageAlt": "Juno 滑板短片：素材生成后再做代码后期：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111974210495025152/img/OGPMaYFSzOAiQsxX.jpg"
+    },
+    {
+      "id": "item-f551e5d529a9b6ad",
+      "title": "nxnative：Switch 游戏的苹果设备原生运行实验",
+      "summary": "nxnative 将自有 Switch 游戏的原生代码接到苹果芯片，图形接口转换为 Metal；仓库明确由 D2R Mobile 的通用部分派生，现为独立的多游戏项目。需要自备游戏文件及合法来源的密钥，仓库不含游戏资产；需 Mac 构建、iOS/iPadOS 26+ 和受支持芯片。主代码 MIT，第三方代码各有许可。《王国之泪》当前仅确认进入开场洞穴，帧率仍在处理，不能把该帖读作完整通关或60fps已实现。",
+      "category": "AI游戏",
+      "author": "Diablokin (@steamdeckf2pgod)",
+      "publishedAt": "2026-10-19T02:06:59.000Z",
+      "source": "https://x.com/steamdeckf2pgod/status/2112002542448349440",
+      "relatedLinks": [
+        {
+          "label": "官方仓库：派生关系与兼容状态",
+          "url": "https://github.com/seedds/nxnative"
+        }
+      ],
+      "image": "assets/news/item-f551e5d529a9b6ad-diagram.svg",
+      "imageAlt": "nxnative：Switch 游戏的苹果设备原生运行实验：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-00503237d06ce17f",
+      "title": "Aero Hand Open：腱绳驱动的研究机械手",
+      "summary": "Chestnut Robotics 的 Aero Hand Open 是389克、7个主动自由度和16个关节的研究机械手，公开3D打印结构、Python SDK、ROS2 Humble及MuJoCo资料。软件为 Apache-2.0，硬件设计和文档为 CC BY-NC-SA 4.0，按图制造用于商业用途须另获许可。官方仓库列套件314美元，但当前官方商店已声明停售，原帖约720美元成品价不能当作现售报价；长期或重载可靠性尚未验证。",
+      "category": "硬件创客",
+      "author": "Techniahqrobot | humanoid robots (@techniahqrobot)",
+      "publishedAt": "2026-10-18T20:29:27.000Z",
+      "source": "https://x.com/techniahqrobot/status/2111917599676350693",
+      "relatedLinks": [
+        {
+          "label": "官方仓库、结构和软件平台",
+          "url": "https://github.com/Chestnut-Robotics/aero-hand-open"
+        },
+        {
+          "label": "硬件非商用与商业整合边界",
+          "url": "https://github.com/Chestnut-Robotics/aero-hand-open/blob/main/LICENSE.md"
+        },
+        {
+          "label": "官方商店停售声明",
+          "url": "https://shop.tetheria.ai/"
+        }
+      ],
+      "image": "assets/news/item-00503237d06ce17f.webp",
+      "imageAlt": "Aero Hand Open：腱绳驱动的研究机械手：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU8J28KXcAAqb4g.jpg"
+    },
+    {
+      "id": "item-3b11d41aef532752",
+      "title": "Low-Cost-Mocap：改装摄像头追踪无人机",
+      "summary": "Joshua Bird 的 Low-Cost-Mocap 用外置 PS3 Eye 摄像头和红外标记做室内动捕，驱动无人机飞行；MIT 仓库提供电脑端、ESP32 通信代码和3D文件，主分支需要自行编译带 SfM 的 OpenCV。项目博客发布于2023年，本帖是近期再分享，精度未独立复现。转帖把无人机写成20美元，但作者当年列出的单机物料约50美元；这些历史成本都不代表当前整套系统报价。",
+      "category": "硬件创客",
+      "author": "Ilir Aliu (@IlirAliu_)",
+      "publishedAt": "2026-10-18T07:56:08.000Z",
+      "source": "https://x.com/IlirAliu_/status/2111728019924451819",
+      "relatedLinks": [
+        {
+          "label": "作者仓库与依赖",
+          "url": "https://github.com/jyjblrd/Low-Cost-Mocap"
+        },
+        {
+          "label": "作者2023年博客、无人机物料与摄像头说明",
+          "url": "https://joshuabird.com/blog/post/mocap-drones"
+        }
+      ],
+      "image": "assets/news/item-3b11d41aef532752.webp",
+      "imageAlt": "Low-Cost-Mocap：改装摄像头追踪无人机：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/ext_tw_video_thumb/2111727986697248768/pu/img/r3u5v46MXl5QStla.jpg"
+    }
+  ]
+}

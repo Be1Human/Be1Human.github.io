@@ -1,0 +1,206 @@
+{
+  "id": "2026-10-22",
+  "date": "2026-10-22",
+  "label": "103 条初筛 · 18 条展开核实 · 10 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-22",
+  "items": [
+    {
+      "id": "item-70895d778171a28f",
+      "title": "机械蜘蛛案例：参考图到 Blender 骨骼动画",
+      "summary": "Siddharth Ahuja 分享 Muska 的机械蜘蛛制作案例：先准备概念图和多视图参考，再用约1700词提示词让 MCP for Blender 完成模型、材质、骨骼和走路循环。作者称 Blender 阶段约一小时，前期设计与剪辑另算；不是一句话生成或普遍一次成功保证。 MCP 插件为 MIT，模型服务费用另计。",
+      "category": "内容制作",
+      "author": "siddharth ahuja (@sidahuj)",
+      "publishedAt": "2026-10-21T15:07:57.000Z",
+      "source": "https://x.com/sidahuj/status/2112923854809285029",
+      "relatedLinks": [
+        {
+          "label": "官方案例与作者归属",
+          "url": "https://www.mcp-for-blender.com/creations/case-studies/mechanical-spider/"
+        },
+        {
+          "label": "MCP for Blender 仓库",
+          "url": "https://github.com/ahujasid/mcp-for-blender"
+        }
+      ],
+      "image": "assets/news/item-70895d778171a28f.webp",
+      "imageAlt": "机械蜘蛛案例：参考图到 Blender 骨骼动画",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112919322431737856/img/NA2P42Ucsjk7lb9E.jpg"
+    },
+    {
+      "id": "item-c28ebd107ac52ba7",
+      "title": "Learn Arduino：11课浏览器电路入门",
+      "summary": "Dilum Sanjaya 用 Opus 5.5 制作浏览器3D Arduino课程，官网列出11课，涉及LED、按钮、电位器、超声波、蜂鸣器、电机与舵机。已核对课程列表，未运行仿真或验证教学准确性；未查到公开许可证，不能替代实物电路验证。",
+      "category": "硬件创客",
+      "author": "Dilum Sanjaya (@DilumSanjaya)",
+      "publishedAt": "2026-10-20T16:52:19.000Z",
+      "source": "https://x.com/DilumSanjaya/status/2112587730542854263",
+      "relatedLinks": [
+        {
+          "label": "作者课程页",
+          "url": "https://learn-arduino-red.vercel.app/"
+        }
+      ],
+      "image": "assets/news/item-c28ebd107ac52ba7.webp",
+      "imageAlt": "Learn Arduino：11课浏览器电路入门",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112586659976105984/img/moTDH_XXIRYDP1lA.jpg"
+    },
+    {
+      "id": "item-b0f219e4303da57b",
+      "title": "Robotics Engineer：电路板装配与故障可视化",
+      "summary": "Movez 展示用 Opus 5.5 与 Colorfigures Skill 制作的网页教学原型，称覆盖13种板卡，演示贴装、焊接和反接等故障。与本期 Arduino 逐课教程是不同作者、不同项目；这里只记录作者展示，不认可其“解决机器人教育”或替代真实硬件的宣传，未独立测试。 Colorfigures Skill 为 MIT，但生成仍消耗模型额度；试玩页本次未能核验。",
+      "category": "硬件创客",
+      "author": "Movez (@0xMovez)",
+      "publishedAt": "2026-10-21T16:12:45.000Z",
+      "source": "https://x.com/0xMovez/status/2112940162103615783",
+      "relatedLinks": [
+        {
+          "label": "作者提供的试玩入口",
+          "url": "https://x.com/0xMovez/status/2112940165920694702"
+        },
+        {
+          "label": "Colorfigures 作者页面：MIT许可与模型用量说明",
+          "url": "https://april-zhu.com/colorfigures"
+        }
+      ],
+      "image": "assets/news/item-b0f219e4303da57b.webp",
+      "imageAlt": "Robotics Engineer：电路板装配与故障可视化",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112939486963269633/img/fQMnKNKVIw6ETNOc.jpg"
+    },
+    {
+      "id": "item-f27be4c071c929d7",
+      "title": "S1 手套：同步记录关节、压力与视频",
+      "summary": "Quanting Xie 展示 S1 技能采集手套，关节布局与配套机械手对应，校准后将测得角度映射为机械手目标；同时记录接触压力和视频。作者展示30类佩戴任务与遮挡场景，属于研发方演示，并非机器人已学会这些技能；价格、许可和量产状态未确认。",
+      "category": "硬件创客",
+      "author": "Quanting Xie (@DanielXieee)",
+      "publishedAt": "2026-10-21T20:00:03.000Z",
+      "source": "https://x.com/DanielXieee/status/2112997362612441490",
+      "relatedLinks": [
+        {
+          "label": "作者：压力与视频同步",
+          "url": "https://x.com/DanielXieee/status/2112997364537622933"
+        },
+        {
+          "label": "作者：关节映射机制",
+          "url": "https://x.com/DanielXieee/status/2112997368320991561"
+        }
+      ],
+      "image": "assets/news/item-f27be4c071c929d7.webp",
+      "imageAlt": "S1 手套：同步记录关节、压力与视频",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112953549659463680/img/_rsGjhHvwpC_ecNw.jpg"
+    },
+    {
+      "id": "item-f7bd219affb8b509",
+      "title": "Plumb：让编码 Agent 借助3D视觉还原物理场景",
+      "summary": "Anpei Chen 的 Plumb 研究把视频转换为可执行物理场景，让 Codex 使用 Pi3X 等视觉工具改善物体计数、相机运动和空间尺度估计。代码 MIT，但 Pi3X 权重限非商业；需Linux、NVIDIA CUDA环境及相关模型访问，属于未独立复现的研究原型。",
+      "category": "实用工作流",
+      "author": "Anpei Chen (@AnpeiC)",
+      "publishedAt": "2026-10-21T14:17:12.000Z",
+      "source": "https://x.com/AnpeiC/status/2112911082386030816",
+      "relatedLinks": [
+        {
+          "label": "官方代码与依赖许可",
+          "url": "https://github.com/Inception3D/Plumb"
+        },
+        {
+          "label": "作者列出的失败类型",
+          "url": "https://x.com/AnpeiC/status/2112911085313630438"
+        }
+      ],
+      "image": "assets/news/item-f7bd219affb8b509.webp",
+      "imageAlt": "Plumb：让编码 Agent 借助3D视觉还原物理场景",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112897700329127937/img/SvX2bdVEqsKXXfo4.jpg"
+    },
+    {
+      "id": "item-7944d420a4131402",
+      "title": "角色制作管线：Tripo 到 Unity CLI",
+      "summary": "Lucca Cerf 展示角色制作流程，将 Tripo P2、Blender、Cartwheel、Cascadeur 和 Unity CLI 串联，并称由 Fable 5.5 与多个 Opus 5.5 Agent 协作搭建。这里只核对原帖工具顺序与演示存在，未取得可复现工程或独立测试；第三方工具许可和费用需分别确认。",
+      "category": "AI游戏开发",
+      "author": "Lucca Cerf (@luccacerf)",
+      "publishedAt": "2026-10-21T21:53:12.000Z",
+      "source": "https://x.com/luccacerf/status/2113025837565870162",
+      "relatedLinks": [],
+      "image": "assets/news/item-7944d420a4131402.webp",
+      "imageAlt": "角色制作管线：Tripo 到 Unity CLI",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113025460900704256/img/rDaVZm8rInLfdTVI.jpg"
+    },
+    {
+      "id": "item-e236f5afb2dc0415",
+      "title": "Unreal 城市场景：AI 辅助制作早期预览",
+      "summary": "Shikhar 展示使用 Opus 5.5、Blender 和 ImageGen 制作 Unreal Engine 城市场景的早期预览，并说明当周模型额度用完。这是作者的开发记录，未独立试玩、确认帧率或完整工程；不能把短片当作已完成可发布游戏。",
+      "category": "AI游戏开发",
+      "author": "Shikhar (@xikhar)",
+      "publishedAt": "2026-10-21T00:57:53.000Z",
+      "source": "https://x.com/xikhar/status/2112709928771277158",
+      "relatedLinks": [],
+      "image": "assets/news/item-e236f5afb2dc0415.webp",
+      "imageAlt": "Unreal 城市场景：AI 辅助制作早期预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112709538264784896/img/atuxVnANRtiGf_Vo.jpg"
+    },
+    {
+      "id": "item-9c13774f2ad59513",
+      "title": "NKD Klein Tools：在 ComfyUI 调整区域编辑",
+      "summary": "Nekodificador 更新 ComfyUI 的 NKD Klein Tools，使其兼容 FLUX 3 Image Klein，加入预采样边界框编辑、参考权重控制和提示词增强选项。作者强调是改善原生功能的操作体验，并承认模型仍有失败情况。原帖为西班牙语，正文显示X英译，原始页标题与语言标记已核对；未验证安装或许可证。",
+      "category": "内容制作",
+      "author": "Nekodificador (@Nekodificador)",
+      "publishedAt": "2026-10-20T16:51:42.000Z",
+      "source": "https://x.com/Nekodificador/status/2112587573621399633",
+      "relatedLinks": [],
+      "image": "assets/news/item-9c13774f2ad59513.webp",
+      "imageAlt": "NKD Klein Tools：在 ComfyUI 调整区域编辑",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112586420560814080/img/dQlszjE6IAxIGdnL.jpg"
+    },
+    {
+      "id": "item-8ea227d352ff5008",
+      "title": "Claude API：新版迁移要检查的参数变更",
+      "summary": "ClaudeDevs 发布2026-10-21版API：Messages API移除temperature、top_p和top_k，部分非法消息内容改为返回400，新版SDK与ant CLI默认使用新版。2023-06-01尚未弃用；已有工作流应先检查依赖和迁移说明，而非直接升级生产环境。",
+      "category": "实用工作流",
+      "author": "ClaudeDevs (@ClaudeDevs)",
+      "publishedAt": "2026-10-21T21:03:10.000Z",
+      "source": "https://x.com/ClaudeDevs/status/2113013247209021918",
+      "relatedLinks": [
+        {
+          "label": "官方：参数变更",
+          "url": "https://x.com/ClaudeDevs/status/2113013248714744208"
+        },
+        {
+          "label": "官方：SDK与迁移指南",
+          "url": "https://x.com/ClaudeDevs/status/2113013250136662488"
+        }
+      ],
+      "image": "assets/news/item-8ea227d352ff5008-diagram.svg",
+      "imageAlt": "Claude API：新版迁移要检查的参数变更：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-2581c2fb91fd127e",
+      "title": "Claude Duet：后台协助的研究预览",
+      "summary": "Claude 官方发布 Duet 研究预览，可延续账户记忆、Skills和已连接应用，后台推进任务并在代表用户行动前确认。目前仅面向美国Pro/Max用户通过候补名单开放，官方承认仍可能误判紧急程度；不应理解为已全面开放或无需监督的自动执行。",
+      "category": "实用工作流",
+      "author": "Claude (@claudeai)",
+      "publishedAt": "2026-10-21T19:09:35.000Z",
+      "source": "https://x.com/claudeai/status/2112984664256241837",
+      "relatedLinks": [
+        {
+          "label": "官方：上下文接续",
+          "url": "https://x.com/claudeai/status/2112984666437546104"
+        },
+        {
+          "label": "官方：开放范围与限制",
+          "url": "https://x.com/claudeai/status/2112984669943968099"
+        }
+      ],
+      "image": "assets/news/item-2581c2fb91fd127e.webp",
+      "imageAlt": "Claude Duet：后台协助的研究预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HVLUnMDWsAAn7Pw.png"
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "id": "2026-10-26",
+  "date": "2026-10-26",
+  "label": "10 月 26 日 · 15 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-26",
+  "items": [
+    {
+      "id": "item-ee0e07ae1bcd61e4",
+      "title": "花园扫描到 Blender 节点重建",
+      "summary": "gokaygokay 用 Claude 辅助把花园 Gaussian splat 重建为 Blender 场景。 原作者公开重建工具与限制：扫描源文件及拟合后的演示资产未打包，不能把画面理解为无损重建或所有对象都保留实时节点。",
+      "category": "AI游戏开发",
+      "author": "gokaygokay (@gokayfem)",
+      "publishedAt": "2026-10-25T11:15:01.000Z",
+      "source": "https://x.com/gokayfem/status/2114314785575604491",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/gokayfem/gaussian-splat-to-blender-nodes"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://raw.githubusercontent.com/gokayfem/gaussian-splat-to-blender-nodes/main/README.md"
+        }
+      ],
+      "image": "assets/news/item-ee0e07ae1bcd61e4.webp",
+      "imageAlt": "花园扫描到 Blender 节点重建：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114312639333462016/img/W4aeGsp3AFlnQzSw.jpg"
+    },
+    {
+      "id": "item-ef9397e4f2fc0600",
+      "title": "Claude Code CLI 驱动 Unreal 原型",
+      "summary": "Danny Limanseta 展示用 Claude Code CLI 制作的 Unreal Engine 原型。 作者在回复中说明，通过生成的批处理启动预览；素材商店的角色、动画参与了原型制作。属于个人流程演示，未独立复现。",
+      "category": "AI游戏开发",
+      "author": "Danny Limanseta (@DannyLimanseta)",
+      "publishedAt": "2026-10-25T17:15:02.000Z",
+      "source": "https://x.com/DannyLimanseta/status/2114405388171034809",
+      "relatedLinks": [],
+      "image": "assets/news/item-ef9397e4f2fc0600.webp",
+      "imageAlt": "Claude Code CLI 驱动 Unreal 原型：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114404239929954304/img/wwAG84OaW1ZNW2Y3.jpg"
+    },
+    {
+      "id": "item-d2699e68ff8bb311",
+      "title": "Mesh Avatar Studio：单图动态头像",
+      "summary": "Mesh Avatar Studio 将单张插画制作成可嵌入网页的动态头像。 shinshin86 发布的是上线约三周后的工作流更新与重新介绍，不是当天首次发布。AI 准备基础，再做人工修正；不等同于承诺 Live2D 格式兼容或一键完美绑定。",
+      "category": "内容制作",
+      "author": "shinshin86｜AITuber OnAir開発者｜AIキャラのミコをバズらせたい人 (@shinshin86)",
+      "publishedAt": "2026-10-24T22:45:49.000Z",
+      "source": "https://x.com/shinshin86/status/2114126244799447116",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/shinshin86/mesh-avatar-studio"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://raw.githubusercontent.com/shinshin86/mesh-avatar-studio/main/packages/element/README.md"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://raw.githubusercontent.com/shinshin86/mesh-avatar-studio/main/packages/react/README.md"
+        }
+      ],
+      "image": "assets/news/item-d2699e68ff8bb311.webp",
+      "imageAlt": "Mesh Avatar Studio：单图动态头像：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114125556455550976/img/51NwGwGemfFoKySA.jpg"
+    },
+    {
+      "id": "item-51fc1e94b1043eb8",
+      "title": "SimReady：机器人仿真用三维资产",
+      "summary": "Oliver Prompts 介绍 NVIDIA SimReady，用于机器人仿真与合成数据的三维资产库。 官方 10 月 21 日公告为 2,000 多项；本期引用的是近期英文介绍帖，不把资源说成今天刚发布。免费访问不等于所有素材可任意商用；索引许可不能代替资产许可。",
+      "category": "硬件创客",
+      "author": "Oliver Prompts (@oliviscusAI)",
+      "publishedAt": "2026-10-26T03:14:42.000Z",
+      "source": "https://x.com/oliviscusAI/status/2114556298167505225",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://huggingface.co/datasets/nvidia/simready-assets"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://huggingface.co/blog/nvidia/simready-central-assets-robotics-ai-factories"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://huggingface.co/datasets/nvidia/simready-central-library"
+        }
+      ],
+      "image": "assets/news/item-51fc1e94b1043eb8.webp",
+      "imageAlt": "SimReady：机器人仿真用三维资产：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114556204043128832/img/uEMJ_UplrULizrTw.jpg"
+    },
+    {
+      "id": "item-ae1a10b07e7e1912",
+      "title": "三种网格视频效果与提示词",
+      "summary": "Kōda 分享用 Claude 制作网格视频效果的提示词。 作者示例使用 15 秒视频及 40 秒音乐，给出三组提示词。属于编排与合成方法示例；处理时间、模型效果和成本未独立复测。",
+      "category": "内容制作",
+      "author": "Kōda (@aimikoda)",
+      "publishedAt": "2026-10-25T01:28:10.000Z",
+      "source": "https://x.com/aimikoda/status/2114167098284839305",
+      "relatedLinks": [],
+      "image": "assets/news/item-ae1a10b07e7e1912.webp",
+      "imageAlt": "三种网格视频效果与完整提示词：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114165538637086720/img/sjq2NLLvgzdV6xnr.jpg"
+    },
+    {
+      "id": "item-d17df2a3035881e8",
+      "title": "Commons 素材检索接入视频工作流",
+      "summary": "Elliot Padfield 分享把 Wikimedia Commons 素材检索接入 Claude 视频工作流的思路。 原帖提出筛选公有领域或 CC BY 素材并保留署名。官方说明强调元数据并不保证版权准确，肖像、商标等权利仍需检查；不照搬未独立核实的素材总量。",
+      "category": "实用工作流",
+      "author": "Elliot Padfield (@ElliotPadfield)",
+      "publishedAt": "2026-10-25T19:08:20.000Z",
+      "source": "https://x.com/ElliotPadfield/status/2114433899468333236",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://commons.wikimedia.org/wiki/Commons:API"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://www.mediawiki.org/wiki/API:Imageinfo"
+        }
+      ],
+      "image": "assets/news/item-d17df2a3035881e8-diagram.svg",
+      "imageAlt": "Commons 素材检索接入视频工作流：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-72508f3ad56c0313",
+      "title": "Three Small Worlds：可进入的三维卡片",
+      "summary": "AmirMušić 开源 Three Small Worlds，用网页卡片进入不同三维场景。 项目为 Vite/WebGL 前端示例，无需后端或 API key。作者归属 pmndrs/Paul Henschel 的门户交互灵感及场景创作者；桌面优先，移动端性能与可访问性仍有限。",
+      "category": "内容制作",
+      "author": "AmirMušić (@AmirMushich)",
+      "publishedAt": "2026-10-25T19:23:45.000Z",
+      "source": "https://x.com/AmirMushich/status/2114437778100691393",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/amirmushichge/three-small-worlds"
+        }
+      ],
+      "image": "assets/news/item-72508f3ad56c0313.webp",
+      "imageAlt": "Three Small Worlds：可进入的三维卡片：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114435317168062464/img/4XoJfKPVgDeDJXwT.jpg"
+    },
+    {
+      "id": "item-1dcd900155f27880",
+      "title": "VRChat 中推荐世界并生成传送门",
+      "summary": "破天ハクト 展示 VRChat 内的 AI 世界推荐与传送门原型。 原始日文已核对。仅是作者开发演示，未确认可公开下载、价格、使用模型或适用所有世界；不将视频当作通用稳定性保证。",
+      "category": "AI游戏开发",
+      "author": "♱破天ハクト♱ (@hact_ai)",
+      "publishedAt": "2026-10-24T14:07:08.000Z",
+      "source": "https://x.com/hact_ai/status/2113995712551911615",
+      "relatedLinks": [],
+      "image": "assets/news/item-1dcd900155f27880.webp",
+      "imageAlt": "VRChat 中推荐世界并生成传送门：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113995541487271938/img/tBkoCXwtR4WRrMip.jpg"
+    },
+    {
+      "id": "item-1da1678085163ded",
+      "title": "Roblox VFX：已有素材与知识库协作",
+      "summary": "John Kler 展示用 Claude 辅助制作 Roblox 特效的流程。 作者补充依靠规则、指南、现成高质量网格及详细提示。时间为个人自述，不代表从零到完成的总工时；本期只选同作者同项目一条。",
+      "category": "AI游戏开发",
+      "author": "John Kler (@JohnKlerAI)",
+      "publishedAt": "2026-10-26T01:49:40.000Z",
+      "source": "https://x.com/JohnKlerAI/status/2114534898237362335",
+      "relatedLinks": [],
+      "image": "assets/news/item-1da1678085163ded.webp",
+      "imageAlt": "Roblox VFX：已有素材与知识库协作：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114533917650796544/img/wMNNaM2K6ErtGnaU.jpg"
+    },
+    {
+      "id": "item-d105d755008386ee",
+      "title": "HyperFrames：参考片段驱动风格编辑",
+      "summary": "Peter Yang 转述 Jake Moran 的 HyperFrames 参考片段编辑流程。 原帖明确归属 Jake Moran。这里仅整理视频工作流，不承诺任意短片都能几分钟精确复刻；费用与所有平台支持未核实。",
+      "category": "内容制作",
+      "author": "Peter Yang (@petergyang)",
+      "publishedAt": "2026-10-26T00:00:19.000Z",
+      "source": "https://x.com/petergyang/status/2114507378532229214",
+      "relatedLinks": [
+        {
+          "label": "原帖所附教学视频",
+          "url": "https://youtu.be/MC1g2fHYC88"
+        }
+      ],
+      "image": "assets/news/item-d105d755008386ee.webp",
+      "imageAlt": "HyperFrames：参考片段驱动风格编辑：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114507327491747840/img/9uzAmoIvOfta7Bt0.jpg"
+    },
+    {
+      "id": "item-fbf48f12d38c7b66",
+      "title": "像素风泳池：可旋转的三维小场景",
+      "summary": "NinjaCodex 展示用 Claude 制作的像素风三维泳池场景。 作者回复给出 Three.js、正交/等距视角与关闭抗锯齿的提示词。泳者、跳台、观众及遮阳伞是场景元素；成本和运行效果未独立复测。",
+      "category": "AI游戏开发",
+      "author": "NinjaCodex (@N1njaCodex)",
+      "publishedAt": "2026-10-25T21:20:35.000Z",
+      "source": "https://x.com/N1njaCodex/status/2114467181912322353",
+      "relatedLinks": [],
+      "image": "assets/news/item-fbf48f12d38c7b66.webp",
+      "imageAlt": "像素风泳池：可旋转的三维小场景：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114467119723114497/img/tFmO5H_s9EJAxlYn.jpg"
+    },
+    {
+      "id": "item-c131feb579cf984f",
+      "title": "Octopus OS：可修改自身结构的智能体运行时",
+      "summary": "Octopus OS 是可让智能体修改任务结构的开源运行时。 虽然 X 原帖使用产品化措辞，官方 README 明确当前模型未主动发挥自我改进，普通编码不比 Codex CLI 多出能力。要求 macOS 14+、Node 24、Rust；不是 OpenAI 官方产品。",
+      "category": "实用工作流",
+      "author": "vechen (@miu21590)",
+      "publishedAt": "2026-10-24T20:45:10.000Z",
+      "source": "https://x.com/miu21590/status/2114095879632375944",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/miuuyy/Octopus-SI-OS"
+        }
+      ],
+      "image": "assets/news/item-c131feb579cf984f.webp",
+      "imageAlt": "Octopus OS：可修改自身结构的智能体运行时：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114095551461392384/img/maynKcun7fiMt4mJ.jpg"
+    },
+    {
+      "id": "item-86cb85538de07b23",
+      "title": "Capri：Windows 桌面 AI 角色",
+      "summary": "Sigma sheron 发布 Windows 桌面角色 Capri，可文字和语音对话。 作者页还介绍打开应用、网页、记事本、搜索与提醒。离线与本地运行属于作者说明，未审计隐私、遥测或安装包安全；联网搜索不能等同于离线能力。",
+      "category": "实用工作流",
+      "author": "Sigma sheron (@sigmasheron)",
+      "publishedAt": "2026-10-25T20:34:31.000Z",
+      "source": "https://x.com/sigmasheron/status/2114455586540540264",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://sigmasheron.itch.io/capri-ai"
+        }
+      ],
+      "image": "assets/news/item-86cb85538de07b23.webp",
+      "imageAlt": "Capri：Windows 桌面 AI 角色：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114454927829291008/img/XhJZm6a2VvatrdmJ.jpg"
+    },
+    {
+      "id": "item-ace16ac7a2fbc17e",
+      "title": "程序化苏格兰高地蒸汽列车场景",
+      "summary": "Fazley 分享用 Claude 制作的 Three.js 高地列车场景及提示词。 原帖记录约 77 万 token、约一小时，为作者单次自述，不可推导一般成本或取代建模流程。保留来源归属，不声称亲测。",
+      "category": "AI游戏开发",
+      "author": "Fazley | AI Lab (@itsfazley)",
+      "publishedAt": "2026-10-25T13:00:03.000Z",
+      "source": "https://x.com/itsfazley/status/2114341216045425010",
+      "relatedLinks": [],
+      "image": "assets/news/item-ace16ac7a2fbc17e.webp",
+      "imageAlt": "程序化苏格兰高地蒸汽列车场景：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114071963417321472/img/4WDyhEl0I1wblyxu.jpg"
+    },
+    {
+      "id": "item-71e7eaa3afa48ccb",
+      "title": "特定笔记本的实验性 Googlebook 镜像重建",
+      "summary": "Merck Hung 公开由 Codex 辅助编写的 Googlebook 镜像重建工具。 实验性项目，不是 Google 官方安装器，也不支持任意电脑。README 要求匹配具体硬件；固件准备有风险，上游内核与系统组件另有许可，未进行安装或硬件验证。",
+      "category": "硬件创客",
+      "author": "Merck Hung (@merckhung)",
+      "publishedAt": "2026-10-25T03:40:33.000Z",
+      "source": "https://x.com/merckhung/status/2114200413537001613",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/merckhung/googlebook_image_rebuilder"
+        }
+      ],
+      "image": "assets/news/item-71e7eaa3afa48ccb.webp",
+      "imageAlt": "特定笔记本的实验性 Googlebook 镜像重建：原帖真实视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114200200705372160/img/DznQozgs-HKZPt-8.jpg"
+    }
+  ]
+}

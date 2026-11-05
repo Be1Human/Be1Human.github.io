@@ -1,0 +1,177 @@
+{
+  "id": "2026-11-02",
+  "date": "2026-11-02",
+  "label": "11 月 2 日 · 11 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-02",
+  "items": [
+    {
+      "id": "item-bcea56c467ba052e",
+      "title": "AnyShot：为 Blender 场景规划镜头并渲染",
+      "summary": "AnyShot 是 apek 开源的 Blender 镜头规划工具，接收已有 .blend、压缩场景或 AnyScene 输出。Claude 代理选择镜头、焦点和运动，检查穿墙与遮挡后先做预览，再渲染图像或视频。仓库为 MIT；模型及云 GPU 费用另计，作者的耗时比较不代表通用性能。",
+      "category": "内容制作",
+      "author": "apek @apekshik",
+      "publishedAt": "2026-11-01T23:23:50.000Z",
+      "source": "https://x.com/apekshik/status/2117034914822713596",
+      "relatedLinks": [
+        {
+          "label": "官方项目仓库",
+          "url": "https://github.com/apekshik/anyshot"
+        }
+      ],
+      "image": "assets/news/item-bcea56c467ba052e.webp",
+      "imageAlt": "AnyShot：为 Blender 场景规划镜头并渲染，真实原帖预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2117033072512405504/img/NeGnMRw1KkeSz-E1.jpg"
+    },
+    {
+      "id": "item-88009ebf56a0cc25",
+      "title": "HairDeck：单图生成风格化发卡与骨骼",
+      "summary": "CuteGuy 分享 HairDeck：从单张动漫人物图生成独立的风格化发卡几何、UV 与弹簧骨骼链，面向 GLB/VRM 角色制作。官方仓库要求 Linux、Python 3.12 和 NVIDIA CUDA，代码为 Apache-2.0；SAM 3、DINOv3 等依赖有独立许可或访问条件。并非一键完成全部头发贴图和最终角色，未独立运行。",
+      "category": "AI 游戏开发",
+      "author": "CuteGuy @cutetoxicguy",
+      "publishedAt": "2026-11-01T16:00:02.000Z",
+      "source": "https://x.com/cutetoxicguy/status/2116923225573839167",
+      "relatedLinks": [
+        {
+          "label": "官方项目仓库",
+          "url": "https://github.com/hyz317/HairDeck"
+        }
+      ],
+      "image": "assets/news/item-88009ebf56a0cc25.webp",
+      "imageAlt": "HairDeck：单图生成风格化发卡与骨骼，真实原帖预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116921884256141313/img/ZqaDzWhGMzf-qDiX.jpg"
+    },
+    {
+      "id": "item-9b1eebdf1f78110c",
+      "title": "Construct：用结构化场景描述生成可编辑 3D",
+      "summary": "CuteGuy 分享 Construct 1.0：AI 检索资料并写结构化场景描述，确定性几何流程生成带命名零件和关节的模型。项目区分已核实、用户提供、推断和装饰性细节，提供 GLB、OBJ 与浏览器场景导出，并有 Blender 插件。Apache-2.0；不是精密 CAD 或已验证的生产级网格。",
+      "category": "AI 游戏开发",
+      "author": "CuteGuy @cutetoxicguy",
+      "publishedAt": "2026-10-31T14:00:46.000Z",
+      "source": "https://x.com/cutetoxicguy/status/2116530826586263715",
+      "relatedLinks": [
+        {
+          "label": "官方项目仓库",
+          "url": "https://github.com/rtmandreyev/construct"
+        }
+      ],
+      "image": "assets/news/item-9b1eebdf1f78110c.webp",
+      "imageAlt": "Construct：用结构化场景描述生成可编辑 3D，真实原帖预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116530634340356097/img/6wpJ9DDsaXbUtLxl.jpg"
+    },
+    {
+      "id": "item-1b3e5f64ec1080c8",
+      "title": "OSH Cut：把可制造性反馈接入 AI 建模",
+      "summary": "Caleb（OSH Cut）展示 Claude Code 经 MCP 获取加工能力与 DFM（可制造性设计）反馈，调用 OpenCascade 编写几何，再根据错误迭代修正和上传设计的过程。作者明确说过程仍低效；截图是引用帖的设计示意，不能据此认定已生产、通过载荷验证或可安全承重。",
+      "category": "硬件创客",
+      "author": "Caleb (OSH Cut) @OSHBuilt",
+      "publishedAt": "2026-11-01T15:14:45.000Z",
+      "source": "https://x.com/OSHBuilt/status/2116911831289835550",
+      "relatedLinks": [],
+      "image": "assets/news/item-1b3e5f64ec1080c8.webp",
+      "imageAlt": "OSH Cut：把可制造性反馈接入 AI 建模，真实原帖预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HV_EBiWbYAA_PIc?format=jpg&name=small"
+    },
+    {
+      "id": "item-b0c5997cd4bdce5e",
+      "title": "现有 FBX 配合 AI 编程：保留角色细节的动画流程",
+      "summary": "Sergito 展示使用现有 Meebits FBX 模型，在 Blender 中由 AI 辅助编程制作动画，而不是重新生成角色图像。原帖认为这样更容易保留已有模型细节；尚未公开完整工程、提示词、角色授权或费用，因此仅作为工作流示例，不声称可直接复用资产。",
+      "category": "内容制作",
+      "author": "Sergito ❚ ❚ @sergitosergito",
+      "publishedAt": "2026-10-31T15:01:05.000Z",
+      "source": "https://x.com/sergitosergito/status/2116546001825571177",
+      "relatedLinks": [],
+      "image": "assets/news/item-b0c5997cd4bdce5e.webp",
+      "imageAlt": "现有 FBX 配合 AI 编程：保留角色细节的动画流程，真实原帖预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116544895355584512/img/AYpDIAsBjTI6bnJ5.jpg"
+    },
+    {
+      "id": "item-76ad4b33b097ae07",
+      "title": "LUCIAN：代码生成舞台与视频动作追踪",
+      "summary": "LUCIAN展示让Claude创建三维舞台、编排镜头，再把视频追踪的舞蹈动作放入场景的流程。作者称舞台可复用；Tripo原创角色是后续设想，不能当作已完成效果。原帖没有公开完整框架或可复现工程，成本与角色一致性属于作者陈述，未独立实测。",
+      "category": "内容制作",
+      "author": "LUCIAN｜AI × Blockchain",
+      "publishedAt": "2026-11-01T08:06:51.000Z",
+      "source": "https://x.com/lucianlamp/status/2116804148301848846",
+      "relatedLinks": [],
+      "image": "assets/news/item-76ad4b33b097ae07.webp",
+      "imageAlt": "LUCIAN：代码生成舞台与视频动作追踪 原帖视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116804026377654272/img/tv3X8Z5o_B4b0MtB.jpg"
+    },
+    {
+      "id": "item-04481895208d80e9",
+      "title": "地图数据到 Blender：搭建虚构城市镜头",
+      "summary": "絵空事テレビ把地图数据在Blender中组装为城市，再使用Kling 4.0转换成实拍风格视频，作为虚构城市「朧ヶ丘」的场景。原帖明确列出PLATEAU三维城市模型、日本国土地理院高程和OpenStreetMap贡献者数据来源，且经过加工。作者在回复指出结果会偏离真实街景，并非测绘级复原。",
+      "category": "内容制作",
+      "author": "絵空事テレビ / AIカワウソ",
+      "publishedAt": "2026-11-01T12:20:45.000Z",
+      "source": "https://x.com/boke_ai/status/2116868040537276831",
+      "relatedLinks": [],
+      "image": "assets/news/item-04481895208d80e9.webp",
+      "imageAlt": "地图数据到 Blender：搭建虚构城市镜头 原帖视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116866382130540545/img/Z0x78T84Y1cgNgxR.jpg"
+    },
+    {
+      "id": "item-4c941ec110aa37ec",
+      "title": "单张立绘到 VTuber：拆层、补绘与动作流程",
+      "summary": "いのり展示单张立绘制作VTuber模型的分阶段演示：AI分析人物，再由Codex和Claude Code协助拆分部件、补绘、组装和动作制作。原帖仅展示流程视频，未给出完整项目、通用成功率或对任意人物适用的保证；遮挡处补绘和分层质量仍应检查。与历史StandRig项目未见同一仓库关系，不把它视作现成一键产品。",
+      "category": "内容制作",
+      "author": "いのり",
+      "publishedAt": "2026-11-01T11:32:58.000Z",
+      "source": "https://x.com/lnkiai/status/2116856018101821911",
+      "relatedLinks": [],
+      "image": "assets/news/item-4c941ec110aa37ec.webp",
+      "imageAlt": "单张立绘到 VTuber：拆层、补绘与动作流程 原帖视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116855990339637248/img/XlgAaTIq7V7t9O2n.jpg"
+    },
+    {
+      "id": "item-d53b185a43356499",
+      "title": "MossPanelDataset：选择分镜布局生成漫画",
+      "summary": "Kamimoto发布ComfyUI-MossPanelDataset自定义节点，面向MOSS-Image漫画生成。原帖称可从196个示例选择布局，填写人物、场景和对白，支持2至6格及日语对白，不需手写JSON或坐标。未安装或运行验证；原帖未说明许可证、算力和具体费用，不补充免费商用等推断。作者没有可见认证标记。",
+      "category": "内容制作",
+      "author": "Kamimoto(かみもと)",
+      "publishedAt": "2026-11-02T03:01:49.000Z",
+      "source": "https://x.com/sep_is_heim/status/2117089771948478826",
+      "relatedLinks": [],
+      "image": "assets/news/item-d53b185a43356499.webp",
+      "imageAlt": "MossPanelDataset：选择分镜布局生成漫画 原帖视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2117089382876495872/img/Q4XQzBR0vb1EJvIM.jpg"
+    },
+    {
+      "id": "item-0a4a27fb249b1ad0",
+      "title": "角色待机动画：同首帧生成两段循环后拼接",
+      "summary": "Eris Create Lab给出Grok生成Muse角色待机动画的提示词流程：使用半身插画、角色参考和循环视频模式，以同一首帧分别生成两段15秒循环，再让AI合成长循环。提示词明确固定镜头、1:1比例、白背景、无声音，并要求末帧恢复起始表情姿态。这里只能确认作者流程与示例，不保证模型生成一定无缝或身份完全一致。",
+      "category": "内容制作",
+      "author": "Eris Create Lab",
+      "publishedAt": "2026-11-01T11:19:36.000Z",
+      "source": "https://x.com/Eris_Create_Lab/status/2116852652340646373",
+      "relatedLinks": [],
+      "image": "assets/news/item-0a4a27fb249b1ad0.webp",
+      "imageAlt": "角色待机动画：同首帧生成两段循环后拼接 原帖视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116852608392683520/img/c7KwWa5HIyU0wK8X.jpg"
+    },
+    {
+      "id": "item-5e7b26dca602e3dd",
+      "title": "PlantCraft：工业数据、Python 分析与 AI 问答",
+      "summary": "Sadao Tokuyama介绍Jônathan Dambros开发的PlantCraft，集成历史数据、Python分析、报警和报表，提供自然语言AI分析及画面创建辅助。原帖标明离线运行、设备侧只读以及Apache-2.0许可；本文只核对原帖介绍和项目入口，未部署验证，不把只读接口等同于完整工业安全认证。其与BIMCraft是不同项目。作者没有可见认证标记。",
+      "category": "实用工作流",
+      "author": "Sadao Tokuyama",
+      "publishedAt": "2026-11-01T01:27:42.000Z",
+      "source": "https://x.com/tokufxug/status/2116703696004517971",
+      "relatedLinks": [],
+      "image": "assets/news/item-5e7b26dca602e3dd.webp",
+      "imageAlt": "PlantCraft：工业数据、Python 分析与 AI 问答 原帖视频预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2116703683325108224/img/ZGKcCj53SEhFmcA7.jpg"
+    }
+  ]
+}

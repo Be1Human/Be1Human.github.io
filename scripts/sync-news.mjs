@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { buildArchive, normalizeEdition, validateEditionId, SOURCE_PROJECT } from './news-data.mjs';
+import { syncExperienceNews } from './experience-news.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const source = process.argv[2];
 if (!source) throw new Error('Usage: node scripts/sync-news.mjs /absolute/path/to/verified-source-checkout');
@@ -33,3 +34,5 @@ else {
   await rename(`${target}.tmp`, target);
   console.log(`Imported ${editions.length} editions / ${editions.reduce((sum, edition) => sum + edition.items.length, 0)} news items. Quote drafts excluded.`);
 }
+const experience = await syncExperienceNews({root, archive});
+console.log(`Updated interactive news archive: ${experience.files} derived files, ${experience.written} changed.`);

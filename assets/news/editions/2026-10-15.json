@@ -1,0 +1,350 @@
+{
+  "id": "2026-10-15",
+  "date": "2026-10-15",
+  "label": "103 条初筛 · 22 条展开核验 · 19 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-15",
+  "items": [
+    {
+      "id": "item-e0cfc313706be8e9",
+      "title": "Scenario Blender 生成插件",
+      "summary": "Scenario 把图片、3D、材质、音频等生成能力接进 Blender，并提供本地 MCP。官方仓库要求 Blender 5.0+；插件仍属实验性，生成需 Scenario API 与 CU 额度。",
+      "category": "内容创作",
+      "author": "Emm | scenario.com · @emmanuel_2m",
+      "publishedAt": "2026-10-14T12:09:59.000Z",
+      "source": "https://x.com/emmanuel_2m/status/2110342352665473156",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/scenario-labs/blender-plugin"
+        }
+      ],
+      "image": "assets/news/item-e0cfc313706be8e9.webp",
+      "imageAlt": "Scenario Blender 生成插件 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110341167745282048/img/hVJk4bJns62H7gmk.jpg"
+    },
+    {
+      "id": "item-3dd469938dbd1521",
+      "title": "Mirelo SFX 2.0 视频音效",
+      "summary": "Mirelo SFX 2.0 根据画面生成同步音效与环境声，可替换不需要的背景音乐并处理对白。官方说明单视频最高10分钟；对白会检测后重建，不能视为保留原始波形，独立声轨版本尚未发布。",
+      "category": "内容创作",
+      "author": "Mirelo · @MireloAI",
+      "publishedAt": "2026-10-14T13:23:15.000Z",
+      "source": "https://x.com/MireloAI/status/2110360787780800611",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://mirelo.ai/blog/mirelo-sfx-2-0"
+        },
+        {
+          "label": "补充一手资料",
+          "url": "https://mirelo.ai/pricing"
+        }
+      ],
+      "image": "assets/news/item-3dd469938dbd1521.webp",
+      "imageAlt": "Mirelo SFX 2.0 视频音效 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110360533803130880/img/5zr539rN6-iuzBZ8.jpg"
+    },
+    {
+      "id": "item-a26b9eef4b8edd56",
+      "title": "RP1 开源人形机器人",
+      "summary": "RoboParty 公开 RP1 人形机器人开发栈。硬件仓库已有 STEP、加工图、PCB Gerber、线束与 BOM，聚合入口连接固件、控制和训练资源；各子项目许可不同，未确认零售价或复刻总成本。",
+      "category": "硬件创客",
+      "author": "RoboParty · @RoboParty_DEV",
+      "publishedAt": "2026-10-14T15:59:00.000Z",
+      "source": "https://x.com/RoboParty_DEV/status/2110399984680210450",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/Roboparty/RP1"
+        },
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/Roboparty/rp1_hardware"
+        }
+      ],
+      "image": "assets/news/item-a26b9eef4b8edd56.webp",
+      "imageAlt": "RP1 开源人形机器人 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110391573771108352/img/mZ5FknYGbYCX8Tqr.jpg"
+    },
+    {
+      "id": "item-fda1350235a5bc48",
+      "title": "ESP32 改造 Agent 状态灯",
+      "summary": "Arman 把玩具交通灯改为 Codex 状态提示器：更换电路板，接入 ESP32 SuperMini，并3D打印容纳新硬件的后壳。来源为波斯语原帖的 X 英文翻译；未见完整开源制作教程。",
+      "category": "硬件创客",
+      "author": "Arman · @itsArmanj",
+      "publishedAt": "2026-10-15T04:51:03.000Z",
+      "source": "https://x.com/itsArmanj/status/2110594277021786193",
+      "relatedLinks": [],
+      "image": "assets/news/item-fda1350235a5bc48.webp",
+      "imageAlt": "ESP32 改造 Agent 状态灯 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUpWQpIXsAAeFsp.jpg"
+    },
+    {
+      "id": "item-1429f569452ce3d8",
+      "title": "SlashVibe 实体 Agent 控制器",
+      "summary": "SlashVibe 展示可查看 Agent 状态、用摇杆切换会话并语音下指令的实体原型。官方帖称计划10月27日在 Kickstarter 众筹；当前是原型演示，非已确认发货的成品。",
+      "category": "硬件创客",
+      "author": "SlashVibe · @slashvibe_ai",
+      "publishedAt": "2026-10-14T13:58:09.000Z",
+      "source": "https://x.com/slashvibe_ai/status/2110369571441934580",
+      "relatedLinks": [],
+      "image": "assets/news/item-1429f569452ce3d8.webp",
+      "imageAlt": "SlashVibe 实体 Agent 控制器 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110366144376848384/img/TYj9kVKSGuCLLkB5.jpg"
+    },
+    {
+      "id": "item-0efdf4db1db6009d",
+      "title": "Backyard Rascals 多人夺旗",
+      "summary": "Chong-U 展示用 Gemini 4 Argon 与 Cursor 制作的3D多人夺旗游戏，主角是卡通动物，并给出在线试玩入口。已核对其历史找人/农场游戏，是不同项目；未独立复现开发过程。",
+      "category": "游戏开发",
+      "author": "Chong-U · @chongdashu",
+      "publishedAt": "2026-10-14T13:48:44.000Z",
+      "source": "https://x.com/chongdashu/status/2110367201786314935",
+      "relatedLinks": [],
+      "image": "assets/news/item-0efdf4db1db6009d.webp",
+      "imageAlt": "Backyard Rascals 多人夺旗 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110366826270269440/img/u-ItyFK4N95OBuWY.jpg"
+    },
+    {
+      "id": "item-143a7bcc4c344588",
+      "title": "Matrix-Game 4.0 神经渲染",
+      "summary": "Matrix-Game 4.0 让游戏引擎维护逻辑、物理与输入，再由视频模型把低模画面渲染为细节画面。官方宣传了 RTX 5090 演示；公开 README 当前只列 A100 80GB 测试，RTX 50 优化代码仍待发布。",
+      "category": "游戏开发",
+      "author": "Skywork · @Skywork_ai",
+      "publishedAt": "2026-10-15T06:14:53.000Z",
+      "source": "https://x.com/Skywork_ai/status/2110615377088745817",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/SkyworkAI/Matrix-Game/blob/main/Matrix-Game-4/README.md"
+        }
+      ],
+      "image": "assets/news/item-143a7bcc4c344588-diagram.svg",
+      "imageAlt": "Matrix-Game 4.0 神经渲染：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-e5a445e28c4d3b19",
+      "title": "Dark Veil 自研引擎开发复盘",
+      "summary": "Thomas Ricouard 介绍用 Codex/Astra 制作 Dark Veil 的过程：Rust、wgpu、Rapier 与程序化资产，覆盖概念图、玩法循环、音频、回归测试和跨平台适配。文章明确并非单提示词完成，项目暂未开源。",
+      "category": "游戏开发",
+      "author": "Thomas Ricouard · @Dimillian",
+      "publishedAt": "2026-10-14T14:17:07.000Z",
+      "source": "https://x.com/Dimillian/status/2110374345985994999",
+      "relatedLinks": [],
+      "image": "assets/news/item-e5a445e28c4d3b19.webp",
+      "imageAlt": "Dark Veil 自研引擎开发复盘 · 原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUmEUxLXMAAnA5q?format=jpg&name=small"
+    },
+    {
+      "id": "item-b80dc46693c4e177",
+      "title": "落地页转3D运镜视频",
+      "summary": "zero 分享把网站落地页制作成14.5秒3D运镜视频的完整提示词：Playwright 截取页面与图层，WebGL2 动画，再导出 MP4。作者也注明只能生成预览的环境无法直接交付 MP4，仍需本地代码执行能力。",
+      "category": "内容创作",
+      "author": "zero · @twoclipping",
+      "publishedAt": "2026-10-14T11:18:56.000Z",
+      "source": "https://x.com/twoclipping/status/2110329502676951367",
+      "relatedLinks": [],
+      "image": "assets/news/item-b80dc46693c4e177.webp",
+      "imageAlt": "落地页转3D运镜视频 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110328827956068352/img/Yfz92C5G-vOXGdv4.jpg"
+    },
+    {
+      "id": "item-bdfd46eaf2cae139",
+      "title": "Hermes 0.22 工作流更新",
+      "summary": "Hermes 0.22 系列增加统一应用/MCP连接、本地 llama.cpp 模型管理等。采集时最新已是0.22.2，用于修复0.22.1错误打包导致的 gateway 问题；部分旧会话删除问题仍列为已知限制。",
+      "category": "实用工作流",
+      "author": "Nous Research · @NousResearch",
+      "publishedAt": "2026-10-14T15:00:01.000Z",
+      "source": "https://x.com/NousResearch/status/2110385143643091204",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0"
+        },
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2"
+        }
+      ],
+      "image": "assets/news/item-bdfd46eaf2cae139.webp",
+      "imageAlt": "Hermes 0.22 工作流更新 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110377145604141056/img/8J1hdULr9c37a8kH.jpg"
+    },
+    {
+      "id": "item-484f47cc5366d193",
+      "title": "instabox Agent 云电脑",
+      "summary": "instabox 为 Agent 提供带桌面和持久文件的 Linux 云电脑，支持快照、暂停恢复与端口公开 URL。作者原帖宣布邀请制 beta，并提供早期免费算力额度；免费期时长与长期费用未确认。",
+      "category": "实用工作流",
+      "author": "Hang Huang · @hanghuang_",
+      "publishedAt": "2026-10-14T12:38:21.000Z",
+      "source": "https://x.com/hanghuang_/status/2110349488200057326",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://instabox.sh/"
+        },
+        {
+          "label": "补充一手资料",
+          "url": "https://instabox.sh/docs"
+        }
+      ],
+      "image": "assets/news/item-484f47cc5366d193.webp",
+      "imageAlt": "instabox Agent 云电脑 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/ext_tw_video_thumb/2110349435888693248/pu/img/SIVoHixZZX1I6aFL.jpg"
+    },
+    {
+      "id": "item-3991602451eb4742",
+      "title": "Maka Rust 原生预览",
+      "summary": "Maka 正将 Agent 工作区改写为 Rust＋GPUI，统一运行时管理执行、权限与状态。rust-preview 明确是独立实验预览，并非 ASF 官方发行版；并发基准也不包含外部模型延迟，不能推导实际任务速度。",
+      "category": "实用工作流",
+      "author": "AstroHan · @AstroHanRay",
+      "publishedAt": "2026-10-15T02:51:45.000Z",
+      "source": "https://x.com/AstroHanRay/status/2110564255158452368",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/apache/maka/tree/rust-preview"
+        },
+        {
+          "label": "补充一手资料",
+          "url": "https://raw.githubusercontent.com/apache/maka/rust-preview/packages/cli/README.md"
+        }
+      ],
+      "image": "assets/news/item-3991602451eb4742-diagram.svg",
+      "imageAlt": "Maka Rust 原生预览：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-5c3f812abe2ac440",
+      "title": "新词雷达 v0.4 需求研究",
+      "summary": "new-term-radar 从多个来源发现新词与需求，新增收入信号、Reddit求助、首页竞争检查及 pains 命令。支持 CLI、Skills 和 MCP，产出 Markdown/JSON；部分搜索依赖付费API，TrustMRR数据仅限内部研究用途。",
+      "category": "实用工作流",
+      "author": "Jason Zhu · @GoSailGlobal",
+      "publishedAt": "2026-10-14T13:24:53.000Z",
+      "source": "https://x.com/GoSailGlobal/status/2110361202564255817",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://github.com/zhuyansen/new-term-radar/blob/main/README.zh-CN.md"
+        }
+      ],
+      "image": "assets/news/item-5c3f812abe2ac440.webp",
+      "imageAlt": "新词雷达 v0.4 需求研究 · 原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUmBiFFacAEKQt-?format=png&name=small"
+    },
+    {
+      "id": "item-9b55a702dcadbbc2",
+      "title": "ESP32 AI 硬件入门指南",
+      "summary": "HalfBit 的入门文章区分芯片、开发板和成品，解释设备、语音服务端与云端模型如何配合，并整理 PSRAM、麦克风/喇叭及固件适配等选购检查项。属于作者个人研究，文中报价不视为实时市场价格。",
+      "category": "硬件创客",
+      "author": "半格 / HalfBit · @justhalfbit",
+      "publishedAt": "2026-10-14T15:25:19.000Z",
+      "source": "https://x.com/justhalfbit/status/2110391509254386101",
+      "relatedLinks": [],
+      "image": "assets/news/item-9b55a702dcadbbc2.webp",
+      "imageAlt": "ESP32 AI 硬件入门指南 · 原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUmcWckbcAAQa4Y?format=jpg&name=small"
+    },
+    {
+      "id": "item-3cba8766b052cc61",
+      "title": "Zenzap 多人 AI 群聊",
+      "summary": "Zenzap 是让人和 Agent 在同一团队群聊协作的独立平台，可配置工具访问范围和谁能要求 Agent 行动。官方例子包括会前准备、交班总结、线索分配和发票审批；不是任意现有聊天群的通用插件。",
+      "category": "实用工作流",
+      "author": "Guy Weiss · @GuyWeissZZ",
+      "publishedAt": "2026-10-14T15:10:56.000Z",
+      "source": "https://x.com/GuyWeissZZ/status/2110387887023751398",
+      "relatedLinks": [
+        {
+          "label": "补充一手资料",
+          "url": "https://www.zenzap.co/agents/"
+        },
+        {
+          "label": "补充一手资料",
+          "url": "https://www.zenzap.co/pricing/"
+        }
+      ],
+      "image": "assets/news/item-3cba8766b052cc61.webp",
+      "imageAlt": "Zenzap 多人 AI 群聊 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110386430899830784/img/rE71AFBHPv8e7PpP.jpg"
+    },
+    {
+      "id": "item-1343695962db1d30",
+      "title": "Teleoperator 浏览器多人驾驶",
+      "summary": "Mindblown 把 Teleoperator 更新为浏览器多人驾驶体验。作者介绍其结合 OpenStreetMap 数据、Blender 与AI生成3D模型，并提供旧金山地图试玩入口；未独立测试多人稳定性。",
+      "category": "游戏开发",
+      "author": "Mindblown · @mindblown_ai",
+      "publishedAt": "2026-10-14T20:52:09.000Z",
+      "source": "https://x.com/mindblown_ai/status/2110473760155558197",
+      "relatedLinks": [],
+      "image": "assets/news/item-1343695962db1d30.webp",
+      "imageAlt": "Teleoperator 浏览器多人驾驶 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110470775442751488/img/ieBXK8E80ohUDDiz.jpg"
+    },
+    {
+      "id": "item-fd345628bd08327a",
+      "title": "可交互数据中心演示",
+      "summary": "An Xuan 展示可像策略游戏一样操作的数据中心场景，作者称由 Opus 5.5 开发，机架和机器人在 Blender 建模、以 Three.js 运行。本帖未提供源码或公开试玩链接。",
+      "category": "游戏开发",
+      "author": "An Xuan · @anxuanng",
+      "publishedAt": "2026-10-14T21:00:00.000Z",
+      "source": "https://x.com/anxuanng/status/2110475736213819575",
+      "relatedLinks": [],
+      "image": "assets/news/item-fd345628bd08327a.webp",
+      "imageAlt": "可交互数据中心演示 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110465067510861824/img/Xx1hcKHnIhUbkvrG.jpg"
+    },
+    {
+      "id": "item-263a3346bc51101a",
+      "title": "视频剪辑 Skill 的交付标准",
+      "summary": "晓辉博士复盘自己调试视频剪辑 Skill 的过程，具体讨论封面、字幕位置、气口、验收、临时文件与 Token 消耗。它是个人工作流经验，不是新工具发布，也没有完整开源配置。",
+      "category": "内容创作",
+      "author": "晓辉博士 · @xiaohuiyuan",
+      "publishedAt": "2026-10-14T10:06:14.000Z",
+      "source": "https://x.com/xiaohuiyuan/status/2110311207077130451",
+      "relatedLinks": [],
+      "image": "assets/news/item-263a3346bc51101a.webp",
+      "imageAlt": "视频剪辑 Skill 的交付标准 · 原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110310519680925696/img/pWX3s2_JaK6Jsay7.jpg"
+    },
+    {
+      "id": "item-bac9f90f61dd342d",
+      "title": "Claude 与 Grok Bot 联动",
+      "summary": "劳伦斯演示从 Claude Code 接入指定 Grok Bot，再由 Bot 调用 Cursor 云端编码、用手机跟进的工作流。官方确认后半段的云任务与手机查看能力；前半段插件连接步骤仍仅据作者演示，使用受套餐与周额度限制。",
+      "category": "实用工作流",
+      "author": "劳伦斯 · @LawrenceW_Zen",
+      "publishedAt": "2026-10-15T05:49:00.000Z",
+      "source": "https://x.com/LawrenceW_Zen/status/2110608860679487757",
+      "relatedLinks": [
+        {
+          "label": "官方套餐与额度",
+          "url": "https://cursor.com/help/grok-bot/plans"
+        },
+        {
+          "label": "官方移动端说明",
+          "url": "https://cursor.com/help/grok-bot/mobile"
+        }
+      ],
+      "image": "assets/news/item-bac9f90f61dd342d.webp",
+      "imageAlt": "Claude 与 Grok Bot 联动 · 原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUpdKWJagAAVuZE?format=jpg&name=small"
+    }
+  ]
+}

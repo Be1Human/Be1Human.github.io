@@ -1,0 +1,258 @@
+{
+  "id": "2026-10-27",
+  "date": "2026-10-27",
+  "label": "10 月 27 日 · 14 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-27",
+  "items": [
+    {
+      "id": "item-1ccfb3377742680e",
+      "title": "AnyMove：双视角视频转生物动画",
+      "summary": "AnyMove 把双视角 AI 视频转为生物骨骼动画，可用于游戏资产。 不是一键动捕。官方说明视频视角可能漂移、肢体错配；训练准备不计入快速捕捉时间。",
+      "category": "AI游戏开发",
+      "author": "Rehan Sheikh (@rehan_shei)",
+      "publishedAt": "2026-10-27T08:51:37.000Z",
+      "source": "https://x.com/rehan_shei/status/2115003471015588021",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/patch-gg/anymove"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/patch-gg/anymove/blob/main/docs/PIPELINE.md"
+        }
+      ],
+      "image": "assets/news/item-1ccfb3377742680e.webp",
+      "imageAlt": "AnyMove：双视角视频转生物动画：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2115003287779061760/img/cXktxbj59hwCjpRK.jpg"
+    },
+    {
+      "id": "item-606d49be2cc18033",
+      "title": "RGB MoCap：本地视频人体动捕",
+      "summary": "toyxyz 的 RGB MoCap 在 Windows 本地把人体视频转成角色动画。 原代码 MIT 不代表模型均可商用；完整安装约 45GB，模型与组件需分别核对许可。",
+      "category": "AI游戏开发",
+      "author": "toyxyz (@toyxyz3)",
+      "publishedAt": "2026-10-27T10:37:37.000Z",
+      "source": "https://x.com/toyxyz3/status/2115030148840038608",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/toyxyz/toyxyz_RGBMocap"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/toyxyz/toyxyz_RGBMocap/blob/main/THIRD_PARTY_NOTICES.md"
+        }
+      ],
+      "image": "assets/news/item-606d49be2cc18033.webp",
+      "imageAlt": "RGB MoCap：本地视频人体动捕：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2115030011745054721/img/YCjJOX6JH5lXfyrI.jpg"
+    },
+    {
+      "id": "item-95e0ea7a42f49930",
+      "title": "Gemini API CLI：给现有智能体接多模态",
+      "summary": "Google 的 Gemini API CLI 为现有智能体提供多模态命令行接口。 官方有较早发布记录，本帖不是首次发布证据。CLI 为无状态工具，现有智能体负责上下文与规划；测试版可能有破坏性变更。",
+      "category": "实用工作流",
+      "author": "Philipp Schmid (@_philschmid)",
+      "publishedAt": "2026-10-26T17:37:53.000Z",
+      "source": "https://x.com/_philschmid/status/2114773524787187804",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/google-gemini/gemini-api-cli"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing"
+        }
+      ],
+      "image": "assets/news/item-95e0ea7a42f49930.webp",
+      "imageAlt": "Gemini API CLI：给现有智能体接多模态：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114773209451044864/img/FDDzvkDHVXkOt5Jp.jpg"
+    },
+    {
+      "id": "item-688e9289561b0553",
+      "title": "fun-isometric：等距动态贴纸",
+      "summary": "Kelvin 的 fun-isometric 是智能体技能，用代码制作网页等距动态贴纸。 源码使用 Canvas 与预设关键帧；视频导出依赖 FFmpeg 等工具，不是视频转三维资产。",
+      "category": "内容制作",
+      "author": "Kelvin (@KelvinAdithya)",
+      "publishedAt": "2026-10-26T18:36:52.000Z",
+      "source": "https://x.com/KelvinAdithya/status/2114788369754628272",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/kelvinkn17/skills"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://raw.githubusercontent.com/kelvinkn17/skills/main/skills/fun-isometric/SKILL.md"
+        }
+      ],
+      "image": "assets/news/item-688e9289561b0553.webp",
+      "imageAlt": "fun-isometric：等距动态贴纸：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114787948931788800/img/zDy-XY7DFY_lIn2Q.jpg"
+    },
+    {
+      "id": "item-ae30d982fb36d3cd",
+      "title": "skill-diet：先评估再精简技能",
+      "summary": "Nico 的 skill-diet 用于精简智能体技能指令，减少重复上下文。 维护者所报 token 节省来自特定样本，不是普遍保证。本期仅阅读源码说明，未读取用户会话或安装工具。",
+      "category": "实用工作流",
+      "author": "Nico Bailon (@nicopreme)",
+      "publishedAt": "2026-10-27T07:01:23.000Z",
+      "source": "https://x.com/nicopreme/status/2114975730471997613",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/nicobailon/skill-diet"
+        }
+      ],
+      "image": "assets/news/item-ae30d982fb36d3cd.webp",
+      "imageAlt": "skill-diet：先评估再精简技能：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114975644673265664/img/gWAlgFipd5ORpEbV.jpg"
+    },
+    {
+      "id": "item-63650a49db31ab0d",
+      "title": "MotionSites：建站技能与截图检查",
+      "summary": "MotionSites 提供 Claude 建站技能，覆盖落地页规划、实现和截图检查。 不把整个素材库说成开源，也不采用获奖级效果保证。这里介绍可核对的建站流程，未核实完整库价格。",
+      "category": "内容制作",
+      "author": "Viktor Oddy (@viktoroddy)",
+      "publishedAt": "2026-10-26T11:43:10.000Z",
+      "source": "https://x.com/viktoroddy/status/2114684257109254434",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/Motionsites-AI/claude-skill"
+        },
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://github.com/Motionsites-AI/claude-skill/blob/main/LICENSE"
+        }
+      ],
+      "image": "assets/news/item-63650a49db31ab0d.webp",
+      "imageAlt": "MotionSites：建站技能与截图检查：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114684115635310592/img/h10bIs3cv0Nw9GZx.jpg"
+    },
+    {
+      "id": "item-987deb88380a2663",
+      "title": "用 Claude Code 定制家中电视界面",
+      "summary": "Samraaj 用 Claude Code 为自己的电视制作了自定义首页。 作者展示与家人共同绘画的功能。不能据此认定任意电视可刷入该系统，也没有独立测试。",
+      "category": "硬件创客",
+      "author": "Samraaj Bath (@samraaj)",
+      "publishedAt": "2026-10-26T17:26:58.000Z",
+      "source": "https://x.com/samraaj/status/2114770776411041933",
+      "relatedLinks": [],
+      "image": "assets/news/item-987deb88380a2663.webp",
+      "imageAlt": "用 Claude Code 定制家中电视界面：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114770487956148224/img/uVIeJcsr5K-QlE7f.jpg"
+    },
+    {
+      "id": "item-549f6a42d12ed442",
+      "title": "AI 像素图到游戏精灵的清理流程",
+      "summary": "Kimo 分享把 AI 像素图整理成可用于游戏的精灵素材的方法。 原帖附自家网格检测工具；仅整理具体制作步骤，不背书产品效果、价格或所荐模型。",
+      "category": "AI游戏开发",
+      "author": "Kimo (@asynkimo)",
+      "publishedAt": "2026-10-26T19:09:50.000Z",
+      "source": "https://x.com/asynkimo/status/2114796665307578732",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料与限制",
+          "url": "https://spritecook.ai/pixel-grid-detector"
+        }
+      ],
+      "image": "assets/news/item-549f6a42d12ed442.webp",
+      "imageAlt": "AI 像素图到游戏精灵的清理流程：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114796362885660672/img/zEbxyLxON1rgXglD.jpg"
+    },
+    {
+      "id": "item-7a35e53548a393d7",
+      "title": "Three.js 程序化眼球示例",
+      "summary": "Gianluca 展示用 Claude 辅助编写的 Three.js 程序化眼球。 参数数量与制作过程均为作者自述；没有验证生理准确性或将其视为医疗模型。",
+      "category": "内容制作",
+      "author": "Gianluca Lomarco (@__rockbiter)",
+      "publishedAt": "2026-10-26T14:38:10.000Z",
+      "source": "https://x.com/__rockbiter/status/2114728296034226583",
+      "relatedLinks": [],
+      "image": "assets/news/item-7a35e53548a393d7.webp",
+      "imageAlt": "Three.js 程序化眼球示例：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114694823621890048/img/eDaHybZoa47lMlmv.jpg"
+    },
+    {
+      "id": "item-d733c78623343417",
+      "title": "Blender 镜头草模到生成视频",
+      "summary": "Matt Workman 分享从三维草模到 AI 视频的制作流程。 模型和平台名称按作者演示保留，不采用夸张质量评价；没有把作者账户配额比例当作通用成本。",
+      "category": "内容制作",
+      "author": "Matt Workman (@mattworkman)",
+      "publishedAt": "2026-10-26T21:03:31.000Z",
+      "source": "https://x.com/mattworkman/status/2114825275167175105",
+      "relatedLinks": [],
+      "image": "assets/news/item-d733c78623343417.webp",
+      "imageAlt": "Blender 镜头草模到生成视频：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114825025245061121/img/8EAAgkByF-o1_uvB.jpg"
+    },
+    {
+      "id": "item-6f950e0d32f7e593",
+      "title": "LiDAR 扫描复用漫画房间背景",
+      "summary": "ぬこー様ちゃん 展示用 iPhone LiDAR 与 AI 制作漫画房间背景。 原文为日语。作者称模型制作约两小时；未确认具体 AI 模型、下载工具或通用效果。",
+      "category": "内容制作",
+      "author": "ぬこー様ちゃん@samachan (@nukosama)",
+      "publishedAt": "2026-10-27T10:24:24.000Z",
+      "source": "https://x.com/nukosama/status/2115026823180599455",
+      "relatedLinks": [],
+      "image": "assets/news/item-6f950e0d32f7e593.webp",
+      "imageAlt": "LiDAR 扫描复用漫画房间背景：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2115026798732034048/img/sdswXw1vd77iz1WU.jpg"
+    },
+    {
+      "id": "item-29fefcce086c5d4f",
+      "title": "VRChat：模仿音效由 AI 评分",
+      "summary": "鵜崎 发布 VRChat 游戏世界《你来做效果音》，让玩家模仿音效。 原文为日语，账号未见认证标记。未核实 Quest 兼容性、费用或所有声音类别支持；保留原帖游玩入口。",
+      "category": "AI游戏开发",
+      "author": "鵜崎 (@Uzaaaki)",
+      "publishedAt": "2026-10-26T12:40:09.000Z",
+      "source": "https://x.com/Uzaaaki/status/2114698596943810901",
+      "relatedLinks": [],
+      "image": "assets/news/item-29fefcce086c5d4f.webp",
+      "imageAlt": "VRChat：模仿音效由 AI 评分：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114697116740472833/img/0ZALg1ZqicXTN_mA.jpg"
+    },
+    {
+      "id": "item-ead9500b4375fa14",
+      "title": "Blender 背景资产进入漫画流程",
+      "summary": "ねぶ 分享 Claude Code、Blender 与 Clip Studio 的漫画背景流程。 原文为日语，账号未见认证标记。作者所报十五分钟仅为个人样例；原文接口名称疑有拼写差异，不擅自推断具体插件。",
+      "category": "内容制作",
+      "author": "ねぶ＠趣味の漫画描き (@nebusoku_owl)",
+      "publishedAt": "2026-10-26T23:49:15.000Z",
+      "source": "https://x.com/nebusoku_owl/status/2114866983091265936",
+      "relatedLinks": [],
+      "image": "assets/news/item-ead9500b4375fa14-diagram.svg",
+      "imageAlt": "Blender 背景资产进入漫画流程：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-bd8bff6939610c80",
+      "title": "用帖子日期与画面查找本地视频",
+      "summary": "keshi 分享用 Grok 与 Claude Code 整理旧视频的个人流程。 原文为日语。预览来自作者在本帖引用的系列合辑，不是本次文件检索的录屏；未复现其检索过程。",
+      "category": "实用工作流",
+      "author": "keshi (@keshiAIart)",
+      "publishedAt": "2026-10-27T06:12:23.000Z",
+      "source": "https://x.com/keshiAIart/status/2114963400748830843",
+      "relatedLinks": [],
+      "image": "assets/news/item-bd8bff6939610c80.webp",
+      "imageAlt": "用帖子日期与画面查找本地视频：原帖真实预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2114366780592578561/img/rcdCGtYmqzVRfX0M.jpg"
+    }
+  ]
+}

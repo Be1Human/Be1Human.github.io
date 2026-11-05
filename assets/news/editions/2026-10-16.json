@@ -1,0 +1,354 @@
+{
+  "id": "2026-10-16",
+  "date": "2026-10-16",
+  "label": "105 条初筛 · 25 条展开核验 · 17 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-16",
+  "items": [
+    {
+      "id": "item-6ec06909755c76ca",
+      "title": "NPCTalk：与游戏 NPC 语音互动",
+      "summary": "NPCTalk 已公开语音服务器、Agent Skills 与 GTA V 示例，把识别、角色对话、配音和动作串起来。代码为 MIT，但需自备游戏与服务配置，部署可能收费；仅限单机或自营服务器，即装即玩的模组仍是作者预告。",
+      "category": "AI游戏",
+      "author": "universal-modder · @universalmodhq",
+      "publishedAt": "2026-10-16T09:28:36.000Z",
+      "source": "https://x.com/universalmodhq/status/2111026512057254236",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/christos-antono/NPCTalk"
+        }
+      ],
+      "image": "assets/news/item-6ec06909755c76ca.webp",
+      "imageAlt": "NPCTalk：与游戏 NPC 语音互动 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111025000694341632/img/T7S9OGMrXKIfxwv7.jpg"
+    },
+    {
+      "id": "item-39b035f0f5cba1d6",
+      "title": "UniForge3D 多视角照片建模",
+      "summary": "UniForge3D 从少量无需提供相机位姿的照片生成完整3D资产，结合可见部分重建与不可见区域补全，支持 GLB 输出。代码为 Apache-2.0；显存、速度未独立实测，商用仍需分别核查权重和依赖许可。",
+      "category": "内容创作",
+      "author": "Stefan 3D AI · @Stefan_3D_AI",
+      "publishedAt": "2026-10-15T18:09:45.000Z",
+      "source": "https://x.com/Stefan_3D_AI/status/2110795276000854263",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/xibushu/UniForge3D"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://xishuxishu.github.io/uniforge3d-project/"
+        }
+      ],
+      "image": "assets/news/item-39b035f0f5cba1d6.webp",
+      "imageAlt": "UniForge3D 多视角照片建模 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110794975269335040/img/fRcGw-8OCOqM34GO.jpg"
+    },
+    {
+      "id": "item-15744c24027075cd",
+      "title": "六层飞控 PCB 点亮实录",
+      "summary": "GoFly 记录用 Codex 进行六层飞控板设计、Claude 检查，再适配和烧录 Betaflight 4.5.2 的过程。作者称现已通过主控启动、USB连接及传感器读取；实飞尚未测试，也未见完整开源工程，不能当成飞行安全验证。",
+      "category": "硬件创客",
+      "author": "GoFly · @GoGoFly23",
+      "publishedAt": "2026-10-15T12:49:02.000Z",
+      "source": "https://x.com/GoGoFly23/status/2110714565403283471",
+      "relatedLinks": [],
+      "image": "assets/news/item-15744c24027075cd.webp",
+      "imageAlt": "六层飞控 PCB 点亮实录 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110712608043192322/img/dxTuqufG_YssAwNp.jpg"
+    },
+    {
+      "id": "item-925ffd7347e49395",
+      "title": "Knödel Watch 动画德语卡片",
+      "summary": "Knödel Watch 在 M5Stack StopWatch（ESP32-S3）上用动画角色、合成发音和间隔复习教德语，支持电脑浏览器安装。代码 MIT，学习内容 CC BY-NC-SA 4.0，角色另有权利限制；AI 编写的课程尚未经过母语者校对。 原帖时间标为最后编辑时间。",
+      "category": "硬件创客",
+      "author": "Xu Dong · @XuDong63766789",
+      "publishedAt": "2026-10-14T21:59:47.000Z",
+      "source": "https://x.com/XuDong63766789/status/2110490779470926175",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/yanxuceo/knoedel-watch"
+        }
+      ],
+      "image": "assets/news/item-925ffd7347e49395.webp",
+      "imageAlt": "Knödel Watch 动画德语卡片 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110108999307665409/img/zZ-8wVB7rI7awe_m.jpg"
+    },
+    {
+      "id": "item-67fa67618a1d8fe4",
+      "title": "Waveshare ESP32-S3 墨水屏板",
+      "summary": "Waveshare ESP32-S3-ePaper-3.97 集成3.97英寸800×480墨水屏、Wi-Fi/BLE、麦克风、温湿度传感器和RTC，面向桌面信息牌、气象站与语音交互原型。帖子是近期分享，产品并非今日首发；未验证特定使用条件下的续航。",
+      "category": "硬件创客",
+      "author": "Praveen Kumar Verma · @Alacritic_Super",
+      "publishedAt": "2026-10-15T06:05:04.000Z",
+      "source": "https://x.com/Alacritic_Super/status/2110612903787364833",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://www.waveshare.com/esp32-s3-epaper-3.97.htm"
+        }
+      ],
+      "image": "assets/news/item-67fa67618a1d8fe4.webp",
+      "imageAlt": "Waveshare ESP32-S3 墨水屏板 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110612667077718016/img/nG6WoRgAUxKltRmq.jpg"
+    },
+    {
+      "id": "item-b52d28dfec003dbf",
+      "title": "Form Studio 1 树脂打印机",
+      "summary": "Formlabs 发布699美元起的 Form Studio 1，面向模型、原型与创客。第三方树脂需使用 Resin Tank Pro；UL GREENGUARD Gold 认证适用于搭配 Alpha Resins 和 VOC Extractor 的组合，不能把宣传理解成任意材料均无需防护。",
+      "category": "硬件创客",
+      "author": "Formlabs · @formlabs",
+      "publishedAt": "2026-10-14T13:04:42.000Z",
+      "source": "https://x.com/formlabs/status/2110356122737475927",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://formlabs.com/3d-printers/form-studio-1/"
+        }
+      ],
+      "image": "assets/news/item-b52d28dfec003dbf.webp",
+      "imageAlt": "Form Studio 1 树脂打印机 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUl9tRcWsAAsnPW.jpg"
+    },
+    {
+      "id": "item-98874100ae5c8643",
+      "title": "Motion Prompt 动效术语库",
+      "summary": "Motion Prompt 把镜头、UI、动态图形等五类120个术语做成可播放参考。可直接选取例子交给 Claude Code 或 Codex，也能复制编号和提示词；代码与示例为MIT，复用元素代码需保留署名行。",
+      "category": "内容创作",
+      "author": "洛克船长 · @slashui",
+      "publishedAt": "2026-10-15T22:27:53.000Z",
+      "source": "https://x.com/slashui/status/2110860240271048834",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://showheyohtaki.github.io/motion-prompt/"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://github.com/showheyohtaki/motion-prompt"
+        }
+      ],
+      "image": "assets/news/item-98874100ae5c8643.webp",
+      "imageAlt": "Motion Prompt 动效术语库 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110860107785326592/img/4jjZ33qbfrPLuS6d.jpg"
+    },
+    {
+      "id": "item-b03d9189bb244ba2",
+      "title": "OpenDesign Motion 代码动效",
+      "summary": "OpenDesign v0.25.0 新增 Motion 工作流，可从内置例子让编码Agent生成可编辑动效，再导出MP4，交互动画可保留为HTML。项目 Apache-2.0；模型API或托管服务费用另计，版本10月15日发布，X介绍帖在10月16日。",
+      "category": "内容创作",
+      "author": "OpenDesign · @OpenDesignHQ",
+      "publishedAt": "2026-10-16T09:15:29.000Z",
+      "source": "https://x.com/OpenDesignHQ/status/2111023212129829086",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/nexu-io/open-design/releases/tag/open-design-v0.25.0"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://github.com/nexu-io/open-design"
+        }
+      ],
+      "image": "assets/news/item-b03d9189bb244ba2.webp",
+      "imageAlt": "OpenDesign Motion 代码动效 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110996800614301696/img/X0cUllAy6pZXBPSE.jpg"
+    },
+    {
+      "id": "item-a94e20a38ba265f4",
+      "title": "Pruna 多参考视频生成",
+      "summary": "P-Video-2-Pro-Reference 基于 MiniMax H3，支持最多9张图片、3段视频与3份音频参考，生成5–15秒视频。480p Cost 模式输出0.015美元/秒起，参考输入另收费；默认Speed模式价格更高，首尾帧控制是软关键帧。",
+      "category": "内容创作",
+      "author": "Pruna AI · @PrunaAI",
+      "publishedAt": "2026-10-15T16:00:21.000Z",
+      "source": "https://x.com/PrunaAI/status/2110762712137367851",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://docs.api.pruna.ai/guides/models/p-video-2-pro-reference"
+        }
+      ],
+      "image": "assets/news/item-a94e20a38ba265f4.webp",
+      "imageAlt": "Pruna 多参考视频生成 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/ext_tw_video_thumb/2110762682856943616/pu/img/PtAEQepdHEZT7rv9.jpg"
+    },
+    {
+      "id": "item-ad2df156c739c776",
+      "title": "16种代码视频风格筛选",
+      "summary": "chengfeng-video-styles 为 Claude Code/Codex 提供16种代码动画风格，先做约3秒样片选风格，再生成HTML短片。仓库采用Apache-2.0并要求保留NOTICE署名；第16种小黑手绘关联另一个需单独安装的Skill，导出MP4需可用执行环境。",
+      "category": "内容创作",
+      "author": "成峰（AI产品自由） · @agentchengfeng",
+      "publishedAt": "2026-10-16T01:49:54.000Z",
+      "source": "https://x.com/agentchengfeng/status/2110911078955884650",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/Agentchengfeng/chengfeng-video-styles"
+        }
+      ],
+      "image": "assets/news/item-ad2df156c739c776.webp",
+      "imageAlt": "16种代码视频风格筛选 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUtzqI7bMAEQjsC?format=jpg&name=small"
+    },
+    {
+      "id": "item-e8bb8e78d376a0e3",
+      "title": "Openverse 音效搜索工作流",
+      "summary": "Elliot Padfield 分享让视频剪辑Agent调用Openverse寻找音效、环境声和音乐的方式。官方API支持匿名访问但有限额；素材是开放许可索引，使用前仍应回原站核对商业、修改和署名条件，不能统称免版权。",
+      "category": "内容创作",
+      "author": "Elliot Padfield · @ElliotPadfield",
+      "publishedAt": "2026-10-15T16:06:40.000Z",
+      "source": "https://x.com/ElliotPadfield/status/2110764303087288788",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://api.openverse.org/v1/"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://docs.openverse.org/terms_of_service.html"
+        }
+      ],
+      "image": "assets/news/item-e8bb8e78d376a0e3.webp",
+      "imageAlt": "Openverse 音效搜索工作流 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110763523915554816/img/vaZxtQSU_rpBbh7Q.jpg"
+    },
+    {
+      "id": "item-ddcd2122caeeea40",
+      "title": "Magnitude 本地推理引擎",
+      "summary": "Magnitude 会在用户硬件上自动调优kernel并搭配推测解码，支持主流桌面系统及Agent接入，代码Apache-2.0。作者在11种模型上的平均解码速度测试超过Ollama两倍，但配置与硬件特定，未独立复现，非全场景性能保证。",
+      "category": "实用工具",
+      "author": "Tom Greenwald · @tomgreenwald",
+      "publishedAt": "2026-10-15T13:03:51.000Z",
+      "source": "https://x.com/tomgreenwald/status/2110718297255670071",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/magnitudedev/magnitude"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://magnitude.dev/benchmarks"
+        }
+      ],
+      "image": "assets/news/item-ddcd2122caeeea40.webp",
+      "imageAlt": "Magnitude 本地推理引擎 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUrGvg0XUAArZ_R?format=jpg&name=small"
+    },
+    {
+      "id": "item-ab8484f65bd4a52f",
+      "title": "Inflight 原型反馈接 Agent",
+      "summary": "Inflight 在原型里收集定位评论与视频反馈，通过MCP把上下文和下一步交给编码Agent，也可同步Slack。14天试用后Pro为每成员每月18美元，reviewer免费；分享敏感原型前需检查链接或密码设置。",
+      "category": "实用工具",
+      "author": "Ridd  · @ridd_design",
+      "publishedAt": "2026-10-15T15:05:09.000Z",
+      "source": "https://x.com/ridd_design/status/2110748819847630872",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://inflight.co/"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://inflight.co/mcp"
+        },
+        {
+          "label": "官方资料",
+          "url": "https://inflight.co/pricing"
+        }
+      ],
+      "image": "assets/news/item-ab8484f65bd4a52f.webp",
+      "imageAlt": "Inflight 原型反馈接 Agent · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110744555825827840/img/Gry5GU9kejQuN5DE.jpg"
+    },
+    {
+      "id": "item-96e58106895c6f1e",
+      "title": "Orca 多 Agent 工作台",
+      "summary": "Orca 把Claude Code、Codex等CLI放进同一工作台，用独立Git worktree隔离并行任务，提供diff批注、预览和手机跟进。支持macOS、Windows、Linux，采用MIT；使用自己的Agent订阅或API，开源工作台不包含模型额度。",
+      "category": "实用工具",
+      "author": "铁锤人 · @lxfater",
+      "publishedAt": "2026-10-15T13:57:36.000Z",
+      "source": "https://x.com/lxfater/status/2110731820429946883",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/stablyai/orca"
+        }
+      ],
+      "image": "assets/news/item-96e58106895c6f1e.webp",
+      "imageAlt": "Orca 多 Agent 工作台 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUrTZ58XEAAXuQ9?format=jpg&name=small"
+    },
+    {
+      "id": "item-4afe36b38c5722ad",
+      "title": "OpenRouter Armor 工具调用检查",
+      "summary": "OpenRouter Armor beta 使用TypeSafe Jev，在工具执行前结合规则与上下文分类，当前评估免费。它仍可能误报或漏报，部分接入方式依赖客户端拦截，不是完整安全沙箱；会处理调用及对话上下文，不支持ZDR等特定要求。",
+      "category": "实用工具",
+      "author": "OpenRouter · @OpenRouter",
+      "publishedAt": "2026-10-15T21:00:20.000Z",
+      "source": "https://x.com/OpenRouter/status/2110838205654470840",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://openrouter.ai/docs/guides/features/plugins/armor"
+        }
+      ],
+      "image": "assets/news/item-4afe36b38c5722ad.webp",
+      "imageAlt": "OpenRouter Armor 工具调用检查 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2110838170522943488/img/vieHXRIpJQMYO4bh.jpg"
+    },
+    {
+      "id": "item-5b6741a6a04f8e0e",
+      "title": "Replica Skills 需求与评论研究",
+      "summary": "Replica Skills 提供11个Claude技能，串联公开界面与流程分析、架构、测试、评论痛点和品牌设计。官方强调仅重建功能流程，不复制原代码、标识或内容，采用MIT；鱼皮的300条评论测试是个人样本，不能当成平台总体统计。",
+      "category": "实用工具",
+      "author": "程序员鱼皮 · @yupi996",
+      "publishedAt": "2026-10-15T10:37:00.000Z",
+      "source": "https://x.com/yupi996/status/2110681338223247674",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/Jakeschincariol/replica-skill"
+        }
+      ],
+      "image": "assets/news/item-5b6741a6a04f8e0e.webp",
+      "imageAlt": "Replica Skills 需求与评论研究 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUqlOHRbsAAlXkN?format=jpg&name=small"
+    },
+    {
+      "id": "item-32f60cf4eea10f6b",
+      "title": "Motion Explainer 术语讲解套件",
+      "summary": "Motion Explainer 把一个领域的24个术语做成三条循环讲解视频及一页速查表。与Motion Prompt的现成参考库不同，它是制作新领域教材的流程；需要人工确认术语和视觉方案，使用Node.js、Playwright与FFmpeg导出，MIT许可。",
+      "category": "内容创作",
+      "author": "しょうへい｜デイトラ代表 · @showheyohtaki",
+      "publishedAt": "2026-10-16T07:49:47.000Z",
+      "source": "https://x.com/showheyohtaki/status/2111001647426253219",
+      "relatedLinks": [
+        {
+          "label": "官方资料",
+          "url": "https://github.com/showheyohtaki/motion-explainer"
+        }
+      ],
+      "image": "assets/news/item-32f60cf4eea10f6b.webp",
+      "imageAlt": "Motion Explainer 术语讲解套件 · 原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111000865654099968/img/dnEjYgfgEDBG_Stc.jpg"
+    }
+  ]
+}

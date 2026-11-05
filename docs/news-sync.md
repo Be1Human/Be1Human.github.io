@@ -6,7 +6,7 @@
 - Sites 项目：`appgprj_6acdd345a22c819182154b950d3994f3`
 - 数据目录：已发布源代码中的 `dist/data/editions.json` 与每期 JSON。
 - 本地博客目录：`/Users/guotengtao/Documents/cloudboy/blog`。
-- 公开新闻页：`https://be1human.github.io/news.html`。
+- 新版新闻入口：`https://be1human.github.io/#news`；原新闻静态页与日期链接继续保留。
 - 目的地：`Be1Human/Be1Human.github.io`，`main` 分支，根目录发布。
 
 ## 每次自动同步
@@ -33,6 +33,18 @@
 白名单包含标题、摘要、分类、原作者、原帖链接、来源链接、原帖发布时间、采集时间和原帖预览图片 URL。其他字段一律丢弃。尤其不导入 `comment`、引用转发草稿、内部核对笔记、账号数据或访问令牌。不复制完整视频；视频入口回到原帖。
 
 站点构建不需要源站凭据。`data/news.json` 是公开数据，前台不请求私人站点接口，访客不需要登录 Dot。
+
+## 新版首页的新闻归档
+
+`data/news.json` 是唯一的新闻内容来源。`scripts/experience-news.mjs` 将全部期数转换为新版页面读取的文件：
+
+- `assets/news/archive.json` 只含期数、日期、数量、来源版本及每期文件地址，`newest` 指向默认显示的最新一期。
+- `assets/news/editions/{id}.json` 包含对应一期的公开内容，保留同日的 `-evening` 等独立期数。新版页面进入新闻后先读取小索引，再按选择读取一期。
+- 已有本地原帖 WebP 与明确标注的主题示意图继续复用。新增资讯有原帖配图时使用原帖预览地址；缺图时生成带标题和分类的 `item-{id}-diagram.svg`，标注「主题示意图 · 非原帖图片」。转换不请求视频、不调用付费生成接口。
+
+`npm run news:sync -- /absolute/path/to/source-checkout` 导入后立即更新新版归档；即使源站数据没有变化，也会补齐缺失的新版归档。`npm run build` 再次生成同一套文件，`npm run check` 检查它们与公开数据一致。现有的 `npm run news:publish` 命令包含这些输出，无须给日常自动任务增加另一套发布命令。
+
+新闻转换只写 `assets/news/` 下的归档和示意图，不重写 `content-local.json`、手记内容、`app.js` 或 `style.css`。首页以 `src/experience/index.html` 为构建源；修改新版首页时必须同步这份源文件，避免下次构建恢复旧页面。已有的文章、项目、旧新闻静态页、兼容页与 RSS 继续由原构建器生成。
 
 ## 单次导入与检查
 

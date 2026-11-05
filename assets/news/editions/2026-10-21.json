@@ -1,0 +1,230 @@
+{
+  "id": "2026-10-21",
+  "date": "2026-10-21",
+  "label": "101 条初筛 · 19 条展开核实 · 10 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-21",
+  "items": [
+    {
+      "id": "item-89133a2af1512fae",
+      "title": "《島ぐらし》：用测量驱动 AI 游戏优化",
+      "summary": "入江慎吾用 Claude、Codex 开发五岛列岛题材3D游戏《島ぐらし》，并记录 Steam Deck 优化过程：先逐项关闭植被、角色、阴影并记录测量，再合并角色网格、按距离简化树木、减少远处居民更新。作者报告接近60fps但仍非全程稳定；属于作者开发日志，未独立复测。",
+      "category": "AI游戏开发",
+      "author": "入江 慎吾  (@iritec_jp)",
+      "publishedAt": "2026-10-20T23:00:00.000Z",
+      "source": "https://x.com/iritec_jp/status/2112680261125050598",
+      "relatedLinks": [],
+      "image": "assets/news/item-89133a2af1512fae.webp",
+      "imageAlt": "岛ぐらし：用测量驱动 AI 游戏优化：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112432781494272000/img/2z9VaJnnr7GgJx80.jpg"
+    },
+    {
+      "id": "item-ecc8e5a32b4e5015",
+      "title": "Motion2Code：把动效参考重建成代码",
+      "summary": "Motion2Code 是供编程 Agent 使用的动效重建 Skill，把视频抽帧分析后重建为 SVG＋GSAP 动画，并提供逐帧对照、循环接缝检查与导出脚本。支持 Claude Code、Codex 等，仓库 MIT；模型服务和环境费用另计，不保证任意视频一键还原。",
+      "category": "内容制作",
+      "author": "Lovis Odin (@OdinLovis)",
+      "publishedAt": "2026-10-20T13:30:00.000Z",
+      "source": "https://x.com/OdinLovis/status/2112536814393454735",
+      "relatedLinks": [
+        {
+          "label": "README 功能、安装、依赖、页面契约、gallery 来源与 MIT 标签",
+          "url": "https://github.com/lovisdotio/motion2code"
+        },
+        {
+          "label": "README 可见 LICENSE 链接；MIT 标签已在仓库主页面核实",
+          "url": "https://github.com/lovisdotio/motion2code/blob/main/LICENSE"
+        }
+      ],
+      "image": "assets/news/item-ecc8e5a32b4e5015.webp",
+      "imageAlt": "Motion2Code：把动效参考重建成代码：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112498368849321984/img/Z2hGtES7o2dAv6SZ.jpg"
+    },
+    {
+      "id": "item-1e8fe100c5cb75d8",
+      "title": "Beacon：跨编码 Agent 的会话与项目记忆",
+      "summary": "Beacon 统一 Claude Code、Codex、Cursor 等20多种工具的会话轨迹，把经审核的经验通过 MCP 或 Skill 复用。核心 MIT、本地版免费；云端记忆和部分服务另有套餐。交互安装预选 Beacon Cloud，确认后会转发会话；要只留本机须明确选 Local。会话可能包含代码与命令，显式记忆评估还可能使用外部服务。",
+      "category": "实用工作流",
+      "author": "Justin D'Souza (@jqdsouza)",
+      "publishedAt": "2026-10-20T14:32:08.000Z",
+      "source": "https://x.com/jqdsouza/status/2112552451547001218",
+      "relatedLinks": [
+        {
+          "label": "支持范围、MIT、安装默认 Cloud/Local 行为、捕获字段、Lens 风险",
+          "url": "https://github.com/Asymptote-Labs/agent-beacon"
+        },
+        {
+          "label": "opt-in review-gated 记忆流程、项目作用域、Jev 外部评估",
+          "url": "https://docs.beacon.sh/concepts/cross-harness-memory"
+        },
+        {
+          "label": "免费层与 Pro 价格、50 lifetime findings、Cloud memory MCP 限 Pro",
+          "url": "https://docs.beacon.sh/deployment/plans"
+        }
+      ],
+      "image": "assets/news/item-1e8fe100c5cb75d8.webp",
+      "imageAlt": "Beacon：跨编码 Agent 的会话与项目记忆：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112552129952874496/img/X1ifILIq6yhlSaGJ.jpg"
+    },
+    {
+      "id": "item-eae96e0394f0209d",
+      "title": "PGX：给 Agent 的可丢弃数据库",
+      "summary": "PGX 用一个 Rust 运行时容纳多个 Postgres 兼容数据库，面向 Agent、CI、PR 与预览环境，支持克隆和设置 TTL。支持 macOS/Linux、AGPL-3.0，目前 Beta。不是生产 PostgreSQL 替代品：fsync=off、不保证崩溃安全，扩展兼容受限；宜使用脱敏数据。快速写时复制还依赖合适存储后端，未采纳原帖性能倍数。",
+      "category": "实用工作流",
+      "author": "alex shapalov (@alxshp)",
+      "publishedAt": "2026-10-20T16:21:29.000Z",
+      "source": "https://x.com/alxshp/status/2112579971952910540",
+      "relatedLinks": [
+        {
+          "label": "Rust、轻量 Postgres-compatible 定位及官方 GitHub 链接",
+          "url": "https://pgx.dev/"
+        },
+        {
+          "label": "AGPL、Mac/Linux、Beta、TTL、兼容范围、COW 条件、生产与崩溃限制",
+          "url": "https://github.com/pgrundev/pgx"
+        }
+      ],
+      "image": "assets/news/item-eae96e0394f0209d.webp",
+      "imageAlt": "PGX：给 Agent 的可丢弃数据库：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112372069308694529/img/n5MlTVsknCrF5wOq.jpg"
+    },
+    {
+      "id": "item-8215b834e1ed63d9",
+      "title": "NVIDIA Flora：机器人视频标注与奖励模型",
+      "summary": "NVIDIA Flora 将人类或机器人操作视频拆成动作片段、文字说明及奖励评分，供机器人训练和评估使用。TempSeg为9B，Captioner和Rewarder为27B；时间戳由管线组织，不是 Captioner 单独预测。官方权重限非商业机器人研究开发，不用于直接控制机器人或作为唯一安全监测。原帖125倍成本宣称未独立复测，不写入文案。",
+      "category": "硬件创客",
+      "author": "Jim Fan (@DrJimFan)",
+      "publishedAt": "2026-10-20T17:31:29.000Z",
+      "source": "https://x.com/DrJimFan/status/2112597587987689912",
+      "relatedLinks": [
+        {
+          "label": "官方项目用途、论文、模型集合、完整 benchmark 表",
+          "url": "https://research.nvidia.com/labs/gear/flora/"
+        },
+        {
+          "label": "Captioner 输出范围、27B、License、Linux/GPU、用途限制、Release Date",
+          "url": "https://huggingface.co/nvidia/Flora-Captioner"
+        },
+        {
+          "label": "outcome/dense/rubric rewards、27B、License、用途限制",
+          "url": "https://huggingface.co/nvidia/Flora-Rewarder"
+        },
+        {
+          "label": "9B LoRA、temporal segmentation、License、用途限制、输入权利要求",
+          "url": "https://huggingface.co/nvidia/Flora-TempSeg"
+        },
+        {
+          "label": "官方项目页可见的模型集合链接",
+          "url": "https://huggingface.co/collections/nvidia/flora"
+        }
+      ],
+      "image": "assets/news/item-8215b834e1ed63d9.webp",
+      "imageAlt": "NVIDIA Flora：机器人视频标注与奖励模型：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112589725337083904/img/4Fy5XFx6jbgKIYgv.jpg"
+    },
+    {
+      "id": "item-06b4bad6e7b4dfb1",
+      "title": "实拍＋深度参考：保留表演再换场景",
+      "summary": "Curious Refuge 公布实拍灰盒素材转悬崖场景的测试与步骤：用 GPT Image 2.0 改首帧背景与风格，用 fal 上的 Depth Anything Video 生成原视频深度图，再将首帧和深度运动参考交给 Seedance 2.5。它展示一种混合制作方法，不保证人物动作逐帧完全保真；服务成本未在原帖列清。",
+      "category": "内容制作",
+      "author": "Curious Refuge (@CuriousRefuge)",
+      "publishedAt": "2026-10-20T16:54:07.000Z",
+      "source": "https://x.com/CuriousRefuge/status/2112588184333001099",
+      "relatedLinks": [],
+      "image": "assets/news/item-06b4bad6e7b4dfb1.webp",
+      "imageAlt": "实拍＋深度参考：保留表演再换场景：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112588163118145536/img/nCmC4OkoULwtDIlO.jpg"
+    },
+    {
+      "id": "item-5116efaec4e815d5",
+      "title": "Unity＋PICO：CLI 构建头显应用原型",
+      "summary": "Lucas Martinic 展示 PICO 头显上的“冻结时间”应用原型。作者描述 Claude Code 调用 Unity 6、Unity CLI 与 Pico CLI，以无界面流程构建 APK 并装到设备等待人工测试。原帖没有公开可复用仓库或完整提示词，本次只核实其演示和自述，不将其视为已验证的通用一键部署能力。",
+      "category": "AI游戏开发",
+      "author": "Lucas Martinic (@lucas_martinic)",
+      "publishedAt": "2026-10-20T12:01:00.000Z",
+      "source": "https://x.com/lucas_martinic/status/2112514417300758643",
+      "relatedLinks": [],
+      "image": "assets/news/item-5116efaec4e815d5.webp",
+      "imageAlt": "Unity＋PICO：CLI 构建头显应用原型：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112480862675542016/img/ELt688QDmNoO9xuz.jpg"
+    },
+    {
+      "id": "item-43a36fb1055b0987",
+      "title": "FastH3 Omni：多参考视频生成与蒸馏",
+      "summary": "Hao AI Lab 发布 FastH3 Omni 与蒸馏训练代码，支持图像、视频和音频参考、ComfyUI 及 FP8/NVFP4。官方消费卡配方包括5090 32GB、4090 24GB分层卸载，默认480p；12倍加速来自8×GB200的特定比较。代码与权重许可不同：权重遵循 MiniMax-H3 Community License，欧盟、英国、韩国、美国等排除地区需另洽许可，不可笼统称全球免费商用。年收入超过2000万美元也有额外许可要求。",
+      "category": "内容制作",
+      "author": "Hao AI Lab (@haoailab)",
+      "publishedAt": "2026-10-20T19:22:31.000Z",
+      "source": "https://x.com/haoailab/status/2112625528805208257",
+      "relatedLinks": [
+        {
+          "label": "官方发布、ComfyUI 已支持、8 次评估、8×GB200 benchmark 条件",
+          "url": "https://haoailab.com/blogs/fastvideo-omniref-update/"
+        },
+        {
+          "label": "输入输出、BF16 release、runtime 与权重许可链接",
+          "url": "https://huggingface.co/FastVideo/FastVideo-FastH3-Omni-8-Step-V1"
+        },
+        {
+          "label": "ComfyUI 模型格式、节点与组件、数值差异",
+          "url": "https://huggingface.co/FastVideo/FastH3-Omni-Comfy"
+        },
+        {
+          "label": "显存/设备配方、4090 FP8 offload、5090/Spark 480p、Blackwell 要求",
+          "url": "https://github.com/hao-ai-lab/FastVideo/blob/main/docs/inference/fasth3_omniref.md"
+        },
+        {
+          "label": "官方权重卡所链接社区许可，地域、商业收入门槛、冒充和公开标注限制",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE"
+        }
+      ],
+      "image": "assets/news/item-43a36fb1055b0987.webp",
+      "imageAlt": "FastH3 Omni：多参考视频生成与蒸馏：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112619935101054976/img/ErrljJJaTjJHMPbc.jpg"
+    },
+    {
+      "id": "item-51ccb36640a1c4a9",
+      "title": "AI 换角色网格：骨骼与手部仍需人工检查",
+      "summary": "Max 记录将 Sketchfab 动画、Meshy/Tripo 生成网格和编程模型组合的过程，指出比例不一致、手指变形及跨帧错误导致反复修正。原帖是作者失败与限制复盘，不是可直接复用的自动绑定工具；来源资产是否免费商用仍须逐项核对许可证，不能把“免费动画”理解成无条件授权。",
+      "category": "AI游戏开发",
+      "author": "Max (@maxt3chno)",
+      "publishedAt": "2026-10-20T09:49:29.000Z",
+      "source": "https://x.com/maxt3chno/status/2112481320081256666",
+      "relatedLinks": [],
+      "image": "assets/news/item-51ccb36640a1c4a9.webp",
+      "imageAlt": "AI 换角色网格：骨骼与手部仍需人工检查：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112480885131907072/img/fu4y8QGUc4UJtSsO.jpg"
+    },
+    {
+      "id": "item-195fc19f0023d0d1",
+      "title": "Claude Ads：广告账户分析 Skill",
+      "summary": "Claude Ads 是 Claude Code 广告审核与规划 Skill，官方列出12个平台、MIT许可和默认只读的账户适配器，变更需明确批准。目前为开发候选版，12个平台的账户健康评分功能均关闭，不能宣传成已能自动给账户健康分。只有 Claude Code 已验证，其他 host 属实验适配；模型与广告服务费用另计。",
+      "category": "实用工作流",
+      "author": "RUX (@0xrux)",
+      "publishedAt": "2026-10-20T14:59:24.000Z",
+      "source": "https://x.com/0xrux/status/2112559312102883732",
+      "relatedLinks": [
+        {
+          "label": "12 平台、MIT、命令、read-only 与 mutation gate、开发状态、禁用健康评分、host 边界",
+          "url": "https://github.com/AgriciDaniel/claude-ads"
+        },
+        {
+          "label": "密钥与客户数据安全边界、已列出的外连服务",
+          "url": "https://github.com/AgriciDaniel/claude-ads/blob/main/SECURITY.md"
+        }
+      ],
+      "image": "assets/news/item-195fc19f0023d0d1.webp",
+      "imageAlt": "Claude Ads：广告账户分析 Skill：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112559218725117952/img/qNy_ZJTta3YH7tl8.jpg"
+    }
+  ]
+}

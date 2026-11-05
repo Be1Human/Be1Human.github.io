@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { httpsUrl, validateEditionId } from './news-data.mjs';
 import { buildFeed, renderStatusText } from './blog-feed.mjs';
 import { projectCategories, projectPagePath, validateProject } from './project-data.mjs';
+import { buildExperienceNews } from './experience-news.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const readJSON = async path => JSON.parse(await readFile(resolve(root, path), 'utf8'));
@@ -22,6 +23,9 @@ const dateLabel = date => `${Number(date.slice(5, 7))} 月 ${Number(date.slice(8
 const minutes = post => Math.max(1, Math.ceil(post.sections.reduce((n, section) => n + section.paragraphs.join('').length, 0) / 400));
 const categories = projectCategories;
 const pages = new Map();
+// The interactive homepage fetches the small index and just one edition at a
+// time; keep it synchronized with the same authoritative public archive.
+for (const [path, content] of await buildExperienceNews({root, archive: news})) pages.set(path, content);
 
 function unique(items, key) {
   if (new Set(items.map(item => item[key])).size !== items.length) throw new Error(`Duplicate ${key}`);

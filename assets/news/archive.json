@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "sourceName": "AI 热门 20 · 每日精选",
+  "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/",
+  "sourceRevision": "dac1fd90d077031afc4507273bcd79a180742baa",
+  "syncedAt": "2026-11-03T12:32:55.097Z",
+  "sourceSha256": "456506f88767fbdf510bf4522fe06b8da821c1e8dc89ca2c9d14f265f6c86515",
+  "newest": "2026-11-03",
+  "oldest": "2026-10-13",
+  "totalItems": 331,
+  "editions": [
+    {
+      "id": "2026-11-03",
+      "date": "2026-11-03",
+      "label": "11 月 3 日 · 11 条非中文原帖",
+      "count": 11,
+      "url": "assets/news/editions/2026-11-03.json"
+    },
+    {
+      "id": "2026-11-02",
+      "date": "2026-11-02",
+      "label": "11 月 2 日 · 11 条非中文原帖",
+      "count": 11,
+      "url": "assets/news/editions/2026-11-02.json"
+    },
+    {
+      "id": "2026-11-01",
+      "date": "2026-11-01",
+      "label": "11 月 1 日 · 13 条非中文原帖",
+      "count": 13,
+      "url": "assets/news/editions/2026-11-01.json"
+    },
+    {
+      "id": "2026-10-31",
+      "date": "2026-10-31",
+      "label": "10 月 31 日 · 14 条非中文原帖",
+      "count": 14,
+      "url": "assets/news/editions/2026-10-31.json"
+    },
+    {
+      "id": "2026-10-30",
+      "date": "2026-10-30",
+      "label": "10 月 30 日 · 14 条非中文原帖",
+      "count": 14,
+      "url": "assets/news/editions/2026-10-30.json"
+    },
+    {
+      "id": "2026-10-29",
+      "date": "2026-10-29",
+      "label": "10 月 29 日 · 18 条非中文原帖",
+      "count": 18,
+      "url": "assets/news/editions/2026-10-29.json"
+    },
+    {
+      "id": "2026-10-28",
+      "date": "2026-10-28",
+      "label": "10 月 28 日 · 14 条非中文原帖",
+      "count": 14,
+      "url": "assets/news/editions/2026-10-28.json"
+    },
+    {
+      "id": "2026-10-27",
+      "date": "2026-10-27",
+      "label": "10 月 27 日 · 14 条非中文原帖",
+      "count": 14,
+      "url": "assets/news/editions/2026-10-27.json"
+    },
+    {
+      "id": "2026-10-26",
+      "date": "2026-10-26",
+      "label": "10 月 26 日 · 15 条非中文原帖",
+      "count": 15,
+      "url": "assets/news/editions/2026-10-26.json"
+    },
+    {
+      "id": "2026-10-25",
+      "date": "2026-10-25",
+      "label": "108 条初筛 · 15 条展开核实 · 12 条精选",
+      "count": 12,
+      "url": "assets/news/editions/2026-10-25.json"
+    },
+    {
+      "id": "2026-10-24",
+      "date": "2026-10-24",
+      "label": "107 条初筛 · 18 条展开核实 · 10 条精选",
+      "count": 10,
+      "url": "assets/news/editions/2026-10-24.json"
+    },
+    {
+      "id": "2026-10-23",
+      "date": "2026-10-23",
+      "label": "102 条搜索初筛＋1 条溯源 · 22 条展开核实 · 14 条精选",
+      "count": 14,
+      "url": "assets/news/editions/2026-10-23.json"
+    },
+    {
+      "id": "2026-10-22",
+      "date": "2026-10-22",
+      "label": "103 条初筛 · 18 条展开核实 · 10 条精选",
+      "count": 10,
+      "url": "assets/news/editions/2026-10-22.json"
+    },
+    {
+      "id": "2026-10-21",
+      "date": "2026-10-21",
+      "label": "101 条初筛 · 19 条展开核实 · 10 条精选",
+      "count": 10,
+      "url": "assets/news/editions/2026-10-21.json"
+    },
+    {
+      "id": "2026-10-20",
+      "date": "2026-10-20",
+      "label": "104 条初筛 · 17 条展开核实 · 13 条精选",
+      "count": 13,
+      "url": "assets/news/editions/2026-10-20.json"
+    },
+    {
+      "id": "2026-10-19",
+      "date": "2026-10-19",
+      "label": "101 条初筛 · 17 条展开核验 · 15 条精选",
+      "count": 15,
+      "url": "assets/news/editions/2026-10-19.json"
+    },
+    {
+      "id": "2026-10-18",
+      "date": "2026-10-18",
+      "label": "108 条初筛 · 22 条展开核验 · 19 条精选",
+      "count": 19,
+      "url": "assets/news/editions/2026-10-18.json"
+    },
+    {
+      "id": "2026-10-17",
+      "date": "2026-10-17",
+      "label": "125 条初筛 · 20 条展开核验 · 20 条精选",
+      "count": 20,
+      "url": "assets/news/editions/2026-10-17.json"
+    },
+    {
+      "id": "2026-10-16",
+      "date": "2026-10-16",
+      "label": "105 条初筛 · 25 条展开核验 · 17 条精选",
+      "count": 17,
+      "url": "assets/news/editions/2026-10-16.json"
+    },
+    {
+      "id": "2026-10-15",
+      "date": "2026-10-15",
+      "label": "103 条初筛 · 22 条展开核验 · 19 条精选",
+      "count": 19,
+      "url": "assets/news/editions/2026-10-15.json"
+    },
+    {
+      "id": "2026-10-14",
+      "date": "2026-10-14",
+      "label": "101 条初筛 · 22 条展开核验 · 18 条精选",
+      "count": 18,
+      "url": "assets/news/editions/2026-10-14.json"
+    },
+    {
+      "id": "2026-10-13-evening",
+      "date": "2026-10-13",
+      "label": "晚间更新 · 10 条新帖 · 最新优先",
+      "count": 10,
+      "url": "assets/news/editions/2026-10-13-evening.json"
+    },
+    {
+      "id": "2026-10-13",
+      "date": "2026-10-13",
+      "label": "104 条初筛 · 22 条展开核验 · 20 条精选",
+      "count": 20,
+      "url": "assets/news/editions/2026-10-13.json"
+    }
+  ]
+}

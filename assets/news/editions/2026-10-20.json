@@ -1,0 +1,275 @@
+{
+  "id": "2026-10-20",
+  "date": "2026-10-20",
+  "label": "104 条初筛 · 17 条展开核实 · 13 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-20",
+  "items": [
+    {
+      "id": "item-02b545fc5bf20180",
+      "title": "PhoneBot：旧安卓手机驱动双足机器人",
+      "summary": "UCLA PhoneBot 用手机摄像头、IMU和计算能力做感知与运动策略推理，另有控制板负责舵机。论文展示真机行走、跟踪人与起身，硬件约400美元但不含手机；对话依赖外部后端。机械CAD、BOM和装配资料采用CC BY-NC 4.0，商业用途需另获许可。",
+      "category": "硬件创客",
+      "author": "T.Yamazaki (@ZappyZappy7)",
+      "publishedAt": "2026-10-19T11:22:11.000Z",
+      "source": "https://x.com/ZappyZappy7/status/2112142261710635145",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://phonebot.dev/"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://arxiv.org/html/2610.08737v1"
+        }
+      ],
+      "image": "assets/news/item-02b545fc5bf20180.webp",
+      "imageAlt": "PhoneBot：旧安卓手机驱动双足机器人：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112140914932252672/img/fkRAsWrvX5XY8Gjz.jpg"
+    },
+    {
+      "id": "item-07eac3a5779f2a75",
+      "title": "Loopcut：在 Blender 内接入 ChatGPT 订阅",
+      "summary": "作者展示 Blender 内的AI代理。官方应用页面确认可登录ChatGPT Plus/Pro，不另收Loopcut调用费但仍受原订阅额度限制；也支持自带API密钥或本地模型。代理可读取场景、展示执行前的bpy脚本、检查视口和渲染，并保存场景检查点。应用与Blender构建采用GPL，托管服务并非全部开源；不要与同名云渲染MCP连接器混为一谈。",
+      "category": "AI游戏开发",
+      "author": "spuice (@spuicey)",
+      "publishedAt": "2026-10-20T00:46:58.000Z",
+      "source": "https://x.com/spuicey/status/2112344791635681477",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://loopcut.org/"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/Samffprice/loopcut"
+        }
+      ],
+      "image": "assets/news/item-07eac3a5779f2a75.webp",
+      "imageAlt": "Loopcut：在 Blender 内接入 ChatGPT 订阅：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112344128553893888/img/AC0DATrIMDCZNwx3.jpg"
+    },
+    {
+      "id": "item-559926ad4c0d4ec4",
+      "title": "ComfyArt：基于 ComfyUI 的 AI 设计画布",
+      "summary": "ComfyArt 将ComfyUI工作流接到图像、视频和音频设计画布，并提供Agent/MCP交互。可用本地GPU或可选的Comfy Cloud；云端需要付费计划，外部Agent各需自己的服务账户。应用代码MIT不等于所有依赖可随意商用：仓库包含的tldraw许可证对生产使用有额外限制。",
+      "category": "内容制作",
+      "author": "jtydhr88 (@jtydhr88)",
+      "publishedAt": "2026-10-19T12:25:55.000Z",
+      "source": "https://x.com/jtydhr88/status/2112158299135025641",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/jtydhr88/ComfyArt"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/jtydhr88/ComfyArt/blob/main/licenses/tldraw-LICENSE.md"
+        }
+      ],
+      "image": "assets/news/item-559926ad4c0d4ec4.webp",
+      "imageAlt": "ComfyArt：基于 ComfyUI 的 AI 设计画布：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112157472962076672/img/dPdoN8pUL6yn7o2g.jpg"
+    },
+    {
+      "id": "item-1f3d8ce0a1acca04",
+      "title": "ComfyUI-DBS：把音轨拆成对白、音乐和音效",
+      "summary": "这是DBS模型的非官方ComfyUI节点，可本地分离对白、音乐与音效。节点支持CUDA和CPU，Apple/AMD GPU当前回退CPU；节点代码MIT，上游模型Apache-2.0。不能将原帖“ANY soundtrack”理解为所有语言、歌曲都能无损分离，非英语和演唱质量未由本次验证。",
+      "category": "内容制作",
+      "author": "Wildminder (@wildmindai)",
+      "publishedAt": "2026-10-19T14:51:00.000Z",
+      "source": "https://x.com/wildmindai/status/2112194810681651245",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/hiroki-abe-58/ComfyUI-DBS"
+        }
+      ],
+      "image": "assets/news/item-1f3d8ce0a1acca04.webp",
+      "imageAlt": "ComfyUI-DBS：把音轨拆成对白、音乐和音效：原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU_4cIqawAA_ub4?format=png&name=small"
+    },
+    {
+      "id": "item-6085e6a736889ce3",
+      "title": "PINOC：从图像搭建 Gaussian 场景与角色",
+      "summary": "作者展示用Opus与PINOC生成场景、角色和动作。Viggle官方JST-2资料确认Gaussian场景与角色、浏览器Agent模式；不能等同Blender多边形资产。官方明确当前碰撞和物体交互仍采用规则物理，学习式交互物理是后续JST-3目标；不是本次已验证的完整物理世界模拟。 官方MCP文档说明生成角色为.vsplat而非网格，需要Viggle Splat Engine（Unity/Web）；动作可单独导出。免费试用仅限个人评估与原型，商业使用需付费等级。Opus仅为演示作者使用方式，非已核实的内置专用功能。",
+      "category": "AI游戏开发",
+      "author": "おのふみ| 3D×動画生成×個人開発 (@onofumi_AI)",
+      "publishedAt": "2026-10-20T06:38:40.000Z",
+      "source": "https://x.com/onofumi_AI/status/2112433299138441635",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://viggle.ai/jst2"
+        },
+        {
+          "label": "官方MCP和导出文档",
+          "url": "https://viggle.ai/pinoc/mcp"
+        },
+        {
+          "label": "官方试用与商业使用限制",
+          "url": "https://viggle.ai/pinoc/pricing"
+        }
+      ],
+      "image": "assets/news/item-6085e6a736889ce3.webp",
+      "imageAlt": "PINOC：从图像搭建 Gaussian 场景与角色：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112433259116412928/img/3R2F9ltdpMP5xsgN.jpg"
+    },
+    {
+      "id": "item-463e7ec1fb8dbdc8",
+      "title": "PandaCode：统一多个编码 Agent 的桌面工作台",
+      "summary": "PandaCode 面向macOS Apple silicon、Windows和Linux，在同一桌面界面组织Claude Code、Codex等Agent，提供会话、看板与仓库视图。应用免费，模型与服务费用另计；许可证是在MIT基础上增加署名条件，并非标准MIT。作者主动说明早期版本可能有较多Bug，发布包未签名，原帖启动速度和节省Token比例均未独立复测。",
+      "category": "实用工作流",
+      "author": "AICodeKing (@aicodeking)",
+      "publishedAt": "2026-10-20T02:34:23.000Z",
+      "source": "https://x.com/aicodeking/status/2112371824696901818",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/aicodeking/pandacode"
+        }
+      ],
+      "image": "assets/news/item-463e7ec1fb8dbdc8.webp",
+      "imageAlt": "PandaCode：统一多个编码 Agent 的桌面工作台：原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HVCkGf6bkAA64lk?format=jpg&name=small"
+    },
+    {
+      "id": "item-48c92f99d5fdaff0",
+      "title": "GenOffice：带 AI 编辑的本地 Office 工作台",
+      "summary": "GenOffice提供跨平台文档、表格、幻灯片与PDF编辑和AI/CLI/MCP接口。可读写常见Office格式，AI更改支持审阅；复杂文件往返兼容仍需实测。应用Apache-2.0但企业目录有例外，AI通过Genspark账户或自带服务，费用不含在“免费应用”中。官方打包版本启用可关闭的分析统计；向云模型提问可能发送相关文档内容。",
+      "category": "实用工作流",
+      "author": "0xMarioNawfal - The Roundtable Show (@RoundtableSpace)",
+      "publishedAt": "2026-10-20T07:15:00.000Z",
+      "source": "https://x.com/RoundtableSpace/status/2112442442729611352",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/genspark-ai/genoffice"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/genspark-ai/genoffice/blob/main/PRIVACY.md"
+        }
+      ],
+      "image": "assets/news/item-48c92f99d5fdaff0-diagram.svg",
+      "imageAlt": "GenOffice：带 AI 编辑的本地 Office 工作台：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-2aadc49388324e34",
+      "title": "Fo MCP：把 Agent 接到实体设备",
+      "summary": "作者展示通过MCP、API和webhook建立双向连接，让Fo与灯、扫地机器人和CLI等交互。原帖带“Made with AI”标记，本次仅核对演示与作者描述，没有测试真实设备可靠性，未验证其“快3倍”等速度宣称。不能据此当作安全报警或家庭设备控制的成熟方案。",
+      "category": "硬件创客",
+      "author": "Shivani Poddar (@shivanipod)",
+      "publishedAt": "2026-10-19T17:25:37.000Z",
+      "source": "https://x.com/shivanipod/status/2112233722846355593",
+      "relatedLinks": [],
+      "image": "assets/news/item-2aadc49388324e34.webp",
+      "imageAlt": "Fo MCP：把 Agent 接到实体设备：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112233024402472960/img/fZFTdC8EQsvjuoLo.jpg"
+    },
+    {
+      "id": "item-8a9ed948e14bc8c8",
+      "title": "Zeroth-01：3D 打印人形机器人复刻记录",
+      "summary": "Zeroth-01上游是MIT许可的3D打印小型人形机器人平台，BOM起价约350美元是项目估算，不是当前整机成交价。原帖提到的树莓派4、16个舵机和约40厘米机身来自独立复刻者Justin Riekehof；其已演示预设动作，MuJoCo中训练的步行仍待部署真机。该限制属于这份复刻记录，不代表整个上游平台都不能行走。",
+      "category": "硬件创客",
+      "author": "Techniahqrobot | humanoid robots (@techniahqrobot)",
+      "publishedAt": "2026-10-19T17:28:02.000Z",
+      "source": "https://x.com/techniahqrobot/status/2112234328776409159",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/zeroth-robotics/zeroth-bot"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://github.com/Justin-Riekehof/zeroth-01-build"
+        }
+      ],
+      "image": "assets/news/item-8a9ed948e14bc8c8.webp",
+      "imageAlt": "Zeroth-01：3D 打印人形机器人复刻记录：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112234218856046592/img/n6FhVUnSWa681Oj2.jpg"
+    },
+    {
+      "id": "item-4c2a4ae760e7cfcd",
+      "title": "Opus＋Blender：虚构耳机广告的代码制作",
+      "summary": "作者展示一支虚构耳机广告，称通过Claude Code指挥Blender制作3DCG，未使用视频生成模型；整体节奏、运动、BGM和音效由Opus安排。这里只能确认作品展示与作者的工作流说明，没有重做工程或验证素材版权，也不能推导完全免费或无需人工检查。",
+      "category": "内容制作",
+      "author": "みーみー｜AIアニメクリエイター (@mimi_N20)",
+      "publishedAt": "2026-10-20T01:01:50.000Z",
+      "source": "https://x.com/mimi_N20/status/2112348532653076627",
+      "relatedLinks": [],
+      "image": "assets/news/item-4c2a4ae760e7cfcd.webp",
+      "imageAlt": "Opus＋Blender：虚构耳机广告的代码制作：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112348514558902272/img/IwM6GS3ITXzf2-2R.jpg"
+    },
+    {
+      "id": "item-7053b94090fcde50",
+      "title": "Opus＋Blender：把动画制作步骤封装成 Skill",
+      "summary": "小阪淳展示动物玩具动画，称把此前机器人动画制作流程封装成Skill并加入选项，以产生不同变体。作者回复说明“一个角色倒下，其他角色转头看”的情节由Opus提出，并附线框版。发布于10月18日10:32 UTC，采集时略超48小时，作为约49小时内的补充样本；没有确认公开可下载的完整Skill或工程。",
+      "category": "内容制作",
+      "author": "小阪淳 (@KOSAKA_Jun)",
+      "publishedAt": "2026-10-18T10:32:59.000Z",
+      "source": "https://x.com/KOSAKA_Jun/status/2111767491856970107",
+      "relatedLinks": [],
+      "image": "assets/news/item-7053b94090fcde50.webp",
+      "imageAlt": "Opus＋Blender：把动画制作步骤封装成 Skill：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111766879291445248/img/lZBwCfMUUua2uuSl.jpg"
+    },
+    {
+      "id": "item-3e8939c153e88f71",
+      "title": "程序化噪声：纠正 AI 示意图的标注错误",
+      "summary": "预览为待纠错原图，包含错误标注，不是正确技术参考。着色器作者Xor逐条纠正一张AI生成程序化噪声示意图，展示Perlin、Voronoi/Worley与Simplex的差异，并解释网格与采样方式。原帖社区注释也指出错误，但这里依据作者后续技术图解，不把社区注释本身视为最终技术证明。适合做游戏地形与材质前交叉核对概念，不是新的生成模型。",
+      "category": "AI游戏开发",
+      "author": "Xor (@XorDev)",
+      "publishedAt": "2026-10-18T18:11:29.000Z",
+      "source": "https://x.com/XorDev/status/2111882879097852015",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://x.com/XorDev/status/2111883646533566749"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://x.com/XorDev/status/2111884389647032828"
+        },
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://x.com/XorDev/status/2111885622386307203"
+        }
+      ],
+      "image": "assets/news/item-3e8939c153e88f71.webp",
+      "imageAlt": "待纠错原图：这张 AI 生成的噪声示意图含标注错误，请勿用作技术参考；正确解释见下方作者纠错帖。",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU3LFZcXsAI8k2j?format=jpg&name=small"
+    },
+    {
+      "id": "item-1e5fa2add6e36892",
+      "title": "MOSS-Image：ComfyUI 官方接入开放权重图像模型",
+      "summary": "ComfyUI官方宣布支持OpenMOSS的MOSS-Image，称其为5B开放权重模型，接受结构布局提示并可生成可读文字，已有社区微调与LoRA。本次未做输出质量、显存或速度测试；“消费级硬件”不代表所有电脑都能顺畅运行，开放权重也不自动意味着无限制商用。",
+      "category": "内容制作",
+      "author": "ComfyUI (@ComfyUI)",
+      "publishedAt": "2026-10-19T19:30:22.000Z",
+      "source": "https://x.com/ComfyUI/status/2112265117924835409",
+      "relatedLinks": [
+        {
+          "label": "官方项目或作者资料",
+          "url": "https://huggingface.co/Comfy-Org/MOSS-Image"
+        }
+      ],
+      "image": "assets/news/item-1e5fa2add6e36892.webp",
+      "imageAlt": "MOSS-Image：ComfyUI 官方接入开放权重图像模型：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2112265081258147840/img/OQfFDBJh73rPZ-8b.jpg"
+    }
+  ]
+}

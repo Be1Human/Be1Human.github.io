@@ -1,0 +1,185 @@
+{
+  "id": "2026-10-24",
+  "date": "2026-10-24",
+  "label": "107 条初筛 · 18 条展开核实 · 10 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-24",
+  "items": [
+    {
+      "id": "item-5c47d4bc24a0beed",
+      "title": "Scenario 3D Collection：带生成参数的资产数据集",
+      "summary": "Scenario 发布可下载的 AI 生成三维资产集。官方数据卡列出1342个示例、1500个输出文件，约39GB，包含GLB、Blender等格式及可用输入和生成参数。资产使用CC BY4.0，需署名Scenario；这不是开放模型权重。部分输入参数缺失，一个场景缺两张纹理，结构检查不代表资产已达到游戏生产标准。",
+      "category": "AI游戏开发",
+      "author": "Scenario (@Scenario_gg)",
+      "publishedAt": "2026-10-23T14:15:08.000Z",
+      "source": "https://x.com/Scenario_gg/status/2113635335267643591",
+      "relatedLinks": [
+        {
+          "label": "官方项目与文档",
+          "url": "https://huggingface.co/datasets/scenario-labs/3d-collection"
+        }
+      ],
+      "image": "assets/news/item-5c47d4bc24a0beed.webp",
+      "imageAlt": "Scenario 3D Collection：带生成参数的资产数据集：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113635253310935041/img/f-5AP-QXfuz17hOF.jpg"
+    },
+    {
+      "id": "item-60f88630674de82c",
+      "title": "Bonesworth：把游戏动画问题转成可测量指标",
+      "summary": "Meticulai 公开骰子卡牌游戏 Bonesworth 的迭代方法：先构建，再由独立批评者测量并提出修复。作者对骨骼动作、座姿手臂可达范围、骰子落点及完整对局中的穿模进行检查。文中的帧数改善属于作者案例数据，未独立复现；不同于此前《島ぐらし》的性能测量项目。",
+      "category": "AI游戏开发",
+      "author": "Meticulai (@MeticulAi)",
+      "publishedAt": "2026-10-22T23:28:54.000Z",
+      "source": "https://x.com/MeticulAi/status/2113412310043914276",
+      "relatedLinks": [],
+      "image": "assets/news/item-60f88630674de82c.webp",
+      "imageAlt": "Bonesworth：把游戏动画问题转成可测量指标：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113412285657976833/img/xIhItb4xl9Enl_qe.jpg"
+    },
+    {
+      "id": "item-89e256cbdff6d958",
+      "title": "Blender 字幕动画：让文字参与场景与表演",
+      "summary": "aicreataro 用 Opus、Blender 与 Python 把歌词做成三维场景元素：文字会被舞者碰散、掉进画面，也会出现在车厢天花板、墙面和地板上。素材分别来自Kling、Midjourney和Suno，作者明确经过多次调整。这是新的舞者与字幕作品，不是旧期跑者七种材质的2D转3D项目。",
+      "category": "内容制作",
+      "author": "aicreataro (@aicreataro)",
+      "publishedAt": "2026-10-23T08:35:39.000Z",
+      "source": "https://x.com/aicreataro/status/2113549902084997427",
+      "relatedLinks": [],
+      "image": "assets/news/item-89e256cbdff6d958.webp",
+      "imageAlt": "Blender 字幕动画：让文字参与场景与表演：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113548206957297664/img/OxwTfl-ik5uffFhH.jpg"
+    },
+    {
+      "id": "item-675ef17b8f267d91",
+      "title": "runonweb：按任务调用浏览器本地 AI",
+      "summary": "Miguel Ángel Durán 发布 runonweb，把抠图、语音转文字、OCR、深度等任务包装为浏览器模块。项目优先使用WebGPU，部分任务提供WASM路径；模型首次使用需下载，体积和兼容性取决于任务。代码MIT不代表所有模型同一许可，本地处理为项目设计说明，未做网络审计。",
+      "category": "实用工作流",
+      "author": "Miguel Ángel Durán (@midudev)",
+      "publishedAt": "2026-10-23T14:04:34.000Z",
+      "source": "https://x.com/midudev/status/2113632678809346139",
+      "relatedLinks": [
+        {
+          "label": "官方项目与文档",
+          "url": "https://github.com/midudev/runonweb.ai"
+        }
+      ],
+      "image": "assets/news/item-675ef17b8f267d91.webp",
+      "imageAlt": "runonweb：按任务调用浏览器本地 AI：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113632553055784960/img/4t1Jh51iNvsMlV9_.jpg"
+    },
+    {
+      "id": "item-431435494be0eb9b",
+      "title": "Isaac Lab 3.0：可选择物理与渲染后端",
+      "summary": "NVIDIA 发布 Isaac Lab3.0，面向机器人强化学习、模仿学习与后训练。新的模块化架构支持Newton等物理后端与OVRTX等渲染方案，并提供真实硬件部署路径。并非所有流程都依赖Isaac Sim；使用该后端时需遵循版本和GPU要求。此次只核实官方资料，没有训练或验证仿真到真实效果。",
+      "category": "硬件创客",
+      "author": "NVIDIA Robotics (@NVIDIARobotics)",
+      "publishedAt": "2026-10-22T23:09:07.000Z",
+      "source": "https://x.com/NVIDIARobotics/status/2113407332747293131",
+      "relatedLinks": [
+        {
+          "label": "官方项目与文档",
+          "url": "https://github.com/isaac-sim/IsaacLab"
+        },
+        {
+          "label": "官方项目与文档",
+          "url": "https://isaac-sim.github.io/IsaacLab"
+        }
+      ],
+      "image": "assets/news/item-431435494be0eb9b.webp",
+      "imageAlt": "Isaac Lab 3.0：可选择物理与渲染后端：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113406445874245632/img/m2sVj3rIi7U4P9yD.jpg"
+    },
+    {
+      "id": "item-0f263bb4cd4db74e",
+      "title": "COWBOY：把场景到达与接触操作合并成策略",
+      "summary": "Jiahui Yang 介绍 COWBOY 机器人研究：先把任务拆成考虑场景的全身到达控制和局部接触强化学习，再蒸馏成视觉动作策略，协调底座、机械臂、灵巧手与主动视觉。作者展示仿真训练后在真实环境部署；这些是论文团队的实验陈述，不等于任意家庭物体都能可靠抓取。",
+      "category": "硬件创客",
+      "author": "Jiahui(Jim) Yang (@Jiahui_Yang6709)",
+      "publishedAt": "2026-10-22T15:17:29.000Z",
+      "source": "https://x.com/Jiahui_Yang6709/status/2113288638775935479",
+      "relatedLinks": [],
+      "image": "assets/news/item-0f263bb4cd4db74e.webp",
+      "imageAlt": "COWBOY：把场景到达与接触操作合并成策略：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113281087434883072/img/1Yc2p8tCSttWzgLs.jpg"
+    },
+    {
+      "id": "item-67da8a9695ccb93c",
+      "title": "参考图建模：先写指示书再交给 dot",
+      "summary": "元気ファイン 分享低多边形建模案例：先让Claude Opus根据参考图写制作指示，再交给dot在Blender中执行。原帖展示参考与输出图片，未公开完整指示书、网格质量指标或费用。这里只整理分阶段交接方法，不将个人案例扩写成稳定的一键还原能力。",
+      "category": "内容制作",
+      "author": "元気ファイン (@genkifine_hero)",
+      "publishedAt": "2026-10-24T00:27:22.000Z",
+      "source": "https://x.com/genkifine_hero/status/2113789410550694217",
+      "relatedLinks": [],
+      "image": "assets/news/item-67da8a9695ccb93c.webp",
+      "imageAlt": "参考图建模：先写指示书再交给 dot：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HVWvndKbgAAtTAw?format=jpg&name=small"
+    },
+    {
+      "id": "item-08905603b12fb94b",
+      "title": "Agent Relay：跨工具共享代理会话与任务",
+      "summary": "Will Washburn 发布 Agent Relay，让不同机器与工具中的Agent检索会话、提问和交接工作，继续使用Claude终端或Codex等现有工具。仓库Apache-2.0，可自托管；云服务仅确认免费开始，不承诺无限额度。共享会话会扩展上下文可见范围，应按团队和数据权限配置。",
+      "category": "实用工作流",
+      "author": "Will Washburn (@willwashburn)",
+      "publishedAt": "2026-10-23T15:00:13.000Z",
+      "source": "https://x.com/willwashburn/status/2113646682001101151",
+      "relatedLinks": [
+        {
+          "label": "官方项目与文档",
+          "url": "https://agentrelay.com/"
+        },
+        {
+          "label": "官方项目与文档",
+          "url": "https://github.com/agentworkforce/relay"
+        }
+      ],
+      "image": "assets/news/item-08905603b12fb94b.webp",
+      "imageAlt": "Agent Relay：跨工具共享代理会话与任务：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2113633448573435904/img/R_pLdiJuXfLt7Pef.jpg"
+    },
+    {
+      "id": "item-2701baff9e2b5fe4",
+      "title": "MCP Tasks：长任务与补充输入的适用范围",
+      "summary": "Vox 整理Claude Code的MCP Tasks与Elicitations使用思路。已用当前官方文档修正原帖范围：Tasks公开Beta要求v2.1.304+，条件表还包括Agent SDK与GitHub Actions，不限终端CLI；VS Code、desktop和subagent调用不支持。服务端需实现对应协议，任务中可用输入请求补参数；远程与本地任务退出后的生命周期不同。",
+      "category": "实用工作流",
+      "author": "Vox (@Voxyz_ai)",
+      "publishedAt": "2026-10-23T18:38:01.000Z",
+      "source": "https://x.com/Voxyz_ai/status/2113701494457332115",
+      "relatedLinks": [
+        {
+          "label": "官方项目与文档",
+          "url": "https://code.claude.com/docs/en/mcp"
+        }
+      ],
+      "image": "assets/news/item-2701baff9e2b5fe4-diagram.svg",
+      "imageAlt": "MCP Tasks：长任务与补充输入的适用范围：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-37cdc47d13f57ec9",
+      "title": "Agent S4：保持模型不变，迭代操作接口",
+      "summary": "Simular 介绍Agent S4：元代理研究任务轨迹并迭代接口库，保持任务模型和harness不变。团队报告Qwen3.8-27B在108项OSWorld V2任务中取得21.3%二元成功率。该数值来自作者特定测试，不是通用电脑任务可靠性保证；本次未独立复测，不据此宣称全面超过其他模型。 21.3%对应无scratch VM的实验版本；带scratch VM版本为19.44%，不可混用最佳指标。",
+      "category": "实用工作流",
+      "author": "Simular (@SimularAI)",
+      "publishedAt": "2026-10-23T16:13:19.000Z",
+      "source": "https://x.com/SimularAI/status/2113665077215625360",
+      "relatedLinks": [
+        {
+          "label": "官方项目与文档",
+          "url": "https://simular.ai/articles/agent-s4-evolving-the-interfaces-computer-use-agents-work-throughagen"
+        }
+      ],
+      "image": "assets/news/item-37cdc47d13f57ec9.webp",
+      "imageAlt": "Agent S4：保持模型不变，迭代操作接口：原帖媒体预览",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/ext_tw_video_thumb/2113665052800585728/pu/img/xQt-muphkm2r9o3e.jpg"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { isExperienceNewsOutput } from './experience-news.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const source = process.argv[2];
@@ -18,7 +19,7 @@ run(process.execPath, ['scripts/sync-news.mjs', resolve(source)]);
 if (!git('status', '--porcelain')) { console.log('No changes. No commit or push.'); process.exit(0); }
 run('npm', ['run', 'build']);
 run('npm', ['run', 'check']);
-const allowed = path => ['data/news.json', 'index.html', 'news.html', 'feed.xml', 'sitemap.xml', 'portfolio/index.html', 'portfolio/news.html', 'portfolio/feed.xml', 'portfolio/sitemap.xml'].includes(path) || /^(?:portfolio\/)?news\/\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.html$/.test(path);
+const allowed = path => isExperienceNewsOutput(path) || ['data/news.json', 'index.html', 'news.html', 'feed.xml', 'sitemap.xml', 'portfolio/index.html', 'portfolio/news.html', 'portfolio/feed.xml', 'portfolio/sitemap.xml'].includes(path) || /^(?:portfolio\/)?news\/\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.html$/.test(path);
 const tracked = git('diff', '--name-only').split('\n').filter(Boolean);
 const untracked = git('ls-files', '--others', '--exclude-standard').split('\n').filter(Boolean);
 const changed = [...new Set([...tracked, ...untracked])];

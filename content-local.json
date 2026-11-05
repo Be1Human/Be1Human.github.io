@@ -12,26 +12,33 @@
     {
       "id": "haimian-deep-space",
       "title": "Haimian · 深空外设",
-      "category": "experiments",
-      "categoryLabel": "硬件与交互",
+      "category": "games",
+      "categoryLabel": "游戏 / 交互硬件",
       "subtitle": "桌面硬件与实体交互",
       "summary": "把「深空」带到桌面：用旋钮选择、按键确认，在实体小屏上继续游戏。配合 Windows USB 控制台切换应用与主题，也能通过 WiFi 接入服务并接续存档。",
       "source": "https://be1human.github.io/projects/haimian-deep-space.html",
-      "image": "assets/ed988e374580.svg",
-      "imageAlt": "Haimian 桌面小屏、旋钮与确认按键的结构示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
+      "image": "assets/images/haimian/device-game.webp",
+      "imageAlt": "设备实拍：深空对话已显示在桌面小屏上，旋钮和确认按键位于屏幕下方。",
+      "imageNote": "设备实拍：深空对话已显示在桌面小屏上，旋钮和确认按键位于屏幕下方。",
       "tags": [
+        "叙事游戏",
         "实体交互",
         "深空",
         "桌面小屏"
       ],
       "links": [
         {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/haimian-deep-space.html"
+          "label": "进入深空官网",
+          "url": "https://dsgame.archerpeng.com/"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg"
+      "sourceImage": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg",
+      "imageWidth": 1279,
+      "imageHeight": 1706,
+      "categories": [
+        "games",
+        "experiments"
+      ]
     },
     {
       "id": "rain-city",
@@ -492,6 +499,95 @@
   ],
   "journal": [
     {
+      "id": "jev-co-creation",
+      "title": "共生，从说清楚问题开始",
+      "source": "https://be1human.github.io/posts/jev-co-creation.html",
+      "sourceLabel": "打开独立文章页",
+      "date": "2026-11-04",
+      "summary": "读《认识 Jev》时，我重新想了一遍人与 AI 的分工：我怎样提出问题、模型怎样表达判断，以及一个建议如何成为可靠的行动。这篇先记下阅读后的想法，再把它带回自己的作品里。",
+      "image": "assets/journal/jev-co-creation.svg",
+      "imageAlt": "共生，从说清楚问题开始：人定义问题，AI 提供判断，程序检查与执行的阅读手记封面",
+      "imageNote": "阅读手记示意：一种协作设计的设想。",
+      "tags": [
+        "Jev",
+        "人与 AI",
+        "学习心得"
+      ],
+      "sections": [
+        {
+          "title": "先把问题问清楚",
+          "paragraphs": [
+            "读 Datawhale 的《认识 Jev》时，我很在意一个问题：当我要的答案已经有明确选项，怎样让 AI 的判断更容易接进程序？第一章介绍的方式是，把材料放进 state，定义问题和选项，再读取类型化结果与概率。",
+            "这让我想到创作中的许多小决定。为一条新闻建议分类、判断一段任务是否需要补充信息，都可以先把问题写清楚。问题越具体，我越容易看见 AI 到底帮了哪一步，也越容易检查自己的提问有没有遗漏。"
+          ],
+          "links": [
+            {
+              "label": "阅读依据：第一章 · 认识 Jev",
+              "url": "https://datawhalechina.github.io/jev-cookbook/course/01/"
+            }
+          ]
+        },
+        {
+          "title": "给它看什么，也是一种设计",
+          "paragraphs": [
+            "课程对 state 的解释很有启发：它是这次判断可以使用的证据。材料是否足够、是否夹带无关内容、有没有把答案提前放进去，都会影响我该怎样理解结果。",
+            "如果把这个想法带到新闻归档，我会先整理原帖内容、来源和发布时间，再请 AI 给分类建议；最后的收录决定仍留给自己。遇到同时涉及游戏与硬件的项目，也应先想清楚是否允许多选。分类规则本身含糊，换一个模型未必能解决问题。"
+          ],
+          "links": [
+            {
+              "label": "补充阅读：核心概念 · State",
+              "url": "https://datawhalechina.github.io/jev-cookbook/course/02/"
+            }
+          ]
+        },
+        {
+          "title": "给不确定留下一个位置",
+          "paragraphs": [
+            "概率、置信度与结果是否正确，需要分开看。课程提醒，判断的质量要放到真实样本中检验。我也因此更愿意在流程里保留“暂缓”“需要补充信息”和“交给我看一下”这些出口。",
+            "对我的作品来说，一个伙伴能在信息不足时停下来，可能比每次都迅速给出答案更让人安心。我想知道它当时看见了什么、有哪些选择，以及为什么这一步值得再确认。这样的停顿，也可以成为交互的一部分。"
+          ],
+          "links": [
+            {
+              "label": "补充阅读：概率、置信度与正确性",
+              "url": "https://datawhalechina.github.io/jev-cookbook/course/02/"
+            }
+          ]
+        },
+        {
+          "title": "把这种分工带回游戏和硬件",
+          "paragraphs": [
+            "我希望游戏里的 AI 伙伴既能表达，也能做出可观察的行动。如果以后把这套思路用到 MineClaw，我会先尝试一个小任务：给它当前可见的环境、一个明确目标和几种可行动作，再由程序检查动作是否允许执行，记录实际发生的结果。",
+            "桌面小屏也让我想到类似的交接：人通过旋钮表达选择，界面把当前状态说清楚，程序确认输入，再给出反馈。把这些环节安排好，人与系统才知道彼此进行到了哪里。这里仍是我从课程延伸出的设计设想，接入效果需要之后验证。"
+          ]
+        },
+        {
+          "title": "下一步，先做一个能复盘的小实验",
+          "paragraphs": [
+            "我想从新闻分类开始，挑一批自己已经读过、能说明分类理由的样本，先约定标签、允许多选的情况和待复核条件。然后在同一批材料上比较人工规则与模型建议，保留分歧，再看错误主要来自材料、问题定义，还是判断本身。",
+            "准确率之外，我也会记录等待时间、调用费用，以及人工复核花了多久。只有把整条流程走一遍，才能知道它是否适合我的日常使用。这篇先停在阅读与实验设计，等真正运行之后，再写下结果。"
+          ]
+        },
+        {
+          "title": "共生发生在一次次交接里",
+          "paragraphs": [
+            "我想表达的人与 AI 共生，落到作品中，应该能被具体看见：我提出目标，AI 提供新的判断，程序把行动落实，结果再帮助我们修正下一步。每一次交接，都有人能理解的依据和反馈。",
+            "这也让我更喜欢首页那句话——“在彼此的思考里生长”。让 AI 参与创造的同时，我也继续学习怎样提问、怎样验证，以及怎样为自己的选择负责。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "阅读课程原文：认识 Jev",
+          "url": "https://datawhalechina.github.io/jev-cookbook/course/01/"
+        },
+        {
+          "label": "延伸阅读：第二章 · 核心概念",
+          "url": "https://datawhalechina.github.io/jev-cookbook/course/02/"
+        }
+      ],
+      "imageFit": "contain"
+    },
+    {
       "id": "a-train-through-the-clouds",
       "title": "一列火车，两种天空： 动态壁纸工作坊",
       "source": "https://be1human.github.io/posts/a-train-through-the-clouds.html",
@@ -802,22 +898,151 @@
     "source": "https://be1human.github.io/projects/haimian-deep-space.html",
     "date": null,
     "summary": "把「深空」带到桌面：用旋钮选择、按键确认，在实体小屏上继续游戏。配合 Windows USB 控制台切换应用与主题，也能通过 WiFi 接入服务并接续存档。",
-    "image": "assets/ed988e374580.svg",
-    "imageAlt": "Haimian 桌面小屏、旋钮与确认按键的结构示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
+    "image": "assets/images/haimian/device-game.webp",
+    "imageAlt": "设备实拍：深空对话已显示在桌面小屏上，旋钮和确认按键位于屏幕下方。",
+    "imageNote": "设备实拍：深空对话已显示在桌面小屏上，旋钮和确认按键位于屏幕下方。",
     "sections": [
       {
-        "title": "旋钮、按键与三种应用",
+        "title": "把深空带到桌面",
         "paragraphs": [
-          "Haimian 把小屏、旋钮和确认按键放进一台桌面设备。旋转用于选择主题或选项，短按确认，长按切换功能，让屏幕中的内容通过实体操作继续展开。",
-          "配套教程展示了 Deep Space、额度屏和时钟三个应用。深空作为其中的游戏入口，可以在桌面小屏上显示内容并进行选择。"
+          "深空以跨越 800 年的虫洞通信为叙事入口。Haimian 将这段对话带到实体小屏，用桌面设备承接游戏中的回复、选项与确认。",
+          "下面的实拍记录了设备显示深空对话的状态；同时保留外观建模、结构拆解与打印试装过程，展示从造型到实体的推进。"
+        ],
+        "images": [
+          {
+            "src": "assets/images/haimian/device-angle.webp",
+            "width": 1279,
+            "height": 1706,
+            "alt": "设备实拍：从侧前方观察小屏的倾斜角度、旋钮与按键布局。",
+            "caption": "设备实拍：从侧前方观察小屏的倾斜角度、旋钮与按键布局。"
+          }
+        ]
+      },
+      {
+        "title": "一个旋钮、一颗按键",
+        "paragraphs": [
+          "Haimian 把小屏、旋钮和确认按键放进一台桌面设备。旋转用于选择主题或选项，短按确认，长按切换功能。",
+          "配套教程展示了 Deep Space、额度屏和时钟三个应用。同一块小屏可以切换内容，实拍中也记录了蓝白时钟主题。"
+        ],
+        "images": [
+          {
+            "src": "assets/images/haimian/device-clock.webp",
+            "width": 1279,
+            "height": 1706,
+            "alt": "设备实拍：切换到蓝白时钟主题，显示时间、日期和星期。",
+            "caption": "设备实拍：切换到蓝白时钟主题，显示时间、日期和星期。"
+          },
+          {
+            "src": "assets/images/haimian/device-side.webp",
+            "width": 1279,
+            "height": 1706,
+            "alt": "外壳实拍：白色打印壳体、倾斜屏幕面板与前置旋钮。",
+            "caption": "外壳实拍：白色打印壳体、倾斜屏幕面板与前置旋钮。"
+          }
+        ]
+      },
+      {
+        "title": "外观与结构探索",
+        "paragraphs": [
+          "建模阶段围绕倾斜屏幕、前置旋钮、按键和前后壳体展开，使用整机视图、概念多视图与爆炸图检查空间关系。"
+        ],
+        "images": [
+          {
+            "src": "assets/images/haimian/model-perspective.webp",
+            "width": 1394,
+            "height": 1279,
+            "alt": "外观建模：整机三分之四视角，探索屏幕、旋钮与侧边的造型关系。",
+            "caption": "外观建模：整机三分之四视角，探索屏幕、旋钮与侧边的造型关系。"
+          },
+          {
+            "src": "assets/images/haimian/design-views.webp",
+            "width": 1448,
+            "height": 1086,
+            "alt": "外观设计与尺寸规划概念板：正面、侧面、背面、顶部与底部。图中规格及标记为设计表达。",
+            "caption": "外观设计与尺寸规划概念板：正面、侧面、背面、顶部与底部。图中规格及标记为设计表达。"
+          },
+          {
+            "src": "assets/images/haimian/exploded.webp",
+            "width": 1800,
+            "height": 1109,
+            "alt": "结构建模：屏幕、旋钮、按键、后盖与底座的装配关系。",
+            "caption": "结构建模：屏幕、旋钮、按键、后盖与底座的装配关系。"
+          },
+          {
+            "src": "assets/images/haimian/internal-layout.webp",
+            "width": 1679,
+            "height": 1280,
+            "alt": "结构探索：内部主板、支撑柱和前后壳体的空间关系。",
+            "caption": "结构探索：内部主板、支撑柱和前后壳体的空间关系。"
+          }
+        ]
+      },
+      {
+        "title": "从分件到装配",
+        "paragraphs": [
+          "壳体分为前壳、后盖和底座。结构分件和装配示意用于表达组件的进入方向，以及屏幕、PCB 与后部托架的关系。",
+          "制作过程实拍保留了未装屏幕和旋钮的壳体状态，可与完整设备对照。"
+        ],
+        "images": [
+          {
+            "src": "assets/images/haimian/shell-parts.webp",
+            "width": 1800,
+            "height": 1000,
+            "alt": "结构分件：前壳、后盖和底座内部设计；仅展示零件结构，非实际打印朝向。",
+            "caption": "结构分件：前壳、后盖和底座内部设计；仅展示零件结构，非实际打印朝向。"
+          },
+          {
+            "src": "assets/images/haimian/assembly-sequence.webp",
+            "width": 1800,
+            "height": 908,
+            "alt": "装配示意：组件进入、屏幕与 PCB 就位、后部托架闭合。",
+            "caption": "装配示意：组件进入、屏幕与 PCB 就位、后部托架闭合。"
+          },
+          {
+            "src": "assets/images/haimian/shell-unassembled.webp",
+            "width": 810,
+            "height": 1440,
+            "alt": "制作过程实拍：屏幕和旋钮尚未装入的前壳，按键灯环已亮起。",
+            "caption": "制作过程实拍：屏幕和旋钮尚未装入的前壳，按键灯环已亮起。"
+          }
+        ]
+      },
+      {
+        "title": "打印样件与桌面试装",
+        "paragraphs": [
+          "白色外壳样件和桌面试装照片记录了模型落地的过程。前后壳、连接线和供电设备放在一起检查，再推进到完整设备。"
+        ],
+        "images": [
+          {
+            "src": "assets/images/haimian/printed-prototypes.webp",
+            "width": 1064,
+            "height": 983,
+            "alt": "打印样件实拍：多件白色外壳样件，记录模型到实体的制作过程。",
+            "caption": "打印样件实拍：多件白色外壳样件，记录模型到实体的制作过程。"
+          },
+          {
+            "src": "assets/images/haimian/assembly-bench.webp",
+            "width": 1013,
+            "height": 1800,
+            "alt": "桌面试装实拍：前壳、后盖、连接线与供电设备放在一起检查。",
+            "caption": "桌面试装实拍：前壳、后盖、连接线与供电设备放在一起检查。"
+          }
         ]
       },
       {
         "title": "Windows USB 控制台",
         "paragraphs": [
-          "设备通过 USB 连接 Windows 后，可在配套控制台中查看连接状态或重新检测设备，再选择应用与主题并应用到小屏。控制台同时提供启动、停止和时间同步等入口。",
-          "应用与主题切换、时间同步可以通过 USB 在本地完成。控制台与实体设备各自承担配置和显示交互，让同一块小屏可以在不同应用之间切换。"
+          "设备通过 USB 连接 Windows 后，可在配套控制台中查看连接状态或重新检测设备，选择应用与主题，并应用到小屏。控制台同时提供启动、停止和时间同步等入口。",
+          "应用与主题切换、时间同步可以通过 USB 在本地完成。控制台与实体设备分别承担配置和显示交互。"
+        ],
+        "images": [
+          {
+            "src": "assets/images/haimian/pc-console.webp",
+            "width": 1088,
+            "height": 1263,
+            "alt": "Windows 控制台截图：USB 连接状态、应用切换、主题预览和设备运行控制。",
+            "caption": "Windows 控制台截图：USB 连接状态、应用切换、主题预览和设备运行控制。"
+          }
         ]
       },
       {
@@ -825,16 +1050,31 @@
         "paragraphs": [
           "设备可进入 AP 配网模式，在配网页中选择 2.4 GHz WiFi，保存并重启后连接深空服务。游戏服务的交互需要网络连接。",
           "配网页提供服务器设置和存档接续入口，可使用手机端已有的存档标识继续会话，让桌面外设与原有游戏进度接上。"
-        ]
+        ],
+        "images": []
       }
     ],
-    "links": [],
+    "links": [
+      {
+        "label": "进入深空官网",
+        "url": "https://dsgame.archerpeng.com/"
+      }
+    ],
     "tags": [
+      "叙事游戏",
       "实体交互",
       "深空",
       "桌面小屏"
     ],
-    "sourceImage": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg"
+    "sourceImage": "https://be1human.github.io/assets/images/haimian-deep-space-cover.svg",
+    "imageWidth": 1279,
+    "imageHeight": 1706,
+    "category": "games",
+    "categories": [
+      "games",
+      "experiments"
+    ],
+    "categoryLabel": "游戏 / 交互硬件"
   },
   "provenance": {
     "extractedAt": "2026-11-02",

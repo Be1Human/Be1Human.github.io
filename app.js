@@ -1,6 +1,6 @@
 (()=>{'use strict';
-// Existing RSS and shared status URLs now open the preserved reading timeline.
-if (/^#(?:status-|article-)/.test(location.hash)) { location.replace('journal.html'+location.search+location.hash); return; }
+// Preserve existing public RSS and article/status links.
+if(/^#(?:status-|article-)/.test(location.hash)){location.replace('journal.html'+location.search+location.hash);return}
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const validURL=u=>/^https:\/\//.test(u||'')?u:'#';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)'),small=matchMedia('(max-width: 700px)');
@@ -15,7 +15,7 @@ const heroStates=['home','half','screens','face','controller'],heroClips=['home-
 const journeyStates=['entry','panels','near','street','arrival','symbol'],journeyClips=['entry-panels','panels-near','near-street','street-arrival','arrival-symbol'];
 const chapters=[{name:'角色档案',en:'PROFILE',route:'about',note:'关于云上男孩，以及那些始终保持好奇的事。'},{name:'创作记录',en:'JOURNAL',route:'journal',note:'把构想变成作品的过程，也值得被留下。'},{name:'创作领域',en:'FIELDS',route:'about',note:'游戏 / AI 工具 / 视觉 / 硬件。'},{name:'作品集',en:'PROJECTS',route:'works',note:'从一台桌面小屏，到一个可以探索的世界。'},{name:'联系与链接',en:'LINKS',route:'contact',note:'继续聊聊，继续创造。'}];
 const renderedViews=new Set();
-function populateView(){if(data&&!renderedViews.has(route)){if(route==='works'){renderProjects();renderFilm()}if(route==='journal')renderJournal();if(route==='news')renderNews();renderedViews.add(route)}document.querySelectorAll('#'+route+' img[data-src]').forEach(im=>{im.src=im.dataset.src;delete im.dataset.src})}
+function populateView(){if(data){if(route==='news')renderNews();else if(!renderedViews.has(route)){if(route==='works'){renderProjects();renderFilm()}if(route==='journal')renderJournal();renderedViews.add(route)}}document.querySelectorAll('#'+route+' img[data-src]').forEach(im=>{im.src=im.dataset.src;delete im.dataset.src})}
 const routes=['home','index','about','works','journal','news','journey','contact'];
 const labels={home:'首页',index:'索引',about:'关于',works:'作品',journal:'创作手记',news:'科技新闻',journey:'创作世界',contact:'联系'};
 const imageCache=new Map();
@@ -80,7 +80,7 @@ function renderDeck(){
   `<div class="chapter-face passport"><div class="pass-rail">PERSONAL FILE <span>CB—001</span></div><div class="pass-copy"><span class="chapter-kicker">01 / MEET THE CREATOR</span><h2>角色<br>档案<span>↗</span></h2><p>云上男孩 / BE1HUMAN</p><span class="pass-signature">Stay curious.</span><i class="barcode"></i></div><div class="pass-photo"><span>CREATOR ID</span><img src="assets/character.webp" width="240" height="340" alt="" loading="lazy"></div><span class="pass-stamp">保持好奇<br>KEEP CREATING</span><span class="chapter-foot">PROFILE / 个人档案</span></div>`,
   `<div class="chapter-face notebook"><div class="journal-photo"><img src="assets/a5b585b46ae1.webp" width="600" height="400" alt="" loading="lazy"><span>FIELD NOTES / 02</span></div><div class="journal-paper"><span class="chapter-kicker">THE MAKING OF</span><h2>创作<br>手记<span>↗</span></h2><p>从一个念头，<br>到可以运行的作品。</p><span class="journal-line">IDEA — BUILD — REPEAT</span></div><span class="journal-tape"></span><span class="journal-sticker">记录<br>进行时 ✳</span><span class="chapter-foot">JOURNAL / 创作中的切片</span></div>`,
   `<div class="chapter-face terminal"><div class="terminal-head"><span>● ● ●</span><span>CB / EXPERIMENT LAB</span><b>03</b></div><div class="terminal-title"><span class="chapter-kicker">THINGS I MAKE</span><h2>创作领域<span>↗</span></h2></div><div class="skill-modules"><span><i>✚</i><b>PLAY</b><small>游戏</small></span><span><i>&gt;_</i><b>BUILD</b><small>AI 工具</small></span><span><i>◈</i><b>SEE</b><small>视觉</small></span><span><i>⊞</i><b>TOUCH</b><small>硬件</small></span></div><div class="terminal-command"><span>~/cloudboy</span> explore --all <b>▌</b></div></div>`,
-  `<div class="chapter-face gamecart"><div class="cart-ridges"></div><div class="cart-heading"><span class="cart-number">04</span><div><span class="chapter-kicker">SELECTED WORKS</span><h2>作品集 <span>↗</span></h2></div><span class="cart-star">✳</span></div><div class="cart-screens"><span><img src="assets/ed988e374580.svg" width="320" height="200" alt="" loading="lazy"><b>01 / HAIMIAN</b></span><span><img src="assets/904137f6e5d5.svg" width="320" height="200" alt="" loading="lazy"><b>02 / RAIN CITY</b></span><span><img src="assets/cbb91d2e0275.webp" width="320" height="200" alt="" loading="lazy"><b>03 / MINECLAW</b></span></div><span class="chapter-foot">把想法，做成作品。<b>PRESS START →</b></span><div class="cart-pins"></div></div>`,
+  `<div class="chapter-face gamecart"><div class="cart-ridges"></div><div class="cart-heading"><span class="cart-number">04</span><div><span class="chapter-kicker">SELECTED WORKS</span><h2>作品集 <span>↗</span></h2></div><span class="cart-star">✳</span></div><div class="cart-screens"><span><img src="assets/images/haimian/device-game.webp" width="320" height="200" alt="" loading="lazy"><b>01 / HAIMIAN</b></span><span><img src="assets/904137f6e5d5.svg" width="320" height="200" alt="" loading="lazy"><b>02 / RAIN CITY</b></span><span><img src="assets/cbb91d2e0275.webp" width="320" height="200" alt="" loading="lazy"><b>03 / MINECLAW</b></span></div><span class="chapter-foot">把想法，做成作品。<b>PRESS START →</b></span><div class="cart-pins"></div></div>`,
   `<div class="chapter-face boarding"><div class="boarding-main"><span class="chapter-kicker">OPEN CHANNEL / 05</span><h2>保持<br>联系<span>↗</span></h2><div class="boarding-route"><span>YOU</span><i>········ ↗</i><span>CLOUD</span></div><p>继续聊聊，继续创造。</p><span class="boarding-sign">NEXT STOP / SOMETHING NEW</span></div><div class="boarding-stub"><span>BOARDING PASS</span><div class="sheep-orbit"><img src="assets/sheep.svg" width="95" height="75" alt="" loading="lazy"></div><b>∞</b><small>IDEAS WELCOME</small><i class="barcode"></i></div></div>`
  ];
  $('deck').innerHTML=chapters.map((c,i)=>`<button class="cartridge chapter-${i}" data-chapter="${i}" aria-label="${esc(c.name)}" tabindex="${i===deckIndex?0:-1}">${faces[i]}</button>`).join('');updateDeck();
@@ -163,7 +163,7 @@ $('tour-toggle').onclick=()=>{if(autoRunning){stopAuto();cancelMotion();setPoste
 go(location.hash.slice(1)||'home',{boot:true});
 document.querySelectorAll('[data-filter-link]').forEach(a=>a.addEventListener('click',()=>{filter=a.dataset.filterLink;if(data)renderProjects()}));
 const categories=[['all','全部'],['games','游戏'],['tools','AI 工具'],['visual','视觉'],['experiments','硬件 / 实验']];
-function categoryMatch(p){if(filter==='all')return true;const text=(p.category+' '+p.categoryLabel+' '+p.tags.join(' ')).toLowerCase();if(filter==='visual')return /visual|视觉|壁纸|shader/.test(text);if(filter==='tools')return /tool|工具|workflow|效率/.test(text);return p.category===filter}
+function categoryMatch(p){if(filter==='all'||(p.categories||[p.category]).includes(filter))return true;const text=(p.category+' '+p.categoryLabel+' '+p.tags.join(' ')).toLowerCase();if(filter==='visual')return /visual|视觉|壁纸|shader/.test(text);if(filter==='tools')return /tool|工具|workflow|效率/.test(text);return p.category===filter}
 function renderProjects(){if(!data)return;$('filters').innerHTML=categories.map(([id,name])=>`<button data-filter="${id}" class="${filter===id?'active':''}" aria-pressed="${filter===id}">${name}</button>`).join('');const projects=data.projects.filter(categoryMatch);$('project-count').textContent=String(projects.length).padStart(2,'0');$('project-grid').innerHTML=projects.map(p=>`<button class="project-card" data-project="${esc(p.id)}"><span class="cover"><img src="${esc(p.image)}" alt="${esc(p.imageAlt)}" loading="lazy" decoding="async" width="640" height="400"></span><span class="meta">${esc(p.categoryLabel)} / ${esc(p.tags.slice(0,2).join(' · '))}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><span class="open">打开项目 ↗</span></button>`).join('')}
 $('filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(b){filter=b.dataset.filter;renderProjects()}});
 function renderFilm(){const featured=data.projects.slice(0,6),suits=['◆','♠','✦','♥','♣','♦'];$('film-strip').innerHTML=featured.map((p,i)=>`<button class="work-card" data-film="${i}" aria-label="查看 ${esc(p.title)}"><span class="card-corner">${String(i+1).padStart(2,'0')}<b>${suits[i]}</b></span><span class="card-edition">CLOUD BOY<br>SELECTED / 2026</span><img src="${esc(p.image)}" alt="${esc(p.imageAlt)}" width="640" height="400" decoding="async"><span class="card-copy"><small>${esc(p.categoryLabel)}</small><strong>${esc(p.title)}</strong></span><span class="card-bottom">EXPLORE PROJECT <b>↗</b></span><span class="card-corner mirrored">${String(i+1).padStart(2,'0')}<b>${suits[i]}</b></span></button>`).join('');updateFilm()}
@@ -174,16 +174,88 @@ $('film-prev').onclick=()=>turnFilm(-1);$('film-next').onclick=()=>turnFilm(1);$
 $('film-redeal').onclick=dealWorks;
 $('film-strip').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();turnFilm(e.key==='ArrowRight'?1:-1);document.querySelector('.work-card.active')?.focus({preventScroll:true})});
 function renderJournal(){$('timeline').innerHTML=data.journal.map(j=>`<button class="journal-card" data-journal="${esc(j.id)}"><div><time datetime="${j.date}">${j.date.replaceAll('-',' / ')}</time><h2>${esc(j.title)}</h2><p>${esc(j.summary)}</p><span class="text-link">翻开这篇手记 ↗</span></div><img src="${esc(j.image)}" alt="${esc(j.imageAlt)}" width="600" height="400" loading="lazy" decoding="async"></button>`).join('')}
-function renderNews(){
- const clock=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Hong_Kong',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false});
- $('news-date').textContent=data.news.date+' 期 / '+data.news.items.length+' 条精选 · 发布时间为 UTC+8';
- $('news-list').innerHTML=data.news.items.map((n,i)=>{
-  const date=new Date(n.publishedAt),valid=n.publishedAt&&!Number.isNaN(date.getTime()),stamp=valid?clock.format(date):'时间未提供';
-  return `<article class="news-item"><div class="news-card-meta"><span class="news-category"><b>${String(i+1).padStart(2,'0')}</b>${esc(n.category)}</span><time ${valid?`datetime="${esc(n.publishedAt)}"`:''}>${esc(stamp)}</time></div><a class="news-cover" href="${esc(validURL(n.source))}" target="_blank" rel="noopener" aria-label="查看 ${esc(n.title)} 的原帖"><img src="${esc(n.image)}" alt="${esc(n.imageAlt||n.title)}" width="1200" height="750" loading="${i<2?'eager':'lazy'}" decoding="async"><span class="news-image-kind">${n.imageKind==='diagram'?'主题图解':'原帖配图'} <b>↗</b></span></a><div class="news-copy"><h2><a href="${esc(validURL(n.source))}" target="_blank" rel="noopener">${esc(n.title)}</a></h2><p>${esc(n.summary)}</p><div class="news-card-bottom"><small>${esc(n.author)}</small><a href="${esc(validURL(n.source))}" target="_blank" rel="noopener">阅读原帖 ↗</a></div></div></article>`
+let newsArchive=null,newsArchiveReady=null,newsEditionId='',newsLoadToken=0;
+const newsEditionCache=new Map();
+const newsClock=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Hong_Kong',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false});
+function paintNewsItems(items){
+ $('news-list').innerHTML=items.map((n,i)=>{
+  const date=new Date(n.publishedAt),valid=n.publishedAt&&!Number.isNaN(date.getTime()),stamp=valid?newsClock.format(date):'时间未提供';
+  return `<article class="news-item"><div class="news-card-meta"><span class="news-category"><b>${String(i+1).padStart(2,'0')}</b>${esc(n.category)}</span><time ${valid?`datetime="${esc(n.publishedAt)}"`:''}>${esc(stamp)}</time></div><a class="news-cover" href="${esc(validURL(n.source))}" target="_blank" rel="noopener" aria-label="查看 ${esc(n.title)} 的原帖"><img src="${esc(n.image)}" alt="${esc(n.imageAlt||n.title)}" width="1200" height="750" loading="${i<2?'eager':'lazy'}" decoding="async"><span class="news-image-kind">${n.imageKind==='diagram'?'主题示意':'原帖配图'} <b>↗</b></span></a><div class="news-copy"><h2><a href="${esc(validURL(n.source))}" target="_blank" rel="noopener">${esc(n.title)}</a></h2><details class="news-summary"><summary><span class="news-excerpt">${esc(n.summary)}</span><span class="news-summary-action"><span class="when-closed">展开摘要 +</span><span class="when-open">收起摘要 −</span></span></summary><p>${esc(n.summary)}</p></details><div class="news-card-bottom"><small>${esc(n.author)}</small><a href="${esc(validURL(n.source))}" target="_blank" rel="noopener">阅读原帖 ↗</a></div></div></article>`
  }).join('');
 }
+function requestedNewsEdition(){const id=new URLSearchParams(location.search).get('newsDate');return newsArchive.editions.some(e=>e.id===id)?id:newsArchive.newest}
+function newsEditionLabel(entry){return entry.date.replaceAll('-','.')+(entry.id.endsWith('-evening')?' 晚间':'')}
+function newsControls(id){
+ const i=newsArchive.editions.findIndex(e=>e.id===id);
+ $('news-edition').value=id;$('news-older').disabled=i===newsArchive.editions.length-1;$('news-newer').disabled=i===0;$('news-latest').disabled=i===0;
+}
+async function showNewsEdition(id,{remember=false}={}){
+ const entry=newsArchive.editions.find(e=>e.id===id);if(!entry)return;
+ const token=++newsLoadToken;newsEditionId=id;newsControls(id);
+ if(remember){const url=new URL(location.href);url.searchParams.set('newsDate',id);history.pushState(null,'',url)}
+ $('news-error').hidden=true;$('news-list').setAttribute('aria-busy','true');$('news-list').replaceChildren();$('news-date').textContent='正在载入 '+newsEditionLabel(entry)+' 期…';
+ try{
+  if(!newsEditionCache.has(id)){
+   newsEditionCache.set(id,fetch(entry.url+'?v='+newsArchive.sourceRevision).then(r=>{if(!r.ok)throw Error('news edition');return r.json()}).then(edition=>{if(edition.id!==id||!Array.isArray(edition.items)||edition.items.length!==entry.count)throw Error('news edition mismatch');return edition}));
+   if(newsEditionCache.size>4)newsEditionCache.delete(newsEditionCache.keys().next().value);
+  }
+  const edition=await newsEditionCache.get(id);if(token!==newsLoadToken||route!=='news')return;
+  paintNewsItems(edition.items);$('news-list').setAttribute('aria-busy','false');$('news-date').textContent=newsEditionLabel(entry)+' 期 / '+edition.items.length+' 条精选 · 原帖发布时间为 UTC+8';
+  $('announcement').textContent='已显示 '+newsEditionLabel(entry)+' 期新闻，共 '+edition.items.length+' 条';
+  if(route==='news'&&!routeTransitioning)stagger('.news-item',[{opacity:0,transform:'translateY(24px)'},{opacity:1,transform:'none'}],{delay:45,duration:500});
+ }catch{
+  newsEditionCache.delete(id);if(token!==newsLoadToken)return;
+  $('news-list').setAttribute('aria-busy','false');$('news-date').textContent=newsEditionLabel(entry)+' 期未能载入';$('news-error').hidden=false;
+ }
+}
+async function renderNews(){
+ try{
+  if(!newsArchiveReady)newsArchiveReady=fetch('assets/news/archive.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('news archive');return r.json()}).then(archive=>{if(!archive.editions?.length)throw Error('empty news archive');return archive}).catch(error=>{newsArchiveReady=null;throw error});
+  newsArchive=await newsArchiveReady;
+  $('news-archive-summary').textContent=newsArchive.oldest+' — '+newsArchive.newest+' · '+newsArchive.editions.length+' 期 / '+newsArchive.totalItems+' 条';
+  $('news-edition').innerHTML=newsArchive.editions.map(e=>`<option value="${esc(e.id)}">${esc(newsEditionLabel(e))} · ${e.count} 条</option>`).join('');$('news-archive-nav').hidden=false;
+  await showNewsEdition(requestedNewsEdition());
+ }catch{
+  $('news-archive-summary').textContent='历史归档暂时未能载入';$('news-date').textContent='离线快照：'+data.news.date+' 期 / '+data.news.items.length+' 条';paintNewsItems(data.news.items);$('news-error').hidden=false;
+ }
+}
+let newsRefreshAt=0;
+async function refreshNewsArchive(){
+ if(route!=='news'||document.hidden||Date.now()-newsRefreshAt<60000)return;
+ newsRefreshAt=Date.now();
+ try{
+  const response=await fetch('assets/news/archive.json?check='+Math.floor(Date.now()/300000),{cache:'no-store'});
+  if(!response.ok)return;const fresh=await response.json();
+  if(!fresh.editions?.length||fresh.sourceRevision===newsArchive?.sourceRevision)return;
+  newsArchiveReady=Promise.resolve(fresh);await renderNews();
+ }catch{/* Keep the last verified edition available during an outage. */}
+}
+setInterval(refreshNewsArchive,300000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshNewsArchive()});
+$('news-edition').addEventListener('change',e=>showNewsEdition(e.target.value,{remember:true}));
+$('news-older').onclick=()=>{const i=newsArchive.editions.findIndex(e=>e.id===newsEditionId);if(i>=0&&i<newsArchive.editions.length-1)showNewsEdition(newsArchive.editions[i+1].id,{remember:true})};
+$('news-newer').onclick=()=>{const i=newsArchive.editions.findIndex(e=>e.id===newsEditionId);if(i>0)showNewsEdition(newsArchive.editions[i-1].id,{remember:true})};
+$('news-latest').onclick=()=>newsArchive&&showNewsEdition(newsArchive.newest,{remember:true});
+$('news-retry').onclick=()=>newsArchive?showNewsEdition(newsEditionId):renderNews();
+window.addEventListener('popstate',()=>{if(newsArchive&&route==='news'&&location.hash==='#news')showNewsEdition(requestedNewsEdition())});
 const reader=$('reader');
-function readerContent(type,id){let item=type==='journal'?data.journal.find(x=>x.id===id):data.projects.find(x=>x.id===id);if(!item)return false;if(type==='project'&&id===data.featuredProject.id)item={...item,...data.featuredProject};const sections=item.sections||[];$('reader-type').textContent=type==='journal'?'JOURNAL / 创作手记':'PROJECT ARCHIVE / 项目档案';$('reader-body').innerHTML=`<p class="reader-meta">${esc(item.date||item.categoryLabel||'CLOUD BOY')} / ${esc(item.tags?.join(' · ')||'')}</p><h1 id="reader-title">${esc(item.title)}</h1><p>${esc(item.summary)}</p><img class="reader-cover" src="${esc(item.image)}" alt="${esc(item.imageAlt||item.title)}" width="900" height="550" decoding="async"><small>${esc(item.imageNote||'')}</small>${sections.map(s=>`<section><h2>${esc(s.title)}</h2>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}</section>`).join('')}<div class="reader-links"><a href="${esc(validURL(item.source))}" target="_blank" rel="noopener">${type==='journal'?'阅读原文':'查看项目完整记录'} ↗</a>${(item.links||[]).filter(l=>l.url!==item.source).map(l=>`<a href="${esc(validURL(l.url))}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>${type==='project'?'<div class="related"><button class="text-link" data-journal="'+(id==='mineclaw'?'meet-mineclaw':'a-train-through-the-clouds')+'">翻开创作手记 ↗</button></div>':''}`;reader.style.setProperty('--reader-depth',Math.min(readerStack.length,3));$('reader-back').hidden=readerStack.length<2;reader.scrollTop=0;return true}
+function readerImage(im){return `<figure class="reader-figure ${im.width/im.height>1.45?'wide':''}"><button class="reader-image-button" data-reader-image="${esc(im.src)}" data-caption="${esc(im.caption||im.alt)}" aria-label="放大查看：${esc(im.alt)}"><img src="${esc(im.src)}" alt="${esc(im.alt)}" width="${im.width||900}" height="${im.height||600}" loading="lazy" decoding="async"><span>查看大图 ↗</span></button><figcaption>${esc(im.caption||im.alt)}</figcaption></figure>`}
+function readerContent(type,id){
+ let item=type==='journal'?data.journal.find(x=>x.id===id):data.projects.find(x=>x.id===id);if(!item)return false;
+ if(type==='project'&&id===data.featuredProject.id)item={...item,...data.featuredProject};
+ const sections=item.sections||[],hasGallery=sections.some(s=>s.images?.length),official=(item.links||[]).find(l=>l.url==='https://dsgame.archerpeng.com/');
+ reader.classList.toggle('has-project-gallery',hasGallery);$('reader-type').textContent=type==='journal'?'JOURNAL / 创作手记':'PROJECT ARCHIVE / 项目档案';
+ $('reader-body').innerHTML=`<p class="reader-meta">${esc(item.date||item.categoryLabel||'CLOUD BOY')} / ${esc(item.tags?.join(' · ')||'')}</p><h1 id="reader-title">${esc(item.title)}</h1><p>${esc(item.summary)}</p>${official?`<a class="project-official" href="${esc(official.url)}" target="_blank" rel="noopener">进入深空官网 <span>↗</span></a>`:''}${hasGallery?readerImage({src:item.image,alt:item.imageAlt||item.title,caption:item.imageNote,width:item.imageWidth,height:item.imageHeight}):`<img class="reader-cover ${item.imageFit==='contain'?'contained':''}" src="${esc(item.image)}" alt="${esc(item.imageAlt||item.title)}" width="900" height="550" decoding="async"><small>${esc(item.imageNote||'')}</small>`}${sections.map(s=>`<section><h2>${esc(s.title)}</h2>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.images?.length?`<div class="reader-gallery">${s.images.map(readerImage).join('')}</div>`:''}${s.links?.length?`<div class="reader-section-links">${s.links.map(l=>`<a href="${esc(validURL(l.url))}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>`:''}</section>`).join('')}<div class="reader-links"><a href="${esc(validURL(item.source))}" target="_blank" rel="noopener">${esc(item.sourceLabel||(type==='journal'?'阅读原文':'查看项目完整记录'))} ↗</a>${(item.links||[]).filter(l=>l.url!==item.source).map(l=>`<a href="${esc(validURL(l.url))}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>${type==='project'?'<div class="related"><button class="text-link" data-journal="'+(id==='mineclaw'?'meet-mineclaw':'a-train-through-the-clouds')+'">翻开创作手记 ↗</button></div>':''}`;
+ reader.style.setProperty('--reader-depth',Math.min(readerStack.length,3));$('reader-back').hidden=readerStack.length<2;reader.scrollTop=0;return true;
+}
+const projectLightbox=document.createElement('dialog');projectLightbox.id='project-lightbox';projectLightbox.setAttribute('aria-label','项目图片大图');
+projectLightbox.innerHTML='<div class="lightbox-toolbar"><span id="lightbox-count"></span><button id="lightbox-close" aria-label="关闭大图">关闭 ×</button></div><figure><img id="lightbox-image" alt=""><figcaption id="lightbox-caption"></figcaption></figure><div class="lightbox-controls"><button id="lightbox-prev" aria-label="上一张图片">← 上一张</button><button id="lightbox-next" aria-label="下一张图片">下一张 →</button></div>';
+document.body.append(projectLightbox);let lightboxIndex=0,lightboxItems=[],lightboxTrigger=null;
+function showProjectImage(index){lightboxIndex=(index+lightboxItems.length)%lightboxItems.length;const b=lightboxItems[lightboxIndex];$('lightbox-image').src=b.dataset.readerImage;$('lightbox-image').alt=b.querySelector('img').alt;$('lightbox-caption').textContent=b.dataset.caption;$('lightbox-count').textContent=String(lightboxIndex+1).padStart(2,'0')+' / '+lightboxItems.length}
+$('reader-body').addEventListener('click',e=>{const b=e.target.closest('[data-reader-image]');if(!b)return;lightboxItems=[...$('reader-body').querySelectorAll('[data-reader-image]')];lightboxTrigger=b;showProjectImage(lightboxItems.indexOf(b));projectLightbox.showModal();$('lightbox-close').focus()});
+$('lightbox-close').onclick=()=>projectLightbox.close();$('lightbox-prev').onclick=()=>showProjectImage(lightboxIndex-1);$('lightbox-next').onclick=()=>showProjectImage(lightboxIndex+1);
+projectLightbox.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();e.stopPropagation();showProjectImage(lightboxIndex+(e.key==='ArrowRight'?1:-1))}});
+projectLightbox.addEventListener('cancel',e=>{e.preventDefault();e.stopPropagation();projectLightbox.close()});projectLightbox.addEventListener('close',()=>{lightboxTrigger?.focus({preventScroll:true});$('lightbox-image').removeAttribute('src')});
 function openReader(type,id){if(!data)return;if(!reader.open){returnFocus=document.activeElement;readerStack=[]}readerStack.push({type,id});if(!readerContent(type,id))return;if(!reader.open){reader.showModal();document.body.style.overflow='hidden';$('reader-close').focus();animate(reader,[{opacity:0,transform:'perspective(1200px) translateY(140px) rotateX(18deg) scale(.75)'},{opacity:1,transform:'none'}],{duration:700})}else if(motionEnabled)$('reader-body').animate([{opacity:0,transform:'perspective(1200px) translateX(100px) rotateY(-18deg)'},{opacity:1,transform:'none'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'})}
 document.addEventListener('click',e=>{const p=e.target.closest('[data-project]'),j=e.target.closest('[data-journal]');if(p)openReader('project',p.dataset.project);else if(j)openReader('journal',j.dataset.journal)});
 async function closeReader(){if(reader.dataset.closing)return;reader.dataset.closing='true';await animate(reader,[{opacity:1,transform:'none'},{opacity:0,transform:'perspective(1200px) translateY(100px) rotateX(12deg) scale(.86)'}],{duration:220,easing:'ease-in'});reader.close();delete reader.dataset.closing}reader.addEventListener('cancel',e=>{e.preventDefault();closeReader()});$('reader-close').onclick=closeReader;$('reader-back').onclick=()=>{readerStack.pop();const v=readerStack.at(-1);if(v){readerContent(v.type,v.id);animate($('reader-body'),[{opacity:0,transform:'perspective(1200px) translateX(-70px) rotateY(12deg)'},{opacity:1,transform:'none'}],{duration:500})}};reader.addEventListener('close',()=>{document.body.style.overflow='';readerStack=[];returnFocus?.focus({preventScroll:true})});reader.addEventListener('click',e=>{if(e.target===reader){const r=reader.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeReader()}});
@@ -194,18 +266,5 @@ $('journey-start').onclick=()=>{journeyStep=0;location.hash='journey'};$('journe
 window.addEventListener('wheel',e=>{if(routeTransitioning||reader.open||route!=='journey'||small.matches||!motionEnabled)return;if(Math.abs(e.deltaY)<Math.abs(e.deltaX))return;e.preventDefault();stopAuto();if(transitioning)return;wheelTotal+=e.deltaY;clearTimeout(wheelTimer);wheelTimer=setTimeout(()=>wheelTotal=0,150);if(Math.abs(wheelTotal)>65){const d=Math.sign(wheelTotal);wheelTotal=0;stepJourney(d)}},{passive:false});
 document.addEventListener('keydown',e=>{if(routeTransitioning||reader.open||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,textarea,select'))return;if(e.key==='Escape'&&route==='journey'){location.hash='works';return}if(['ArrowLeft','ArrowRight'].includes(e.key)&&(route==='home'&&e.target.closest('#index'))){e.preventDefault();turnDeck(e.key==='ArrowRight'?1:-1)}if(['ArrowDown','ArrowUp'].includes(e.key)&&route==='journey'){e.preventDefault();stopAuto();const d=e.key==='ArrowDown'?1:-1;stepJourney(d)}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stopAuto();cancelMotion();if(routeTransitioning)go(requestedRoute,{instant:true});else setPoster(activeScene)}else if(route==='home')syncHomeScroll()});
-Promise.all([
- fetch('content-local.json?v=release-20261103').then(r=>{if(!r.ok)throw Error('content');return r.json()}),
- fetch('data/news.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null)
-]).then(([d,archive])=>{
- const latest=archive?.editions?.[0];
- if(latest?.items?.length){
-  const cached=new Map(d.news.items.map(n=>[n.source,n]));
-  d.news={date:latest.date,source:'news/'+latest.id+'.html',items:latest.items.map(n=>{
-   const old=cached.get(n.url),image=old?.image||n.preview?.url;
-   return {id:n.id,title:n.title,summary:n.summary,category:n.category,author:n.author,source:n.url,publishedAt:n.publishedAtISO,image:image||'assets/news/signal.svg',imageKind:old?.imageKind||(image?'original':'diagram'),imageAlt:old?.imageAlt||n.preview?.alt||'新闻主题示意图'};
-  })};
- }
- data=d;populateView();if(!routeTransitioning&&['works','journal','news'].includes(route))enterView(route)
-}).catch(()=>{$('content-error').hidden=false});
+fetch('content-local.json?v=jev-journal-19',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('content');return r.json()}).then(d=>{data=d;populateView();if(!routeTransitioning&&['works','journal','news'].includes(route))enterView(route)}).catch(()=>{$('content-error').hidden=false});
 })();

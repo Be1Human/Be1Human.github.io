@@ -1,0 +1,430 @@
+{
+  "id": "2026-10-18",
+  "date": "2026-10-18",
+  "label": "108 条初筛 · 22 条展开核验 · 19 条精选",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-10-18",
+  "items": [
+    {
+      "id": "item-974670feab8b9f72",
+      "title": "ESP Emulator：不用开发板运行固件",
+      "summary": "Espressif 的 ESP Emulator 可在桌面或浏览器中运行所支持 ESP32 芯片的 ESP-IDF 固件，适合先验证软件流程。目前仍属 Beta；公开仓库分发安装器、预编译程序、文档和辅助工具，不能据此称模拟器核心全部开源。浏览器托管版不支持直接联网，硬件时序与外设表现仍需实机验证。",
+      "category": "硬件创客",
+      "author": "Praveen Kumar Verma (@Alacritic_Super)",
+      "publishedAt": "2026-10-17T18:16:20.000Z",
+      "source": "https://x.com/Alacritic_Super/status/2111521710604530144",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/espressif/esp-emulator"
+        }
+      ],
+      "image": "assets/news/item-974670feab8b9f72.webp",
+      "imageAlt": "ESP Emulator：不用开发板运行固件：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111521580019003392/img/KGGDqiErnuz9cSTL.jpg"
+    },
+    {
+      "id": "item-06e993851aa896ab",
+      "title": "HSync：用 TypeScript 子集编写协议解码器",
+      "summary": "HSync 是 Rust、Tauri 与 Vue 构建的逻辑分析仪应用。作者称 uiharu 解码链路将严格 TypeScript 子集编译为 IR，再生成 Rust 原生代码，并非通用 TypeScript 编译器。当前主工程标注 Apache-2.0 或 GPL-3.0-or-later；作者明确实机测试的是 DSLogic U2Pro16，兼容列表不等于全部设备已验证。",
+      "category": "硬件创客",
+      "author": "Pipe (@_HalfSweet)",
+      "publishedAt": "2026-10-17T11:35:30.000Z",
+      "source": "https://x.com/_HalfSweet/status/2111420835928121669",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/HalfSweet/HSync"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/HalfSweet/HSync/blob/main/Cargo.toml"
+        }
+      ],
+      "image": "assets/news/item-06e993851aa896ab.webp",
+      "imageAlt": "HSync：用 TypeScript 子集编写协议解码器：原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HU1F6w7bsAA7qKd?format=png&name=small"
+    },
+    {
+      "id": "item-681f893b8d753ae2",
+      "title": "Desigma：Rust 原生 UI 设计编辑器",
+      "summary": "Desigma 是不依赖 Electron 的 Rust 原生 UI 设计工具，支持导入 .fig 与 Figma REST JSON，并提供布局、组件、向量与 MCP 文件会话能力。代码采用 MIT 或 Apache-2.0。项目仍处于早期 Alpha，真实 .fig 文件兼容性有缺口，部分字体需要下载，不宜理解为成熟 Figma 替代品或始终完全离线。",
+      "category": "实用工具",
+      "author": "Geek Lite (@QingQ77)",
+      "publishedAt": "2026-10-17T15:11:00.000Z",
+      "source": "https://x.com/QingQ77/status/2111475068849049851",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/deepfounder-ai/desigma"
+        }
+      ],
+      "image": "assets/news/item-681f893b8d753ae2.webp",
+      "imageAlt": "Desigma：Rust 原生 UI 设计编辑器：原帖图片",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/media/HUzSm-9aQAAd3nt?format=jpg&name=small"
+    },
+    {
+      "id": "item-7af8304e510cff3c",
+      "title": "Eleven：Agent 辅助逆向分析工作台",
+      "summary": "Eleven 将支持 ACP 的 Agent 接入逆向分析界面，支持二进制、APK 等文件，并整合 Ghidra、Rizin、jadx 等外部工具。项目采用 Apache-2.0，覆盖 macOS、Windows 与 Linux，但架构和系统版本有要求，依赖外部分析工具，首次启动可辅助安装，模型服务费用也不包含在内。补丁以提案和副本方式处理，使用范围应限于获授权的程序。",
+      "category": "实用工具",
+      "author": "M. (@wlzh)",
+      "publishedAt": "2026-10-18T08:02:26.000Z",
+      "source": "https://x.com/wlzh/status/2111729603777823188",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/Zfinix/eleven"
+        }
+      ],
+      "image": "assets/news/item-7af8304e510cff3c-diagram.svg",
+      "imageAlt": "Eleven：Agent 辅助逆向分析工作台：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-33ee9af28bf025a8",
+      "title": "DSH-LayerFS：可分叉的 Agent 文件工作区",
+      "summary": "作者展示基于 LayerFS 的多 Agent 工作区，利用工具轨迹记录、存算分离与分支机制管理文件变化。官方 DSH 插件要求 Docker 和 Linux daemon，当前预设按 Agent 建立工作区，不能泛化为任意 bash 环境即插即用。仓库采用 MIT；作者明确界面尚未完成，展示中部分轨迹来自真实运行后的回放脚本，本次未复现。",
+      "category": "实用工具",
+      "author": "Yifan Xu (@yifanxu_ephai)",
+      "publishedAt": "2026-10-17T10:07:04.000Z",
+      "source": "https://x.com/yifanxu_ephai/status/2111398582289076594",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/Ephemeral-AI-Lab/layerfs/tree/main/dsh"
+        },
+        {
+          "label": "作者补充说明",
+          "url": "https://x.com/yifanxu_ephai/status/2111398921499185497"
+        }
+      ],
+      "image": "assets/news/item-33ee9af28bf025a8.webp",
+      "imageAlt": "DSH-LayerFS：可分叉的 Agent 文件工作区：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111397537198567424/img/pGKoU8BlCKUMg7jU.jpg"
+    },
+    {
+      "id": "item-b7902498028add7d",
+      "title": "OpenUI 1.0：把 Agent 输出渲染成组件",
+      "summary": "OpenUI 用预先定义的组件把 Agent 输出渲染成可交互界面，例如表单、图表和地图。官方核心及 React 相关 1.0 版本发布于 10 月 12 日，并非本帖当天首发；其他框架绑定仍有 0.4 系列。SDK 为 MIT，可接自选模型；托管 Gateway 的 API 调用与模型 token 另计费，免费 SDK 不代表整条服务免费。",
+      "category": "实用工具",
+      "author": "Charly Wargnier  (@DataChaz)",
+      "publishedAt": "2026-10-17T12:29:25.000Z",
+      "source": "https://x.com/DataChaz/status/2111434406783279520",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/thesysdev/openui"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://www.openui.com/docs/gateway/pricing-credits"
+        }
+      ],
+      "image": "assets/news/item-b7902498028add7d.webp",
+      "imageAlt": "OpenUI 1.0：把 Agent 输出渲染成组件：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111434373820219392/img/bQl7fQHV66bd2OQN.jpg"
+    },
+    {
+      "id": "item-2bc94641398fc121",
+      "title": "img2pixi2D：从参考图搭建可编辑场景",
+      "summary": "Nick 展示将静态参考图转为 PixiJS 场景，再加入动作、敌人、界面和人工微调的实验。官方 img2pixi2d 是依赖现有 PixiJS v8 应用的 Agent skill，可分别编辑命名对象，不是单图自动生成完整游戏的保证。CLI 安装器采用 Apache-2.0；skill、工具与示例没有仓库级源码许可，公开可见不等于可自由商用。",
+      "category": "AI游戏",
+      "author": "Nick (@NickDevFE)",
+      "publishedAt": "2026-10-17T14:00:01.000Z",
+      "source": "https://x.com/NickDevFE/status/2111457205740568678",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/img2threejs/pixi2d"
+        }
+      ],
+      "image": "assets/news/item-2bc94641398fc121.webp",
+      "imageAlt": "img2pixi2D：从参考图搭建可编辑场景：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111440196696989696/img/6usM4ixrNiqeeXMP.jpg"
+    },
+    {
+      "id": "item-089bf6bbb98b00e0",
+      "title": "Lost Marbles：AI 辅助浏览器游戏 Beta",
+      "summary": "Meticulai Games 展示 Lost Marbles，并在作者回复中给出浏览器 Beta 入口，称使用 Three.js 与 AI 制作。当前免费试玩是作者声明，不代表开源、永久免费或后续收费安排已确定。官网读取遇到 403，本次没有绕过限制，也未实际试玩；因此只作为有作者演示及入口的游戏制作案例。",
+      "category": "AI游戏",
+      "author": "Meticulai Games (@MeticulAi)",
+      "publishedAt": "2026-10-17T21:22:25.000Z",
+      "source": "https://x.com/MeticulAi/status/2111568537684955500",
+      "relatedLinks": [
+        {
+          "label": "作者补充说明",
+          "url": "https://x.com/MeticulAi/status/2111568539546943683"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://meticulai.com/games/lost-marbles/"
+        }
+      ],
+      "image": "assets/news/item-089bf6bbb98b00e0.webp",
+      "imageAlt": "Lost Marbles：AI 辅助浏览器游戏 Beta：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111568349436035072/img/D3eM8lkQJhWb3-Th.jpg"
+    },
+    {
+      "id": "item-b73c7cf1f4336807",
+      "title": "Three.js 机甲场景：长会话迭代原型",
+      "summary": "Frog King Simulator 账号展示 Three.js 机甲游戏原型，称持续在同一个 Claude Code 会话中迭代，并未使用 Blender。作者回复强调机甲驾驶玩法，以及灯光、后处理对画面观感的影响。这里只记录作者展示和制作描述，未取得完整工程或复现；账号名称不能当作这段机甲项目的正式游戏名。",
+      "category": "AI游戏",
+      "author": "Frog King Simulator (@Belbizaz)",
+      "publishedAt": "2026-10-16T15:43:06.000Z",
+      "source": "https://x.com/Belbizaz/status/2111120760660254842",
+      "relatedLinks": [],
+      "image": "assets/news/item-b73c7cf1f4336807.webp",
+      "imageAlt": "Three.js 机甲场景：长会话迭代原型：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111115234396213248/img/G4S6luyQ9xqlBwdc.jpg"
+    },
+    {
+      "id": "item-0bde87c7b3efc13f",
+      "title": "Blender＋Seedance：先预演再生成镜头",
+      "summary": "ComfyUI 官方展示短片 THE DISTURBANCE CALL，说明先用 Blender 的简模预演控制镜头运动、动作和时序，再交给 Seedance 生成。原帖标注 Seedance 2.5；本次未单独运行或确认短片专属模板。ComfyUI 本地软件免费不代表 Partner Nodes 调用免费，后者需要账户及 credits，素材权利仍需自行确认。",
+      "category": "内容创作",
+      "author": "ComfyUI (@ComfyUI)",
+      "publishedAt": "2026-10-16T15:01:18.000Z",
+      "source": "https://x.com/ComfyUI/status/2111110239714165176",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://docs.comfy.org/tutorials/partner-nodes/pricing"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://blog.comfy.org/p/seedance-25-is-now-available-via"
+        }
+      ],
+      "image": "assets/news/item-0bde87c7b3efc13f.webp",
+      "imageAlt": "Blender＋Seedance：先预演再生成镜头：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111110169530966017/img/w4BOttZzPTwil2N4.jpg"
+    },
+    {
+      "id": "item-066ce45470ea91a2",
+      "title": "Houdini＋DaVinci：语音指令到渲染调色",
+      "summary": "hectorvfx 展示从 iPhone 语音指令经 Claude 生成 Houdini 场景，再在 DaVinci Resolve 中通过 MCP 做 ACES 调色的实验。作者称最终用 RTX 5090 渲染约 50 小时，说明 AI 辅助搭建不等于消除离线渲染成本。未取得完整工程及同一 MCP 实现，本次未复现，也不把作者描述当作所有版本都支持的标准集成。",
+      "category": "内容创作",
+      "author": "hectorvfx (@hectorVFX)",
+      "publishedAt": "2026-10-17T12:31:57.000Z",
+      "source": "https://x.com/hectorVFX/status/2111435045109903540",
+      "relatedLinks": [
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/hectorVFX/status/2111462780603621387"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/hectorVFX/status/2111470794479980762"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/hectorVFX/status/2111461646661226841"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/hectorVFX/status/2111453825013883336"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/hectorVFX/status/2111750687382188089"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/hectorVFX/status/2111510674475995609"
+        }
+      ],
+      "image": "assets/news/item-066ce45470ea91a2.webp",
+      "imageAlt": "Houdini＋DaVinci：语音指令到渲染调色：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111434890621177856/img/MmIwwWVloOpCzvOb.jpg"
+    },
+    {
+      "id": "item-6c19e15c7d6e7c7c",
+      "title": "Gaussian-VRM：多视角生成到角色动画",
+      "summary": "Ueda 展示从 MiniMax-H3 360 Orbit 多视角视频，经 PyCOLMAP 与 gsplat 重建，再封装 Gaussian-VRM、在 Three.js 中接 FBX 动画的流程。Gaussian-VRM 代码为 MIT，但仓库部分资产仅限研究；上游 H3 社区许可有地区及商业限制，不是无限制免费商用。手机端展示能力不等于可在手机生成。本帖时间按页面显示的最后编辑时间记录。",
+      "category": "内容创作",
+      "author": "Ueda (@megyo9)",
+      "publishedAt": "2026-10-17T05:45:24.000Z",
+      "source": "https://x.com/megyo9/status/2111332732055986217",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/naruya/gaussian-vrm"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE"
+        }
+      ],
+      "image": "assets/news/item-6c19e15c7d6e7c7c.webp",
+      "imageAlt": "Gaussian-VRM：多视角生成到角色动画：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111330590356361216/img/cI5kyiDwGzwzhJJx.jpg"
+    },
+    {
+      "id": "item-537097f6b5516e23",
+      "title": "mapcn：给 React 项目加地图与 Agent Skill",
+      "summary": "mapcn 基于 MapLibre 与 shadcn/ui 提供 React 地图组件，并提供 Agent skill，帮助在应用中加入地图交互。组件代码采用 MIT，但默认 CARTO 底图的商业使用需要另外的 Enterprise 许可；可换底图，不代表新底图的数据和服务无条件免费。组件不是自动完成地理数据、路线规划与后端的整套系统。",
+      "category": "实用工具",
+      "author": "Anmoldeep Singh (@anmold_s)",
+      "publishedAt": "2026-10-17T17:01:03.000Z",
+      "source": "https://x.com/anmold_s/status/2111502765843492999",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://www.mapcn.dev/docs/skill"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/AnmolSaini16/mapcn"
+        }
+      ],
+      "image": "assets/news/item-537097f6b5516e23.webp",
+      "imageAlt": "mapcn：给 React 项目加地图与 Agent Skill：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111502236115517441/img/2-hbwK1DLgDHc-is.jpg"
+    },
+    {
+      "id": "item-52824c1abc8daa31",
+      "title": "ReUI Data Grid：应用内可编辑表格",
+      "summary": "ReUI 的 Data Grid 演示了单元格编辑、拖拽填充、剪贴板、筛选与撤销等交互，适用于订单等应用内表格。免费基础组件为 MIT，完整 Pro blocks 和模板另收费，不能把演示涉及的全部成品界面都归为免费。撤销栈、实际保存、权限和业务校验仍要接入自己的后端，并非完整电子表格产品。",
+      "category": "实用工具",
+      "author": "Shuh (@shuxer)",
+      "publishedAt": "2026-10-18T07:05:06.000Z",
+      "source": "https://x.com/shuxer/status/2111715175308857835",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://reui.io/components/data-grid"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://reui.io/pricing"
+        },
+        {
+          "label": "官方文档：编辑与撤销边界",
+          "url": "https://reui.io/docs/components/base/data-grid"
+        }
+      ],
+      "image": "assets/news/item-52824c1abc8daa31.webp",
+      "imageAlt": "ReUI Data Grid：应用内可编辑表格：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111713491480387585/img/bajIMPIWgl1zh6c-.jpg"
+    },
+    {
+      "id": "item-de6c044ad3f6e924",
+      "title": "ESP32-DATV-SA：独立数字电视测试信标",
+      "summary": "OH2HOT 展示由 ESP32-C3 独立运行的 DVB-S2 实验信标，可输出测试卡或短循环视频，不必持续连接电脑。官方提供兼容浏览器烧录方式；固件上电可能立即发射，多数地区需要相应业余无线电许可，台架测试应使用假负载。此条仅介绍项目，不提供发射操作指南；源码许可未进一步确认，也未实际烧录。",
+      "category": "硬件创客",
+      "author": "OH2HOT  (@OH2HOT)",
+      "publishedAt": "2026-10-16T16:08:19.000Z",
+      "source": "https://x.com/OH2HOT/status/2111127104993604046",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/barisdinc/ESP32-DATV-SA"
+        },
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/barisdinc/ESP32-DATV-SA/blob/main/docs/FLASHING.md"
+        }
+      ],
+      "image": "assets/news/item-de6c044ad3f6e924.webp",
+      "imageAlt": "ESP32-DATV-SA：独立数字电视测试信标：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111126508232130561/img/oGnYr-xoo11M3jfs.jpg"
+    },
+    {
+      "id": "item-4df9a4dd5e6bb744",
+      "title": "TwinX：用线缆连接的可重构机器人",
+      "summary": "东京大学 JSK 的 TwinX 研究将两台轮腿机器人用线缆连接，既可协同包围、拖拽物体，也能对接成四足、全向移动或移动操作形态。官方项目页说明使用视觉标记辅助对接，并训练四足运动策略。当前是研究演示，不是已售套件，也没有在此核实可直接复现的开源整机方案。",
+      "category": "硬件创客",
+      "author": "T.Yamazaki (@ZappyZappy7)",
+      "publishedAt": "2026-10-16T23:57:06.000Z",
+      "source": "https://x.com/ZappyZappy7/status/2111245077616173090",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://shin0805.github.io/twinx-bridging/"
+        }
+      ],
+      "image": "assets/news/item-4df9a4dd5e6bb744.webp",
+      "imageAlt": "TwinX：用线缆连接的可重构机器人：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111244882161606656/img/5MtZ-x7nIrVtWJkN.jpg"
+    },
+    {
+      "id": "item-ffa10375cf2b4604",
+      "title": "Raspberry Pi：复古车载音响外观时钟",
+      "summary": "作者用 Raspberry Pi 与 LCD 重现 1990 年代车载音响的视觉界面，实际功能是时钟，并明确没有声音。它适合作为屏幕交互和复古硬件外观的制作参考，而非音频播放器。原帖未提供已核实的源码、完整物料清单或复现教程，也没有宣称使用 AI。",
+      "category": "硬件创客",
+      "author": "そぞら@Raspberry Pi 電子工作 (@sozoraemon)",
+      "publishedAt": "2026-10-18T10:30:06.000Z",
+      "source": "https://x.com/sozoraemon/status/2111766765776802302",
+      "relatedLinks": [],
+      "image": "assets/news/item-ffa10375cf2b4604.webp",
+      "imageAlt": "Raspberry Pi：复古车载音响外观时钟：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111766745824563200/img/stqqHFlYEQIP-7JS.jpg"
+    },
+    {
+      "id": "item-bcb0b8fde5a4bebf",
+      "title": "Claude Code：双语汽车讲解片流程",
+      "summary": "MSB 展示结合 3D 拆解动画、文案、配音、数据动效和剪辑的 Roadster 讲解片，并在回复中给出远程控制 Mac mini 的平台入口与部分提示词。作者补充使用本地 Qwen 系 TTS，并同时制作中英文版本。其单片成本是由订阅额度变化推算，未作可复现核算，故不引用低价承诺；影片中的汽车技术内容也未独立事实核查。",
+      "category": "内容创作",
+      "author": "MSB (@KeWai386772)",
+      "publishedAt": "2026-10-17T12:54:43.000Z",
+      "source": "https://x.com/KeWai386772/status/2111440772998599022",
+      "relatedLinks": [
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/KeWai386772/status/2111440775120875526"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/KeWai386772/status/2111440777838760047"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/KeWai386772/status/2111440781672415338"
+        },
+        {
+          "label": "作者回复：制作流程与边界",
+          "url": "https://x.com/KeWai386772/status/2111643567672402091"
+        }
+      ],
+      "image": "assets/news/item-bcb0b8fde5a4bebf.webp",
+      "imageAlt": "Claude Code：双语汽车讲解片流程：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111437764327784448/img/QUKNFoofk4gUPM9E.jpg"
+    },
+    {
+      "id": "item-df7d6e838d3541f7",
+      "title": "Web Ocean：61KB 的 WebGPU 海面",
+      "summary": "Web Ocean 以单 HTML 文件实现可交互海面，官方仓库使用 WebGPU、FFT 波浪、泡沫与高光效果，不依赖游戏引擎；61KB 指压缩精简后的文件，未精简版本更大。代码采用 MIT，需要支持 WebGPU 的浏览器与 GPU。演示聚焦海面，没有岸线与物体交互，云层也非体积云；不引用未经复现的半小时制作承诺。",
+      "category": "内容创作",
+      "author": "Jurly (@jurlycat)",
+      "publishedAt": "2026-10-17T04:00:00.000Z",
+      "source": "https://x.com/jurlycat/status/2111306207239557288",
+      "relatedLinks": [
+        {
+          "label": "官方项目资料",
+          "url": "https://github.com/Noniv/web-ocean"
+        }
+      ],
+      "image": "assets/news/item-df7d6e838d3541f7.webp",
+      "imageAlt": "Web Ocean：61KB 的 WebGPU 海面：原帖视频封面",
+      "imageKind": "original",
+      "originalImage": "https://pbs.twimg.com/amplify_video_thumb/2111289721498529792/img/Qe9uoXKkpM8Sue5d.jpg"
+    }
+  ]
+}

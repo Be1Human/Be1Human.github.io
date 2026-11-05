@@ -49,7 +49,7 @@ npm run check
 - `src/experience/index.html`：新版首页源文件，构建时复制到根目录，新闻同步不会覆盖设计。
 - `app.js` / `style.css`：新版交互和样式；`content-local.json` 保存经审核的作品与手记内容，更新这两类内容时同步维护。
 - `video-manifest.json` / `assets/video/`：按需加载的正反向镜头视频。
-- 首页新闻直接读取 `data/news.json` 最新一期，配图保留来源；原帖没有图片时显示标注过的主题图解。
+- 首页新闻从 `data/news.json` 自动构建完整日期索引与分期 JSON，按需读取；新闻页每五分钟检查新版本。缺图显示明确标注的主题示意。
 - `src/page.template.html`：静态归档的共享导航、页面头部和页脚。
 - `scripts/build-blog.mjs`：页面渲染、内容验证、RSS、站内链接检查。
 - `scripts/project-data.mjs`：作品字段校验、公开源码与站内项目介绍的边界。
@@ -69,3 +69,7 @@ npm run check
 ## 根站与旧链接
 
 维护目录为 `/Users/guotengtao/Documents/cloudboy/blog`，远程仓库为 `Be1Human/Be1Human.github.io`。`/portfolio/` 已作为兼容入口：页面跳转到对应根地址，保留筛选参数与段落锚点；旧 RSS 仍随构建更新。旧 `Be1Human/portfolio` 仓库保留历史，但不再启用 GitHub Pages 或接收新闻同步。
+
+## 自动发布与公网验收
+
+完成网站修改后执行 `npm run site:publish`，自动构建、检查、提交并推送；随后执行 `npm run site:verify -- --attempts 20 --interval 15`，核对公网精确版本和视频资源。用户请求修改即包括发布，无须再次要求上线。
