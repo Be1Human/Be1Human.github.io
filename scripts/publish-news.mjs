@@ -17,8 +17,9 @@ if (git('rev-list', '--count', 'origin/main..HEAD') !== '0') throw new Error('Un
 run('git', ['merge', '--ff-only', 'origin/main']);
 run(process.execPath, ['scripts/sync-news.mjs', resolve(source)]);
 if (!git('status', '--porcelain')) { console.log('No changes. No commit or push.'); process.exit(0); }
-run('npm', ['run', 'build']);
-run('npm', ['run', 'check']);
+if (!process.env.npm_execpath) throw new Error('Run through npm run news:publish so npm-cli.js is available.');
+run(process.execPath, [process.env.npm_execpath, 'run', 'build']);
+run(process.execPath, [process.env.npm_execpath, 'run', 'check']);
 const allowed = path => isExperienceNewsOutput(path) || ['data/news.json', 'index.html', 'news.html', 'feed.xml', 'sitemap.xml', 'portfolio/index.html', 'portfolio/news.html', 'portfolio/feed.xml', 'portfolio/sitemap.xml'].includes(path) || /^(?:portfolio\/)?news\/\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.html$/.test(path);
 const tracked = git('diff', '--name-only').split('\n').filter(Boolean);
 const untracked = git('ls-files', '--others', '--exclude-standard').split('\n').filter(Boolean);
@@ -31,4 +32,5 @@ run('git', ['commit', '-m', `Sync Dot news through ${archive.editions[0].id}`]);
 run('git', ['push', 'origin', 'main']);
 const published = git('ls-remote', 'origin', 'refs/heads/main').split(/\s+/)[0];
 if (published !== git('rev-parse', 'HEAD')) throw new Error('Remote advanced; verify the published version before reporting success.');
-console.log(`Pushed ${archive.editions.length} editions through ${archive.editions[0].id}. Verify GitHub Pages deployment before reporting the update live.`);
+run(process.execPath, ['scripts/verify-live-site.mjs', '--attempts', '20', '--interval', '15']);
+console.log(`Published and verified ${archive.editions.length} editions through ${archive.editions[0].id}.`);

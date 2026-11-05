@@ -8,6 +8,6 @@ Edit the interactive homepage in src/experience/index.html; its runtime is app.j
 
 data/news.json is the authoritative public news archive. The build derives assets/news/archive.json and individual editions. Do not hand-maintain a single-day snapshot or reduce existing history. The original AI 热门 20 source is private; use only the user's authorized Sites account/source checkout. Authentication failure must keep the last valid archive intact.
 
-Run npm run site:publish for the complete checked commit/push process, then npm run site:verify -- --attempts 20 --interval 15. Only report completion after the public verification succeeds; a push alone is not completion. Open the affected official page and verify its real UI when browser tools are available.
+Run npm run site:publish for the complete build/check/commit/push/public-verification process. Use npm run site:verify separately only for status or recovery. Only report completion after the public verification succeeds; a push alone is not completion. Open the affected official page and verify its real UI when browser tools are available.
 
 The local design preview is a mirror, not the publication endpoint. If working there, transfer only approved public runtime changes here, preserve the full current news archive, update src/experience/index.html, publish, then refresh the mirror.

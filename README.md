@@ -72,4 +72,4 @@ npm run check
 
 ## 自动发布与公网验收
 
-完成网站修改后执行 `npm run site:publish`，自动构建、检查、提交并推送；随后执行 `npm run site:verify -- --attempts 20 --interval 15`，核对公网精确版本和视频资源。用户请求修改即包括发布，无须再次要求上线。
+完成网站修改后执行 `npm run site:publish`，自动完成构建、检查、提交、推送以及公网精确版本和视频资源验收。`npm run site:verify` 可单独用于查询或失败续验。用户请求修改即包括发布，无须再次要求上线。
