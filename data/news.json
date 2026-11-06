@@ -2,9 +2,351 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "dac1fd90d077031afc4507273bcd79a180742baa",
-  "syncedAt": "2026-11-03T12:32:55.097Z",
+  "sourceRevision": "df9a7f7f167c76823983bd4eab69bf7d68f842b2",
+  "syncedAt": "2026-11-06T13:04:17.347Z",
   "editions": [
+    {
+      "id": "2026-11-06",
+      "date": "2026-11-06",
+      "label": "11 月 6 日 · 13 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-06",
+      "items": [
+        {
+          "id": "07f605789056e29a",
+          "rank": 1,
+          "title": "Iron Curtain Call：设计文档与并行 Agent 开发",
+          "summary": "Whale Dev Studios 分享 Godot 卡通 FPS 的开发流程：先写设计与对白，再分支并行开发，由协调者检查测试后合并。作者报告 demo 通过193项自动检查，但仍每天亲自试玩；检查数与制作效率未独立复测，不是一键生成游戏。",
+          "category": "AI 游戏开发",
+          "author": "Whale Dev Studios @whaledevstudios",
+          "url": "https://x.com/whaledevstudios/status/2118500903783141660",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/whaledevstudios/status/2118500903783141660"
+            },
+            {
+              "title": "作者测试与人工试玩说明",
+              "url": "https://x.com/whaledevstudios/status/2118500915141328981"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T00:29:09.000Z",
+          "observedAt": "2026-11-06T12:51:01.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/ext_tw_video_thumb/2118399335322845184/pu/img/r-uOSFIWJ4Okewr7.jpg",
+            "alt": "Iron Curtain Call：设计文档与并行 Agent 开发，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "15926d17b194a753",
+          "rank": 2,
+          "title": "StableGen 0.5.0：在 Blender 内配置 ComfyUI",
+          "summary": "StableGen 0.5.0 把 ComfyUI 与模型安装接入 Blender，支持续传，并新增 TRELLIS.2 与 LATO.2 低多边形重建。作者称安装流程目前只在 Windows 测试；随物体移动保持纹理的投影功能默认关闭，要求 Blender 5.1+。本期未安装验证。",
+          "category": "AI 3D 工作流",
+          "author": "Ondřej Sakala @sakalond",
+          "url": "https://x.com/sakalond/status/2118442039276920930",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/sakalond/status/2118442039276920930"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T20:35:15.000Z",
+          "observedAt": "2026-11-06T12:47:33.223Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118440043769466880/img/q9sIUKO5WfTzIYMU.jpg",
+            "alt": "StableGen 0.5.0：在 Blender 内配置 ComfyUI，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2c252cbc8b9a17e0",
+          "rank": 3,
+          "title": "RelayVSR 与 RTX VSR：同片段的速度和显存对比",
+          "summary": "BennyDaBall 用 RTX 5090、同一段124帧视频比较2倍放大。作者报告预热后三次中位数：RelayVSR 5.8秒、11.6GB，RTX VSR 1.3秒、2.9GB。细节、闪烁与身份保持指标为作者自定口径，未独立复测；回复已更正相关 ComfyUI PR 为已合并。",
+          "category": "AI 视频实测",
+          "author": "BennyDaBall @BennyDaBall_OG",
+          "url": "https://x.com/BennyDaBall_OG/status/2118472181747220682",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/BennyDaBall_OG/status/2118472181747220682"
+            },
+            {
+              "title": "作者更正：相关 PR 已合并",
+              "url": "https://x.com/BennyDaBall_OG/status/2118477116413194544"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T22:35:02.000Z",
+          "observedAt": "2026-11-06T12:46:56.985Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118471445726502912/img/OjgAdI0OlhPz5tBo.jpg",
+            "alt": "RelayVSR 与 RTX VSR：同片段的速度和显存对比，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "afd60521f76cceb5",
+          "rank": 4,
+          "title": "Codex＋Blender MCP：角色建模迭代流程",
+          "summary": "作者从 ChatGPT 的正侧背参考图出发，让 Codex/Claude 经 Blender MCP 分块建模，再把截图交回 ChatGPT 获得修改提示，最后做绑定、动画与材质。作者明确说需要大量提示、修正和等待，未提供模型下载、总耗时或成本。27赞，作为具体工作流的低热度例外收录。",
+          "category": "AI 游戏美术",
+          "author": "Penguin @PenguinWeb3",
+          "url": "https://x.com/PenguinWeb3/status/2118677082368516393",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/PenguinWeb3/status/2118677082368516393"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T12:09:14.000Z",
+          "observedAt": "2026-11-06T12:51:01.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118676847802126336/img/hHdz1DaAdwtU6Z5T.jpg",
+            "alt": "Codex＋Blender MCP：角色建模迭代流程，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "835696debf6df9b7",
+          "rank": 5,
+          "title": "AFTERCHARGE：用分段提示控制15秒动作镜头",
+          "summary": "Loriel.AI 用 Krea 2 参考图与 MiniMax H3/ComfyUI 制作15秒动作测试，并公开完整分时提示。提示锁定角色、街道与行进轴线，逐段规定运镜、动作、光效和声音。原帖简介提到修复，但详细提示明确禁止修复破损物体，故不作重建效果宣传。29赞，作为有具体制作材料的例外收录。",
+          "category": "AI 视频工作流",
+          "author": "Loriel.AI @ou_zhen599",
+          "url": "https://x.com/ou_zhen599/status/2118390351971201254",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/ou_zhen599/status/2118390351971201254"
+            },
+            {
+              "title": "作者完整分时提示",
+              "url": "https://x.com/ou_zhen599/status/2118390557143920996"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T17:09:52.000Z",
+          "observedAt": "2026-11-06T12:50:15.084Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118390074324955136/img/5W9pCJ6wgkWDjaBu.jpg",
+            "alt": "AFTERCHARGE：用分段提示控制15秒动作镜头，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b684249d5fb6c745",
+          "rank": 6,
+          "title": "Mistral Studio：托管 Agent、流程和应用",
+          "summary": "Mistral Studio 新增托管 Agent 与应用。官方说明 Python SDK 的同一份 Agent 定义可本地运行、自托管或由 Mistral 托管，配套持久执行、人工审批、沙箱、追踪和评估。文档当前标注 Public Preview，本期未验证可靠性或节省工时。",
+          "category": "实用工作流",
+          "author": "Mistral AI @MistralAI",
+          "url": "https://x.com/MistralAI/status/2118370229466153299",
+          "sources": [
+            {
+              "title": "X 原帖与作者回复",
+              "url": "https://x.com/MistralAI/status/2118370229466153299"
+            },
+            {
+              "title": "官方发布及用途区分",
+              "url": "https://mistral.ai/news/build-with-studio/"
+            },
+            {
+              "title": "11月5日更新及预览状态",
+              "url": "https://docs.mistral.ai/resources/release-notes"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T15:49:54.000Z",
+          "observedAt": "2026-11-06T12:48:59.813Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118366149817589760/img/w-0uis_jH9k-FJib.jpg",
+            "alt": "Mistral Studio：托管 Agent、流程和应用：原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "bb001fdea68fd1d8",
+          "rank": 7,
+          "title": "Atomic Server：统一管理本地推理引擎",
+          "summary": "Atomic Server 提供 OpenAI-compatible API、网页管理和终端界面，统一管理多种本地推理引擎。仓库为 Apache-2.0；MLX 仅适用于 Apple Silicon，vLLM/SGLang/TensorRT 另有容器与平台要求，部分 CLI 仍为 stub。未安装或实测，不能理解为任意模型和硬件均可运行。",
+          "category": "本地 AI 工具",
+          "author": "atomic.chat @atomic_chat_hq",
+          "url": "https://x.com/atomic_chat_hq/status/2118038974996373719",
+          "sources": [
+            {
+              "title": "X 原帖与作者回复",
+              "url": "https://x.com/atomic_chat_hq/status/2118038974996373719"
+            },
+            {
+              "title": "官方仓库及平台限制",
+              "url": "https://github.com/AtomicBot-ai/atomic-server"
+            }
+          ],
+          "publishedAtISO": "2026-11-04T17:53:37.000Z",
+          "observedAt": "2026-11-06T12:48:45.486Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118037377356644352/img/VcD3RnUjS8WLn5pk.jpg",
+            "alt": "Atomic Server：用同一入口管理多种本地推理引擎：原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4509e38b10546514",
+          "rank": 8,
+          "title": "ChatGPT Images 2.6：GIF、参考图与编辑控制",
+          "summary": "OpenAI 发布 Images 2.6，支持从提示词或图片生成 GIF、逐帧编辑与复用参考图。官方另介绍 API 的图像标注、SVG 导出和 complexity 参数；提速幅度属于官方描述，本期未实测。套餐与 API 的费用、可用范围应以实际账户及文档为准。",
+          "category": "AI 图像与视频",
+          "author": "OpenAI @OpenAI",
+          "url": "https://x.com/OpenAI/status/2118124944928432327",
+          "sources": [
+            {
+              "title": "X 原帖与作者回复",
+              "url": "https://x.com/OpenAI/status/2118124944928432327"
+            },
+            {
+              "title": "官方发布及API功能",
+              "url": "https://openai.com/index/introducing-images-2-6/"
+            },
+            {
+              "title": "官方系统卡及限制",
+              "url": "https://deploymentsafety.openai.com/chatgpt-images-2-6/introduction"
+            }
+          ],
+          "publishedAtISO": "2026-11-04T23:35:14.000Z",
+          "observedAt": "2026-11-06T12:49:15.893Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118124891572748288/img/ZSIlzNmSPQEK0Sfd.jpg",
+            "alt": "ChatGPT Images 2.6：GIF、参考图与 API 编辑控制：原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "dd10cff49f4a878f",
+          "rank": 9,
+          "title": "Frameboy：实时探索 Atlas 生成世界",
+          "summary": "World Labs 发布 Frameboy，通过云 GPU 串流优化版 Atlas，官方称最高15 fps。它也作为流式叠加渲染模式接入 Viewfinder beta，可从用户输入逐帧扩展场景。Viewfinder 仍需候补名单；这是世界探索演示，不是完整游戏引擎，帧率未独立实测。",
+          "category": "AI 世界模型",
+          "author": "World Labs @theworldlabs",
+          "url": "https://x.com/theworldlabs/status/2118424455873741028",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/theworldlabs/status/2118424455873741028"
+            },
+            {
+              "title": "Viewfinder beta 集成与候补名单",
+              "url": "https://x.com/theworldlabs/status/2118424459308908555"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T19:25:23.000Z",
+          "observedAt": "2026-11-06T12:51:01.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118400697251291136/img/_9Bg9vROC3CjqxOh.jpg",
+            "alt": "Frameboy：实时探索 Atlas 生成世界，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "11b866c7d9b5d772",
+          "rank": 10,
+          "title": "赛博朋克格斗：参考图与动作生成的修正思路",
+          "summary": "Nightway Fantasy 用 Krea 2 参考图与 Seedance 2.5 测试刀剑、重型手枪格斗动画。作者承认画面存在形变，提出清理参考图，或先慢速生成再后期加速；这些是待试的修改思路，不能当作已验证的解决方案。",
+          "category": "AI 动画",
+          "author": "Nightway Fantasy @NightwayFantasy",
+          "url": "https://x.com/NightwayFantasy/status/2118470701141369158",
+          "sources": [
+            {
+              "title": "英文原帖与作者讨论",
+              "url": "https://x.com/NightwayFantasy/status/2118470701141369158"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T22:29:09.000Z",
+          "observedAt": "2026-11-06T12:49:13.043Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118469745276026880/img/nKs_A97vqEjxX3nn.jpg",
+            "alt": "赛博朋克格斗：参考图与动作生成的修正思路，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "10af36d0ae2b83fe",
+          "rank": 11,
+          "title": "Rune：让编码代理检查原生界面",
+          "summary": "Rune 是开发中的 Rust 原生 UI 框架，提供 GPU 渲染、无头截图、元素树检查与脚本输入，方便编码代理检查自己生成的界面。官方仓库采用 MIT 许可，并提示使用开发版本。本期未验证性能、跨平台兼容性或代理修复成功率。",
+          "category": "AI 编程工具",
+          "author": "dax @thdxr",
+          "url": "https://x.com/thdxr/status/2118582237738234338",
+          "sources": [
+            {
+              "title": "X 原帖与可见回复",
+              "url": "https://x.com/thdxr/status/2118582237738234338"
+            },
+            {
+              "title": "官方仓库及 Agent 工作流",
+              "url": "https://github.com/anomalyco/rune"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T05:52:21.000Z",
+          "observedAt": "2026-11-06T12:50:07.798Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118582100165087232/img/DOgR3upSv3WWgscZ.jpg",
+            "alt": "Rune：让编码代理检查原生界面：原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "fb353e68cbf45a70",
+          "rank": 12,
+          "title": "Cursor Live Apps：从开发到可分享的应用",
+          "summary": "Cursor Live Apps 可由云端 Agent 搭建带 Postgres 数据库的应用，安全检查后由用户显式发布为分享链接。官方要求付费套餐并启用 cloud agents，支持新建或现有 Cursor Origin/GitHub 仓库。检查不保证无漏洞，访问控制依账户类型而异；未独立部署验证。",
+          "category": "实用工作流",
+          "author": "Cursor @cursor_ai",
+          "url": "https://x.com/cursor_ai/status/2118458629091426304",
+          "sources": [
+            {
+              "title": "X 原帖与可见回复",
+              "url": "https://x.com/cursor_ai/status/2118458629091426304"
+            },
+            {
+              "title": "官方功能更新及套餐条件",
+              "url": "https://cursor.com/changelog/build-live-apps"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T21:41:10.000Z",
+          "observedAt": "2026-11-06T12:51:14.303Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118458611320131584/img/uUJSIBl8QaDBnoAA.jpg",
+            "alt": "Cursor Live Apps：从开发到可分享的应用：原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "bc25df4a839ae635",
+          "rank": 13,
+          "title": "Vercel Schedules：运行时创建定时任务",
+          "summary": "Vercel Schedules 进入公测，所有套餐可用。静态配置可触发私有函数、HTTP 路径或 Queue；运行时动态创建的一次性或循环任务则以 Queue topic 为目标，可取消、禁用或手动运行。它负责触发，具体业务和权限检查仍由应用实现；本期未测试运行可靠性。",
+          "category": "实用工作流",
+          "author": "Vercel @vercel",
+          "url": "https://x.com/vercel/status/2118438184594149784",
+          "sources": [
+            {
+              "title": "X 原帖与可见回复",
+              "url": "https://x.com/vercel/status/2118438184594149784"
+            },
+            {
+              "title": "官方公测说明及触发目标",
+              "url": "https://vercel.com/changelog/vercel-schedules-is-now-in-public-beta"
+            }
+          ],
+          "publishedAtISO": "2026-11-05T20:19:56.000Z",
+          "observedAt": "2026-11-06T12:51:24.822Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/card_img/2118402728779239425/TiNBhSb6?format=jpg&name=small",
+            "alt": "Vercel Schedules 原帖官方文章预览图",
+            "type": "image"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-03",
       "date": "2026-11-03",
