@@ -15,7 +15,7 @@ test('archive and article routes share navigation, identity, footer and styleshe
     ...posts.map(post => [`posts/${post.id}.html`, 'index.html#journal']),
     ...news.editions.map(edition => [`news/${edition.id}.html`, 'index.html#news']),
     ...projects.filter(project => project.presentation === 'showcase').map(project => [project.url, 'index.html#works']),
-    ...learning.map(article => [`learn/${article.id}.html`, 'index.html#learning']),
+    ...learning.map(article => [`learn/${article.id}.html`, 'learn.html']),
   ];
   const home = await read('journal.html');
   const extract = (html, tag, name) => html.match(new RegExp(`<${tag} class="${name}">[\\s\\S]*?</${tag}>`))?.[0];
@@ -23,8 +23,8 @@ test('archive and article routes share navigation, identity, footer and styleshe
   const expectedHeader = normalize(extract(home, 'header', 'blog-header'));
   const main = await read('index.html');
   const mainLinks = [...main.match(/<nav aria-label="主导航">([\s\S]*?)<\/nav>/)[1].matchAll(/<a href="([^"]+)"[^>]*>(.*?)<\/a>/g)];
-  const readerLinks = [...expectedHeader.matchAll(/<a href="index.html(#[^"]+)"[^>]*>(.*?)<\/a>/g)];
-  assert.deepEqual(mainLinks.map(m=>[m[1],m[2]]),readerLinks.map(m=>[m[1],m[2]]),'homepage and reading navigation must have the same destinations and order');
+  const readerLinks = [...expectedHeader.match(/<nav aria-label="主导航">([\s\S]*?)<\/nav>/)[1].matchAll(/<a href="([^"]+)"[^>]*>(.*?)<\/a>/g)];
+  assert.deepEqual(mainLinks.map(m=>[m[1],m[2]]),readerLinks.map(m=>[m[1].replace(/^index\.html(?=#)/,''),m[2]]),'homepage and reading navigation must have the same destinations and order');
   const expectedFooter = normalize(extract(home, 'footer', 'blog-footer'));
   const stylesheet = home.match(/href="(assets\/site\.css\?v=[a-f0-9]+)"/)[1];
   for (const [route, active] of routes) {

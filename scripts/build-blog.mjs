@@ -26,6 +26,7 @@ const styleVersion = await assetVersion('assets/site.css');
 const scriptVersion = await assetVersion('assets/app.js');
 const learnStyleVersion = await assetVersion('assets/learn.css');
 const learnScriptVersion = await assetVersion('assets/learn.js');
+const directoryStyleVersion = await assetVersion('assets/learn-directory.css');
 const directoryScriptVersion = await assetVersion('assets/learn-directory.js');
 const readingStyleVersion = await assetVersion('assets/reading.css');
 const readingScriptVersion = await assetVersion('assets/reading.js');
@@ -91,7 +92,7 @@ function render(path, title, description, active, content, ogtype = 'website') {
   const base = path.includes('/') ? '../' : '';
   const nav = renderSiteNavigation({base, active});
   let html = template;
-  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>${path==='learn/softmax-attention.html'?`<script type="module" src="${base}assets/attention.js?v=${attentionScriptVersion}"></script>`:''}` : '';
+  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>${path==='learn.html'?`<link rel="stylesheet" href="assets/learn-directory.css?v=${directoryStyleVersion}"><script src="assets/learn-directory.js?v=${directoryScriptVersion}" defer></script>`:''}${path==='learn/softmax-attention.html'?`<script type="module" src="${base}assets/attention.js?v=${attentionScriptVersion}"></script>`:''}` : '';
   const brandedTitle = title.replaceAll('CLOUD BOY · 云上男孩', '克劳德梦见电子羊').replaceAll('— CLOUD BOY', '— 克劳德梦见电子羊');
   const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: path==='learn.html'?'learning-directory':active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, READING_STYLE_VERSION:readingStyleVersion, READING_SCRIPT_VERSION:readingScriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
@@ -129,9 +130,8 @@ function feedEntry(entry) {
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
 // Preserve the approved interactive homepage when rebuilding news and archives.
 const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
-const homeLearning = learningOutput.home;
-const homeReadingAssets = new Map([['assets/reading.css',readingStyleVersion],['assets/reading.js',readingScriptVersion],['assets/learn.css',learnStyleVersion],['assets/learn.js',learnScriptVersion]]);
-let homepage = homepageTemplate.replace('<!--HOME_AGENT_LEARNING-->',`<!--HOME_LEARNING_START-->${homeLearning}<!--HOME_LEARNING_END-->`).replace('<!--SITE_NAVIGATION-->',`<!--HOME_NAV_START-->${renderSiteNavigation({interactive:true})}<!--HOME_NAV_END-->`);
+const homeReadingAssets = new Map([['assets/reading.css',readingStyleVersion],['assets/reading.js',readingScriptVersion]]);
+let homepage = homepageTemplate.replace('<!--SITE_NAVIGATION-->',`<!--HOME_NAV_START-->${renderSiteNavigation({interactive:true})}<!--HOME_NAV_END-->`);
 for (const [path,version] of homeReadingAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
 pages.set('index.html', homepage);
 
@@ -166,7 +166,6 @@ render('news.html', '科技新闻 — CLOUD BOY · 云上男孩', '从 Dot AI �
 for (const edition of news.editions) render(`news/${edition.id}.html`, `${edition.date} 科技精选 — CLOUD BOY`, `${edition.date} 的 ${edition.items.length} 条科技精选，保留原作者和来源。`, 'news', newsPage(edition, '../'));
 
 for (const page of learningOutput.pages) render(page.path, page.title, page.summary, 'learning', page.body, page.path === 'learn.html' ? 'website' : 'article');
-pages.set('learn.html', `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agent 学习 — 克劳德梦见电子羊</title><link rel="canonical" href="${origin}#learning"><script src="assets/learn-directory.js?v=${directoryScriptVersion}"></script><noscript><meta http-equiv="refresh" content="0;url=index.html#learning"></noscript></head><body><a href="index.html#learning">返回学习目录</a></body></html>\n`);
 pages.set('assets/learning-search.json', JSON.stringify(learningOutput.searchIndex));
 
 const rssItems = [
@@ -174,7 +173,7 @@ const rssItems = [
   ...news.editions.map(edition => ({title: `${edition.date} 科技精选 · ${edition.items.length} 条`, link: `news/${edition.id}.html`, date: edition.date, summary: edition.items.slice(0, 3).map(item => item.title).join('；')})),
 ].sort((a, b) => b.date.localeCompare(a.date));
 pages.set('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>克劳德梦见电子羊</title><link>${origin}</link><description>作品、创作手记与每日科技精选</description><language>zh-CN</language>${rssItems.map(item => `<item><title>${e(item.title)}</title><link>${origin}${item.link}</link><guid>${origin}${item.link}</guid><pubDate>${new Date(item.publishedAt || `${item.date}T12:00:00Z`).toUTCString()}</pubDate><description>${e(item.summary)}</description></item>`).join('')}</channel></rss>\n`);
-pages.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...pages.keys()].filter(path => path.endsWith('.html') && path !== 'learn.html').map(path => `<url><loc>${origin}${path === 'index.html' ? '' : path}</loc></url>`).join('')}</urlset>\n`);
+pages.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...pages.keys()].filter(path => path.endsWith('.html')).map(path => `<url><loc>${origin}${path === 'index.html' ? '' : path}</loc></url>`).join('')}</urlset>\n`);
 
 // Check local hrefs/srcs against this build or actual assets before writing any output.
 for (const [path, html] of pages) {
@@ -194,7 +193,7 @@ for (const [path, html] of pages) {
 // deployment is disabled. Generate aliases with each build, including new news.
 const canonicalPages = [...pages.keys()].filter(path => path.endsWith('.html'));
 for (const path of canonicalPages) {
-  const target = origin + (path === 'index.html' ? '' : path === 'learn.html' ? '#learning' : path);
+  const target = origin + (path === 'index.html' ? '' : path);
   pages.set(`portfolio/${path}`, `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>正在前往克劳德梦见电子羊</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script><noscript><meta http-equiv="refresh" content="0;url=${target}"></noscript></head><body><p>博客已迁到新地址。<a href="${target}">继续阅读 →</a></p></body></html>\n`);
 }
 // Feed readers do not execute JavaScript; keep their existing subscription live.

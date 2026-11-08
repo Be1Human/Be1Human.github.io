@@ -6,6 +6,5 @@
   target.pathname = !path || path === '/' || path === '/index.html' ? '/' : path;
   target.search = location.search;
   target.hash = location.hash;
-  if (path === '/learn.html') { target.pathname = '/'; target.hash = 'learning'; }
   location.replace(target.href);
 })();

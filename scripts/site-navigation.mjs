@@ -8,5 +8,5 @@ export const siteNavigation = [
 ];
 
 export function renderSiteNavigation({base = '', active = '', interactive = false} = {}) {
-  return siteNavigation.map(([id, label]) => `<a href="${interactive ? '' : base+'index.html'}#${id}"${id === active ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  return siteNavigation.map(([id, label]) => `<a href="${id === 'learning' ? base+'learn.html' : (interactive ? '' : base+'index.html')+'#'+id}"${id === active ? ' aria-current="page"' : ''}>${label}</a>`).join('');
 }
