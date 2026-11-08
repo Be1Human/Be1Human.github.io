@@ -2,13 +2,13 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
-import {readLearning, validateLearning, learningPages} from '../scripts/learning.mjs';
+import {readLearning, validateLearning, learningPages, learningOrder} from '../scripts/learning.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const read=path=>readFile(new URL('../'+path,import.meta.url),'utf8');
 
 test('the learning collection has complete lessons, original examples and resolvable citations',async()=>{
  const articles=await readLearning(root);
- assert.equal(articles.length,13);
+ assert.equal(articles.length,learningOrder.length);
  for(const article of articles){
   const text=article.sections.map(s=>s.body).join('');
   assert.ok(text.replace(/<[^>]+>/g,'').length>1000,`${article.id}: detailed lesson required`);
@@ -38,7 +38,7 @@ test('all learning pages are discoverable without JavaScript and searchable with
   assert.ok(sitemap.includes(`/learn/${a.id}.html`),a.id);
   assert.ok(search.find(s=>s.id===a.id).text.includes(a.sections[0].title));
  }
- assert.equal(result.pages.length,14);
+ assert.equal(result.pages.length,articles.length+1);
  assert.ok((await read('index.html')).includes('href="#learning">Agent 学习'));
  const evaluation=articles.find(a=>a.id==='agent-evaluation');
  assert.ok(evaluation.sources.some(s=>s.url==='https://aclanthology.org/2026.findings-acl.1330/'));

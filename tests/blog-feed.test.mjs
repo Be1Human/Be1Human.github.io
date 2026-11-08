@@ -32,11 +32,18 @@ test('the preserved journal feed shows statuses and article previews with workin
     assert(index.includes(renderStatusText(update.content)));
   }
   for (const post of posts.filter(post => post.inFeed !== false)) {
-    assert(index.includes(`href="posts/${post.id}.html"`));
-    const article = await readFile(new URL(`../posts/${post.id}.html`,import.meta.url),'utf8');
-    assert(article.includes(post.sections[0].paragraphs[0]));
+    const articlePath=post.learningId ? `learn/${post.learningId}.html` : `posts/${post.id}.html`;
+    assert(index.includes(`href="${articlePath}"`));
+    const article = await readFile(new URL(`../${articlePath}`,import.meta.url),'utf8');
+    assert(article.includes(post.learningId ? post.title : post.sections[0].paragraphs[0]));
     assert(!index.includes(post.sections[0].paragraphs[0]));
   }
   assert(!index.includes('blog-entry--featured'));
   assert(!index.includes('id="article-a-new-home-for-ideas"'));
+});
+
+test('learning article entries open the full wiki and reject invalid target paths',()=>{
+  const post={id:'comparison',date:'2026-11-08',learningId:'supervisor-verify-eval'};
+  assert.equal(buildFeed([post],[])[0].permalink,'learn/supervisor-verify-eval.html');
+  assert.throws(()=>buildFeed([{...post,learningId:'../../outside'}],[]),/Invalid learning article link/);
 });

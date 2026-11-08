@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { runInNewContext } from 'node:vm';
+import {learningOrder} from '../scripts/learning.mjs';
 const read = p => readFile(new URL('../'+p, import.meta.url), 'utf8');
 
 test('the generated homepage preserves the approved experience and its runtime assets', async () => {
@@ -11,7 +12,7 @@ test('the generated homepage preserves the approved experience and its runtime a
   assert.equal(normalized,template);
   assert(html.indexOf('id="home-opening"')<html.indexOf('id="learning"'));
   assert(html.indexOf('id="learning"')<html.indexOf('id="index"'));
-  assert.equal((html.match(/class="learn-topic"/g)||[]).length,13);
+  assert.equal((html.match(/class="learn-topic"/g)||[]).length,learningOrder.length);
   assert(html.includes('克劳德梦见电子羊'));
   for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
     if (/^https?:/.test(match[1])) continue;

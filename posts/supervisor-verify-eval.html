@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>Supervisor、Verify、Eval：分清调度、验证与评测 — 克劳德梦见电子羊</title>
+  <meta name="description" content="用同一个知识库任务，分清谁决定下一步、谁检查当前结果、谁衡量系统表现；拆开运行时门控、在线评测、重试与判分器的边界。">
+  <link rel="canonical" href="https://be1human.github.io/posts/supervisor-verify-eval.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="Supervisor、Verify、Eval：分清调度、验证与评测 — 克劳德梦见电子羊">
+  <meta property="og:description" content="用同一个知识库任务，分清谁决定下一步、谁检查当前结果、谁衡量系统表现；拆开运行时门控、在线评测、重试与判分器的边界。">
+  <meta property="og:url" content="https://be1human.github.io/posts/supervisor-verify-eval.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=ec0a14068b2f">
+  <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+
+</head>
+<body id="top" data-page="journal" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home" aria-current="page">首页</a><a href="../index.html#journal">手记</a><a href="../works.html">作品</a><a href="../learn.html">Agent 学习</a><a href="../news.html">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="2026-11-08">2026.11.08</time><span>·</span>1 分钟阅读<span>·</span>Agent 学习</p></div></div><h1>Supervisor、Verify、Eval：<wbr>分清调度、验证与评测</h1><p class="article-lede">用同一个知识库任务，分清谁决定下一步、谁检查当前结果、谁衡量系统表现；拆开运行时门控、在线评测、重试与判分器的边界。</p></header><figure class="article-cover"><img src="../assets/images/supervisor-verify-eval.svg" alt="调度、验证与评测：同一任务的三种职责，原创教学结构示意" width="1200" height="600"><figcaption>调度、验证与评测：同一任务的三种职责，原创教学结构示意</figcaption></figure><div class="prose"><section id="section-1"><h2>先分清三个问题</h2><p>Supervisor 决定下一步做什么，Verify 检查明确条件是否满足，Eval 按判据衡量一次或一组运行的表现。三者可以复用代码，但需要分别写清输入、输出和谁消费结果。</p><p>完整文章已加入 Agent 学习 Wiki 的重点对比入口，包含三列对照、同一知识库任务、四种交互情境、通过／失败／未知三态，以及指标分母与判分器误判的讨论。</p></section><section id="section-2"><h2>阶段之外，还要看控制作用</h2><p>Eval 可以离线或在线运行，也能为单次交互提供反馈；分数被用于阻断当前执行时，它同时承担门控职责。Verify 也不限于布尔值，失败后的重试、修订或停止由策略和预算决定。</p><p>文章结合官方文档与论文独立编写，保留八条原始资料。示例均为教学设计，不是真实实验成绩；主文和交互对比见下方完整文章。</p></section><section class="article-links"><h2>继续探索</h2><ul><li><a href="https://be1human.github.io/learn/supervisor-verify-eval.html" target="_blank" rel="noopener noreferrer">阅读全文：Supervisor、Verify、Eval 的职责与边界 ↗</a></li><li><a href="https://be1human.github.io/learn/agent-loop.html" target="_blank" rel="noopener noreferrer">Agent Loop：运行时如何推进任务 ↗</a></li><li><a href="https://be1human.github.io/learn/agent-evaluation.html" target="_blank" rel="noopener noreferrer">Agent 评测综述解读 ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span># Supervisor</span><span># Verify</span><span># Eval</span></div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

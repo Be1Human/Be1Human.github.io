@@ -1,0 +1,125 @@
+[
+  {
+    "id": "supervisor-verify-eval",
+    "title": "Supervisor、Verify、Eval：分清调度、验证与评测",
+    "eyebrow": "SUPERVISOR · VERIFY · EVAL",
+    "summary": "用同一个知识库任务，分清谁决定下一步、谁检查当前结果、谁衡量系统表现；拆开运行时门控、在线评测、重试与判分器的边界。",
+    "category": "核心机制",
+    "level": "进阶",
+    "minutes": 18,
+    "updated": "2026-11-08",
+    "featured": true,
+    "sections": [
+      {
+        "id": "three-questions",
+        "title": "先用三个问题分清职责",
+        "body": "<p>Supervisor 决定下一步怎么走，Verify 判断这一步是否满足明确条件，Eval 测量一次或一组运行表现如何。它们可以复用同一段检查代码，却不能因此被视为同一种职责。理解这条边界，才能知道一个失败应该修路由、补验证，还是先修判分规则。</p><div class=\"learn-triad learn-role-summary\"><div><strong>Supervisor</strong><span>接下来做什么</span></div><div><strong>Verify</strong><span>这一步能否通过</span></div><div><strong>Eval</strong><span>系统究竟表现如何</span></div></div><p>本文把三个词作为<strong>调度、校验、测量</strong>的工程视角，而不是要求安装三个同名组件。尤其是 Verify，并非各框架共同定义的一个标准模块。名字相似的 evaluator 也可能被用于运行中的反馈循环，不能只凭类名或目录名判断职责。Anthropic 的模式讨论提供了调度和反馈循环的参照，但具体实现仍由应用决定。<a href=\"#ref-1\">[1]</a></p><aside class=\"learn-callout\"><strong>先问结果被谁消费</strong><p>用于选择下一节点，是调度；用于放行或拦截当前动作，是门控；用于记录质量、比较版本或发现回归，是评测。同一信号同时被两处使用时，应分别记录这两种作用。</p></aside>"
+      },
+      {
+        "id": "comparison",
+        "title": "一张表看清三者的输入与输出",
+        "body": "<table><thead><tr><th>Supervisor · 调度</th><th>Verify · 校验</th><th>Eval · 评测</th></tr></thead><tbody><tr><td>问：下一步做什么？</td><td>问：指定条件满足了吗？</td><td>问：表现达到了什么水平？</td></tr><tr><td>输入：目标、状态、工具结果、预算</td><td>输入：候选动作或结果、判据、证据</td><td>输入：任务、轨迹、输出、评测配置</td></tr><tr><td>输出：继续、委派、等待、结束等决策</td><td>输出：逐项结论、理由、证据与未知项</td><td>输出：单次反馈、分项得分及汇总统计</td></tr><tr><td>通常位于执行控制流</td><td>可置于输入、工具前后、输出等位置</td><td>可离线运行，也可评估线上真实交互</td></tr><tr><td>可由代码、状态机或模型实现</td><td>可由规则、测试、人工或模型实现</td><td>由 grader 执行判分，数据集提供样本</td></tr></tbody></table><p>这张表区分的是职责，不是互斥的部署进程。一个服务可以同时承载三者；一次规则检查也可以既返回当前请求的校验结果，又把同一结论作为评测反馈记录下来。</p>"
+      },
+      {
+        "id": "supervisor",
+        "title": "Supervisor 管方向，不替代事实判据",
+        "body": "<p>调度器维护任务推进关系：缺资料时继续检索，已有证据时生成草稿，检验失败时决定修订或停止。简单任务完全可以用明确的状态转换来实现，不必为了叫作 Supervisor 而额外增加一次模型调用。只有分解方式确实需要动态变化时，模型调度才可能带来价值。</p><p>这里要注意框架的具体命名。LangChain 的 subagents 文档把 Supervisor 描述为维护上下文、跨多轮调用子 Agent 的主 Agent；Router 则通常是一次分类与分发。两者都参与控制流，但并非严格同义词。本文说代码也能承担调度职责，并不等于该框架名为 Supervisor 的模式本身就是一台状态机。<a href=\"#ref-2\">[2]</a></p><p>例如知识库任务的下一步可以是 <code>retrieve</code>、<code>draft</code>、<code>revise</code> 或 <code>stop</code>。调度器选中 <code>stop</code> 只代表它提出结束决策；交付条件仍应由明确的判据约束。否则，模型说“任务完成”就会被错误地当成“任务已被验证完成”。</p>"
+      },
+      {
+        "id": "verify",
+        "title": "Verify 校验什么，就只能证明什么",
+        "body": "<p>校验必须对应一个可说明的谓词。例如，引用编号必须指向已读取的资料；工单草稿的产品版本必须来自授权记录；输出 JSON 必须包含必填字段。只写“检查质量”而没有可观察标准，会让校验器变成另一个凭感觉打分的生成器。</p><p>类型与格式检查很有价值，但其证明范围有限。Pydantic 支持字段和模型级验证，可对数据施加自定义约束；它不会因为 <code>version</code> 是字符串，就自动知道这个版本是否真实存在。类型正确、业务条件满足、引用支持结论，是不同层次，需要相应证据和检查逻辑。<a href=\"#ref-3\">[3]</a></p><table><thead><tr><th>教学结论</th><th>含义</th><th>后续策略</th></tr></thead><tbody><tr><td>通过 pass</td><td>本次指定判据均有证据支持</td><td>允许进入约定的下一阶段</td></tr><tr><td>失败 fail</td><td>有证据表明某条判据不满足</td><td>阻断、修订或终止</td></tr><tr><td>未知 unknown</td><td>材料不足、检查超时或无法判定</td><td>补证据、人工复核或报告未完成</td></tr></tbody></table><p>三态是本文的教学契约，不是统一框架 API。未知不能偷偷折算成通过，失败也不天然意味着必须重试。最终动作应由明确的策略与剩余预算决定。</p>"
+      },
+      {
+        "id": "guardrails",
+        "title": "Verify 与 Guardrail 有交集，但不完全重合",
+        "body": "<p>Guardrail 关注约束怎样被执行：哪些输入可进入系统，哪些资料允许检索，哪些工具调用可运行，哪些输出必须拦截或处理。NVIDIA 的官方分类覆盖输入、检索、对话、执行和输出阶段，因此不能把护栏只画在最终答案之后。<a href=\"#ref-4\">[4]</a></p><p>校验结果可以成为护栏的输入，但仅仅记一条“违反规则”的日志，并不等于已阻止违规动作。例如工具执行前检查授权并拒绝越权读取，是控制；输出已经披露后再发告警，则不能撤回这次披露。检查放在哪里、检查失败会发生什么，都属于设计的一部分。</p><p>相反，一次拼写检查、引用完整性检查或测试编译，也不必被统称为安全护栏。它们可能只是质量验收。区分术语的实用方法是写清对象、判据和后果，避免用一个“Guardrail 已接入”的标签掩盖尚未覆盖的失败路径。</p>"
+      },
+      {
+        "id": "eval",
+        "title": "Eval 测量能力，不限于离线仪表盘",
+        "body": "<p>评测可以给单次运行反馈，再汇总到数据集或生产流量；不必一开始就拥有大型面板。LangSmith 明确区分离线评测与线上评测：前者常用于版本比较和回归，后者针对真实交互做持续质量检查。线上评测可在近实时运行，所以“Eval 只发生在事前或事后、用户完全无感”不是通用定义。<a href=\"#ref-5\">[5]</a></p><p>执行时机还要与控制作用分开。如果一个分数只进入日志，它承担测量职责；如果当前请求必须等分数达标才能交付，这个检查还承担了门控职责，并进入用户等待的关键路径。同一个 grader 可以被两种场景复用，但超时、成本、阻断策略需要分别配置。</p><p>评测也不只评价模型。路由、检索、工具、环境和判分器都会影响结果。Anthropic 将任务、试次、轨迹与 grader 分开讨论，这有助于避免把“整套系统得分下降”直接归因给某个模型。<a href=\"#ref-6\">[6]</a></p><aside class=\"learn-callout\"><strong>数据集不是判分者</strong><p>Dataset 提供输入、参考资料、期望行为及元数据；真正执行判分的是代码、人工或模型 grader。参考答案和人工标注也需要审查与版本管理。</p></aside><p>不同实现还区分逐次、成对和汇总评测器；汇总统计只是评测输出的一种形态，不是 Eval 的唯一含义。<a href=\"#ref-8\">[8]</a></p>"
+      },
+      {
+        "id": "same-task",
+        "title": "把三者放进同一个知识库任务",
+        "body": "<p><strong>以下为原创教学设计，不是已运行实验。</strong>用户请求：“根据我有权访问的产品资料，解释某版本的问题，并生成带来源的工单草稿。”系统只读取授权知识库和生成草稿，本例没有实际提交工单。</p><div class=\"learn-flow\"><div><strong>接收任务</strong><span>明确授权与交付条件</span></div><div><strong>调度检索</strong><span>Supervisor 选择下一步</span></div><div><strong>生成草稿</strong><span>保留资料与版本来源</span></div><div><strong>逐项校验</strong><span>Verify 返回结论</span></div><div><strong>决策交付</strong><span>策略决定继续或停止</span></div></div><p>运行前先写三个交付条件：引用可定位；关键事实得到相应资料支持；内容不超出授权范围。Supervisor 发现版本缺失时选择补查，生成器据证据形成草稿，Verify 分别返回每条条件的状态。只有满足约定条件的草稿才能交付，且明确标记“草稿，未提交”。</p><p>与此同时，保留脱敏轨迹和版本配置。Eval 可以用同一批教学任务比较旧版与新版调度策略，也可抽样检查真实交互中的引用问题。这条测量支路服务于长期改进，不应伪装成当前答复已经通过的证据。</p>"
+      },
+      {
+        "id": "failures",
+        "title": "失败时，先找到责任边界",
+        "body": "<table><thead><tr><th>教学情形</th><th>当场怎样处理</th><th>评测怎样记录</th></tr></thead><tbody><tr><td>检索到了错误版本</td><td>判据失败，调度器补查正确版本</td><td>记录检索与路由错误，不只记总失败</td></tr><tr><td>知识库没有所需资料</td><td>返回未知，说明缺证据</td><td>单列无法作答的处理是否合规</td></tr><tr><td>引用存在但不支持结论</td><td>拦截草稿，修订后再校验</td><td>检查引用支持度判据及漏检</td></tr><tr><td>资料要求执行越权动作</td><td>拒绝越权，不升级资料内容为指令</td><td>纳入对抗样本与约束违反统计</td></tr><tr><td>Reviewer 给了错误通过结论</td><td>用更可靠的证据复核</td><td>这是判分器误判，也应被评测</td></tr></tbody></table><p>失败归因可以有多个标签，但每个标签都应关联可观察证据。“Supervisor 不够聪明”无法指导修改；“授权资料已齐全，却连续三次委派同一检索且无新证据”则能定位到重复检测和停止策略。</p><p>拒绝或未知也不一定是坏结果。对于确实缺少授权或资料的任务，准确停止可能正是期望行为。评测必须按任务类型设置成功条件，不能以“是否给出长答案”来评价所有输入。</p>"
+      },
+      {
+        "id": "contracts",
+        "title": "把检查结果与重试策略分开",
+        "body": "<p>一个有用的校验结果至少应携带：检查项、通过／失败／未知、原因、证据引用、检查器版本。可以另附可修复性建议，但是否重试仍由策略决定；模型 Reviewer 的“建议再试一次”不是无限调用的许可。</p><p><strong>下面是教学伪代码，表达只读草稿任务的控制关系，省略了具体 SDK、取消和异常分类。</strong>真实实现需要把工具错误保留为显式结果，并为校验超时设置未知状态。</p><pre><code>for attempt in range(max_attempts):\n    if remaining_budget &lt;= 0:\n        return report_incomplete(\"budget_exhausted\")\n    plan = route(state, remaining_budget)\n    candidate = execute_readonly(plan, budget=remaining_budget, capture_errors=True)\n    remaining_budget -= candidate.cost\n    verdict = verify(candidate, rules, evidence)\n    record_trial(plan, candidate, verdict)\n    if verdict.status == \"pass\":\n        return deliver_draft(candidate, submitted=False)\n    if verdict.status == \"unknown\":\n        return report_missing_evidence(verdict)\n    if not policy.may_retry(verdict, remaining_budget):\n        return report_failure(verdict)\n    state = update_from_feedback(state, verdict)\nreturn report_incomplete(\"attempt_limit\")</code></pre><p>每次修订得到的是新候选，必须再次经过校验，不能把“进入修订分支”写成成功出口。本例为了清楚展示边界，未知直接返回；另一种策略可以在预算内先补证据，再重新运行判据，但仍不能跳过验证。</p><p>若以后增加真实提交工具，还要处理幂等键、权限与提交状态。请求超时可能意味着结果未知，不能据此认定“没有提交”并盲目再发一次。应先查询状态或进入人工处理。重试策略要区分只读操作、可幂等写入以及不可确认的副作用。</p><p>代码把预算简化为可扣减额度；生产中还应分别约束调用数、token、时间和费用。预算耗尽与尝试次数用尽应保留不同的停止原因，便于后续归因。</p>"
+      },
+      {
+        "id": "metrics",
+        "title": "比较版本时，明确每个指标的分母",
+        "body": "<p>评测需要同时看能力、约束和代价。成功率上升，但更频繁越权、调用数翻倍或尾延迟恶化，都不能直接叫作全面提升。以下指标定义用于教学，不提供虚构的成绩或通用上线阈值。</p><table><thead><tr><th>指标</th><th>建议定义</th><th>必须一起交代</th></tr></thead><tbody><tr><td>任务成功率</td><td>满足该类任务验收条件的试次／全部有效试次</td><td>任务分层、失败与未知数量</td></tr><tr><td>约束违反率</td><td>实际突破至少一次目标约束的试次／纳入该约束检查的试次</td><td>哪条约束、是否实际拦截</td></tr><tr><td>校验漏检率</td><td>被放行的真实违规样本／人工复核的真实违规样本</td><td>标注规则、复核覆盖与样本量</td></tr><tr><td>端到端延迟</td><td>从接收请求到最终状态可用的耗时分布</td><td>是否含重试、工具等待与同步检查</td></tr><tr><td>单位任务成本</td><td>纳入范围的全部运行成本／有效任务试次</td><td>模型、工具、重试及 grader 成本范围</td></tr></tbody></table><p>固定任务版本、工具权限、环境与预算，记录试次和随机性，再比较改动；小样本中的百分比要同时给出分子与分母。P99 等尾部分位数需要足够样本支撑，不能用几次运行制造看似精确的结论。离线与线上数据分布不同，也不能不加说明地合并成一个总分。</p><p>这里的有效试次包含任务失败和未知，不能只保留成功请求。确需排除基础设施中断等样本时，应预先规定规则，公开被排除数量，并保留原始记录。</p><p>这里的约束违反率统计实际突破约束，例如越权读取确已执行；被成功拦截的越权尝试另计为阻断事件。若要衡量误拦，还需在本应允许的样本中统计被错误阻断的比例，不能把这些分子混在一起。</p>"
+      },
+      {
+        "id": "judge-quality",
+        "title": "Reviewer 和 Judge 自己也需要被检验",
+        "body": "<p>同一个模型可以承担生成、Reviewer 或评测 Judge 的角色，但角色变化不会消除模型的盲点。检查器只看到了一个精美解释、没有看到原始证据时，即使给出高分，也可能只是认可了表达方式。</p><p>MT-Bench 与 Chatbot Arena 的相关论文讨论了位置、冗长和自偏好等 Judge 偏差。这说明模型评分是可扩展的判断工具，需要校准与抽查，不能视为天然真值，也不能把某篇论文的历史一致率当作自己系统的保证。<a href=\"#ref-7\">[7]</a></p><ul><li>对格式、权限和可执行条件，优先使用能直接核实的规则或测试。</li><li>对语义质量，给 Judge 明确判据、可见证据及允许未知的出口。</li><li>做成对比较时平衡候选顺序，检查长度和身份线索是否影响评分。</li><li>对分歧、关键失败和疑似漏检做人工复核，保留修正记录。</li></ul><p>参考答案也可能有遗漏。遇到看似合理的运行却被判失败，应同时检查任务、环境和 grader，而不是只调整 Agent 去迎合一个错误的判分器。</p>"
+      },
+      {
+        "id": "practice",
+        "title": "从一条小闭环开始落地",
+        "body": "<p>先选一个边界清楚的只读任务，写出输入、可用资料、允许动作和交付条件。用普通代码完成可预测的路由，给候选结果增加最小必要检查，再用少量代表性样本验证是否测到了真正关心的问题。只有固定规则不足以选择路径时，再引入模型调度。</p><ol><li>准备正常、资料缺失、资料冲突和越权诱导四类教学输入。</li><li>画出每类输入的下一步、检查项，以及通过／失败／未知出口。</li><li>只改变一处路由或提示策略，用相同样本、权限和预算重跑。</li><li>阅读失败轨迹，区分任务错误、工具错误、验证漏检和 grader 误判。</li><li>把真实失败沉淀为回归样本，保持数据、判据和版本可追溯。</li></ol><p>不必同时建设三个独立 Agent 或先搭一个庞大仪表盘。起点可以是一张状态转换表、几个明确的检查器和一个能保存逐次结果的评测脚本。关键是让调度、门控和测量各有清楚的契约，任何一方都不替另一方假定成功。</p><p>继续阅读 <a href=\"agent-loop.html\">Agent Loop</a> 理解运行外壳，阅读 <a href=\"agent-evaluation.html\">Agent 评测综述</a> 扩展评测地图，或用 <a href=\"agent-observability.html\">可观测性与追踪</a> 把分数追溯到具体执行证据。</p>"
+      }
+    ],
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Anthropic · Building effective agents",
+        "url": "https://www.anthropic.com/research/building-effective-agents",
+        "note": "2024-12-19；调度与反馈模式、简单方案优先。本文不照搬其历史工具选型。"
+      },
+      {
+        "id": "ref-2",
+        "title": "LangChain · Subagents",
+        "url": "https://docs.langchain.com/oss/python/langchain/multi-agent/subagents",
+        "note": "官方文档，2026-11-08 核验；Supervisor 与 Router 的具体命名边界。"
+      },
+      {
+        "id": "ref-3",
+        "title": "Pydantic · Validators",
+        "url": "https://pydantic.dev/docs/validation/latest/concepts/validators/",
+        "note": "官方 Latest 文档，2026-11-08 核验；字段、模型与自定义约束验证。"
+      },
+      {
+        "id": "ref-4",
+        "title": "NVIDIA NeMo Guardrails · Guardrail Types",
+        "url": "https://docs.nvidia.com/nemo/guardrails/latest/about-nemo-guardrails-library/rail-types",
+        "note": "官方 Latest 文档，2026-11-08 核验；输入、检索、对话、执行与输出阶段。"
+      },
+      {
+        "id": "ref-5",
+        "title": "LangSmith · Evaluation concepts",
+        "url": "https://docs.langchain.com/langsmith/evaluation-concepts",
+        "note": "官方文档，2026-11-08 核验；离线/线上评测、单次反馈与判分主体。"
+      },
+      {
+        "id": "ref-6",
+        "title": "Anthropic · Demystifying evals for AI agents",
+        "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+        "note": "2026-01-09；任务、试次、grader、轨迹及评测维护。"
+      },
+      {
+        "id": "ref-7",
+        "title": "Zheng et al. · Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+        "url": "https://arxiv.org/abs/2306.05685",
+        "note": "NeurIPS 2023 Datasets and Benchmarks；Judge 的位置、冗长、自偏好等偏差。"
+      },
+      {
+        "id": "ref-8",
+        "title": "LangSmith · Evaluation types",
+        "url": "https://docs.langchain.com/langsmith/evaluation-types",
+        "note": "官方文档，2026-11-08 核验；线上逐次反馈、代码与模型评测器、汇总评测器。"
+      }
+    ]
+  }
+]

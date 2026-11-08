@@ -42,6 +42,7 @@ for (const project of projects) {
   await access(resolve(root, project.image));
 }
 for (const post of posts) {
+  if (post.learningId && !learning.some(article=>article.id===post.learningId)) throw new Error('Unknown learning article link');
   if (!/^[a-z0-9-]+$/.test(post.id)) throw new Error('Invalid article ID');
   validateEditionId(post.date);
   if (!post.title || !post.summary || !post.sections.length || !post.tags.length) throw new Error('Incomplete article');

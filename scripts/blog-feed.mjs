@@ -29,11 +29,12 @@ export function buildFeed(posts, updates) {
   }
   for (const post of posts) {
     validateDate(post);
+    if (post.learningId !== undefined && (typeof post.learningId !== 'string' || !/^[a-z0-9-]+$/.test(post.learningId))) throw new Error('Invalid learning article link');
     if (post.inFeed !== undefined && typeof post.inFeed !== 'boolean') throw new Error('inFeed must be a boolean');
   }
   const entries = [
     ...updates.map(update => ({...update, type: 'status', permalink: `index.html#status-${update.id}`})),
-    ...posts.filter(post => post.inFeed !== false).map(post => ({...post, type: 'article', permalink: `posts/${post.id}.html`})),
+    ...posts.filter(post => post.inFeed !== false).map(post => ({...post, type: 'article', permalink: post.learningId ? `learn/${post.learningId}.html` : `posts/${post.id}.html`})),
   ];
   // Undated times retain their existing order; new posts can be ordered precisely within a day.
   return entries.sort((a, b) => b.date.localeCompare(a.date) || (b.publishedAt ? Date.parse(b.publishedAt) : 0) - (a.publishedAt ? Date.parse(a.publishedAt) : 0));

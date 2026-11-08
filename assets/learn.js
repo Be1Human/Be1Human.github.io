@@ -71,3 +71,4 @@ for(const pre of article.querySelectorAll('pre')){
   pre.append(button);
 }
 for(const button of document.querySelectorAll('[data-demo-step]'))button.addEventListener('click',()=>{for(const tab of document.querySelectorAll('[data-demo-step]'))tab.setAttribute('aria-pressed',String(tab===button));for(const panel of document.querySelectorAll('[data-demo-panel]'))panel.hidden=panel.dataset.demoPanel!==button.dataset.demoStep;});
+for(const button of document.querySelectorAll('[data-comparison-case]'))button.addEventListener('click',()=>{for(const tab of document.querySelectorAll('[data-comparison-case]'))tab.setAttribute('aria-pressed',String(tab===button));for(const panel of document.querySelectorAll('[data-comparison-panel]'))panel.hidden=panel.dataset.comparisonPanel!==button.dataset.comparisonCase;});
