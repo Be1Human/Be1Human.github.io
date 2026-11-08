@@ -82,9 +82,9 @@ npm run check
 
 所有阅读页共用当前「克劳德梦见电子羊」深色品牌与导航；旧米白归档主题及云朵标识已退役，不保留双主题入口。
 
-主页开场在第二段推进镜头后衔接完整 Agent 学习区，继续下划再到章节卡片；`#learning` 支持直接定位，上划可回到镜头，独立 `learn.html` 继续可用。
+主页开场在第二段推进镜头后露出背景画面，Agent 学习屏只保留标题和独立学习页入口，继续下划再到章节卡片；`#learning` 支持直接定位，上划可回到镜头，独立 `learn.html` 继续可用。
 
-重点对比《Supervisor、Verify、Eval》在学习首页与主页内嵌 Wiki 单独推荐；博客记录可通过 `learningId` 直接将时间线和 RSS 导向对应完整 Wiki 文章。文章源位于 `data/learning/comparisons.json`。
+重点对比《Supervisor、Verify、Eval》在独立学习首页单独推荐；博客记录可通过 `learningId` 直接将时间线和 RSS 导向对应完整 Wiki 文章。文章源位于 `data/learning/comparisons.json`。
 
 ## 图文与代码
 

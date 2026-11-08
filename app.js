@@ -59,7 +59,7 @@ function startHomeIdle(){
  v.play().catch(failed);
 }
 function scrollToHero(step){if(route!=='home'||routeTransitioning)return;const el=$('home-opening'),range=Math.max(1,el.offsetHeight-innerHeight);window.scrollTo({top:el.getBoundingClientRect().top+scrollY+range*Math.max(0,Math.min(heroLastStep,step))/Math.max(1,heroLastStep),behavior:motionEnabled?'smooth':'instant'})}
-function updateHomeNavigation(){const learning=$('learning'),rect=learning?.getBoundingClientRect(),inLearning=!!rect&&rect.top<=innerHeight*.45&&rect.bottom>120;for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);a.setAttribute('aria-current',active?'page':'false')}}
+function updateHomeNavigation(){const learning=$('learning'),rect=learning?.getBoundingClientRect(),inLearning=!!rect&&rect.top<=innerHeight*.45&&rect.bottom>120;document.body.dataset.homeSection=inLearning?'learning':'opening';$('footer-hint').textContent=inLearning?'':'下滑推进 · 上滑倒回 · 继续进入 Agent 学习';for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);a.setAttribute('aria-current',active?'page':'false')}}
 function syncHomeScroll(){
  if(route!=='home'||routeTransitioning||document.hidden)return;
  updateHomeNavigation();
