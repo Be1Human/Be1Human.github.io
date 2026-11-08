@@ -15,10 +15,15 @@ const [projects, posts, news, evidence, template, updates] = await Promise.all([
   readJSON('data/updates.json'),
 ]);
 const origin = 'https://be1human.github.io/';
-const styleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/site.css'))).digest('hex').slice(0, 12);
-const scriptVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/app.js'))).digest('hex').slice(0, 12);
-const learnStyleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/learn.css'))).digest('hex').slice(0, 12);
-const learnScriptVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/learn.js'))).digest('hex').slice(0, 12);
+async function assetVersion(path) {
+  // Match the LF bytes Git publishes, including files edited with CRLF locally.
+  const content = (await readFile(resolve(root, path), 'utf8')).replaceAll('\r\n', '\n');
+  return createHash('sha256').update(content).digest('hex').slice(0, 12);
+}
+const styleVersion = await assetVersion('assets/site.css');
+const scriptVersion = await assetVersion('assets/app.js');
+const learnStyleVersion = await assetVersion('assets/learn.css');
+const learnScriptVersion = await assetVersion('assets/learn.js');
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -66,7 +71,7 @@ for (const edition of news.editions) {
 }
 news.editions.sort((a, b) => b.id.localeCompare(a.id));
 const latest = news.editions[0];
-const redirectVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/legacy-redirect.js'))).digest('hex').slice(0, 12);
+const redirectVersion = await assetVersion('assets/legacy-redirect.js');
 
 function render(path, title, description, active, content, ogtype = 'website') {
   const base = path.includes('/') ? '../' : '';
