@@ -102,8 +102,8 @@
     "label": "AI 与工具",
     "description": "面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。",
     "image": "assets/images/mineclaw.jpg",
-    "imageAlt": "MineClaw 本地控制台展示 Minecraft 世界的实时感知",
-    "imageNote": "项目控制台截图",
+    "imageAlt": "MineClaw 控制台待连接界面，背包栏尚无数据",
+    "imageNote": "控制台界面（待连接）",
     "tags": [
       "TypeScript",
       "Minecraft",

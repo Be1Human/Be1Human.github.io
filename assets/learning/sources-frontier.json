@@ -1,0 +1,82 @@
+[
+  {
+    "articleId": "context-engineering",
+    "asset": "assets/learning/context-engineering-evidence.svg",
+    "type": "original-explanatory-svg",
+    "title": "context-engineering-evidence",
+    "basis": [
+      "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+      "https://arxiv.org/abs/2307.03172"
+    ],
+    "license": "Original site-authored diagram; underlying papers and documentation retain their own licenses.",
+    "usage": "依据原始资料的概念独立绘制，具体案例为教学数据；未复刻论文原图、未使用论文实验数值。",
+    "reviewedAt": "2026-11-08"
+  },
+  {
+    "articleId": "agent-memory",
+    "asset": "assets/learning/agent-memory-time.svg",
+    "type": "original-explanatory-svg",
+    "title": "agent-memory-time",
+    "basis": [
+      "https://arxiv.org/abs/2410.10813",
+      "https://arxiv.org/abs/2310.08560"
+    ],
+    "license": "Original site-authored diagram; underlying papers and documentation retain their own licenses.",
+    "usage": "原创双时间教学图：系统时间版本与有效期分别展示；杭州标为未确认计划，不推断实际地点。",
+    "reviewedAt": "2026-11-08"
+  },
+  {
+    "articleId": "agentic-rag",
+    "asset": "assets/learning/agentic-rag-coverage.svg",
+    "type": "original-explanatory-svg",
+    "title": "agentic-rag-coverage",
+    "basis": [
+      "https://arxiv.org/abs/2310.11511",
+      "https://arxiv.org/abs/2401.15884"
+    ],
+    "license": "Original site-authored diagram; underlying papers and documentation retain their own licenses.",
+    "usage": "依据原始资料的概念独立绘制，具体案例为教学数据；未复刻论文原图、未使用论文实验数值。",
+    "reviewedAt": "2026-11-08"
+  },
+  {
+    "articleId": "planning-and-reflection",
+    "asset": "assets/learning/planning-and-reflection-test-loop.svg",
+    "type": "original-explanatory-svg",
+    "title": "planning-and-reflection-test-loop",
+    "basis": [
+      "https://arxiv.org/abs/2303.11366",
+      "https://arxiv.org/abs/2305.18323"
+    ],
+    "license": "Original site-authored diagram; underlying papers and documentation retain their own licenses.",
+    "usage": "依据原始资料的概念独立绘制，具体案例为教学数据；未复刻论文原图、未使用论文实验数值。",
+    "reviewedAt": "2026-11-08"
+  },
+  {
+    "articleId": "multi-agent",
+    "asset": "assets/learning/multi-agent-merge-contract.svg",
+    "type": "original-explanatory-svg",
+    "title": "multi-agent-merge-contract",
+    "basis": [
+      "https://www.anthropic.com/research/multi-agent-research-system",
+      "https://arxiv.org/abs/2308.08155"
+    ],
+    "license": "Original site-authored diagram; underlying papers and documentation retain their own licenses.",
+    "usage": "依据原始资料的概念独立绘制，具体案例为教学数据；未复刻论文原图、未使用论文实验数值。",
+    "reviewedAt": "2026-11-08"
+  },
+  {
+    "articleId": "mcp",
+    "asset": "assets/learning/mcp-trust-sequence.svg",
+    "type": "original-explanatory-svg",
+    "title": "mcp-trust-sequence",
+    "basis": [
+      "https://modelcontextprotocol.io/specification/2026-07-28/architecture",
+      "https://modelcontextprotocol.io/specification/2026-07-28/server/tools",
+      "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+      "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http"
+    ],
+    "license": "Original site-authored diagram; underlying papers and documentation retain their own licenses.",
+    "usage": "依据原始资料的概念独立绘制，具体案例为教学数据；未复刻论文原图、未使用论文实验数值。",
+    "reviewedAt": "2026-11-08"
+  }
+]

@@ -65,10 +65,3 @@ window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnima
 const tocLinks=[...document.querySelectorAll('.learn-toc nav a')];
 function updateToc(){let selected=tocLinks[0];for(const link of tocLinks){if(document.getElementById(link.hash.slice(1))?.getBoundingClientRect().top<=155)selected=link;}for(const link of tocLinks){const active=link===selected;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}}
 window.addEventListener('resize',updateProgress); updateProgress();
-for(const pre of article.querySelectorAll('pre')){
-  const button=document.createElement('button');button.type='button';button.className='learn-copy';button.textContent='复制';button.setAttribute('aria-label','复制代码');
-  button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.querySelector('code')?.textContent||pre.textContent.replace(button.textContent,''));button.textContent='已复制';}catch{button.textContent='请手动选择';}setTimeout(()=>button.textContent='复制',1800);});
-  pre.append(button);
-}
-for(const button of document.querySelectorAll('[data-demo-step]'))button.addEventListener('click',()=>{for(const tab of document.querySelectorAll('[data-demo-step]'))tab.setAttribute('aria-pressed',String(tab===button));for(const panel of document.querySelectorAll('[data-demo-panel]'))panel.hidden=panel.dataset.demoPanel!==button.dataset.demoStep;});
-for(const button of document.querySelectorAll('[data-comparison-case]'))button.addEventListener('click',()=>{for(const tab of document.querySelectorAll('[data-comparison-case]'))tab.setAttribute('aria-pressed',String(tab===button));for(const panel of document.querySelectorAll('[data-comparison-panel]'))panel.hidden=panel.dataset.comparisonPanel!==button.dataset.comparisonCase;});

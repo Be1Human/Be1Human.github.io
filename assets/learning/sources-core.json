@@ -1,0 +1,75 @@
+{
+  "reviewedAt": "2026-11-08",
+  "assets": [
+    {
+      "file": "assets/learning/react-evidence.svg",
+      "type": "original-svg",
+      "license": "Original site illustration",
+      "sourceReferences": [
+        "https://react-lm.github.io/",
+        "https://react-lm.github.io/files/diagram.png",
+        "https://react-lm.github.io/files/results.png"
+      ],
+      "usage": "独立绘制具体教学案例；非论文原图、非产品运行截图"
+    },
+    {
+      "file": "assets/learning/agent-loop-recovery.svg",
+      "type": "original-svg",
+      "license": "Original site illustration",
+      "sourceReferences": [
+        "https://docs.langchain.com/oss/python/langgraph/persistence",
+        "https://docs.langchain.com/oss/python/langgraph/fault-tolerance"
+      ],
+      "usage": "独立绘制具体教学案例；非论文原图、非产品运行截图"
+    },
+    {
+      "file": "assets/learning/tool-calling-wire.svg",
+      "type": "original-svg",
+      "license": "Original site illustration",
+      "sourceReferences": [
+        "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+        "https://json-schema.org/understanding-json-schema/reference/object"
+      ],
+      "usage": "独立绘制具体教学案例；非论文原图、非产品运行截图"
+    },
+    {
+      "file": "assets/learning/workflows-control-boundary.svg",
+      "type": "original-svg",
+      "license": "Original site illustration",
+      "sourceReferences": [
+        "https://www.anthropic.com/research/building-effective-agents"
+      ],
+      "usage": "独立绘制具体教学案例；非论文原图、非产品运行截图"
+    },
+    {
+      "file": "assets/learning/supervisor-verify-eval-lanes.svg",
+      "type": "original-svg",
+      "license": "Original site illustration",
+      "sourceReferences": [
+        "https://docs.langchain.com/langsmith/evaluation-types",
+        "https://www.anthropic.com/research/building-effective-agents"
+      ],
+      "usage": "独立绘制具体教学案例；非论文原图、非产品运行截图"
+    },
+    {
+      "file": "assets/learning/supervisor-verify-eval-matrix.svg",
+      "type": "original-svg",
+      "license": "Original site illustration",
+      "sourceReferences": [
+        "https://www.anthropic.com/research/demystifying-evals-for-ai-agents"
+      ],
+      "usage": "独立绘制具体教学案例；非论文原图、非产品运行截图"
+    },
+    {
+      "file": "assets/learning/react-paper-overview.png",
+      "type": "paper-original-figure",
+      "title": "ReAct author project overview figure",
+      "sourceUrl": "https://react-lm.github.io/files/diagram.png",
+      "sourcePage": "https://react-lm.github.io/",
+      "authors": "Shunyu Yao et al.",
+      "license": "作者项目页未单列图像许可证；用于带出处的论文评述，保留原图，不声明为本站原创或开放素材。",
+      "usage": "原图完整引用，紧邻读图解读，不做修改。"
+    }
+  ],
+  "referenceImagePolicy": "引用一张作者项目原始机制图作论文评述，保留来源和作者；本站案例图独立绘制。"
+}

@@ -7,6 +7,7 @@ import { buildFeed, renderStatusText } from './blog-feed.mjs';
 import { projectCategories, projectPagePath, validateProject } from './project-data.mjs';
 import { buildExperienceNews } from './experience-news.mjs';
 import { readLearning, learningPages } from './learning.mjs';
+import { renderRichContent } from './rich-content.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const readJSON = async path => JSON.parse(await readFile(resolve(root, path), 'utf8'));
@@ -24,6 +25,8 @@ const styleVersion = await assetVersion('assets/site.css');
 const scriptVersion = await assetVersion('assets/app.js');
 const learnStyleVersion = await assetVersion('assets/learn.css');
 const learnScriptVersion = await assetVersion('assets/learn.js');
+const readingStyleVersion = await assetVersion('assets/reading.css');
+const readingScriptVersion = await assetVersion('assets/reading.js');
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -33,6 +36,14 @@ const categories = projectCategories;
 const pages = new Map();
 const learning = await readLearning(root);
 const learningOutput = learningPages(learning);
+const experienceContent = await readJSON('content-local.json');
+for (const entry of experienceContent.journal) {
+  const post=posts.find(post=>post.id===entry.id);
+  if (!post) continue;
+  entry.title=post.title;entry.summary=post.summary;entry.updatedAt=post.updatedAt;entry.hideCover=post.hideCover;entry.image=post.image;entry.imageAlt=post.imageAlt;
+  entry.sections=post.sections.map(section=>({title:section.heading,paragraphs:section.paragraphs,...(section.body?{body:renderRichContent(section.body)}:{})}));
+}
+pages.set('content-local.json',JSON.stringify(experienceContent,null,2)+'\n');
 // The interactive homepage fetches the small index and just one edition at a
 // time; keep it synchronized with the same authoritative public archive.
 for (const [path, content] of await buildExperienceNews({root, archive: news})) pages.set(path, content);
@@ -80,7 +91,7 @@ function render(path, title, description, active, content, ogtype = 'website') {
   let html = template;
   const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>` : '';
   const brandedTitle = title.replaceAll('CLOUD BOY · 云上男孩', '克劳德梦见电子羊').replaceAll('— CLOUD BOY', '— 克劳德梦见电子羊');
-  const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead};
+  const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, READING_STYLE_VERSION:readingStyleVersion, READING_SCRIPT_VERSION:readingScriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
   if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
@@ -117,7 +128,7 @@ const home = `<section class="site-panel activity-feed" aria-labelledby="home-ti
 // Preserve the approved interactive homepage when rebuilding news and archives.
 const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
 const homeLearning = `<section class="home-learning" id="learning" aria-labelledby="home-learning-title">${learningOutput.pages[0].body.replace('<h1>Agent 学习</h1>', '<h2 id="home-learning-title">Agent 学习</h2>').replaceAll('href="#top"','href="#learning"')}</section>`;
-const homeLearnAssets = new Map([['assets/learn.css',learnStyleVersion],['assets/learn.js',learnScriptVersion]]);
+const homeLearnAssets = new Map([['assets/learn.css',learnStyleVersion],['assets/learn.js',learnScriptVersion],['assets/reading.css',readingStyleVersion],['assets/reading.js',readingScriptVersion]]);
 let homepage = homepageTemplate.replace('<!--HOME_AGENT_LEARNING-->',`<!--HOME_LEARNING_START-->${homeLearning}<!--HOME_LEARNING_END-->`);
 for (const [path,version] of homeLearnAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
 pages.set('index.html', homepage);
@@ -125,14 +136,14 @@ pages.set('index.html', homepage);
 render('works.html', '作品集 — CLOUD BOY · 云上男孩', `游戏、视觉、工具与研究实验：CLOUD BOY 的 ${projects.length} 件作品及项目记录。`, 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
 
 for (const project of projects.filter(project => project.presentation === 'showcase')) {
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header><figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure><div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header><figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure><div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.body?renderRichContent(section.body):section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article');
 }
 
 render('journal.html', '克劳德梦见电子羊 · 手记', '云上男孩的文字动态与长文章，按发布时间排列。', 'home', home);
 
 for (const post of posts) {
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="${e(post.publishedAt || post.date)}">${post.date.replaceAll('-', '.')}</time><span>·</span>${minutes(post)} 分钟阅读<span>·</span>${e(post.category)}</p></div></div><h1>${e(post.title).replaceAll('：', '：<wbr>')}</h1><p class="article-lede">${e(post.summary)}</p></header>${post.image ? `<figure class="article-cover"><img src="../${post.image}" alt="${e(post.imageAlt)}" width="1200" height="600"><figcaption>${e(post.imageAlt)}</figcaption></figure>` : ''}<div class="prose">${post.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}${post.links.length ? `<section class="article-links"><h2>继续探索</h2><ul>${post.links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>` : ''}</div><footer class="article-end"><div class="tags">${post.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article>`;
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="${e(post.publishedAt || post.date)}">${post.date.replaceAll('-', '.')}</time><span>·</span>${minutes(post)} 分钟阅读<span>·</span>${e(post.category)}${post.updatedAt?`<span>·</span>更新 ${e(post.updatedAt)}`:''}</p></div></div><h1>${e(post.title).replaceAll('：', '：<wbr>')}</h1><p class="article-lede">${e(post.summary)}</p></header>${post.image && !post.hideCover ? `<figure class="article-cover"><img src="../${post.image}" alt="${e(post.imageAlt)}" width="1200" height="600"><figcaption>${e(post.imageAlt)}</figcaption></figure>` : ''}<div class="prose">${post.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.body?renderRichContent(section.body):section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}${post.links.length ? `<section class="article-links"><h2>继续探索</h2><ul>${post.links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>` : ''}</div><footer class="article-end"><div class="tags">${post.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article>`;
   render(`posts/${post.id}.html`, `${post.title} — CLOUD BOY`, post.summary, 'journal', body, 'article');
 }
 
@@ -167,8 +178,8 @@ for (const [path, html] of pages) {
   if (!path.endsWith('.html')) continue;
   const pageIds = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   if (new Set(pageIds).size !== pageIds.length) throw new Error(`Duplicate HTML ID: ${path}`);
-  for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
-    const url = match[1];
+  for (const match of html.matchAll(/\b(?:href|src)=(['"])(.*?)\1/g)) {
+    const url = match[2];
     if (/^(?:https?:|#)/.test(url)) continue;
     const target = resolve(root, dirname(path), url.split(/[?#]/)[0]);
     const localPath = relative(root, target).replaceAll('\\', '/');

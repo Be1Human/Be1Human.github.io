@@ -23,3 +23,10 @@
 - `assets/images/agent-learning-cover.svg`：本站原创 Agent 学习结构示意；Wiki 页面参考 Prompt Engineering Guide 的知识站阅读方式，正文、示例与图解独立编写，论文与官方文档在各篇末尾逐条列出。
 
 - `assets/images/supervisor-verify-eval.svg`：本站原创调度、验证与评测职责图。用户提供的对照图作为写作主题参考；正文、图解、对照表与情境示例独立编写，原始资料在文章末尾列明。
+
+## 学习文章图文重写（2026-11）
+
+- 论文与作者原图、改绘和原创案例图逐张登记于 `assets/learning/sources-core.json`、`sources-frontier.json`、`sources-evaluation.json`。ReAct 作者原图未改；Snell 等论文曲线保留原始 SVG 与 CC BY 4.0 归属说明。
+- `notes-decision.svg`、`notes-inventory.svg`、`notes-reading-map.svg` 为本站原创教学图；数值和轨迹在图说中标明用途。项目已有截图沿用原来源，其中 MineClaw 截图为待连接界面。
+- 代码高亮使用 PrismJS 1.30.0 的官方核心与语言语法，MIT；源码与许可证位于 `scripts/vendor/prism.cjs` 和 `prism-LICENSE.txt`，只在构建阶段运行。
+- 文字编辑参考 [Humanizer](https://github.com/blader/humanizer/blob/main/SKILL.md) 与 [technical-writing](https://github.com/ericrisco/rsc-harness/blob/main/skills/technical-writing/SKILL.md) 的去套话、具体案例和技术表达规则。未复制其示例为项目实现事实。

@@ -35,7 +35,10 @@ test('the preserved journal feed shows statuses and article previews with workin
     const articlePath=post.learningId ? `learn/${post.learningId}.html` : `posts/${post.id}.html`;
     assert(index.includes(`href="${articlePath}"`));
     const article = await readFile(new URL(`../${articlePath}`,import.meta.url),'utf8');
-    assert(article.includes(post.learningId ? post.title : post.sections[0].paragraphs[0]));
+    const body=post.sections[0].body;
+    const firstImage=body?.match(/<img\b[^>]*src=['"]([^'"]+)['"]/)?.[1];
+    const firstParagraph=body?.match(/<p>([\s\S]*?)<\/p>/)?.[1];
+    assert(article.includes(post.learningId ? post.title : firstImage || firstParagraph || post.sections[0].paragraphs[0]));
     assert(!index.includes(post.sections[0].paragraphs[0]));
   }
   assert(!index.includes('blog-entry--featured'));

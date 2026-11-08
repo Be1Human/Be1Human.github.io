@@ -1,0 +1,53 @@
+[
+  {
+    "path": "assets/learning/eval-state-and-procedure.svg",
+    "type": "original-diagram",
+    "title": "终态正确，过程越权",
+    "basedOn": [
+      "https://aclanthology.org/2026.findings-emnlp.1162/"
+    ],
+    "note": "本站原创教学记录与状态；没有复用论文实验数据。"
+  },
+  {
+    "path": "assets/learning/eval-run-matrix.svg",
+    "type": "original-diagram",
+    "title": "12次运行，三个读数",
+    "basedOn": [
+      "https://arxiv.org/abs/2406.12045",
+      "https://arxiv.org/abs/2107.03374"
+    ],
+    "note": "本站原创教学矩阵；数值可由文章Python代码复算，非论文实验成绩。"
+  },
+  {
+    "path": "assets/learning/eval-ttc-paper-figure1.svg",
+    "type": "paper-figure",
+    "title": "Snell et al. Figure 1 上半部",
+    "sourceUrl": "https://arxiv.org/html/2408.03314v1/revisions_fig1.svg",
+    "pageUrl": "https://arxiv.org/html/2408.03314v1#S1.F1",
+    "authors": "Charlie Snell, Jaehoon Lee, Kelvin Xu, Aviral Kumar",
+    "year": 2024,
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modified": false,
+    "note": "arXiv HTML明确标示CC BY 4.0。SVG无脚本/foreignObject/外部资源引用，保留原图。"
+  },
+  {
+    "path": "assets/learning/eval-ttc-budget.svg",
+    "type": "original-diagram",
+    "title": "同一预算怎样分配",
+    "basedOn": [
+      "https://arxiv.org/abs/2408.03314"
+    ],
+    "note": "抽象额度仅用于展示执行策略；不表示token、FLOPs、延迟或实验准确率。"
+  },
+  {
+    "path": "assets/learning/eval-timeout-waterfall.svg",
+    "type": "original-diagram",
+    "title": "超时后重复创建工单",
+    "basedOn": [
+      "https://opentelemetry.io/docs/concepts/signals/traces/",
+      "https://docs.stripe.com/api/idempotent_requests"
+    ],
+    "note": "本站原创虚构教学时间线；时间值与ID不来自用户或真实服务。"
+  }
+]

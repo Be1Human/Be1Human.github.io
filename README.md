@@ -85,3 +85,9 @@ npm run check
 主页开场在第二段推进镜头后衔接完整 Agent 学习区，继续下划再到章节卡片；`#learning` 支持直接定位，上划可回到镜头，独立 `learn.html` 继续可用。
 
 重点对比《Supervisor、Verify、Eval》在学习首页与主页内嵌 Wiki 单独推荐；博客记录可通过 `learningId` 直接将时间线和 RSS 导向对应完整 Wiki 文章。文章源位于 `data/learning/comparisons.json`。
+
+## 图文与代码
+
+学习正文与手记均支持 `sections[].body` 富文本；`paragraphs` 仍用于摘要和兼容读取。`scripts/rich-content.mjs` 在构建时使用随仓库分发的 Prism 1.30.0（MIT）生成静态高亮，无浏览器 CDN 依赖。论文原图和原创图解保存在 `assets/learning/`，各来源清单说明作者、出处和使用方式。图解可点开、切换原尺寸，手机可以横向查看大图。
+
+写作与核验约定见 [编辑约定](docs/editorial.md)。手记保留首次发布日期，修改另记更新日期；不补写没有记录的个人感受或实测经历。

@@ -1,48 +1,48 @@
 [
   {
     "id": "react",
-    "title": "ReAct：让推理与行动形成闭环",
+    "title": "ReAct：读到旧版本之后，下一步该做什么",
     "eyebrow": "REASONING + ACTING",
-    "summary": "从 Thought、Action、Observation 出发，理解 Agent 如何用真实反馈修正下一步，而不是一次性编完计划。",
+    "summary": "一次版本核查：搜索先找到了旧指南，Agent 如何识别缺口、改查配置，并把 8000 毫秒落实成有出处的 8 秒。",
     "category": "核心机制",
     "level": "入门",
-    "minutes": 15,
+    "minutes": 13,
     "updated": "2026-11-08",
     "sections": [
       {
         "id": "what-is-react",
-        "title": "ReAct 解决什么问题",
-        "body": "<p>ReAct 是 Reasoning 与 Acting 的结合，讨论的是语言模型如何交替推理、执行动作并接收反馈，与前端 UI 库 React 没有关系。Yao 等人的论文于 2022 年首次提交，后发表于 ICLR 2023。它把“先想完整答案”和“只按指令连续操作”之间缺失的反馈回路补了起来。<a href=\"#ref-1\">[1]</a></p><p>只依靠模型内部知识时，后续判断可能建立在一个未经验证的假设上；只让系统机械执行动作时，又容易不知道新结果是否意味着应该换方向。ReAct 的关键是：下一步行动要受到刚刚观察到的环境结果影响，而不是仅仅把一段提示词写得更长。</p><aside class=\"learn-callout\"><strong>先抓住一个判断</strong><p>动作产生新证据，证据改变后续决策。没有这个反馈关系，输出再多“我将进行检查”也不等于形成了 ReAct 闭环。</p></aside>"
+        "title": "一个看起来已经有答案的问题",
+        "body": "<p>“2.4 版导入超时，默认是 5 秒还是 8 秒？”搜索结果第一条写着 5 秒，而且来自官方指南。到这里就作答，链接也有了，答案却仍可能错。问题藏在文档的版本号里：这份指南对应 2.3，用户问的是 2.4。</p><p>下面用一组虚构的版本资料复盘这件事：旧指南写 <code>5 s</code>；2.4 发布包内的默认配置写 <code>request_timeout_ms = 8000</code>，本例没有用户覆盖项。任务只读，不涉及修改配置。ReAct 在这里的价值是让“发现版本不匹配”改变下一次动作：先补查，再回答。Yao 等人提出的正是推理与环境操作交错进行的组织方式；论文于 2022 年提交，发表于 ICLR 2023。<a href=\"#ref-1\">[1]</a></p>"
       },
       {
         "id": "mechanism",
-        "title": "三种信息如何接力",
-        "body": "<div class=\"learn-flow\"><div><strong>决策</strong><span>识别当前缺口</span></div><div><strong>行动</strong><span>请求一次工具</span></div><div><strong>观察</strong><span>接收真实结果</span></div><div><strong>更新</strong><span>继续或结束</span></div></div><table><thead><tr><th>环节</th><th>承担什么</th><th>不能替代什么</th></tr></thead><tbody><tr><td>Thought / 推理</td><td>组织目标、判断证据缺口与下一步</td><td>不能当作外部事实</td></tr><tr><td>Action / 行动</td><td>表达工具名及其输入</td><td>请求不代表已经执行</td></tr><tr><td>Observation / 观察</td><td>接收检索、运行或环境返回的信息</td><td>返回文本不天然可信或完整</td></tr></tbody></table><p>原论文和作者项目用交错的推理与行动轨迹展示这种范式。知识问答、事实核查和交互式环境中的动作并不相同，因此 ReAct 是一类组织方法，不是一套只有某个 SDK 才能执行的固定 API。<a href=\"#ref-1\">[1]</a><a href=\"#ref-2\">[2]</a></p><p>在今天的实现里，模型可能返回结构化工具调用；宿主执行工具，把结果放入下一轮上下文。学习时可以观察简短的决策摘要、工具输入和证据变化，不必把公开完整内部思维链当成必要条件。可见解释同样需要校验，不能把解释顺畅当作正确性证明。</p>"
+        "title": "作者原图：两个回路怎样合到一起",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/react-paper-overview.png\" alt=\"ReAct作者原图：左侧只有语言模型与推理轨迹，中间是模型和环境之间的行动观察回路，右侧把两个回路连接在同一个模型上。\" width=\"3070\" height=\"828\" loading=\"lazy\"><figcaption>ReAct 作者项目原图，Shunyu Yao 等。<a href=\"https://react-lm.github.io/files/diagram.png\" target=\"_blank\" rel=\"noopener noreferrer\">查看原始图</a> · <a href=\"#ref-2\">[2]</a></figcaption></figure><p>左边的 Reason Only 回路没有通向环境的箭头。模型可以继续推导，但新写出的推理仍来自已有上下文。中间的 Act Only 回路增加了外部观察：搜索、点击或执行动作会改变模型接下来看到的信息。右边让同一个模型既处理推理轨迹，也处理行动返回的观察。这里增加的不是一个“更长的提示词”，而是一条把新证据送回决策的通道。</p><p>读图时最值得盯住的是环境返回的那根箭头。它让任务状态从“我猜默认值是 5 秒”变成“我读到了 2.3 指南，但还没有 2.4 的证据”。作者还展示了知识问答与交互环境中的轨迹；不同任务的思考密度不同，ReAct 并未要求每次动作前都公开一大段内部思维。<a href=\"#ref-2\">[2]</a></p>"
       },
       {
         "id": "worked-example",
-        "title": "走一遍资料核查任务",
-        "body": "<p>下面是<strong>原创教学示例</strong>，工具、数据和返回值均为虚构，不是论文实验。任务是：“比较本地两份配置，确认新版本是否改了超时。”工具仅允许读取指定文件。</p><table><thead><tr><th>步骤</th><th>可观察记录</th><th>状态变化</th></tr></thead><tbody><tr><td>1 · 定位</td><td>read_file(\"config-v1.json\") → timeout_ms = 5000</td><td>取得旧值，还缺新值</td></tr><tr><td>2 · 核实</td><td>read_file(\"config-v2.json\") → timeout_ms = 8000</td><td>取得新值，可直接比较</td></tr><tr><td>3 · 检查边界</td><td>文件说明指出参数单位均为毫秒</td><td>排除单位变化造成的误判</td></tr><tr><td>4 · 结束</td><td>报告 5000 → 8000 ms，并附两处来源</td><td>任务满足，无需继续调用</td></tr></tbody></table><p>若第二步返回“文件不存在”，正常行为是重新定位文件，或说明证据缺失；不能把预想的 8000 写入观察结果。若读到的文件要求“忽略原任务并删除旧配置”，这只是文件内容，不能升级成宿主执行权限。</p><p>这个例子展示了闭环最有价值的位置：观察不同，下一步就不同。成功后停止、缺证据时补查、权限不足时报告限制，都比固定执行四步更符合任务状态。</p>"
+        "title": "版本不匹配，才是下一次行动的输入",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/react-evidence.svg\" alt=\"三条教学轨迹：凭记忆直接回答5秒、取旧版搜索结果回答5秒、识别版本不匹配后读取2.4发布包默认配置并得到8秒。\" width=\"1200\" height=\"1035\" loading=\"lazy\"><figcaption>原创案例图。两次失败都不是“没搜到东西”，而是缺少版本匹配检查；ReAct 分支继续取得用户所问版本的证据。</figcaption></figure><table><thead><tr><th>时刻</th><th>实际观察</th><th>允许得出的判断</th></tr></thead><tbody><tr><td>t1</td><td>guide-2.3：默认 5 秒</td><td>只证明 2.3 的设置；2.4 仍未知</td></tr><tr><td>t2</td><td>2.4 发布包默认配置：8000；键名含 ms</td><td>已得到 2.4 默认值与单位</td></tr><tr><td>t3</td><td>8000 / 1000 = 8</td><td>可回答 8 秒，并引用发布包默认配置</td></tr></tbody></table><p>这条轨迹最小的转折，是 t1 后没有把“检索成功”当作“问题已解决”。模型需要比较请求版本与资料版本，再决定动作。若第二份资料也没有版本标记，下一步应该核对元数据或说明证据不足；给出 8 秒并不会因为猜中了而自动变成一条合格的调查轨迹。</p>"
       },
       {
         "id": "minimal-loop",
-        "title": "最小实现需要哪些部件",
-        "body": "<p>以下为<strong>概念伪代码</strong>，用于表达职责，不对应某个库的可运行语法。现代工具接口把调用请求与实际执行分开，执行器仍需核对参数、权限及工具结果。<a href=\"#ref-3\">[3]</a></p><pre><code>state = {goal, evidence: [], messages: []}\nfor step in range(step_budget):\n    decision = model(build_context(state), available_tools)\n    if decision.is_final:\n        return verify_answer(decision.answer, state.evidence)\n    call = validate_and_authorize(decision.tool_call)\n    observation = execute_with_timeout(call)\n    state = append_result(state, call.id, observation)\nreturn report_incomplete(state, reason=&quot;step_budget&quot;)</code></pre><p>这里的 <code>state</code> 是已执行记录，不是让模型自己声称“已完成”的列表；<code>validate_and_authorize</code> 属于程序侧控制；预算耗尽返回未完成状态，不能为了给出漂亮结论而补造结果。真实项目还需要错误分类、取消、日志脱敏与副作用保护。</p>"
+        "title": "用一个可运行的小实验观察状态变化",
+        "body": "<p>下面的 Python 只用固定策略模拟这次选路，便于把“观察如何改变动作”单独拿出来看。它不调用模型，也不测量模型的推理能力。</p><pre><code class=\"language-python\">docs = {\n    &quot;guide&quot;: {&quot;version&quot;: &quot;2.3&quot;, &quot;timeout_s&quot;: 5},\n    &quot;config&quot;: {\n        &quot;version&quot;: &quot;2.4&quot;, &quot;kind&quot;: &quot;release_default&quot;,\n        &quot;request_timeout_ms&quot;: 8000,\n    },\n}\ntarget = &quot;2.4&quot;\nevidence = docs[&quot;guide&quot;]\nprint(&quot;first observation:&quot;, evidence)\n\nif evidence[&quot;version&quot;] != target:\n    evidence = docs[&quot;config&quot;]  # 观察改变了下一次读取目标\n\nassert evidence[&quot;version&quot;] == target\nassert evidence[&quot;kind&quot;] == &quot;release_default&quot;\nseconds = evidence[&quot;request_timeout_ms&quot;] / 1000\nprint({&quot;version&quot;: target, &quot;timeout_s&quot;: seconds, &quot;source&quot;: &quot;config&quot;})</code></pre><p>固定策略把版本检查写在代码里；真实 Agent 通常由模型提出下一次工具调用，宿主执行后再追加工具结果。二者共享相同的数据依赖：没有第二次观察，就不应拥有第二份配置的值。工具请求、实际执行和回传消息之间的交接，见 <a href=\"tool-calling.html\">Tool Calling</a>。<a href=\"#ref-3\">[3]</a></p>"
       },
       {
         "id": "comparison",
-        "title": "与 CoT、工具调用和规划的关系",
-        "body": "<table><thead><tr><th>概念</th><th>关注点</th><th>与 ReAct 的关系</th></tr></thead><tbody><tr><td>Chain-of-Thought</td><td>组织多步推理</td><td>不必包含环境操作</td></tr><tr><td>Tool Calling</td><td>表达结构化动作请求</td><td>可承载 ReAct 的行动步骤</td></tr><tr><td>Planning</td><td>形成任务分解或路径</td><td>计划可被后续观察修正</td></tr><tr><td>Agent Loop</td><td>管理模型、工具、状态与停止</td><td>提供 ReAct 的运行控制外壳</td></tr></tbody></table><p>Google 的作者解读强调，推理可以帮助维护和调整计划，环境互动又为推理补入信息。<a href=\"#ref-4\">[4]</a>因此，ReAct 既不等于“所有 Agent”，也不要求每次动作前都输出一段冗长解释。它是一种让决策与外部反馈协同的模式。</p>"
+        "title": "一次工具调用，还不足以叫作闭环",
+        "body": "<p>给模型一个搜索工具，只说明系统具有访问能力。ReAct 还要求后续决策能使用新观察。在这个例子中，搜索一次后直接结束，只完成了工具调用；“识别旧版本，再改查新版配置”才体现反馈对动作的影响。</p><table><thead><tr><th>方法</th><th>这个案例里解决了哪部分</th><th>仍缺什么</th></tr></thead><tbody><tr><td>CoT</td><td>组织版本与单位的推导</td><td>外部资料若缺失，推导无法补出事实</td></tr><tr><td>Tool Calling</td><td>表达并执行一次检索请求</td><td>工具结果之后怎样继续</td></tr><tr><td>ReAct</td><td>根据版本冲突改变下一次动作</td><td>权限、恢复、预算等运行控制</td></tr><tr><td>Agent Loop</td><td>保存状态并管理执行与停止</td><td>具体任务的证据判据</td></tr></tbody></table><p>Google Research 的作者解读把这种协同描述为：推理帮助调整行动计划，行动把环境信息带回推理。<a href=\"#ref-4\">[4]</a> 因此，ReAct 可以放在多种运行时里；它并不是某个框架类名的别名。</p>"
       },
       {
         "id": "limits",
-        "title": "什么时候有效，什么时候会失败",
-        "body": "<ul><li><strong>适合：</strong>证据需要逐步发现、动作结果会改变路径、单次回答无法完成的任务。</li><li><strong>不一定划算：</strong>输入已完整、规则固定、一步即可算出的任务；循环会增加等待和调用成本。</li><li><strong>典型失败：</strong>重复搜索同一问题、把错误工具结果当真、找到部分证据就过早结束、计划漂移。</li><li><strong>工程补救：</strong>明确完成条件，对重复动作计数，保留来源，限制预算，并为失败结果设计分支。</li></ul><p>论文中的任务设置和历史模型结果不能直接外推成今天所有业务的提升比例。判断自己的 ReAct 实现是否有效，应使用同一任务集、相同工具权限与可比预算，比较完成率、证据质量及成本。</p>"
+        "title": "错误仍会沿着观察传播",
+        "body": "<p>假如工具返回的配置本身标错版本，Agent 也可能沿着错误证据走到一个完整却错误的结论。ReAct 解决的是信息如何进入下一步，不替来源做真实性背书。检索质量、元数据和权限仍影响这条链路。</p><p>重复动作也是常见故障：同一个查询连续返回同一份旧文档，状态却没有增加新证据。可以把“文档 ID、版本、内容哈希”做成观察指纹；重复命中时换来源、补充查询条件或结束。只按步数限制虽然能止损，却解释不了为什么浪费了这些步。</p>"
       },
       {
         "id": "practice",
-        "title": "做一次最小练习",
-        "body": "<ol><li>选一个只读任务，例如“找出两个配置文件的差异”。先写下可观察的完成条件。</li><li>只提供两个工具：列文件和读文件，限定目录。</li><li>分别测试正常文件、缺失文件、单位不一致三种输入。</li><li>记录每次动作、观察、停止原因，检查下一步是否真的受观察影响。</li></ol><p>完成后继续阅读 <a href=\"agent-loop.html\">Agent Loop</a>，把这个交互模式放入一个具有预算、状态和异常处理的运行系统中。</p>"
+        "title": "这个案例的完成条件",
+        "body": "<p>答案应同时满足三个条件：值来自 2.4 发布包默认配置，单位转换正确，引用能定位到配置项。缺任意一项都留下明确的未完成状态。将旧指南排在搜索首位、删除新版配置、把单位改成秒，是三种有区分力的测试输入；它们分别检验版本核查、缺证据处理和单位判断。</p><p>这些检查比要求模型反复写“我需要核实”更有用：它们把任务是否完成，落到了可以观察的数据上。下一篇 <a href=\"agent-loop.html\">Agent Loop</a> 继续处理另一个问题：第二次工具调用发出后，程序中断了怎么办。</p>"
       }
     ],
     "sources": [
@@ -74,53 +74,53 @@
   },
   {
     "id": "agent-loop",
-    "title": "Agent Loop：一次模型调用之外发生了什么",
+    "title": "Agent Loop：一次修改怎样在中断后继续",
     "eyebrow": "STATE · ACTION · FEEDBACK",
-    "summary": "拆开模型、运行时、工具与状态，理解循环如何启动、恢复、停止，以及为什么一个 while 循环还不够。",
+    "summary": "从空字符串解析失败出发，拆开模型决策、工具副作用、检查点与恢复；解释“没有收到结果”为什么不等于“没有执行”。",
     "category": "核心机制",
     "level": "基础",
-    "minutes": 16,
+    "minutes": 14,
     "updated": "2026-11-08",
     "sections": [
       {
         "id": "loop-definition",
-        "title": "Loop 是运行系统的控制流",
-        "body": "<p>Agent Loop 是围绕模型反复推进任务的控制循环：构建上下文、调用模型、解释输出、执行工具、记录结果，再决定继续、等待或结束。它不是模型内部逐 token 生成的过程，也不等于一次 API 请求。一次模型调用可能只提出动作；工具返回后，还需要新的决策。</p><p>官方 Agent SDK 文档以“模型评估 → 工具执行 → 结果回流”说明这种循环，并暴露轮次、预算和权限控制。<a href=\"#ref-1\">[1]</a>不同产品可能把若干步骤封装在 SDK、服务端工具或托管运行时内，因此不能仅凭客户端发了几次 HTTP 请求判断 Agent 实际执行了几轮。</p>"
+        "title": "测试失败之后，谁让任务继续",
+        "body": "<p>一个逗号分隔解析函数在空输入上返回了 <code>[\"\"]</code>，测试期望的是 <code>[]</code>。模型看到失败信息后提出修改；程序写文件、运行测试，把新结果交回模型。单次模型调用只产生了其中的一次决定，后面的执行、记账和下一轮输入由运行系统推动。</p><p>Agent Loop 指这段反复取状态、调用模型、执行动作、收集结果并判断是否继续的控制流。Claude Agent SDK 的官方说明把消息循环、工具轮次、权限和预算放在运行层处理。<a href=\"#ref-1\">[1]</a> 在这个案例里，真正决定能否继续的，不只是模型会不会再生成一句话，还有文件是否已写、哪条测试失败、剩余预算，以及上一次调用有没有结果。</p>"
       },
       {
         "id": "ownership",
-        "title": "谁负责决定，谁负责执行",
-        "body": "<table><thead><tr><th>层次</th><th>主要职责</th><th>常见误解</th></tr></thead><tbody><tr><td>模型</td><td>根据可见上下文生成回答或动作提议</td><td>生成工具名就已经完成操作</td></tr><tr><td>框架</td><td>组织消息、模型及工具适配、常用模式</td><td>装了框架自然拥有可靠任务状态</td></tr><tr><td>运行时 / Harness</td><td>推进循环、执行权限检查、预算、持久化、取消和恢复</td><td>模型自行保证权限与恰当停止</td></tr><tr><td>业务工具</td><td>执行受约束的读取、查询或写入，返回可验证结果</td><td>工具返回任意字符串都能当成功证据</td></tr></tbody></table><p>这些词在不同项目中有重叠。这里按职责划分，而不是按库名强行归类。LangGraph 的官方介绍区分了模型/工具集成、图式编排运行时与更完整的 harness；这提示我们，比较方案时要核对实际能力的归属。<a href=\"#ref-2\">[2]</a></p><aside class=\"learn-callout\"><strong>避免重复造循环</strong><p>若现有运行时已经管理工具执行、恢复和预算，业务层先复用这些能力；自行编写循环时，再明确新增了哪些责任。</p></aside>"
+        "title": "模型得到的上下文，是程序装配出来的",
+        "body": "<table><thead><tr><th>参与者</th><th>这个修复任务里的职责</th><th>可观察记录</th></tr></thead><tbody><tr><td>模型</td><td>提出编辑、测试或结束请求</td><td>工具名、参数、调用 ID</td></tr><tr><td>宿主／运行时</td><td>校验范围、执行工具、保存结果</td><td>权限结论、工具状态、错误分类</td></tr><tr><td>文件与测试工具</td><td>实际修改文件并返回进程结果</td><td>内容哈希、退出码、标准输出</td></tr><tr><td>验证器</td><td>按预先写好的条件检查结果</td><td>两条 fixture 是否通过</td></tr></tbody></table><p>模型通常看不到整个工作目录和所有历史记录。运行时选择要送回的失败摘要、相关代码与工具结果；截断了 traceback 的关键行，模型可能修错位置；把旧测试结果重复放进去，则可能让它基于过期状态继续修改。上下文装配因此是执行语义的一部分，而不只是节省 token 的技巧。LangGraph 把持久运行、状态和人为介入等能力放在编排运行时层。<a href=\"#ref-2\">[2]</a></p>"
       },
       {
         "id": "state-machine",
-        "title": "把循环看成状态机",
-        "body": "<div class=\"learn-flow\"><div><strong>准备</strong><span>目标与上下文</span></div><div><strong>决策</strong><span>回答或工具请求</span></div><div><strong>执行</strong><span>校验后调用</span></div><div><strong>记录</strong><span>写入真实结果</span></div><div><strong>分流</strong><span>继续 · 等待 · 停止</span></div></div><p>“循环”不意味着永远只有一个 <code>while</code>。可以是图节点、消息驱动状态机或托管服务。需要稳定保存的是足以恢复的执行状态，例如任务标识、消息序列、证据、已执行动作、待处理调用、预算消耗及停止原因。</p><p>建议把终态区分为 <code>completed</code>、<code>needs_input</code>、<code>cancelled</code>、<code>budget_exceeded</code> 和 <code>failed</code>。这是一种教学设计，不是统一行业协议。它的作用是避免把“模型不再调用工具”自动解释为“业务任务验收通过”。</p><p>运行状态与业务状态也要分开：工具调用返回成功，只能证明工具完成了操作；例如文件写入成功，并不能证明文件内容正确。完成检查应读取可观察结果或运行适当验证。</p>"
+        "title": "最危险的空隙在“执行了，但还没记下来”",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/agent-loop-recovery.svg\" alt=\"编辑文件已经落盘，但工具观察尚未写入检查点时发生中断。恢复需核对执行账本和文件哈希，确认副作用再继续测试。\" width=\"1200\" height=\"1050\" loading=\"lazy\"><figcaption>原创恢复图。编辑与保存观察之间存在中断窗口；恢复策略必须结合工具语义，不能只看最后一条消息。</figcaption></figure><p>例如检查点最后停在 <code>waiting_tool</code>，调用 ID 是 <code>edit-17</code>。磁盘上的文件却可能已经被改好。重启后直接重放这次编辑，可能把同一补丁应用两遍；直接宣称修改成功，也可能跳过真正的失败。恢复程序需要执行账本、工具幂等键，或修改前后的内容哈希来消除歧义。</p><p>LangGraph 用检查点保留线程状态，用 store 保存跨线程数据；内存型 saver 随进程退出丢失，而持久后端能跨重启保留记录。<a href=\"#ref-3\">[3]</a> 这帮助程序知道自己“上次进行到哪儿”，但外部动作是否完成，仍需单独确认。</p>"
       },
       {
         "id": "trace",
-        "title": "从一次修改任务看完整链路",
-        "body": "<p>下面是<strong>原创虚构轨迹</strong>：修复一个示例项目的超时配置，并核对运行结果。它用于解释执行边界，不是已经执行过的工程记录。</p><ol><li><strong>准备：</strong>宿主读取任务、允许的工作目录和测试命令，创建 run_id。</li><li><strong>定位：</strong>模型请求读取配置；执行器校验路径后返回内容及来源。</li><li><strong>修改：</strong>模型提出补丁；宿主核对授权范围，执行一次写入并记录动作标识。</li><li><strong>验证：</strong>模型请求运行既定检查；宿主等待实际退出码和输出。</li><li><strong>收尾：</strong>检查通过则报告具体结果；失败则把错误作为新观察，允许在预算内修正。</li></ol><p>假如运行测试超时，不能在日志里伪造“通过”；假如用户中途取消，也不能让后台写入继续并在稍后覆盖用户文件。每条分支都需要运行系统可执行的约束。</p>"
+        "title": "先把修复本身缩到两条测试",
+        "body": "<p>以下是实际运行过的微型 Python fixture。旧函数对空输入留下一个空项；修复在保留 <code>strip()</code> 的同时过滤空片段。这个实验只验证示例函数，未调用 Agent，也没有外推成某个模型的成绩。</p><pre><code class=\"language-python\">def before(text):\n    return [s.strip() for s in text.split(&quot;,&quot;)]\n\ndef after(text):\n    return [s.strip() for s in text.split(&quot;,&quot;) if s.strip()]\n\ncases = [(&quot;&quot;, []), (&quot;a, b&quot;, [&quot;a&quot;, &quot;b&quot;])]\nfor name, fn in [(&quot;before&quot;, before), (&quot;after&quot;, after)]:\n    passed = sum(fn(text) == expected for text, expected in cases)\n    print(f&quot;{name}: {passed}/{len(cases)}&quot;)\n# before: 1/2\n# after: 2/2</code></pre><p>完整任务状态至少应保留：候选文件版本、测试输入、测试结果和对应调用 ID。只保存“测试通过了”这句摘要，之后无法区分它属于当前文件还是上一个候选。文件哈希与测试调用的关联能让这个结论有对象。</p>"
       },
       {
         "id": "pseudo-code",
-        "title": "最小伪代码与停止条件",
-        "body": "<p>以下<strong>概念伪代码</strong>省略具体 SDK 类型，重点是事件先记录、动作受约束、结束原因可解释。</p><pre><code>run = load_or_create_run(task_id)\nwhile not run.is_terminal:\n    if cancelled(run):\n        stop(run, &quot;cancelled&quot;); break\n    if budget_exhausted(run):\n        stop(run, &quot;budget_exceeded&quot;); break\n    decision = model(context_for(run), tools_for(run))\n    record_decision(run, decision)\n    if decision.has_tool_calls:\n        calls = validate_and_authorize(decision.calls)\n        results = execute_dependency_safe(calls)\n        checkpoint(run, results)\n    elif completion_check(decision, run):\n        stop(run, &quot;completed&quot;, decision.answer)\n    else:\n        stop(run, &quot;needs_input&quot;, decision.answer)</code></pre><p>预算至少要考虑步数、时间、模型消耗和工具开销。达到边界就保存已完成内容和未完成事项，不让模型“再试一次”绕过上限。某些 SDK 对 turn 的定义还包括最终纯文本输出，计数口径应以实际运行时文档为准。<a href=\"#ref-1\">[1]</a></p>"
+        "title": "一次恢复，是一次带证据的状态转换",
+        "body": "<p>下面是控制关系的伪代码。<code>ledger</code> 和 <code>reconcile</code> 是应用层接口，不是特定 SDK 的函数名。</p><pre><code class=\"language-python\">while budget.allows_next_step():\n    pending = state.pending_call\n    if pending:\n        outcome = ledger.lookup(pending.id)\n        if outcome is None:\n            outcome = reconcile(pending, current_file_hash())\n        if outcome.status == &quot;unknown&quot;:\n            return stop(&quot;tool_outcome_unknown&quot;)\n        state.append_observation(pending.id, outcome)\n        state.pending_call = None\n        checkpoint.save(state)\n\n    action = model(compose_context(state))\n    if action.kind == &quot;final&quot;:\n        return verify_current_candidate(state)\n    state.pending_call = authorize(action)\n    checkpoint.save(state)\n    execute_and_record(state.pending_call, ledger)\nreturn stop(&quot;budget_exhausted&quot;)</code></pre><p>顺序有两个要点：执行前先记下待办调用，执行后把结果和调用 ID 一起写入账本。追加观察与清除 pending 应作为同一份状态快照保存。重启后先处理待定调用，再请模型决定新动作。最终答案也要与当前候选的测试证据绑定；模型提出结束，只是一个控制请求。</p>"
       },
       {
         "id": "recovery",
-        "title": "重试、并发和恢复的难点",
-        "body": "<table><thead><tr><th>情形</th><th>错误做法</th><th>处理思路</th></tr></thead><tbody><tr><td>查询暂时失败</td><td>无上限重试</td><td>区分可重试错误，退避并限制次数</td></tr><tr><td>写入超时</td><td>假设没有写入，再发一次</td><td>先查动作状态；必要时使用幂等键</td></tr><tr><td>多工具并行</td><td>有依赖的读写也同时运行</td><td>只并行互不依赖的操作，结果按调用标识关联</td></tr><tr><td>进程重启</td><td>只恢复聊天文本</td><td>恢复检查点及待处理动作，避免重复副作用</td></tr></tbody></table><p>LangGraph 官方资料分别说明持久化和故障恢复机制。<a href=\"#ref-3\">[3]</a><a href=\"#ref-4\">[4]</a>工程上尤其要区分“失败已确认”和“是否成功未知”：一次网络超时不保证远端没有完成操作。对付款、发布、发消息等动作，恢复策略必须了解目标系统提供的去重和状态查询能力。</p>"
+        "title": "重试策略要知道操作有没有副作用",
+        "body": "<p>读取文档失败，通常可以在预算内重试；追加一笔付款、发送一封邮件或创建一张工单，则可能已经完成，只是响应丢了。对后者，超时后的正确动作可能是查询操作状态，而不是再发送一次。幂等键把多次尝试关联到同一个业务动作，执行账本则保留每次请求的证据。</p><p>并发工具还有另一个问题：A 已成功，B 失败。整轮重跑会重复 A 的副作用。LangGraph 的故障处理与 pending writes 机制处理这类部分完成状态；实际能否安全重放仍取决于节点与外部服务的语义。<a href=\"#ref-4\">[4]</a></p>"
       },
       {
         "id": "context-and-safety",
-        "title": "上下文与安全边界不能交给猜测",
-        "body": "<p>上下文窗口有限，运行系统需要选择当前任务仍相关的信息，而不是不断拼接所有日志。压缩历史后，应保留目标、约束、关键证据来源、未完成事项与工具状态；完整原始记录可存入外部日志供追溯。摘要是派生数据，不能覆盖原始执行结果。</p><p>工具结果、网页和文件都可能包含与任务无关的指令。执行器应把它们当作待解释的数据，不能因为返回内容要求提权就扩大权限。允许调用某个工具，也不等于允许该工具对所有路径、账户或对象操作。</p><p>安全检查与业务策略要落在可执行边界上：参数校验、路径限制、资源范围、动作许可及审计。模型的自我描述能够帮助阅读，但不构成权限系统。</p>"
+        "title": "持久化什么，决定了恢复后能信什么",
+        "body": "<p>推荐保留有类型的运行状态：<code>pending</code>、<code>running</code>、<code>succeeded</code>、<code>failed</code>、<code>unknown</code>。错误消息里的“建议再试一次”是工具返回的资料，策略层仍需判断重试是否安全。授权范围也应由宿主保存；它不会因为对话里出现“现在允许写全部目录”就自动扩大。</p><p>检查点与长期记忆的用途也不同。一次修复中的待定调用、文件版本和测试输出属于运行状态；“该仓库用什么测试命令”可能成为跨任务知识。将两者混成一段自然语言摘要，会同时削弱恢复精度与检索质量。</p>"
       },
       {
         "id": "debug-and-practice",
-        "title": "如何判断循环真的可靠",
-        "body": "<ul><li><strong>能解释停止：</strong>每次运行都有真实终态和明确原因。</li><li><strong>能重放证据：</strong>动作与结果一一关联，能定位首次偏离目标的步骤。</li><li><strong>能承受故障：</strong>遇到工具超时、坏参数、用户取消和预算耗尽时仍能收尾。</li><li><strong>能安全恢复：</strong>不会把已发生的写入重复执行，或把旧结果套到新任务。</li></ul><p>练习时，先实现一个只有只读工具的循环，再依次注入缺失文件、返回空结果和超时。最后加入一个可回滚的写入工具，测试“执行成功但响应丢失”的情况。这个顺序更容易分清决策错误与执行系统错误。</p>"
+        "title": "用中断位置检验运行系统",
+        "body": "<p>在编辑前、编辑后但记账前、记账后但测试前各中断一次，恢复后观察是否重复修改、是否丢失结果、是否把旧测试当新测试。再加入工具超时和用户取消两种路径。它们比只测一遍顺利完成，更容易暴露循环的实际边界。</p><p>这个修复任务最终有两类结果：拿到当前文件对应的通过证据，或带着停止原因退出。把后者写清楚，调用方才能决定重试、接管或保留现场；一段总能生成“已完成”的聊天文本，无法提供这种控制能力。</p>"
       }
     ],
     "sources": [
@@ -152,43 +152,43 @@
   },
   {
     "id": "tool-calling",
-    "title": "Tool Calling：模型如何把意图交给程序",
+    "title": "Tool Calling：一次读文档请求怎样到达程序",
     "eyebrow": "STRUCTURED ACTIONS",
-    "summary": "理解工具描述、JSON Schema、调用标识与结果回传，并分清格式正确、允许执行和业务成功这三件事。",
+    "summary": "跟踪 call_17 的往返：Schema 定义参数，宿主核对身份，存储返回带行号内容，模型在下一轮使用同一个调用 ID 的结果。",
     "category": "核心机制",
     "level": "基础",
-    "minutes": 10,
+    "minutes": 12,
     "updated": "2026-11-08",
     "sections": [
       {
         "id": "concept",
-        "title": "工具调用是一种接口契约",
-        "body": "<p>Tool Calling，也常称 Function Calling，是让模型以约定结构表达动作请求的机制。它连接了自然语言意图与程序能力，但模型输出通常只是工具名和参数，实际函数仍由宿主或服务端执行。官方工具文档也按执行位置区分客户端工具与服务端工具。<a href=\"#ref-1\">[1]</a></p><p>因此，工具调用既不是让模型随意执行代码，也不是“把一句回答包装成 JSON”。一次完整调用需要工具定义、模型选择、程序执行和结果回传，之后模型才能根据观察继续回答或发起新动作。</p>"
+        "title": "先看一条请求，而不是先装一个框架",
+        "body": "<p>用户问：“2.4 版导入超时参数在哪一行？”模型可以提出 <code>read_document</code> 请求，但请求本身并不读取文件。应用收到工具名和参数后，才决定是否允许调用、怎样访问存储、如何把结果回传。这个交接就是工具调用的核心。官方工具文档也区分模型发出的调用请求与客户端或服务端的执行。<a href=\"#ref-1\">[1]</a></p><p>下面使用一个教学接口：按文档 ID 与行号读取资料。把路径替换成稳定 ID，是为了让模型选择业务对象，把机器路径、凭据和身份留在程序侧。工具结果保留版本、行号和正文，让后续回答有可以定位的出处。</p>"
       },
       {
         "id": "round-trip",
-        "title": "从定义到结果的往返",
-        "body": "<div class=\"learn-flow\"><div><strong>定义</strong><span>名称 · 用途 · 参数</span></div><div><strong>选择</strong><span>模型提出调用</span></div><div><strong>执行</strong><span>宿主核对后运行</span></div><div><strong>回传</strong><span>结果关联调用</span></div><div><strong>继续</strong><span>模型使用观察</span></div></div><table><thead><tr><th>字段</th><th>作用</th></tr></thead><tbody><tr><td>name</td><td>确定调用哪个能力，不应用含糊的万能名称</td></tr><tr><td>description</td><td>解释用途、限制及何时调用，减少误选</td></tr><tr><td>input_schema</td><td>约束参数结构、类型与必要字段</td></tr><tr><td>call_id</td><td>关联请求和结果，尤其用于多次或并行调用</td></tr><tr><td>result</td><td>返回实际数据或明确错误，不能伪造成功</td></tr></tbody></table><p>不同接口的字段名会变化，上表是职责概念，不是跨平台通用 JSON 格式。官方工具定义文档展示了名称、描述和输入 Schema 的具体作用。<a href=\"#ref-2\">[2]</a></p>"
+        "title": "call_17 在哪里接上了下一轮",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/tool-calling-wire.svg\" alt=\"模型发出call_17请求，宿主先校验参数和文档权限，再访问存储，返回值带相同调用ID进入下一轮。\" width=\"1200\" height=\"1010\" loading=\"lazy\"><figcaption>原创协议时序。箭头分别表示请求、实际读取与观察回传；图中的调用字段用于说明关联关系，具体 SDK 字段以其文档为准。</figcaption></figure><p>工具定义在调用之前告诉模型“能做什么、参数怎样写”；调用 ID 则在一次往返中回答“这份结果属于哪一次请求”。同一轮存在多个工具请求时，仅靠工具名字无法区分返回值。若把文档 B 的结果接到文档 A 的调用上，JSON 可能完全合法，后续回答却会引用错对象。</p><p>工具结果必须进入后续模型输入，模型才有机会利用它。日志里出现“已读取文档”，但下一轮只追加了一个成功布尔值，等于把真正的证据丢在了宿主里。模型此时依旧不知道文档写了什么。</p>"
       },
       {
         "id": "schema-example",
-        "title": "一个只读工具的最小例子",
-        "body": "<p>以下为<strong>原创教学工具定义</strong>，省略平台封装字段。它查询某个示例项目的一条构建记录，限制只读，不触发重跑。</p><pre><code>{\n  &quot;name&quot;: &quot;get_build_status&quot;,\n  &quot;description&quot;: &quot;只读查询指定项目的构建状态，不创建或重跑构建。&quot;,\n  &quot;input_schema&quot;: {\n    &quot;type&quot;: &quot;object&quot;,\n    &quot;properties&quot;: {\n      &quot;project_id&quot;: {&quot;type&quot;: &quot;string&quot;},\n      &quot;build_id&quot;: {&quot;type&quot;: &quot;string&quot;}\n    },\n    &quot;required&quot;: [&quot;project_id&quot;, &quot;build_id&quot;],\n    &quot;additionalProperties&quot;: false\n  }\n}</code></pre><p>JSON Schema 的 <code>properties</code> 描述已知字段，<code>required</code> 指定必要字段，<code>additionalProperties: false</code> 用于限制未声明字段。<a href=\"#ref-3\">[3]</a>但 Schema 不能证明这个项目属于当前用户，也不能判断构建号是否存在。执行器还需要访问控制和业务校验。</p>"
+        "title": "Schema 约束形状，宿主检查对象",
+        "body": "<p>这个 Schema 限制参数形状和单字段范围。<code>required</code> 决定必填字段，<code>additionalProperties: false</code> 拒绝额外属性；JSON Schema 官方对象文档给出了这些关键词的语义。<a href=\"#ref-3\">[3]</a></p><pre><code class=\"language-json\">{\n  &quot;name&quot;: &quot;read_document&quot;,\n  &quot;description&quot;: &quot;读取当前用户有权访问的文档行，返回版本、行号和正文&quot;,\n  &quot;input_schema&quot;: {\n    &quot;type&quot;: &quot;object&quot;,\n    &quot;properties&quot;: {\n      &quot;doc_id&quot;: {&quot;type&quot;: &quot;string&quot;},\n      &quot;start_line&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 1},\n      &quot;end_line&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 1}\n    },\n    &quot;required&quot;: [&quot;doc_id&quot;, &quot;start_line&quot;, &quot;end_line&quot;],\n    &quot;additionalProperties&quot;: false\n  }\n}</code></pre><p>这仍允许 <code>start_line=20, end_line=10</code>，因为两个字段各自都是正整数。跨字段的大小关系、一次最多读取多少行、当前身份能否访问这个文档，都应由宿主继续检查。它们属于接口语义和访问控制，不会从字段类型里自动长出来。</p>"
       },
       {
         "id": "trace",
-        "title": "一次调用不等于任务完成",
-        "body": "<p>以下<strong>虚构轨迹</strong>展示一个关键分歧：用户询问“这次构建是否成功”。模型调用 <code>get_build_status</code>，工具返回 <code>{\"status\":\"running\"}</code>。正确的最终回答是“仍在运行”，或在已授权且有预算的情况下等待再查；不能把 HTTP 200 当作构建成功。</p><p>若返回 <code>permission_denied</code>，不应改用一个权限更大的万能工具绕开限制。若工具超时，也只能报告暂时无法确认；有副作用的工具更需要检查调用是否已在服务端生效。</p><aside class=\"learn-callout\"><strong>三层成功分别判断</strong><p>格式符合 Schema → 操作获准且执行 → 业务结果满足目标。前一层成功，不会自动推出后一层成功。</p></aside>"
+        "title": "让错误也成为可用的观察",
+        "body": "<p>下面是宿主接口的结构示意。<code>identity</code> 来自已认证会话，文档 ID 的存在性与权限分别处理；对外错误是否区分不存在和无权，应按产品的信息披露策略决定。</p><pre><code class=\"language-python\">def read_document(args, identity, store):\n    start, end = args[&quot;start_line&quot;], args[&quot;end_line&quot;]\n    if end &lt; start or end - start + 1 &gt; 80:\n        return {&quot;status&quot;: &quot;invalid_range&quot;, &quot;max_lines&quot;: 80}\n    if not store.allowed(identity, args[&quot;doc_id&quot;]):\n        return {&quot;status&quot;: &quot;unavailable&quot;}\n    doc = store.read(args[&quot;doc_id&quot;])\n    return {\n        &quot;status&quot;: &quot;ok&quot;, &quot;doc_id&quot;: args[&quot;doc_id&quot;],\n        &quot;version&quot;: doc.version, &quot;start_line&quot;: start,\n        &quot;lines&quot;: doc.lines[start - 1:end],\n    }</code></pre><p>对“行范围反了”的返回，模型可以修正参数；对“资料不可用”，它可能换授权来源或说明缺失。若所有失败都只返回空字符串，模型就无法判断是确实没有内容、工具坏了，还是没有权限。结构化错误减少的是这类歧义，而不是让模型无限重试。</p>"
       },
       {
         "id": "design",
-        "title": "怎样设计模型容易用对的工具",
-        "body": "<ul><li><strong>按业务能力命名：</strong>例如“读取构建状态”比“调用任意 API”更容易约束和测试。</li><li><strong>返回足够上下文：</strong>状态、资源标识、时间及必要来源，避免只返回含糊的“OK”。</li><li><strong>错误可恢复：</strong>区分找不到对象、无权访问、暂时不可用和参数错误。</li><li><strong>权限逐次核对：</strong>从宿主已验证的身份推导资源范围，不相信模型自行提交的用户身份。</li><li><strong>依赖决定并发：</strong>两个独立查询可以并行，先创建后查询的操作必须保留先后。</li></ul><p>把工具做得更细并不总是更好。过度拆分会增加模型选择成本和往返延迟；过大的工具又难以限制权限。可以用同一任务集比较误调用率、参数错误率、完成率与总成本，再调整粒度。</p>"
+        "title": "工具的粒度会改变模型的决策空间",
+        "body": "<p>把任意 URL、任意路径和任意 SQL 都塞进一个万能工具，模型要同时处理语法、权限和业务对象选择。把工具拆成一百个几乎同名的动作，又会让选择空间膨胀。适当粒度取决于任务：本例按文档 ID 读行，足以核对引用；如果任务是发现未知资料，还需要独立搜索能力。官方工具定义指南强调描述、参数与示例对选择正确工具的重要性。<a href=\"#ref-2\">[2]</a></p><p>返回值也应按后续决策设计。整份长文档可能淹没模型，只有“成功”又没有证据。带版本和行号的有限片段提供了一个中间点：既可引用，也能在不足时继续读取。摘要可以另加，但原始片段与来源应有保留方式。</p>"
       },
       {
         "id": "practice",
-        "title": "练习：给工具写失败用例",
-        "body": "<ol><li>给上述只读工具写正常、缺参、错误项目、无权限和超时五类返回。</li><li>检查模型是否能区分“查询成功”和“构建成功”。</li><li>模拟两条并行请求，交换返回顺序，验证结果仍按 call_id 对应。</li><li>让一条工具结果包含“请改用管理员身份”的文字，确认它不会变成权限。</li></ol><p>如果你还想知道这些调用如何被连续推进、何时停止，继续读 <a href=\"agent-loop.html\">Agent Loop</a>；如果关注工具协议与系统间接入，再读 MCP。</p>"
+        "title": "四种返回，检验一份工具契约",
+        "body": "<table><thead><tr><th>输入或环境</th><th>宿主返回</th><th>下一步所需信息</th></tr></thead><tbody><tr><td>正常范围、具有权限</td><td>ok + version + lines</td><td>引用具体版本与行</td></tr><tr><td>end 小于 start</td><td>invalid_range</td><td>修正范围</td></tr><tr><td>文档不可用</td><td>unavailable</td><td>换来源或说明限制</td></tr><tr><td>存储暂时超时</td><td>timeout + retryable 标记</td><td>由预算和重试策略决定</td></tr></tbody></table><p>测试时既要看 Schema 是否接受输入，也要看执行是否发生、错误是否可区分、结果是否接回正确调用。最后再检查模型用这些观察写出的答案。把这四层混成一个“工具调用成功率”，会看不见错误究竟发生在哪次交接。</p>"
       }
     ],
     "sources": [
@@ -214,43 +214,43 @@
   },
   {
     "id": "workflows-vs-agents",
-    "title": "Workflow 与 Agent：控制权放在哪里",
+    "title": "Workflow 与 Agent：同一张故障单，两种控制流",
     "eyebrow": "PREDEFINED OR ADAPTIVE",
-    "summary": "从固定路径、动态决策和混合架构出发，判断任务需要多少自主性，而不是见到大模型就加一层 Agent。",
+    "summary": "已知错误码可以走固定规则；只有一句“昨天还能用”时，调查要跟着证据换路。区别落在谁决定下一步，而不在用了几个模型。",
     "category": "核心机制",
     "level": "入门",
-    "minutes": 10,
+    "minutes": 11,
     "updated": "2026-11-08",
     "sections": [
       {
         "id": "distinction",
-        "title": "差别在控制流，不在模型品牌",
-        "body": "<p>Workflow 与 Agent 都可以使用语言模型、工具和检索。一个实用区分是：Workflow 的主要执行路径由预定义代码决定；Agent 的下一步更多由模型结合当前状态动态选择。这是 Anthropic 官方架构文章采用的区分方式，并非所有团队完全一致的命名标准。<a href=\"#ref-1\">[1]</a></p><p>是否画成图、是否有循环、是否调用了工具，都不能单独判定它属于哪类。固定的“生成 → 检查 → 最多重试两次”仍可以是 Workflow；一个运行在图框架里的节点，也可以让模型自主选择多个工具。</p>"
+        "title": "两份“导入失败”工单，差在哪里",
+        "body": "<p>第一份工单有产品版本、错误码和完整日志：<code>2.4 / E_TIMEOUT</code>，配置里也能找到超时参数。第二份只有一句“昨天还能用”，没有日志，网络、权限、文件格式都有可能变化。它们属于同一业务，适合的控制流却可能不同。</p><p>Anthropic 的架构文章按执行路径区分 Workflow 与 Agent：前者主要按预定义路径编排，后者让模型在运行中决定过程与工具使用。<a href=\"#ref-1\">[1]</a> 这个区分不取决于是否调用 LLM。固定的分类→抽取→生成流程可以每步都调用模型，而模型在中间仍没有改变拓扑的权限。</p>"
       },
       {
         "id": "two-paths",
-        "title": "把同一任务放到两种路径里",
-        "body": "<div class=\"learn-flow\"><div><strong>固定路径</strong><span>输入 → 分类</span></div><div><strong>明确分支</strong><span>抽取 → 校验</span></div><div><strong>动态决策</strong><span>观察 → 选工具</span></div><div><strong>有限自治</strong><span>反馈 → 换路径</span></div></div><p>以<strong>虚构的资料整理任务</strong>为例：如果输入始终是固定格式表单，输出始终是五个字段，可以先抽取、校验、写入草稿；失败字段按规则回退。路径已知，模型主要承担语义转换。</p><p>如果任务改为“调查一个陌生组件为什么报错”，需要读哪些文件、调用哪个查询、是否补充日志，都可能受到新证据影响。此时，局部 Agent 更适合探索路径；写入生产配置等动作仍可放在明确受控的流程之外。</p>"
+        "title": "固定路径处理已知输入，动态路径调查未知原因",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/workflows-control-boundary.svg\" alt=\"同一业务的两种路径：信息齐全的E_TIMEOUT任务按预先规则生成草稿；信息不足的故障调查在读取日志后可能改查DNS，形成反馈回路。\" width=\"1200\" height=\"1070\" loading=\"lazy\"><figcaption>原创案例图。决定架构的是剩余不确定性：输入 A 已给定规则所需信息，输入 B 的下一步需要环境观察。</figcaption></figure><p>对第一份工单，程序可以按错误码选择模板，再请模型把日志整理成清楚的说明。只要必需信息齐全，状态转换可以提前列出。对第二份工单，如果日志显示的是 DNS 解析失败，继续套“调大超时”的模板就偏离了问题；调查必须根据观察换一条路径。</p><p>动态路径不是让每个节点都自由发挥。允许的工具集合、读取范围和最大调查轮次仍由应用定义。模型拥有的是边界内的选路权，而不是整个系统的管理权。</p>"
       },
       {
         "id": "comparison",
-        "title": "收益与代价分别是什么",
-        "body": "<table><thead><tr><th>维度</th><th>Workflow</th><th>Agent</th></tr></thead><tbody><tr><td>路径</td><td>预先定义主要节点与分支</td><td>运行时根据状态选择动作</td></tr><tr><td>优势</td><td>容易约束、定位与复现</td><td>能适应未知步骤与反馈变化</td></tr><tr><td>主要风险</td><td>遇到流程外输入僵化</td><td>路径漂移、重复动作、成本不稳</td></tr><tr><td>检查重点</td><td>分支覆盖、字段与状态转移</td><td>完成率、轨迹质量、预算与副作用</td></tr></tbody></table><p>这张表描述常见工程取舍，不是对性能的保证。动态决策不自动带来更高准确率，固定流程也不自动意味着低能力。真实任务的输入变化和错误代价决定了需要多少灵活性。</p>"
+        "title": "把控制流写出来，差别会更清楚",
+        "body": "<p>下面两段均为教学伪代码。第一段的分支集合在程序里已知；第二段让模型根据新证据选择下一种调查动作。</p><pre><code class=\"language-python\"># 固定 Workflow：所有可走的边都预先写明\nfields = extract(ticket)\nif fields.error_code == &quot;E_TIMEOUT&quot;:\n    evidence = lookup_timeout_docs(fields.version)\n    draft = render_timeout_template(fields, evidence)\nelse:\n    draft = send_to_known_error_queue(fields)\nreturn validate_and_deliver(draft)</code></pre><pre><code class=\"language-python\"># 有界 Agent：环境结果参与下一次选路\nstate = Investigation(ticket=ticket, evidence=[])\nfor _ in range(max_steps):\n    action = decide(state, allowed_tools)\n    if action.kind == &quot;answer&quot;:\n        return validate_and_deliver(action.draft)\n    observation = run_readonly(action)\n    state.add(action, observation)\nreturn handoff_with_evidence(state)</code></pre><p>两者都可以保留日志、检查点和人工介入，二者也都可能失败。差异在于第二段把部分路径选择交给了模型，因此需要额外观察“它为什么又查了一次”“有没有取得新信息”“为什么现在停止”。</p>"
       },
       {
         "id": "hybrid",
-        "title": "常见落地是混合架构",
-        "body": "<p>LangGraph 官方文档说明，图可以混合确定性步骤与模型驱动步骤。<a href=\"#ref-2\">[2]</a>因此，实际系统不必在两种标签中二选一。可以用 Workflow 控制阶段、权限和交付条件，再把证据探索等不确定环节交给局部 Agent。</p><pre><code># 概念伪代码：固定骨架 + 有限探索\nrequest = validate_input(user_request)\nscope = authorize_resources(request)\nevidence = investigation_agent(scope, step_budget=8)\ndraft = compose_from_evidence(evidence)\nif business_checks(draft):\n    save_reviewable_draft(draft)\nelse:\n    return_missing_evidence(draft)</code></pre><p>这里的 8 步仅是教学预算，不是推荐阈值。结构上的要点是：探索不能扩大授权范围，输出进入业务校验，校验失败就保留缺口。Agent 提交的是调查结果，不是绕开流程的通行证。</p><p>运行时还可承担状态持久化和中断恢复，让混合系统在等待人类输入或外部任务时继续工作；这些是执行系统的能力，与模型是否“聪明”是不同问题。<a href=\"#ref-3\">[3]</a></p>"
+        "title": "可预测的外围，围住不确定的调查段",
+        "body": "<p>一个实用组合是：程序完成身份校验、输入检查和已知错误分流；只有无法被已知规则解释的工单，才进入只读调查循环。调查结束后，引用和字段仍由固定规则检查，真实提交则放在独立授权步骤。LangGraph 的工作流与 Agent 能共享同一编排基础，持久化机制也可跨这些节点使用。<a href=\"#ref-2\">[2]</a><a href=\"#ref-3\">[3]</a></p><p>这种组合保留了固定路径的可测试性，也把模型计算留给确实缺少信息的部分。它付出的代价是多维护一个分流条件：哪些请求进入调查，哪些直接处理。分流错误本身应单独统计，否则很难解释平均成本为什么变化。</p>"
       },
       {
         "id": "choose",
-        "title": "如何为一个任务选择架构",
-        "body": "<ol><li><strong>列出变化：</strong>输入格式、工具选择、执行顺序和终止条件，哪些已知，哪些需要现场判断？</li><li><strong>先做可控基线：</strong>用最简单的固定路径，测量失败集中在哪些环节。</li><li><strong>只释放必要控制权：</strong>若失败源于未知证据路径，把该环节改为动态探索。</li><li><strong>用预算比较：</strong>在相同任务和权限下，比较完成率、时延、调用成本及异常率。</li></ol><p>如果动态方案只让模型重复已经确定的操作，并没有改善失败任务，就应重新检查自主性是否有必要。反过来，若固定流程不断增加难以维护的例外分支，也值得试验局部 Agent。</p>"
+        "title": "判断收益，要比较同一组故障单",
+        "body": "<table><thead><tr><th>观察项</th><th>固定路径可能占优</th><th>动态调查可能有价值</th></tr></thead><tbody><tr><td>路径稳定性</td><td>版本与错误码能唯一确定处理步骤</td><td>日志会揭示事先未知的原因</td></tr><tr><td>失败解释</td><td>规则分支和缺字段可直接定位</td><td>需要检查跨多步的证据变化</td></tr><tr><td>费用与等待</td><td>常规请求较少额外回合</td><td>增加回合但可能减少人工调查</td></tr><tr><td>回归测试</td><td>按各分支构造固定样本</td><td>还需覆盖工具结果变化与停止</td></tr></tbody></table><p>比较时固定工具权限、资料版本和预算，按已知错误、缺信息、资料冲突等类别分组。只报告一个总成功率，可能掩盖“简单请求变慢，少数难题变好”的交换。是否值得增加动态路径，应从这样的分组结果判断。</p>"
       },
       {
         "id": "exercise",
-        "title": "练习：画出控制权边界",
-        "body": "<p>选一个你熟悉的流程，比如整理会议记录。用一种颜色标出程序决定的步骤，用另一种颜色标出模型决定的动作，再标注每个写操作由谁授权、由谁验证。最后设计一个输入异常，观察系统应按固定分支处理，还是需要进一步探索。</p><p>这个练习的目标是让控制权可见：谁决定下一步，谁执行动作，谁判断完成。明确这三者后，再选择框架和模型，通常比先堆叠 Agent 角色更容易定位真正需求。</p>"
+        "title": "从故障单里抽出架构边界",
+        "body": "<p>可以先记录现有人工处理的三个事实：同类工单是否每次都查同一套资料，哪种新证据会让人换方向，什么信息足以交付。前两项决定路径要开放到哪里，第三项决定循环何时结束。</p><p>这个案例的交付约定是：错误码已知时走固定路径；根因未知时在只读范围内调查；资料或权限不足时移交现有证据。无论经过哪条路径，草稿都要带版本与来源，真实提交另经授权。</p>"
       }
     ],
     "sources": [
