@@ -43,7 +43,7 @@ async function filterSearch() {
   document.querySelector('.learn-search-empty').hidden = count>0;
   return true;
 }
-function openSearch(trigger) {opener=trigger;dialog.showModal();input.focus();filterSearch();}
+function openSearch(trigger) {if(dialog.closest('[hidden]'))return;opener=trigger;dialog.showModal();input.focus();filterSearch();}
 for (const trigger of document.querySelectorAll('[data-learn-search]')) {
   trigger.hidden = false;
   trigger.addEventListener('click',()=>{
@@ -55,7 +55,7 @@ dialog.addEventListener('close',()=>opener?.focus());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 input.addEventListener('input',filterSearch);
 input.addEventListener('keydown',async event=>{if(event.key==='Enter'){event.preventDefault();if(await filterSearch()){const first=rankedResults[0];if(first)location.assign(first.href);}}});
-document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();if(dialog.open)dialog.close();else openSearch(document.activeElement);}});
+document.addEventListener('keydown',event=>{if(dialog.closest('[hidden]'))return;if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();if(dialog.open)dialog.close();else openSearch(document.activeElement);}});
 
 const article=document.querySelector('[data-learning-article]');
 const progress=document.querySelector('.learn-progress span');

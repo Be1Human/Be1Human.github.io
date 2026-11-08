@@ -26,6 +26,8 @@ const dateLabel = date => `${Number(date.slice(5, 7))} 月 ${Number(date.slice(8
 const minutes = post => Math.max(1, Math.ceil(post.sections.reduce((n, section) => n + section.paragraphs.join('').length, 0) / 400));
 const categories = projectCategories;
 const pages = new Map();
+const learning = await readLearning(root);
+const learningOutput = learningPages(learning);
 // The interactive homepage fetches the small index and just one edition at a
 // time; keep it synchronized with the same authoritative public archive.
 for (const [path, content] of await buildExperienceNews({root, archive: news})) pages.set(path, content);
@@ -107,7 +109,12 @@ function feedEntry(entry) {
 }
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
 // Preserve the approved interactive homepage when rebuilding news and archives.
-pages.set('index.html', await readFile(resolve(root, 'src/experience/index.html'), 'utf8'));
+const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
+const homeLearning = `<section class="home-learning" id="learning" aria-labelledby="home-learning-title">${learningOutput.pages[0].body.replace('<h1>Agent 学习</h1>', '<h2 id="home-learning-title">Agent 学习</h2>').replaceAll('href="#top"','href="#learning"')}</section>`;
+const homeLearnAssets = new Map([['assets/learn.css',learnStyleVersion],['assets/learn.js',learnScriptVersion]]);
+let homepage = homepageTemplate.replace('<!--HOME_AGENT_LEARNING-->',`<!--HOME_LEARNING_START-->${homeLearning}<!--HOME_LEARNING_END-->`);
+for (const [path,version] of homeLearnAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
+pages.set('index.html', homepage);
 
 render('works.html', '作品集 — CLOUD BOY · 云上男孩', `游戏、视觉、工具与研究实验：CLOUD BOY 的 ${projects.length} 件作品及项目记录。`, 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
 
@@ -139,8 +146,6 @@ function newsPage(edition, base) {
 render('news.html', '科技新闻 — CLOUD BOY · 云上男孩', '从 Dot AI 热门 20 同步的每日科技精选，按日期归档，支持分类与搜索。', 'news', newsPage(latest, ''));
 for (const edition of news.editions) render(`news/${edition.id}.html`, `${edition.date} 科技精选 — CLOUD BOY`, `${edition.date} 的 ${edition.items.length} 条科技精选，保留原作者和来源。`, 'news', newsPage(edition, '../'));
 
-const learning = await readLearning(root);
-const learningOutput = learningPages(learning);
 for (const page of learningOutput.pages) render(page.path, page.title, page.summary, 'learning', page.body, page.path === 'learn.html' ? 'website' : 'article');
 pages.set('assets/learning-search.json', JSON.stringify(learningOutput.searchIndex));
 

@@ -152,3 +152,8 @@ body.motion-off .chapter-face,body.motion-off .chapter-face *{transition:none!im
 
 @media(min-width:701px) and (max-width:1150px){.topbar nav{gap:16px}.topbar nav a{font-size:12px;letter-spacing:0}.topbar .brand>span{font-size:16px}.topbar{gap:16px}}
 @media(max-width:420px){.topbar nav a{font-size:10px;padding-inline:5px}}
+
+/* The second opening clip leads into the full Agent learning wiki. */
+.home-opening{height:210svh}.home-learning{position:relative;z-index:1;background:#10232e;padding:18px 0 60px;--sans:"Segoe UI","Microsoft YaHei",sans-serif;--mono:Consolas,monospace;font:16px/1.8 var(--sans);scroll-margin-top:85px;border-top:1px solid #9eafb34d}.home-learning .learn-intro h2{font:700 clamp(30px,3vw,42px)/1.4 var(--sans);letter-spacing:-1px;margin:0;color:#e9dfcd}.home-learning .learn-progress{display:none}.home-learning .learn-footnote{padding-bottom:35px}.home-learning .learn-sidebar{padding-top:32px}.home-learning .learn-demo,.home-learning .learn-search-dialog{color:#e9dfcd}.home-learning a{color:inherit}.home-learning .learn-tree a[aria-current]{color:#ffaaa3}.home-learning .learn-main{padding-top:32px}.home-learning .learn-pagination{margin-bottom:30px}
+@media(max-width:700px){.home-opening{height:200svh}.home-learning{scroll-margin-top:106px;padding-top:8px}.home-learning .learn-intro h2{font-size:30px;line-height:1.55}.home-learning .learn-main{padding-top:24px}}
+@media(prefers-reduced-motion:reduce){.home-opening{height:100svh}}body.motion-off .home-opening{height:100svh}

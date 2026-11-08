@@ -11,7 +11,8 @@ let activeScene='home',routeVersion=0,sequenceVersion=0,routeTransitioning=false
 const entryAnimations=new Set();
 let idleCleanup=null;
 const manifestReady=fetch('video-manifest.json').then(r=>r.ok?r.json():{}).then(m=>videoManifest=m).catch(()=>{});
-const heroStates=['home','half','screens','face','controller'],heroClips=['home-half','half-screens','screens-face','face-controller'];
+const heroStates=['home','half','screens'],heroClips=['home-half','half-screens'];
+const heroLastStep=heroStates.length-1;
 const journeyStates=['entry','panels','near','street','arrival','symbol'],journeyClips=['entry-panels','panels-near','near-street','street-arrival','arrival-symbol'];
 const chapters=[{name:'角色档案',en:'PROFILE',route:'about',note:'关于云上男孩，以及那些始终保持好奇的事。'},{name:'创作记录',en:'JOURNAL',route:'journal',note:'把构想变成作品的过程，也值得被留下。'},{name:'创作领域',en:'FIELDS',route:'about',note:'游戏 / AI 工具 / 视觉 / 硬件。'},{name:'作品集',en:'PROJECTS',route:'works',note:'从一台桌面小屏，到一个可以探索的世界。'},{name:'联系与链接',en:'LINKS',route:'contact',note:'继续聊聊，继续创造。'}];
 const renderedViews=new Set();
@@ -40,10 +41,10 @@ async function moveScene(from,to,clip,reverse=false,rate=1.8){
  }
  if(token!==transitionToken)return false;transitioning=false;document.body.classList.remove('is-transitioning');return true;
 }
-function updateHero(){document.querySelectorAll('#hero-dots button').forEach((b,i)=>{b.classList.toggle('active',i===heroStep);b.setAttribute('aria-current',String(i===heroStep))});$('scene-label').textContent=String(heroStep+1).padStart(2,'0')+' / '+['THE BEGINNING','CLOSER','THROUGH THE SCREEN','HELLO THERE','LET’S CREATE'][heroStep];$('hero-next').innerHTML=heroStep===4?'回到开场 <span>↑</span>':'下一幕 <span>↓</span>'}
-for(let i=0;i<5;i++){const b=document.createElement('button');b.setAttribute('aria-label','开场镜头 '+(i+1));b.addEventListener('click',()=>scrollToHero(i));$('hero-dots').append(b)}updateHero();
-async function stepHero(delta){if(transitioning)return;if(heroStep+delta>4){location.hash='index';return}const n=Math.max(0,heroStep+delta);if(n===heroStep)return;const ok=await moveScene(heroStates[heroStep],heroStates[n],heroClips[Math.min(heroStep,n)],delta<0,2.4);if(ok&&route==='home'){heroStep=n;updateHero()}}
-$('hero-next').addEventListener('click',()=>scrollToHero(heroStep===4?0:heroStep+1));
+function updateHero(){document.querySelectorAll('#hero-dots button').forEach((b,i)=>{b.classList.toggle('active',i===heroStep);b.setAttribute('aria-current',String(i===heroStep))});$('scene-label').textContent=String(heroStep+1).padStart(2,'0')+' / '+['THE BEGINNING','CLOSER','THROUGH THE SCREEN'][heroStep];$('hero-next').innerHTML=heroStep===heroLastStep?'进入 Agent 学习 <span>↓</span>':'下一幕 <span>↓</span>'}
+for(let i=0;i<heroStates.length;i++){const b=document.createElement('button');b.setAttribute('aria-label','开场镜头 '+(i+1));b.addEventListener('click',()=>scrollToHero(i));$('hero-dots').append(b)}updateHero();
+async function stepHero(delta){if(transitioning)return;if(heroStep+delta>heroLastStep){scrollHomeContent('learning');return}const n=Math.max(0,heroStep+delta);if(n===heroStep)return;const ok=await moveScene(heroStates[heroStep],heroStates[n],heroClips[Math.min(heroStep,n)],delta<0,2.4);if(ok&&route==='home'){heroStep=n;updateHero()}}
+$('hero-next').addEventListener('click',()=>heroStep===heroLastStep?scrollHomeContent('learning'):scrollToHero(heroStep+1));
 let heroTarget=0,homeScrollRunning=false,scrollTick=0;
 function startHomeIdle(){
  const clip=videoManifest['home-idle'],v=$('motion');
@@ -57,11 +58,13 @@ function startHomeIdle(){
  idleCleanup=()=>{v.removeEventListener('playing',playing);v.removeEventListener('error',failed)};
  v.play().catch(failed);
 }
-function scrollToHero(step){if(route!=='home'||routeTransitioning)return;const el=$('home-opening'),range=Math.max(1,el.offsetHeight-innerHeight);window.scrollTo({top:el.getBoundingClientRect().top+scrollY+range*step/4,behavior:motionEnabled?'smooth':'instant'})}
+function scrollToHero(step){if(route!=='home'||routeTransitioning)return;const el=$('home-opening'),range=Math.max(1,el.offsetHeight-innerHeight);window.scrollTo({top:el.getBoundingClientRect().top+scrollY+range*Math.max(0,Math.min(heroLastStep,step))/Math.max(1,heroLastStep),behavior:motionEnabled?'smooth':'instant'})}
+function updateHomeNavigation(){const learning=$('learning'),rect=learning?.getBoundingClientRect(),inLearning=!!rect&&rect.top<=innerHeight*.45&&rect.bottom>120;for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);a.setAttribute('aria-current',active?'page':'false')}}
 function syncHomeScroll(){
  if(route!=='home'||routeTransitioning||document.hidden)return;
+ updateHomeNavigation();
  const el=$('home-opening'),progress=Math.max(0,Math.min(1,-el.getBoundingClientRect().top/Math.max(1,el.offsetHeight-innerHeight)));
- heroTarget=Math.round(progress*4);
+ heroTarget=Math.round(progress*heroLastStep);
  if(!motionEnabled){heroStep=heroTarget;setPoster(heroStates[heroStep]);updateHero();return}
  if(heroStep===0&&heroTarget===0){startHomeIdle();return}
  if(idleCleanup)releaseVideo();
@@ -121,6 +124,8 @@ async function portalTo(frame,version){
 }
 let deckRevealed=false;
 function scrollHomeIndex(){ $('index').scrollIntoView({behavior:motionEnabled?'smooth':'instant',block:'start'}); }
+function isHomeContentAnchor(id){const target=$(id);return !!target&&!!target.closest('#learning')&&!target.closest('dialog')}
+function scrollHomeContent(id,{instant=false}={}){const target=$(id);if(!target)return;target.scrollIntoView({behavior:motionEnabled&&!instant?'smooth':'instant',block:'start'})}
 const deckObserver=new IntersectionObserver(entries=>{if(route==='home'&&!deckRevealed&&entries.some(e=>e.isIntersecting)){deckRevealed=true;enterView('index')}},{threshold:.22});
 deckObserver.observe($('index'));
 function mountRoute(next){
@@ -128,12 +133,12 @@ function mountRoute(next){
  document.querySelectorAll('.topbar nav a').forEach(a=>{a.classList.toggle('active',a.hash==='#'+next);a.setAttribute('aria-current',a.hash==='#'+next?'page':'false')});
  if(next==='home'){heroStep=Math.max(0,heroStates.indexOf(activeScene));updateHero()}if(next==='journey'){journeyStep=Math.max(0,journeyStates.indexOf(activeScene));updateJourney()}
  if(next==='home'){deckRevealed=false;heroTarget=0;}
- window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回 · 继续探索作品':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'切换章节，继续探索';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
+  window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回 · 继续进入 Agent 学习':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'切换章节，继续探索';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
 }
 async function go(next,{boot=false,instant=false}={}){
- const indexAnchor=next==='index';
- if(indexAnchor){if(route==='home'&&!boot&&!routeTransitioning){scrollHomeIndex();return}next='home'}
- if(!routes.includes(next))next='home';requestedRoute=next;const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
+ const indexAnchor=next==='index',homeContentAnchor=isHomeContentAnchor(next)?next:null;
+ if(indexAnchor||homeContentAnchor){if(route==='home'&&!boot&&!routeTransitioning){if(indexAnchor)scrollHomeIndex();else scrollHomeContent(homeContentAnchor);return}next='home'}
+ if(!routes.includes(next))next='home';requestedRoute=homeContentAnchor||(indexAnchor?'index':next);const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
  routeTransitioning=true;document.body.classList.toggle('is-routing',next!=='home');document.body.dataset.destination=next;$('transition-name').textContent=labels[next];$('transition-en').textContent=chapterEnglish[next];document.querySelector('#'+route)?.classList.add('departing');
  await manifestReady;if(version!==routeVersion)return;
  const config=routeScenes[next];
@@ -151,12 +156,13 @@ async function go(next,{boot=false,instant=false}={}){
  }
  mountRoute(next);routeTransitioning=false;document.body.classList.remove('is-routing');enterView(next);
  if(indexAnchor)scrollHomeIndex();
+ if(homeContentAnchor)scrollHomeContent(homeContentAnchor,{instant:boot||instant});
  if(next==='home')requestAnimationFrame(syncHomeScroll);
  if(motionEnabled&&!instant&&next==='journey')runJourney();
 }
 async function runJourney(){const seq=++sequenceVersion;autoRunning=true;document.body.classList.add('auto-touring');$('tour-toggle').textContent='暂停漫游 Ⅱ';while(journeyStep<5&&seq===sequenceVersion&&route==='journey'&&!routeTransitioning&&motionEnabled){const before=journeyStep;await stepJourney(1);if(before===journeyStep)break}if(seq===sequenceVersion){autoRunning=false;document.body.classList.remove('auto-touring');$('tour-toggle').textContent=journeyStep===5?'重新漫游 ↺':'自动漫游 →'}}
 window.addEventListener('hashchange',()=>go(location.hash.slice(1)));
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;if(route==='home'&&!routeTransitioning&&(a.hash==='#index'||a.hash==='#home')){e.preventDefault();if(a.hash==='#index')scrollHomeIndex();else window.scrollTo({top:0,behavior:motionEnabled?'smooth':'instant'});return}if(a.hash===location.hash&&routes.includes(a.hash.slice(1))){e.preventDefault();go(a.hash.slice(1),{boot:true})}});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;if(route==='home'&&!routeTransitioning&&(a.hash==='#index'||a.hash==='#home')){e.preventDefault();if(a.hash==='#index')scrollHomeIndex();else window.scrollTo({top:0,behavior:motionEnabled?'smooth':'instant'});return}const anchor=a.hash.slice(1);if(a.hash===location.hash&&(routes.includes(anchor)||isHomeContentAnchor(anchor))){e.preventDefault();go(anchor,{boot:!isHomeContentAnchor(anchor)})}});
 $('cinema-skip').onclick=()=>go(requestedRoute,{instant:true});
 $('motion-retry').onclick=()=>{$('motion-retry').hidden=true;if(route==='home')syncHomeScroll();else go(route,{boot:true})};
 $('tour-toggle').onclick=()=>{if(autoRunning){stopAuto();cancelMotion();setPoster(journeyStates[journeyStep])}else if(journeyStep===5){journeyStep=0;go('journey',{boot:true})}else runJourney()};

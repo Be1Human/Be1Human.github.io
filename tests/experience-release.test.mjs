@@ -6,7 +6,12 @@ const read = p => readFile(new URL('../'+p, import.meta.url), 'utf8');
 
 test('the generated homepage preserves the approved experience and its runtime assets', async () => {
   const html=await read('index.html');
-  assert.equal(html,await read('src/experience/index.html'));
+  const template=await read('src/experience/index.html');
+  const normalized=html.replace(/<!--HOME_LEARNING_START-->[\s\S]*?<!--HOME_LEARNING_END-->/,'<!--HOME_AGENT_LEARNING-->').replace(/(assets\/learn\.(?:css|js))\?v=[a-f0-9]+/g,'$1');
+  assert.equal(normalized,template);
+  assert(html.indexOf('id="home-opening"')<html.indexOf('id="learning"'));
+  assert(html.indexOf('id="learning"')<html.indexOf('id="index"'));
+  assert.equal((html.match(/class="learn-topic"/g)||[]).length,13);
   assert(html.includes('克劳德梦见电子羊'));
   for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
     if (/^https?:/.test(match[1])) continue;

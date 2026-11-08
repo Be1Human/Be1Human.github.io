@@ -39,7 +39,7 @@ test('all learning pages are discoverable without JavaScript and searchable with
   assert.ok(search.find(s=>s.id===a.id).text.includes(a.sections[0].title));
  }
  assert.equal(result.pages.length,14);
- assert.ok((await read('index.html')).includes('href="learn.html"'));
+ assert.ok((await read('index.html')).includes('href="#learning">Agent 学习'));
  const evaluation=articles.find(a=>a.id==='agent-evaluation');
  assert.ok(evaluation.sources.some(s=>s.url==='https://aclanthology.org/2026.findings-acl.1330/'));
  assert.ok(evaluation.sources.some(s=>s.url==='https://aclanthology.org/2026.findings-emnlp.1162/'));
