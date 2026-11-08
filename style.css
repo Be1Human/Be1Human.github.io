@@ -156,11 +156,12 @@ body.motion-off .chapter-face,body.motion-off .chapter-face *{transition:none!im
 /* The second opening clip leads directly to the Wiki navigation. */
 .bottombar .footer-location{font-size:11px;letter-spacing:.04em;padding:8px 0}
 .home-opening{height:210svh}
+.view.home-page{min-height:100svh}
 .home-learning{--accent:var(--cyan);--mono:Consolas,"Microsoft YaHei",monospace;position:relative;z-index:1;min-height:100svh;display:grid;grid-template-columns:244px minmax(0,1fr);align-items:start;padding:94px 32px 52px;scroll-margin-top:0;background:transparent}
 .home-learning>.learn-sidebar{top:94px;height:calc(100svh - 146px);padding-top:32px}
 .home-learning-stage{min-width:0;min-height:calc(100svh - 146px)}
-body[data-route=home][data-home-section=learning] .world .shade{background:linear-gradient(90deg,#10232ef5 0%,#10232eeb 22%,#10232e60 43%,#10232e12 75%)}
+body[data-route=learning] .world .shade{background:linear-gradient(90deg,#10232ef5 0%,#10232eeb 22%,#10232e60 43%,#10232e12 75%)}
 @media(max-width:1000px){.home-learning{padding-top:80px}.home-learning>.learn-sidebar{top:80px;height:calc(100svh - 132px)}}
 @media(max-width:760px){.home-learning{display:block;padding-inline:24px}.home-learning .learn-mobile-menu{padding:16px;background:#10232e85}.home-learning .learn-mobile-menu[open]{background:#10232ef5}}
 @media(max-width:700px){.home-opening{height:200svh}.home-learning{padding-top:106px}.home-learning-stage{min-height:calc(100svh - 158px)}}
-@media(prefers-reduced-motion:reduce){.home-opening{height:100svh}}body.motion-off .home-opening{height:100svh}
+@media(prefers-reduced-motion:reduce){.home-opening{height:calc(100svh + 96px)}}body.motion-off .home-opening{height:calc(100svh + 96px)}

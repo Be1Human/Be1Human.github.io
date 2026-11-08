@@ -16,8 +16,8 @@ const heroLastStep=heroStates.length-1;
 const journeyStates=['entry','panels','near','street','arrival','symbol'],journeyClips=['entry-panels','panels-near','near-street','street-arrival','arrival-symbol'];
 const renderedViews=new Set();
 function populateView(){if(data){if(route==='news')renderNews();else if(!renderedViews.has(route)){if(route==='works'){renderProjects();renderFilm()}if(route==='journal')renderJournal();renderedViews.add(route)}}document.querySelectorAll('#'+route+' img[data-src]').forEach(im=>{im.src=im.dataset.src;delete im.dataset.src})}
-const routes=['home','about','works','journal','news','journey','contact'];
-const labels={home:'首页',about:'关于',works:'作品',journal:'创作手记',news:'科技新闻',journey:'创作世界',contact:'联系'};
+const routes=['home','learning','about','works','journal','news','journey','contact'];
+const labels={home:'首页',learning:'Agent 学习',about:'关于',works:'作品',journal:'创作手记',news:'科技新闻',journey:'创作世界',contact:'联系'};
 const imageCache=new Map();
 function imageReady(name){const path='assets/'+name+'.webp';if(!imageCache.has(path)){const p=new Promise(resolve=>{let im=new Image();im.onload=()=>resolve(path);im.onerror=()=>resolve(null);im.src=path;});imageCache.set(path,p);if(imageCache.size>4)imageCache.delete(imageCache.keys().next().value);}return imageCache.get(path)}
 function setPoster(name){activeScene=name;$('scene').src='assets/'+name+'.webp';$('scene').dataset.frame=name}
@@ -42,8 +42,8 @@ async function moveScene(from,to,clip,reverse=false,rate=1.8){
 }
 function updateHero(){document.querySelectorAll('#hero-dots button').forEach((b,i)=>{b.classList.toggle('active',i===heroStep);b.setAttribute('aria-current',String(i===heroStep))});$('scene-label').textContent=String(heroStep+1).padStart(2,'0')+' / '+['THE BEGINNING','CLOSER','THROUGH THE SCREEN'][heroStep];$('hero-next').hidden=heroStep===heroLastStep;$('hero-next').innerHTML='下一幕 <span>↓</span>'}
 for(let i=0;i<heroStates.length;i++){const b=document.createElement('button');b.setAttribute('aria-label','开场镜头 '+(i+1));b.addEventListener('click',()=>scrollToHero(i));$('hero-dots').append(b)}updateHero();
-async function stepHero(delta){if(transitioning)return;if(heroStep+delta>heroLastStep){scrollHomeContent('learning');return}const n=Math.max(0,heroStep+delta);if(n===heroStep)return;const ok=await moveScene(heroStates[heroStep],heroStates[n],heroClips[Math.min(heroStep,n)],delta<0,2.4);if(ok&&route==='home'){heroStep=n;updateHero()}}
-$('hero-next').addEventListener('click',()=>heroStep===heroLastStep?scrollHomeContent('learning'):scrollToHero(heroStep+1));
+async function stepHero(delta){if(transitioning)return;if(heroStep+delta>heroLastStep){go('learning');return}const n=Math.max(0,heroStep+delta);if(n===heroStep)return;const ok=await moveScene(heroStates[heroStep],heroStates[n],heroClips[Math.min(heroStep,n)],delta<0,2.4);if(ok&&route==='home'){heroStep=n;updateHero()}}
+$('hero-next').addEventListener('click',()=>heroStep===heroLastStep?go('learning'):scrollToHero(heroStep+1));
 let heroTarget=0,homeScrollRunning=false,scrollTick=0;
 function startHomeIdle(){
  const clip=videoManifest['home-idle'],v=$('motion');
@@ -58,21 +58,16 @@ function startHomeIdle(){
  v.play().catch(failed);
 }
 function scrollToHero(step){if(route!=='home'||routeTransitioning)return;const el=$('home-opening'),range=Math.max(1,el.offsetHeight-innerHeight);window.scrollTo({top:el.getBoundingClientRect().top+scrollY+range*Math.max(0,Math.min(heroLastStep,step))/Math.max(1,heroLastStep),behavior:motionEnabled?'smooth':'instant'})}
-function updateHomeNavigation(){
- const rect=$('learning').getBoundingClientRect(),inLearning=rect.top<=Math.max(120,innerHeight*.25)&&rect.bottom>120;
- document.body.dataset.homeSection=inLearning?'learning':'opening';
- document.title=(inLearning?'Agent 学习':'首页')+' · 克劳德梦见电子羊';
- $('footer-hint').textContent=inLearning?'':'下滑推进 · 上滑倒回';
- if(['','#home','#learning'].includes(location.hash)){const hash=inLearning?'#learning':'#home';if(location.hash!==hash)history.replaceState(null,'',hash)}
- for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}
+function finishHomeOpening(){
+ if(route!=='home'||routeTransitioning||transitioning||homeScrollRunning||heroStep!==heroLastStep||heroTarget!==heroLastStep)return false;
+ if(location.hash!=='#learning')history.pushState(null,'','#learning');
+ go('learning');return true;
 }
-
 function syncHomeScroll(){
  if(route!=='home'||routeTransitioning||document.hidden)return;
- updateHomeNavigation();
  const el=$('home-opening'),progress=Math.max(0,Math.min(1,-el.getBoundingClientRect().top/Math.max(1,el.offsetHeight-innerHeight)));
  heroTarget=Math.round(progress*heroLastStep);
- if(!motionEnabled){heroStep=heroTarget;setPoster(heroStates[heroStep]);updateHero();return}
+ if(!motionEnabled){heroStep=heroTarget;setPoster(heroStates[heroStep]);updateHero();finishHomeOpening();return}
  if(heroStep===0&&heroTarget===0){startHomeIdle();return}
  if(idleCleanup)releaseVideo();
  pumpHomeScroll();
@@ -81,18 +76,18 @@ async function pumpHomeScroll(){
  if(homeScrollRunning||transitioning||routeTransitioning||route!=='home')return;
  homeScrollRunning=true;const version=routeVersion;
  try{while(version===routeVersion&&route==='home'&&!routeTransitioning&&!document.hidden&&motionEnabled&&heroStep!==heroTarget){const before=heroStep;await stepHero(Math.sign(heroTarget-heroStep));if(before===heroStep)break}}
- finally{homeScrollRunning=false;if(version===routeVersion)startHomeIdle();else if(route==='home')requestAnimationFrame(syncHomeScroll)}
+ finally{homeScrollRunning=false;if(version===routeVersion){if(!finishHomeOpening())startHomeIdle()}else if(route==='home')requestAnimationFrame(syncHomeScroll)}
 }
 window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=requestAnimationFrame(()=>{scrollTick=0;syncHomeScroll()})},{passive:true});
-window.addEventListener('resize',()=>{if(route!=='home')return;if(location.hash==='#learning'){scrollHomeContent('learning',{instant:true});updateHomeNavigation()}else syncHomeScroll()});
-const routeScenes={home:{frame:'home',start:'home',clip:'home-idle'},about:{frame:'panels',start:'entry',clip:'entry-panels'},journal:{frame:'symbol',start:'arrival',clip:'arrival-symbol'},works:{frame:'near',start:'panels',clip:'panels-near'},news:{frame:'street',start:'near',clip:'near-street'},journey:{frame:'entry',start:'entry'},contact:{frame:'symbol',start:'arrival',clip:'arrival-symbol'}};
-const chapterEnglish={home:'WELCOME BACK',about:'MEET THE CREATOR',journal:'BEHIND THE IDEAS',works:'SELECTED WORKS',news:'SIGNALS FROM OUTSIDE',journey:'ENTER THE WORLD',contact:'STAY CURIOUS'};
+window.addEventListener('resize',()=>{if(route==='home')syncHomeScroll()});
+const routeScenes={learning:{frame:'screens',start:'screens'},home:{frame:'home',start:'home',clip:'home-idle'},about:{frame:'panels',start:'entry',clip:'entry-panels'},journal:{frame:'symbol',start:'arrival',clip:'arrival-symbol'},works:{frame:'near',start:'panels',clip:'panels-near'},news:{frame:'street',start:'near',clip:'near-street'},journey:{frame:'entry',start:'entry'},contact:{frame:'symbol',start:'arrival',clip:'arrival-symbol'}};
+const chapterEnglish={learning:'AGENT LEARNING',home:'WELCOME BACK',about:'MEET THE CREATOR',journal:'BEHIND THE IDEAS',works:'SELECTED WORKS',news:'SIGNALS FROM OUTSIDE',journey:'ENTER THE WORLD',contact:'STAY CURIOUS'};
 function stopAuto(){sequenceVersion++;autoRunning=false;document.body.classList.remove('auto-touring');if($('tour-toggle'))$('tour-toggle').textContent='自动漫游 →'}
 function animate(el,frames,options={}){if(!el||!motionEnabled)return Promise.resolve();const a=el.animate(frames,{duration:650,easing:'cubic-bezier(.16,1,.3,1)',...options});entryAnimations.add(a);return a.finished.catch(()=>{}).finally(()=>{entryAnimations.delete(a);a.cancel()})}
 function stagger(selector,frames,{delay=65,duration=650}={}){document.querySelectorAll(selector).forEach((el,i)=>animate(el,frames,{duration,delay:Math.min(i,8)*delay,fill:'backwards'}))}
 function enterView(next){
  document.body.dataset.entrance=next;
- if(!motionEnabled)return;
+ if(!motionEnabled||next==='learning')return;
  const rise=[{opacity:0,transform:'translateY(55px)'},{opacity:1,transform:'translateY(0)'}];
  animate($(next+'-title')||document.querySelector('#'+next+' h1'),[{opacity:0,clipPath:'inset(0 0 100% 0)',transform:'translateY(35px)'},{opacity:1,clipPath:'inset(0 0 0 0)',transform:'none'}],{duration:850});
  if(next==='home'){stagger('.hero-copy>.eyebrow,.hero-copy>.hero-sub,.hero-actions',rise,{delay:140});animate(document.querySelector('.hero-copy'),rise)}
@@ -111,28 +106,16 @@ async function portalTo(frame,version){
  if(motionEnabled)await animate(curtain,[{transform:'translateX(0)'},{transform:'translateX(110%) skewX(-12deg)'}],{duration:300,fill:'forwards',easing:'cubic-bezier(.65,0,.35,1)'});
  if(version===routeVersion)curtain.hidden=true;return version===routeVersion;
 }
-function isHomeContentAnchor(id){return id==='learning'}
-function scrollHomeContent(id,{instant=false}={}){const target=$(id);if(!target)return;target.scrollIntoView({behavior:motionEnabled&&!instant?'smooth':'instant',block:'start'})}
-function showHomeSection(id){
- cancelMotion();homeScrollRunning=false;
- heroStep=heroTarget=id==='learning'?heroLastStep:0;
- setPoster(heroStates[heroStep]);updateHero();
- if(id==='learning')scrollHomeContent(id,{instant:true});else window.scrollTo({top:0,behavior:'instant'});
- updateHomeNavigation();if(id==='home')startHomeIdle();
-}
 function mountRoute(next){
  route=next;document.body.dataset.route=next;document.querySelectorAll('.view').forEach(v=>{v.hidden=v.id!==next;v.classList.remove('departing');v.classList.toggle('active',v.id===next)});
  document.querySelectorAll('.topbar nav a').forEach(a=>{a.classList.toggle('active',a.hash==='#'+next);a.setAttribute('aria-current',a.hash==='#'+next?'page':'false')});
- if(next==='home'){heroStep=Math.max(0,heroStates.indexOf(activeScene));updateHero()}if(next==='journey'){journeyStep=Math.max(0,journeyStates.indexOf(activeScene));updateJourney()}
+ if(next==='home'){heroStep=0;updateHero()}if(next==='journey'){journeyStep=Math.max(0,journeyStates.indexOf(activeScene));updateJourney()}
  if(next==='home')heroTarget=heroStep;
   window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
 }
 async function go(next,{boot=false,instant=next!=='journey'}={}){
  if(next==='index'){next='learning';history.replaceState(null,'','#learning')}
- const homeContentAnchor=isHomeContentAnchor(next)?next:null;
- if((homeContentAnchor||next==='home')&&route==='home'&&!boot&&!routeTransitioning){showHomeSection(homeContentAnchor||'home');return}
- if(homeContentAnchor)next='home';
- if(!routes.includes(next))next='home';requestedRoute=homeContentAnchor||next;const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
+ if(!routes.includes(next))next='home';requestedRoute=next;const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
  routeTransitioning=true;document.body.classList.toggle('is-routing',next!=='home'&&!instant);document.body.dataset.destination=next;$('transition-name').textContent=labels[next];$('transition-en').textContent=chapterEnglish[next];document.querySelector('#'+route)?.classList.add('departing');
  await manifestReady;if(version!==routeVersion)return;
  const config=routeScenes[next];
@@ -149,7 +132,6 @@ async function go(next,{boot=false,instant=next!=='journey'}={}){
    if(activeScene!==config.frame)setPoster(config.frame);
  }
  mountRoute(next);routeTransitioning=false;document.body.classList.remove('is-routing');enterView(next);
- if(next==='home')showHomeSection(homeContentAnchor||'home');
  if(next==='home')requestAnimationFrame(syncHomeScroll);
  if(motionEnabled&&!instant&&next==='journey')runJourney();
 }
@@ -157,7 +139,7 @@ async function runJourney(){const seq=++sequenceVersion;autoRunning=true;documen
 window.addEventListener('hashchange',()=>go(location.hash.slice(1)));
 document.addEventListener('click',e=>{
  const a=e.target.closest('a[href^="#"]');if(!a||e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
- const target=a.hash.slice(1);if(!routes.includes(target)&&target!=='index'&&!isHomeContentAnchor(target))return;
+ const target=a.hash.slice(1);if(!routes.includes(target)&&target!=='index')return;
  e.preventDefault();if(location.hash!==a.hash)history.pushState(null,'',a.hash);go(target);
 });
 $('cinema-skip').onclick=()=>go(requestedRoute,{instant:true});

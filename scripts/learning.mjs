@@ -52,6 +52,6 @@ export function learningPages(articles) {
     pages.push({path:pathFor(article.id),title:`${article.title} — Agent 学习`,summary:article.summary,body:shell(article.id,article,content)});
   }
   const searchIndex = articles.map(a=>({id:a.id,title:a.title,summary:a.summary,category:a.category,text:plain(a.sections.map(s=>s.title+' '+s.body).join(' '))}));
-  const home = `<section class="home-learning" id="learning" aria-labelledby="home-learning-title"><h2 id="home-learning-title" class="sr-only">Agent 学习</h2><aside class="learn-sidebar">${sidebar(null,'',true)}</aside><div class="home-learning-stage"><details class="learn-mobile-menu"><summary>☰ 学习目录</summary>${sidebar(null,'',true)}</details></div>${search('')}</section>`;
+  const home = `<section class="view learning-view home-learning" id="learning" hidden aria-labelledby="learning-title"><h1 id="learning-title" class="sr-only">Agent 学习</h1><aside class="learn-sidebar">${sidebar(null,'',true)}</aside><div class="home-learning-stage"><details class="learn-mobile-menu"><summary>☰ 学习目录</summary>${sidebar(null,'',true)}</details></div>${search('')}</section>`;
   return {pages, searchIndex, home};
 }
