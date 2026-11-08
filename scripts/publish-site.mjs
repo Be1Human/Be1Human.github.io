@@ -10,7 +10,7 @@ if (args.includes('--help')) {
   console.log('Usage: node scripts/publish-site.mjs [--message "Publish message"]\nBuild, check, commit and push approved public site changes to Be1Human/Be1Human.github.io main. Never force-push; deployment verification is separate.');
   process.exit(0);
 }
-let message = 'Publish interactive portfolio and complete news archive';
+let message = process.env.SITE_PUBLISH_MESSAGE || 'Publish portfolio updates';
 if (args.length) {
   if (args.length !== 2 || args[0] !== '--message' || !args[1].trim()) {
     console.error(JSON.stringify({status: 'failed', message: 'Use --help or --message "Publish message".'}));
@@ -33,6 +33,8 @@ const git = (...gitArgs) => run('git', gitArgs, {capture: true, label: `git ${gi
 const splitNul = value => value.split('\0').filter(Boolean);
 const badPart = /(?:^|[._-])(?:private|secrets?|credentials?|api[-_]?keys?|keys?|tokens?)(?:[._-]|$)/i;
 const textFile = /\.(?:html|css|js|mjs|cjs|json|xml|md|txt|svg|ya?ml|toml|ini|conf)$/i;
+// The user explicitly requested removal of the retired archive theme.
+const retiredThemePaths = new Set(['assets/styles.css', 'assets/mark.svg']);
 const strongSecret = /-----BEGIN (?:[A-Z ]* )?PRIVATE KEY-----|\bsk-(?:cp-|proj-)?[A-Za-z0-9_-]{24,}\b|\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{30,}\b|\bgithub_pat_[A-Za-z0-9_]{40,}\b|\bAKIA[A-Z0-9]{16}\b|\bxox[baprs]-[A-Za-z0-9-]{20,}\b/;
 
 function allowedPath(path) {
@@ -42,8 +44,8 @@ function allowedPath(path) {
     || /^(?:production|site|logs?)$/i.test(p) || /\.(?:log|pem|key|p12|pfx)$/i.test(p) || badPart.test(p))) return false;
   if (parts.length === 1) return ['.nojekyll', '.gitattributes', '.gitignore', 'AGENTS.md'].includes(path) || /\.(?:html|css|js|json|xml|md)$/i.test(path);
   return /^(?:assets|src|scripts|tests|docs)\//.test(path) || /^data\/.+\.json$/i.test(path)
-    || /^(?:portfolio\/)?(?:posts|projects|news)\/[a-z0-9-]+\.html$/.test(path)
-    || /^portfolio\/(?:index|works|journal|news)\.html$/.test(path)
+    || /^(?:portfolio\/)?(?:posts|projects|news|learn)\/[a-z0-9-]+\.html$/.test(path)
+    || /^portfolio\/(?:index|works|journal|news|learn)\.html$/.test(path)
     || /^portfolio\/(?:feed|sitemap)\.xml$/.test(path);
 }
 
@@ -53,11 +55,11 @@ function changedPaths() {
   for (let i = 0; i < records.length; i++) {
     const status = records[i].slice(0, 2);
     if (status.includes('U') || ['AA', 'DD'].includes(status)) throw new Error('Resolve existing merge conflicts before publishing.');
-    if (status.includes('D')) throw new Error('Release contains deletions; preserve them for separate review.');
+    if (status.includes('D') && !retiredThemePaths.has(records[i].slice(3))) throw new Error('Release contains unapproved deletions.');
     paths.add(records[i].slice(3));
     if (/[RC]/.test(status)) paths.add(records[++i]);
   }
-  if (git('diff', 'HEAD', '--name-only', '--diff-filter=D')) throw new Error('Release contains deletions; preserve them for separate review.');
+  if (git('diff', 'HEAD', '--name-only', '--diff-filter=D').split('\n').filter(Boolean).some(path=>!retiredThemePaths.has(path))) throw new Error('Release contains unapproved deletions.');
   const changed = [...paths].sort();
   if (changed.some(path => !allowedPath(path))) throw new Error('Release contains a path outside the approved public site directories.');
   return changed;

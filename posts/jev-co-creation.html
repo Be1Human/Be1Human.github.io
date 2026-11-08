@@ -3,31 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f5f0">
-  <title>共生，从说清楚问题开始 — CLOUD BOY</title>
+  <meta name="theme-color" content="#10232e">
+  <title>共生，从说清楚问题开始 — 克劳德梦见电子羊</title>
   <meta name="description" content="读《认识 Jev》时，我重新想了一遍人与 AI 的分工：我怎样提出问题、模型怎样表达判断，以及一个建议如何成为可靠的行动。这篇先记下阅读后的想法，再把它带回自己的作品里。">
   <link rel="canonical" href="https://be1human.github.io/posts/jev-co-creation.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:title" content="共生，从说清楚问题开始 — CLOUD BOY">
+  <meta property="og:title" content="共生，从说清楚问题开始 — 克劳德梦见电子羊">
   <meta property="og:description" content="读《认识 Jev》时，我重新想了一遍人与 AI 的分工：我怎样提出问题、模型怎样表达判断，以及一个建议如何成为可靠的行动。这篇先记下阅读后的想法，再把它带回自己的作品里。">
   <meta property="og:url" content="https://be1human.github.io/posts/jev-co-creation.html">
   <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="../assets/mark.svg?v=a832a4e1a06d" type="image/svg+xml">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
-  <link rel="stylesheet" href="../assets/styles.css?v=a832a4e1a06d">
+  <link rel="stylesheet" href="../assets/site.css?v=ec0a14068b2f">
   <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+
 </head>
-<body id="top" data-page="journal">
+<body id="top" data-page="journal" data-learning-base="../">
   <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="blog-header">
-    <a class="blog-brand" href="../index.html" aria-label="云上男孩的博客"><img class="blog-mark" src="../assets/mark.svg?v=a832a4e1a06d" width="42" height="42" alt=""><span>云上男孩<small>CLOUD BOY</small></span></a>
-    <nav aria-label="主导航"><a href="../index.html" aria-current="page">主页</a><a href="../works.html">作品集</a><a href="../news.html">科技新闻</a></nav>
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home" aria-current="page">首页</a><a href="../index.html#journal">手记</a><a href="../works.html">作品</a><a href="../learn.html">Agent 学习</a><a href="../news.html">新闻</a><a href="../index.html#about">关于</a></nav>
   </header>
   <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="2026-11-04">2026.11.04</time><span>·</span>3 分钟阅读<span>·</span>学习心得</p></div></div><h1>共生，从说清楚问题开始</h1><p class="article-lede">读《认识 Jev》时，我重新想了一遍人与 AI 的分工：我怎样提出问题、模型怎样表达判断，以及一个建议如何成为可靠的行动。这篇先记下阅读后的想法，再把它带回自己的作品里。</p></header><figure class="article-cover"><img src="../assets/images/jev-co-creation.svg" alt="共生，从说清楚问题开始：人定义问题，AI 提供判断，程序检查与执行的阅读手记封面" width="1200" height="600"><figcaption>共生，从说清楚问题开始：人定义问题，AI 提供判断，程序检查与执行的阅读手记封面</figcaption></figure><div class="prose"><section id="section-1"><h2>先把问题问清楚</h2><p>读 Datawhale 的《认识 Jev》时，我很在意一个问题：当我要的答案已经有明确选项，怎样让 AI 的判断更容易接进程序？第一章介绍的方式是，把材料放进 state，定义问题和选项，再读取类型化结果与概率。</p><p>这让我想到创作中的许多小决定。为一条新闻建议分类、判断一段任务是否需要补充信息，都可以先把问题写清楚。问题越具体，我越容易看见 AI 到底帮了哪一步，也越容易检查自己的提问有没有遗漏。</p></section><section id="section-2"><h2>给它看什么，也是一种设计</h2><p>课程对 state 的解释很有启发：它是这次判断可以使用的证据。材料是否足够、是否夹带无关内容、有没有把答案提前放进去，都会影响我该怎样理解结果。</p><p>如果把这个想法带到新闻归档，我会先整理原帖内容、来源和发布时间，再请 AI 给分类建议；最后的收录决定仍留给自己。遇到同时涉及游戏与硬件的项目，也应先想清楚是否允许多选。分类规则本身含糊，换一个模型未必能解决问题。</p></section><section id="section-3"><h2>给不确定留下一个位置</h2><p>概率、置信度与结果是否正确，需要分开看。课程提醒，判断的质量要放到真实样本中检验。我也因此更愿意在流程里保留“暂缓”“需要补充信息”和“交给我看一下”这些出口。</p><p>对我的作品来说，一个伙伴能在信息不足时停下来，可能比每次都迅速给出答案更让人安心。我想知道它当时看见了什么、有哪些选择，以及为什么这一步值得再确认。这样的停顿，也可以成为交互的一部分。</p></section><section id="section-4"><h2>把这种分工带回游戏和硬件</h2><p>我希望游戏里的 AI 伙伴既能表达，也能做出可观察的行动。如果以后把这套思路用到 MineClaw，我会先尝试一个小任务：给它当前可见的环境、一个明确目标和几种可行动作，再由程序检查动作是否允许执行，记录实际发生的结果。</p><p>桌面小屏也让我想到类似的交接：人通过旋钮表达选择，界面把当前状态说清楚，程序确认输入，再给出反馈。把这些环节安排好，人与系统才知道彼此进行到了哪里。这里仍是我从课程延伸出的设计设想，接入效果需要之后验证。</p></section><section id="section-5"><h2>下一步，先做一个能复盘的小实验</h2><p>我想从新闻分类开始，挑一批自己已经读过、能说明分类理由的样本，先约定标签、允许多选的情况和待复核条件。然后在同一批材料上比较人工规则与模型建议，保留分歧，再看错误主要来自材料、问题定义，还是判断本身。</p><p>准确率之外，我也会记录等待时间、调用费用，以及人工复核花了多久。只有把整条流程走一遍，才能知道它是否适合我的日常使用。这篇先停在阅读与实验设计，等真正运行之后，再写下结果。</p></section><section id="section-6"><h2>共生发生在一次次交接里</h2><p>我想表达的人与 AI 共生，落到作品中，应该能被具体看见：我提出目标，AI 提供新的判断，程序把行动落实，结果再帮助我们修正下一步。每一次交接，都有人能理解的依据和反馈。</p><p>这也让我更喜欢首页那句话——“在彼此的思考里生长”。让 AI 参与创造的同时，我也继续学习怎样提问、怎样验证，以及怎样为自己的选择负责。</p></section><section class="article-links"><h2>继续探索</h2><ul><li><a href="https://datawhalechina.github.io/jev-cookbook/course/01/" target="_blank" rel="noopener noreferrer">阅读课程原文：第一章 · 认识 Jev ↗</a></li><li><a href="https://datawhalechina.github.io/jev-cookbook/course/02/" target="_blank" rel="noopener noreferrer">补充阅读：第二章 · 核心概念 ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span># Jev</span><span># 人与 AI</span><span># 学习心得</span></div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article></main>
   <footer class="blog-footer">
-    <p>© 2026 云上男孩<span>保持好奇，慢慢创造。</span></p>
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
     <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
   </footer>
 </body>

@@ -1,6 +1,6 @@
 # 克劳德梦见电子羊 · 云上男孩
 
-[个人博客](https://be1human.github.io/) · [作品集](https://be1human.github.io/works.html) · [博客时间线](https://be1human.github.io/journal.html) · [科技新闻](https://be1human.github.io/news.html)
+[个人博客](https://be1human.github.io/) · [作品集](https://be1human.github.io/works.html) · [博客时间线](https://be1human.github.io/journal.html) · [科技新闻](https://be1human.github.io/news.html) · [Agent 学习](https://be1human.github.io/learn.html)
 
 一个零依赖的中文作品集：新版首页使用复古像素场景、滚动镜头、章节卡片与扑克牌作品展示。动态、文章、项目详情和新闻日期归档保留原来的静态阅读页面；关闭 JavaScript 时可通过首页链接访问这些内容。
 
@@ -53,7 +53,7 @@ npm run check
 - `src/page.template.html`：静态归档的共享导航、页面头部和页脚。
 - `scripts/build-blog.mjs`：页面渲染、内容验证、RSS、站内链接检查。
 - `scripts/project-data.mjs`：作品字段校验、公开源码与站内项目介绍的边界。
-- `assets/styles.css`：桌面与手机布局。
+- `assets/site.css`：桌面与手机布局。
 - `assets/app.js`：筛选、搜索、日期切换和旧作品锚点兼容。
 - `scripts/news-data.mjs`：公开字段白名单、来源校验和重复导入处理。
 - `scripts/publish-news.mjs`：自动同步的构建、检查和受限提交发布。
@@ -73,3 +73,11 @@ npm run check
 ## 自动发布与公网验收
 
 完成网站修改后执行 `npm run site:publish`，自动完成构建、检查、提交、推送以及公网精确版本和视频资源验收。`npm run site:verify` 可单独用于查询或失败续验。用户请求修改即包括发布，无须再次要求上线。
+
+## Agent 学习 Wiki
+
+入口为 `learn.html`，独立文章为 `learn/<id>.html`。内容源在 `data/learning/`，由 `scripts/learning.mjs` 验证并渲染；`assets/learn.css` 和 `assets/learn.js` 提供分组侧栏、页内目录、全文搜索、进度、示例切换与代码复制。搜索在浏览器本地执行，无第三方查询服务。
+
+首期 13 篇解读按核心机制、上下文与协作、评测与进阶组织，保留引用、资料版本、更新时间与教学示例边界。Wiki 是持续维护的知识库，发布手记同时在博客时间线和互动首页建立入口，避免用重复全文淹没手记。构建同时生成静态页面、搜索索引、sitemap 和旧路径兼容页；`site:verify` 核验所有 Wiki 页面的精确公网版本。
+
+所有阅读页共用当前「克劳德梦见电子羊」深色品牌与导航；旧米白归档主题及云朵标识已退役，不保留双主题入口。

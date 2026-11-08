@@ -499,6 +499,56 @@
   ],
   "journal": [
     {
+      "id": "agent-learning-guide",
+      "title": "开一页 Agent 学习笔记：从机制到评测",
+      "source": "https://be1human.github.io/learn.html",
+      "sourceLabel": "进入 Agent 学习 Wiki",
+      "date": "2026-11-08",
+      "summary": "给博客增加一份可以循序阅读的 Agent Wiki。第一期从 ReAct、Agent Loop 和 ACL 评测综述开始，串起上下文、记忆、工具协议与协作。",
+      "image": "assets/images/agent-learning-cover.svg",
+      "imageAlt": "Agent 学习地图：目标、决策、工具与反馈的原创结构示意",
+      "imageNote": "原创学习地图示意",
+      "tags": [
+        "Agent",
+        "论文解读",
+        "学习笔记"
+      ],
+      "sections": [
+        {
+          "title": "先把行动链读清楚",
+          "paragraphs": [
+            "第一期整理了 13 篇独立学习文章。先用 ReAct 理解推理与行动怎样交替，再用 Agent Loop 看清模型、宿主和工具各自负责什么，最后通过 Agent 评测综述建立检验可靠性的基本框架。",
+            "Wiki 使用分组目录、正文与页内导航组织内容。每篇保留原理、原创示例、适用边界、练习和原始资料，便于沿着一个概念继续追问。"
+          ]
+        },
+        {
+          "title": "从论文回到实践",
+          "paragraphs": [
+            "评测主篇以 A Survey on Evaluation of LLM-based Agents（Findings of ACL 2026）为主线，补充 Findings of EMNLP 2026 的过程评测讨论。不同会议与年份分别标注，教学例子不作为论文实验结果。",
+            "上下文工程、Agent 记忆、Agentic RAG、规划与反思、多 Agent、MCP、推理时计算和可观测性各有独立章节。后续沿着实际问题更新，保留每篇的资料来源与更新时间。"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "打开 Agent 学习 Wiki",
+          "url": "https://be1human.github.io/learn.html"
+        },
+        {
+          "label": "ReAct 框架原理",
+          "url": "https://be1human.github.io/learn/react.html"
+        },
+        {
+          "label": "Agent Loop 原理",
+          "url": "https://be1human.github.io/learn/agent-loop.html"
+        },
+        {
+          "label": "Agent 评测综述解读",
+          "url": "https://be1human.github.io/learn/agent-evaluation.html"
+        }
+      ]
+    },
+    {
       "id": "jev-co-creation",
       "title": "共生，从说清楚问题开始",
       "source": "https://be1human.github.io/posts/jev-co-creation.html",

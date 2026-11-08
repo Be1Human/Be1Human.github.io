@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f5f0">
+  <meta name="theme-color" content="#10232e">
   <title>{{TITLE}}</title>
   <meta name="description" content="{{DESCRIPTION}}">
   <link rel="canonical" href="{{CANONICAL}}">
@@ -14,20 +14,21 @@
   <meta property="og:url" content="{{CANONICAL}}">
   <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="{{BASE}}assets/mark.svg?v={{STYLE_VERSION}}" type="image/svg+xml">
+  <link rel="icon" href="{{BASE}}assets/sheep.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="{{BASE}}feed.xml">
-  <link rel="stylesheet" href="{{BASE}}assets/styles.css?v={{STYLE_VERSION}}">
+  <link rel="stylesheet" href="{{BASE}}assets/site.css?v={{STYLE_VERSION}}">
   <script src="{{BASE}}assets/app.js?v={{SCRIPT_VERSION}}" defer></script>
+{{EXTRA_HEAD}}
 </head>
-<body id="top" data-page="{{PAGE}}">
+<body id="top" data-page="{{PAGE}}" data-learning-base="{{BASE}}">
   <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="blog-header">
-    <a class="blog-brand" href="{{BASE}}index.html" aria-label="云上男孩的博客"><img class="blog-mark" src="{{BASE}}assets/mark.svg?v={{STYLE_VERSION}}" width="42" height="42" alt=""><span>云上男孩<small>CLOUD BOY</small></span></a>
+    <a class="blog-brand" href="{{BASE}}index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="{{BASE}}assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
     <nav aria-label="主导航">{{NAV}}</nav>
   </header>
   <main id="main" tabindex="-1">{{CONTENT}}</main>
   <footer class="blog-footer">
-    <p>© 2026 云上男孩<span>保持好奇，慢慢创造。</span></p>
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
     <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="{{BASE}}feed.xml">RSS ↗</a></nav>
   </footer>
 </body>

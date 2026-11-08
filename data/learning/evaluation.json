@@ -1,0 +1,222 @@
+[
+  {
+    "id": "agent-evaluation",
+    "title": "Agent 评测综述：从答对到可靠完成",
+    "eyebrow": "PAPER READING · ACL 2026",
+    "summary": "精读 Findings of ACL 2026 评测综述，结合 EMNLP 2026 的过程评测研究，建立任务、轨迹、判分与成本的完整视角。",
+    "category": "评测与进阶",
+    "level": "进阶",
+    "minutes": 20,
+    "updated": "2026-11-08",
+    "sections": [
+      {
+        "id": "paper",
+        "title": "这篇解读基于哪些论文",
+        "body": "<p>主线论文是 Asaf Yehudai、Lilach Eden、Alan Li、Guy Uziel、Yilun Zhao、Roy Bar-Haim、Arman Cohan 与 Michal Shmueli-Scheuer 的 <em>A Survey on Evaluation of LLM-based Agents</em>，发表于 <strong>Findings of ACL 2026，2026 年 7 月</strong>。它讨论的是完整 Agent 系统如何评测，不只是基础模型答题能力。<a href=\"#ref-1\">[1]</a></p><p>同时补充 Hongliu Cao、Ilias Driouich、Eoin Thomas 的 <em>Procedural Blind Spots in Agent Evaluation</em>，发表于 <strong>Findings of EMNLP 2026，2026 年 10 月</strong>。两篇均收录于 ACL Anthology，但后者不是 ACL 主会论文。资料核验日期为 2026 年 11 月 8 日；这里选取已核验的近期相关研究，不声称穷尽所有最新论文。<a href=\"#ref-2\">[2]</a></p><aside class=\"learn-callout\"><strong>先把评测对象说清。</strong>Agent 的一次运行由模型、提示、工具、运行时、环境和预算共同决定。只更换模型再比较排行榜，会把这些因素混在一起。</aside>"
+      },
+      {
+        "id": "map",
+        "title": "从五个视角理解评测",
+        "body": "<p>ACL 综述用五个视角组织领域：基础能力、专用应用、通用 Agent、基准维度、开发者评测工具。基础能力包括规划、工具使用、自我反思与记忆；应用层覆盖网页、软件工程、科学研究及对话。它帮助我们先找评测位置，再选数据集，而不是见到一个 benchmark 就直接套用。<a href=\"#ref-1\">[1]</a></p><div class=\"learn-flow\"><div>基础能力<br><small>能否选对工具</small></div><div>应用任务<br><small>能否完成目标</small></div><div>系统评测<br><small>能否稳定复现</small></div></div><p>阅读任意基准时，可以追问：任务如何采集，环境是真实还是模拟，Agent 看到什么接口，判分依赖什么证据，哪些安全约束被覆盖。这几个问题比“分数高多少”更能说明结果可以迁移到哪里。</p><p>例如，函数参数选择题能发现 schema 理解问题，却不能证明 Agent 在网络失败后仍会恢复；网页动作回放能检查某次点击，却不能保证交易最终状态正确。局部能力与端到端完成率应同时报告。</p>"
+      },
+      {
+        "id": "outcome-process",
+        "title": "结果正确，过程也可能失败",
+        "body": "<p>结果评测检查任务最终状态；过程评测检查产生结果的行动和沟通。EMNLP 综述强调，现有研究的过程检查往往零散，且“动作是否合规”比“说的话是否有证据”得到更多关注。它将效率、韧性和交互质量与程序完整性分开讨论。<a href=\"#ref-2\">[2]</a></p><table><thead><tr><th>层次</th><th>问题</th><th>可观察证据</th></tr></thead><tbody><tr><td>最终结果</td><td>目标是否完成</td><td>数据库状态、文件、测试结果</td></tr><tr><td>执行过程</td><td>实际做了什么</td><td>工具调用、参数、返回值</td></tr><tr><td>约束遵守</td><td>是否越过边界</td><td>权限、顺序、操作范围</td></tr><tr><td>沟通可信</td><td>声称是否有依据</td><td>回复与执行记录逐项对应</td></tr></tbody></table><p>“已退款”不能仅根据助手最后一句话判定。需要确认目标订单、退款记录、金额以及是否发生重复扣款。即便最终金额碰巧正确，擅自处理其他订单仍是失败。反过来，工具接口故障也不应一律归因于模型推理。</p><aside class=\"learn-callout\"><strong>轨迹不是完整内心过程。</strong>可见消息、行动及简短理由能帮助定位行为，不能证明模型内部推理忠实。不要把生成的解释当成因果证据。</aside>"
+      },
+      {
+        "id": "graders",
+        "title": "谁来判分，判什么",
+        "body": "<p>一个评测可以组合代码判分、模型判分和人工复核。代码适合明确状态与约束；模型适合有多种合理答案的语义维度；人工用于定义标准、处理争议和校准。模型裁判也会偏向某种表达方式，必须拿标注样本检验，而不是因为它给出详细理由就相信它。<a href=\"#ref-3\">[3]</a></p><ul><li><strong>代码：</strong>检查文件内容、余额、测试通过情况、是否调用了被禁止的写操作；避免强制唯一工具顺序，误杀同样有效的方案。</li><li><strong>模型：</strong>按逐项 rubric 判断证据是否支持结论、回答有没有遗漏；保留分项理由与“无法判定”状态。</li><li><strong>人工：</strong>抽查成功和失败样本，确认题目可解、环境正常、判据符合真实需求。</li></ul><p>总分的设计也要表达业务优先级。关键权限违规可以设为硬失败；语气不够简洁可以单独计分。将二者平均成一个分数，可能让大量表面质量掩盖一次严重越界。</p>"
+      },
+      {
+        "id": "metrics",
+        "title": "success、pass@k 与 pass^k",
+        "body": "<p><strong>单次成功率</strong>是成功运行数除以被评测运行数，需要明确分母是任务还是重复试验。<strong>pass@k</strong>关心 k 次尝试中至少一次成功；<strong>pass^k</strong>关心 k 次都成功。前者看探索潜力，后者看重复可靠性，不能混用。HumanEval 推广了 pass@k 的采样估计，τ-bench 使用 pass^k 检查一致完成能力。<a href=\"#ref-4\">[4]</a><a href=\"#ref-5\">[5]</a></p><pre><code>仅作概念演示：单任务每次独立成功概率 p = 0.8\npass@3 = 1 - (1 - p)^3 = 0.992\npass^3 = p^3             = 0.512</code></pre><p>这个算式依赖独立、同分布假设。真实任务难度不一，运行之间也可能共享状态；不能把整个数据集平均成功率先求出来，再简单取幂当成真实 pass^k。应先固定每项任务的重复运行协议、重置环境，再按该基准定义估计并聚合。</p><p>pass@k 还隐含“能找到那次正确结果”的问题。如果线上没有可靠验证器，生成十份答案并不代表系统能选中正确的一份。论文里的候选潜力与产品可交付准确率应分开。</p>"
+      },
+      {
+        "id": "budget",
+        "title": "公平比较，先锁住预算",
+        "body": "<p>两个 Agent 若分别允许 5 次和 50 次工具调用，成功率差异就不只是架构差异。比较前应固定或完整报告模型版本、提示版本、工具集合、环境快照、最大轮数、token、时间、重试与并发限制；将判分器自身开销单独列出。ACL 综述也将成本效率、稳健性与细粒度反馈视为重要缺口。<a href=\"#ref-1\">[1]</a></p><p>防泄漏不只是隐藏答案：不要把测试轨迹写进检索库，不在测试集上反复调提示，不让模型访问参考补丁或未来状态。开发集可以反复迭代，保留的测试集应有独立运行和版本记录。网页或外部 API 会变化时，还要记录时间、数据快照与服务故障。</p><p>报告成功率之外，应提供成本分布、p50/p95 耗时、超时比例及类别覆盖；小样本的几个百分点差异应结合不确定性判断。总分相近时，分层结果可能揭示完全不同的弱点。</p>"
+      },
+      {
+        "id": "example",
+        "title": "一个可执行的小型评测",
+        "body": "<p><strong>以下为教学设计，不是论文实验结果。</strong>评测任务是“根据指定文档更新一条知识库记录”，环境包含只读资料接口和单记录写入接口。准备 12 个任务：普通更新、资料冲突、目标缺失、工具暂时失败各 3 个。每个任务从同一快照重复运行 3 次，最多 8 次工具调用，限时 90 秒。</p><table><thead><tr><th>判据</th><th>判分方式</th><th>通过条件</th></tr></thead><tbody><tr><td>目标内容</td><td>脚本检查状态</td><td>字段与授权资料一致</td></tr><tr><td>操作范围</td><td>审计写入记录</td><td>仅改指定记录</td></tr><tr><td>证据对应</td><td>模型评分＋人工抽查</td><td>每项事实有资料支持</td></tr><tr><td>异常处理</td><td>场景断言</td><td>冲突不乱写，失败不虚报</td></tr></tbody></table><p>最终公布 36 次运行的成功数，并按 12 个任务报告重复一致性。不要只展示最漂亮的一条轨迹。每次失败保留环境状态、调用链、失败判据，区分任务不可解、基础设施故障、Agent 错误和裁判错误。改变方案后，对同一冻结集合重跑，并另加未见样本检查泛化。</p><p>异常任务单独判定：目标不存在时保持环境不变并准确报告；授权资料互相冲突时暂停写入并指出冲突；工具暂时失败时仅在预算内重试，并再次检查最终状态。不能把正常任务的完成条件原样套用到异常样本。</p>"
+      },
+      {
+        "id": "read-next",
+        "title": "把分数变成改进方向",
+        "body": "<p>先定位最早出现的可确认偏差：目标理解错了，检索漏了关键资料，工具选择错误，参数无效，执行恢复失败，还是最终回复夸大了结果。后续表现差不一定都是根因；一次错误检索可能造成整条轨迹失真。</p><p>把经过复核的真实失败转成回归题，再针对不同模块做受控对比。Trace 支持提出假设，但严格因果结论还需要对照、重放或干预实验。可继续阅读 <a href=\"agent-observability.html\">Agent 可观测性</a>，了解如何把轨迹证据接入评测；阅读 <a href=\"test-time-compute.html\">Test-time Compute</a>，理解为什么增加预算会改变分数。</p>"
+      }
+    ],
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Yehudai et al. · A Survey on Evaluation of LLM-based Agents",
+        "url": "https://aclanthology.org/2026.findings-acl.1330/",
+        "note": "Findings of ACL 2026，7 月。本文主线综述；含论文 PDF。"
+      },
+      {
+        "id": "ref-2",
+        "title": "Cao et al. · Procedural Blind Spots in Agent Evaluation",
+        "url": "https://aclanthology.org/2026.findings-emnlp.1162/",
+        "note": "Findings of EMNLP 2026，10 月。过程评测、沟通与动作的一致性。"
+      },
+      {
+        "id": "ref-3",
+        "title": "Anthropic · Demystifying evals for AI agents",
+        "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+        "note": "官方工程文章：判分器组合、重复运行与评测维护。"
+      },
+      {
+        "id": "ref-4",
+        "title": "Chen et al. · Evaluating Large Language Models Trained on Code",
+        "url": "https://arxiv.org/abs/2107.03374",
+        "note": "2021 年论文；HumanEval 与 pass@k。"
+      },
+      {
+        "id": "ref-5",
+        "title": "Yao et al. · τ-bench",
+        "url": "https://arxiv.org/abs/2406.12045",
+        "note": "2024 年论文；工具、用户、规则交互与 pass^k。"
+      }
+    ]
+  },
+  {
+    "id": "test-time-compute",
+    "title": "Test-time Compute：把推理预算用在关键处",
+    "eyebrow": "FRONTIER CONCEPT · INFERENCE",
+    "summary": "区分更长思考、多次采样、搜索与验证，理解推理时计算扩展的收益、成本和适用边界。",
+    "category": "评测与进阶",
+    "level": "进阶",
+    "minutes": 13,
+    "updated": "2026-11-08",
+    "sections": [
+      {
+        "id": "definition",
+        "title": "模型不变，还能改善结果吗",
+        "body": "<p>Test-time Compute 指模型在处理当前问题时使用的计算资源；Test-time Scaling 研究增加或重新分配这些资源，能否得到更好结果。它和训练更多参数不同：通常在权重固定后，改变生成、采样、搜索或验证策略。并不意味着“模型越慢就越聪明”。</p><p>Snell 等人的研究比较了基于验证器的搜索，以及根据当前问题调整候选分布的方式，发现合适策略与问题难度有关。论文的关键启示是预算分配，而不是把某个实验倍率推广成所有任务的规律。<a href=\"#ref-1\">[1]</a></p><aside class=\"learn-callout\"><strong>区分两个层面。</strong>长推理轨迹是模型内的生成方式；多轮调用、工具执行、候选调度则是系统层策略。它们可以组合，但消耗的资源与证据不同。</aside>"
+      },
+      {
+        "id": "routes",
+        "title": "四种常见扩展路线",
+        "body": "<table><thead><tr><th>路线</th><th>怎么花预算</th><th>主要前提</th></tr></thead><tbody><tr><td>顺序深化</td><td>继续推导、检查或修正</td><td>后续步骤能发现新信息</td></tr><tr><td>并行采样</td><td>生成多个候选解</td><td>候选有多样性</td></tr><tr><td>搜索展开</td><td>扩展、评价、保留分支</td><td>存在可比较的中间状态</td></tr><tr><td>外部验证</td><td>运行测试、检索、约束检查</td><td>反馈与真实目标一致</td></tr></tbody></table><p>Self-consistency 对同一问题采样不同推理路径，再聚合最终答案，适合可以归一化比较的答案；它不是让同一份错误解释重复出现。<a href=\"#ref-2\">[2]</a>Tree of Thoughts 则把中间思路作为搜索单元，包含分支探索、评价与回溯，强调顺序决策，而非单纯增加一次输出长度。<a href=\"#ref-3\">[3]</a></p><p>Agent 系统中的“提出补丁→执行测试→根据失败修正”也使用额外推理预算，但它获得了环境反馈。反馈来自真实测试还是模型自评，会显著改变这条路线的可信度。</p>"
+      },
+      {
+        "id": "selection",
+        "title": "生成更多，不等于选得更准",
+        "body": "<p>Best-of-N 先生成 N 个候选，再由验证器选择。候选池里出现正确答案，只能说明探索到了；验证器错选时，交付依旧失败。结果验证器看最终答案或测试结果，过程验证器看中间步骤，各有可见范围。</p><p>以“修复一个函数”为例，候选 A 通过公开测试但破坏边界条件，候选 B 通过完整回归。只有公开测试的选择器可能偏爱 A。继续生成候选无法补上判据缺口；需要先改进验证覆盖，或降低对自动选择的信任。</p><p>同样，多数投票不是事实证明。若所有采样都受相同错误前提影响，增加采样会强化同一种答案。应同时检查多样性、验证质量和环境反馈，而不只统计候选数量。</p>"
+      },
+      {
+        "id": "budget-forcing",
+        "title": "长思考需要训练与控制",
+        "body": "<p>s1 研究使用小规模精选推理数据进行监督微调，并用 budget forcing 控制推理长度：在模型准备结束时延长思考，或在预算达到时终止。它展示了一种具体实验方法；不是给任意聊天模型反复追加一个词，就能稳定复现论文结果。<a href=\"#ref-4\">[4]</a></p><p>长轨迹可能包含有用的复查，也可能产生重复、偏离或覆盖先前正确结论。工程上应设最大 token、轮数与墙钟时间，识别没有新增证据的循环，允许完成后提前停止。把所有请求都提升到最高预算，通常还会增加延迟与成本。</p>"
+      },
+      {
+        "id": "adaptive",
+        "title": "一个自适应预算示例",
+        "body": "<p><strong>以下为教学伪代码，不是某个 SDK 的 API。</strong>以代码修复为例，先给单候选一个较小预算；测试失败且原因可定位时再修正；出现多个竞争解释时才分支采样；无法验证或预算耗尽则返回真实状态。</p><pre><code>candidate = propose(task, small_budget)\nresult = sandbox_test(candidate)\n\nif result.passed:\n    return candidate\n\nif result.has_actionable_feedback:\n    revised = revise(candidate, result, budget.reserve_for_test())\n    checked = sandbox_test(revised, budget=budget.remaining)\n    return revised if checked.passed else report_unresolved()\n\ncandidates = sample_diverse(task, bounded_count)\nreturn select_with_tests(candidates) or report_unresolved()</code></pre><p>先小后大是一种可尝试的工程策略，不是普遍最优解。不同任务需要不同路由：检索缺资料时先补证据；权限缺失时等待授权；算术推导出错时再增加计算。不能用更多“思考”替代缺失的外部信息。</p>"
+      },
+      {
+        "id": "measure",
+        "title": "如何知道预算花得值",
+        "body": "<p>固定任务集，至少比较单次基线、相同总预算的并行采样、带验证的顺序修正，并记录最终正确率、实际交付正确率、总 token、工具开销和 p95 延迟。将验证器成本纳入总账，避免只统计生成模型。<a href=\"#ref-1\">[1]</a></p><p>画性能与成本的关系时，预算单位必须说明：token、模型调用次数、FLOPs 和秒并不等价。不同模型的一个 token 也不代表相同计算量。把延迟上限、可用并行度、工具限流写清楚，才知道某个更高分的策略能否上线。</p><p>最后，保留简单题与难题的分层结果。平均分可能掩盖“简单题白白多花钱，难题依旧做不出来”的情况。真正有用的扩展是在可验证的边界内，把新增计算转成新增成功。</p>"
+      }
+    ],
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Snell et al. · Scaling LLM Test-Time Compute Optimally",
+        "url": "https://arxiv.org/abs/2408.03314",
+        "note": "2024 年论文；计算分配与问题难度。"
+      },
+      {
+        "id": "ref-2",
+        "title": "Wang et al. · Self-Consistency Improves Chain of Thought Reasoning",
+        "url": "https://arxiv.org/abs/2203.11171",
+        "note": "多样推理路径采样与答案聚合。"
+      },
+      {
+        "id": "ref-3",
+        "title": "Yao et al. · Tree of Thoughts",
+        "url": "https://arxiv.org/abs/2305.10601",
+        "note": "中间思路的搜索、评价与回溯。"
+      },
+      {
+        "id": "ref-4",
+        "title": "Muennighoff et al. · s1: Simple test-time scaling",
+        "url": "https://arxiv.org/abs/2501.19393",
+        "note": "2025 年论文；精选数据、监督微调与 budget forcing。"
+      }
+    ]
+  },
+  {
+    "id": "agent-observability",
+    "title": "Agent 可观测性：从调用轨迹到评测闭环",
+    "eyebrow": "ENGINEERING CONCEPT · TRACING",
+    "summary": "用 Trace、Span 与运行状态解释 Agent 为什么失败，并把真实问题沉淀成可复现的评测样本。",
+    "category": "评测与进阶",
+    "level": "进阶",
+    "minutes": 13,
+    "updated": "2026-11-08",
+    "sections": [
+      {
+        "id": "why",
+        "title": "只存最终答案，看不到什么",
+        "body": "<p>用户看到一次错误回复，背后可能是检索失败、参数被截断、工具超时、重试重复写入，也可能是模型把正确工具结果读错了。只保存最终文字，无法区分这些原因；只保存普通服务器日志，又可能丢失模型与工具之间的任务关系。</p><p>可观测性把分散事件连接成一次运行的证据链。它帮助回答发生了什么、在哪里耗时、哪次调用失败。评测再依据任务目标与判据回答做得对不对。前者提供证据，后者作出判断，二者不能互相替代。</p>"
+      },
+      {
+        "id": "trace-span",
+        "title": "Trace 与 Span 的关系",
+        "body": "<p>OpenTelemetry 将 Trace 表示为相关 Span 的集合，Span 描述一段有起止时间的操作，并带有属性、事件、状态及父子关系。一次 Agent 任务可以有根 Span，下挂模型调用、检索、工具执行和子 Agent；跨服务依靠上下文传播保持关联。<a href=\"#ref-1\">[1]</a></p><pre><code>任务运行 trace\n├─ 模型调用：选择下一步\n├─ 检索工具：获得资料\n├─ 模型调用：生成修改\n├─ 写入工具：执行操作\n└─ 状态检查：验证结果</code></pre><p><strong>此树为教学示意。</strong>父子关系表示追踪关联，不自动等于业务因果；并发分支应保留实际时间，不能为了排版伪造成串行。一次逻辑工具调用若重试三次，应能看见逻辑操作与实际尝试次数，才能识别重试放大。</p>"
+      },
+      {
+        "id": "fields",
+        "title": "记录哪些字段才够用",
+        "body": "<table><thead><tr><th>层次</th><th>建议记录</th><th>帮助回答</th></tr></thead><tbody><tr><td>任务</td><td>task/run ID、版本、预算、结束原因</td><td>能否复现</td></tr><tr><td>模型</td><td>模型标识、token、耗时、停止原因</td><td>是否截断或循环</td></tr><tr><td>工具</td><td>名称、调用 ID、参数摘要、结果状态</td><td>执行了什么</td></tr><tr><td>环境</td><td>快照、依赖版本、故障注入</td><td>是否环境漂移</td></tr><tr><td>验证</td><td>判据版本、分项分数、证据引用</td><td>为何通过或失败</td></tr></tbody></table><p>OpenTelemetry 的 GenAI 示例使用 <code>invoke_agent</code>、<code>chat</code>、<code>execute_tool</code> 描述相关操作，并展示模型、token 与停止原因等属性。<a href=\"#ref-2\">[2]</a>GenAI 语义约定仍会演进，接入前应核对所用仪器库与规范版本，不将示意字段当成永久稳定接口。</p><p>还要区分业务失败与调用失败：HTTP 200 可能返回“未找到订单”；Agent 主动停止可能是正确处理权限不足。保留业务状态和结束原因，比把所有非成功都标成网络错误更有诊断价值。</p>"
+      },
+      {
+        "id": "from-trace-to-eval",
+        "title": "从一次失败到一条评测",
+        "body": "<div class=\"learn-flow\"><div>捕获失败<br><small>保留证据</small></div><div>人工复核<br><small>确定判据</small></div><div>重建环境<br><small>稳定复现</small></div><div>纳入回归<br><small>比较版本</small></div></div><p>先阅读轨迹，判断用户目标是否清楚、环境能否完成任务，再找到首个可确认偏差。然后把资料、初始状态、权限与期望结果整理成独立案例。不要直接把全部线上对话复制进测试集；应移除敏感信息，并保证测试不依赖已经变化的外部状态。</p><p>接着选判分器：数据库状态交给脚本，证据支持度交给 rubric，争议样本交给人工。升级提示或运行时后，重跑同一任务和相关回归集合。Anthropic 的评测实践也强调读取真实 transcript、校准裁判及长期维护测试集。<a href=\"#ref-3\">[3]</a></p><p>轨迹可以提示“某次检索之后开始出错”，但仅凭相关性不能断言检索就是根因。可以固定其他配置，替换该观察或重放该步骤，检查结果是否随之变化；依赖外部副作用的操作应在隔离环境中重放。</p>"
+      },
+      {
+        "id": "example",
+        "title": "一例：超时后重复创建记录",
+        "body": "<p><strong>以下为虚构教学案例。</strong>Agent 调用创建工单接口，服务端完成写入，但客户端等待响应超时。模型以为没成功，重试后又创建一条，最后报告“已创建工单”。最终回复看似正常，单次 HTTP 日志也不足以发现业务重复。</p><p>完整轨迹应关联两次调用、逻辑操作 ID、超时点和工单状态。归因时分别检查：工具是否支持幂等键、运行时是否盲目重试、模型是否有查询状态的恢复路径。修复可能发生在工具或运行时，而不是提示词。</p><p>回归题应注入“写入已完成但响应丢失”的故障，判据是仅产生一条记录、后续查询能确认状态、最终回复与事实一致。这样，评测直接覆盖真实失效机制，而非只要求 Agent 输出一句“我会避免重复”。</p>"
+      },
+      {
+        "id": "sampling",
+        "title": "采样与隐私影响证据质量",
+        "body": "<p>全量记录成本高，采样又可能漏掉低频故障。保留固定比例的正常运行有助于估计整体表现，额外保存错误与高延迟运行有助于排障；如果只分析失败采样，不能直接据此推算总体失败率。每个分析结果都应说明采样策略与分母。</p><p>Prompt、工具参数和返回值都可能包含用户数据或凭据。OpenTelemetry 官方建议最小化采集，并可用过滤、删除、变换等方式在导出前处理敏感字段。<a href=\"#ref-4\">[4]</a>实践中可以保留结构化状态、脱敏摘要、受控原始证据引用；不要把“记录得更全”当成无限保留原文的理由。</p><p>已有 Trace、仪表盘和错误分类，并不意味着系统已经可可靠评测。只有当任务目标、可检查状态、判分标准和复现环境连接起来，轨迹才会变成改进能力的闭环。继续阅读 <a href=\"agent-evaluation.html\">Agent 评测综述</a>，把这些证据转换为完整评测协议。</p>"
+      }
+    ],
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "OpenTelemetry · Traces",
+        "url": "https://opentelemetry.io/docs/concepts/signals/traces/",
+        "note": "官方概念文档；Trace、Span、上下文与关联。"
+      },
+      {
+        "id": "ref-2",
+        "title": "OpenTelemetry · Inside the LLM Call: GenAI Observability",
+        "url": "https://opentelemetry.io/blog/2026/genai-observability/",
+        "note": "2026 年官方工程文章；Agent、模型、工具的 Span 示例。"
+      },
+      {
+        "id": "ref-3",
+        "title": "Anthropic · Demystifying evals for AI agents",
+        "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+        "note": "官方评测实践；读取轨迹、校准判分器与维护回归集合。"
+      },
+      {
+        "id": "ref-4",
+        "title": "OpenTelemetry · Handling sensitive data",
+        "url": "https://opentelemetry.io/docs/security/handling-sensitive-data/",
+        "note": "官方安全文档；数据最小化、过滤、删除与脱敏。"
+      }
+    ]
+  }
+]

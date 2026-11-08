@@ -6,6 +6,7 @@ import { httpsUrl, validateEditionId } from './news-data.mjs';
 import { buildFeed, renderStatusText } from './blog-feed.mjs';
 import { projectCategories, projectPagePath, validateProject } from './project-data.mjs';
 import { buildExperienceNews } from './experience-news.mjs';
+import { readLearning, learningPages } from './learning.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const readJSON = async path => JSON.parse(await readFile(resolve(root, path), 'utf8'));
@@ -14,8 +15,10 @@ const [projects, posts, news, evidence, template, updates] = await Promise.all([
   readJSON('data/updates.json'),
 ]);
 const origin = 'https://be1human.github.io/';
-const styleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/styles.css'))).digest('hex').slice(0, 12);
+const styleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/site.css'))).digest('hex').slice(0, 12);
 const scriptVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/app.js'))).digest('hex').slice(0, 12);
+const learnStyleVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/learn.css'))).digest('hex').slice(0, 12);
+const learnScriptVersion = createHash('sha256').update(await readFile(resolve(root, 'assets/learn.js'))).digest('hex').slice(0, 12);
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -65,9 +68,11 @@ const redirectVersion = createHash('sha256').update(await readFile(resolve(root,
 function render(path, title, description, active, content, ogtype = 'website') {
   const base = path.includes('/') ? '../' : '';
   const navActive = active === 'journal' ? 'home' : active;
-  const nav = [['index.html', 'home', '主页'], ['works.html', 'works', '作品集'], ['news.html', 'news', '科技新闻']].map(([href, key, name]) => `<a href="${base}${href}"${key === navActive ? ' aria-current="page"' : ''}>${name}</a>`).join('');
+  const nav = [['index.html#home', 'home', '首页'], ['index.html#journal', 'journal', '手记'], ['works.html', 'works', '作品'], ['learn.html', 'learning', 'Agent 学习'], ['news.html', 'news', '新闻'], ['index.html#about', 'about', '关于']].map(([href, key, name]) => `<a href="${base}${href}"${key === navActive ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   let html = template;
-  const variables = {TITLE: e(title), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, NAV: nav, CONTENT: content};
+  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>` : '';
+  const brandedTitle = title.replaceAll('CLOUD BOY · 云上男孩', '克劳德梦见电子羊').replaceAll('— CLOUD BOY', '— 克劳德梦见电子羊');
+  const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
   if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
@@ -111,7 +116,7 @@ for (const project of projects.filter(project => project.presentation === 'showc
   render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article');
 }
 
-render('journal.html', '云上男孩 · 动态与文章', '云上男孩的文字动态与长文章，按发布时间排列。', 'home', home);
+render('journal.html', '克劳德梦见电子羊 · 手记', '云上男孩的文字动态与长文章，按发布时间排列。', 'home', home);
 
 for (const post of posts) {
   const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="${e(post.publishedAt || post.date)}">${post.date.replaceAll('-', '.')}</time><span>·</span>${minutes(post)} 分钟阅读<span>·</span>${e(post.category)}</p></div></div><h1>${e(post.title).replaceAll('：', '：<wbr>')}</h1><p class="article-lede">${e(post.summary)}</p></header>${post.image ? `<figure class="article-cover"><img src="../${post.image}" alt="${e(post.imageAlt)}" width="1200" height="600"><figcaption>${e(post.imageAlt)}</figcaption></figure>` : ''}<div class="prose">${post.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}${post.links.length ? `<section class="article-links"><h2>继续探索</h2><ul>${post.links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>` : ''}</div><footer class="article-end"><div class="tags">${post.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article>`;
@@ -134,11 +139,16 @@ function newsPage(edition, base) {
 render('news.html', '科技新闻 — CLOUD BOY · 云上男孩', '从 Dot AI 热门 20 同步的每日科技精选，按日期归档，支持分类与搜索。', 'news', newsPage(latest, ''));
 for (const edition of news.editions) render(`news/${edition.id}.html`, `${edition.date} 科技精选 — CLOUD BOY`, `${edition.date} 的 ${edition.items.length} 条科技精选，保留原作者和来源。`, 'news', newsPage(edition, '../'));
 
+const learning = await readLearning(root);
+const learningOutput = learningPages(learning);
+for (const page of learningOutput.pages) render(page.path, page.title, page.summary, 'learning', page.body, page.path === 'learn.html' ? 'website' : 'article');
+pages.set('assets/learning-search.json', JSON.stringify(learningOutput.searchIndex));
+
 const rssItems = [
   ...feed.map(entry => ({title: entry.type === 'article' ? entry.title : entry.content.split('\n')[0].slice(0, 60), link: entry.permalink, date: entry.date, publishedAt: entry.publishedAt, summary: entry.type === 'article' ? entry.summary : entry.content})),
   ...news.editions.map(edition => ({title: `${edition.date} 科技精选 · ${edition.items.length} 条`, link: `news/${edition.id}.html`, date: edition.date, summary: edition.items.slice(0, 3).map(item => item.title).join('；')})),
 ].sort((a, b) => b.date.localeCompare(a.date));
-pages.set('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>CLOUD BOY · 云上男孩</title><link>${origin}</link><description>作品、创作手记与每日科技精选</description><language>zh-CN</language>${rssItems.map(item => `<item><title>${e(item.title)}</title><link>${origin}${item.link}</link><guid>${origin}${item.link}</guid><pubDate>${new Date(item.publishedAt || `${item.date}T12:00:00Z`).toUTCString()}</pubDate><description>${e(item.summary)}</description></item>`).join('')}</channel></rss>\n`);
+pages.set('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>克劳德梦见电子羊</title><link>${origin}</link><description>作品、创作手记与每日科技精选</description><language>zh-CN</language>${rssItems.map(item => `<item><title>${e(item.title)}</title><link>${origin}${item.link}</link><guid>${origin}${item.link}</guid><pubDate>${new Date(item.publishedAt || `${item.date}T12:00:00Z`).toUTCString()}</pubDate><description>${e(item.summary)}</description></item>`).join('')}</channel></rss>\n`);
 pages.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...pages.keys()].filter(path => path.endsWith('.html')).map(path => `<url><loc>${origin}${path === 'index.html' ? '' : path}</loc></url>`).join('')}</urlset>\n`);
 
 // Check local hrefs/srcs against this build or actual assets before writing any output.
@@ -160,12 +170,12 @@ for (const [path, html] of pages) {
 const canonicalPages = [...pages.keys()].filter(path => path.endsWith('.html'));
 for (const path of canonicalPages) {
   const target = origin + (path === 'index.html' ? '' : path);
-  pages.set(`portfolio/${path}`, `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>正在前往云上男孩的博客</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script><noscript><meta http-equiv="refresh" content="0;url=${target}"></noscript></head><body><p>博客已迁到新地址。<a href="${target}">继续阅读 →</a></p></body></html>\n`);
+  pages.set(`portfolio/${path}`, `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>正在前往克劳德梦见电子羊</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script><noscript><meta http-equiv="refresh" content="0;url=${target}"></noscript></head><body><p>博客已迁到新地址。<a href="${target}">继续阅读 →</a></p></body></html>\n`);
 }
 // Feed readers do not execute JavaScript; keep their existing subscription live.
 pages.set('portfolio/feed.xml', pages.get('feed.xml'));
 pages.set('portfolio/sitemap.xml', pages.get('sitemap.xml'));
-pages.set('404.html', `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>页面未找到 — 云上男孩</title><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script></head><body><p>这个页面暂时没有找到。<a href="${origin}">返回博客主页 →</a></p></body></html>\n`);
+pages.set('404.html', `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>页面未找到 — 克劳德梦见电子羊</title><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script></head><body><p>这个页面暂时没有找到。<a href="${origin}">返回博客主页 →</a></p></body></html>\n`);
 
 for (const [path, content] of pages) {
   const target = resolve(root, path);

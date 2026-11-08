@@ -149,3 +149,6 @@ body.motion-off .chapter-face,body.motion-off .chapter-face *{transition:none!im
 @media(max-width:700px){#news .news-archive-summary{font-size:10px;letter-spacing:0}.news-archive-nav{display:block;padding:16px 0}.news-archive-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:9px}.news-archive-label small{margin:0;font-size:9px}.news-date-controls{gap:10px;justify-content:space-between}.news-edition-label{min-width:0;flex:1;max-width:230px}#news-edition{font-size:11px;padding:13px 26px 13px 10px}.news-edition-label>span:last-child{right:10px}.news-date-controls>button{font-size:10px}#news .section-heading{margin-bottom:20px}#news-latest{font-size:10px}#news-date{margin-bottom:23px}}
 
 .journal-card img.contained{height:auto;aspect-ratio:8/5;object-fit:contain;align-self:start;background:#10232e}
+
+@media(min-width:701px) and (max-width:1150px){.topbar nav{gap:16px}.topbar nav a{font-size:12px;letter-spacing:0}.topbar .brand>span{font-size:16px}.topbar{gap:16px}}
+@media(max-width:420px){.topbar nav a{font-size:10px;padding-inline:5px}}

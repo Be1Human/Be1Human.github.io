@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build": "node scripts/build-blog.mjs",
-    "check": "node --check app.js && node --check assets/app.js && node --check scripts/serve.mjs && node scripts/build-blog.mjs --check && node --test tests/*.test.mjs",
+    "check": "node --check app.js && node --check assets/app.js && node --check assets/learn.js && node --check scripts/serve.mjs && node scripts/build-blog.mjs --check && node --test tests/*.test.mjs",
     "news:sync": "node scripts/sync-news.mjs",
     "news:publish": "node scripts/publish-news.mjs",
     "site:publish": "node scripts/publish-site.mjs && node scripts/verify-live-site.mjs --attempts 20 --interval 15",
