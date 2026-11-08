@@ -15,6 +15,7 @@ test('old page URLs preserve deep paths, filters and anchors on the same root do
     ['/portfolio/news.html?date=2026-10-30', '/news.html?date=2026-10-30'],
     ['/portfolio/news/2026-10-13-evening.html#item-1', '/news/2026-10-13-evening.html#item-1'],
     ['/portfolio/projects/duomind.html', '/projects/duomind.html'],
+    ['/portfolio/learn.html', '/#learning'],
   ]) {
     const old = new URL(path, 'https://be1human.github.io');
     let destination;
@@ -55,4 +56,13 @@ test('date-style news links retain search filters and the selected item after re
   const editionSelect = {addEventListener() {}, options: [{value: 'news/2026-10-30.html'}]};
   runInNewContext(script, {URL, location, window: {location}, document: {body: {dataset: {page: 'news'}}, querySelectorAll: () => [], querySelector: () => editionSelect}});
   assert.equal(destination, 'https://be1human.github.io/news/2026-10-30.html?q=AI&category=tools#item-306fd8fd45fa4e83');
+});
+
+test('old learning bookmarks return to the single directory without replaying an entrance', async () => {
+  const script = await read('assets/learn-directory.js');
+  for (const origin of ['https://be1human.github.io', 'http://127.0.0.1:4187']) {
+    let destination;
+    runInNewContext(script, {URL, location: {href: origin+'/learn.html?from=bookmark', search: '?from=bookmark', replace: value => { destination = value; }}});
+    assert.equal(destination, origin+'/index.html?from=bookmark#learning');
+  }
 });

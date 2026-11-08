@@ -19,7 +19,7 @@ test('the learning collection has complete lessons, original examples and resolv
   assert.equal(new Set(ids).size,ids.length,article.id);
   for(const [,id] of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.includes(id),`${article.id} missing #${id}`);
   assert.equal((html.match(/<h1[\s>]/g)||[]).length,1);
-  assert.ok(html.includes('href="../learn.html" aria-current="page"'));
+  assert.ok(html.includes('href="../index.html#learning" aria-current="page"'));
   assert.ok(html.includes(`rel="canonical" href="https://be1human.github.io/learn/${article.id}.html"`));
  }
  const bad=structuredClone(articles);bad[0].sections[0].body+='<a href="#missing-source">[99]</a>';
@@ -30,7 +30,7 @@ test('the learning collection has complete lessons, original examples and resolv
 
 test('all learning pages are discoverable without JavaScript and searchable with the full content index',async()=>{
  const articles=await readLearning(root);const result=learningPages(articles);
- const home=await read('learn.html');const sitemap=await read('sitemap.xml');
+ const home=await read('index.html');const sitemap=await read('sitemap.xml');
  const search=JSON.parse(await read('assets/learning-search.json'));
  assert.equal(search.length,articles.length);
  for(const a of articles){
@@ -38,7 +38,7 @@ test('all learning pages are discoverable without JavaScript and searchable with
   assert.ok(sitemap.includes(`/learn/${a.id}.html`),a.id);
   assert.ok(search.find(s=>s.id===a.id).text.includes(a.sections[0].title));
  }
- assert.equal(result.pages.length,articles.length+1);
+ assert.equal(result.pages.length,articles.length);
  assert.ok((await read('index.html')).includes('href="#learning">Agent 学习'));
  const evaluation=articles.find(a=>a.id==='agent-evaluation');
  assert.ok(evaluation.sources.some(s=>s.url==='https://aclanthology.org/2026.findings-acl.1330/'));

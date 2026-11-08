@@ -154,6 +154,7 @@ body.motion-off .chapter-face,body.motion-off .chapter-face *{transition:none!im
 @media(max-width:420px){.topbar nav a{font-size:10px;padding-inline:5px}}
 
 /* The second opening clip leads directly to the Wiki navigation. */
+.bottombar .footer-location{font-size:11px;letter-spacing:.04em;padding:8px 0}
 .home-opening{height:210svh}
 .home-learning{--accent:var(--cyan);--mono:Consolas,"Microsoft YaHei",monospace;position:relative;z-index:1;min-height:100svh;display:grid;grid-template-columns:244px minmax(0,1fr);align-items:start;padding:94px 32px 52px;scroll-margin-top:0;background:transparent}
 .home-learning>.learn-sidebar{top:94px;height:calc(100svh - 146px);padding-top:32px}

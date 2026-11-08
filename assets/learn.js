@@ -51,7 +51,7 @@ for (const trigger of document.querySelectorAll('[data-learn-search]')) {
   });
 }
 document.querySelector('[data-search-close]').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('close',()=>opener?.focus());
+dialog.addEventListener('close',()=>opener?.focus({preventScroll:true}));
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 input.addEventListener('input',filterSearch);
 input.addEventListener('keydown',async event=>{if(event.key==='Enter'){event.preventDefault();if(await filterSearch()){const first=rankedResults[0];if(first)location.assign(first.href);}}});

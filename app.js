@@ -6,7 +6,7 @@ const validURL=u=>/^https:\/\//.test(u||'')?u:'#';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)'),small=matchMedia('(max-width: 700px)');
 let preferred;try{preferred=localStorage.getItem('cloudboy-motion')}catch{}
 let motionEnabled=preferred===null||preferred===undefined?!reduced.matches&&!navigator.connection?.saveData:preferred==='on';
-let route='home',data=null,deckIndex=0,filmIndex=0,filter='all',heroStep=0,journeyStep=0,transitioning=false,transitionToken=0,returnFocus=null,videoManifest={},readerStack=[],wheelTotal=0,wheelTimer=0,cancelPlayback=null;
+let route='home',data=null,filmIndex=0,filter='all',heroStep=0,journeyStep=0,transitioning=false,transitionToken=0,returnFocus=null,videoManifest={},readerStack=[],wheelTotal=0,wheelTimer=0,cancelPlayback=null;
 let activeScene='home',routeVersion=0,sequenceVersion=0,routeTransitioning=false,autoRunning=false,requestedRoute='home';
 const entryAnimations=new Set();
 let idleCleanup=null;
@@ -14,11 +14,10 @@ const manifestReady=fetch('video-manifest.json').then(r=>r.ok?r.json():{}).then(
 const heroStates=['home','half','screens'],heroClips=['home-half','half-screens'];
 const heroLastStep=heroStates.length-1;
 const journeyStates=['entry','panels','near','street','arrival','symbol'],journeyClips=['entry-panels','panels-near','near-street','street-arrival','arrival-symbol'];
-const chapters=[{name:'角色档案',en:'PROFILE',route:'about',note:'关于云上男孩，以及那些始终保持好奇的事。'},{name:'创作记录',en:'JOURNAL',route:'journal',note:'把构想变成作品的过程，也值得被留下。'},{name:'创作领域',en:'FIELDS',route:'about',note:'游戏 / AI 工具 / 视觉 / 硬件。'},{name:'作品集',en:'PROJECTS',route:'works',note:'从一台桌面小屏，到一个可以探索的世界。'},{name:'联系与链接',en:'LINKS',route:'contact',note:'继续聊聊，继续创造。'}];
 const renderedViews=new Set();
 function populateView(){if(data){if(route==='news')renderNews();else if(!renderedViews.has(route)){if(route==='works'){renderProjects();renderFilm()}if(route==='journal')renderJournal();renderedViews.add(route)}}document.querySelectorAll('#'+route+' img[data-src]').forEach(im=>{im.src=im.dataset.src;delete im.dataset.src})}
-const routes=['home','index','about','works','journal','news','journey','contact'];
-const labels={home:'首页',index:'索引',about:'关于',works:'作品',journal:'创作手记',news:'科技新闻',journey:'创作世界',contact:'联系'};
+const routes=['home','about','works','journal','news','journey','contact'];
+const labels={home:'首页',about:'关于',works:'作品',journal:'创作手记',news:'科技新闻',journey:'创作世界',contact:'联系'};
 const imageCache=new Map();
 function imageReady(name){const path='assets/'+name+'.webp';if(!imageCache.has(path)){const p=new Promise(resolve=>{let im=new Image();im.onload=()=>resolve(path);im.onerror=()=>resolve(null);im.src=path;});imageCache.set(path,p);if(imageCache.size>4)imageCache.delete(imageCache.keys().next().value);}return imageCache.get(path)}
 function setPoster(name){activeScene=name;$('scene').src='assets/'+name+'.webp';$('scene').dataset.frame=name}
@@ -59,7 +58,15 @@ function startHomeIdle(){
  v.play().catch(failed);
 }
 function scrollToHero(step){if(route!=='home'||routeTransitioning)return;const el=$('home-opening'),range=Math.max(1,el.offsetHeight-innerHeight);window.scrollTo({top:el.getBoundingClientRect().top+scrollY+range*Math.max(0,Math.min(heroLastStep,step))/Math.max(1,heroLastStep),behavior:motionEnabled?'smooth':'instant'})}
-function updateHomeNavigation(){const learning=$('learning'),rect=learning?.getBoundingClientRect(),inLearning=!!rect&&rect.top<=innerHeight*.45&&rect.bottom>120;document.body.dataset.homeSection=inLearning?'learning':'opening';$('footer-hint').textContent=inLearning?'':'下滑推进 · 上滑倒回';for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);a.setAttribute('aria-current',active?'page':'false')}}
+function updateHomeNavigation(){
+ const rect=$('learning').getBoundingClientRect(),inLearning=rect.top<=Math.max(120,innerHeight*.25)&&rect.bottom>120;
+ document.body.dataset.homeSection=inLearning?'learning':'opening';
+ document.title=(inLearning?'Agent 学习':'首页')+' · 克劳德梦见电子羊';
+ $('footer-hint').textContent=inLearning?'':'下滑推进 · 上滑倒回';
+ if(['','#home','#learning'].includes(location.hash)){const hash=inLearning?'#learning':'#home';if(location.hash!==hash)history.replaceState(null,'',hash)}
+ for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}
+}
+
 function syncHomeScroll(){
  if(route!=='home'||routeTransitioning||document.hidden)return;
  updateHomeNavigation();
@@ -77,23 +84,9 @@ async function pumpHomeScroll(){
  finally{homeScrollRunning=false;if(version===routeVersion)startHomeIdle();else if(route==='home')requestAnimationFrame(syncHomeScroll)}
 }
 window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=requestAnimationFrame(()=>{scrollTick=0;syncHomeScroll()})},{passive:true});
-window.addEventListener('resize',()=>{if(route==='home')syncHomeScroll()});
-function renderDeck(){
- const faces=[
-  `<div class="chapter-face passport"><div class="pass-rail">PERSONAL FILE <span>CB—001</span></div><div class="pass-copy"><span class="chapter-kicker">01 / MEET THE CREATOR</span><h2>角色<br>档案<span>↗</span></h2><p>云上男孩 / BE1HUMAN</p><span class="pass-signature">Stay curious.</span><i class="barcode"></i></div><div class="pass-photo"><span>CREATOR ID</span><img src="assets/character.webp" width="240" height="340" alt="" loading="lazy"></div><span class="pass-stamp">保持好奇<br>KEEP CREATING</span><span class="chapter-foot">PROFILE / 个人档案</span></div>`,
-  `<div class="chapter-face notebook"><div class="journal-photo"><img src="assets/a5b585b46ae1.webp" width="600" height="400" alt="" loading="lazy"><span>FIELD NOTES / 02</span></div><div class="journal-paper"><span class="chapter-kicker">THE MAKING OF</span><h2>创作<br>手记<span>↗</span></h2><p>从一个念头，<br>到可以运行的作品。</p><span class="journal-line">IDEA — BUILD — REPEAT</span></div><span class="journal-tape"></span><span class="journal-sticker">记录<br>进行时 ✳</span><span class="chapter-foot">JOURNAL / 创作中的切片</span></div>`,
-  `<div class="chapter-face terminal"><div class="terminal-head"><span>● ● ●</span><span>CB / EXPERIMENT LAB</span><b>03</b></div><div class="terminal-title"><span class="chapter-kicker">THINGS I MAKE</span><h2>创作领域<span>↗</span></h2></div><div class="skill-modules"><span><i>✚</i><b>PLAY</b><small>游戏</small></span><span><i>&gt;_</i><b>BUILD</b><small>AI 工具</small></span><span><i>◈</i><b>SEE</b><small>视觉</small></span><span><i>⊞</i><b>TOUCH</b><small>硬件</small></span></div><div class="terminal-command"><span>~/cloudboy</span> explore --all <b>▌</b></div></div>`,
-  `<div class="chapter-face gamecart"><div class="cart-ridges"></div><div class="cart-heading"><span class="cart-number">04</span><div><span class="chapter-kicker">SELECTED WORKS</span><h2>作品集 <span>↗</span></h2></div><span class="cart-star">✳</span></div><div class="cart-screens"><span><img src="assets/images/haimian/device-game.webp" width="320" height="200" alt="" loading="lazy"><b>01 / HAIMIAN</b></span><span><img src="assets/904137f6e5d5.svg" width="320" height="200" alt="" loading="lazy"><b>02 / RAIN CITY</b></span><span><img src="assets/cbb91d2e0275.webp" width="320" height="200" alt="" loading="lazy"><b>03 / MINECLAW</b></span></div><span class="chapter-foot">把想法，做成作品。<b>PRESS START →</b></span><div class="cart-pins"></div></div>`,
-  `<div class="chapter-face boarding"><div class="boarding-main"><span class="chapter-kicker">OPEN CHANNEL / 05</span><h2>保持<br>联系<span>↗</span></h2><div class="boarding-route"><span>YOU</span><i>········ ↗</i><span>CLOUD</span></div><p>继续聊聊，继续创造。</p><span class="boarding-sign">NEXT STOP / SOMETHING NEW</span></div><div class="boarding-stub"><span>BOARDING PASS</span><div class="sheep-orbit"><img src="assets/sheep.svg" width="95" height="75" alt="" loading="lazy"></div><b>∞</b><small>IDEAS WELCOME</small><i class="barcode"></i></div></div>`
- ];
- $('deck').innerHTML=chapters.map((c,i)=>`<button class="cartridge chapter-${i}" data-chapter="${i}" aria-label="${esc(c.name)}" tabindex="${i===deckIndex?0:-1}">${faces[i]}</button>`).join('');updateDeck();
-}
-function updateDeck(){document.querySelectorAll('.cartridge').forEach((b,i)=>{let d=i-deckIndex;if(d>2)d-=5;if(d<-2)d+=5;b.style.setProperty('--offset',d);b.style.setProperty('--depth',Math.abs(d));b.style.setProperty('--z',5-Math.abs(d));b.style.setProperty('--opacity',Math.abs(d)===2?'.26':d?'.6':'1');b.classList.toggle('active',d===0);b.tabIndex=d===0?0:-1;b.setAttribute('aria-pressed',String(d===0))});$('deck-count').textContent=String(deckIndex+1).padStart(2,'0')+' / 05';$('deck-enter').href='#'+chapters[deckIndex].route;}
-function turnDeck(d){deckIndex=(deckIndex+d+5)%5;updateDeck()}
-$('deck').addEventListener('click',e=>{const b=e.target.closest('[data-chapter]');if(!b)return;const i=Number(b.dataset.chapter);if(i===deckIndex){location.hash=chapters[i].route}else{deckIndex=i;updateDeck()}});$('deck-prev').onclick=()=>turnDeck(-1);$('deck-next').onclick=()=>turnDeck(1);renderDeck();
-
-const routeScenes={home:{frame:'home',start:'home',clip:'home-idle'},index:{frame:'controller',start:'face',clip:'face-controller'},about:{frame:'panels',start:'entry',clip:'entry-panels'},journal:{frame:'symbol',start:'arrival',clip:'arrival-symbol'},works:{frame:'near',start:'panels',clip:'panels-near'},news:{frame:'street',start:'near',clip:'near-street'},journey:{frame:'entry',start:'entry'},contact:{frame:'symbol',start:'arrival',clip:'arrival-symbol'}};
-const chapterEnglish={home:'WELCOME BACK',index:'CHOOSE A CHAPTER',about:'MEET THE CREATOR',journal:'BEHIND THE IDEAS',works:'SELECTED WORKS',news:'SIGNALS FROM OUTSIDE',journey:'ENTER THE WORLD',contact:'STAY CURIOUS'};
+window.addEventListener('resize',()=>{if(route!=='home')return;if(location.hash==='#learning'){scrollHomeContent('learning',{instant:true});updateHomeNavigation()}else syncHomeScroll()});
+const routeScenes={home:{frame:'home',start:'home',clip:'home-idle'},about:{frame:'panels',start:'entry',clip:'entry-panels'},journal:{frame:'symbol',start:'arrival',clip:'arrival-symbol'},works:{frame:'near',start:'panels',clip:'panels-near'},news:{frame:'street',start:'near',clip:'near-street'},journey:{frame:'entry',start:'entry'},contact:{frame:'symbol',start:'arrival',clip:'arrival-symbol'}};
+const chapterEnglish={home:'WELCOME BACK',about:'MEET THE CREATOR',journal:'BEHIND THE IDEAS',works:'SELECTED WORKS',news:'SIGNALS FROM OUTSIDE',journey:'ENTER THE WORLD',contact:'STAY CURIOUS'};
 function stopAuto(){sequenceVersion++;autoRunning=false;document.body.classList.remove('auto-touring');if($('tour-toggle'))$('tour-toggle').textContent='自动漫游 →'}
 function animate(el,frames,options={}){if(!el||!motionEnabled)return Promise.resolve();const a=el.animate(frames,{duration:650,easing:'cubic-bezier(.16,1,.3,1)',...options});entryAnimations.add(a);return a.finished.catch(()=>{}).finally(()=>{entryAnimations.delete(a);a.cancel()})}
 function stagger(selector,frames,{delay=65,duration=650}={}){document.querySelectorAll(selector).forEach((el,i)=>animate(el,frames,{duration,delay:Math.min(i,8)*delay,fill:'backwards'}))}
@@ -103,10 +96,6 @@ function enterView(next){
  const rise=[{opacity:0,transform:'translateY(55px)'},{opacity:1,transform:'translateY(0)'}];
  animate($(next+'-title')||document.querySelector('#'+next+' h1'),[{opacity:0,clipPath:'inset(0 0 100% 0)',transform:'translateY(35px)'},{opacity:1,clipPath:'inset(0 0 0 0)',transform:'none'}],{duration:850});
  if(next==='home'){stagger('.hero-copy>.eyebrow,.hero-copy>.hero-sub,.hero-actions',rise,{delay:140});animate(document.querySelector('.hero-copy'),rise)}
- if(next==='index'){
-   document.querySelectorAll('.cartridge').forEach((card,i)=>{const base=getComputedStyle(card).transform,depth=Math.abs(i-deckIndex);animate(card,[{opacity:0,transform:base+' translateY(240px) rotateX(55deg) scale(.65)'},{opacity:Number(card.style.getPropertyValue('--opacity')),transform:base}],{duration:1100,delay:depth*90,fill:'backwards'})});
-   animate(document.querySelector('.deck-caption'),rise,{delay:450});
- }
  if(next==='about'){animate(document.querySelector('.portrait-card'),[{opacity:0,transform:'perspective(1100px) translateX(170px) rotateY(-48deg) rotate(8deg)'},{opacity:1,transform:'rotate(3deg)'}],{duration:1000});stagger('.profile-facts>div,.fields>a',rise);}
  if(next==='works'){dealWorks();stagger('.project-card',rise,{delay:55});}
  if(next==='journal')stagger('.journal-card',[{opacity:0,transform:'perspective(1200px) translateX(140px) rotateY(-24deg)'},{opacity:1,transform:'none'}],{delay:140,duration:950});
@@ -122,24 +111,29 @@ async function portalTo(frame,version){
  if(motionEnabled)await animate(curtain,[{transform:'translateX(0)'},{transform:'translateX(110%) skewX(-12deg)'}],{duration:300,fill:'forwards',easing:'cubic-bezier(.65,0,.35,1)'});
  if(version===routeVersion)curtain.hidden=true;return version===routeVersion;
 }
-let deckRevealed=false;
-function scrollHomeIndex(){ $('index').scrollIntoView({behavior:motionEnabled?'smooth':'instant',block:'start'}); }
-function isHomeContentAnchor(id){const target=$(id);return !!target&&!!target.closest('#learning')&&!target.closest('dialog')}
+function isHomeContentAnchor(id){return id==='learning'}
 function scrollHomeContent(id,{instant=false}={}){const target=$(id);if(!target)return;target.scrollIntoView({behavior:motionEnabled&&!instant?'smooth':'instant',block:'start'})}
-const deckObserver=new IntersectionObserver(entries=>{if(route==='home'&&!deckRevealed&&entries.some(e=>e.isIntersecting)){deckRevealed=true;enterView('index')}},{threshold:.22});
-deckObserver.observe($('index'));
+function showHomeSection(id){
+ cancelMotion();homeScrollRunning=false;
+ heroStep=heroTarget=id==='learning'?heroLastStep:0;
+ setPoster(heroStates[heroStep]);updateHero();
+ if(id==='learning')scrollHomeContent(id,{instant:true});else window.scrollTo({top:0,behavior:'instant'});
+ updateHomeNavigation();if(id==='home')startHomeIdle();
+}
 function mountRoute(next){
  route=next;document.body.dataset.route=next;document.querySelectorAll('.view').forEach(v=>{v.hidden=v.id!==next;v.classList.remove('departing');v.classList.toggle('active',v.id===next)});
  document.querySelectorAll('.topbar nav a').forEach(a=>{a.classList.toggle('active',a.hash==='#'+next);a.setAttribute('aria-current',a.hash==='#'+next?'page':'false')});
  if(next==='home'){heroStep=Math.max(0,heroStates.indexOf(activeScene));updateHero()}if(next==='journey'){journeyStep=Math.max(0,journeyStates.indexOf(activeScene));updateJourney()}
- if(next==='home'){deckRevealed=false;heroTarget=0;}
-  window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'切换章节，继续探索';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
+ if(next==='home')heroTarget=heroStep;
+  window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
 }
-async function go(next,{boot=false,instant=false}={}){
- const indexAnchor=next==='index',homeContentAnchor=isHomeContentAnchor(next)?next:null;
- if(indexAnchor||homeContentAnchor){if(route==='home'&&!boot&&!routeTransitioning){if(indexAnchor)scrollHomeIndex();else scrollHomeContent(homeContentAnchor);return}next='home'}
- if(!routes.includes(next))next='home';requestedRoute=homeContentAnchor||(indexAnchor?'index':next);const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
- routeTransitioning=true;document.body.classList.toggle('is-routing',next!=='home');document.body.dataset.destination=next;$('transition-name').textContent=labels[next];$('transition-en').textContent=chapterEnglish[next];document.querySelector('#'+route)?.classList.add('departing');
+async function go(next,{boot=false,instant=next!=='journey'}={}){
+ if(next==='index'){next='learning';history.replaceState(null,'','#learning')}
+ const homeContentAnchor=isHomeContentAnchor(next)?next:null;
+ if((homeContentAnchor||next==='home')&&route==='home'&&!boot&&!routeTransitioning){showHomeSection(homeContentAnchor||'home');return}
+ if(homeContentAnchor)next='home';
+ if(!routes.includes(next))next='home';requestedRoute=homeContentAnchor||next;const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
+ routeTransitioning=true;document.body.classList.toggle('is-routing',next!=='home'&&!instant);document.body.dataset.destination=next;$('transition-name').textContent=labels[next];$('transition-en').textContent=chapterEnglish[next];document.querySelector('#'+route)?.classList.add('departing');
  await manifestReady;if(version!==routeVersion)return;
  const config=routeScenes[next];
  if(!motionEnabled||instant){setPoster(config.frame)}
@@ -155,14 +149,17 @@ async function go(next,{boot=false,instant=false}={}){
    if(activeScene!==config.frame)setPoster(config.frame);
  }
  mountRoute(next);routeTransitioning=false;document.body.classList.remove('is-routing');enterView(next);
- if(indexAnchor)scrollHomeIndex();
- if(homeContentAnchor)scrollHomeContent(homeContentAnchor,{instant:boot||instant});
+ if(next==='home')showHomeSection(homeContentAnchor||'home');
  if(next==='home')requestAnimationFrame(syncHomeScroll);
  if(motionEnabled&&!instant&&next==='journey')runJourney();
 }
 async function runJourney(){const seq=++sequenceVersion;autoRunning=true;document.body.classList.add('auto-touring');$('tour-toggle').textContent='暂停漫游 Ⅱ';while(journeyStep<5&&seq===sequenceVersion&&route==='journey'&&!routeTransitioning&&motionEnabled){const before=journeyStep;await stepJourney(1);if(before===journeyStep)break}if(seq===sequenceVersion){autoRunning=false;document.body.classList.remove('auto-touring');$('tour-toggle').textContent=journeyStep===5?'重新漫游 ↺':'自动漫游 →'}}
 window.addEventListener('hashchange',()=>go(location.hash.slice(1)));
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;if(route==='home'&&!routeTransitioning&&(a.hash==='#index'||a.hash==='#home')){e.preventDefault();if(a.hash==='#index')scrollHomeIndex();else window.scrollTo({top:0,behavior:motionEnabled?'smooth':'instant'});return}const anchor=a.hash.slice(1);if(a.hash===location.hash&&(routes.includes(anchor)||isHomeContentAnchor(anchor))){e.preventDefault();go(anchor,{boot:!isHomeContentAnchor(anchor)})}});
+document.addEventListener('click',e=>{
+ const a=e.target.closest('a[href^="#"]');if(!a||e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+ const target=a.hash.slice(1);if(!routes.includes(target)&&target!=='index'&&!isHomeContentAnchor(target))return;
+ e.preventDefault();if(location.hash!==a.hash)history.pushState(null,'',a.hash);go(target);
+});
 $('cinema-skip').onclick=()=>go(requestedRoute,{instant:true});
 $('motion-retry').onclick=()=>{$('motion-retry').hidden=true;if(route==='home')syncHomeScroll();else go(route,{boot:true})};
 $('tour-toggle').onclick=()=>{if(autoRunning){stopAuto();cancelMotion();setPoster(journeyStates[journeyStep])}else if(journeyStep===5){journeyStep=0;go('journey',{boot:true})}else runJourney()};
@@ -270,7 +267,7 @@ function updateJourney(){$('journey-count').textContent=String(journeyStep+1).pa
 async function stepJourney(delta){if(transitioning)return;if(journeyStep+delta<0){location.hash='works';return}if(journeyStep+delta>5){location.hash='contact';return}const n=journeyStep+delta;const ok=await moveScene(journeyStates[journeyStep],journeyStates[n],journeyClips[Math.min(journeyStep,n)],delta<0);if(ok&&route==='journey'){journeyStep=n;updateJourney()}}
 $('journey-start').onclick=()=>{journeyStep=0;location.hash='journey'};$('journey-next').onclick=()=>{stopAuto();stepJourney(1)};$('journey-back').onclick=()=>{stopAuto();stepJourney(-1)};
 window.addEventListener('wheel',e=>{if(routeTransitioning||reader.open||route!=='journey'||small.matches||!motionEnabled)return;if(Math.abs(e.deltaY)<Math.abs(e.deltaX))return;e.preventDefault();stopAuto();if(transitioning)return;wheelTotal+=e.deltaY;clearTimeout(wheelTimer);wheelTimer=setTimeout(()=>wheelTotal=0,150);if(Math.abs(wheelTotal)>65){const d=Math.sign(wheelTotal);wheelTotal=0;stepJourney(d)}},{passive:false});
-document.addEventListener('keydown',e=>{if(routeTransitioning||reader.open||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,textarea,select'))return;if(e.key==='Escape'&&route==='journey'){location.hash='works';return}if(['ArrowLeft','ArrowRight'].includes(e.key)&&(route==='home'&&e.target.closest('#index'))){e.preventDefault();turnDeck(e.key==='ArrowRight'?1:-1)}if(['ArrowDown','ArrowUp'].includes(e.key)&&route==='journey'){e.preventDefault();stopAuto();const d=e.key==='ArrowDown'?1:-1;stepJourney(d)}});
+document.addEventListener('keydown',e=>{if(routeTransitioning||reader.open||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,textarea,select'))return;if(e.key==='Escape'&&route==='journey'){location.hash='works';return}if(['ArrowDown','ArrowUp'].includes(e.key)&&route==='journey'){e.preventDefault();stopAuto();const d=e.key==='ArrowDown'?1:-1;stepJourney(d)}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stopAuto();cancelMotion();if(routeTransitioning)go(requestedRoute,{instant:true});else setPoster(activeScene)}else if(route==='home')syncHomeScroll()});
 fetch('content-local.json?v=jev-journal-19',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('content');return r.json()}).then(d=>{data=d;populateView();if(!routeTransitioning&&['works','journal','news'].includes(route))enterView(route)}).catch(()=>{$('content-error').hidden=false});
 })();

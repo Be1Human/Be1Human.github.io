@@ -76,13 +76,15 @@ npm run check
 
 ## Agent 学习 Wiki
 
-入口为 `learn.html`，独立文章为 `learn/<id>.html`。内容源在 `data/learning/`，由 `scripts/learning.mjs` 验证并渲染；学习首页保留左侧 Wiki 分组目录与搜索，中间只显示背景视频，背景使用已有的 `home-idle.mp4`；`assets/learn-directory.css` 与 `assets/learn-directory.js` 管理该页。文章阅读页由 `assets/learn.css` 和 `assets/learn.js` 提供侧栏、页内目录、全文搜索与阅读进度。代码复制由共享阅读组件处理。搜索在浏览器本地执行，无第三方查询服务。
+学习目录统一在主页 `#learning`，独立文章为 `learn/<id>.html`。`learn.html` 和旧 `/portfolio/learn.html` 自动回到这一个目录。内容源在 `data/learning/`，由 `scripts/learning.mjs` 验证并渲染；目录保留左侧 Wiki 分组与搜索，中间保留开场背景。文章阅读页由 `assets/learn.css` 和 `assets/learn.js` 提供侧栏、页内目录、全文搜索与阅读进度。代码复制由共享阅读组件处理。搜索在浏览器本地执行，无第三方查询服务。
 
 现有 15 篇解读按核心机制、上下文与协作、评测与进阶组织，保留引用、资料版本、更新时间与教学示例边界。Wiki 是持续维护的知识库，发布手记同时在博客时间线和互动首页建立入口，避免用重复全文淹没手记。构建同时生成静态页面、搜索索引、sitemap 和旧路径兼容页；`site:verify` 核验所有 Wiki 页面的精确公网版本。
 
 所有阅读页共用当前「克劳德梦见电子羊」深色品牌与导航；旧米白归档主题及云朵标识已退役，不保留双主题入口。
 
-主页开场在第二段推进镜头后直接显示左侧 Wiki 分组目录和搜索，中间保留背景画面，没有“进入学习”过渡页或按钮，继续下划再到章节卡片；`#learning` 支持直接定位，上划可回到镜头，独立 `learn.html` 继续可用。
+主页顺序为开场镜头 → Wiki，不再接章节卡片或“进入学习”入口。上划可回到开场。顶部导航直接切换内容，只有开场滚动和主动打开的创作漫游使用视频转场；深链接直接定位内容，不重播开场。
+
+`src/experience/index.html` 和所有阅读页的导航均由 `scripts/site-navigation.mjs` 生成，顺序及目标一致：主页、手记、作品、Agent 学习、新闻、关于。阅读页导航返回主页的对应栏目；文章面包屑和 Wiki 标题统一返回 `index.html#learning`。旧归档和文章链接继续可用。
 
 学习首页只移除中间的介绍、流程图、推荐卡片和学习路线，保留 Wiki 导航；博客记录可通过 `learningId` 直接将时间线和 RSS 导向对应完整 Wiki 文章。文章源位于 `data/learning/comparisons.json`。
 
