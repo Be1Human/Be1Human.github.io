@@ -499,12 +499,55 @@
   ],
   "journal": [
     {
-      "id": "supervisor-verify-eval",
-      "title": "Supervisor、Verify、Eval：一份草稿的三种去向",
-      "source": "https://be1human.github.io/learn/supervisor-verify-eval.html",
-      "sourceLabel": "阅读全文与交互对比",
+      "id": "softmax-attention",
+      "title": "Softmax 与 Attention 原理：公式、计算与注意力稀释",
       "date": "2026-11-08",
-      "summary": "一份 2.4 版故障草稿引用了 2.3 版 D23：Verify 指出版本错误，Supervisor 决定补查 D24，Eval 保留候选与修订代价。",
+      "summary": "解释 Q、K、V、缩放点积与 Softmax，手算权重和加权输出，再推导为什么固定分数差下竞争项增多会稀释注意力。含公式、图解、交互计算和 Python 示例。",
+      "source": "https://be1human.github.io/learn/softmax-attention.html",
+      "sourceLabel": "阅读全文与交互计算",
+      "image": "assets/images/attention-cover.svg",
+      "imageAlt": "缩放点积 Attention：Query 与 Key 打分，Softmax 归一化，再聚合 Value",
+      "tags": [
+        "Attention",
+        "Softmax",
+        "Transformer"
+      ],
+      "sections": [
+        {
+          "title": "缩放点积与归一化",
+          "paragraphs": [
+            "Attention 用查询与键的匹配分数生成权重，再对值向量加权求和。Softmax 只负责把一行分数归一化。"
+          ],
+          "body": "<p>Attention 用 Query 与 Key 的匹配分数生成权重，再对 Value 向量加权求和。Softmax 只负责把一行分数归一化，权重不是最终输出。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/learning/attention-qkv-flow.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/learning/attention-qkv-flow.svg\" alt=\"单个查询与三个键计算分数，经过Softmax后聚合对应值向量\" width=\"1200\" height=\"825\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>原创教学计算图。完整公式、变量和代码见学习页。</figcaption></figure>"
+        },
+        {
+          "title": "数量与分数差如何影响权重",
+          "paragraphs": [
+            "固定目标与等分背景的分数差为Δ时，目标权重为1/(1+N exp(−Δ))。"
+          ],
+          "body": "<p>固定目标与等分背景的分数差为 Δ 时，目标权重是 <code>1 / (1 + N exp(−Δ))</code>。完整文章逐步推导分母与 ln N 的关系，并区分局部权重、输出向量和实际任务表现。</p>"
+        }
+      ],
+      "links": [
+        {
+          "label": "阅读全文：Softmax 与 Attention 原理",
+          "url": "https://be1human.github.io/learn/softmax-attention.html"
+        },
+        {
+          "label": "Attention Is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      ],
+      "updatedAt": "2026-11-08",
+      "hideCover": true
+    },
+    {
+      "id": "supervisor-verify-eval",
+      "title": "Supervisor、Verify 与 Eval：职责、机制与对比",
+      "source": "https://be1human.github.io/learn/supervisor-verify-eval.html",
+      "sourceLabel": "阅读全文与图解对比",
+      "date": "2026-11-08",
+      "summary": "Supervisor 选择下一步，Verify 检查当前对象，Eval 按判据形成可比较的反馈。理解三者的输入输出、在线协同、护栏位置，以及漏检与误拦的统计分母。",
       "image": "assets/images/supervisor-verify-eval.svg",
       "imageAlt": "调度、验证与评测：同一任务的三种职责，原创教学结构示意",
       "imageNote": "原创教学结构示意，非实验结果",
@@ -515,11 +558,11 @@
       ],
       "sections": [
         {
-          "title": "同一处版本错，有三种处理动作",
+          "title": "三种机制的职责",
           "paragraphs": [
-            "草稿引用存在，但 D23 对应 2.3 而目标是 2.4。Verify 返回版本不匹配，Supervisor 补查 D24，Eval 记录修订与最终结果。"
+            "Supervisor 决定下一步执行，Verify 判断当前候选是否满足约束，Eval 按任务协议测量系统表现。"
           ],
-          "body": "<p>教学工单草稿写“2.4 版默认超时为 5 秒”，引用编号 D23 也确实存在，但 D23 对应的是 2.3。补查的 D24 属于 2.4 发布包默认配置，写有 <code>request_timeout_ms=8000</code>，且本例没有用户覆盖项。字段齐全、引用存在，仍不足以支持草稿里的版本事实。</p><p>Verify 指出 <code>version_mismatch</code> 并阻断当前候选；Supervisor 根据剩余预算选择读取 D24、修订并重新验证，或带原因结束；Eval 保存旧候选、修订候选及最终状态，比较错误是否恢复、用了多少代价。完整文章画出了执行支路和测量支路。</p>"
+          "body": "<p>Supervisor 管理执行方向，输出路由、等待、重试或结束决策；Verify 检查候选或动作的具体约束，返回通过、失败或未知及相应证据；Eval 对完整运行或样本集合按协议评分，测量质量、成本和稳定性。</p><p>三者可以由规则、代码或模型实现，区分它们要看检查结果怎样被使用。验证失败会进入当前请求的控制流，旁路评测则记录测量；将某个评分接成放行条件时，它又承担了门控职责。</p>"
         },
         {
           "title": "全文中的对比",
@@ -547,11 +590,11 @@
     },
     {
       "id": "agent-learning-guide",
-      "title": "Agent 学习目录：三个观察角度",
+      "title": "Agent 学习目录",
       "source": "https://be1human.github.io/learn.html",
       "sourceLabel": "进入 Agent 学习 Wiki",
       "date": "2026-11-08",
-      "summary": "ReAct 看新证据怎样改变行动，Loop 看运行状态与故障恢复，Eval 看判据与重复运行结果。同一次任务可以从这三个角度检查。",
+      "summary": "从 Softmax 与 Attention 到 ReAct、任务运行、检索、记忆与评测，按技术主题查阅原理、公式、流程和代码。",
       "image": "assets/images/agent-learning-cover.svg",
       "imageAlt": "同一文档比较任务的三个观察角度：证据与行动、运行状态与恢复、判据与重复结果",
       "imageNote": "原创学习地图示意",
@@ -573,7 +616,7 @@
           "paragraphs": [
             "缺证据时看检索与上下文；任务失控时看Loop和调度；不知道改动是否有效时看评测与追踪。"
           ],
-          "body": "<p>发现模型使用了过期材料，可以从上下文工程、记忆与 Agentic RAG 查起。任务重复调用同一工具，则要检查 Loop 的状态、预算和退出条件。</p><p>Supervisor、Verify 与 Eval 的对比篇讨论三种职责怎样连接。评测综述讨论任务样本、评分器、环境与预算怎样共同影响一个成绩。</p><p>目录目前有 14 篇。每篇保留原始资料，图解与代码放在对应问题旁边；论文结果与本地小案例分开标注。</p>"
+          "body": "<p>发现模型使用了过期材料，可以从上下文工程、记忆与 Agentic RAG 查起。任务重复调用同一工具，则要检查 Loop 的状态、预算和退出条件。</p><p>Supervisor、Verify 与 Eval 的对比篇讨论三种职责怎样连接。评测综述讨论任务样本、评分器、环境与预算怎样共同影响一个成绩。</p><p>目录目前有 15 篇。每篇保留原始资料，图解与代码放在对应问题旁边；论文结果与本地小案例分开标注。</p>"
         }
       ],
       "links": [

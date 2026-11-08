@@ -1,7 +1,14 @@
 import Prism from './vendor/prism.cjs';
 
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const decodeHTML=value=>value.replace(/&(?:amp|lt|gt|quot|#39|apos);/g,entity=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&apos;':"'"}[entity]));
+const decodeHTML=value=>value.replace(/&(?:amp|lt|gt|quot|apos|#\d+|#x[\da-f]+);/gi,entity=>{
+  if(entity[1]==='#'){
+    const hexadecimal=entity[2].toLowerCase()==='x';
+    const point=Number.parseInt(entity.slice(hexadecimal?3:2,-1),hexadecimal?16:10);
+    return point>0&&point<=0x10ffff&&!(point>=0xd800&&point<=0xdfff)?String.fromCodePoint(point):'\ufffd';
+  }
+  return {'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'"}[entity.toLowerCase()];
+});
 const aliases={js:'javascript',ts:'typescript',py:'python',sh:'bash',shell:'bash',pseudocode:'python',text:'plain',plaintext:'plain'};
 const names={python:'Python',javascript:'JavaScript',typescript:'TypeScript',json:'JSON',bash:'Shell',pseudocode:'概念伪代码',plain:'执行记录',http:'HTTP'};
 

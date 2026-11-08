@@ -30,3 +30,9 @@
 - `notes-decision.svg`、`notes-inventory.svg`、`notes-reading-map.svg` 为本站原创教学图；数值和轨迹在图说中标明用途。项目已有截图沿用原来源，其中 MineClaw 截图为待连接界面。
 - 代码高亮使用 PrismJS 1.30.0 的官方核心与语言语法，MIT；源码与许可证位于 `scripts/vendor/prism.cjs` 和 `prism-LICENSE.txt`，只在构建阶段运行。
 - 文字编辑参考 [Humanizer](https://github.com/blader/humanizer/blob/main/SKILL.md) 与 [technical-writing](https://github.com/ericrisco/rsc-harness/blob/main/skills/technical-writing/SKILL.md) 的去套话、具体案例和技术表达规则。未复制其示例为项目实现事实。
+
+## Softmax 与 Attention（2026-11）
+
+- 四张教学图由本站的 `scripts/generate-attention-figures.py` 生成；数值严格来自正文设定。曲线与向量图使用 Matplotlib 绘制，交互计算只改变固定分数模型。
+- `attention-lost-middle-paper.svg` 为 Liu 等《Lost in the Middle》Figure 1，TACL 2024，原图未修改，依 CC BY 4.0 使用。出处与文件摘要登记于 `assets/learning/sources-attention.json`。
+- 参考 Prompt Engineering Guide 多篇教程的主题组织方式；正文按各技术机制独立编写，不沿用其历史 SDK 代码。

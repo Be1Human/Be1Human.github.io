@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="825" viewBox="0 0 1200 825" role="img" aria-labelledby="title desc">
+<title id="title">Scaled Dot-Product Attention 的计算流程</title><desc id="desc">Q与K计算分数，缩放、加mask、softmax形成权重，最后对V加权求和。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="m1 1 6 3-6 3" fill="none" stroke="#8bccce" stroke-width="1.5"/></marker></defs>
+<rect width="1200" height="825" fill="#10232e"/>
+<g font-family="Segoe UI,Microsoft YaHei,sans-serif">
+<text x="48" y="64" fill="#e9dfcd" font-size="32" font-weight="650">Attention：先计算匹配，再聚合内容</text>
+<text x="48" y="104" fill="#a5b6ba" font-size="20" font-weight="400">以下展示一行 query；dₖ = 2，mask = 0，温度 τ = 1。</text>
+<rect x="48" y="148" width="340" height="136" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="68" y="185" fill="#8bccce" font-size="23" font-weight="400">Query · 当前查询</text>
+<text x="68" y="226" fill="#e9dfcd" font-size="19" font-weight="400">q = [√2, 0]</text>
+<text x="68" y="262" fill="#a5b6ba" font-size="18" font-weight="400">决定从哪些位置读取</text>
+<rect x="430" y="148" width="340" height="136" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="450" y="185" fill="#8bccce" font-size="23" font-weight="400">Key · 用于匹配</text>
+<text x="450" y="226" fill="#e9dfcd" font-size="19" font-weight="400">K = [[5,0], [0,1], [−2,0]]</text>
+<text x="450" y="262" fill="#a5b6ba" font-size="18" font-weight="400">与 q 点积形成分数</text>
+<rect x="812" y="148" width="340" height="136" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="832" y="185" fill="#8bccce" font-size="23" font-weight="400">Value · 待聚合内容</text>
+<text x="832" y="226" fill="#e9dfcd" font-size="19" font-weight="400">V = [[1,0], [0,1], [0,1]]</text>
+<text x="832" y="262" fill="#a5b6ba" font-size="18" font-weight="400">按权重组合成输出</text>
+<path d="M220 298 L220 336" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M600 298 L600 336" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="352" width="722" height="100" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="76" y="393" fill="#e9dfcd" font-size="27" font-weight="400">qKᵀ / √dₖ = [5, 0, −2]</text>
+<text x="76" y="431" fill="#a5b6ba" font-size="20" font-weight="400">除以 √dₖ 控制点积分数尺度；不是 token 数。</text>
+<path d="M410 466 L410 504" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="520" width="722" height="100" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="76" y="559" fill="#8bccce" font-size="27" font-weight="400">a = softmax([5, 0, −2])</text>
+<text x="76" y="598" fill="#e9dfcd" font-size="25" font-weight="400">≈ [0.992408, 0.006687, 0.000905]</text>
+<path d="M982 299V672H805" fill="none" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M410 634 L410 672" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="688" width="1104" height="88" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="76" y="725" fill="#ffaaa3" font-size="29" font-weight="400">z = aV ≈ [0.992408, 0.007592]</text>
+<text x="76" y="758" fill="#a5b6ba" font-size="20" font-weight="400">权重是标量，输出是向量；V 的方向与大小同样影响输出。</text>
+</g></svg>

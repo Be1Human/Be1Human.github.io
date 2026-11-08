@@ -27,6 +27,7 @@ const learnStyleVersion = await assetVersion('assets/learn.css');
 const learnScriptVersion = await assetVersion('assets/learn.js');
 const readingStyleVersion = await assetVersion('assets/reading.css');
 const readingScriptVersion = await assetVersion('assets/reading.js');
+const attentionScriptVersion = await assetVersion('assets/attention.js');
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -89,7 +90,7 @@ function render(path, title, description, active, content, ogtype = 'website') {
   const navActive = active === 'journal' ? 'home' : active;
   const nav = [['index.html#home', 'home', '首页'], ['index.html#journal', 'journal', '手记'], ['works.html', 'works', '作品'], ['learn.html', 'learning', 'Agent 学习'], ['news.html', 'news', '新闻'], ['index.html#about', 'about', '关于']].map(([href, key, name]) => `<a href="${base}${href}"${key === navActive ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   let html = template;
-  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>` : '';
+  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>${path==='learn/softmax-attention.html'?`<script type="module" src="${base}assets/attention.js?v=${attentionScriptVersion}"></script>`:''}` : '';
   const brandedTitle = title.replaceAll('CLOUD BOY · 云上男孩', '克劳德梦见电子羊').replaceAll('— CLOUD BOY', '— 克劳德梦见电子羊');
   const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, READING_STYLE_VERSION:readingStyleVersion, READING_SCRIPT_VERSION:readingScriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);

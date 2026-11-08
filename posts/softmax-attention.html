@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>Softmax 与 Attention 原理：公式、计算与注意力稀释 — 克劳德梦见电子羊</title>
+  <meta name="description" content="解释 Q、K、V、缩放点积与 Softmax，手算权重和加权输出，再推导为什么固定分数差下竞争项增多会稀释注意力。含公式、图解、交互计算和 Python 示例。">
+  <link rel="canonical" href="https://be1human.github.io/posts/softmax-attention.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="Softmax 与 Attention 原理：公式、计算与注意力稀释 — 克劳德梦见电子羊">
+  <meta property="og:description" content="解释 Q、K、V、缩放点积与 Softmax，手算权重和加权输出，再推导为什么固定分数差下竞争项增多会稀释注意力。含公式、图解、交互计算和 Python 示例。">
+  <meta property="og:url" content="https://be1human.github.io/posts/softmax-attention.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=020151086b1a">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
+  <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+  <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
+
+</head>
+<body id="top" data-page="journal" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home" aria-current="page">首页</a><a href="../index.html#journal">手记</a><a href="../works.html">作品</a><a href="../learn.html">Agent 学习</a><a href="../news.html">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="2026-11-08">2026.11.08</time><span>·</span>1 分钟阅读<span>·</span>Agent 学习<span>·</span>更新 2026-11-08</p></div></div><h1>Softmax 与 Attention 原理：<wbr>公式、计算与注意力稀释</h1><p class="article-lede">解释 Q、K、V、缩放点积与 Softmax，手算权重和加权输出，再推导为什么固定分数差下竞争项增多会稀释注意力。含公式、图解、交互计算和 Python 示例。</p></header><div class="prose"><section id="section-1"><h2>缩放点积与归一化</h2><p>Attention 用 Query 与 Key 的匹配分数生成权重，再对 Value 向量加权求和。Softmax 只负责把一行分数归一化，权重不是最终输出。</p><figure class="learn-figure"><a class="figure-open" href="../assets/learning/attention-qkv-flow.svg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/learning/attention-qkv-flow.svg" alt="单个查询与三个键计算分数，经过Softmax后聚合对应值向量" width="1200" height="825"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>原创教学计算图。完整公式、变量和代码见学习页。</figcaption></figure></section><section id="section-2"><h2>数量与分数差如何影响权重</h2><p>固定目标与等分背景的分数差为 Δ 时，目标权重是 <code>1 / (1 + N exp(−Δ))</code>。完整文章逐步推导分母与 ln N 的关系，并区分局部权重、输出向量和实际任务表现。</p></section><section class="article-links"><h2>继续探索</h2><ul><li><a href="https://be1human.github.io/learn/softmax-attention.html" target="_blank" rel="noopener noreferrer">阅读全文：Softmax 与 Attention 原理 ↗</a></li><li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">Attention Is All You Need ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span># Attention</span><span># Softmax</span><span># Transformer</span></div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

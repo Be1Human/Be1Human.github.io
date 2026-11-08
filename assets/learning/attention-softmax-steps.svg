@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">Softmax 计算：指数、求和与归一化</title><desc id="desc">三个位置的分数为5、0、负2，指数总和149.5485，权重约99.2408%、0.6687%、0.0905%。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="m1 1 6 3-6 3" fill="none" stroke="#8bccce" stroke-width="1.5"/></marker></defs>
+<rect width="1200" height="680" fill="#10232e"/>
+<g font-family="Segoe UI,Microsoft YaHei,sans-serif">
+<text x="48" y="64" fill="#e9dfcd" font-size="32" font-weight="650">Softmax：把一行分数转成权重</text>
+<text x="48" y="105" fill="#a5b6ba" font-size="20" font-weight="400">单个 query、单个 head；三个位置是教学输入，不是真实文本的分词结果。</text>
+<rect x="48" y="145" width="228" height="64" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="68" y="186" fill="#8bccce" font-size="22" font-weight="400">① 分数 s</text>
+<path d="M288 177 L322 177" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="340" y="145" width="228" height="64" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="360" y="186" fill="#8bccce" font-size="22" font-weight="400">② 取指数 exp(s)</text>
+<path d="M580 177 L614 177" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="632" y="145" width="228" height="64" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="652" y="186" fill="#8bccce" font-size="22" font-weight="400">③ 求总和 Z</text>
+<path d="M872 177 L906 177" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="924" y="145" width="228" height="64" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="944" y="186" fill="#8bccce" font-size="22" font-weight="400">④ 除以 Z</text>
+<text x="70" y="267" fill="#a5b6ba" font-size="23" font-weight="400">位置</text>
+<text x="340" y="267" fill="#a5b6ba" font-size="23" font-weight="400">s</text>
+<text x="590" y="267" fill="#a5b6ba" font-size="23" font-weight="400">exp(s)</text>
+<text x="900" y="267" fill="#a5b6ba" font-size="23" font-weight="400">a = exp(s) / Z</text>
+<text x="70" y="325" fill="#e9dfcd" font-size="24" font-weight="400">位置 1</text>
+<text x="340" y="325" fill="#e9dfcd" font-size="25" font-weight="400">5</text>
+<text x="590" y="325" fill="#e9dfcd" font-size="25" font-weight="400">148.413159</text>
+<text x="900" y="325" fill="#8bccce" font-size="25" font-weight="400">99.2408%</text>
+<text x="70" y="395" fill="#e9dfcd" font-size="24" font-weight="400">位置 2</text>
+<text x="340" y="395" fill="#e9dfcd" font-size="25" font-weight="400">0</text>
+<text x="590" y="395" fill="#e9dfcd" font-size="25" font-weight="400">1.000000</text>
+<text x="900" y="395" fill="#e9dfcd" font-size="25" font-weight="400">0.6687%</text>
+<text x="70" y="465" fill="#e9dfcd" font-size="24" font-weight="400">位置 3</text>
+<text x="340" y="465" fill="#e9dfcd" font-size="25" font-weight="400">-2</text>
+<text x="590" y="465" fill="#e9dfcd" font-size="25" font-weight="400">0.135335</text>
+<text x="900" y="465" fill="#e9dfcd" font-size="25" font-weight="400">0.0905%</text>
+<rect x="48" y="510" width="1104" height="110" rx="8" fill="#193441" stroke="#4c6776"/>
+<text x="73" y="550" fill="#e9dfcd" font-size="25" font-weight="400">Z = exp(5) + exp(0) + exp(−2) = 149.548494</text>
+<text x="73" y="592" fill="#a5b6ba" font-size="22" font-weight="400">归一化后总和为 1；比较的是相对分数，不是绝对分数。</text>
+</g></svg>

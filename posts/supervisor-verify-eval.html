@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10232e">
-  <title>Supervisor、Verify、Eval：一份草稿的三种去向 — 克劳德梦见电子羊</title>
-  <meta name="description" content="一份 2.4 版故障草稿引用了 2.3 版 D23：Verify 指出版本错误，Supervisor 决定补查 D24，Eval 保留候选与修订代价。">
+  <title>Supervisor、Verify 与 Eval：职责、机制与对比 — 克劳德梦见电子羊</title>
+  <meta name="description" content="Supervisor 选择下一步，Verify 检查当前对象，Eval 按判据形成可比较的反馈。理解三者的输入输出、在线协同、护栏位置，以及漏检与误拦的统计分母。">
   <link rel="canonical" href="https://be1human.github.io/posts/supervisor-verify-eval.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:title" content="Supervisor、Verify、Eval：一份草稿的三种去向 — 克劳德梦见电子羊">
-  <meta property="og:description" content="一份 2.4 版故障草稿引用了 2.3 版 D23：Verify 指出版本错误，Supervisor 决定补查 D24，Eval 保留候选与修订代价。">
+  <meta property="og:title" content="Supervisor、Verify 与 Eval：职责、机制与对比 — 克劳德梦见电子羊">
+  <meta property="og:description" content="Supervisor 选择下一步，Verify 检查当前对象，Eval 按判据形成可比较的反馈。理解三者的输入输出、在线协同、护栏位置，以及漏检与误拦的统计分母。">
   <meta property="og:url" content="https://be1human.github.io/posts/supervisor-verify-eval.html">
   <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
   <link rel="stylesheet" href="../assets/site.css?v=020151086b1a">
-  <link rel="stylesheet" href="../assets/reading.css?v=02556da89320">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
   <script src="../assets/app.js?v=e8aeca74a339" defer></script>
   <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
 
@@ -28,7 +28,7 @@
     <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
     <nav aria-label="主导航"><a href="../index.html#home" aria-current="page">首页</a><a href="../index.html#journal">手记</a><a href="../works.html">作品</a><a href="../learn.html">Agent 学习</a><a href="../news.html">新闻</a><a href="../index.html#about">关于</a></nav>
   </header>
-  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="2026-11-08">2026.11.08</time><span>·</span>1 分钟阅读<span>·</span>Agent 学习<span>·</span>更新 2026-11-08</p></div></div><h1>Supervisor、Verify、Eval：<wbr>一份草稿的三种去向</h1><p class="article-lede">一份 2.4 版故障草稿引用了 2.3 版 D23：Verify 指出版本错误，Supervisor 决定补查 D24，Eval 保留候选与修订代价。</p></header><figure class="article-cover"><img src="../assets/images/supervisor-verify-eval.svg" alt="调度、验证与评测：同一任务的三种职责，原创教学结构示意" width="1200" height="600"><figcaption>调度、验证与评测：同一任务的三种职责，原创教学结构示意</figcaption></figure><div class="prose"><section id="section-1"><h2>同一处版本错，有三种处理动作</h2><p>教学工单草稿写“2.4 版默认超时为 5 秒”，引用编号 D23 也确实存在，但 D23 对应的是 2.3。补查的 D24 属于 2.4 发布包默认配置，写有 <code>request_timeout_ms=8000</code>，且本例没有用户覆盖项。字段齐全、引用存在，仍不足以支持草稿里的版本事实。</p><p>Verify 指出 <code>version_mismatch</code> 并阻断当前候选；Supervisor 根据剩余预算选择读取 D24、修订并重新验证，或带原因结束；Eval 保存旧候选、修订候选及最终状态，比较错误是否恢复、用了多少代价。完整文章画出了执行支路和测量支路。</p></section><section id="section-2"><h2>全文中的对比</h2><p>补查 D24 之后，仍要核对发布版本、参数内容与换算结果。候选 v2 将 8000 毫秒写为 8 秒，再走一遍验证；草稿就绪也不表示已经提交。只换文档编号就判通过，会把同一个证据缺口带进新候选。</p><p>Eval 可以逐次提供反馈，也能在离线样本集上比较版本。某个分数被用来决定当前请求是否放行时，同一个检查又承担了门控职责。全文按这条数据流展开。</p></section><section class="article-links"><h2>继续探索</h2><ul><li><a href="https://be1human.github.io/learn/supervisor-verify-eval.html" target="_blank" rel="noopener noreferrer">阅读全文：Supervisor、Verify、Eval 的职责与边界 ↗</a></li><li><a href="https://be1human.github.io/learn/agent-loop.html" target="_blank" rel="noopener noreferrer">Agent Loop：运行时如何推进任务 ↗</a></li><li><a href="https://be1human.github.io/learn/agent-evaluation.html" target="_blank" rel="noopener noreferrer">Agent 评测综述解读 ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span># Supervisor</span><span># Verify</span><span># Eval</span></div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article></main>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../index.html">← 返回主页</a><span>文章</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>@Be1Human</span></strong><p><time datetime="2026-11-08">2026.11.08</time><span>·</span>1 分钟阅读<span>·</span>Agent 学习<span>·</span>更新 2026-11-08</p></div></div><h1>Supervisor、Verify 与 Eval：<wbr>职责、机制与对比</h1><p class="article-lede">Supervisor 选择下一步，Verify 检查当前对象，Eval 按判据形成可比较的反馈。理解三者的输入输出、在线协同、护栏位置，以及漏检与误拦的统计分母。</p></header><figure class="article-cover"><img src="../assets/images/supervisor-verify-eval.svg" alt="调度、验证与评测：同一任务的三种职责，原创教学结构示意" width="1200" height="600"><figcaption>调度、验证与评测：同一任务的三种职责，原创教学结构示意</figcaption></figure><div class="prose"><section id="section-1"><h2>三种机制的职责</h2><p>Supervisor 管理执行方向，输出路由、等待、重试或结束决策；Verify 检查候选或动作的具体约束，返回通过、失败或未知及相应证据；Eval 对完整运行或样本集合按协议评分，测量质量、成本和稳定性。</p><p>三者可以由规则、代码或模型实现，区分它们要看检查结果怎样被使用。验证失败会进入当前请求的控制流，旁路评测则记录测量；将某个评分接成放行条件时，它又承担了门控职责。</p></section><section id="section-2"><h2>全文中的对比</h2><p>补查 D24 之后，仍要核对发布版本、参数内容与换算结果。候选 v2 将 8000 毫秒写为 8 秒，再走一遍验证；草稿就绪也不表示已经提交。只换文档编号就判通过，会把同一个证据缺口带进新候选。</p><p>Eval 可以逐次提供反馈，也能在离线样本集上比较版本。某个分数被用来决定当前请求是否放行时，同一个检查又承担了门控职责。全文按这条数据流展开。</p></section><section class="article-links"><h2>继续探索</h2><ul><li><a href="https://be1human.github.io/learn/supervisor-verify-eval.html" target="_blank" rel="noopener noreferrer">阅读全文：Supervisor、Verify、Eval 的职责与边界 ↗</a></li><li><a href="https://be1human.github.io/learn/agent-loop.html" target="_blank" rel="noopener noreferrer">Agent Loop：运行时如何推进任务 ↗</a></li><li><a href="https://be1human.github.io/learn/agent-evaluation.html" target="_blank" rel="noopener noreferrer">Agent 评测综述解读 ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span># Supervisor</span><span># Verify</span><span># Eval</span></div><a class="back-link" href="../index.html">← 返回主页</a></footer></div></article></main>
   <footer class="blog-footer">
     <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
     <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>

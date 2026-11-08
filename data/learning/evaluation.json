@@ -1,42 +1,47 @@
 [
   {
     "id": "agent-evaluation",
-    "title": "Agent 评测：结果对了，任务就算成功吗",
+    "title": "Agent 评测原理与 ACL 2026 综述：任务、判分器与可靠性",
     "eyebrow": "PAPER READING · ACL 2026",
-    "summary": "从一次越权更新和一张12次运行矩阵读懂 ACL 2026 综述：终态、过程、判分器与重复可靠性分别在测什么。",
+    "summary": "解释 Agent 评测的任务、环境、轨迹与判分器，解读 ACL 2026 综述的分类，并区分结果正确、过程合规、pass@k 与重复可靠性。",
     "category": "评测与进阶",
     "level": "进阶",
-    "minutes": 16,
+    "minutes": 19,
     "updated": "2026-11-08",
     "sections": [
       {
-        "id": "outcome-process",
-        "title": "K17 改对了，为什么仍要判失败",
-        "body": "<p>用户只授权更新知识库记录 K17。Agent 把它从 v2 改到 v3，还顺手改了 K18，发现不对后又把 K18 恢复。最后数据库与目标快照相同，回复“已更新 K17”也没有说错。只看最终状态，这次运行会过关；检查写入轨迹，就会发现越权。</p><p class=\"article-note\">下文的记录编号、运行矩阵和故障时间线均为教学数据，用来复现判据差异；论文中的实验结果另行标注。</p><figure class=\"learn-figure\"><a href=\"../assets/learning/eval-state-and-procedure.svg\"><img src=\"../assets/learning/eval-state-and-procedure.svg\" alt=\"终态K17为v3、K18为v1，但轨迹包含两次未授权K18写入\" loading=\"lazy\"></a><figcaption>图 1 · 原创教学图。过程检查依据的概念来自 Cao 等人的 <a href=\"#ref-2\">过程评测综述</a>。</figcaption></figure><p>Cao 等人的 Findings of EMNLP 2026 综述指出，过程检查经常只覆盖局部，动作合规与沟通依据的检查也不均衡。这个案例需要保留三份证据：数据库终态、实际调用轨迹、用户可见声明。三份证据的判据不同，不能用最后一句话代替全部验收。<a href=\"#ref-2\">[2]</a></p>"
+        "id": "definition",
+        "title": "Agent 评测的对象与组成",
+        "body": "<p>Agent 评测是在给定任务、环境与预算下运行 Agent，再按预先定义的判据检查结果、行为和成本。被测对象包括模型与让它调用工具、保存状态、处理失败的运行系统。相同模型接到不同工具或恢复策略，可能得到不同结果。</p><p>单轮问答通常检查一份回答；Agent 会在多个回合中改变外部状态，所以最终回复、实际结果和中间动作需要分开记录。评测流程由以下部件构成：<a href=\"#ref-3\">[3]</a></p><table><thead><tr><th>部件</th><th>定义</th><th>为什么需要</th></tr></thead><tbody><tr><td>Task／任务</td><td>输入、目标、约束与成功条件</td><td>先界定什么算完成，什么属于越界</td></tr><tr><td>Environment／环境</td><td>初始数据、可用工具、权限与外部依赖</td><td>同一句请求在不同环境中难度不同</td></tr><tr><td>Trial／一次试次</td><td>从约定初态开始的一次运行</td><td>区分同一任务的多次尝试</td></tr><tr><td>Trajectory／轨迹</td><td>该试次的可观测消息、动作、工具返回与状态变化</td><td>检查执行过程和故障传播</td></tr><tr><td>Outcome／结果</td><td>运行结束时的实际环境状态与产物</td><td>区分“说已完成”和“确已完成”</td></tr><tr><td>Grader／判分器</td><td>把所需证据映射为通过、失败、未知或分数的逻辑</td><td>使结论可重复检查</td></tr><tr><td>Aggregation／汇总</td><td>按明确分母汇总多个任务与试次</td><td>衡量覆盖、可靠性及代价</td></tr></tbody></table><p>评测 harness 负责重置环境、调度试次、保存轨迹、调用判分器与汇总。它与被测 Agent 的运行 harness 用途不同。把参考答案意外提供给 Agent，或让并行试次共享可写数据库，都会改变被测条件，不能靠最后的统计修正。</p>"
       },
       {
         "id": "paper",
-        "title": "ACL 综述怎样帮我们挑选评测",
-        "body": "<p>Yehudai 等人的 <em>A Survey on Evaluation of LLM-based Agents</em> 收录于 Findings of ACL 2026。它把研究组织为基础能力、专用应用、通用 Agent、基准设计维度和开发者工具五种视角。对 K17 任务，这份分类的用途是定位缺口：会不会选更新工具，是能力题；能否在交互中守住记录范围，是应用与端到端任务；环境如何重置、成功如何判定，则属于基准设计。<a href=\"#ref-1\">[1]</a></p><table><thead><tr><th>已有评测</th><th>能支持的判断</th><th>K17 案例还缺什么</th></tr></thead><tbody><tr><td>工具名与参数选择题</td><td>理解接口和参数</td><td>真正执行后的状态与副作用</td></tr><tr><td>最终数据库对比</td><td>目标状态是否成立</td><td>中间越权后又恢复的操作</td></tr><tr><td>完整轨迹检查</td><td>权限、动作及声明的一致性</td><td>重复运行后的稳定程度</td></tr></tbody></table><p>基准分数只能证明它覆盖到的条件。一个很高的工具选择分数，没有回答网络故障后会不会重复写入；一次正确的终态，也没有回答下次是否还能做到。阅读综述时，应把数据集和待回答的问题对应起来，而不是收集排行榜名称。</p>"
+        "title": "ACL 2026 综述的五个观察视角",
+        "body": "<p>Yehudai 等人的 <em>A Survey on Evaluation of LLM-based Agents</em> 收录于 Findings of ACL 2026（7 月）。综述没有把“Agent 能力”压成单一分数，而是从五个视角整理评测：<a href=\"#ref-1\">[1]</a></p><table><thead><tr><th>视角</th><th>主要检查什么</th><th>读分数时要保留的条件</th></tr></thead><tbody><tr><td>基础能力</td><td>规划、推理、工具使用等组成能力</td><td>单项能力不能代替完整任务</td></tr><tr><td>专用应用</td><td>网页、软件工程等场景中的任务</td><td>工具与环境约束影响难度</td></tr><tr><td>通用 Agent</td><td>跨不同任务与领域的综合表现</td><td>任务组成及各类权重</td></tr><tr><td>基准设计维度</td><td>环境、交互、任务与成功定义等设计</td><td>是否接近目标部署条件</td></tr><tr><td>开发者评测工具</td><td>执行、记录、评分与维护评测的基础设施</td><td>框架提供能力，任务仍需自己定义</td></tr></tbody></table><p>这份分类的实用含义是：工具名选择题检查的是局部接口理解；数据库快照检查的是一次执行结果；跨故障、权限和任务类别的重复运行，才逐步接近端到端可靠性。综述还指出成本效率、安全、鲁棒性和细粒度评测的缺口。阅读榜单前，先判断它覆盖了上述哪一层。</p><p>能力分数较高，不能自动推出真实环境的副作用可控。后面的 K17 示例将把这个缺口分解为结果判据和过程判据。</p>"
       },
       {
-        "id": "metrics",
-        "title": "同一批运行，可以得到三个不同的读数",
-        "body": "<figure class=\"learn-figure\"><a href=\"../assets/learning/eval-run-matrix.svg\"><img src=\"../assets/learning/eval-run-matrix.svg\" alt=\"四个任务三次运行共12格，其中9次通过；4个任务至少一次通过，2个任务三次全过\" loading=\"lazy\"></a><figcaption>图 2 · 原创教学矩阵。绿色为满足该任务全部判据，红色为失败。每次运行前重置环境。</figcaption></figure><p>矩阵中有 9 个绿格，因此运行通过率是 9/12。若关心“四个任务有没有哪次做出来”，答案是 4/4；若关心“同一个任务三次都可靠吗”，答案是 2/4。缺资料任务的期望行为是停止写入并报告缺口，所以准确拒绝也可以通过。把拒绝一律算失败，会把错误的目标写进评分器。</p><p><code>pass@k</code> 询问 k 次尝试中至少成功一次；τ-bench 的 <code>pass^k</code> 关注重复完成的一致性。图中的 4/4 和 2/4 是这批固定三次运行的直接观察，并非从大量样本计算的无偏估计量。τ-bench 原论文也报告，所测 function-calling agents 的任务成功率不到 50%，retail 的 pass^8 低于 25%；这是 2024 年那组模型与环境的结果，不是今天模型的统一能力上限。<a href=\"#ref-4\">[4]</a><a href=\"#ref-5\">[5]</a></p><pre><code class=\"language-python\">runs = [\n    [1, 1, 1],  # 正常更新\n    [1, 1, 1],  # 缺资料时正确停止\n    [1, 0, 1],  # 版本冲突\n    [0, 1, 0],  # 暂时故障\n]\nprint(sum(map(sum, runs)), &quot;/&quot;, sum(map(len, runs)))\nprint(sum(any(row) for row in runs), &quot;/&quot;, len(runs))\nprint(sum(all(row) for row in runs), &quot;/&quot;, len(runs))\n# 输出：9 / 12；4 / 4；2 / 4</code></pre><p>把不同任务平均成功率记为 p，再计算 p 的 k 次方，会抹掉任务难度差异和运行间依赖。应按任务重置并重复运行，再按选定基准的定义估计和汇总。</p>"
+        "id": "outcome-process",
+        "title": "结果评测与过程评测：K17 示例",
+        "body": "<p>结果评测检查运行结束时是否满足目标；过程评测检查达到目标时是否遵守约束。两者可以同时成立，也可能冲突。用户可见声明还需要与真实结果和证据一致，它属于另一条可检查的关系。</p><p>用户只授权更新知识库记录 K17。Agent 把它从 v2 改到 v3，还顺手改了 K18，发现不对后又把 K18 恢复。最后数据库与目标快照相同，回复“已更新 K17”也没有说错。只看最终状态，这次运行会过关；检查写入轨迹，就会发现越权。</p><p class=\"article-note\">下文的记录编号、运行矩阵和故障时间线均为教学数据，用来复现判据差异；论文中的实验结果另行标注。</p><figure class=\"learn-figure\"><a href=\"../assets/learning/eval-state-and-procedure.svg\"><img src=\"../assets/learning/eval-state-and-procedure.svg\" alt=\"终态K17为v3、K18为v1，但轨迹包含两次未授权K18写入\" loading=\"lazy\"></a><figcaption>图 1 · 原创教学图。过程检查依据的概念来自 Cao 等人的 <a href=\"#ref-2\">过程评测综述</a>。</figcaption></figure><p>Cao 等人的 Findings of EMNLP 2026 综述指出，过程检查经常只覆盖局部，动作合规与沟通依据的检查也不均衡。这个案例需要保留三份证据：数据库终态、实际调用轨迹、用户可见声明。三份证据的判据不同，不能用最后一句话代替全部验收。<a href=\"#ref-2\">[2]</a></p>"
       },
       {
         "id": "graders",
-        "title": "判分器必须拿到它要检查的证据",
-        "body": "<p>K17 任务可以拆成三条判据。数据库状态交给代码；写入范围查审计日志；“每个事实是否被资料支持”需要把回答、引用片段和规则一起交给语义判分器。只把回答交给另一个模型，它只能评价文本，看不见 K18 的写入。</p><pre><code class=\"language-json\">{\n  &quot;task_id&quot;: &quot;K17-update&quot;,\n  &quot;checks&quot;: {\n    &quot;target_version&quot;: &quot;K17.version == v3&quot;,\n    &quot;write_scope&quot;: &quot;every write.record_id == K17&quot;,\n    &quot;claim_support&quot;: &quot;each factual claim cites supporting evidence&quot;\n  },\n  &quot;hard_fail&quot;: [&quot;write_scope&quot;],\n  &quot;unknown&quot;: &quot;required evidence is missing&quot;\n}</code></pre><p>这是本文的评分契约，不是某个 SDK 的配置文件。写入范围违反时直接失败；证据缺失时保留 unknown；语义争议交给复核。不要把越权与“措辞不够简洁”平均成一个总分。Anthropic 的评测实践也区分任务、试次、轨迹与 grader，模型评分只是可用判分器之一。<a href=\"#ref-3\">[3]</a></p>"
+        "title": "判分器如何组合代码、模型与人工检查",
+        "body": "<p>确定性代码适合明确的字段、测试与权限断言；模型判分器适合有语义弹性的质量判据；人工复核用于校准和有争议样本。模型评分也会出错，需用人工标注的通过／失败样例检查误放和误拦，并固定评分提示、输入证据与模型版本。多放一个“裁判模型”，不会自动得到可信标准。</p><p>K17 任务可以拆成三条判据。数据库状态交给代码；写入范围查审计日志；“每个事实是否被资料支持”需要把回答、引用片段和规则一起交给语义判分器。只把回答交给另一个模型，它只能评价文本，看不见 K18 的写入。</p><pre><code class=\"language-json\">{\n  &quot;task_id&quot;: &quot;K17-update&quot;,\n  &quot;checks&quot;: {\n    &quot;target_version&quot;: &quot;K17.version == v3&quot;,\n    &quot;write_scope&quot;: &quot;every write.record_id == K17&quot;,\n    &quot;claim_support&quot;: &quot;each factual claim cites supporting evidence&quot;\n  },\n  &quot;hard_fail&quot;: [&quot;write_scope&quot;],\n  &quot;unknown&quot;: &quot;required evidence is missing&quot;\n}</code></pre><p>这是本文的评分契约，不是某个 SDK 的配置文件。写入范围违反时直接失败；证据缺失时保留 unknown；语义争议交给复核。不要把越权与“措辞不够简洁”平均成一个总分。Anthropic 的评测实践也区分任务、试次、轨迹与 grader，模型评分只是可用判分器之一。<a href=\"#ref-3\">[3]</a></p>"
+      },
+      {
+        "id": "metrics",
+        "title": "成功率、pass@k 与 pass^k 测量不同事件",
+        "body": "<p>一次试次是否通过，先由任务全部判据确定。成功率是通过试次占比；<code>pass@k</code> 关心同一任务 k 次尝试里至少一次成功；<code>pass^k</code> 关心这 k 次全部成功。前者更接近能力覆盖，后者更严格地检查重复可靠性。一次失败后的正确停止，也可以是该任务预先约定的成功行为。</p><p>对固定任务 i，若每次试次的成功概率都是 <code>pᵢ</code>，且这些试次条件独立，那么 <code>pass@kᵢ = 1 − (1 − pᵢ)^k</code>，<code>pass^kᵢ = pᵢ^k</code>。这是带假设的概率关系，不是把任意一次总体成功率直接乘方。重置环境是控制试次条件的必要步骤之一，并不会自动消除共享服务、缓存或评测器带来的依赖。</p><figure class=\"learn-figure\"><a href=\"../assets/learning/eval-run-matrix.svg\"><img src=\"../assets/learning/eval-run-matrix.svg\" alt=\"四个任务三次运行共12格，其中9次通过；4个任务至少一次通过，2个任务三次全过\" loading=\"lazy\"></a><figcaption>图 2 · 原创教学矩阵。绿色为满足该任务全部判据，红色为失败。每次运行前重置环境。</figcaption></figure><p>矩阵中有 9 个绿格，因此运行通过率是 9/12。若关心“四个任务有没有哪次做出来”，答案是 4/4；若关心“同一个任务三次都可靠吗”，答案是 2/4。缺资料任务的期望行为是停止写入并报告缺口，所以准确拒绝也可以通过。把拒绝一律算失败，会把错误的目标写进评分器。</p><p><code>pass@k</code> 询问 k 次尝试中至少成功一次；τ-bench 的 <code>pass^k</code> 关注重复完成的一致性。图中的 4/4 和 2/4 是这批固定三次运行的直接观察，并非从大量样本计算的无偏估计量。τ-bench 原论文也报告，所测 function-calling agents 的任务成功率不到 50%，retail 的 pass^8 低于 25%；这是 2024 年那组模型与环境的结果，不是今天模型的统一能力上限。<a href=\"#ref-4\">[4]</a><a href=\"#ref-5\">[5]</a></p><pre><code class=\"language-python\">runs = [\n    [1, 1, 1],  # 正常更新\n    [1, 1, 1],  # 缺资料时正确停止\n    [1, 0, 1],  # 版本冲突\n    [0, 1, 0],  # 暂时故障\n]\nprint(sum(map(sum, runs)), &quot;/&quot;, sum(map(len, runs)))\nprint(sum(any(row) for row in runs), &quot;/&quot;, len(runs))\nprint(sum(all(row) for row in runs), &quot;/&quot;, len(runs))\n# 输出：9 / 12；4 / 4；2 / 4</code></pre><p>任务集合通常先按任务估计，再按约定权重汇总。不能把所有任务的平均成功率 p 代进上述公式，因为任务难度不同，一般有 <code>平均(pᵢ^k) ≠ 平均(pᵢ)^k</code>。HumanEval 的 pass@k 还使用基于每题 n 个样本、c 个成功样本的估计量 <code>1 − C(n−c, k) / C(n, k)</code>（n ≥ k），应注明采用的具体定义。候选池中至少一个正确，也不等于线上系统已经能够选择并交付它。<a href=\"#ref-4\">[4]</a></p>"
       },
       {
         "id": "budget",
-        "title": "比较两个版本时，把环境和预算写进记录",
+        "title": "环境、预算、数据隔离与分母",
         "body": "<p>提示 A 允许 5 次调用，提示 B 允许 50 次，B 多完成几题并不能说明它的路由更好。K17 评测应冻结资料与初始数据库，固定模型、工具权限和判分器；记录实际调用、token、耗时、重试与停止原因。判分器本身的费用也要单列。</p><p>开发时可以反复查看失败轨迹、调整提示；最终比较需要保留未用于调试的任务。参考答案、参考补丁和测试轨迹不能进入 Agent 的检索库。外部 API 不可冻结时，至少保存依赖版本、返回摘要与故障记录，否则分数变化可能只是环境变化。<a href=\"#ref-1\">[1]</a></p><p>报告中同时列出有效试次数、成功、失败、未知和预先约定的排除数量。超时不能在统计时悄悄消失。比较版本的第一张表应该能解释分母，之后再谈成功率提高了多少。</p>"
       },
       {
         "id": "read-next",
-        "title": "从失败样本回到可修改的部件",
+        "title": "失败归因与受控重放",
         "body": "<p>若 K18 的越权调用来自计划阶段，就检查任务范围怎样进入上下文；若工具层接受了不允许的记录号，应补执行前约束；若日志已经显示越权而 grader 仍判通过，就先修判分器。把这三种失败都记作“模型能力不足”，下一次改动很难对准问题。</p><p>Trace 给出候选解释，重放或受控干预再检验解释。相同环境下只替换那次错误观察，结果是否改变？只收紧工具权限，越权是否消失？相邻两次事件不自动构成因果关系。<a href=\"agent-observability.html\">可观测性文章</a>沿着一次响应丢失的故障展开；<a href=\"supervisor-verify-eval.html\">Supervisor、Verify、Eval</a>则讨论这些检查怎样接进控制流。</p>"
       }
     ],
@@ -75,42 +80,47 @@
   },
   {
     "id": "test-time-compute",
-    "title": "Test-time Compute：多想几次，为什么仍可能选错",
+    "title": "Test-time Compute 原理：并行采样、修订与搜索",
     "eyebrow": "FRONTIER CONCEPT · INFERENCE",
-    "summary": "用一个“第二大不同元素”的小函数拆开候选生成、验证与预算，再读 Snell 等人的真实计算曲线。",
+    "summary": "区分训练计算与推理时计算，解释并行采样、顺序修订和树搜索怎样分配预算，再结合代码验证与原论文曲线分析收益和成本。",
     "category": "评测与进阶",
     "level": "进阶",
-    "minutes": 14,
+    "minutes": 17,
     "updated": "2026-11-08",
     "sections": [
       {
-        "id": "selection",
-        "title": "三份答案里有正确代码，系统仍可能交付错的",
-        "body": "<p>任务是返回整数列表中“第二大的不同元素”。输入 <code>[2, 2, 1]</code> 应返回 1；只有一个不同值时返回 <code>None</code>。候选 A 写成 <code>sorted(xs)[-2]</code>，候选 B 先去重却没有处理只有一个值，候选 C 同时处理了重复值和边界。若测试只有 <code>[1, 3, 2]</code>，三份代码都返回 2。</p><p>候选池已经有正确解，选择器却分不出来。再生成十份类似候选，只会扩大这个没有判别力的池子。Test-time Compute 包括生成、修订、搜索和验证消耗的计算；最终能否改善结果，取决于这些计算是否产生了有用的新候选或新证据。</p><p class=\"article-note\">函数、预算格和测试数据是本文的教学示例；下文标有作者的曲线来自论文原图。</p>"
-      },
-      {
-        "id": "paper",
-        "title": "这张论文图先看横轴，再看曲线",
-        "body": "<figure class=\"learn-figure paper-figure\"><a href=\"../assets/learning/eval-ttc-paper-figure1.svg\"><img src=\"../assets/learning/eval-ttc-paper-figure1.svg\" alt=\"Snell等人论文Figure1的修订实验曲线，比较并行采样与按题目难度分配计算的策略\" loading=\"lazy\"></a><figcaption>图 1 · Snell、Lee、Xu、Kumar，2024，Figure 1 上半部，原图未修改。<a href=\"https://arxiv.org/html/2408.03314v1#S1.F1\">论文与图注</a>；<a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>。</figcaption></figure><p>左图横轴是该实验定义的 test-time compute，纵轴是准确率；比较曲线时，需要看“达到相近准确率花了多少预算”，而非只看最右边哪个点最高。实验基于 MATH 和专门微调的 PaLM 2-S* 修订模型，不能直接换算成某个通用聊天模型的响应秒数。<a href=\"#ref-1\">[1]</a></p><p>论文里按题目难度分配策略，还存在一笔部署账：难度估计使用了每题 2048 个样本，而研究为简化分析未计入这笔开销。这解释了为什么论文中的计算收益不能原样当成线上降本承诺。部署时必须把“判断该花多少预算”的成本也算进去。</p>"
+        "id": "definition",
+        "title": "什么是 Test-time Compute",
+        "body": "<p>Test-time Compute（推理时计算）是在处理一个输入任务时消耗的计算。它可以用于生成更多 token、生成多个候选、检查候选、根据反馈修订，或搜索中间状态。增加这类计算的目标，是在不重新训练模型参数的情况下改善本次任务的结果。</p><p>训练计算用数据更新参数；推理时计算使用已经得到的参数解决当前问题。某种推理策略可能依赖专门训练过的生成器或验证器，但其训练成本与每次部署运行的推理成本仍要分别记账。Snell 等人的研究讨论了不同题目和策略下怎样分配测试时预算。<a href=\"#ref-1\">[1]</a></p><p>预算至少有两种不同读法：总计算量与墙钟时间。四次并行调用可能比四次串行调用更快，却仍要支付四次生成成本。token、FLOPs、费用和秒数也不是可以直接相加的单位；比较策略时先选清统一计量方式，再另报延迟。</p>"
       },
       {
         "id": "routes",
-        "title": "把八个额度单位放在哪里",
-        "body": "<figure class=\"learn-figure\"><a href=\"../assets/learning/eval-ttc-budget.svg\"><img src=\"../assets/learning/eval-ttc-budget.svg\" alt=\"同一八单位示意预算可用于四候选加测试，或生成、测试、修订和复测\" loading=\"lazy\"></a><figcaption>图 2 · 原创预算分配示意。每格是抽象额度，不代表 token、FLOPs、延迟或实验准确率。</figcaption></figure><p>并行采样把预算用于探索不同方案，之后还要付出筛选成本。顺序修订把失败反馈交给下一次生成，适合“方向大致对、错误能定位”的候选。树搜索进一步对中间状态评分、保留部分分支；验证器偏差也会被搜索放大。Self-consistency 的答案聚合和 Tree of Thoughts 的分支搜索属于不同策略，不能只用“思考得更久”概括。<a href=\"#ref-2\">[2]</a><a href=\"#ref-3\">[3]</a></p><p>对小函数，重复值测试直接定位了候选 A 的错误，顺序修订有可利用的反馈。如果所有候选都误解了“不同元素”，重新展开解法可能更有用。若需求根本没写清，增加计算没有替产品定义作决定。</p>"
+        "title": "三种机制：扩展候选、利用反馈、搜索状态",
+        "body": "<h3>并行采样与候选选择</h3><p>固定输入，多次采样产生不同候选，然后用验证器排序或用规则聚合答案。Best-of-N 需要选出候选；Self-consistency 对多条推理路径的最终答案聚合。新增样本只有在带来有用差异、且筛选能识别正确解时才产生收益。共享的误解会让很多候选一起错，数量本身不会消除这种偏差。<a href=\"#ref-2\">[2]</a></p><h3>顺序修订</h3><p>下一次生成读取上一次候选及反馈，例如编译错误或失败测试。与独立采样相比，这条链把预算用于定向修改；有效前提是反馈能定位问题。错误反馈可能把正确候选改坏，因此应保存已验证版本，而不能默认最后一版最好。</p><h3>树搜索</h3><p>先生成若干中间状态，再评价、保留分支或回溯，而不是每次都从头完成整份答案。Tree of Thoughts 用这一类探索把生成与搜索策略结合。分支数与深度同时增长时，候选状态和评分成本会迅速增大；中间评分若偏向貌似合理的错误路线，搜索也会系统性偏离。<a href=\"#ref-3\">[3]</a></p><figure class=\"learn-figure\"><a href=\"../assets/learning/eval-ttc-budget.svg\"><img src=\"../assets/learning/eval-ttc-budget.svg\" alt=\"同一八单位示意预算可用于四候选加测试，或生成、测试、修订和复测\" loading=\"lazy\"></a><figcaption>图 2 · 原创预算分配示意。每格是抽象额度，不代表 token、FLOPs、延迟或实验准确率。</figcaption></figure>"
+      },
+      {
+        "id": "selection",
+        "title": "代码示例：生成得到正确解，选择仍可能失败",
+        "body": "<p>任务是返回整数列表中“第二大的不同元素”。输入 <code>[2, 2, 1]</code> 应返回 1；只有一个不同值时返回 <code>None</code>。候选 A 写成 <code>sorted(xs)[-2]</code>，候选 B 先去重却没有处理只有一个值，候选 C 同时处理了重复值和边界。若测试只有 <code>[1, 3, 2]</code>，三份代码都返回 2。</p><p>候选池已经有正确解，选择器却分不出来。再生成十份类似候选，只会扩大这个没有判别力的池子。Test-time Compute 包括生成、修订、搜索和验证消耗的计算；最终能否改善结果，取决于这些计算是否产生了有用的新候选或新证据。</p><p class=\"article-note\">函数、预算格和测试数据是本文的教学示例；下文标有作者的曲线来自论文原图。</p><p>对小函数，重复值测试直接定位了候选 A 的错误，顺序修订有可利用的反馈。如果所有候选都误解了“不同元素”，重新展开解法可能更有用。若需求根本没写清，增加计算没有替产品定义作决定。</p>"
       },
       {
         "id": "worked-code",
-        "title": "让验证器真正区分这三份代码",
+        "title": "用有判别力的测试验证候选",
         "body": "<pre><code class=\"language-python\">def second_distinct(xs):\n    values = sorted(set(xs))\n    return values[-2] if len(values) &gt;= 2 else None\n\ncases = [([1, 3, 2], 2), ([2, 2, 1], 1), ([5, 5], None)]\nfor xs, expected in cases:\n    assert second_distinct(xs) == expected, (xs, expected)\nprint(&quot;3 / 3 passed&quot;)</code></pre><p>这段 Python 只验证已写明的整数列表约定。它给出可复现的 <code>3 / 3 passed</code>，没有测量任何模型的修复能力。测试暴露了普通输入、重复值和不足两个不同值三种情况；若生产输入允许非整数、超大列表或流式数据，还需要另行定义和检查。</p><p>Best-of-N 的有效链路是“生成候选→验证→选择”。若验证器看不到边界测试，候选中存在正确答案只代表探索到了，不能证明能交付它。报告候选池中的最好成绩与实际选择后的成绩，可以直接发现这段损失。</p>"
       },
       {
+        "id": "paper",
+        "title": "Snell 等人的计算分配曲线与实验条件",
+        "body": "<figure class=\"learn-figure paper-figure\"><a href=\"../assets/learning/eval-ttc-paper-figure1.svg\"><img src=\"../assets/learning/eval-ttc-paper-figure1.svg\" alt=\"Snell等人论文Figure1的修订实验曲线，比较并行采样与按题目难度分配计算的策略\" loading=\"lazy\"></a><figcaption>图 1 · Snell、Lee、Xu、Kumar，2024，Figure 1 上半部，原图未修改。<a href=\"https://arxiv.org/html/2408.03314v1#S1.F1\">论文与图注</a>；<a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>。</figcaption></figure><p>左图横轴是该实验定义的 test-time compute，纵轴是准确率；比较曲线时，需要看“达到相近准确率花了多少预算”，而非只看最右边哪个点最高。实验基于 MATH 和专门微调的 PaLM 2-S* 修订模型，不能直接换算成某个通用聊天模型的响应秒数。<a href=\"#ref-1\">[1]</a></p><p>论文里按题目难度分配策略，还存在一笔部署账：难度估计使用了每题 2048 个样本，而研究为简化分析未计入这笔开销。这解释了为什么论文中的计算收益不能原样当成线上降本承诺。部署时必须把“判断该花多少预算”的成本也算进去。</p>"
+      },
+      {
         "id": "budget-forcing",
-        "title": "延长一条推理，和保留多个候选并不一样",
+        "title": "Budget forcing 与运行时停止条件",
         "body": "<p>s1 的 budget forcing 控制一条推理的长度，并配合精选数据上的训练。它提供的是具体模型与实验设置下的方法，不是给任意模型追加“继续想”就能复现的通用技巧。<a href=\"#ref-4\">[4]</a>一条修订链也可能先找到正确代码，随后又把它改坏，因此需要保存已验证候选，不能默认最后一版最好。</p><p>运行系统至少要分别限制生成预算、测试成本和墙钟时间。若把预算全部花在候选生成上，最后没有时间运行测试，系统只得到更多未经检查的答案。早停也应依据验证结果：当前交付条件已满足，就没有必要把剩余额度耗尽。</p>"
       },
       {
         "id": "measure",
-        "title": "比较策略，保留同一张成本账",
+        "title": "策略比较：把生成、验证和路由成本一起计算",
         "body": "<p>在冻结任务上比较单候选、同总预算的并行采样、测试驱动修订。记录生成、验证、工具及路由的全部费用，另报延迟分布。并行调用能缩短墙钟时间，却不会让总 token 自动减少；一个 token、一次模型调用与一秒也不是可互换的单位。</p><p>分别查看简单题和难题。平均分提高可能来自少量题目受益，而其余请求只增加等待。对于“正确候选很少出现”的任务，优化探索；对于“正确候选经常被错选”的任务，优化验证器；对于“所有路径都缺资料”的任务，补资料。这三个改动花的是不同的预算。</p>"
       }
     ],
@@ -143,42 +153,52 @@
   },
   {
     "id": "agent-observability",
-    "title": "Agent Trace：一次超时，怎样变成两张工单",
+    "title": "Agent 可观测性原理：Logs、Metrics 与 Traces",
     "eyebrow": "ENGINEERING CONCEPT · TRACING",
-    "summary": "沿着一条响应丢失的时间线，区分客户端错误、数据库提交和重试，再把故障写成可回归的判据。",
+    "summary": "解释日志、指标、Trace 与 Span 的关系，以及上下文怎样跨服务传播；再用重复创建工单的故障说明诊断、幂等恢复和故障注入评测。",
     "category": "评测与进阶",
     "level": "进阶",
-    "minutes": 14,
+    "minutes": 18,
     "updated": "2026-11-08",
     "sections": [
       {
-        "id": "example",
-        "title": "“创建成功”之前，已经多出了一条记录",
-        "body": "<p>客户端发出 <code>create_ticket</code>，服务端完成写入，但响应在途中丢失。客户端等到超时，运行时又发了一次创建请求。第二次返回 201，Agent 报告“已创建工单”。用户看到一条正常回复，数据库却有两条工单。</p><p class=\"article-note\">本文沿用一条虚构故障，所有 ID 与毫秒数均为教学数据。它用来展示需要关联哪些证据，不是任何线上系统的性能记录。</p><figure class=\"learn-figure\"><a href=\"../assets/learning/eval-timeout-waterfall.svg\"><img src=\"../assets/learning/eval-timeout-waterfall.svg\" alt=\"第一次创建超时前数据库已经提交A，重试又提交B；HTTP状态与业务状态不一致\" loading=\"lazy\"></a><figcaption>图 1 · 原创故障瀑布图。Span 的时间与父子关联依据 <a href=\"#ref-1\">OpenTelemetry Trace</a>；幂等恢复机制参照 <a href=\"#ref-5\">接口幂等文档</a>。</figcaption></figure><p>错误判断发生在“超时，所以没有创建”。超时只说明客户端没有及时拿到结果。只看第二次 HTTP 201，甚至只数错误日志，都无法回答数据库最终有几条记录。</p>"
+        "id": "definition",
+        "title": "Agent 的可观测性在观察什么",
+        "body": "<p>可观测性是根据系统产生的外部信号，分析其运行状态和行为的能力。对 Agent，需要回答的不只是“模型说了什么”，还包括调用了哪个工具、工具是否真的执行、状态怎样改变、哪里发生等待，以及为什么停止。它为诊断提供证据，不会仅凭多记几条日志就自动证明故障原因。</p><table><thead><tr><th>信号</th><th>保存什么</th><th>适合回答的问题</th></tr></thead><tbody><tr><td>Logs／日志</td><td>某个时刻的事件、属性与文本记录</td><td>这次调用返回了什么错误</td></tr><tr><td>Metrics／指标</td><td>一段时间或一组请求的计数、分布等聚合</td><td>超时比例、成本和延迟是否发生变化</td></tr><tr><td>Traces／调用链</td><td>相关操作的时间与关联结构</td><td>这个请求跨哪些模型、工具与服务传播</td></tr></tbody></table><p>三类信号互补：指标适合发现总体变化，Trace 定位具体请求结构，日志补充事件细节。日志中关联 trace/span ID，有助于从某条异常回到同一请求；每个任务都不同的 run_id 通常更适合日志或 Trace 属性，而不是作为聚合指标的高基数标签。<a href=\"#ref-6\">[6]</a></p>"
       },
       {
         "id": "trace-span",
-        "title": "把两次尝试放回同一个逻辑操作",
-        "body": "<p>Trace 是相关 Span 的集合；Span 记录有起止时间的一次操作，还能携带属性、事件与状态。<a href=\"#ref-1\">[1]</a>这个案例需要同时保留任务、逻辑创建操作和两次网络尝试。<code>run_id</code> 关联整次 Agent 任务，<code>operation_id</code> 关联“创建这一张工单”的意图，<code>attempt</code> 区分重试。它们不是同一个 ID。</p><pre><code class=\"language-json\">{\n  &quot;run_id&quot;: &quot;run-42&quot;,\n  &quot;operation_id&quot;: &quot;create-draft-17&quot;,\n  &quot;attempt&quot;: 1,\n  &quot;tool&quot;: &quot;create_ticket&quot;,\n  &quot;client_status&quot;: &quot;timeout&quot;,\n  &quot;business_status&quot;: &quot;unknown&quot;,\n  &quot;started_ms&quot;: 200,\n  &quot;ended_ms&quot;: 1000\n}</code></pre><p>这是本文的最小记录格式，不是 OpenTelemetry 的标准字段清单。尤其不能在超时行直接写 <code>business_status: failed</code>。数据库提交事件要从服务端 Span、审计记录或后续状态查询取得，再通过上下文传播、关联 ID 或 Span Link 连回该任务。</p><p>父子关系帮助重建请求结构，但不是因果证明。并行工具的时间条可以重叠；重试可能是同一逻辑操作下的多次尝试，也可能被仪器库记作独立 Span。记录真实边界比把树排得整齐更有用。GenAI 的操作命名和属性也会演进，接入时应固定采用的语义约定版本。<a href=\"#ref-2\">[2]</a></p>"
+        "title": "Trace、Span 与逻辑操作的关联",
+        "body": "<p>一个 Span 描述一次有边界的操作，包含 span ID、trace ID、开始与结束时间，并可携带父 span ID、属性、事件和状态。同一 Trace 的 Span 共享 trace ID；父子关系表示操作的调用或执行上下文。模型请求、工具请求和数据库提交可以分别形成 Span，并行操作则可能在时间上重叠。</p><p>Agent 的一次用户任务不一定永远对应一棵完整 Trace：后台队列、延迟恢复或其它运行系统可能生成新的 Trace，再用 Span Link 或业务 ID 关联。run_id 标识任务，operation_id 标识一次业务意图，span_id 标识一段被观测的操作，重试次数标识具体尝试；这些 ID 的作用不能混用。<a href=\"#ref-1\">[1]</a></p><p>在后面的创建工单示例中，需要同时保留任务、逻辑创建操作和两次网络尝试。<code>run_id</code> 关联整次 Agent 任务，<code>operation_id</code> 关联“创建这一张工单”的意图，<code>attempt</code> 区分重试。它们不是同一个 ID。</p><pre><code class=\"language-json\">{\n  &quot;run_id&quot;: &quot;run-42&quot;,\n  &quot;operation_id&quot;: &quot;create-draft-17&quot;,\n  &quot;attempt&quot;: 1,\n  &quot;tool&quot;: &quot;create_ticket&quot;,\n  &quot;client_status&quot;: &quot;timeout&quot;,\n  &quot;business_status&quot;: &quot;unknown&quot;,\n  &quot;started_ms&quot;: 200,\n  &quot;ended_ms&quot;: 1000\n}</code></pre><p>这是本文的最小记录格式，不是 OpenTelemetry 的标准字段清单。尤其不能在超时行直接写 <code>business_status: failed</code>。数据库提交事件要从服务端 Span、审计记录或后续状态查询取得，再通过上下文传播、关联 ID 或 Span Link 连回该任务。</p><p>父子关系帮助重建请求结构，但不是因果证明。并行工具的时间条可以重叠；重试可能是同一逻辑操作下的多次尝试，也可能被仪器库记作独立 Span。记录真实边界比把树排得整齐更有用。GenAI 的操作命名和属性也会演进，接入时应固定采用的语义约定版本。<a href=\"#ref-2\">[2]</a></p>"
+      },
+      {
+        "id": "context-propagation",
+        "title": "上下文怎样跨进程与服务传播",
+        "body": "<p>跨服务调用不会因为时间接近就自动归入同一 Trace。发送方把当前 trace ID、span ID 及相关标志注入请求或消息元数据；接收方提取后，在相同 trace 下创建自己的 Span，并把传入的 span 关联为远程父级。OpenTelemetry 用 propagator 完成这类序列化与提取，HTTP 中常见的载体是 W3C <code>traceparent</code>。<a href=\"#ref-7\">[7]</a></p><p>例如 Agent 运行时 → 工具网关 → 创建服务 → 数据库，各处计装需要保留真实调用边界。若网关丢掉传播上下文，服务端写入虽然有独立记录，前端却可能只看到一次超时，必须靠受控的业务关联 ID 再拼接。异步消息也需要传递上下文；多来源合并不适合硬塞一个虚假的父节点时，可用 Span Links 表达关联。</p><p>上下文传播关联的是执行证据，不是传递工具权限；收到同一 trace ID 不表示获得写入资格。权限仍由服务按身份与业务策略校验。只有日志关联而缺少服务端提交证据，也无法从“客户端未收到响应”判断数据库状态。</p>"
+      },
+      {
+        "id": "fields",
+        "title": "字段选择、采样与数据范围",
+        "body": "<p>计装前先选择操作边界、必要属性及采样策略。模型版本、输入／输出 token 数、工具名、重试、停止原因和时间，通常有助于理解路径与开销；应用层业务状态应从实际状态或查询取得，不应由 HTTP 状态推断。GenAI 语义约定会演进，需要固定采用的版本。<a href=\"#ref-2\">[2]</a></p><p>这次故障最有价值的字段是逻辑操作 ID、尝试次数、客户端状态、服务端提交与最终记录数。模型 token、版本和停止原因可以解释调用开销，原始提示全文却未必有助于确认重复写入。</p><p>保留受控证据引用、参数摘要与访问权限，导出前过滤凭据和个人信息。OpenTelemetry 的安全文档提供了删除、过滤和变换敏感字段的做法。<a href=\"#ref-4\">[4]</a>哈希能用于部分关联，但不自动消除可重识别风险，也不能代替数据保留与访问规则。</p><p>采样同样影响结论：额外保留错误轨迹适合排障，不能据此推算总体失败率。若一百条保留轨迹里八十条是超时，首先要查看采样策略是否刻意保留了超时。需要估计总体发生率时，使用已知抽样概率或独立的全量计数。</p><p>Head sampling 在 Trace 开始附近决定是否保留，可能错过后来才出现的异常；tail sampling 在看到更多 Span 后按规则保留，但需要收集和等待，且不能恢复上游已经丢弃的信号。排障样本与总体指标因此要分开解释：前者可以刻意偏向失败，后者的分母需要有明确统计范围。<a href=\"#ref-8\">[8]</a></p>"
+      },
+      {
+        "id": "example",
+        "title": "故障示例：客户端超时与服务端提交",
+        "body": "<p>客户端发出 <code>create_ticket</code>，服务端完成写入，但响应在途中丢失。客户端等到超时，运行时又发了一次创建请求。第二次返回 201，Agent 报告“已创建工单”。用户看到一条正常回复，数据库却有两条工单。</p><p class=\"article-note\">本文沿用一条虚构故障，所有 ID 与毫秒数均为教学数据。它用来展示需要关联哪些证据，不是任何线上系统的性能记录。</p><figure class=\"learn-figure\"><a href=\"../assets/learning/eval-timeout-waterfall.svg\"><img src=\"../assets/learning/eval-timeout-waterfall.svg\" alt=\"第一次创建超时前数据库已经提交A，重试又提交B；HTTP状态与业务状态不一致\" loading=\"lazy\"></a><figcaption>图 1 · 原创故障瀑布图。Span 的时间与父子关联依据 <a href=\"#ref-1\">OpenTelemetry Trace</a>；幂等恢复机制参照 <a href=\"#ref-5\">接口幂等文档</a>。</figcaption></figure><p>错误判断发生在“超时，所以没有创建”。超时只说明客户端没有及时拿到结果。只看第二次 HTTP 201，甚至只数错误日志，都无法回答数据库最终有几条记录。</p>"
       },
       {
         "id": "diagnosis",
-        "title": "从轨迹提出假设，再查询业务状态",
+        "title": "诊断：把客户端状态与业务事实分开",
         "body": "<p>排查时先找两次创建调用是否具有相同的业务输入，再查第一次提交是否早于超时。如果两条工单对应同一逻辑请求，问题就不在“最终回复没有解释清楚”，而在恢复路径没有确认第一次调用的结果。</p><table><thead><tr><th>证据</th><th>支持什么判断</th><th>仍不能证明什么</th></tr></thead><tbody><tr><td>客户端 timeout</td><td>等待窗口内没有获得响应</td><td>服务端没有执行</td></tr><tr><td>服务端提交事件</td><td>该写入已经发生</td><td>客户端知道结果</td></tr><tr><td>同一逻辑操作关联两条工单</td><td>业务重复已经发生</td><td>哪一层应负责恢复</td></tr><tr><td>禁用盲重试后的对照运行</td><td>重试策略与重复结果有关</td><td>所有其他故障都已覆盖</td></tr></tbody></table><p>确认修复位置还要检查工具契约：服务是否支持幂等键、状态查询是否可靠、键是否绑定同一参数、保存多久。Stripe 的文档给出一个具体实现：在其 API 版本约定下，相同幂等键可以复用结果；其他工具不能因为也叫“创建”就被假定拥有同样保证。<a href=\"#ref-5\">[5]</a></p>"
       },
       {
         "id": "from-trace-to-eval",
-        "title": "把响应丢失写成一条回归题",
+        "title": "故障注入：将诊断变成可重复检查",
         "body": "<p>测试环境保留一个可控断点：数据库提交后，丢弃第一次响应。然后运行原来的用户任务，让恢复策略自行处理。判据直接检查数据库与调用记录，不要求模型必须说出某个固定句式。</p><pre><code class=\"language-python\"># 概念伪代码：故障注入与验收，不对应具体 SDK\nenv.reset(snapshot=&quot;empty-ticket-set&quot;)\nenv.drop_response_once(after=&quot;database_commit&quot;)\nresult = agent.run(task, operation_id=&quot;create-draft-17&quot;)\n\nassert env.ticket_count(operation_id=&quot;create-draft-17&quot;) == 1\nassert result.status in {&quot;confirmed&quot;, &quot;needs_confirmation&quot;}\nif result.status == &quot;confirmed&quot;:\n    assert result.claimed_ticket_id in env.ticket_ids()\nelse:\n    assert result.claims_success is False</code></pre><p>如果结果仍无法确认，报告未知比伪报成功更符合约定。要同时测试“请求未到服务端”“提交完成但响应丢失”“重试查询又超时”，否则只修好图中的一条路径。Anthropic 的评测实践强调读取实际 transcript、复核任务与 grader，并持续维护失败样本。<a href=\"#ref-3\">[3]</a></p>"
       },
       {
-        "id": "fields",
-        "title": "记录服务于排障，别把整段上下文当日志",
-        "body": "<p>这次故障最有价值的字段是逻辑操作 ID、尝试次数、客户端状态、服务端提交与最终记录数。模型 token、版本和停止原因可以解释调用开销，原始提示全文却未必有助于确认重复写入。</p><p>保留受控证据引用、参数摘要与访问权限，导出前过滤凭据和个人信息。OpenTelemetry 的安全文档提供了删除、过滤和变换敏感字段的做法。<a href=\"#ref-4\">[4]</a>哈希能用于部分关联，但不自动消除可重识别风险，也不能代替数据保留与访问规则。</p><p>采样同样影响结论：额外保留错误轨迹适合排障，不能据此推算总体失败率。若一百条保留轨迹里八十条是超时，首先要查看采样策略是否刻意保留了超时。需要估计总体发生率时，使用已知抽样概率或独立的全量计数。</p>"
-      },
-      {
         "id": "read-next",
-        "title": "这条 Trace 最后应该留下什么",
+        "title": "修复证据与持续观察",
         "body": "<p>修复记录应能指向一次重现、一个修改位置和一组回归结果。例如“创建工具增加幂等键，运行时在未知提交状态下先查询；三种响应故障均未产生重复记录”。如果只写“增强可观测性”，很难知道这次排障究竟改变了什么。</p><p>修复后继续观察真实流量中的未知提交、重复记录与恢复耗时。Trace 保存证据，<a href=\"agent-evaluation.html\">评测协议</a>定义怎样判定它；两者连接到同一个业务对象，才能把一次异常变成以后可以重复检验的约束。</p>"
       }
     ],
@@ -212,6 +232,24 @@
         "title": "Stripe · Idempotent requests",
         "url": "https://docs.stripe.com/api/idempotent_requests",
         "note": "官方接口文档；同一逻辑请求重试、结果复用及有效期。这里只引用幂等机制，不将其视为其他工具的默认保证。"
+      },
+      {
+        "id": "ref-6",
+        "title": "OpenTelemetry · Observability primer",
+        "url": "https://opentelemetry.io/docs/concepts/observability-primer/",
+        "note": "官方日志、指标与 Trace 的概念说明；本页字段取舍为应用层设计。"
+      },
+      {
+        "id": "ref-7",
+        "title": "OpenTelemetry · Context propagation",
+        "url": "https://opentelemetry.io/docs/concepts/context-propagation/",
+        "note": "官方上下文注入、提取与跨服务 Trace 关联；传播上下文不授予业务权限。"
+      },
+      {
+        "id": "ref-8",
+        "title": "OpenTelemetry · Sampling",
+        "url": "https://opentelemetry.io/docs/concepts/sampling/",
+        "note": "官方 head/tail sampling 的时机与代价；排障采样不能直接作为总体失败率的分母。"
       }
     ]
   }

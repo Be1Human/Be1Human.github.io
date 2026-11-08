@@ -6,3 +6,15 @@
 @media print{.figure-zoom-hint,.code-toolbar button{display:none}.code-frame{break-inside:avoid}.code-frame pre{white-space:pre-wrap}.code-frame code{white-space:pre-wrap!important}.code-frame{background:#fff;color:#111}.learn-figure{break-inside:avoid}#reading-figure-viewer{display:none}}
 
 .figure-open img[src*="paper"]{background:#fff}
+
+.math-display{margin:25px 0;padding:24px 20px;background:#142d39;border:1px solid #415965;border-left:3px solid #8bccce;border-radius:6px;max-width:100%;overflow:auto;color:#e9dfcd}
+.math-display math{font-family:"Cambria Math",math;font-size:1.2em;min-width:max-content;margin:0 auto;line-height:1.5}
+.attention-lab{padding:24px;margin:30px 0;border:1px solid #4c6776;border-radius:7px;background:#142d39}
+.attention-lab h3{margin-top:0!important}.attention-lab>p{font-size:13px;line-height:1.9}
+.attention-lab label{display:block;margin:22px 0;color:#e9dfcd;font-size:14px}.attention-lab output{float:right;color:#8bccce;font-family:Consolas,monospace}
+.attention-lab input[type=range]{display:block;width:100%;accent-color:#8bccce;margin-top:16px;cursor:pointer}
+.attention-lab-equation{font:15px/1.8 Consolas,monospace;padding:16px 0;color:#c9b0e4;overflow-wrap:anywhere}
+.attention-mass{height:24px;overflow:hidden;background:#d3918d;border-radius:4px}.attention-mass>span{display:block;height:100%;background:#8bccce;transition:width .1s}
+.attention-lab dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0 10px}.attention-lab dl>div{padding:12px;background:#0e242f;border:1px solid #3c5867;border-radius:4px}
+.attention-lab dt{font-size:11px;color:#a5b6ba}.attention-lab dd{margin:7px 0 0;color:#e9dfcd;font:20px/1.7 Consolas,monospace;overflow-wrap:anywhere}.attention-lab-note{margin-bottom:0!important;color:#a5b6ba}
+@media(max-width:760px){.math-display{padding:20px 13px}.math-display math{font-size:1.07em}.attention-lab{padding:18px 15px}.attention-lab dl{grid-template-columns:1fr}.attention-lab dl>div{display:flex;align-items:center;justify-content:space-between;gap:10px}.attention-lab dd{font-size:18px;margin:0}}

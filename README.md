@@ -91,3 +91,5 @@ npm run check
 学习正文与手记均支持 `sections[].body` 富文本；`paragraphs` 仍用于摘要和兼容读取。`scripts/rich-content.mjs` 在构建时使用随仓库分发的 Prism 1.30.0（MIT）生成静态高亮，无浏览器 CDN 依赖。论文原图和原创图解保存在 `assets/learning/`，各来源清单说明作者、出处和使用方式。图解可点开、切换原尺寸，手机可以横向查看大图。
 
 写作与核验约定见 [编辑约定](docs/editorial.md)。手记保留首次发布日期，修改另记更新日期；不补写没有记录的个人感受或实测经历。
+
+数学文章使用原生 MathML 排版；`assets/attention.js` 只在 Softmax/Attention 学习页加载，提供固定 logits 下 N 与分数差的交互计算。四张原创图可用 Matplotlib 执行 `python scripts/generate-attention-figures.py` 重建（Windows 微软雅黑字体），论文原图与出处见 `assets/learning/sources-attention.json`。

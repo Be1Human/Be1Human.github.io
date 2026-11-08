@@ -1,0 +1,37 @@
+{
+  "updated": "2026-11-08",
+  "original": [
+    {
+      "file": "attention-qkv-flow.svg",
+      "kind": "本站原创教学计算图",
+      "generator": "scripts/generate-attention-figures.py"
+    },
+    {
+      "file": "attention-softmax-steps.svg",
+      "kind": "本站原创教学计算图",
+      "generator": "scripts/generate-attention-figures.py"
+    },
+    {
+      "file": "attention-dilution-curve.svg",
+      "kind": "本站原创教学计算图",
+      "generator": "scripts/generate-attention-figures.py"
+    },
+    {
+      "file": "attention-signal-vectors.svg",
+      "kind": "本站原创教学计算图",
+      "generator": "scripts/generate-attention-figures.py"
+    }
+  ],
+  "paper": [
+    {
+      "file": "attention-lost-middle-paper.svg",
+      "title": "Lost in the Middle Figure 1",
+      "authors": "Nelson F. Liu et al.",
+      "source": "https://arxiv.org/html/2307.03172v3/figure1.svg",
+      "paper": "https://aclanthology.org/2024.tacl-1.9/",
+      "license": "CC BY 4.0",
+      "modification": "none",
+      "sha256": "c06f2d853a265ee3de6a17c30a0962c5633dfd73363f6e67f2c0798fe878af21"
+    }
+  ]
+}

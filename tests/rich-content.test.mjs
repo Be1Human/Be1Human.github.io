@@ -22,3 +22,11 @@ test('figure links keep a usable original-image fallback without JavaScript',()=
  assert.ok(linked.includes('class="figure-open"'));
  assert.equal((linked.match(/<a\b/g)||[]).length,2);
 });
+
+test('numeric HTML entities in authored code become copyable source, decoded once',()=>{
+ const html=renderRichContent('<pre><code class="language-plain">parse(&#x27;a,b&#x27;)&#10;assert x &#60; 3\n&amp;lt;literal&amp;gt;</code></pre>');
+ const code=html.match(/<pre><code[^>]*>([\s\S]*?)<\/code><\/pre>/)[1];
+ assert.ok(code.includes("parse('a,b')\nassert x &lt; 3"));
+ assert.ok(code.includes('&amp;lt;literal&amp;gt;'));
+ assert.ok(!code.includes('&amp;#x27;'));
+});
