@@ -41,7 +41,7 @@ async function moveScene(from,to,clip,reverse=false,rate=1.8){
  }
  if(token!==transitionToken)return false;transitioning=false;document.body.classList.remove('is-transitioning');return true;
 }
-function updateHero(){document.querySelectorAll('#hero-dots button').forEach((b,i)=>{b.classList.toggle('active',i===heroStep);b.setAttribute('aria-current',String(i===heroStep))});$('scene-label').textContent=String(heroStep+1).padStart(2,'0')+' / '+['THE BEGINNING','CLOSER','THROUGH THE SCREEN'][heroStep];$('hero-next').innerHTML=heroStep===heroLastStep?'进入 Agent 学习 <span>↓</span>':'下一幕 <span>↓</span>'}
+function updateHero(){document.querySelectorAll('#hero-dots button').forEach((b,i)=>{b.classList.toggle('active',i===heroStep);b.setAttribute('aria-current',String(i===heroStep))});$('scene-label').textContent=String(heroStep+1).padStart(2,'0')+' / '+['THE BEGINNING','CLOSER','THROUGH THE SCREEN'][heroStep];$('hero-next').hidden=heroStep===heroLastStep;$('hero-next').innerHTML='下一幕 <span>↓</span>'}
 for(let i=0;i<heroStates.length;i++){const b=document.createElement('button');b.setAttribute('aria-label','开场镜头 '+(i+1));b.addEventListener('click',()=>scrollToHero(i));$('hero-dots').append(b)}updateHero();
 async function stepHero(delta){if(transitioning)return;if(heroStep+delta>heroLastStep){scrollHomeContent('learning');return}const n=Math.max(0,heroStep+delta);if(n===heroStep)return;const ok=await moveScene(heroStates[heroStep],heroStates[n],heroClips[Math.min(heroStep,n)],delta<0,2.4);if(ok&&route==='home'){heroStep=n;updateHero()}}
 $('hero-next').addEventListener('click',()=>heroStep===heroLastStep?scrollHomeContent('learning'):scrollToHero(heroStep+1));
@@ -59,7 +59,7 @@ function startHomeIdle(){
  v.play().catch(failed);
 }
 function scrollToHero(step){if(route!=='home'||routeTransitioning)return;const el=$('home-opening'),range=Math.max(1,el.offsetHeight-innerHeight);window.scrollTo({top:el.getBoundingClientRect().top+scrollY+range*Math.max(0,Math.min(heroLastStep,step))/Math.max(1,heroLastStep),behavior:motionEnabled?'smooth':'instant'})}
-function updateHomeNavigation(){const learning=$('learning'),rect=learning?.getBoundingClientRect(),inLearning=!!rect&&rect.top<=innerHeight*.45&&rect.bottom>120;document.body.dataset.homeSection=inLearning?'learning':'opening';$('footer-hint').textContent=inLearning?'':'下滑推进 · 上滑倒回 · 继续进入 Agent 学习';for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);a.setAttribute('aria-current',active?'page':'false')}}
+function updateHomeNavigation(){const learning=$('learning'),rect=learning?.getBoundingClientRect(),inLearning=!!rect&&rect.top<=innerHeight*.45&&rect.bottom>120;document.body.dataset.homeSection=inLearning?'learning':'opening';$('footer-hint').textContent=inLearning?'':'下滑推进 · 上滑倒回';for(const a of document.querySelectorAll('.topbar nav a')){if(!['#home','#learning'].includes(a.hash))continue;const active=a.hash===(inLearning?'#learning':'#home');a.classList.toggle('active',active);a.setAttribute('aria-current',active?'page':'false')}}
 function syncHomeScroll(){
  if(route!=='home'||routeTransitioning||document.hidden)return;
  updateHomeNavigation();
@@ -133,7 +133,7 @@ function mountRoute(next){
  document.querySelectorAll('.topbar nav a').forEach(a=>{a.classList.toggle('active',a.hash==='#'+next);a.setAttribute('aria-current',a.hash==='#'+next?'page':'false')});
  if(next==='home'){heroStep=Math.max(0,heroStates.indexOf(activeScene));updateHero()}if(next==='journey'){journeyStep=Math.max(0,journeyStates.indexOf(activeScene));updateJourney()}
  if(next==='home'){deckRevealed=false;heroTarget=0;}
-  window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回 · 继续进入 Agent 学习':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'切换章节，继续探索';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
+  window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'切换章节，继续探索';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
 }
 async function go(next,{boot=false,instant=false}={}){
  const indexAnchor=next==='index',homeContentAnchor=isHomeContentAnchor(next)?next:null;

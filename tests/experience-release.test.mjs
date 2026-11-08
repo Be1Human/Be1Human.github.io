@@ -12,12 +12,15 @@ test('the generated homepage preserves the approved experience and its runtime a
   assert(html.indexOf('id="home-opening"')<html.indexOf('id="learning"'));
   assert(html.indexOf('id="learning"')<html.indexOf('id="index"'));
   assert.equal((html.match(/class="learn-topic"/g)||[]).length,0);
-  const entrance=html.match(/<section class="home-learning"[\s\S]*?<\/section>/)?.[0];
-  assert(entrance?.includes('href="learn.html"'));
-  assert(entrance.includes('id="home-learning-title">Agent 学习'));
+  const wiki=html.match(/<section class="home-learning"[\s\S]*?<\/section>/)?.[0];
+  assert(wiki?.includes('class="learn-sidebar"'));
+  assert(wiki.includes('href="learn/react.html"'));
+  assert(wiki.includes('data-learn-search'));
+  assert(!wiki.includes('进入学习'));
+  assert(!wiki.includes('home-learning-copy'));
   assert(!html.includes('learn-overview-graph'));
-  assert(!html.includes('src="assets/learn.js'));
-  assert(!html.includes('href="assets/learn.css'));
+  assert(html.includes('src="assets/learn.js'));
+  assert(html.includes('href="assets/learn.css'));
   assert(html.includes('克劳德梦见电子羊'));
   for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
     if (/^https?:/.test(match[1])) continue;

@@ -130,8 +130,8 @@ function feedEntry(entry) {
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
 // Preserve the approved interactive homepage when rebuilding news and archives.
 const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
-const homeLearning = `<section class="home-learning" id="learning" aria-labelledby="home-learning-title"><div class="home-learning-copy"><h2 id="home-learning-title">Agent 学习</h2><a class="outline-button" href="learn.html">进入学习 <span aria-hidden="true">→</span></a></div></section>`;
-const homeReadingAssets = new Map([['assets/reading.css',readingStyleVersion],['assets/reading.js',readingScriptVersion]]);
+const homeLearning = learningOutput.home;
+const homeReadingAssets = new Map([['assets/reading.css',readingStyleVersion],['assets/reading.js',readingScriptVersion],['assets/learn.css',learnStyleVersion],['assets/learn.js',learnScriptVersion]]);
 let homepage = homepageTemplate.replace('<!--HOME_AGENT_LEARNING-->',`<!--HOME_LEARNING_START-->${homeLearning}<!--HOME_LEARNING_END-->`);
 for (const [path,version] of homeReadingAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
 pages.set('index.html', homepage);
