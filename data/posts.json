@@ -5,7 +5,7 @@
     "date": "2026-11-08",
     "updatedAt": "2026-11-08",
     "title": "Softmax 与 Attention 原理：公式、计算与注意力稀释",
-    "summary": "解释 Q、K、V、缩放点积与 Softmax，手算权重和加权输出，再推导为什么固定分数差下竞争项增多会稀释注意力。含公式、图解、交互计算和 Python 示例。",
+    "summary": "Attention 决定从前文各处取多少信息，Softmax 负责把分数换成比例。从 Q、K、V 的含义开始，逐步算出这些比例，再说明内容变多时，为什么一条信息分到的比例可能变小。",
     "category": "Agent 学习",
     "tags": [
       "Attention",
@@ -13,22 +13,22 @@
       "Transformer"
     ],
     "image": "assets/images/attention-cover.svg",
-    "imageAlt": "缩放点积 Attention：Query 与 Key 打分，Softmax 归一化，再聚合 Value",
+    "imageAlt": "Attention 的计算：先打分，再把分数换成比例，最后按比例取信息",
     "hideCover": true,
     "sections": [
       {
-        "heading": "缩放点积与归一化",
+        "heading": "Attention 和 Softmax 各做什么",
         "paragraphs": [
-          "Attention 用查询与键的匹配分数生成权重，再对值向量加权求和。Softmax 只负责把一行分数归一化。"
+          "Attention 决定从各处取多少信息；Softmax 把一组分数换成加起来为 1 的比例。"
         ],
-        "body": "<p>Attention 用 Query 与 Key 的匹配分数生成权重，再对 Value 向量加权求和。Softmax 只负责把一行分数归一化，权重不是最终输出。</p><figure class=\"learn-figure\"><img src=\"../assets/learning/attention-qkv-flow.svg\" alt=\"单个查询与三个键计算分数，经过Softmax后聚合对应值向量\" width=\"1200\" height=\"825\"><figcaption>原创教学计算图。完整公式、变量和代码见学习页。</figcaption></figure>"
+        "body": "<p>Attention 可以理解为按比例从不同位置取信息。Query 表示当前要找什么，Key 用来与它比较，Value 是实际取出的信息。先比较 Query 和各个 Key，再用 Softmax 把分数换成比例，最后按这些比例把 Value 合在一起。</p><p>所以，Softmax 算出的比例只是中间一步，还不是 Attention 最后交出的信息。</p><figure class=\"learn-figure\"><img src=\"../assets/learning/attention-qkv-flow.svg\" alt=\"单个查询与三个键计算分数，经过Softmax后聚合对应值向量\" width=\"1200\" height=\"825\"><figcaption>原创教学图。图中演示一组数怎样依次算出分数、比例和结果，完整公式与代码见学习页。</figcaption></figure>"
       },
       {
-        "heading": "数量与分数差如何影响权重",
+        "heading": "内容多了，比例为什么可能变小",
         "paragraphs": [
-          "固定目标与等分背景的分数差为Δ时，目标权重为1/(1+N exp(−Δ))。"
+          "目标比分数相同的其它项高出 Δ 分，有 N 个其它项时，目标比例为 1 / (1 + N exp(−Δ))。"
         ],
-        "body": "<p>固定目标与等分背景的分数差为 Δ 时，目标权重是 <code>1 / (1 + N exp(−Δ))</code>。完整文章逐步推导分母与 ln N 的关系，并区分局部权重、输出向量和实际任务表现。</p>"
+        "body": "<p>先固定分数不变：目标比每个其它项高出 Δ 分，另外共有 N 项。目标分到的比例是 <code>1 / (1 + N exp(−Δ))</code>。其中 <code>exp(−Δ)</code> 就是 e 的 −Δ 次方。其它项越来越多，它们合起来占的份额就会增加。</p><p>学习页从具体数字开始，一步步说明公式里的分子、分母和数量。也会说明：某一处的比例变小，不等于 AI 一定忘了整条规则，更不能直接换算成任务出错的概率。</p>"
       }
     ],
     "links": [
@@ -47,7 +47,7 @@
     "learningId": "supervisor-verify-eval",
     "date": "2026-11-08",
     "title": "Supervisor、Verify 与 Eval：职责、机制与对比",
-    "summary": "Supervisor 选择下一步，Verify 检查当前对象，Eval 按判据形成可比较的反馈。理解三者的输入输出、在线协同、护栏位置，以及漏检与误拦的统计分母。",
+    "summary": "Supervisor 决定下一步做什么，Verify 检查眼前的结果是否符合要求，Eval 记录并比较任务做得怎样。这篇说明三者怎样配合，以及漏检和误拦怎样计算。",
     "category": "Agent 学习",
     "tags": [
       "Supervisor",
@@ -58,18 +58,18 @@
     "imageAlt": "调度、验证与评测：同一任务的三种职责，原创教学结构示意",
     "sections": [
       {
-        "heading": "三种机制的职责",
+        "heading": "谁安排下一步，谁负责检查",
         "paragraphs": [
-          "Supervisor 决定下一步执行，Verify 判断当前候选是否满足约束，Eval 按任务协议测量系统表现。"
+          "Supervisor 安排下一步；Verify 检查当前答案或动作；Eval 用事先定好的条件检查一次或一批任务。"
         ],
-        "body": "<p>Supervisor 管理执行方向，输出路由、等待、重试或结束决策；Verify 检查候选或动作的具体约束，返回通过、失败或未知及相应证据；Eval 对完整运行或样本集合按协议评分，测量质量、成本和稳定性。</p><p>三者可以由规则、代码或模型实现，区分它们要看检查结果怎样被使用。验证失败会进入当前请求的控制流，旁路评测则记录测量；将某个评分接成放行条件时，它又承担了门控职责。</p>"
+        "body": "<p>Supervisor 可以理解为安排任务的主管：决定接着查资料、修改、等待，还是结束。Verify 是当前这一步的检查：答案或动作是否满足要求，哪里没过，哪里还无法确认。Eval 是评测：用事先定好的条件，检查任务质量、花费和是否稳定。</p><p>它们都可能由程序规则或模型来做。区别要看检查结果用在哪里：是马上影响这次任务下一步，还是保存下来，供之后比较不同版本。一个评分如果被用来决定当前动作能否继续，也就在做放行检查。</p>"
       },
       {
-        "heading": "全文中的对比",
+        "heading": "同一份草稿怎样经过三种处理",
         "paragraphs": [
-          "文章沿 D23 到 D24 的补查与修订，解释在线门控、旁路评分、未知状态和评分器误判。"
+          "文章用 D23 与 D24 两份版本资料说明：补到新资料以后，还要重新检查草稿内容。"
         ],
-        "body": "<p>补查 D24 之后，仍要核对发布版本、参数内容与换算结果。候选 v2 将 8000 毫秒写为 8 秒，再走一遍验证；草稿就绪也不表示已经提交。只换文档编号就判通过，会把同一个证据缺口带进新候选。</p><p>Eval 可以逐次提供反馈，也能在离线样本集上比较版本。某个分数被用来决定当前请求是否放行时，同一个检查又承担了门控职责。全文按这条数据流展开。</p>"
+        "body": "<p>草稿问的是 2.4 版，却引用了 2.3 版文档 D23。补查 2.4 版文档 D24 后，还要核对里面的参数，再把 8000 毫秒换成 8 秒。只把引用编号换掉，不能证明内容已经改对。</p><p>修改后的第二版草稿还要再检查一遍。草稿准备好，也不代表已经提交。评测可以记录这次修订的结果，也可以把一批任务放在一起，看改动有没有减少错误、增加多少花费。</p>"
       }
     ],
     "links": [
@@ -92,7 +92,7 @@
     "id": "agent-learning-guide",
     "date": "2026-11-08",
     "title": "Agent 学习目录",
-    "summary": "从 Softmax 与 Attention 到 ReAct、任务运行、检索、记忆与评测，按技术主题查阅原理、公式、流程和代码。",
+    "summary": "从 Attention 怎样取信息，到 AI 怎样查资料、用工具、记住事情和检查结果，按问题查阅 15 篇学习文章。",
     "category": "Agent 学习",
     "tags": [
       "Agent",
@@ -100,21 +100,21 @@
       "学习笔记"
     ],
     "image": "assets/images/agent-learning-cover.svg",
-    "imageAlt": "同一文档比较任务的三个观察角度：证据与行动、运行状态与恢复、判据与重复结果",
+    "imageAlt": "从三个角度看同一任务：资料怎样改变下一步、任务怎样继续、结果怎样检查",
     "sections": [
       {
-        "heading": "同一个任务，三个观察角度",
+        "heading": "同一个任务，可以从三个角度看",
         "paragraphs": [
-          "比较两份版本文档时，ReAct 解释证据怎样改变行动，Loop 解释运行状态与恢复，Eval 检查判据和重复结果。"
+          "ReAct 解释新资料怎样改变下一步；Loop 解释任务怎样继续或恢复；Eval 检查是否做成、再试一次是否还行。"
         ],
-        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/notes-reading-map.svg\" alt=\"同一文档比较任务在ReAct、Loop与Eval三个观察角度的阅读地图\" width=\"1200\" height=\"590\"><figcaption>三个入口对应不同问题。图中任务为学习示例；下方各篇继续展开执行记录、状态与评测口径。</figcaption></figure>"
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/notes-reading-map.svg\" alt=\"同一文档比较任务在ReAct、Loop与Eval三个观察角度的阅读地图\" width=\"1200\" height=\"590\"><figcaption>图中用比较两份版本文档的教学任务，说明三个不同问题：看到新资料后怎么办，任务中断后怎么办，最后怎样检查有没有做好。</figcaption></figure>"
       },
       {
-        "heading": "按卡住的位置找文章",
+        "heading": "按想弄明白的问题找文章",
         "paragraphs": [
-          "缺证据时看检索与上下文；任务失控时看Loop和调度；不知道改动是否有效时看评测与追踪。"
+          "资料不对就看资料选择与检索；任务停不下来就看循环和调度；不知道改动有没有用就看评测和运行记录。"
         ],
-        "body": "<p>发现模型使用了过期材料，可以从上下文工程、记忆与 Agentic RAG 查起。任务重复调用同一工具，则要检查 Loop 的状态、预算和退出条件。</p><p>Supervisor、Verify 与 Eval 的对比篇讨论三种职责怎样连接。评测综述讨论任务样本、评分器、环境与预算怎样共同影响一个成绩。</p><p>目录目前有 15 篇。每篇保留原始资料，图解与代码放在对应问题旁边；论文结果与本地小案例分开标注。</p>"
+        "body": "<p>想知道模型怎样从前文取信息，可以先看 Softmax 与 Attention。想知道 AI 为什么需要再查一次资料，可以看 ReAct。资料过期或互相矛盾时，可以看上下文工程（给模型准备本次要看的内容）、记忆和 Agentic RAG（边查边判断资料够不够）。</p><p>任务一直重复调用工具，可以看 Agent Loop——让任务反复执行、检查并决定何时停止的程序。如果想分清谁安排下一步、谁检查当前结果、谁比较整体表现，可以看 Supervisor、Verify 与 Eval。</p><p>目录目前有 15 篇。各篇保留原始资料，在相关说明旁放图解和代码。论文中测得的结果与本站教学例子分别注明。</p>"
       }
     ],
     "links": [
@@ -141,8 +141,8 @@
   {
     "id": "jev-co-creation",
     "date": "2026-11-04",
-    "title": "Jev 阅读笔记：分类结果怎样接到动作",
-    "summary": "把一条新闻的分类拆成证据、答案空间和发布策略。标签选对了，仍有两件事要检查：概率是否可信，以及程序是否允许执行。",
+    "title": "Jev 阅读笔记：选好类别以后，程序还要检查什么",
+    "summary": "用一条新闻说明怎样给 AI 准备材料和选项，以及怎样读它返回的概率。选中了类别，并不等于可以直接发布。",
     "category": "学习心得",
     "tags": [
       "Jev",
@@ -150,28 +150,28 @@
       "学习心得"
     ],
     "image": "assets/images/jev-decision-cover.svg",
-    "imageAlt": "新闻分类的证据、候选标签与发布策略图",
+    "imageAlt": "先给新闻选类别，再由程序决定是否发布或交给人复核",
     "sections": [
       {
-        "heading": "一条新闻，两个不同问题",
+        "heading": "先定分类规则，再决定是否发布",
         "paragraphs": [
-          "“这是什么类别”由判断接口回答，“能不能发布”由程序策略决定。两者用到的信息并不相同。"
+          "“属于哪类”和“能否发布”是两个问题，不能只选中一个标签就直接发布。"
         ],
-        "body": "<p>一条关于 Minecraft AI 伙伴的更新，既涉及游戏，也涉及开发工具。若归档系统只能选一个主分类，先要定规则：按使用场景分，还是按产品形态分？没有这条规则，模型与人工都可能给出不同答案。</p><p>Jev 课程讨论的入口是有限答案空间：把本次允许使用的材料放进 state，再定义问题和选项。返回值便于代码读取，发布动作仍由应用决定。</p><figure class=\"learn-figure\"><img src=\"../assets/learning/notes-decision.svg\" alt=\"新闻进入标签判断后，再由程序根据规则决定发布或复核\" width=\"1200\" height=\"620\"><figcaption>同一最高标签可以对应完全不同的分布。图中数字为教学设定；不能据此推断接口准确率、延迟或校准。</figcaption></figure>"
+        "body": "<p>一条关于 Minecraft AI 伙伴的更新，既与游戏有关，也像开发工具。如果只能选一个主分类，就要先定规则：按使用场景分，还是按产品形态分？规则不同，模型和人都可能给出不同答案。</p><p>Jev 课程介绍了“有限答案”的做法，也就是先列好允许选择的答案。把这次判断能用的材料放进 <code>state</code>，可以把它理解为一包资料；再写清问题和选项。这样返回的答案方便程序读取，但能不能发布，仍要由程序检查。</p><figure class=\"learn-figure\"><img src=\"../assets/learning/notes-decision.svg\" alt=\"新闻进入标签判断后，再由程序根据规则决定发布或复核\" width=\"1200\" height=\"620\"><figcaption>两组结果选中的类别相同，但给各类别的概率不同。数字只是教学设定，不能当成接口准确率、速度或概率是否可信的实测结果。</figcaption></figure>"
       },
       {
-        "heading": "State 里放什么",
+        "heading": "State 这包资料里放什么",
         "paragraphs": [
-          "state 保存当前可用证据；日期、来源和正文应先于分类规则准备。"
+          "state 保存这次判断可以看的资料，例如标题、正文、来源和日期。"
         ],
-        "body": "<p>新闻归档可以只提供标题、正文、原始来源和发布时间。人工最终标签不应塞进 state，否则评测时等于把答案交给了模型。下面只演示数据结构，不对应 SDK 的调用签名。</p><pre><code class=\"language-json\">{\n  &quot;state&quot;: {\n    &quot;title&quot;: &quot;Minecraft 伙伴新增目标执行&quot;,\n    &quot;source&quot;: &quot;项目发布记录&quot;,\n    &quot;text&quot;: &quot;增加任务日志与游戏状态检查。&quot;\n  },\n  &quot;question&quot;: &quot;按产品形态选择主分类&quot;,\n  &quot;choices&quot;: [\n    &quot;开发工具&quot;,\n    &quot;游戏&quot;,\n    &quot;硬件&quot;\n  ],\n  &quot;policy&quot;: {\n    &quot;ambiguous&quot;: &quot;人工复核&quot;,\n    &quot;publish_requires&quot;: [\n      &quot;来源可访问&quot;,\n      &quot;发布时间已核对&quot;\n    ]\n  }\n}</code></pre><p>如果允许多标签，就不应为了凑一个 Choice 而把信息挤掉。主分类与附加标签也可以拆成两个问题，各自保留判据。</p>"
+        "body": "<p>新闻归档可以提供标题、正文、原始来源和发布时间。做测试时，不能把人工确认的最终类别也放进去，否则等于先把答案告诉了模型。下面只演示资料怎样摆放，不是可以直接调用 Jev 的完整代码。</p><pre><code class=\"language-json\">{\n  &quot;state&quot;: {\n    &quot;title&quot;: &quot;Minecraft 伙伴新增目标执行&quot;,\n    &quot;source&quot;: &quot;项目发布记录&quot;,\n    &quot;text&quot;: &quot;增加任务日志与游戏状态检查。&quot;\n  },\n  &quot;question&quot;: &quot;按产品形态选择主分类&quot;,\n  &quot;choices&quot;: [\n    &quot;开发工具&quot;,\n    &quot;游戏&quot;,\n    &quot;硬件&quot;\n  ],\n  &quot;policy&quot;: {\n    &quot;ambiguous&quot;: &quot;人工复核&quot;,\n    &quot;publish_requires&quot;: [\n      &quot;来源可访问&quot;,\n      &quot;发布时间已核对&quot;\n    ]\n  }\n}</code></pre><p>如果一条新闻可以有多个标签，就不必硬挤成一个选项。也可以分成“主分类是什么”和“还要加哪些标签”两个问题，分别说明怎样选。</p>"
       },
       {
-        "heading": "概率该怎样读",
+        "heading": "返回 0.99，就一定比 0.51 靠谱吗",
         "paragraphs": [
-          "0.51 与 0.99 都可能选中同一标签，但单条概率不能代替跨样本校准。"
+          "要看概率是否可信，需要对照一批已经知道正确类别的新闻，不能只看一个数字。"
         ],
-        "body": "<p>按“开发工具、游戏、硬件”的选项顺序，两组教学分布分别为 [0.51, 0.49, 0] 和 [0.99, 0.01, 0]。这里把硬件概率设为 0 只是示例设定，不是接口实测。两组最高标签相同，分布形状却很不同。后者是否更可靠，要拿带标注的样本检验。课程把概率、正确性与校准分开讨论：一条记录对不对靠参考标注；一组“报 0.8”的预测是否约有八成命中，才涉及校准。</p><p>因此，归档策略需要记录被复核的原因，并查看错分主要集中在哪些边界。把所有错误都归结为“模型不够聪明”，无法回答应该改标签规则、补上下文，还是换判断器。</p>"
+        "body": "<p>按“开发工具、游戏、硬件”的顺序，两组教学结果分别是 <code>[0.51, 0.49, 0]</code> 和 <code>[0.99, 0.01, 0]</code>。它们都把开发工具放在第一位，但第一组与游戏很接近，第二组给开发工具的概率高得多。硬件为 0 是这里的示例设定，不是接口实测。</p><p>第二组是不是更可信，需要对照一批人工确认过类别的新闻。“这条分对了吗”看这条的正确答案；“给出的概率准不准”则要看一批结果。例如很多次报 0.8 时，是否真的大约八成分对了。这种概率与实际正确比例是否对得上的检查，叫校准。</p><p>分类错了，先看错在哪里：分类规则是否含糊，资料是否不够，还是负责分类的模型表现不合适。把原因都说成“模型不够聪明”，很难知道下一步该改什么。需要人工复核的记录，也应保留为什么送去复核。</p>"
       }
     ],
     "links": [
@@ -190,10 +190,10 @@
   {
     "id": "a-new-home-for-ideas",
     "inFeed": false,
-    "title": "博客入口与内容归档",
+    "title": "博客内容放在哪里，更新怎样查",
     "date": "2026-10-30",
     "category": "站点记录",
-    "summary": "作品、手记、Agent 学习和新闻各有独立入口。文章链接保留，内容更新时同步首页和静态阅读页。",
+    "summary": "作品、手记、Agent 学习和新闻各有入口。同一篇文章更新后继续用原链接，并保留首次发布与最近更新的日期。",
     "image": "assets/images/blue-sky-train.png",
     "imageAlt": "蓝天与云间列车，来自云上男孩的动态壁纸作品",
     "tags": [
@@ -203,18 +203,18 @@
     ],
     "sections": [
       {
-        "heading": "四类内容",
+        "heading": "四类内容，各有入口",
         "paragraphs": [
-          "作品集记录做过的项目；手记解释制作过程；学习页整理技术问题；新闻按日期保留来源。"
+          "作品集放项目介绍，手记放制作说明，学习页讲技术，新闻按日期保留来源。"
         ],
-        "body": "<p>作品集放项目介绍、实际截图与使用入口。手记留给需要展开说明的制作过程。Agent 学习页按机制与问题组织文章，独立于发布日期排列的时间线。</p><p>新闻使用日期归档，每条保留原始链接。来源作者展示了什么，与本站实际验证了什么，需要分别说明。</p>"
+        "body": "<p>作品集放项目介绍、实际截图和使用入口。需要展开说明的制作过程放在手记里。Agent 学习页按技术和问题分类，不必按发布日期一篇篇往前翻。</p><p>新闻按日期归档，每条保留原始链接。原作者展示了什么、本站实际检查了什么，会分别说明。</p>"
       },
       {
-        "heading": "链接与更新",
+        "heading": "原链接继续用，修改日期单独记",
         "paragraphs": [
-          "独立文章和旧链接继续可访问；更新日期与首次发布日期分开。"
+          "文章更新仍用原地址；首次发布日期与更新日期分开显示。"
         ],
-        "body": "<p>同一篇内容可以从主页、时间线或学习目录进入。文章修改后沿用原地址，保留首次发布日期，并显示更新信息。旧作品入口继续转向当前页面。</p><p>项目源码的可见范围不随博客展示变化。私有工程可以有公开介绍页，介绍页只放已整理的公开内容。</p>"
+        "body": "<p>同一篇文章可以从主页、手记列表或学习目录进入。修改后继续用原地址，保留首次发布日期，再显示更新信息。旧作品链接也会转到现在的页面。</p><p>博客展示项目，不会自动改变源码的公开范围。私有工程也可以有公开介绍页，页面只放已经整理好的公开内容。</p>"
       }
     ],
     "links": [],
@@ -223,12 +223,12 @@
   },
   {
     "id": "a-train-through-the-clouds",
-    "title": "动态壁纸工作坊：素材分层与程序绘制",
+    "title": "动态壁纸：图片分层与用程序画图",
     "date": "2026-10-30",
     "category": "项目手记",
-    "summary": "蓝天列车使用透明素材与 Shader 混合，星空列车由 GLSL 程序绘制。两张成片相近，制作中要解决的问题不同。",
+    "summary": "蓝天列车把透明图片与绘图程序合在一起，星空列车则用程序绘制。这里说明分层、遮挡和远近移动速度怎样处理。",
     "image": "assets/images/starry-night.png",
-    "imageAlt": "动态壁纸工作坊中的星空列车实际渲染截图",
+    "imageAlt": "动态壁纸工作坊里，程序实际绘出的星空列车画面",
     "tags": [
       "WebGL",
       "Shader",
@@ -236,25 +236,25 @@
     ],
     "sections": [
       {
-        "heading": "先区分两种成片",
+        "heading": "两种画面，用了不同做法",
         "paragraphs": [
-          "蓝天列车是素材与 Shader 混合，星空列车由 GLSL 实时绘制。"
+          "蓝天列车把透明图片与 Shader 绘图程序合在一起；星空列车用 GLSL 语言实时绘制。"
         ],
-        "body": "<figure class=\"learn-figure\"><img src=\"../assets/images/blue-sky-train.png\" alt=\"蓝天湖景列车的实际画面\" width=\"2048\" height=\"768\"><figcaption>蓝天湖景列车：透明素材组成场景，视差、局部遮挡、水面与微动分别处理。</figcaption></figure><figure class=\"learn-figure\"><img src=\"../assets/images/starry-night.png\" alt=\"星空列车桥梁与水面的实际渲染\" width=\"1920\" height=\"1080\"><figcaption>星空列车：星空、云、桥、列车、蒸汽和水面由 GLSL 绘制。图为项目已有渲染截图。</figcaption></figure>"
+        "body": "<p>Shader 可以理解为负责画面效果的绘图程序，GLSL 是编写这类程序的语言。蓝天案例把透明图片与 Shader 合在一起；星空案例则用 GLSL 绘出场景。</p><figure class=\"learn-figure\"><img src=\"../assets/images/blue-sky-train.png\" alt=\"蓝天湖景列车的实际画面\" width=\"2048\" height=\"768\"><figcaption>蓝天湖景列车：先用透明图片组成场景，再分别处理远近层的移动、前后遮挡、水面和小幅运动。</figcaption></figure><figure class=\"learn-figure\"><img src=\"../assets/images/starry-night.png\" alt=\"星空列车桥梁与水面的实际渲染\" width=\"1920\" height=\"1080\"><figcaption>星空列车：星空、云、桥、列车、蒸汽和水面由 GLSL 绘出。这是项目已有的实际画面截图。</figcaption></figure>"
       },
       {
-        "heading": "分层要解决遮挡和视差",
+        "heading": "为什么远山和近景不能移动得一样快",
         "paragraphs": [
-          "视差参数不同，观察点移动时各层的偏移就不同。缺少的背景区域还需要补齐。"
+          "视点移动时，远处和近处看起来移动速度不同，这种差别叫视差。"
         ],
-        "body": "<p>把画面切成天空、云、远山、桥、列车和水面之后，各层不能简单使用同一个偏移。远景通常变化较慢，近景变化较快；列车经过山体、枝叶和桥梁时，前后顺序也要保持一致。</p><p>下面用三个系数演示视差关系，不是项目代码摘录。相同的 camera_offset 产生不同位移；系数只控制运动尺度，不能自动补出被遮住的背景。</p><pre><code class=\"language-python\">camera_offset = 100\nparallax = {\"sky\": 0.1, \"mountain\": 0.35, \"foreground\": 0.8}\noffsets = {layer: camera_offset * k for layer, k in parallax.items()}\n# {\"sky\": 10, \"mountain\": 35, \"foreground\": 80}</code></pre><p>项目保留的 TA 拆解有 37 个可见图层，但那张拆解参考与动态蓝天案例不是同一张图。静态重组对得上，不等于隐藏背景、无限延伸和运动素材已经准备好。</p>"
+        "body": "<p>画面拆成天空、云、远山、桥、列车和水面后，各层不能简单地移动相同距离。远处通常变化较慢，近处变化较快，这就是这里要做的视差。列车经过山体、枝叶和桥梁时，谁在前、谁在后，也要保持一致。</p><p>下面用三个系数演示：镜头偏移 <code>camera_offset</code> 同样是 100，天空移动 10，山移动 35，近景移动 80。它是教学代码，不是项目源码摘录。系数决定移动多少，不能自动画出原来被挡住的背景。</p><pre><code class=\"language-python\">camera_offset = 100\nparallax = {\"sky\": 0.1, \"mountain\": 0.35, \"foreground\": 0.8}\noffsets = {layer: camera_offset * k for layer, k in parallax.items()}\n# {\"sky\": 10, \"mountain\": 35, \"foreground\": 80}</code></pre><p>项目保留的一份技术美术（TA）图层拆解里，有 37 个可见图层。但那份参考图与动态蓝天案例不是同一张图。把原图拼回去对得上，不代表被挡住的背景已经补齐，也不代表画面已经能一直延伸和运动。</p>"
       },
       {
-        "heading": "验收对象也要分开",
+        "heading": "画面好看之后，还要检查运动和导出",
         "paragraphs": [
-          "画面、运动、性能与导出包是不同检查对象。蓝天案例的通过记录不能自动覆盖其他主题。"
+          "画面、运动、运行是否顺畅、导出的文件是否完整，需要分开检查。"
         ],
-        "body": "<p>壁纸运动时，水面倒影要对应被选中的对象，近景变化要能重复，镜头前进和倒退不能出现不连续的跳变。导出后还要确认成品带齐实际引用的素材。</p><p>项目提供制作与验收两份 Skill，以及本地运行和导出说明。现有验收适配蓝天案例；新主题、星空案例和原生 Wallpaper Engine 的覆盖范围，需要分别看报告。下方入口保留了相应文档。</p>"
+        "body": "<p>壁纸运动时，水面倒影要对应选中的对象；近景运动要能重复；镜头前进或倒退时，画面不能突然跳变。导出后还要确认用到的素材都带齐了。</p><p>项目提供制作和验收两份 Skill，也就是给助手执行时遵循的操作说明；另有本地运行和导出文档。现有检查适配蓝天案例。其它主题、星空案例和原生 Wallpaper Engine 分别检查到了哪里，需要各看报告，不能用一份“通过”替全部内容作保证。</p>"
       }
     ],
     "links": [
@@ -272,10 +272,10 @@
   },
   {
     "id": "meet-mineclaw",
-    "title": "MineClaw：完成任务要看游戏事实",
+    "title": "MineClaw：检查游戏里是否真的完成任务",
     "date": "2026-10-30",
     "category": "项目手记",
-    "summary": "用背包至少四个原木的教学案例，解释 MineClaw 为什么要把动作返回与世界状态分开检查；现有控制台截图不代表一次成功任务。",
+    "summary": "用“背包里至少有四个原木”的教学例子说明：工具说成功，还要看游戏里的实际结果。现有控制台截图展示的是待连接界面。",
     "image": "assets/images/mineclaw.jpg",
     "imageAlt": "MineClaw 控制台待连接界面，背包栏暂无数据",
     "tags": [
@@ -285,25 +285,25 @@
     ],
     "sections": [
       {
-        "heading": "控制台里哪些信息是真正的证据",
+        "heading": "界面显示出来，不等于任务已经完成",
         "paragraphs": [
-          "项目控制台分开显示任务、背包和日志。截图中的背包仍在等待数据，不能把界面出现当成任务完成。"
+          "控制台能显示任务、背包和日志；这张截图还没有背包数据，不能据此判断任务成功。"
         ],
-        "body": "<figure class=\"learn-figure\"><img src=\"../assets/images/mineclaw.jpg\" alt=\"MineClaw 控制台待连接界面，背包栏显示暂无背包数据\" width=\"1440\" height=\"900\"><figcaption>项目现有控制台截图。右侧背包栏为“暂无背包数据”，它展示界面结构，不展示一次成功任务。</figcaption></figure><p>公开版本把日常对话与目标执行拆开：MainBrain 负责对话路径，GoalAgent 推进任务；Mineflayer 适配器连接游戏世界，控制台展示调用、事件和完成证据。任务完成应落在背包、方块、容器或距离等游戏事实上。</p>"
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/images/mineclaw.jpg\" alt=\"MineClaw 控制台待连接界面，背包栏显示暂无背包数据\" width=\"1440\" height=\"900\"><figcaption>项目现有控制台截图。背包栏写着“暂无背包数据”，可以看到界面布局，还看不到一次任务成功的结果。</figcaption></figure><p>公开版本把聊天和做任务分开：MainBrain 负责日常对话，GoalAgent 负责推进目标任务；基于 Mineflayer 的连接程序负责与游戏交流。控制台显示工具调用、发生的事件，以及完成任务的依据。是否完成，要检查背包、方块、容器或距离等实际结果。</p>"
       },
       {
-        "heading": "工具成功之后，还有一次验收",
+        "heading": "挖掘成功后，为什么还要看背包",
         "paragraphs": [
-          "教学目标是背包至少四个原木。挖掘调用返回成功后，掉落物可能还在地上。"
+          "目标是背包至少有四个原木。挖掘成功时，原木可能还掉在地上，并没进背包。"
         ],
-        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/notes-inventory.svg\" alt=\"目标为背包四个原木，工具成功时背包仍为一，拾取后达到四才通过\" width=\"1200\" height=\"620\"><figcaption>教学验收轨迹。它解释项目 README 所说的世界状态验真，不是一次实际游戏测试记录。</figcaption></figure><p>这个差别会改变下一步：如果方块已消失但背包数没增加，要查掉落物、拾取和背包状态；如果材料够了，继续挖掘反而浪费动作。完成条件直接决定何时停止。</p><pre><code class=\"language-json\">{\n  &quot;goal&quot;: {\n    &quot;item&quot;: &quot;oak_log&quot;,\n    &quot;inventory_at_least&quot;: 4\n  },\n  &quot;tool_result&quot;: {\n    &quot;dig&quot;: &quot;success&quot;\n  },\n  &quot;observation&quot;: {\n    &quot;oak_log&quot;: 1\n  },\n  &quot;verdict&quot;: &quot;not_complete&quot;,\n  &quot;next_check&quot;: &quot;掉落物与拾取结果&quot;\n}</code></pre>"
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/notes-inventory.svg\" alt=\"目标为背包四个原木，工具成功时背包仍为一，拾取后达到四才通过\" width=\"1200\" height=\"620\"><figcaption>这是教学检查过程，用来说明项目 README 所说的“用游戏实际状态确认结果”，不是一次真实游戏测试记录。</figcaption></figure><p>如果方块消失了，背包数量却没增加，下一步应该检查掉落物有没有被拾取、背包有没有更新。如果原木已经够了，就该停止。工具返回“成功”和用户的目标完成，是两件需要分别检查的事。</p><pre><code class=\"language-json\">{\n  &quot;goal&quot;: {\n    &quot;item&quot;: &quot;oak_log&quot;,\n    &quot;inventory_at_least&quot;: 4\n  },\n  &quot;tool_result&quot;: {\n    &quot;dig&quot;: &quot;success&quot;\n  },\n  &quot;observation&quot;: {\n    &quot;oak_log&quot;: 1\n  },\n  &quot;verdict&quot;: &quot;not_complete&quot;,\n  &quot;next_check&quot;: &quot;掉落物与拾取结果&quot;\n}</code></pre>"
       },
       {
-        "heading": "运行范围",
+        "heading": "项目包含什么，怎样判断实际能力",
         "paragraphs": [
-          "需要 Minecraft Java 服务器与模型接口。具体覆盖以固定版本文档和测试为准。"
+          "运行需要 Minecraft Java 服务器和模型接口；上面的例子不是成功率报告。"
         ],
-        "body": "<p>公开仓库包含运行时、控制台、功能测试和 Benchmark。服务器、世界存档、账号配置以及运行中的数据库不在发布内容里。启动伙伴运行时和 Web 控制台时，两者是独立进程。</p><p>这篇记录采用下方固定提交的项目说明；上面的原木轨迹是验收条件示例。要评价真实伙伴能完成多少任务，还需要在指定服务器、材料和模型配置上重复运行。</p>"
+        "body": "<p>公开仓库包含伙伴实际运行的程序、网页控制台、功能测试，以及用来比较表现的一组测试任务（Benchmark）。游戏服务器、世界存档、账号设置和正在使用的数据库不在公开内容里。伙伴运行程序与网页控制台分别启动，是两个独立程序。</p><p>这篇记录依据下方链接锁定版本的项目说明。上面的四原木例子，只说明怎样检查任务是否完成。要知道真实伙伴能完成多少任务，还需要固定服务器、材料和模型设置，再重复运行测试。</p>"
       }
     ],
     "links": [

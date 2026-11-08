@@ -12,7 +12,7 @@ test('the learning collection has complete lessons, original examples and resolv
  for(const article of articles){
   const text=article.sections.map(s=>s.body).join('');
   assert.ok(text.replace(/<[^>]+>/g,'').length>1000,`${article.id}: detailed lesson required`);
-  assert.ok(/教学|练习|实践|示例/.test(text),article.id);
+  assert.ok(/教学|练习|实践|示例|例子/.test(text),article.id);
   assert.ok(!/待补充|TODO|lorem ipsum/i.test(text),article.id);
   const html=await read(`learn/${article.id}.html`);
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);

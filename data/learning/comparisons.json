@@ -3,7 +3,7 @@
     "id": "supervisor-verify-eval",
     "title": "Supervisor、Verify 与 Eval：职责、机制与对比",
     "eyebrow": "SUPERVISOR · VERIFY · EVAL",
-    "summary": "Supervisor 选择下一步，Verify 检查当前对象，Eval 按判据形成可比较的反馈。理解三者的输入输出、在线协同、护栏位置，以及漏检与误拦的统计分母。",
+    "summary": "Supervisor 决定下一步做什么，Verify 检查眼前的结果是否符合要求，Eval 记录并比较任务做得怎样。这篇说明三者怎样配合，以及漏检和误拦怎样计算。",
     "category": "核心机制",
     "level": "进阶",
     "minutes": 21,
@@ -12,68 +12,68 @@
     "sections": [
       {
         "id": "three-questions",
-        "title": "三个职责的输入与输出",
-        "body": "<p>Supervisor、Verify 与 Eval 分别描述调度、验证与评测三种职责。Supervisor 根据任务状态选择后续动作；Verify 判断某个输入、动作或候选是否满足指定条件；Eval 使用判据对一次或一组运行产生反馈，以衡量表现和比较版本。三者可以由同一程序组合实现，也可以分开部署，并不要求三个模型。</p><table><thead><tr><th>职责</th><th>主要输入</th><th>主要输出</th><th>结果怎样生效</th></tr></thead><tbody><tr><td>Supervisor</td><td>目标、状态、候选动作、预算</td><td>下一节点或动作、停止或移交决定</td><td>控制执行路径</td></tr><tr><td>Verify</td><td>被检查对象、规则、必要证据</td><td>通过／失败／未知及原因</td><td>由控制策略选择阻断、修订或继续</td></tr><tr><td>Eval</td><td>任务、运行结果或轨迹、评分判据</td><td>分项反馈、错误分类与汇总指标</td><td>支持分析、回归比较，也可供在线控制使用</td></tr></tbody></table><p>区别在于职责，不是单纯的运行时机。Eval 可离线、在线或异步执行；若评分结果参与当前请求的放行，它也承担 Gate 的控制职责。Verify 也不只发生在最终答案之后：访问前、工具调用前和输出前，都可能有各自的检查。</p>"
+        "title": "三者各自负责什么",
+        "body": "<p>Supervisor、Verify 和 Eval 是三种不同工作。Supervisor 决定接下来做什么；Verify 检查某个输入、动作或结果是否符合要求；Eval 给一次或一批任务打分、分类，比较做得怎样。它们可以放在同一个程序里，也可以分开运行，不必使用三个模型。</p><table><thead><tr><th>职责</th><th>需要什么信息</th><th>给出什么结果</th><th>结果用来做什么</th></tr></thead><tbody><tr><td>Supervisor</td><td>目标、任务进展、可选动作和剩余额度</td><td>下一步做什么、停止还是交给别人</td><td>决定后续步骤</td></tr><tr><td>Verify</td><td>要检查的内容、要求和相关资料</td><td>通过／失败／未知及原因</td><td>供程序决定拦住、修改或继续</td></tr><tr><td>Eval</td><td>任务、结果或执行记录、评分规则</td><td>各项得分、错误类别和汇总数字</td><td>分析问题、比较修改效果，也可用于决定能否继续</td></tr></tbody></table><p>区别在于做什么工作，而不只是何时运行。Eval 可以拿测试数据离线跑，也可以在正式服务中评分，或稍后另算。如果必须等评分通过才能返回，它也在决定这次请求能否继续，这种作用常叫 Gate。Verify 也不只检查最后答案：读资料前、用工具前和交出结果前，都可能需要检查。</p>"
       },
       {
         "id": "supervisor",
-        "title": "Supervisor：状态驱动的调度策略",
-        "body": "<p>调度器把当前任务状态映射为下一动作：<code>next = policy(state, allowed_actions, budget)</code>。可用确定性状态机、模型路由，或由主 Agent 动态委派。动态调度需要记录已取得的证据、尚未解决的缺口和预算，才能区分继续检索、调用专职工具、请求输入与停止。具体框架中，持有多轮上下文的 Supervisor 与单步 Router 也可能是不同模式。<a href=\"#ref-1\">[1]</a><a href=\"#ref-2\">[2]</a></p><p>调度器消费验证结果，但不因为决定“继续”就证明候选正确；也不能通过多委派一个 Agent 自动补齐缺失信息。一次重试应能说明准备消除什么缺口，否则循环可能反复产生同样候选。</p>"
+        "title": "Supervisor 怎样安排下一步",
+        "body": "<p>调度就是安排下一步。程序根据当前进展、可做的动作和剩余额度来选择：<code>next = policy(state, allowed_actions, budget)</code>。选择可以按写好的规则，也可以让 AI 判断，或由主 Agent 把工作交给其他 Agent。它需要知道已查到什么、还缺什么、还能花多少，才能决定继续查、换工具、询问信息或停止。有些框架还区分两种做法：Supervisor 保留多轮任务信息，Router 通常只做一次分发。<a href=\"#ref-1\">[1]</a><a href=\"#ref-2\">[2]</a></p><p>Supervisor 会使用检查结果，但决定“继续”不等于当前草稿已经正确。多找一个 Agent，也不会自动补上缺少的资料。重试前需要明确这次准备补查什么，否则可能一遍遍生成同样的草稿。</p>"
       },
       {
         "id": "verify",
-        "title": "Verify：条件、证据与判定状态",
-        "body": "<p>验证器针对一个明确对象执行判据，接口可以抽象为 <code>verify(candidate, evidence, rules)</code>。字段和类型适合 Schema；跨字段关系可用自定义校验；事实支持度需要可定位来源与对应判据。Pydantic 能承载字段、模型和自定义约束，但字符串类型本身不证明业务事实。<a href=\"#ref-3\">[3]</a></p><p><code>pass</code> 表示指定检查有支持证据，<code>fail</code> 表示条件不满足，<code>unknown</code> 表示证据不足或检查未完成。这是本文采用的应用契约，不是所有框架的统一枚举。结果还应携带规则 ID、被检查对象版本与失败位置，便于策略层采取正确动作。</p>"
+        "title": "Verify 怎样给出检查结果",
+        "body": "<p>验证就是拿明确要求，检查一个具体结果。可以简写为 <code>verify(candidate, evidence, rules)</code>，分别传入待检查结果、依据和规则。字段是否齐全、类型是否正确，可以用 Schema 检查；两个字段之间的关系，可以另写判断；事实是否正确，则要能找到来源并对照内容。Pydantic 支持字段、整份数据和自定义检查，但一个字段符合字符串格式，不代表写的事实就是真的。<a href=\"#ref-3\">[3]</a></p><p><code>pass</code> 表示这项检查通过，<code>fail</code> 表示不符合要求，<code>unknown</code> 表示资料不足或检查还没做完。这是本例使用的约定，不是每个框架都用的固定用词。结果还要说明用了哪条规则、检查的是哪一版内容，以及错在哪里，程序才能决定怎样继续。</p>"
       },
       {
         "id": "guardrails",
-        "title": "护栏与验证应放在哪个边界",
-        "body": "<p>当请求要求读取无权访问的 D24，访问控制应在文档存储返回正文之前生效。草稿生成完才发现越权，已经无法撤销模型看到的内容。NVIDIA 的 Guardrails 分类覆盖输入、检索、对话、执行和输出阶段；护栏因此不只是一道最终答案检查。<a href=\"#ref-4\">[4]</a></p><p>引用版本匹配通常属于质量验证；禁止越权读取属于访问控制，护栏可以参与执行约束。把两者都叫“Verify”也能写代码，但接口里仍须保留不同的规则、失败后果和统计口径。否则，一个模糊的“校验失败”无法告诉调用方该修资料还是请求授权。</p>"
+        "title": "检查应该放在什么时候",
+        "body": "<p>如果当前用户无权读 D24，就要在文档正文返回前拦住。等草稿写完才发现，已经无法让 AI 撤回看到的内容。Guardrails（护栏）是用来限制不合规输入或动作的检查。NVIDIA 的分类把它放在输入、检索、对话、执行和输出等阶段，不只检查最终答案。<a href=\"#ref-4\">[4]</a></p><p>核对引用版本，是检查内容质量；阻止无权读取，是检查访问权限。两者即使都交给 Verify，也要分清所用规则、错误后果和统计方法。只返回一句“校验失败”，调用方就不知道该改资料，还是申请权限。</p>"
       },
       {
         "id": "eval",
-        "title": "Eval：从单次反馈到版本比较",
-        "body": "<p>Eval 可以对当前运行返回单条反馈，也可以在固定数据集上批量运行，或抽样评分生产交互。LangSmith 的文档明确包含离线和线上评测；“只在事后异步跑一个仪表盘”并不是通用定义。<a href=\"#ref-5\">[5]</a><a href=\"#ref-8\">[8]</a></p><p>本例可以保存两种证据：候选 v1 被版本规则拦截，候选 v2 是否真正通过。只保留最后答案，会看不见系统为了拿到正确结果用了多少修订。只记录第一次失败，又会漏掉恢复能力。任务、试次、轨迹与 grader 的区分，使这些统计对象保持清楚。数据集提供样本，实际评分的是代码、人工或模型 grader。<a href=\"#ref-6\">[6]</a></p><p>如果评分结果进入“达标才返回”的条件，评分器也承担了当前请求的 Gate。此时它的延迟和超时策略属于用户等待路径；纯旁路评分则通常不阻塞本次响应。应把控制作用与运行时机分成两个字段，而不是只分“线上”和“离线”。</p>"
+        "title": "Eval 怎样记录和比较结果",
+        "body": "<p>Eval 可以给刚完成的一次任务返回评分，也可以反复跑固定测试集，或抽取正式使用中的记录来评分。LangSmith 的文档同时包含离线和线上评测，因此它不只是事后看一个统计面板。<a href=\"#ref-5\">[5]</a><a href=\"#ref-8\">[8]</a></p><p>本例要分别记下：第一版草稿 v1 因版本不对没有通过，第二版 v2 最后是否通过。只留最后答案，就看不到中间改了几次；只记第一次失败，又看不到能否修好。记录时要分清任务、一次尝试（trial）、执行过程，以及负责打分的 grader。测试集提供题目和参考数据，真正打分的是代码、人工或模型。<a href=\"#ref-6\">[6]</a></p><p>如果评分达标后才能返回，用户就得等评分算完；评分超时该怎么办，也需要程序处理。如果只是另取一份记录评分，不影响这次回复，通常就不用让用户等。记录里要分开说明“何时评分”和“评分是否决定能否继续”，不能只分线上、离线。</p>"
       },
       {
         "id": "comparison",
-        "title": "调度、检查与测量如何协同",
-        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/supervisor-verify-eval-lanes.svg\" alt=\"Supervisor调度检索和修订，Verify在工具前和交付前设检查，Eval从执行轨迹旁路收集数据并评分。评测不被误画成每个任务必经的串行阶段。\" width=\"1200\" height=\"1070\" loading=\"lazy\"><figcaption>原创职责泳道图。实线决定当前请求能否推进；虚线把运行证据交给评测。同步评分若参与放行，也同时承担门控职责。</figcaption></figure><p>图中实线影响当前执行，虚线收集用于评测的证据。一个常见顺序是：Supervisor 选择动作；执行前检查是否允许；工具返回观察后更新状态；候选接受交付检查；验证失败时交给调度策略决定修订、补证据或停止。Eval 可从输入、候选和轨迹旁路取数，也可在需要时同步评分。</p><p>检查器返回失败并不会自行触发重试。重试属于控制策略；检查器只需说明哪个条件不满足。另一方面，只有日志、没有执行前或交付前的阻断分支，也不能把错误阻止在业务边界内。</p>"
+        "title": "三者怎样一起工作",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/supervisor-verify-eval-lanes.svg\" alt=\"Supervisor 安排查资料和改草稿，Verify 在用工具和交付前检查，Eval 另取执行记录评分，不一定要挡在当前任务中间。\" width=\"1200\" height=\"1070\" loading=\"lazy\"><figcaption>原创三方分工图。实线决定当前请求能否继续，虚线把过程记录交给评测。如果必须等评分通过才能继续，评分也在起检查作用。</figcaption></figure><p>图中实线影响这次请求接下来做什么，虚线把过程记录交给评测。常见做法是：Supervisor 选动作，执行前检查是否允许；工具返回后记下结果，再检查草稿能否交付。没通过时，由 Supervisor 决定改草稿、补查资料还是停止。Eval 可以另取输入、草稿和执行记录来评分，也可以在当前步骤中算完评分再继续。</p><p>检查失败，不会自动等于再试一次。是否重试由程序安排，检查器负责说明哪项要求没满足。另一边，如果只写日志，却没有在操作前或交付前拦住错误，也无法阻止错误真的发生。</p>"
       },
       {
         "id": "worked-case",
-        "title": "版本引用错误的完整处理",
-        "body": "<p>以下是教学任务：草稿写“2.4 版默认超时为 5 秒”，引用 D23 却属于 2.3；D24 是 2.4 发布包默认配置，写有 <code>request_timeout_ms=8000</code>，没有用户覆盖项。引用编号存在不代表引用支持当前版本。</p><p>收到 <code>version_mismatch</code> 后，调度器的有效动作不是再生成同一句说明，而是寻找对应版本的证据。状态里应明确 <code>missing=[\"source_for_2.4\"]</code>，这样下一次工具结果才能与缺口对应。</p><pre><code class=\"language-json\">{\n  &quot;candidate_id&quot;: &quot;draft-v1&quot;,\n  &quot;target_version&quot;: &quot;2.4&quot;,\n  &quot;citations&quot;: [&quot;D23&quot;],\n  &quot;verdict&quot;: {\n    &quot;status&quot;: &quot;fail&quot;,\n    &quot;rule&quot;: &quot;citation_version_matches&quot;,\n    &quot;observed&quot;: &quot;2.3&quot;,\n    &quot;expected&quot;: &quot;2.4&quot;\n  },\n  &quot;next_action&quot;: {&quot;tool&quot;: &quot;read_document&quot;, &quot;doc_id&quot;: &quot;D24&quot;}\n}</code></pre><p>工具返回 D24 之后，还要核对它确属 2.4 发布包默认配置，并定位 <code>request_timeout_ms</code>。若 D24 没有这一项，任务状态应仍保留缺口。仅仅换了文档 ID，就把状态标成完成，会制造第二次过早结束。</p><p>这份草稿至少有三条不同的检查：字段是否齐全、引用版本是否匹配、引用内容是否支持结论。第一条适合 Schema；第二条可比较结构化元数据；第三条可能需要规则、人工或带证据的语义评审。它们的可靠性与成本不同。Pydantic 的字段、模型和自定义验证能承载约束，但字符串类型本身不证明业务事实。<a href=\"#ref-3\">[3]</a></p><table><thead><tr><th>条件</th><th>失败证据</th><th>处理</th></tr></thead><tbody><tr><td>必需字段存在</td><td>缺少 product_version</td><td>返回字段错误</td></tr><tr><td>引用版本匹配</td><td>D23.version=2.3，目标 2.4</td><td>阻断当前候选</td></tr><tr><td>引用支持结论</td><td>段落没有讨论超时参数</td><td>补证据或修订结论</td></tr><tr><td>检查器能作判断</td><td>资料读取超时</td><td>保留 unknown</td></tr></tbody></table><p>通过表示指定检查有证据支持；失败表示找到反证；未知表示检查暂时没有足够材料。把这三个状态分开，调度器才能区分“修候选”和“补检查所需的证据”。这是一份应用契约，不是所有框架的统一枚举。</p>"
+        "title": "处理引用版本错误",
+        "body": "<p>这是一个用于说明的例子：草稿写“2.4 版默认超时为 5 秒”，引用 D23 却属于 2.3；D24 才是 2.4 发布包默认配置，其中 <code>request_timeout_ms=8000</code>，没有用户自行修改的覆盖值。引用编号确实存在，不代表它能证明这个版本的说法。</p><p>收到 <code>version_mismatch</code>，也就是“版本不匹配”后，下一步需要查对应版本的资料，而不是重复写原来的说明。任务记录里写清 <code>missing=[\"source_for_2.4\"]</code>，表示还缺 2.4 的来源，之后才能检查是否已经补上。</p><pre><code class=\"language-json\">{\n  &quot;candidate_id&quot;: &quot;draft-v1&quot;,\n  &quot;target_version&quot;: &quot;2.4&quot;,\n  &quot;citations&quot;: [&quot;D23&quot;],\n  &quot;verdict&quot;: {\n    &quot;status&quot;: &quot;fail&quot;,\n    &quot;rule&quot;: &quot;citation_version_matches&quot;,\n    &quot;observed&quot;: &quot;2.3&quot;,\n    &quot;expected&quot;: &quot;2.4&quot;\n  },\n  &quot;next_action&quot;: {&quot;tool&quot;: &quot;read_document&quot;, &quot;doc_id&quot;: &quot;D24&quot;}\n}</code></pre><p>读到 D24 后，还要核对它确实属于 2.4 发布包默认配置，再找到 <code>request_timeout_ms</code>。如果没有这个配置项，就仍然缺资料。不能只换了文档 ID，就把任务当作完成。</p><p>草稿至少要做三种检查：字段是否齐全、引用版本是否匹配、原文是否支持结论。第一种适合 Schema，第二种可以直接比较版本记录，第三种可能需要规则、人工或让 AI 对照原文评审。这些做法的可靠性和成本不同。Pydantic 可以执行字段和自定义检查，但格式通过不代表事实正确。<a href=\"#ref-3\">[3]</a></p><table><thead><tr><th>条件</th><th>怎样看出有问题</th><th>处理</th></tr></thead><tbody><tr><td>必需字段存在</td><td>缺少 product_version</td><td>返回字段错误</td></tr><tr><td>引用版本匹配</td><td>D23.version=2.3，目标 2.4</td><td>不让这版草稿交付</td></tr><tr><td>引用支持结论</td><td>段落没有讨论超时参数</td><td>补查资料或修改结论</td></tr><tr><td>检查器能作判断</td><td>资料读取超时</td><td>保留 unknown</td></tr></tbody></table><p>检查通过，表示有依据认为符合这项要求；失败，表示已发现不符合要求的地方；未知，表示暂时没有足够资料。分开记录后，Supervisor 才能判断是改草稿，还是先补齐检查所需资料。这是本例的约定，不是所有框架都相同。</p>"
       },
       {
         "id": "same-task",
-        "title": "候选、修订与试次的关联",
-        "body": "<p>候选 v1 引用了旧版 D23；补查 2.4 发布包默认配置 D24 后，候选 v2 把 8000 毫秒换算成 8 秒；本例没有用户覆盖项。两个候选应保留各自的来源集合和验证结果，再用同一个 trial ID 串起来。覆盖成“当前草稿”，会丢掉最有价值的错误路径。</p><pre><code class=\"language-json\">{\n  &quot;trial_id&quot;: &quot;import-timeout-07&quot;,\n  &quot;candidates&quot;: [\n    {&quot;id&quot;: &quot;v1&quot;, &quot;source&quot;: &quot;D23&quot;, &quot;result&quot;: &quot;fail:version&quot;},\n    {&quot;id&quot;: &quot;v2&quot;, &quot;source&quot;: &quot;D24&quot;, &quot;result&quot;: &quot;pass&quot;}\n  ],\n  &quot;final_state&quot;: &quot;draft_ready&quot;,\n  &quot;submitted&quot;: false,\n  &quot;revision_count&quot;: 1\n}</code></pre><p>这份记录足以区分“首次就对”“修订后对”“一直未完成”。它还保留未提交状态，防止阅读者把草稿就绪误当成业务动作已经完成。脱敏与留存范围应在记录层执行，避免把整份受限知识库复制进评测集。</p>"
+        "title": "保留每版草稿和修改记录",
+        "body": "<p>第一版草稿 v1 引用了旧版 D23。补查 2.4 发布包默认配置 D24 后，第二版 v2 把 8000 毫秒换算成 8 秒；本例没有用户自行修改的覆盖值。两版草稿都要留下各自的来源和检查结果，再用同一个 trial ID 标明它们属于同一次尝试。如果一直覆盖“当前草稿”，就看不到前面怎样出错、怎样改好。</p><pre><code class=\"language-json\">{\n  &quot;trial_id&quot;: &quot;import-timeout-07&quot;,\n  &quot;candidates&quot;: [\n    {&quot;id&quot;: &quot;v1&quot;, &quot;source&quot;: &quot;D23&quot;, &quot;result&quot;: &quot;fail:version&quot;},\n    {&quot;id&quot;: &quot;v2&quot;, &quot;source&quot;: &quot;D24&quot;, &quot;result&quot;: &quot;pass&quot;}\n  ],\n  &quot;final_state&quot;: &quot;draft_ready&quot;,\n  &quot;submitted&quot;: false,\n  &quot;revision_count&quot;: 1\n}</code></pre><p>这份记录能分清“一开始就对”“改过才对”和“一直没做完”。其中还写明尚未提交，避免把草稿写好误当成正式操作已完成。保存评测记录时也要去掉敏感内容、限定保留范围，不能把整份受限知识库照搬进测试集。</p>"
       },
       {
         "id": "contracts",
-        "title": "将验证结果接入控制循环",
-        "body": "<p>下面是只读草稿任务的控制伪代码。预算简化为可扣减额度，实际系统还应分别限制工具次数、token、耗时与费用。</p><pre><code class=\"language-python\">for attempt in range(max_attempts):\n    if budget.exhausted():\n        return stop(&quot;budget_exhausted&quot;)\n    action = choose_action(state, budget)\n    outcome = execute_readonly(action, budget)\n    state.add_observation(action, outcome)\n    candidate = build_candidate(state, outcome)\n    verdict = verify(candidate, evidence=state.evidence)\n    record(candidate, verdict, outcome)\n    if verdict.status == &quot;pass&quot;:\n        return draft_ready(candidate, submitted=False)\n    if verdict.status == &quot;unknown&quot;:\n        return needs_evidence(verdict)\n    state = revise_plan(state, verdict)\nreturn stop(&quot;attempt_limit&quot;)</code></pre><p>失败后的动作可以是修订、补检索、人工复核或停止。是否重试属于策略层，而不是校验器返回 false 的自动含义。如果后来接入真实提交，超时还可能意味着“已提交但响应丢失”；应先核对操作状态或幂等键，再决定是否发送第二次。</p>"
+        "title": "程序怎样使用检查结果",
+        "body": "<p>下面用伪代码说明只查资料、生成草稿的过程，不能直接当成完整程序运行。这里把预算简写为一个可扣减额度；实际系统还要分别限制工具次数、token 数、耗时和费用。</p><pre><code class=\"language-python\">for attempt in range(max_attempts):\n    if budget.exhausted():\n        return stop(&quot;budget_exhausted&quot;)\n    action = choose_action(state, budget)\n    outcome = execute_readonly(action, budget)\n    state.add_observation(action, outcome)\n    candidate = build_candidate(state, outcome)\n    verdict = verify(candidate, evidence=state.evidence)\n    record(candidate, verdict, outcome)\n    if verdict.status == &quot;pass&quot;:\n        return draft_ready(candidate, submitted=False)\n    if verdict.status == &quot;unknown&quot;:\n        return needs_evidence(verdict)\n    state = revise_plan(state, verdict)\nreturn stop(&quot;attempt_limit&quot;)</code></pre><p>检查失败后，可以改草稿、继续查资料、交给人检查或停止。程序决定是否重试，不能把检查器返回 false 一律理解为“再来一遍”。如果以后加入正式提交，超时也可能是已经提交、返回消息却丢了。此时要先查询操作状态或核对幂等键，确认会不会重复做，再决定是否重发。</p>"
       },
       {
         "id": "metrics",
-        "title": "漏检率与误拦率的分母",
-        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/supervisor-verify-eval-matrix.svg\" alt=\"20份教学草稿分为12份正确放行、2份漏检、1份误拦、5份正确阻断。漏检率以真实违规样本为分母，误拦率以真实合格样本为分母。\" width=\"1200\" height=\"940\" loading=\"lazy\"><figcaption>原创分母示意。20 份是用于解释统计对象的教学数字，不是本系统测得的成绩。</figcaption></figure><p>图中，漏检率的分母是 7 份真实有问题的草稿，误拦率的分母是 13 份真实合格草稿。用“全部请求数”做两个分母，会回答另一个问题，数值也不再能直接解释检查器的能力。人工标签、抽样范围和样本量要与结果一起保留。</p><p>系统层再看任务完成率、修订次数、端到端延迟和成本。被成功阻断的越权尝试，与已经发生的越权读取应分开统计；任务未知和工具失败也应留在记录里。比较两版调度策略时，应固定资料版本、权限与预算，保留排除样本的规则。</p>"
+        "title": "漏检率与误拦率怎么算",
+        "body": "<figure class=\"learn-figure\"><img src=\"../assets/learning/supervisor-verify-eval-matrix.svg\" alt=\"20 份示例草稿中，12 份正确放行、2 份漏掉问题、1 份被错误拦住、5 份正确拦住。漏检比例在有问题的草稿里算，误拦比例在合格草稿里算。\" width=\"1200\" height=\"940\" loading=\"lazy\"><figcaption>原创统计图。20 份草稿只是用于说明怎样计算比例，不是本系统实测成绩。</figcaption></figure><p>图里真实有问题的草稿共有 7 份，所以漏检率要用漏掉的份数除以 7；真实合格的有 13 份，所以误拦率要用错拦的份数除以 13。两个分母都换成全部请求数，算出的就不再是这两种比例。人工判断的对错、样本从哪里抽取、共有多少份，也要和成绩一起保留。</p><p>再看整个系统时，还可以统计任务完成率、改了几次、从请求到返回一共等了多久，以及费用。无权读取但被成功拦住，与无权读取已经发生，要分开算；结果未知和工具失败也要留下记录。比较两种安排步骤的做法时，应保持资料版本、权限和额度相同，并说明哪些样本没有计入。</p>"
       },
       {
         "id": "judge-quality",
-        "title": "语义评分器的偏差",
-        "body": "<p>如果 Reviewer 只看到候选文本，却看不到 D23 的版本元数据，它很可能认为引用完整且表达清楚。再增加一个同样缺少证据的模型，并没有补上信息缺口。对字段与版本这类条件，直接检查通常更容易解释；语义支持度评审则需要把原文片段与判据一起交给 Judge。</p><p>MT-Bench 与 Chatbot Arena 相关研究讨论了位置、冗长和自偏好等 Judge 偏差。<a href=\"#ref-7\">[7]</a> 成对评审时交换候选顺序、遮去模型身份，再用人工复核分歧，能帮助识别评分是否被这些线索带偏。模型分数是一份判断记录，不等于真实标签。</p>"
+        "title": "用 AI 评分可能偏在哪里",
+        "body": "<p>如果负责评审的 Reviewer 只看到草稿，没看到 D23 的版本说明，就可能认为引用齐全、表达清楚。再加一个同样看不到资料的模型，并不能解决问题。字段和版本可以直接核对；检查“原文是否支持结论”时，则要把原文和评分规则一起交给评分模型，常称为 Judge。</p><p>MT-Bench 和 Chatbot Arena 相关研究讨论过 Judge 的几种偏差：答案摆放顺序、文字是否更长，以及是否偏爱自己生成的内容，都可能影响评分。<a href=\"#ref-7\">[7]</a> 两份答案比较时，可交换顺序、隐藏模型名称，再由人检查有分歧的地方，判断评分有没有被这些因素带偏。模型给出的分数仍是一份判断，不是已经核实的标准答案。</p>"
       },
       {
         "id": "failures",
-        "title": "拒绝、未知与失败的统计口径",
-        "body": "<p>如果任务本来没有授权，准确拒绝就是预期行为；如果授权齐全但模型错误拒绝，才是误拦。如果知识库没有答案，保留未知比捏造来源更符合交付条件。评测任务应先定义这些预期，再解释成功率。</p><p>工具超时也要单列。一次系统中断与一次错误选路都可能表现为“没有草稿”，但应修复的位置完全不同。归因标签可以有多个，前提是每个标签都对应轨迹证据，例如“同一份旧文档被连续读取三次，证据集合没有变化”。</p>"
+        "title": "分别记录拒绝、未知与失败",
+        "body": "<p>任务本来没有授权时，正确拒绝就是应该做到的事；权限齐全却错误拒绝，才算误拦。知识库里没有答案时，说明不确定也比编造来源更符合要求。评测要先写清每种情况应该怎样处理，再解释成功率。</p><p>工具超时也要单独记录。系统中断和选错调查方向，最后都可能没有草稿，但要修的地方不同。一次失败可以标记多个原因，只要每个原因都有执行记录支持，例如“连续三次读到同一份旧文档，没有查到新资料”。</p>"
       },
       {
         "id": "practice",
-        "title": "调度、验证和评测的交付契约",
-        "body": "<table><thead><tr><th>契约</th><th>这份草稿上的最小内容</th></tr></thead><tbody><tr><td>调度</td><td>发现版本不匹配后读 D24；预算耗尽带原因停止</td></tr><tr><td>验证</td><td>版本匹配、引用支持、字段齐全；保留未知</td></tr><tr><td>评测</td><td>保存每个候选、规则版本和最终状态；单列恢复与漏检</td></tr></tbody></table><p>这份工单的完成记录应保留：D24 的发布版本与默认配置项、当前候选的逐项验证结果、修订次数，以及“草稿已就绪、尚未提交”的最终状态。评测再用同一组判据比较各次运行，单列版本漏检、错误放行与正确拒绝。</p>"
+        "title": "三者需要留下什么记录",
+        "body": "<table><thead><tr><th>需要记录的内容</th><th>这个例子中要写清什么</th></tr></thead><tbody><tr><td>调度</td><td>发现版本不对后读 D24；额度用完则停止并说明原因</td></tr><tr><td>验证</td><td>版本对得上、原文支持结论、字段齐全；无法判断时写明</td></tr><tr><td>评测</td><td>保存每个草稿、规则版本和最终状态；单列恢复与漏检</td></tr></tbody></table><p>这份工单完成时，需要留下 D24 对应的发布版本和默认配置项、当前草稿每项检查的结果、改了几次，以及“草稿已写好、还没提交”的状态。评测再用同一组规则比较各次运行，分别统计版本错误没有被发现、错误放行和正确拒绝。</p>"
       }
     ],
     "sources": [

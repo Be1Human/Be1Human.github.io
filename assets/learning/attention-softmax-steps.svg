@@ -3,8 +3,8 @@
 <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="m1 1 6 3-6 3" fill="none" stroke="#8bccce" stroke-width="1.5"/></marker></defs>
 <rect width="1200" height="680" fill="#10232e"/>
 <g font-family="Segoe UI,Microsoft YaHei,sans-serif">
-<text x="48" y="64" fill="#e9dfcd" font-size="32" font-weight="650">Softmax：把一行分数转成权重</text>
-<text x="48" y="105" fill="#a5b6ba" font-size="20" font-weight="400">单个 query、单个 head；三个位置是教学输入，不是真实文本的分词结果。</text>
+<text x="48" y="64" fill="#e9dfcd" font-size="32" font-weight="650">Softmax：把分数换成比例</text>
+<text x="48" y="105" fill="#a5b6ba" font-size="20" font-weight="400">只算一次查询、一个注意力头；三个位置和分数都是教学设定。</text>
 <rect x="48" y="145" width="228" height="64" rx="8" fill="#193441" stroke="#4c6776"/>
 <text x="68" y="186" fill="#8bccce" font-size="22" font-weight="400">① 分数 s</text>
 <path d="M288 177 L322 177" stroke="#8bccce" stroke-width="2" marker-end="url(#arrow)"/>
@@ -34,5 +34,5 @@
 <text x="900" y="465" fill="#e9dfcd" font-size="25" font-weight="400">0.0905%</text>
 <rect x="48" y="510" width="1104" height="110" rx="8" fill="#193441" stroke="#4c6776"/>
 <text x="73" y="550" fill="#e9dfcd" font-size="25" font-weight="400">Z = exp(5) + exp(0) + exp(−2) = 149.548494</text>
-<text x="73" y="592" fill="#a5b6ba" font-size="22" font-weight="400">归一化后总和为 1；比较的是相对分数，不是绝对分数。</text>
+<text x="73" y="592" fill="#a5b6ba" font-size="22" font-weight="400">每项都除以总和，得到的比例加起来就是 100%。</text>
 </g></svg>

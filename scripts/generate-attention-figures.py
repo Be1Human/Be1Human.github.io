@@ -46,8 +46,8 @@ def save(parts, name):
 
 def softmax_steps():
     s = svg_start('Softmax 计算：指数、求和与归一化', '三个位置的分数为5、0、负2，指数总和149.5485，权重约99.2408%、0.6687%、0.0905%。', 680)
-    text(s, 48, 64, 'Softmax：把一行分数转成权重', 32, weight='650')
-    text(s, 48, 105, '单个 query、单个 head；三个位置是教学输入，不是真实文本的分词结果。', 20, MUTED)
+    text(s, 48, 64, 'Softmax：把分数换成比例', 32, weight='650')
+    text(s, 48, 105, '只算一次查询、一个注意力头；三个位置和分数都是教学设定。', 20, MUTED)
     for x, label in [(48,'① 分数 s'),(340,'② 取指数 exp(s)'),(632,'③ 求总和 Z'),(924,'④ 除以 Z')]:
         box(s, x, 145, 228, 64)
         text(s, x+20, 186, label, 22, TEAL)
@@ -65,14 +65,14 @@ def softmax_steps():
         text(s,900,y,f'{100*ev/z:.4f}%',25,TEAL if i==0 else TEXT)
     box(s,48,510,1104,110)
     text(s,73,550,f'Z = exp(5) + exp(0) + exp(−2) = {z:.6f}',25)
-    text(s,73,592,'归一化后总和为 1；比较的是相对分数，不是绝对分数。',22,MUTED)
+    text(s,73,592,'每项都除以总和，得到的比例加起来就是 100%。',22,MUTED)
     save(s,'attention-softmax-steps.svg')
 
 def qkv_flow():
     s=svg_start('Scaled Dot-Product Attention 的计算流程', 'Q与K计算分数，缩放、加mask、softmax形成权重，最后对V加权求和。', 825)
-    text(s,48,64,'Attention：先计算匹配，再聚合内容',32,weight='650')
-    text(s,48,104,'以下展示一行 query；dₖ = 2，mask = 0，温度 τ = 1。',20,MUTED)
-    for x,title,value,explain in [(48,'Query · 当前查询','q = [√2, 0]','决定从哪些位置读取'),(430,'Key · 用于匹配','K = [[5,0], [0,1], [−2,0]]','与 q 点积形成分数'),(812,'Value · 待聚合内容','V = [[1,0], [0,1], [0,1]]','按权重组合成输出')]:
+    text(s,48,64,'Attention：先算匹配，再按比例合起来',32,weight='650')
+    text(s,48,104,'一次查询的手算；每排有 2 个数，所有位置都能读取。',20,MUTED)
+    for x,title,value,explain in [(48,'Q · 当前用什么去找','q = [√2, 0]','用来和各个位置做比较'),(430,'K · 用什么来匹配','K = [[5,0], [0,1], [−2,0]]','与 q 对应相乘，再相加'),(812,'V · 要提供的信息','V = [[1,0], [0,1], [0,1]]','按比例相乘，再相加')]:
         box(s,x,148,340,136)
         text(s,x+20,185,title,23,TEAL)
         text(s,x+20,226,value,19)
@@ -80,7 +80,7 @@ def qkv_flow():
     arrow(s,220,298,220,336);arrow(s,600,298,600,336)
     box(s,48,352,722,100)
     text(s,76,393,'qKᵀ / √dₖ = [5, 0, −2]',27)
-    text(s,76,431,'除以 √dₖ 控制点积分数尺度；不是 token 数。',20,MUTED)
+    text(s,76,431,'dₖ = 每排数字的个数；除以它的平方根，控制分数大小。',20,MUTED)
     arrow(s,410,466,410,504)
     box(s,48,520,722,100)
     text(s,76,559,'a = softmax([5, 0, −2])',27,TEAL)
@@ -89,7 +89,7 @@ def qkv_flow():
     arrow(s,410,634,410,672)
     box(s,48,688,1104,88)
     text(s,76,725,'z = aV ≈ [0.992408, 0.007592]',29,CORAL)
-    text(s,76,758,'权重是标量，输出是向量；V 的方向与大小同样影响输出。',20,MUTED)
+    text(s,76,758,'比例是一个数，结果是一排数；V 中的数字也会影响结果。',20,MUTED)
     save(s,'attention-qkv-flow.svg')
     (OUT.parent/'images'/'attention-cover.svg').write_bytes((OUT/'attention-qkv-flow.svg').read_bytes())
 
@@ -98,7 +98,7 @@ def dilution_curve():
     fig.subplots_adjust(left=.10,right=.96,bottom=.22,top=.78)
     ns=[10**(4*i/300) for i in range(301)]
     for gap,color,style in [(2,PURPLE,'--'),(5,TEAL,'-'),(8,CORAL,'--')]:
-        ax.plot(ns,[weight(n,gap) for n in ns],color=color,lw=2.6,ls=style,label=f'分数差 Δ = {gap}')
+        ax.plot(ns,[weight(n,gap) for n in ns],color=color,lw=2.6,ls=style,label=f'目标高出 {gap} 分')
     for n in [10,100,1000,10000]:
         a=weight(n)
         ax.scatter([n],[a],color=TEAL,s=42,zorder=4)
@@ -106,14 +106,14 @@ def dilution_curve():
     ax.set_xscale('log');ax.set_xlim(1,15000);ax.set_ylim(0,1.04)
     ax.set_xticks([1,10,100,1000,10000],labels=['1','10','100','1,000','10,000'])
     ax.yaxis.set_major_formatter(PercentFormatter(1))
-    ax.set_xlabel('其它可见位置的数量 N（对数坐标）',labelpad=12)
-    ax.set_ylabel('目标位置权重 a*',labelpad=12)
+    ax.set_xlabel('其它位置有多少个 N（每大格增加 10 倍）',labelpad=12)
+    ax.set_ylabel('目标分到的比例 a*',labelpad=12)
     ax.grid(alpha=.18,color=MUTED);ax.spines[['top','right']].set_visible(False)
     ax.legend(facecolor=PANEL,labelcolor=TEXT,edgecolor='#4c6776',loc='upper right',fontsize=11)
-    fig.text(.06,.92,'固定分数差时，N 怎样改变权重',fontsize=23,weight='bold')
-    fig.text(.06,.855,'单个 attention row；背景位置得分相同；所有 logits 固定；未 mask；τ = 1。',fontsize=12,color=MUTED)
+    fig.text(.06,.92,'分数差不变，其它内容变多会怎样',fontsize=23,weight='bold')
+    fig.text(.06,.855,'只算一次注意力；目标分数固定，其它位置得分一样，所有位置都能读。',fontsize=12,color=MUTED)
     fig.text(.10,.095,'a* = 1 / (1 + N exp(−Δ))',fontsize=20,color=TEAL)
-    fig.text(.10,.038,'这是受控数学实验，不是模型准确率曲线；真实上下文改变时 Q、K、V 也会变化。',fontsize=11,color=MUTED)
+    fig.text(.10,.038,'这里按固定分数计算；真实模型里，加入文字后，分数也可能改变。',fontsize=11,color=MUTED)
     fig.savefig(OUT/'attention-dilution-curve.svg',metadata={'Date':None});plt.close(fig)
 
 def signal_vectors():
@@ -130,16 +130,19 @@ def signal_vectors():
         fig.text(.61,y,f'N = {n:,}',fontsize=14,color=color)
         fig.text(.61,y-.04,f'z = [{a:.4f}, {1-a:.4f}]',fontsize=16,color=TEXT)
     ax.set_xlim(-.04,1.12);ax.set_ylim(-.04,1.12);ax.set_aspect('equal')
-    ax.set_xlabel('第一维：目标方向分量',labelpad=12);ax.set_ylabel('第二维：背景方向分量',labelpad=12)
+    ax.set_xlabel('合成结果的第 1 个数',labelpad=12);ax.set_ylabel('合成结果的第 2 个数',labelpad=12)
     ax.grid(alpha=.18,color=MUTED);ax.spines[['top','right']].set_visible(False)
-    fig.text(.06,.93,'从权重变化，到输出向量变化',fontsize=23,weight='bold')
-    fig.text(.06,.865,'教学设定：v* = [1,0]，所有背景 v = [0,1]，目标分数 5、背景 0。',fontsize=12,color=MUTED)
-    fig.text(.61,.75,'加权输出 z',fontsize=18,weight='bold')
+    fig.text(.06,.93,'比例变了，合成结果怎样变',fontsize=23,weight='bold')
+    fig.text(.06,.865,'教学设定：目标 V = [1,0]，其它 V 都是 [0,1]；分数分别是 5 和 0。',fontsize=12,color=MUTED)
+    fig.text(.61,.75,'按比例合成的结果 z',fontsize=18,weight='bold')
     fig.text(.10,.10,'z = a* [1,0] + (1 − a*) [0,1]',fontsize=19,color=TEAL)
-    fig.text(.10,.04,'背景 V 在本例中同向，所以可合并；一般情形要逐项计算 Σ a[j]v[j]。',fontsize=11,color=MUTED)
+    fig.text(.10,.04,'本例其它 V 完全一样，可以合并计算；一般要把每份 V 乘以比例后相加。',fontsize=11,color=MUTED)
     fig.savefig(OUT/'attention-signal-vectors.svg',metadata={'Date':None});plt.close(fig)
 
 if __name__=='__main__':
     softmax_steps();qkv_flow();dilution_curve();signal_vectors()
+    for name in ['attention-softmax-steps.svg','attention-qkv-flow.svg','attention-dilution-curve.svg','attention-signal-vectors.svg']:
+        asset = OUT / name
+        asset.write_text('\n'.join(line.rstrip() for line in asset.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
     assert abs(weight(10000)-.014624272462681324)<1e-14
     print('Generated four attention figures.')

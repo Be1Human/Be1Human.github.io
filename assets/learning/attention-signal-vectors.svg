@@ -20,33 +20,33 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 518.4 
-L 864 518.4 
-L 864 0 
-L 0 0 
+   <path d="M 0 518.4
+L 864 518.4
+L 864 0
+L 0 0
 z
 " style="fill: #10232e"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 148.608 378.432 
-L 412.992 378.432 
-L 412.992 114.048 
-L 148.608 114.048 
+    <path d="M 148.608 378.432
+L 412.992 378.432
+L 412.992 114.048
+L 148.608 114.048
 z
 " style="fill: #10232e"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
-      <path d="M 157.72469 378.432 
-L 157.72469 114.048 
+      <path d="M 157.72469 378.432
+L 157.72469 114.048
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_2">
       <defs>
-       <path id="m387405fdd1" d="M 0 0 
-L 0 3.5 
+       <path id="m387405fdd1" d="M 0 0
+L 0 3.5
 " style="stroke: #a5b6ba; stroke-width: 0.8"/>
       </defs>
       <g>
@@ -59,8 +59,8 @@ L 0 3.5
     </g>
     <g id="xtick_2">
      <g id="line2d_3">
-      <path d="M 203.308138 378.432 
-L 203.308138 114.048 
+      <path d="M 203.308138 378.432
+L 203.308138 114.048
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_4">
@@ -74,8 +74,8 @@ L 203.308138 114.048
     </g>
     <g id="xtick_3">
      <g id="line2d_5">
-      <path d="M 248.891586 378.432 
-L 248.891586 114.048 
+      <path d="M 248.891586 378.432
+L 248.891586 114.048
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_6">
@@ -89,8 +89,8 @@ L 248.891586 114.048
     </g>
     <g id="xtick_4">
      <g id="line2d_7">
-      <path d="M 294.475034 378.432 
-L 294.475034 114.048 
+      <path d="M 294.475034 378.432
+L 294.475034 114.048
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_8">
@@ -104,8 +104,8 @@ L 294.475034 114.048
     </g>
     <g id="xtick_5">
      <g id="line2d_9">
-      <path d="M 340.058483 378.432 
-L 340.058483 114.048 
+      <path d="M 340.058483 378.432
+L 340.058483 114.048
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_10">
@@ -119,8 +119,8 @@ L 340.058483 114.048
     </g>
     <g id="xtick_6">
      <g id="line2d_11">
-      <path d="M 385.641931 378.432 
-L 385.641931 114.048 
+      <path d="M 385.641931 378.432
+L 385.641931 114.048
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_12">
@@ -133,20 +133,20 @@ L 385.641931 114.048
      </g>
     </g>
     <g id="text_7">
-     <text style="font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #e9dfcd" x="280.8" y="420.254031" transform="rotate(-0 280.8 420.254031)">第一维：目标方向分量</text>
+     <text style="font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #e9dfcd" x="280.8" y="420.278406" transform="rotate(-0 280.8 420.278406)">合成结果的第 1 个数</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_13">
-      <path d="M 148.608 369.31531 
-L 412.992 369.31531 
+      <path d="M 148.608 369.31531
+L 412.992 369.31531
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_14">
       <defs>
-       <path id="m6dcf2385e0" d="M 0 0 
-L -3.5 0 
+       <path id="m6dcf2385e0" d="M 0 0
+L -3.5 0
 " style="stroke: #a5b6ba; stroke-width: 0.8"/>
       </defs>
       <g>
@@ -159,8 +159,8 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_15">
-      <path d="M 148.608 323.731862 
-L 412.992 323.731862 
+      <path d="M 148.608 323.731862
+L 412.992 323.731862
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_16">
@@ -174,8 +174,8 @@ L 412.992 323.731862
     </g>
     <g id="ytick_3">
      <g id="line2d_17">
-      <path d="M 148.608 278.148414 
-L 412.992 278.148414 
+      <path d="M 148.608 278.148414
+L 412.992 278.148414
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_18">
@@ -189,8 +189,8 @@ L 412.992 278.148414
     </g>
     <g id="ytick_4">
      <g id="line2d_19">
-      <path d="M 148.608 232.564966 
-L 412.992 232.564966 
+      <path d="M 148.608 232.564966
+L 412.992 232.564966
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_20">
@@ -204,8 +204,8 @@ L 412.992 232.564966
     </g>
     <g id="ytick_5">
      <g id="line2d_21">
-      <path d="M 148.608 186.981517 
-L 412.992 186.981517 
+      <path d="M 148.608 186.981517
+L 412.992 186.981517
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_22">
@@ -219,8 +219,8 @@ L 412.992 186.981517
     </g>
     <g id="ytick_6">
      <g id="line2d_23">
-      <path d="M 148.608 141.398069 
-L 412.992 141.398069 
+      <path d="M 148.608 141.398069
+L 412.992 141.398069
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke: #a5b6ba; stroke-opacity: 0.18; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_24">
@@ -233,40 +233,40 @@ L 412.992 141.398069
      </g>
     </g>
     <g id="text_14">
-     <text style="font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #e9dfcd" x="109.603859" y="246.24" transform="rotate(-90 109.603859 246.24)">第二维：背景方向分量</text>
+     <text style="font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #e9dfcd" x="109.603859" y="246.24" transform="rotate(-90 109.603859 246.24)">合成结果的第 2 个数</text>
     </g>
    </g>
    <g id="line2d_25">
-    <path d="M 157.72469 141.398069 
-L 385.641931 369.31531 
+    <path d="M 157.72469 141.398069
+L 385.641931 369.31531
 " clip-path="url(#p2680367a0b)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #a5b6ba; stroke-width: 1.4"/>
    </g>
    <g id="patch_3">
-    <path d="M 148.608 378.432 
-L 148.608 114.048 
+    <path d="M 148.608 378.432
+L 148.608 114.048
 " style="fill: none; stroke: #4c6776; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_4">
-    <path d="M 148.608 378.432 
-L 412.992 378.432 
+    <path d="M 148.608 378.432
+L 412.992 378.432
 " style="fill: none; stroke: #4c6776; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_5">
-    <path d="M 159.724391 369.31531 
-Q 271.681741 369.31531 381.067613 369.31531 
+    <path d="M 159.724391 369.31531
+Q 271.681741 369.31531 381.067613 369.31531
 " style="fill: none; stroke: #8bccce; stroke-width: 2.3; stroke-linecap: round"/>
-    <path d="M 376.267613 366.91531 
-L 381.067613 369.31531 
-L 376.267613 371.71531 
+    <path d="M 376.267613 366.91531
+L 381.067613 369.31531
+L 376.267613 371.71531
 " style="fill: none; stroke: #8bccce; stroke-width: 2.3; stroke-linecap: round"/>
    </g>
    <g id="patch_6">
-    <path d="M 157.72469 367.315609 
-Q 157.72469 255.358259 157.72469 145.972387 
+    <path d="M 157.72469 367.315609
+Q 157.72469 255.358259 157.72469 145.972387
 " style="fill: none; stroke: #ffaaa3; stroke-width: 2.3; stroke-linecap: round"/>
-    <path d="M 155.32469 150.772387 
-L 157.72469 145.972387 
-L 160.12469 150.772387 
+    <path d="M 155.32469 150.772387
+L 157.72469 145.972387
+L 160.12469 150.772387
 " style="fill: none; stroke: #ffaaa3; stroke-width: 2.3; stroke-linecap: round"/>
    </g>
    <g id="text_15">
@@ -283,15 +283,15 @@ L 160.12469 150.772387
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="mc634205816" d="M 0 4.031129 
-C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439 
-C 3.606384 2.094493 4.031129 1.069068 4.031129 0 
-C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439 
-C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129 
-C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439 
-C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0 
-C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439 
-C -2.094493 3.606384 -1.069068 4.031129 0 4.031129 
+     <path id="mc634205816" d="M 0 4.031129
+C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439
+C 3.606384 2.094493 4.031129 1.069068 4.031129 0
+C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439
+C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129
+C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439
+C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0
+C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439
+C -2.094493 3.606384 -1.069068 4.031129 0 4.031129
 z
 " style="stroke: #8bccce"/>
     </defs>
@@ -301,15 +301,15 @@ z
    </g>
    <g id="PathCollection_2">
     <defs>
-     <path id="mffe646056a" d="M 0 4.031129 
-C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439 
-C 3.606384 2.094493 4.031129 1.069068 4.031129 0 
-C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439 
-C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129 
-C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439 
-C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0 
-C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439 
-C -2.094493 3.606384 -1.069068 4.031129 0 4.031129 
+     <path id="mffe646056a" d="M 0 4.031129
+C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439
+C 3.606384 2.094493 4.031129 1.069068 4.031129 0
+C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439
+C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129
+C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439
+C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0
+C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439
+C -2.094493 3.606384 -1.069068 4.031129 0 4.031129
 z
 " style="stroke: #8bcbef"/>
     </defs>
@@ -319,15 +319,15 @@ z
    </g>
    <g id="PathCollection_3">
     <defs>
-     <path id="mb7fb08b5b2" d="M 0 4.031129 
-C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439 
-C 3.606384 2.094493 4.031129 1.069068 4.031129 0 
-C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439 
-C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129 
-C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439 
-C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0 
-C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439 
-C -2.094493 3.606384 -1.069068 4.031129 0 4.031129 
+     <path id="mb7fb08b5b2" d="M 0 4.031129
+C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439
+C 3.606384 2.094493 4.031129 1.069068 4.031129 0
+C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439
+C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129
+C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439
+C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0
+C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439
+C -2.094493 3.606384 -1.069068 4.031129 0 4.031129
 z
 " style="stroke: #c9b0e4"/>
     </defs>
@@ -337,15 +337,15 @@ z
    </g>
    <g id="PathCollection_4">
     <defs>
-     <path id="m867d224dcc" d="M 0 4.031129 
-C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439 
-C 3.606384 2.094493 4.031129 1.069068 4.031129 0 
-C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439 
-C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129 
-C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439 
-C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0 
-C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439 
-C -2.094493 3.606384 -1.069068 4.031129 0 4.031129 
+     <path id="m867d224dcc" d="M 0 4.031129
+C 1.069068 4.031129 2.094493 3.606384 2.850439 2.850439
+C 3.606384 2.094493 4.031129 1.069068 4.031129 0
+C 4.031129 -1.069068 3.606384 -2.094493 2.850439 -2.850439
+C 2.094493 -3.606384 1.069068 -4.031129 0 -4.031129
+C -1.069068 -4.031129 -2.094493 -3.606384 -2.850439 -2.850439
+C -3.606384 -2.094493 -4.031129 -1.069068 -4.031129 0
+C -4.031129 1.069068 -3.606384 2.094493 -2.850439 2.850439
+C -2.094493 3.606384 -1.069068 4.031129 0 4.031129
 z
 " style="stroke: #ffaaa3"/>
     </defs>
@@ -379,19 +379,19 @@ z
    <text style="font-size: 16px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #e9dfcd" x="527.04" y="373.248" transform="rotate(-0 527.04 373.248)">z = [0.0146, 0.9854]</text>
   </g>
   <g id="text_27">
-   <text style="font-weight: 700; font-size: 23px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #e9dfcd" x="51.84" y="36.288" transform="rotate(-0 51.84 36.288)">从权重变化，到输出向量变化</text>
+   <text style="font-weight: 700; font-size: 23px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #e9dfcd" x="51.84" y="36.288" transform="rotate(-0 51.84 36.288)">比例变了，合成结果怎样变</text>
   </g>
   <g id="text_28">
-   <text style="font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #a5b6ba" x="51.84" y="69.984" transform="rotate(-0 51.84 69.984)">教学设定：v* = [1,0]，所有背景 v = [0,1]，目标分数 5、背景 0。</text>
+   <text style="font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #a5b6ba" x="51.84" y="69.984" transform="rotate(-0 51.84 69.984)">教学设定：目标 V = [1,0]，其它 V 都是 [0,1]；分数分别是 5 和 0。</text>
   </g>
   <g id="text_29">
-   <text style="font-weight: 700; font-size: 18px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #e9dfcd" x="527.04" y="129.6" transform="rotate(-0 527.04 129.6)">加权输出 z</text>
+   <text style="font-weight: 700; font-size: 18px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #e9dfcd" x="527.04" y="129.6" transform="rotate(-0 527.04 129.6)">按比例合成的结果 z</text>
   </g>
   <g id="text_30">
    <text style="font-size: 19px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #8bccce" x="86.4" y="466.56" transform="rotate(-0 86.4 466.56)">z = a* [1,0] + (1 − a*) [0,1]</text>
   </g>
   <g id="text_31">
-   <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #a5b6ba" x="86.4" y="497.664" transform="rotate(-0 86.4 497.664)">背景 V 在本例中同向，所以可合并；一般情形要逐项计算 Σ a[j]v[j]。</text>
+   <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #a5b6ba" x="86.4" y="497.664" transform="rotate(-0 86.4 497.664)">本例其它 V 完全一样，可以合并计算；一般要把每份 V 乘以比例后相加。</text>
   </g>
  </g>
  <defs>
