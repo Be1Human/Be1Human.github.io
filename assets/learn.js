@@ -59,9 +59,11 @@ document.addEventListener('keydown',event=>{if(dialog.closest('[hidden]'))return
 
 const article=document.querySelector('[data-learning-article]');
 const progress=document.querySelector('.learn-progress span');
+if(article&&progress){
 let scheduled=false;
 function updateProgress(){const rect=article.getBoundingClientRect();const max=Math.max(1,article.scrollHeight-window.innerHeight+100);progress.style.width=`${Math.max(0,Math.min(100,-rect.top/max*100))}%`;updateToc();scheduled=false;}
 window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateProgress);}},{passive:true});
 const tocLinks=[...document.querySelectorAll('.learn-toc nav a')];
 function updateToc(){let selected=tocLinks[0];for(const link of tocLinks){if(document.getElementById(link.hash.slice(1))?.getBoundingClientRect().top<=155)selected=link;}for(const link of tocLinks){const active=link===selected;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}}
 window.addEventListener('resize',updateProgress); updateProgress();
+}

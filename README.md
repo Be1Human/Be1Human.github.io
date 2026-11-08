@@ -76,7 +76,7 @@ npm run check
 
 ## Agent 学习 Wiki
 
-入口为 `learn.html`，独立文章为 `learn/<id>.html`。内容源在 `data/learning/`，由 `scripts/learning.mjs` 验证并渲染；学习首页只显示背景视频和一列文章链接，背景使用已有的 `home-idle.mp4`；`assets/learn-directory.css` 与 `assets/learn-directory.js` 管理该页。文章阅读页由 `assets/learn.css` 和 `assets/learn.js` 提供侧栏、页内目录、全文搜索与阅读进度。代码复制由共享阅读组件处理。搜索在浏览器本地执行，无第三方查询服务。
+入口为 `learn.html`，独立文章为 `learn/<id>.html`。内容源在 `data/learning/`，由 `scripts/learning.mjs` 验证并渲染；学习首页保留左侧 Wiki 分组目录与搜索，中间只显示背景视频，背景使用已有的 `home-idle.mp4`；`assets/learn-directory.css` 与 `assets/learn-directory.js` 管理该页。文章阅读页由 `assets/learn.css` 和 `assets/learn.js` 提供侧栏、页内目录、全文搜索与阅读进度。代码复制由共享阅读组件处理。搜索在浏览器本地执行，无第三方查询服务。
 
 现有 15 篇解读按核心机制、上下文与协作、评测与进阶组织，保留引用、资料版本、更新时间与教学示例边界。Wiki 是持续维护的知识库，发布手记同时在博客时间线和互动首页建立入口，避免用重复全文淹没手记。构建同时生成静态页面、搜索索引、sitemap 和旧路径兼容页；`site:verify` 核验所有 Wiki 页面的精确公网版本。
 
@@ -84,7 +84,7 @@ npm run check
 
 主页开场在第二段推进镜头后露出背景画面，Agent 学习屏只保留标题和独立学习页入口，继续下划再到章节卡片；`#learning` 支持直接定位，上划可回到镜头，独立 `learn.html` 继续可用。
 
-学习首页不设置流程图、推荐卡片和学习路线；博客记录可通过 `learningId` 直接将时间线和 RSS 导向对应完整 Wiki 文章。文章源位于 `data/learning/comparisons.json`。
+学习首页只移除中间的介绍、流程图、推荐卡片和学习路线，保留 Wiki 导航；博客记录可通过 `learningId` 直接将时间线和 RSS 导向对应完整 Wiki 文章。文章源位于 `data/learning/comparisons.json`。
 
 ## 图文与代码
 
