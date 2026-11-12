@@ -2,13 +2,48 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/",
-  "sourceRevision": "df9a7f7f167c76823983bd4eab69bf7d68f842b2",
-  "syncedAt": "2026-11-06T13:04:17.347Z",
-  "sourceSha256": "1773fe9f10c9f9c40725e5295f84226141e67cfa5e884557ec4ffc5bf289befb",
-  "newest": "2026-11-06",
+  "sourceRevision": "7823ed52a9efd5c5960b77466d798dba2084589e",
+  "syncedAt": "2026-11-12T09:48:22.573Z",
+  "sourceSha256": "78921d2336d953a27240d7a4366c4e065d5befba165240976dacc58fc1555106",
+  "newest": "2026-11-11",
   "oldest": "2026-10-13",
-  "totalItems": 344,
+  "totalItems": 409,
   "editions": [
+    {
+      "id": "2026-11-11",
+      "date": "2026-11-11",
+      "label": "11 月 11 日 · 19 条英文原帖",
+      "count": 19,
+      "url": "assets/news/editions/2026-11-11.json"
+    },
+    {
+      "id": "2026-11-10",
+      "date": "2026-11-10",
+      "label": "11 月 10 日 · 17 条非中文原帖",
+      "count": 17,
+      "url": "assets/news/editions/2026-11-10.json"
+    },
+    {
+      "id": "2026-11-09",
+      "date": "2026-11-09",
+      "label": "11 月 9 日 · 9 条非中文原帖",
+      "count": 9,
+      "url": "assets/news/editions/2026-11-09.json"
+    },
+    {
+      "id": "2026-11-08",
+      "date": "2026-11-08",
+      "label": "11 月 8 日 · 8 条非中文原帖",
+      "count": 8,
+      "url": "assets/news/editions/2026-11-08.json"
+    },
+    {
+      "id": "2026-11-07",
+      "date": "2026-11-07",
+      "label": "11 月 7 日 · 12 条非中文原帖",
+      "count": 12,
+      "url": "assets/news/editions/2026-11-07.json"
+    },
     {
       "id": "2026-11-06",
       "date": "2026-11-06",

@@ -1,0 +1,244 @@
+{
+  "id": "2026-11-07",
+  "date": "2026-11-07",
+  "label": "11 月 7 日 · 12 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-07",
+  "items": [
+    {
+      "id": "item-8a8ab1f26244fbfc",
+      "title": "Blender 站台制作：程序建模与生成纹理分工",
+      "summary": "荒船泰廣分享 Blender 与 Claude Opus 5.5 的站台制作试验：大部分模型由代码建模，部分纹理使用 ChatGPT，声音使用 HunyuanVideo-Foley。作者后续澄清，污渍等模板也有生成纹理，前景树木使用现成资产，不能概括成全部程序化或零素材。",
+      "category": "AI 游戏美术",
+      "author": "荒船泰廣 @arafune",
+      "publishedAt": "2026-11-06T05:53:20.000Z",
+      "source": "https://x.com/arafune/status/2118582485412131107",
+      "relatedLinks": [
+        {
+          "label": "作者补充与澄清",
+          "url": "https://x.com/arafune/status/2118650606592348241"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118581705036763136/img/YsItHCUsJ1DUurwr.jpg",
+      "imageAlt": "Blender 站台制作：程序建模与生成纹理分工，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-2824fa71a7ad2548",
+      "title": "Tripo＋Blender：从角色概念图到绑定动画",
+      "summary": "Dhruval 展示角色制作流程：先用 Codex 图像生成准备概念图，再交给 Tripo 生成网格、纹理与绑定，最后让 Claude 为骨架编写动画并导入 Blender。作者还建议提供参考视频帮助描述动作；“少于5次提示”仅为其自述，本期未复测，也未确认总费用与返工次数。",
+      "category": "AI 游戏美术",
+      "author": "Dhruval @dhruvalgolakiya",
+      "publishedAt": "2026-11-06T09:07:52.000Z",
+      "source": "https://x.com/dhruvalgolakiya/status/2118631442066682205",
+      "relatedLinks": [
+        {
+          "label": "作者步骤：角色概念图",
+          "url": "https://x.com/dhruvalgolakiya/status/2118631446449672564"
+        },
+        {
+          "label": "作者步骤：网格、纹理与绑定",
+          "url": "https://x.com/dhruvalgolakiya/status/2118631450992120271"
+        },
+        {
+          "label": "作者步骤：动画与参考视频",
+          "url": "https://x.com/dhruvalgolakiya/status/2118631455551304009"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118630129169838080/img/2t2VCYfwvzEJ1Nzx.jpg",
+      "imageAlt": "Tripo＋Blender：从角色概念图到绑定动画，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-cdd2ca99ed19ff1e",
+      "title": "TailorRig：为裙摆、披风与头发补充骨骼",
+      "summary": "Stefan 介绍 TailorRig 的角色自动绑定方案：身体绑定后，为裙摆、披风、头发和袖子补充骨骼链，并处理相邻部位的权重干扰。原帖称可输入已有骨架以复用动画，也明确表示代码尚未公开。本期未独立验证绑定效果，不能当作已可安装使用的工具。",
+      "category": "AI 游戏美术",
+      "author": "Stefan 3D AI @Stefan_3D_AI",
+      "publishedAt": "2026-11-07T09:49:35.000Z",
+      "source": "https://x.com/Stefan_3D_AI/status/2119004325410213937",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119004212206186496/img/42F4zXUmYV3IE0Hr.jpg",
+      "imageAlt": "TailorRig：为裙摆、披风与头发补充骨骼，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ce5f179e2a0dd7c8",
+      "title": "HyperFlow H3 Flash：RTX 5090 上的视频生成对照",
+      "summary": "DeepForest 在 RTX 5090 上对比生成5秒、768×1344视频：作者测得 Base BF16 25步为540秒，Flash Q8_0 6步为115秒。两边精度与步数不同，适合看具体配置的速度与画面取舍，不能直接作为模型等条件加速结论。",
+      "category": "AI 视频实测",
+      "author": "DeepForest_Studio_AI @DeepForest_Inc",
+      "publishedAt": "2026-11-06T20:52:42.000Z",
+      "source": "https://x.com/DeepForest_Inc/status/2118808820013244894",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118802491894902786/img/cIkQSCq21HtSPRF2.jpg",
+      "imageAlt": "HyperFlow H3 Flash：RTX 5090 上的视频生成对照，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-20761bfcef2fff2c",
+      "title": "游戏攻击特效：初稿与手工微调对照",
+      "summary": "ゆんま将 Claude 快速生成的攻击特效与自己细调后的版本放在同一视频对比。作者在回复中明确图片素材仍由 AI 生成，并举出提前0.2秒、角度调整10度、位置移动10像素等视觉微调，说明这是一份具体案例复盘，而非对全部 AI 游戏制作能力的通用评测。 57赞，因具体迭代过程作为低热度例外收录。",
+      "category": "AI 游戏制作",
+      "author": "ゆんま @yunma33331111",
+      "publishedAt": "2026-11-07T10:46:30.000Z",
+      "source": "https://x.com/yunma33331111/status/2119018652032970932",
+      "relatedLinks": [
+        {
+          "label": "作者补充与澄清",
+          "url": "https://x.com/yunma33331111/status/2119040906418688333"
+        },
+        {
+          "label": "作者补充与澄清",
+          "url": "https://x.com/yunma33331111/status/2119028915406799141"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119017723275706368/img/5ol2LSxG24vrv_Qy.jpg",
+      "imageAlt": "游戏攻击特效：初稿与手工微调对照，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-8c6d4b42d03d329f",
+      "title": "单图到可漫游空间：LOD 与流式加载试验",
+      "summary": "LUCIAN 展示从单张参考图搭建可走动三维空间的试验，作者称使用 Claude Opus 5.5 与 gptimage，并加入 LOD 和流式加载。回复提供可访问演示，同时承认视角变化后仍有漂浮物与局部破绽；本次未独立运行演示，不采用无限世界或全流程本地化保证。",
+      "category": "AI 3D 场景",
+      "author": "LUCIAN @lucianlamp",
+      "publishedAt": "2026-11-06T12:56:55.000Z",
+      "source": "https://x.com/lucianlamp/status/2118689081475703236",
+      "relatedLinks": [
+        {
+          "label": "作者补充与澄清",
+          "url": "https://x.com/lucianlamp/status/2118690219398709553"
+        },
+        {
+          "label": "作者补充与澄清",
+          "url": "https://x.com/lucianlamp/status/2118854845033746928"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118689026291216385/img/vG-5QJgar4Q8_1t7.jpg",
+      "imageAlt": "单图到可漫游空间：LOD 与流式加载试验，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-76728161b1579427",
+      "title": "ComfyUI 提示词工具：按生成时刻保存场景",
+      "summary": "ひげねこ展示自制 ComfyUI 提示词生成工具的场景快照功能：每次生成图像时保存场景状态，与撤销/重做分开，通过历史切换状态并查看对应图像。适合反复更换服装、发型而保留同一场景的流程；发布与源码入口本次未核实。",
+      "category": "ComfyUI 工作流",
+      "author": "ひげねこ@技 @HigenekoTech",
+      "publishedAt": "2026-11-06T09:22:02.000Z",
+      "source": "https://x.com/HigenekoTech/status/2118635006956609721",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118634959380545536/img/in58zPynMKZoRqKo.jpg",
+      "imageAlt": "ComfyUI 提示词工具：按生成时刻保存场景，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-1ff04827e980f215",
+      "title": "Vork：面向 Agent 的 3D 与特效引擎",
+      "summary": "Ravi Parikh 发布面向编码代理的 3D 与特效引擎 Vork，让代理编写着色器、材质、相机和物理逻辑。作者介绍核心 API 较紧凑，基于 Rust 与 Slang，使用 Metal/Vulkan 运行 GPU 任务。原帖的 token 效率与渲染提速均为作者特定案例报告，本期未独立复测，也未确认许可或价格。",
+      "category": "AI 3D 工具",
+      "author": "Ravi Parikh @ravisparikh",
+      "publishedAt": "2026-11-06T16:38:55.000Z",
+      "source": "https://x.com/ravisparikh/status/2118744950825275680",
+      "relatedLinks": [
+        {
+          "label": "作者补充：自定义光照逻辑",
+          "url": "https://x.com/ravisparikh/status/2118744953321046129"
+        },
+        {
+          "label": "作者补充：实拍合成与场景重打光",
+          "url": "https://x.com/ravisparikh/status/2118744955514483127"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118742425564758016/img/Xdqq7q8IhJRQy3pl.jpg",
+      "imageAlt": "Vork：面向 Agent 的 3D 与特效引擎，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-3fbeae82680246a8",
+      "title": "OpenRoboKit：仿真、动作迁移与抓取工具集",
+      "summary": "Jianglong Ye 介绍三个开源机器人项目：RoboKit 用于批量优化和仿真，RetargetingKit 将人体动作映射到机器人，GraspKit 连接抓取优化、仿真训练与硬件执行。已核对 RoboKit 仓库的 MIT 许可及 URDF/MJCF 支持；其他组件的具体部署条件仍应分别查看仓库，未做硬件实测。",
+      "category": "AI 机器人",
+      "author": "Jianglong Ye @jianglong_ye",
+      "publishedAt": "2026-11-06T16:38:11.000Z",
+      "source": "https://x.com/jianglong_ye/status/2118744767727288773",
+      "relatedLinks": [
+        {
+          "label": "RoboKit 官方仓库与许可",
+          "url": "https://github.com/openrobokit/robokit"
+        },
+        {
+          "label": "作者补充：RetargetingKit",
+          "url": "https://x.com/jianglong_ye/status/2118744813881442787"
+        },
+        {
+          "label": "作者补充：GraspKit",
+          "url": "https://x.com/jianglong_ye/status/2118744841446453496"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118744729840209920/img/xKT1eDH3Xd-9t0oI.jpg",
+      "imageAlt": "OpenRoboKit：仿真、动作迁移与抓取工具集，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-27140a14b78963a7",
+      "title": "Dream-1＋SO-101：单臂调试与关节限位经验",
+      "summary": "Praneeth 在单只 SO-101 机械臂上接通 Deepgram 语音、Claude Code 任务拆解与 Dream-1 执行动作的流程。作者建议沿用官方安装方式，检查关节校准、相机布置、逆运动学限位与舵机设置，并报告错误限位曾使机械臂折回自身。做三明治仍是下一步测试，并未完成；84赞，因具体调试经验作为低热度例外。",
+      "category": "AI 硬件实践",
+      "author": "Praneeth Samineni @praneethsamine",
+      "publishedAt": "2026-11-06T02:59:35.000Z",
+      "source": "https://x.com/praneethsamine/status/2118538760786743348",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118538690049769473/img/wfC5DTW6YO3sDfRS.jpg",
+      "imageAlt": "Dream-1＋SO-101：单臂调试与关节限位经验，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-fab1fe1cd6ae3bdc",
+      "title": "OpenReynolds：用自然语言搭建流体仿真",
+      "summary": "Standard Physics 开源 OpenReynolds 仿真代理，可将自然语言描述整理成流体计算案例，运行 OpenFOAM 并返回可复跑的文件。官方仓库为 MIT 许可，提供九种工具，在 Linux/OpenFOAM v2512 工作区执行，模型需自行配置。商业设计优化与托管服务另计；节电和设计改进数字未独立验证。",
+      "category": "AI 工程工具",
+      "author": "Standard Physics @StandardPhys",
+      "publishedAt": "2026-11-06T18:03:15.000Z",
+      "source": "https://x.com/StandardPhys/status/2118766173986955771",
+      "relatedLinks": [
+        {
+          "label": "作者说明：Reynolds 用途与许可",
+          "url": "https://x.com/StandardPhys/status/2118766203573530897"
+        },
+        {
+          "label": "官方仓库与运行条件",
+          "url": "https://github.com/InviscidAI/OpenReynolds"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118766116764082176/img/JwumH-9urzpDLsTN.jpg",
+      "imageAlt": "OpenReynolds：用自然语言搭建流体仿真，原帖视频预览",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-556e30c766ba1189",
+      "title": "Lattice：接入自有 Agent 的本地 LaTeX 工作区",
+      "summary": "Leonardo 发布本地 LaTeX 工作区 Lattice，整合论文、笔记、PDF 预览与 Overleaf 协作。作者明确说明应用不自带 AI，而是运行用户已使用的 Claude Code、Codex、Cursor 等代理；编译依赖自己的 TeX Live，文件改动可查看差异或撤销。本期未安装验证，免费应用不等于模型服务免费。",
+      "category": "AI 写作工作流",
+      "author": "Leonardo @leoliuym",
+      "publishedAt": "2026-11-06T18:37:36.000Z",
+      "source": "https://x.com/leoliuym/status/2118774820293034437",
+      "relatedLinks": [
+        {
+          "label": "作者补充：本地编译与双向定位",
+          "url": "https://x.com/leoliuym/status/2118774838496223388"
+        },
+        {
+          "label": "作者补充：Overleaf 协作",
+          "url": "https://x.com/leoliuym/status/2118774855562912232"
+        },
+        {
+          "label": "作者说明：不自带 AI、使用自有代理",
+          "url": "https://x.com/leoliuym/status/2118774873422287336"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2118774769357303808/img/OdDsUBZl10gzXuJm.jpg",
+      "imageAlt": "Lattice：接入自有 Agent 的本地 LaTeX 工作区，原帖视频预览",
+      "imageKind": "original"
+    }
+  ]
+}

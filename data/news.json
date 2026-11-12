@@ -2,9 +2,1707 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "df9a7f7f167c76823983bd4eab69bf7d68f842b2",
-  "syncedAt": "2026-11-06T13:04:17.347Z",
+  "sourceRevision": "7823ed52a9efd5c5960b77466d798dba2084589e",
+  "syncedAt": "2026-11-12T09:48:22.573Z",
   "editions": [
+    {
+      "id": "2026-11-11",
+      "date": "2026-11-11",
+      "label": "11 月 11 日 · 19 条英文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-11",
+      "items": [
+        {
+          "id": "cc919065e357d88c",
+          "rank": 1,
+          "title": "Claude 新工作界面：白板、表格与数据叙事",
+          "summary": "Claude 官方宣布开始逐步推出 Whiteboards、Sheets 与 Data。线程说明白板和表格面向付费计划进行beta测试，Data已面向付费计划正式开放，可根据数据起草叙事和带解说的视频供审核；认证查询与实时共享仍处于beta。",
+          "category": "AI 办公协作",
+          "author": "Claude @claudeai",
+          "url": "https://x.com/claudeai/status/2120206365759094857",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/claudeai/status/2120206365759094857"
+            },
+            {
+              "title": "官方线程：白板、表格与付费beta范围",
+              "url": "https://x.com/claudeai/status/2120206368619831597"
+            },
+            {
+              "title": "官方线程：Data 可用范围与beta功能",
+              "url": "https://x.com/claudeai/status/2120206372478566799"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T17:26:03.000Z",
+          "observedAt": "2026-11-11T12:40:04.279Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HWx89ZkXMAAqMO6.png",
+            "alt": "Claude 新工作界面：白板、表格与数据叙事，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4bf86900484a872b",
+          "rank": 2,
+          "title": "Gemini 4 Carbon：用交互3D演示鸟类发声研究",
+          "summary": "Google AI 宣布 Gemini 4 Carbon 开放使用，并用鸟类发声器官的交互3D模拟展示推理与编程组合，称可实时合成六种鸟的声音。官方列出应用、API和企业入口，其中部分入口需 Google AI Ultra；研究者免费访问需申请。本期未验证模拟的科学准确性。",
+          "category": "AI 科学可视化",
+          "author": "Google AI @GoogleAI",
+          "url": "https://x.com/GoogleAI/status/2120187753329791341",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/GoogleAI/status/2120187753329791341"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T16:12:06.000Z",
+          "observedAt": "2026-11-11T12:40:58.157Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120186886690115585/img/gsqEPeAFSz4qIDVG.jpg",
+            "alt": "Gemini 4 Carbon：用交互3D演示鸟类发声研究，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "201868c4192e6a7b",
+          "rank": 3,
+          "title": "Gemini Robotics 2.5：从家务动作到零件分拣演示",
+          "summary": "Google DeepMind 发布 Gemini Robotics 2.5，演示折衣、餐点服务和零件分拣等任务。官方线程介绍从摄像头画面构建虚拟练习空间，以及回看错误进行改进的训练方式。与 Apptronik、Mercedes-Benz 的合作被明确称为概念验证，本期未验证实机表现。",
+          "category": "AI 机器人",
+          "author": "Google DeepMind @GoogleDeepMind",
+          "url": "https://x.com/GoogleDeepMind/status/2120169787896525104",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/GoogleDeepMind/status/2120169787896525104"
+            },
+            {
+              "title": "官方线程：虚拟练习与错误回放",
+              "url": "https://x.com/GoogleDeepMind/status/2120169790853513261"
+            },
+            {
+              "title": "官方线程：Apollo 2 零件分拣概念验证",
+              "url": "https://x.com/GoogleDeepMind/status/2120169796184478162"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T15:00:42.000Z",
+          "observedAt": "2026-11-11T12:40:37.699Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120168800934830080/img/HnD54hYgcdKYFBN4.jpg",
+            "alt": "Gemini Robotics 2.5：从家务动作到零件分拣演示，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4b91c752833aa3e3",
+          "rank": 4,
+          "title": "17项界面设计 Skills：补齐示例与使用场景",
+          "summary": "Emil Kowalski 为自己的17项界面设计 Skills 发布文档。作者介绍，每项文档都包含同一界面的前后对照、提示示例、适用场景和可搭配的其他 Skills。本期核对发布帖，未逐项运行或审查文档效果。",
+          "category": "AI 界面设计",
+          "author": "Emil Kowalski @emilkowalski",
+          "url": "https://x.com/emilkowalski/status/2119780441658212842",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/emilkowalski/status/2119780441658212842"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T13:13:35.000Z",
+          "observedAt": "2026-11-11T12:36:42.660Z"
+        },
+        {
+          "id": "aa012a36c1ad84fe",
+          "rank": 5,
+          "title": "Stanford CS329Z：AI Agent 课程讲座与作业陆续公开",
+          "summary": "Michael Ryan 宣布 Stanford CS329Z：Engineering AI Agents 的材料开始向公众开放，讲座正在 Stanford Online 的 YouTube 频道逐日上线。作者线程同时给出搭建 Agent harness 的 HW1，以及用 Harbor 编写终端任务评测的 HW2。本期未完成课程或运行作业。",
+          "category": "AI 学习资源",
+          "author": "Michael Ryan @michaelryan207",
+          "url": "https://x.com/michaelryan207/status/2120216178371260589",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/michaelryan207/status/2120216178371260589"
+            },
+            {
+              "title": "作者线程：HW1 Agent harness",
+              "url": "https://x.com/michaelryan207/status/2120216183517696094"
+            },
+            {
+              "title": "作者线程：HW2 Harbor 评测任务",
+              "url": "https://x.com/michaelryan207/status/2120216188156559447"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T18:05:03.000Z",
+          "observedAt": "2026-11-11T12:37:15.270Z"
+        },
+        {
+          "id": "f894fa90712da1fb",
+          "rank": 6,
+          "title": "Rooftop Rally：用 UE 5.9 Preview 制作匹克球游戏",
+          "summary": "Chong-U 展示用 Fable 5.2、Claude Code 与 Unreal Engine 5.9 Preview 制作的匹克球游戏。作者称角色来自 Tripo，其他3D资产与定制动作由模型在 Blender 中处理；回复给出浏览器试玩入口，并提醒版本可能尚未优化。本期未试玩。",
+          "category": "AI 游戏开发",
+          "author": "Chong-U @chongdashu",
+          "url": "https://x.com/chongdashu/status/2120154573356793883",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/chongdashu/status/2120154573356793883"
+            },
+            {
+              "title": "作者补充：浏览器试玩入口与优化限制",
+              "url": "https://x.com/chongdashu/status/2120454108851417531"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T14:00:15.000Z",
+          "observedAt": "2026-11-11T12:37:10.654Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120154381584838656/img/I33quCLrC5wXZSJK.jpg",
+            "alt": "Rooftop Rally：用 UE 5.9 Preview 制作匹克球游戏，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "08b6344249727708",
+          "rank": 7,
+          "title": "YUNG’s Roads：作者公开AI参与模组开发的具体分工",
+          "summary": "YUNG 说明在即将完成的道路生成模组中使用 Claude Opus，辅助算法重构与优化、文档、游戏内测试和实时Road Tuning界面。作者强调核心算法与创作方向仍由自己设计，并在后续回复展示早期开发界面。本期未审查代码或验证正式发布状态。",
+          "category": "AI 游戏开发复盘",
+          "author": "YUNG @yungnickyoung",
+          "url": "https://x.com/yungnickyoung/status/2120272394849763570",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/yungnickyoung/status/2120272394849763570"
+            },
+            {
+              "title": "作者补充：早期 Road Tuning 界面截图",
+              "url": "https://x.com/yungnickyoung/status/2120273632681165110"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T21:48:26.000Z",
+          "observedAt": "2026-11-11T12:42:52.110Z"
+        },
+        {
+          "id": "2b24407be33cad1e",
+          "rank": 8,
+          "title": "人形机器人概念：CAD、MuJoCo 仿真与 Blender 展示",
+          "summary": "Jake Fitzgerald 分享用 Claude Fable 5.2 设计人形机器人的尝试，称生成了 build123d CAD 文件、MuJoCo 仿真和 Blender 展示短片。作者在回复中提到对部分动作进行平衡测试并迭代。这些是设计与仿真成果，未证明已制造可运行的实体机器人。",
+          "category": "AI 硬件设计",
+          "author": "Jake Fitzgerald @earthtojake",
+          "url": "https://x.com/earthtojake/status/2120247469900800316",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/earthtojake/status/2120247469900800316"
+            },
+            {
+              "title": "作者补充：平衡测试与迭代",
+              "url": "https://x.com/earthtojake/status/2120298168688451946"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T20:09:23.000Z",
+          "observedAt": "2026-11-11T12:37:42.442Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120247236609122304/img/YNcat5EKy6NqK9JC.jpg",
+            "alt": "人形机器人概念：CAD、MuJoCo 仿真与 Blender 展示，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7469e108ad235705",
+          "rank": 9,
+          "title": "游戏角色绑定对照：把检查条件写成数字",
+          "summary": "Kensei 比较 Fable 5.2 与 Opus 5.5 处理 Tripo 模型的 Blender 工作流，记录清理模型、25根骨骼、剑盾和动画片段。作者给出用时与按API价格折算的成本，并建议将握持距离、贴图眼睛数量、披风拉伸等验收条件量化。本期未复测。",
+          "category": "AI 3D 工作流",
+          "author": "Kensei @0xKense1",
+          "url": "https://x.com/0xKense1/status/2119916096098582566",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/0xKense1/status/2119916096098582566"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T22:12:38.000Z",
+          "observedAt": "2026-11-11T12:37:45.096Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119915735342346241/img/qDheqtUrhsvmJ7Dy.jpg",
+            "alt": "游戏角色绑定对照：把检查条件写成数字，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9e9ab41958593977",
+          "rank": 10,
+          "title": "Portals：用传送门连接的自动三维旅程",
+          "summary": "Ethan Mollick 分享由 Fable 5.2 辅助生成、以传送门相连的3D世界实验，并提供试玩和GitHub入口。作者自述由大量Agent生成多个世界，同时在补充中指出协作逐渐形成繁琐流程、拖慢开发。本期未试玩或审计Agent与世界数量。",
+          "category": "AI 交互实验",
+          "author": "Ethan Mollick @emollick",
+          "url": "https://x.com/emollick/status/2119918307457577163",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/emollick/status/2119918307457577163"
+            },
+            {
+              "title": "原帖版本记录：核实首次发布时间",
+              "url": "https://x.com/emollick/status/2119918307457577163/history"
+            },
+            {
+              "title": "作者补充：协作流程拖慢开发",
+              "url": "https://x.com/emollick/status/2119919185698361830"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T22:16:46.000Z",
+          "observedAt": "2026-11-11T12:41:47.761Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119916822719840256/img/z6Umv8d4gNiB_Caz.jpg",
+            "alt": "Portals：用传送门连接的自动三维旅程，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c81140626d73285d",
+          "rank": 11,
+          "title": "Blender 5.3：NVIDIA 视口新增 DLSS 降噪",
+          "summary": "Blender 官方发布5.3版本，列出面向 NVIDIA GPU 的视口 DLSS 降噪、原生3D Gaussian splat支持，以及项目管理、材质、动画和剪辑改进。本条的AI关联是DLSS降噪，不将其他全部更新称为AI功能；本期未安装测试。",
+          "category": "AI 创作工具",
+          "author": "Blender @Blender",
+          "url": "https://x.com/Blender/status/2120186918793072864",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Blender/status/2120186918793072864"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T16:08:47.000Z",
+          "observedAt": "2026-11-11T12:38:25.354Z"
+        },
+        {
+          "id": "b63c26cba4704fdf",
+          "rank": 12,
+          "title": "Age of Dragon：AI 辅助制作的三维游戏演示",
+          "summary": "Mike Houser 展示名为 Age of Dragon 的三维游戏，介绍了 Fable 5.2、Opus 5.5、Tesana、Three.js、Tripo 和 Blender 的制作组合。本期只核对作者主帖与原帖视频封面，未试玩或审查源码，未核实其游戏规模与 token 用量声明。",
+          "category": "AI 游戏开发",
+          "author": "Mike Houser @M__Houser",
+          "url": "https://x.com/M__Houser/status/2120253236309569696",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/M__Houser/status/2120253236309569696"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T20:32:18.000Z",
+          "observedAt": "2026-11-11T12:37:38.360Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120253027571601408/img/vBCJYCjqWpE4Fj1O.jpg",
+            "alt": "Age of Dragon：AI 辅助制作的三维游戏演示，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2d816781115b431d",
+          "rank": 13,
+          "title": "恐龙池塘短片：用 Python 控制 Blender",
+          "summary": "Jeremy Berman 展示恐龙位于芦苇池塘旁的三维短片，并在自己的回复中说明由 Fable 编写 Python 控制 Blender 制作。媒体署名已追溯到这条原创帖，本期不把二次转述者当成原作者；未审阅源工程或复现流程。",
+          "category": "AI 三维影像",
+          "author": "Jeremy Berman @jeremyberman",
+          "url": "https://x.com/jeremyberman/status/2119869358679712206",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/jeremyberman/status/2119869358679712206"
+            },
+            {
+              "title": "原作者补充：Python 控制 Blender",
+              "url": "https://x.com/jeremyberman/status/2119870801730245009"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T19:06:55.000Z",
+          "observedAt": "2026-11-11T12:48:04.853Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119869231831392256/img/20GmImZ9dR47fP80.jpg",
+            "alt": "恐龙池塘短片：用 Python 控制 Blender，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a402a2f316d94c0a",
+          "rank": 14,
+          "title": "视频参考转3D动作：Fable 与 Blender 动画尝试",
+          "summary": "Konstantin Zolozhkov 展示以视频为参考的3D动画生成尝试。作者在回复中说明使用 Fable 5.2 的 medium effort 设置，让其在 Blender 内制作动作，没有使用动作捕捉。本期仅核对演示帖与作者补充，未验证动画精度或复现流程。",
+          "category": "AI 动画",
+          "author": "Konstantin Zolozhkov @KHvostikk",
+          "url": "https://x.com/KHvostikk/status/2119939061049889130",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/KHvostikk/status/2119939061049889130"
+            },
+            {
+              "title": "作者补充：medium effort 设置",
+              "url": "https://x.com/KHvostikk/status/2120092882493407597"
+            },
+            {
+              "title": "作者补充：Blender制作，无动作捕捉",
+              "url": "https://x.com/KHvostikk/status/2120181326896619768"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T23:43:53.000Z",
+          "observedAt": "2026-11-11T12:39:33.940Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119938999607234560/img/8wcjN6FLrXjZCTwQ.jpg",
+            "alt": "视频参考转3D动作：Fable 与 Blender 动画尝试，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c845e40e871c02d4",
+          "rank": 15,
+          "title": "3D样机工作流：从 Blender 到 Three.js 与 Ultramock",
+          "summary": "Josh Millgate 展示把 Fable 5.2 用于自定义3D样机场景的工作流，明确列出 Blender → Three.js → Ultramock 的处理顺序。作者回复表示交互版本之后才会开放，本期仅整理演示，不将其当作已经可用的公开工具。",
+          "category": "AI 设计工作流",
+          "author": "Josh Millgate @joshmillgate",
+          "url": "https://x.com/joshmillgate/status/2120001344237097184",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/joshmillgate/status/2120001344237097184"
+            },
+            {
+              "title": "作者补充：交互版本尚待开放",
+              "url": "https://x.com/joshmillgate/status/2120209165373026565"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T03:51:22.000Z",
+          "observedAt": "2026-11-11T12:42:37.632Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120000740563308544/img/oq-8wxzMnL5jIQq8.jpg",
+            "alt": "3D样机工作流：从 Blender 到 Three.js 与 Ultramock，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "99312fbfd2a89577",
+          "rank": 16,
+          "title": "Agent 编程课程：上下文与权限控制",
+          "summary": "freeCodeCamp 发布关于 Codex 与AI编程Agent的课程介绍，重点是为Agent提供上下文、控制权限，以及在读取代码库、编辑文件和运行命令的任务中提高结果可靠性。与本期LangGraph学习指南教程是不同内容；本期未完整观看课程或执行练习。",
+          "category": "AI 编程教程",
+          "author": "freeCodeCamp.org @freeCodeCamp",
+          "url": "https://x.com/freeCodeCamp/status/2120321177667117342",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/freeCodeCamp/status/2120321177667117342"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T01:02:17.000Z",
+          "observedAt": "2026-11-11T12:43:18.468Z"
+        },
+        {
+          "id": "5659b4281d8b3cf5",
+          "rank": 17,
+          "title": "LangGraph 入门：在本地生成学习指南",
+          "summary": "freeCodeCamp 介绍一篇 Python 与 LangGraph 多Agent教程，以本地学习指南生成为例，组合 Ollama、Qwen、职责明确的提示词、共享状态、节点和边。本期核对教程发布帖，未运行代码或验证硬件要求。",
+          "category": "AI 工作流教程",
+          "author": "freeCodeCamp.org @freeCodeCamp",
+          "url": "https://x.com/freeCodeCamp/status/2120442115872248060",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/freeCodeCamp/status/2120442115872248060"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T09:02:50.000Z",
+          "observedAt": "2026-11-11T12:38:31.867Z"
+        },
+        {
+          "id": "c8883c8f5784aa38",
+          "rank": 18,
+          "title": "与龙同行的飞行演示：Three.js 与 Blender 原型",
+          "summary": "Chetan Ankola 展示一段与龙同行的飞行场景，称使用 Fable 5.2 改进项目，制作工具包括 Three.js 和 Blender。本期核对原帖与真实视频封面，没有验证试玩入口、完整玩法或工程文件。",
+          "category": "AI 游戏原型",
+          "author": "Chetan Ankola @chetanankola",
+          "url": "https://x.com/chetanankola/status/2119951015407738913",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/chetanankola/status/2119951015407738913"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T00:31:23.000Z",
+          "observedAt": "2026-11-11T12:44:04.172Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119948027108741120/img/KjyZWRJyfWwbi9xM.jpg",
+            "alt": "与龙同行的飞行演示：Three.js 与 Blender 原型，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2dbab41fb3abd617",
+          "rank": 19,
+          "title": "地堡射击原型：三核心破坏循环与机械猎犬",
+          "summary": "Hamido Teck 展示AI辅助制作的地堡射击原型，称向 Fable 5.2 提出30秒短流程需求后，加入了三个核心的破坏循环、机械猎犬敌群与蒸汽灯光效果。作者在回复中明确说尚未完成，本期不将其描述为已发布的完整游戏。",
+          "category": "AI 游戏原型",
+          "author": "Hamido Teck @HamidoFx1",
+          "url": "https://x.com/HamidoFx1/status/2120117555419635735",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/HamidoFx1/status/2120117555419635735"
+            },
+            {
+              "title": "作者补充：项目尚未完成",
+              "url": "https://x.com/HamidoFx1/status/2120125793585991999"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T11:33:09.000Z",
+          "observedAt": "2026-11-11T12:38:50.004Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120117337378492416/img/yWf5amOGzsvgoVDm.jpg",
+            "alt": "地堡射击原型：三核心破坏循环与机械猎犬，原帖视频封面",
+            "type": "video"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-10",
+      "date": "2026-11-10",
+      "label": "11 月 10 日 · 17 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-10",
+      "items": [
+        {
+          "id": "9cdc4cb8dc442e6d",
+          "rank": 1,
+          "title": "PCB 自动布线首轮结果：作者尚未完成审查",
+          "summary": "Nirav Patel 展示 Fable 5.2 的 PCB 布线结果，并在回复中说明只要求按 JLC 默认六层板设计规则完成第一轮布线。作者尚未审查设计，不能据此判断可生产或已通过电气验证。",
+          "category": "AI 硬件",
+          "author": "Nirav Patel @cmonkey",
+          "url": "https://x.com/cmonkey/status/2119975852977029365",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/cmonkey/status/2119975852977029365"
+            },
+            {
+              "title": "作者补充：首轮结果尚未审查",
+              "url": "https://x.com/cmonkey/status/2119976035731362291"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T02:10:05.000Z",
+          "observedAt": "2026-11-10T12:15:32.977Z"
+        },
+        {
+          "id": "f863aa24d63ca14c",
+          "rank": 2,
+          "title": "What the water keeps：穿过8个世界的浏览器游船",
+          "summary": "Kevin Ngo 分享浏览器游戏演示 What the water keeps，内容是一段穿过8个梦幻世界的游船旅程。作者称使用 Claude Fable 5.2 制作，并在自己的回复中给出试玩入口。本期只核对原帖与作者补充，没有实际试玩或审阅代码。",
+          "category": "AI 游戏开发",
+          "author": "Kevin Ngo @kevin_t_ngo",
+          "url": "https://x.com/kevin_t_ngo/status/2119868968307695818",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/kevin_t_ngo/status/2119868968307695818"
+            },
+            {
+              "title": "作者回复：试玩入口",
+              "url": "https://x.com/kevin_t_ngo/status/2119868970643964177"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T19:05:21.000Z",
+          "observedAt": "2026-11-10T12:12:58.841Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119868394363367424/img/OARGnHXgicPmtCwd.jpg",
+            "alt": "八个梦境世界：可在浏览器体验的划船游戏，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ef98579a07e6b89c",
+          "rank": 3,
+          "title": "代码绘画：用虚构画家设定引导笔刷引擎",
+          "summary": "Jake Eaton 分享用 Fable 5.2 编写 Python 绘画程序的尝试：先让模型设计带背景故事与稳定风格的虚构画家，再通过反馈调整笔刷和颜料引擎。作者称每幅作品是逐笔运行的程序，部分有一至两千行代码，没有调用图像模型或预先描摹。本期未审阅源码或复现。",
+          "category": "AI 创意编程",
+          "author": "Jake Eaton @jkeatn",
+          "url": "https://x.com/jkeatn/status/2119874007382299087",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/jkeatn/status/2119874007382299087"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T19:25:23.000Z",
+          "observedAt": "2026-11-10T12:13:27.617Z"
+        },
+        {
+          "id": "3b2f9754485a573e",
+          "rank": 4,
+          "title": "Blender 房间短片：网页屏幕与十三个镜头",
+          "summary": "Riley Brown 展示 Blender 房间短片，作者称由 Fable 5.2 编写代码搭建，包含桌面、电脑、网页形式的屏幕内容和日夜光线变化。原帖介绍了13个镜头、RunPod 渲染与 ElevenLabs 声音制作。本期未核对直播全程、制作日志或账单。",
+          "category": "AI 影像",
+          "author": "Riley Brown @rileybrown",
+          "url": "https://x.com/rileybrown/status/2119902109709537708",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/rileybrown/status/2119902109709537708"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T21:17:03.000Z",
+          "observedAt": "2026-11-10T12:16:12.664Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119897796736131072/img/uYa4QI709MAYcBH3.jpg",
+            "alt": "Blender 房间短片：网页屏幕与十三个镜头，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "23587c388a7eb0d1",
+          "rank": 5,
+          "title": "Steel：面向机器人操作任务的物理求解器",
+          "summary": "Skild AI 宣布与 NVIDIA 合作的 Steel 物理求解器开放源代码，重点面向接触丰富、任务多样的机器人操作仿真。作者线程给出二十种 IsaacLab 任务同时运行的吞吐量，以及相同环境数的显存比较。",
+          "category": "AI 机器人",
+          "author": "Skild AI @SkildAI",
+          "url": "https://x.com/SkildAI/status/2119844954893946999",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/SkildAI/status/2119844954893946999"
+            },
+            {
+              "title": "作者线程：吞吐量测试条件",
+              "url": "https://x.com/SkildAI/status/2119844960115798209"
+            },
+            {
+              "title": "作者线程：显存比较条件",
+              "url": "https://x.com/SkildAI/status/2119844962179449258"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T17:29:56.000Z",
+          "observedAt": "2026-11-10T12:16:22.805Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119844625246765056/img/50LSfEemaPWeOR0X.jpg",
+            "alt": "Steel：面向机器人操作任务的物理求解器，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7e13c2144b4358cb",
+          "rank": 6,
+          "title": "Nuplex 与 Emma：说话过程中也能回应的虚拟角色",
+          "summary": "Fangchang Ma 发布基于 Nuplex 全双工音视频模型的 Emma 演示，重点展示用户仍在说话时角色作出反应。作者同时公布有限开放的 beta API，并说明公开 API 不能克隆真人。",
+          "category": "AI 交互",
+          "author": "Fangchang Ma @fangchangma",
+          "url": "https://x.com/fangchangma/status/2119852363494371466",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/fangchangma/status/2119852363494371466"
+            },
+            {
+              "title": "作者说明：有限 beta API",
+              "url": "https://x.com/fangchangma/status/2119854041517981948"
+            },
+            {
+              "title": "作者说明：公开 API 限制",
+              "url": "https://x.com/fangchangma/status/2119854309701755358"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T17:59:23.000Z",
+          "observedAt": "2026-11-10T12:15:06.764Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119845669271982080/img/fFtdVeDoPm46Z9sj.jpg",
+            "alt": "Nuplex 与 Emma：说话过程中也能回应的虚拟角色，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ec7f995f28f6d1fd",
+          "rank": 7,
+          "title": "Blender 跑车建模：Bugatti Tourbillon 与内饰演示",
+          "summary": "Shikhar 展示使用 Fable 5.2 在 Blender 中制作 Bugatti Tourbillon 的演示。作者称模型包含车内结构，随后完成电影感渲染，并自述由一次提示和参考图出发，用时2.5小时。本期没有检查模型文件、提示词或实际耗时。",
+          "category": "AI 3D 制作",
+          "author": "Shikhar @xikhar",
+          "url": "https://x.com/xikhar/status/2119966147328299284",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/xikhar/status/2119966147328299284"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T01:31:31.000Z",
+          "observedAt": "2026-11-10T12:15:59.950Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119965554627014656/img/DavEdty2TpA_b3JZ.jpg",
+            "alt": "参考图到汽车场景：Blender 建模演示，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ecb96464598a657d",
+          "rank": 8,
+          "title": "照片重建 Blender 场景：用像素匹配检查结果",
+          "summary": "Felix Rieseberg 分享把两张照片转成 Blender 场景的尝试，称 Claude 通过 Python 操作建模，并比较照片与渲染画面的匹配像素。作者另提供 Three.js 版本，同时指出其灯光不如 Blender 版本。",
+          "category": "AI 3D",
+          "author": "Felix Rieseberg @felixrieseberg",
+          "url": "https://x.com/felixrieseberg/status/2119777031336452518",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/felixrieseberg/status/2119777031336452518"
+            },
+            {
+              "title": "作者补充：Three.js 版本与灯光限制",
+              "url": "https://x.com/felixrieseberg/status/2119777032103965138"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T13:00:02.000Z",
+          "observedAt": "2026-11-10T12:16:04.896Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119688146027941888/img/MzJ_r6PG7uvfImQw.jpg",
+            "alt": "照片重建 Blender 场景：用像素匹配检查结果，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c0678d2f51872a04",
+          "rank": 9,
+          "title": "歌舞伎町重建：以 Gsplat 作参考的 Blender 工作流",
+          "summary": "hectorvfx 分享用 Blender 5.3 与 Claude Opus 5.5 重建歌舞伎町场景的演示。作者在补充回复中感谢 Kou45388803 提供的 Gsplat，说明以此为参考建模，并结合 ComfyUI 与 Qwen Image-Edit 2.1 修整贴图。本期主要读取西班牙文原帖的平台译文，不将其描述为完全从零生成。",
+          "category": "AI 场景制作",
+          "author": "hectorvfx @hectorVFX",
+          "url": "https://x.com/hectorVFX/status/2119797694801793403",
+          "sources": [
+            {
+              "title": "西班牙文原帖",
+              "url": "https://x.com/hectorVFX/status/2119797694801793403"
+            },
+            {
+              "title": "作者补充：Gsplat参考与纹理流程",
+              "url": "https://x.com/hectorVFX/status/2119797697112588562"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T14:22:09.000Z",
+          "observedAt": "2026-11-10T12:13:31.919Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119795326877904896/img/tuRc3rcb4tfHhQWS.jpg",
+            "alt": "歌舞伎町场景重建：Gsplat 参考与纹理修复，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "cdad12cd0289a551",
+          "rank": 10,
+          "title": "跑步动作预演：慢跑、冲刺与高速疾跑",
+          "summary": "あかくま屋 用 Fable 5.2 制作三种运动预演：慢跑、冲刺和高速疾跑。作者在回复中说明用了角色插画与文字提示，并分享了提示截图。",
+          "category": "AI 动画",
+          "author": "あかくま屋 @akakuma0219",
+          "url": "https://x.com/akakuma0219/status/2120030634248929556",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/akakuma0219/status/2120030634248929556"
+            },
+            {
+              "title": "作者补充：插画与文字输入",
+              "url": "https://x.com/akakuma0219/status/2120051477419118813"
+            },
+            {
+              "title": "作者补充：提示截图",
+              "url": "https://x.com/akakuma0219/status/2120056684106420319"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T05:47:46.000Z",
+          "observedAt": "2026-11-10T12:15:12.204Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120030599155195904/img/abqVbyiES39-UYiU.jpg",
+            "alt": "跑步动作预演：慢跑、冲刺与高速疾跑，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "1596dcd2581e6b93",
+          "rank": 11,
+          "title": "Terminus Teams：让代码 Agent 读取团队消息",
+          "summary": "Winston Gao 发布 Terminus Teams，展示频道、讨论线程、通话和会议等团队沟通功能，并称可让已有 Claude Code 或 Codex 读取消息、回复。作者表示这是首个版本，覆盖自家公司当前所需功能。",
+          "category": "AI 工作流",
+          "author": "Winston Gao @WinstonGu_",
+          "url": "https://x.com/WinstonGu_/status/2119871020618465772",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/WinstonGu_/status/2119871020618465772"
+            },
+            {
+              "title": "作者补充：首版功能范围",
+              "url": "https://x.com/WinstonGu_/status/2119966083998519807"
+            },
+            {
+              "title": "作者补充：项目与源码入口",
+              "url": "https://x.com/WinstonGu_/status/2119941420576633208"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T19:13:31.000Z",
+          "observedAt": "2026-11-10T12:15:09.496Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119870899856019456/img/2Qqsjo09O-mSsog9.jpg",
+            "alt": "Terminus Teams：让代码 Agent 读取团队消息，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "72efe94b34fe78fe",
+          "rank": 12,
+          "title": "cinematic-skill：把脚本、配音与镜头节奏串起来",
+          "summary": "m0h 发布面向 Claude、Codex 的 cinematic-skill，列出逐行脚本、配音对时、代码镜头、音效和字幕流程，并给出 GitHub 仓库。作者补充说明仍会用参考图，并非纯代码无素材。",
+          "category": "AI 影像",
+          "author": "m0h @exploraX_",
+          "url": "https://x.com/exploraX_/status/2119817050008748064",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/exploraX_/status/2119817050008748064"
+            },
+            {
+              "title": "作者补充：使用参考图",
+              "url": "https://x.com/exploraX_/status/2119860672012194196"
+            },
+            {
+              "title": "作者提供的仓库（未审计）",
+              "url": "https://github.com/Moh4696/cinematic-skill"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T15:39:03.000Z",
+          "observedAt": "2026-11-10T12:16:15.070Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119816666531917824/img/n7JjYC_qFcxCGC-3.jpg",
+            "alt": "cinematic-skill：把脚本、配音与镜头节奏串起来，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "5c681ef8b1ef90db",
+          "rank": 13,
+          "title": "电子宠物概念：KiCad、Inventor 与 Blender 串联",
+          "summary": "adam 展示电子宠物硬件概念，称 Fable 5.2 完成 KiCad PCB 布局、Inventor 外壳和 Blender 渲染。适合观察电路、机械外壳与视觉展示如何串联。",
+          "category": "AI 硬件",
+          "author": "adam @adamdotnew",
+          "url": "https://x.com/adamdotnew/status/2120071630139621540",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/adamdotnew/status/2120071630139621540"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T08:30:40.000Z",
+          "observedAt": "2026-11-10T12:16:17.677Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120071508370640896/img/qc0XXzxj8T5pl3Cv.jpg",
+            "alt": "电子宠物概念：KiCad、Inventor 与 Blender 串联，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9a62adb84979b575",
+          "rank": 14,
+          "title": "程序化城堡对照：同一 Blender 提示的时间与成本记录",
+          "summary": "Stefan 3D AI 用9月的同一城堡提示，分别让 Fable 5.2 与 Opus 5.5 在 Blender 中进行程序化制作。作者记录前者71分钟、约38万输出 token，后者55分钟、约32.4万，并给出约32.9与19.1美元的 API 价格折算。本期未复测、核对计费口径或评价画面优劣。",
+          "category": "AI 3D 工作流对照",
+          "author": "Stefan 3D AI @Stefan_3D_AI",
+          "url": "https://x.com/Stefan_3D_AI/status/2120041169719894165",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Stefan_3D_AI/status/2120041169719894165"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T06:29:37.000Z",
+          "observedAt": "2026-11-10T12:16:02.429Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120041091856760832/img/TUmGkHcY_Fk_j7Z2.jpg",
+            "alt": "同一城堡提示：两款模型的时间与输出量比较，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "70f90d82e203cb79",
+          "rank": 15,
+          "title": "九十年代玩具广告风格：代码制作的动画短片",
+          "summary": "Kevin Ngo 展示一支九十年代玩具广告风格的创意短片，称画面由 Fable 5.2 编写代码制作，并用 Python 动画、Blender 渲染。与同作者的划船游戏是不同项目。",
+          "category": "AI 影像",
+          "author": "Kevin Ngo @kevin_t_ngo",
+          "url": "https://x.com/kevin_t_ngo/status/2119972124211454139",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/kevin_t_ngo/status/2119972124211454139"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T01:55:16.000Z",
+          "observedAt": "2026-11-10T12:16:07.582Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119970272552095744/img/ZH2HGWtn-N8PCIHK.jpg",
+            "alt": "九十年代玩具广告风格：代码制作的动画短片，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a60c0213c9c8e13d",
+          "rank": 16,
+          "title": "能走进去的房屋网页：滚动镜头与实时三维",
+          "summary": "Sourany Phomhome 展示 Claude Code、Opus 5.5 和 Three.js 制作的房屋网页，可滚动浏览，也可进入室内。作者称材质通过代码实时生成，并在回复中说明移动端会降低程序化纹理分辨率。",
+          "category": "AI 网页",
+          "author": "Sourany Phomhome @SouranyPhomhome",
+          "url": "https://x.com/SouranyPhomhome/status/2119783017447141865",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/SouranyPhomhome/status/2119783017447141865"
+            },
+            {
+              "title": "作者补充：移动端性能限制",
+              "url": "https://x.com/SouranyPhomhome/status/2119943610195964363"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T13:23:49.000Z",
+          "observedAt": "2026-11-10T12:15:35.544Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119782864187252736/img/RDvtrvvSvtcn7Hc3.jpg",
+            "alt": "能走进去的房屋网页：滚动镜头与实时三维，原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a3a355e55a1db158",
+          "rank": 17,
+          "title": "四种游戏机械概念：集中检查特效与物理",
+          "summary": "Techartist 展示四种游戏机械概念的试验场，称使用 Fable 5.2、Three.js 与 Blender 制作，关注特效、机械行为和物理表现。内容是原型测试演示。",
+          "category": "AI 游戏",
+          "author": "Techartist @techartist_",
+          "url": "https://x.com/techartist_/status/2119946891106394518",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/techartist_/status/2119946891106394518"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T00:15:00.000Z",
+          "observedAt": "2026-11-10T12:16:10.230Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119922739230445568/img/r6kQ3qYFuOhnE1Nn.jpg",
+            "alt": "四种游戏机械概念：集中检查特效与物理，原帖视频封面",
+            "type": "video"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-09",
+      "date": "2026-11-09",
+      "label": "11 月 9 日 · 9 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-09",
+      "items": [
+        {
+          "id": "597aca27c6d74dcf",
+          "rank": 1,
+          "title": "67js：让 AI Agent 通过 MCP 操作 3D 引擎",
+          "summary": "An Xuan 发布开源 3D 引擎 67js，主帖介绍可由 AI Agent 通过23个 MCP 工具驱动。项目适合关注 Agent 与3D场景交互的开发者；本期核对了原帖与开源仓库说明，没有实际运行，也不据此推断对所有 Agent 的兼容性或性能。",
+          "category": "AI 游戏开发",
+          "author": "An Xuan @anxuanng",
+          "url": "https://x.com/anxuanng/status/2119480946340835771",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/anxuanng/status/2119480946340835771"
+            },
+            {
+              "title": "作者开源仓库（已读 README）",
+              "url": "https://github.com/codepawl/67.js"
+            },
+            {
+              "title": "作者补充：开源仓库",
+              "url": "https://x.com/anxuanng/status/2119482072054276239"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T17:23:30.000Z",
+          "observedAt": "2026-11-09T12:44:14.537Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119480858482786304/img/ZOw9UZgrNnKnmiZ1.jpg",
+            "alt": "67js：让 AI Agent 通过 MCP 操作 3D 引擎，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "e8a20ca58374bb2b",
+          "rank": 2,
+          "title": "可动鱼类模型：附新增物种的 AI 制作说明",
+          "summary": "なちゃっと 分享为游戏制作的3D鱼类模型，嘴、眼睛和鱼鳍等部位可以活动，并附新增鱼种的制作说明及 Claude Code／Codex 集成指引。官方画廊将模型、贴图和动作代码标为 CC0 1.0。十分钟内完成新鱼种只是作者估计，本期未实测，也未审阅 ZIP 包内容。",
+          "category": "AI 游戏资产",
+          "author": "なちゃっと @nachat_dayo",
+          "url": "https://x.com/nachat_dayo/status/2119312018633273714",
+          "sources": [
+            {
+              "title": "日文原帖（本次主要阅读平台译文）",
+              "url": "https://x.com/nachat_dayo/status/2119312018633273714"
+            },
+            {
+              "title": "官方鱼类模型画廊（已核对 CC0 声明及集成指引）",
+              "url": "https://cda-social.github.io/fish/gallery.html"
+            },
+            {
+              "title": "作者补充：下载页",
+              "url": "https://x.com/nachat_dayo/status/2119312367377125644"
+            },
+            {
+              "title": "作者澄清：ZIP 下载，无 GitHub 仓库",
+              "url": "https://x.com/nachat_dayo/status/2119661556552343848"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T06:12:14.000Z",
+          "observedAt": "2026-11-09T12:44:16.812Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119301305940480000/img/xdIbfByWQ8viSrX7.jpg",
+            "alt": "可动鱼类模型：附新增物种的 AI 制作说明，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a03f6bf4cdb12fdd",
+          "rank": 3,
+          "title": "Specialist：从机器人夹爪到训练与部署的开源全栈",
+          "summary": "Qiayuan Liao 与合作者发布 Specialist，介绍从机器人夹爪出发搭建操作任务的完整技术栈，公开硬件、数据流程、训练和部署代码，并记录设计选择与踩坑。它提供的是可研究的工程资料，本期未复现硬件或验证训练表现。",
+          "category": "AI 机器人与硬件",
+          "author": "Qiayuan Liao @qiayuanliao",
+          "url": "https://x.com/qiayuanliao/status/2119568741667373314",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/qiayuanliao/status/2119568741667373314"
+            },
+            {
+              "title": "作者项目主页",
+              "url": "https://specialist-ai.github.io/"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T23:12:22.000Z",
+          "observedAt": "2026-11-09T12:44:18.772Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119559972380082176/img/Kr6KcP7NIQqIeXDo.jpg",
+            "alt": "Specialist：从机器人夹爪到训练与部署的开源全栈，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "22eb30ed262dee26",
+          "rank": 4,
+          "title": "可复用角色底模：先逐关节检查，再穿服装",
+          "summary": "sorenxet 给出用 Claude Opus 5.5 经 MCP 操作 Blender 的八步流程：先发送正侧背参考图、调整比例，再做关节标记、绑定与待机／转身／行走动画。重点是先在裸露底模上逐帧修正关节变形，再将其保存为后续角色的共同基础；每条提示只改一个问题。",
+          "category": "AI 游戏角色工作流",
+          "author": "sorenxet @sorenxet",
+          "url": "https://x.com/sorenxet/status/2119398970908713209",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/sorenxet/status/2119398970908713209"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T11:57:45.000Z",
+          "observedAt": "2026-11-09T12:44:58.439Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119374246514208768/img/bV45WMxZLrnBtXhU.jpg",
+            "alt": "可复用角色底模：先逐关节检查，再穿服装，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "862447de822c97d3",
+          "rank": 5,
+          "title": "RTX 5090 上运行 H3：与 Seedance 2.5 对照参考视频",
+          "summary": "Kent Dhani 分享 MiniMax H3 与 Seedance 2.5 对照同一参考的视频示例，并明确表示 H3 在自己的 RTX 5090 上通过 ComfyUI 运行。本期只据当前主帖记录工具组合与运行环境，不沿用内嵌旧帖的“零成本”或质量相当结论，也不将一个示例当作标准评测。",
+          "category": "AI 视频工具对照",
+          "author": "Kent Dhani @kentdhani",
+          "url": "https://x.com/kentdhani/status/2119304293534798270",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/kentdhani/status/2119304293534798270"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T05:41:33.000Z",
+          "observedAt": "2026-11-09T12:44:56.168Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119304119047614465/img/y_9xHA739PSrlF4_.jpg",
+            "alt": "RTX 5090 上运行 H3：与 Seedance 2.5 对照参考视频，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7bd2bbb38b2155d0",
+          "rank": 6,
+          "title": "Blender 发布视频：用桌面端与 iOS 应用作演示",
+          "summary": "Riley Brown 展示新的 Blender 视频编辑流程，用 Opus 5.5 制作应用发布演示。原帖给出的提示要求类似 Screen Studio 的风格，同时展示桌面和 iOS 应用；“一次提示、不到十分钟”是作者自述。本期没有完整复现流程或验证是否还有预先准备。",
+          "category": "AI 内容制作",
+          "author": "Riley Brown @rileybrown",
+          "url": "https://x.com/rileybrown/status/2119651130963537996",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/rileybrown/status/2119651130963537996"
+            }
+          ],
+          "publishedAtISO": "2026-11-09T04:39:45.000Z",
+          "observedAt": "2026-11-09T12:44:23.060Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119649809690656768/img/6EUiHQQOKXELQ--O.jpg",
+            "alt": "Blender 发布视频：用桌面端与 iOS 应用作演示，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "e1ae1772aacd7f7c",
+          "rank": 7,
+          "title": "Blender、Claude 与 Seedance 的短片制作尝试",
+          "summary": "Eric Ker 展示将 Blender、Claude 与 Seedance 组合的短片制作尝试，自述此前不懂 Blender，这次不到30分钟完成，并计划继续尝试短电影。本帖提供工具组合和演示，但没有足够材料还原完整制作顺序，因此不补写具体接入方式或提示词。",
+          "category": "AI 内容制作",
+          "author": "Eric Ker @EricKerArt",
+          "url": "https://x.com/EricKerArt/status/2119552672198197689",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/EricKerArt/status/2119552672198197689"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T22:08:31.000Z",
+          "observedAt": "2026-11-09T12:44:53.833Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119552517616889856/img/cMDb8VFB0fJ1nXBp.jpg",
+            "alt": "Blender、Claude 与 Seedance 的短片制作尝试，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b3c48d9889aab9aa",
+          "rank": 8,
+          "title": "Unity 森林游戏迭代：AI 团队与巨型 Boss 的 V2",
+          "summary": "Kensei 记录用 Unity、Claude Code（Opus 5.5）、Tripo 与 Blender 制作森林探索游戏：从概念图到首个可玩版本，再做带28米巨型 Boss 的 V2。11,700行 C# 与着色器代码均由 AI 编写是作者自述；引用的完整流程文章发表于更早时间，本次没有完整审阅。",
+          "category": "AI 游戏开发",
+          "author": "Kensei @0xKense1",
+          "url": "https://x.com/0xKense1/status/2119547082549744043",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/0xKense1/status/2119547082549744043"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T21:46:18.000Z",
+          "observedAt": "2026-11-09T12:45:00.918Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119546615929143296/img/bBnIm9eF71sap6q8.jpg",
+            "alt": "Unity 森林游戏迭代：AI 团队与巨型 Boss 的 V2，真实原帖视频封面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ed0801adfe0d6ba7",
+          "rank": 9,
+          "title": "0：连接开发 Agent 的开源安全研究工具",
+          "summary": "Doruk 发布开源 AI 安全研究工具 0。仓库将其标为研究预览，提供本地 Web 界面、CLI 和 MCP，可接入自有模型服务，并组织调查、复现与修复验证工作。只应对自己拥有或已获授权的系统使用；本期未验证原帖关于零日漏洞数量及影响范围的宣传数字。",
+          "category": "AI 开发工作流",
+          "author": "Doruk @Peak__Twilight",
+          "url": "https://x.com/Peak__Twilight/status/2119475616030630059",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Peak__Twilight/status/2119475616030630059"
+            },
+            {
+              "title": "官方开源仓库（已读 README）",
+              "url": "https://github.com/0sec-labs/0"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T17:02:19.000Z",
+          "observedAt": "2026-11-09T12:45:03.098Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119472132442955776/img/Tv0w_fenObIaDvaZ.jpg",
+            "alt": "0：连接开发 Agent 的开源安全研究工具，真实原帖视频封面",
+            "type": "video"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-08",
+      "date": "2026-11-08",
+      "label": "11 月 8 日 · 8 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-08",
+      "items": [
+        {
+          "id": "bfd725c97abeffa2",
+          "rank": 1,
+          "title": "Blender 动画复现：先规划，再多轮修正",
+          "summary": "Max 分享用 Opus 5.5 与 Sol 6.1 在 Blender 复现参考动画的案例，自述耗时2小时。作者回复明确先分阶段规划，之后仍需大量迭代，并非一次提示完成；也表示预览动画与可用成片之间仍有差距。",
+          "category": "AI 游戏动画",
+          "author": "Max @maxt3chno",
+          "url": "https://x.com/maxt3chno/status/2119024722516029898",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/maxt3chno/status/2119024722516029898"
+            },
+            {
+              "title": "作者补充与说明",
+              "url": "https://x.com/maxt3chno/status/2119027195846983956"
+            },
+            {
+              "title": "作者补充与说明",
+              "url": "https://x.com/maxt3chno/status/2119064580928205303"
+            },
+            {
+              "title": "作者补充与说明",
+              "url": "https://x.com/maxt3chno/status/2119140801372696996"
+            }
+          ],
+          "publishedAtISO": "2026-11-07T11:10:38.000Z",
+          "observedAt": "2026-11-08T13:01:06.383Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119024571751837696/img/pu0Jbhy1nafayNP6.jpg",
+            "alt": "Blender 动画复现：先规划，再多轮修正，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "55c1c05174d41863",
+          "rank": 2,
+          "title": "室内视频：用平面图和预演检查空间关系",
+          "summary": "GENEL 分享室内生成视频流程：给 Muse 办公室平面图，用 Blender 做预演，再以预演首尾帧生成实拍风视频；抽帧与平面图比对，发现空间错误后回到预演修改。此例另外使用 Kling 4.0 替换人物。作者回复提供提示词，但本次只读到提示词开头，未读取全文。",
+          "category": "内容制作",
+          "author": "GENEL | リアルなAI動画制作 @genel_ai",
+          "url": "https://x.com/genel_ai/status/2119356659877191832",
+          "sources": [
+            {
+              "title": "日文原帖（本次主要阅读平台译文）",
+              "url": "https://x.com/genel_ai/status/2119356659877191832"
+            },
+            {
+              "title": "作者补充",
+              "url": "https://x.com/genel_ai/status/2119356662226223529"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T09:09:38.000Z",
+          "observedAt": "2026-11-08T13:00:09.450Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119351277583007744/img/ey5Cp_zQbZU08gBK.jpg",
+            "alt": "室内视频：用平面图和预演检查空间关系，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "6d3a5a0127948c93",
+          "rank": 3,
+          "title": "Blender 先排镜头，再用 ComfyUI 生成画面",
+          "summary": "ComfyUI 展示与音乐节奏配合的镜头：先在 Blender 建立简单3D预演来约束相机运动，再用 ComfyUI 生成最终画面。可借鉴的是把运镜与画面生成分开控制；原帖没有说明节拍对齐是否自动完成。",
+          "category": "AI 视频工作流",
+          "author": "ComfyUI @ComfyUI",
+          "url": "https://x.com/ComfyUI/status/2118752259442184394",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/ComfyUI/status/2118752259442184394"
+            },
+            {
+              "title": "作者补充与说明",
+              "url": "https://x.com/ComfyUI/status/2118752271286907152"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T17:07:57.000Z",
+          "observedAt": "2026-11-08T13:00:50.409Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118752231604584448/img/XFC7pK8EHhkmYipy.jpg",
+            "alt": "Blender 先排镜头，再用 ComfyUI 生成画面，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a4432eca21a6533c",
+          "rank": 4,
+          "title": "Blender 批量渲染：给积木识别制作合成训练图",
+          "summary": "Mikameel 自述让 Claude 在 Blender 生成21,038张积木训练图。作者补充随机变化了光照、背景、亮度、图像质量与物体角度，并做镜像处理。案例展示从 CAD 模型制作合成数据的思路，不代表识别准确率已经验证。",
+          "category": "AI 创客工作流",
+          "author": "Mikameel ᯅ @augmentedcamel",
+          "url": "https://x.com/augmentedcamel/status/2118965014405259441",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/augmentedcamel/status/2118965014405259441"
+            },
+            {
+              "title": "作者补充与说明",
+              "url": "https://x.com/augmentedcamel/status/2119043909582241916"
+            }
+          ],
+          "publishedAtISO": "2026-11-07T07:13:22.000Z",
+          "observedAt": "2026-11-08T13:01:38.089Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HWgTZmeWoAAQCFj.jpg",
+            "alt": "Blender 批量渲染：给积木识别制作合成训练图，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ea8d71f26e1af264",
+          "rank": 5,
+          "title": "用代码和数学制作音乐的可视化解释",
+          "summary": "550 Atelier 因 Claude 表示无法听声音，追问它如何创作音乐，随后分享 Claude 制作的可视化解释视频。作者明确提及用编程和数学制作音乐，并带游戏制作标签。本期未完整观看视频，不据此推断未展示的具体算法、音频理解能力或生成效果。",
+          "category": "内容制作",
+          "author": "550 Atelier @550Atelier",
+          "url": "https://x.com/550Atelier/status/2119095115927228761",
+          "sources": [
+            {
+              "title": "日文原帖（本次主要阅读平台译文）",
+              "url": "https://x.com/550Atelier/status/2119095115927228761"
+            }
+          ],
+          "publishedAtISO": "2026-11-07T15:50:21.000Z",
+          "observedAt": "2026-11-08T13:00:32.352Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119092244431204352/img/Toyx8_-FwFdJS2L_.jpg",
+            "alt": "用代码和数学制作音乐的可视化解释，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ad6d00f6dce7f9a4",
+          "rank": 6,
+          "title": "手机 Agent 控制方案对照：AirPlay、蓝牙和 ESP32",
+          "summary": "phoneuse 作者整理十种 iPhone Agent 路线，分别比较 Linux AirPlay＋蓝牙 HID、Mac 镜像、托管真机、ESP32 键鼠桥接，以及 Developer Mode 与自签应用要求。自家 phoneuse 不需手机端应用或开发者模式，但需要 AssistiveTouch 和蓝牙配对。实用价值是明确各方案硬件与权限门槛。",
+          "category": "AI 硬件与工作流",
+          "author": "Aleksey Smolenchuk @lxe",
+          "url": "https://x.com/lxe/status/2119264457234993571",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/lxe/status/2119264457234993571"
+            },
+            {
+              "title": "作者补充",
+              "url": "https://x.com/lxe/status/2119308480679162339"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T03:03:15.000Z",
+          "observedAt": "2026-11-08T13:00:52.939Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HWkjvOyakAAVZir?format=jpg&name=small",
+            "alt": "手机 Agent 控制方案对照：AirPlay、蓝牙和 ESP32，原帖或作者回复媒体预览",
+            "type": "image"
+          }
+        },
+        {
+          "id": "1a0af8ca4bc1085a",
+          "rank": 7,
+          "title": "用 Amp 配置树莓派 5，为家庭自动化准备备机",
+          "summary": "Thorsten Ball 记录让 Amp 刷写 SD 卡，再通过 SSH 配置新 Raspberry Pi 5，自己负责插卡、接线和开机。作者回复补充，旧 Pi 4 开始故障，因此为家庭自动化准备备份机器。不能理解为完全无人值守硬件安装。",
+          "category": "AI 硬件与工作流",
+          "author": "Thorsten Ball @thorstenball",
+          "url": "https://x.com/thorstenball/status/2119391742021754912",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/thorstenball/status/2119391742021754912"
+            },
+            {
+              "title": "作者补充",
+              "url": "https://x.com/thorstenball/status/2119392007433166917"
+            },
+            {
+              "title": "作者补充",
+              "url": "https://x.com/thorstenball/status/2119395498750554113"
+            },
+            {
+              "title": "作者补充",
+              "url": "https://x.com/thorstenball/status/2119402636609036737"
+            }
+          ],
+          "publishedAtISO": "2026-11-08T11:29:02.000Z",
+          "observedAt": "2026-11-08T13:01:01.814Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HWmXs8pXgAAYRQw?format=jpg&name=small",
+            "alt": "用 Amp 配置树莓派 5，为家庭自动化准备备机，原帖或作者回复媒体预览",
+            "type": "image"
+          }
+        },
+        {
+          "id": "cc6340bd34ff8a7b",
+          "rank": 8,
+          "title": "Unity 制作对照：单个道具、地图到完整游戏",
+          "summary": "Stefan 用同一任务与提示，让四个 AI 模型在 Unity 中制作大逃杀游戏，按单个道具、地图、完整游戏三阶段展示。值得参考的是分阶段验收思路；本期未读取完整报告，不能据此给模型排名或认定游戏已达到可发布质量。",
+          "category": "AI 游戏开发",
+          "author": "Stefan 3D AI @Stefan_3D_AI",
+          "url": "https://x.com/Stefan_3D_AI/status/2119061332679164210",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Stefan_3D_AI/status/2119061332679164210"
+            },
+            {
+              "title": "作者补充与说明",
+              "url": "https://x.com/Stefan_3D_AI/status/2119061818929029234"
+            }
+          ],
+          "publishedAtISO": "2026-11-07T13:36:06.000Z",
+          "observedAt": "2026-11-08T13:00:40.126Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119060301421441024/img/dlZABkgMujDqjFso.jpg",
+            "alt": "Unity 制作对照：单个道具、地图到完整游戏，原帖视频预览",
+            "type": "video"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026-11-07",
+      "date": "2026-11-07",
+      "label": "11 月 7 日 · 12 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-07",
+      "items": [
+        {
+          "id": "8a8ab1f26244fbfc",
+          "rank": 1,
+          "title": "Blender 站台制作：程序建模与生成纹理分工",
+          "summary": "荒船泰廣分享 Blender 与 Claude Opus 5.5 的站台制作试验：大部分模型由代码建模，部分纹理使用 ChatGPT，声音使用 HunyuanVideo-Foley。作者后续澄清，污渍等模板也有生成纹理，前景树木使用现成资产，不能概括成全部程序化或零素材。",
+          "category": "AI 游戏美术",
+          "author": "荒船泰廣 @arafune",
+          "url": "https://x.com/arafune/status/2118582485412131107",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/arafune/status/2118582485412131107"
+            },
+            {
+              "title": "作者补充与澄清",
+              "url": "https://x.com/arafune/status/2118650606592348241"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T05:53:20.000Z",
+          "observedAt": "2026-11-07T12:51:30.431Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118581705036763136/img/YsItHCUsJ1DUurwr.jpg",
+            "alt": "Blender 站台制作：程序建模与生成纹理分工，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2824fa71a7ad2548",
+          "rank": 2,
+          "title": "Tripo＋Blender：从角色概念图到绑定动画",
+          "summary": "Dhruval 展示角色制作流程：先用 Codex 图像生成准备概念图，再交给 Tripo 生成网格、纹理与绑定，最后让 Claude 为骨架编写动画并导入 Blender。作者还建议提供参考视频帮助描述动作；“少于5次提示”仅为其自述，本期未复测，也未确认总费用与返工次数。",
+          "category": "AI 游戏美术",
+          "author": "Dhruval @dhruvalgolakiya",
+          "url": "https://x.com/dhruvalgolakiya/status/2118631442066682205",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/dhruvalgolakiya/status/2118631442066682205"
+            },
+            {
+              "title": "作者步骤：角色概念图",
+              "url": "https://x.com/dhruvalgolakiya/status/2118631446449672564"
+            },
+            {
+              "title": "作者步骤：网格、纹理与绑定",
+              "url": "https://x.com/dhruvalgolakiya/status/2118631450992120271"
+            },
+            {
+              "title": "作者步骤：动画与参考视频",
+              "url": "https://x.com/dhruvalgolakiya/status/2118631455551304009"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T09:07:52.000Z",
+          "observedAt": "2026-11-07T12:52:46.177Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118630129169838080/img/2t2VCYfwvzEJ1Nzx.jpg",
+            "alt": "Tripo＋Blender：从角色概念图到绑定动画，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "cdd2ca99ed19ff1e",
+          "rank": 3,
+          "title": "TailorRig：为裙摆、披风与头发补充骨骼",
+          "summary": "Stefan 介绍 TailorRig 的角色自动绑定方案：身体绑定后，为裙摆、披风、头发和袖子补充骨骼链，并处理相邻部位的权重干扰。原帖称可输入已有骨架以复用动画，也明确表示代码尚未公开。本期未独立验证绑定效果，不能当作已可安装使用的工具。",
+          "category": "AI 游戏美术",
+          "author": "Stefan 3D AI @Stefan_3D_AI",
+          "url": "https://x.com/Stefan_3D_AI/status/2119004325410213937",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/Stefan_3D_AI/status/2119004325410213937"
+            }
+          ],
+          "publishedAtISO": "2026-11-07T09:49:35.000Z",
+          "observedAt": "2026-11-07T12:51:31.929Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119004212206186496/img/42F4zXUmYV3IE0Hr.jpg",
+            "alt": "TailorRig：为裙摆、披风与头发补充骨骼，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ce5f179e2a0dd7c8",
+          "rank": 4,
+          "title": "HyperFlow H3 Flash：RTX 5090 上的视频生成对照",
+          "summary": "DeepForest 在 RTX 5090 上对比生成5秒、768×1344视频：作者测得 Base BF16 25步为540秒，Flash Q8_0 6步为115秒。两边精度与步数不同，适合看具体配置的速度与画面取舍，不能直接作为模型等条件加速结论。",
+          "category": "AI 视频实测",
+          "author": "DeepForest_Studio_AI @DeepForest_Inc",
+          "url": "https://x.com/DeepForest_Inc/status/2118808820013244894",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/DeepForest_Inc/status/2118808820013244894"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T20:52:42.000Z",
+          "observedAt": "2026-11-07T12:51:47.502Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118802491894902786/img/cIkQSCq21HtSPRF2.jpg",
+            "alt": "HyperFlow H3 Flash：RTX 5090 上的视频生成对照，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "20761bfcef2fff2c",
+          "rank": 5,
+          "title": "游戏攻击特效：初稿与手工微调对照",
+          "summary": "ゆんま将 Claude 快速生成的攻击特效与自己细调后的版本放在同一视频对比。作者在回复中明确图片素材仍由 AI 生成，并举出提前0.2秒、角度调整10度、位置移动10像素等视觉微调，说明这是一份具体案例复盘，而非对全部 AI 游戏制作能力的通用评测。 57赞，因具体迭代过程作为低热度例外收录。",
+          "category": "AI 游戏制作",
+          "author": "ゆんま @yunma33331111",
+          "url": "https://x.com/yunma33331111/status/2119018652032970932",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/yunma33331111/status/2119018652032970932"
+            },
+            {
+              "title": "作者补充与澄清",
+              "url": "https://x.com/yunma33331111/status/2119040906418688333"
+            },
+            {
+              "title": "作者补充与澄清",
+              "url": "https://x.com/yunma33331111/status/2119028915406799141"
+            }
+          ],
+          "publishedAtISO": "2026-11-07T10:46:30.000Z",
+          "observedAt": "2026-11-07T12:52:20.391Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2119017723275706368/img/5ol2LSxG24vrv_Qy.jpg",
+            "alt": "游戏攻击特效：初稿与手工微调对照，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "8c6d4b42d03d329f",
+          "rank": 6,
+          "title": "单图到可漫游空间：LOD 与流式加载试验",
+          "summary": "LUCIAN 展示从单张参考图搭建可走动三维空间的试验，作者称使用 Claude Opus 5.5 与 gptimage，并加入 LOD 和流式加载。回复提供可访问演示，同时承认视角变化后仍有漂浮物与局部破绽；本次未独立运行演示，不采用无限世界或全流程本地化保证。",
+          "category": "AI 3D 场景",
+          "author": "LUCIAN @lucianlamp",
+          "url": "https://x.com/lucianlamp/status/2118689081475703236",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/lucianlamp/status/2118689081475703236"
+            },
+            {
+              "title": "作者补充与澄清",
+              "url": "https://x.com/lucianlamp/status/2118690219398709553"
+            },
+            {
+              "title": "作者补充与澄清",
+              "url": "https://x.com/lucianlamp/status/2118854845033746928"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T12:56:55.000Z",
+          "observedAt": "2026-11-07T12:52:01.208Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118689026291216385/img/vG-5QJgar4Q8_1t7.jpg",
+            "alt": "单图到可漫游空间：LOD 与流式加载试验，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "76728161b1579427",
+          "rank": 7,
+          "title": "ComfyUI 提示词工具：按生成时刻保存场景",
+          "summary": "ひげねこ展示自制 ComfyUI 提示词生成工具的场景快照功能：每次生成图像时保存场景状态，与撤销/重做分开，通过历史切换状态并查看对应图像。适合反复更换服装、发型而保留同一场景的流程；发布与源码入口本次未核实。",
+          "category": "ComfyUI 工作流",
+          "author": "ひげねこ@技 @HigenekoTech",
+          "url": "https://x.com/HigenekoTech/status/2118635006956609721",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/HigenekoTech/status/2118635006956609721"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T09:22:02.000Z",
+          "observedAt": "2026-11-07T12:52:13.901Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118634959380545536/img/in58zPynMKZoRqKo.jpg",
+            "alt": "ComfyUI 提示词工具：按生成时刻保存场景，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "1ff04827e980f215",
+          "rank": 8,
+          "title": "Vork：面向 Agent 的 3D 与特效引擎",
+          "summary": "Ravi Parikh 发布面向编码代理的 3D 与特效引擎 Vork，让代理编写着色器、材质、相机和物理逻辑。作者介绍核心 API 较紧凑，基于 Rust 与 Slang，使用 Metal/Vulkan 运行 GPU 任务。原帖的 token 效率与渲染提速均为作者特定案例报告，本期未独立复测，也未确认许可或价格。",
+          "category": "AI 3D 工具",
+          "author": "Ravi Parikh @ravisparikh",
+          "url": "https://x.com/ravisparikh/status/2118744950825275680",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/ravisparikh/status/2118744950825275680"
+            },
+            {
+              "title": "作者补充：自定义光照逻辑",
+              "url": "https://x.com/ravisparikh/status/2118744953321046129"
+            },
+            {
+              "title": "作者补充：实拍合成与场景重打光",
+              "url": "https://x.com/ravisparikh/status/2118744955514483127"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T16:38:55.000Z",
+          "observedAt": "2026-11-07T12:51:55.111Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118742425564758016/img/Xdqq7q8IhJRQy3pl.jpg",
+            "alt": "Vork：面向 Agent 的 3D 与特效引擎，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "3fbeae82680246a8",
+          "rank": 9,
+          "title": "OpenRoboKit：仿真、动作迁移与抓取工具集",
+          "summary": "Jianglong Ye 介绍三个开源机器人项目：RoboKit 用于批量优化和仿真，RetargetingKit 将人体动作映射到机器人，GraspKit 连接抓取优化、仿真训练与硬件执行。已核对 RoboKit 仓库的 MIT 许可及 URDF/MJCF 支持；其他组件的具体部署条件仍应分别查看仓库，未做硬件实测。",
+          "category": "AI 机器人",
+          "author": "Jianglong Ye @jianglong_ye",
+          "url": "https://x.com/jianglong_ye/status/2118744767727288773",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/jianglong_ye/status/2118744767727288773"
+            },
+            {
+              "title": "RoboKit 官方仓库与许可",
+              "url": "https://github.com/openrobokit/robokit"
+            },
+            {
+              "title": "作者补充：RetargetingKit",
+              "url": "https://x.com/jianglong_ye/status/2118744813881442787"
+            },
+            {
+              "title": "作者补充：GraspKit",
+              "url": "https://x.com/jianglong_ye/status/2118744841446453496"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T16:38:11.000Z",
+          "observedAt": "2026-11-07T12:51:59.336Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118744729840209920/img/xKT1eDH3Xd-9t0oI.jpg",
+            "alt": "OpenRoboKit：仿真、动作迁移与抓取工具集，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "27140a14b78963a7",
+          "rank": 10,
+          "title": "Dream-1＋SO-101：单臂调试与关节限位经验",
+          "summary": "Praneeth 在单只 SO-101 机械臂上接通 Deepgram 语音、Claude Code 任务拆解与 Dream-1 执行动作的流程。作者建议沿用官方安装方式，检查关节校准、相机布置、逆运动学限位与舵机设置，并报告错误限位曾使机械臂折回自身。做三明治仍是下一步测试，并未完成；84赞，因具体调试经验作为低热度例外。",
+          "category": "AI 硬件实践",
+          "author": "Praneeth Samineni @praneethsamine",
+          "url": "https://x.com/praneethsamine/status/2118538760786743348",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/praneethsamine/status/2118538760786743348"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T02:59:35.000Z",
+          "observedAt": "2026-11-07T12:52:47.867Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118538690049769473/img/wfC5DTW6YO3sDfRS.jpg",
+            "alt": "Dream-1＋SO-101：单臂调试与关节限位经验，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "fab1fe1cd6ae3bdc",
+          "rank": 11,
+          "title": "OpenReynolds：用自然语言搭建流体仿真",
+          "summary": "Standard Physics 开源 OpenReynolds 仿真代理，可将自然语言描述整理成流体计算案例，运行 OpenFOAM 并返回可复跑的文件。官方仓库为 MIT 许可，提供九种工具，在 Linux/OpenFOAM v2512 工作区执行，模型需自行配置。商业设计优化与托管服务另计；节电和设计改进数字未独立验证。",
+          "category": "AI 工程工具",
+          "author": "Standard Physics @StandardPhys",
+          "url": "https://x.com/StandardPhys/status/2118766173986955771",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/StandardPhys/status/2118766173986955771"
+            },
+            {
+              "title": "作者说明：Reynolds 用途与许可",
+              "url": "https://x.com/StandardPhys/status/2118766203573530897"
+            },
+            {
+              "title": "官方仓库与运行条件",
+              "url": "https://github.com/InviscidAI/OpenReynolds"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T18:03:15.000Z",
+          "observedAt": "2026-11-07T12:51:57.388Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118766116764082176/img/JwumH-9urzpDLsTN.jpg",
+            "alt": "OpenReynolds：用自然语言搭建流体仿真，原帖视频预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "556e30c766ba1189",
+          "rank": 12,
+          "title": "Lattice：接入自有 Agent 的本地 LaTeX 工作区",
+          "summary": "Leonardo 发布本地 LaTeX 工作区 Lattice，整合论文、笔记、PDF 预览与 Overleaf 协作。作者明确说明应用不自带 AI，而是运行用户已使用的 Claude Code、Codex、Cursor 等代理；编译依赖自己的 TeX Live，文件改动可查看差异或撤销。本期未安装验证，免费应用不等于模型服务免费。",
+          "category": "AI 写作工作流",
+          "author": "Leonardo @leoliuym",
+          "url": "https://x.com/leoliuym/status/2118774820293034437",
+          "sources": [
+            {
+              "title": "英文原帖与可见作者讨论",
+              "url": "https://x.com/leoliuym/status/2118774820293034437"
+            },
+            {
+              "title": "作者补充：本地编译与双向定位",
+              "url": "https://x.com/leoliuym/status/2118774838496223388"
+            },
+            {
+              "title": "作者补充：Overleaf 协作",
+              "url": "https://x.com/leoliuym/status/2118774855562912232"
+            },
+            {
+              "title": "作者说明：不自带 AI、使用自有代理",
+              "url": "https://x.com/leoliuym/status/2118774873422287336"
+            }
+          ],
+          "publishedAtISO": "2026-11-06T18:37:36.000Z",
+          "observedAt": "2026-11-07T12:52:42.083Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2118774769357303808/img/OdDsUBZl10gzXuJm.jpg",
+            "alt": "Lattice：接入自有 Agent 的本地 LaTeX 工作区，原帖视频预览",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-06",
       "date": "2026-11-06",

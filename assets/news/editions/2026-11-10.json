@@ -1,0 +1,299 @@
+{
+  "id": "2026-11-10",
+  "date": "2026-11-10",
+  "label": "11 月 10 日 · 17 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-10",
+  "items": [
+    {
+      "id": "item-9cdc4cb8dc442e6d",
+      "title": "PCB 自动布线首轮结果：作者尚未完成审查",
+      "summary": "Nirav Patel 展示 Fable 5.2 的 PCB 布线结果，并在回复中说明只要求按 JLC 默认六层板设计规则完成第一轮布线。作者尚未审查设计，不能据此判断可生产或已通过电气验证。",
+      "category": "AI 硬件",
+      "author": "Nirav Patel @cmonkey",
+      "publishedAt": "2026-11-10T02:10:05.000Z",
+      "source": "https://x.com/cmonkey/status/2119975852977029365",
+      "relatedLinks": [
+        {
+          "label": "作者补充：首轮结果尚未审查",
+          "url": "https://x.com/cmonkey/status/2119976035731362291"
+        }
+      ],
+      "image": "assets/news/item-9cdc4cb8dc442e6d-diagram.svg",
+      "imageAlt": "PCB 自动布线首轮结果：作者尚未完成审查：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-f863aa24d63ca14c",
+      "title": "What the water keeps：穿过8个世界的浏览器游船",
+      "summary": "Kevin Ngo 分享浏览器游戏演示 What the water keeps，内容是一段穿过8个梦幻世界的游船旅程。作者称使用 Claude Fable 5.2 制作，并在自己的回复中给出试玩入口。本期只核对原帖与作者补充，没有实际试玩或审阅代码。",
+      "category": "AI 游戏开发",
+      "author": "Kevin Ngo @kevin_t_ngo",
+      "publishedAt": "2026-11-09T19:05:21.000Z",
+      "source": "https://x.com/kevin_t_ngo/status/2119868968307695818",
+      "relatedLinks": [
+        {
+          "label": "作者回复：试玩入口",
+          "url": "https://x.com/kevin_t_ngo/status/2119868970643964177"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119868394363367424/img/OARGnHXgicPmtCwd.jpg",
+      "imageAlt": "八个梦境世界：可在浏览器体验的划船游戏，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ef98579a07e6b89c",
+      "title": "代码绘画：用虚构画家设定引导笔刷引擎",
+      "summary": "Jake Eaton 分享用 Fable 5.2 编写 Python 绘画程序的尝试：先让模型设计带背景故事与稳定风格的虚构画家，再通过反馈调整笔刷和颜料引擎。作者称每幅作品是逐笔运行的程序，部分有一至两千行代码，没有调用图像模型或预先描摹。本期未审阅源码或复现。",
+      "category": "AI 创意编程",
+      "author": "Jake Eaton @jkeatn",
+      "publishedAt": "2026-11-09T19:25:23.000Z",
+      "source": "https://x.com/jkeatn/status/2119874007382299087",
+      "relatedLinks": [],
+      "image": "assets/news/item-ef98579a07e6b89c-diagram.svg",
+      "imageAlt": "代码绘画：用虚构画家设定引导笔刷引擎：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-3b2f9754485a573e",
+      "title": "Blender 房间短片：网页屏幕与十三个镜头",
+      "summary": "Riley Brown 展示 Blender 房间短片，作者称由 Fable 5.2 编写代码搭建，包含桌面、电脑、网页形式的屏幕内容和日夜光线变化。原帖介绍了13个镜头、RunPod 渲染与 ElevenLabs 声音制作。本期未核对直播全程、制作日志或账单。",
+      "category": "AI 影像",
+      "author": "Riley Brown @rileybrown",
+      "publishedAt": "2026-11-09T21:17:03.000Z",
+      "source": "https://x.com/rileybrown/status/2119902109709537708",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119897796736131072/img/uYa4QI709MAYcBH3.jpg",
+      "imageAlt": "Blender 房间短片：网页屏幕与十三个镜头，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-23587c388a7eb0d1",
+      "title": "Steel：面向机器人操作任务的物理求解器",
+      "summary": "Skild AI 宣布与 NVIDIA 合作的 Steel 物理求解器开放源代码，重点面向接触丰富、任务多样的机器人操作仿真。作者线程给出二十种 IsaacLab 任务同时运行的吞吐量，以及相同环境数的显存比较。",
+      "category": "AI 机器人",
+      "author": "Skild AI @SkildAI",
+      "publishedAt": "2026-11-09T17:29:56.000Z",
+      "source": "https://x.com/SkildAI/status/2119844954893946999",
+      "relatedLinks": [
+        {
+          "label": "作者线程：吞吐量测试条件",
+          "url": "https://x.com/SkildAI/status/2119844960115798209"
+        },
+        {
+          "label": "作者线程：显存比较条件",
+          "url": "https://x.com/SkildAI/status/2119844962179449258"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119844625246765056/img/50LSfEemaPWeOR0X.jpg",
+      "imageAlt": "Steel：面向机器人操作任务的物理求解器，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-7e13c2144b4358cb",
+      "title": "Nuplex 与 Emma：说话过程中也能回应的虚拟角色",
+      "summary": "Fangchang Ma 发布基于 Nuplex 全双工音视频模型的 Emma 演示，重点展示用户仍在说话时角色作出反应。作者同时公布有限开放的 beta API，并说明公开 API 不能克隆真人。",
+      "category": "AI 交互",
+      "author": "Fangchang Ma @fangchangma",
+      "publishedAt": "2026-11-09T17:59:23.000Z",
+      "source": "https://x.com/fangchangma/status/2119852363494371466",
+      "relatedLinks": [
+        {
+          "label": "作者说明：有限 beta API",
+          "url": "https://x.com/fangchangma/status/2119854041517981948"
+        },
+        {
+          "label": "作者说明：公开 API 限制",
+          "url": "https://x.com/fangchangma/status/2119854309701755358"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119845669271982080/img/fFtdVeDoPm46Z9sj.jpg",
+      "imageAlt": "Nuplex 与 Emma：说话过程中也能回应的虚拟角色，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ec7f995f28f6d1fd",
+      "title": "Blender 跑车建模：Bugatti Tourbillon 与内饰演示",
+      "summary": "Shikhar 展示使用 Fable 5.2 在 Blender 中制作 Bugatti Tourbillon 的演示。作者称模型包含车内结构，随后完成电影感渲染，并自述由一次提示和参考图出发，用时2.5小时。本期没有检查模型文件、提示词或实际耗时。",
+      "category": "AI 3D 制作",
+      "author": "Shikhar @xikhar",
+      "publishedAt": "2026-11-10T01:31:31.000Z",
+      "source": "https://x.com/xikhar/status/2119966147328299284",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119965554627014656/img/DavEdty2TpA_b3JZ.jpg",
+      "imageAlt": "参考图到汽车场景：Blender 建模演示，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ecb96464598a657d",
+      "title": "照片重建 Blender 场景：用像素匹配检查结果",
+      "summary": "Felix Rieseberg 分享把两张照片转成 Blender 场景的尝试，称 Claude 通过 Python 操作建模，并比较照片与渲染画面的匹配像素。作者另提供 Three.js 版本，同时指出其灯光不如 Blender 版本。",
+      "category": "AI 3D",
+      "author": "Felix Rieseberg @felixrieseberg",
+      "publishedAt": "2026-11-09T13:00:02.000Z",
+      "source": "https://x.com/felixrieseberg/status/2119777031336452518",
+      "relatedLinks": [
+        {
+          "label": "作者补充：Three.js 版本与灯光限制",
+          "url": "https://x.com/felixrieseberg/status/2119777032103965138"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119688146027941888/img/MzJ_r6PG7uvfImQw.jpg",
+      "imageAlt": "照片重建 Blender 场景：用像素匹配检查结果，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-c0678d2f51872a04",
+      "title": "歌舞伎町重建：以 Gsplat 作参考的 Blender 工作流",
+      "summary": "hectorvfx 分享用 Blender 5.3 与 Claude Opus 5.5 重建歌舞伎町场景的演示。作者在补充回复中感谢 Kou45388803 提供的 Gsplat，说明以此为参考建模，并结合 ComfyUI 与 Qwen Image-Edit 2.1 修整贴图。本期主要读取西班牙文原帖的平台译文，不将其描述为完全从零生成。",
+      "category": "AI 场景制作",
+      "author": "hectorvfx @hectorVFX",
+      "publishedAt": "2026-11-09T14:22:09.000Z",
+      "source": "https://x.com/hectorVFX/status/2119797694801793403",
+      "relatedLinks": [
+        {
+          "label": "作者补充：Gsplat参考与纹理流程",
+          "url": "https://x.com/hectorVFX/status/2119797697112588562"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119795326877904896/img/tuRc3rcb4tfHhQWS.jpg",
+      "imageAlt": "歌舞伎町场景重建：Gsplat 参考与纹理修复，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-cdad12cd0289a551",
+      "title": "跑步动作预演：慢跑、冲刺与高速疾跑",
+      "summary": "あかくま屋 用 Fable 5.2 制作三种运动预演：慢跑、冲刺和高速疾跑。作者在回复中说明用了角色插画与文字提示，并分享了提示截图。",
+      "category": "AI 动画",
+      "author": "あかくま屋 @akakuma0219",
+      "publishedAt": "2026-11-10T05:47:46.000Z",
+      "source": "https://x.com/akakuma0219/status/2120030634248929556",
+      "relatedLinks": [
+        {
+          "label": "作者补充：插画与文字输入",
+          "url": "https://x.com/akakuma0219/status/2120051477419118813"
+        },
+        {
+          "label": "作者补充：提示截图",
+          "url": "https://x.com/akakuma0219/status/2120056684106420319"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120030599155195904/img/abqVbyiES39-UYiU.jpg",
+      "imageAlt": "跑步动作预演：慢跑、冲刺与高速疾跑，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-1596dcd2581e6b93",
+      "title": "Terminus Teams：让代码 Agent 读取团队消息",
+      "summary": "Winston Gao 发布 Terminus Teams，展示频道、讨论线程、通话和会议等团队沟通功能，并称可让已有 Claude Code 或 Codex 读取消息、回复。作者表示这是首个版本，覆盖自家公司当前所需功能。",
+      "category": "AI 工作流",
+      "author": "Winston Gao @WinstonGu_",
+      "publishedAt": "2026-11-09T19:13:31.000Z",
+      "source": "https://x.com/WinstonGu_/status/2119871020618465772",
+      "relatedLinks": [
+        {
+          "label": "作者补充：首版功能范围",
+          "url": "https://x.com/WinstonGu_/status/2119966083998519807"
+        },
+        {
+          "label": "作者补充：项目与源码入口",
+          "url": "https://x.com/WinstonGu_/status/2119941420576633208"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119870899856019456/img/2Qqsjo09O-mSsog9.jpg",
+      "imageAlt": "Terminus Teams：让代码 Agent 读取团队消息，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-72efe94b34fe78fe",
+      "title": "cinematic-skill：把脚本、配音与镜头节奏串起来",
+      "summary": "m0h 发布面向 Claude、Codex 的 cinematic-skill，列出逐行脚本、配音对时、代码镜头、音效和字幕流程，并给出 GitHub 仓库。作者补充说明仍会用参考图，并非纯代码无素材。",
+      "category": "AI 影像",
+      "author": "m0h @exploraX_",
+      "publishedAt": "2026-11-09T15:39:03.000Z",
+      "source": "https://x.com/exploraX_/status/2119817050008748064",
+      "relatedLinks": [
+        {
+          "label": "作者补充：使用参考图",
+          "url": "https://x.com/exploraX_/status/2119860672012194196"
+        },
+        {
+          "label": "作者提供的仓库（未审计）",
+          "url": "https://github.com/Moh4696/cinematic-skill"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119816666531917824/img/n7JjYC_qFcxCGC-3.jpg",
+      "imageAlt": "cinematic-skill：把脚本、配音与镜头节奏串起来，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-5c681ef8b1ef90db",
+      "title": "电子宠物概念：KiCad、Inventor 与 Blender 串联",
+      "summary": "adam 展示电子宠物硬件概念，称 Fable 5.2 完成 KiCad PCB 布局、Inventor 外壳和 Blender 渲染。适合观察电路、机械外壳与视觉展示如何串联。",
+      "category": "AI 硬件",
+      "author": "adam @adamdotnew",
+      "publishedAt": "2026-11-10T08:30:40.000Z",
+      "source": "https://x.com/adamdotnew/status/2120071630139621540",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120071508370640896/img/qc0XXzxj8T5pl3Cv.jpg",
+      "imageAlt": "电子宠物概念：KiCad、Inventor 与 Blender 串联，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-9a62adb84979b575",
+      "title": "程序化城堡对照：同一 Blender 提示的时间与成本记录",
+      "summary": "Stefan 3D AI 用9月的同一城堡提示，分别让 Fable 5.2 与 Opus 5.5 在 Blender 中进行程序化制作。作者记录前者71分钟、约38万输出 token，后者55分钟、约32.4万，并给出约32.9与19.1美元的 API 价格折算。本期未复测、核对计费口径或评价画面优劣。",
+      "category": "AI 3D 工作流对照",
+      "author": "Stefan 3D AI @Stefan_3D_AI",
+      "publishedAt": "2026-11-10T06:29:37.000Z",
+      "source": "https://x.com/Stefan_3D_AI/status/2120041169719894165",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120041091856760832/img/TUmGkHcY_Fk_j7Z2.jpg",
+      "imageAlt": "同一城堡提示：两款模型的时间与输出量比较，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-70f90d82e203cb79",
+      "title": "九十年代玩具广告风格：代码制作的动画短片",
+      "summary": "Kevin Ngo 展示一支九十年代玩具广告风格的创意短片，称画面由 Fable 5.2 编写代码制作，并用 Python 动画、Blender 渲染。与同作者的划船游戏是不同项目。",
+      "category": "AI 影像",
+      "author": "Kevin Ngo @kevin_t_ngo",
+      "publishedAt": "2026-11-10T01:55:16.000Z",
+      "source": "https://x.com/kevin_t_ngo/status/2119972124211454139",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119970272552095744/img/ZH2HGWtn-N8PCIHK.jpg",
+      "imageAlt": "九十年代玩具广告风格：代码制作的动画短片，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-a60c0213c9c8e13d",
+      "title": "能走进去的房屋网页：滚动镜头与实时三维",
+      "summary": "Sourany Phomhome 展示 Claude Code、Opus 5.5 和 Three.js 制作的房屋网页，可滚动浏览，也可进入室内。作者称材质通过代码实时生成，并在回复中说明移动端会降低程序化纹理分辨率。",
+      "category": "AI 网页",
+      "author": "Sourany Phomhome @SouranyPhomhome",
+      "publishedAt": "2026-11-09T13:23:49.000Z",
+      "source": "https://x.com/SouranyPhomhome/status/2119783017447141865",
+      "relatedLinks": [
+        {
+          "label": "作者补充：移动端性能限制",
+          "url": "https://x.com/SouranyPhomhome/status/2119943610195964363"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119782864187252736/img/RDvtrvvSvtcn7Hc3.jpg",
+      "imageAlt": "能走进去的房屋网页：滚动镜头与实时三维，原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-a3a355e55a1db158",
+      "title": "四种游戏机械概念：集中检查特效与物理",
+      "summary": "Techartist 展示四种游戏机械概念的试验场，称使用 Fable 5.2、Three.js 与 Blender 制作，关注特效、机械行为和物理表现。内容是原型测试演示。",
+      "category": "AI 游戏",
+      "author": "Techartist @techartist_",
+      "publishedAt": "2026-11-10T00:15:00.000Z",
+      "source": "https://x.com/techartist_/status/2119946891106394518",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2119922739230445568/img/r6kQ3qYFuOhnE1Nn.jpg",
+      "imageAlt": "四种游戏机械概念：集中检查特效与物理，原帖视频封面",
+      "imageKind": "original"
+    }
+  ]
+}
