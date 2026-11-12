@@ -2,9 +2,241 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "7823ed52a9efd5c5960b77466d798dba2084589e",
-  "syncedAt": "2026-11-12T09:48:22.573Z",
+  "sourceRevision": "b93d574d63256b42031109a5ad88af09089d2776",
+  "syncedAt": "2026-11-12T14:44:21.849Z",
   "editions": [
+    {
+      "id": "2026-11-12",
+      "date": "2026-11-12",
+      "label": "11 月 12 日 · 10 条英文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-12",
+      "items": [
+        {
+          "id": "56e2caca14fb3a59",
+          "rank": 1,
+          "title": "Plurai Simulation：智能体仿真与失败回放",
+          "summary": "作者介绍从代码重建智能体、工具及运行环境，用模拟任务检查实际动作，并将生产失败转成可重复运行的仿真。原帖提供免费开始入口，未核实额度与完整收费。",
+          "category": "AI 开发工作流",
+          "author": "Ilan Kadar @ilan_kadar",
+          "url": "https://x.com/ilan_kadar/status/2120524450831413518",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/ilan_kadar/status/2120524450831413518"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T14:30:01.000Z",
+          "observedAt": "2026-11-12T12:54:14.137Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120476960069447680/img/34xIvO0Vguqch9bT.jpg",
+            "alt": "Plurai Simulation：智能体仿真与失败回放，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9188948a6b0f9a42",
+          "rank": 2,
+          "title": "OpenBot 1.0：可自托管的 AI 同事平台",
+          "summary": "Atai Barkai 介绍面向企业自有基础设施的 OpenBot 1.0，列出电脑操作、搜索、集成、例行任务及生成式界面等功能，称可通过 AG-UI 接入智能体。此处是 AI 同事平台，并非同名的手机机器人项目。",
+          "category": "AI 工作流",
+          "author": "Atai Barkai @ataiiam",
+          "url": "https://x.com/ataiiam/status/2120170276302524488",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/ataiiam/status/2120170276302524488"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T15:02:39.000Z",
+          "observedAt": "2026-11-12T12:54:38.947Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120170202344382464/img/j17fLQFNua0T77TZ.jpg",
+            "alt": "OpenBot 1.0：可自托管的 AI 同事平台，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "20aeb03cea32e6a7",
+          "rank": 3,
+          "title": "Databricks Genie：把业务上下文接入 AI 工具",
+          "summary": "Databricks 官方介绍 Genie 插件，让智能体访问受治理的业务上下文，跨数据与文档调查问题并返回带引用的答案。原帖强调建立一次业务本体后在多个团队工具间复用；未核查计划、价格及部署要求。",
+          "category": "AI 数据工作流",
+          "author": "Databricks @databricks",
+          "url": "https://x.com/databricks/status/2120630182876741718",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/databricks/status/2120630182876741718"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T21:30:09.000Z",
+          "observedAt": "2026-11-12T12:55:26.995Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HW396cvWEAAdD6Y.jpg",
+            "alt": "Databricks Genie：把业务上下文接入 AI 工具，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "1769d2fdb7250901",
+          "rank": 4,
+          "title": "Cursor Team Projects：团队与智能体共享工作区",
+          "summary": "Cursor 官方宣布 Projects 支持团队成员及其智能体在统一工作区协作。补充线程说明共享上下文、提前共享计划、标记冲突与协助解除任务阻塞，发布状态为 beta。",
+          "category": "AI 协作开发",
+          "author": "Cursor @cursor_ai",
+          "url": "https://x.com/cursor_ai/status/2120295553309565139",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/cursor_ai/status/2120295553309565139"
+            },
+            {
+              "title": "官方补充线程：协作机制与 beta 状态",
+              "url": "https://x.com/cursor_ai/status/2120295565305282658"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T23:20:27.000Z",
+          "observedAt": "2026-11-12T12:56:20.355Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120295511194533888/img/aAr3DgNohNgiXjSB.jpg",
+            "alt": "Cursor Team Projects：团队与智能体共享工作区，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2ea80a62f1a81bb1",
+          "rank": 5,
+          "title": "Businesses in ChatGPT：企业资料与问答代理",
+          "summary": "OpenAI 官方发布 Businesses in ChatGPT beta：企业可认领并管理资料、查看互动洞察；符合条件的企业还可建立 Business Agent 回答客户问题。未将“符合条件”扩大为所有企业均可使用。",
+          "category": "AI 商业工作流",
+          "author": "OpenAI @OpenAI",
+          "url": "https://x.com/OpenAI/status/2120216592395174382",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/OpenAI/status/2120216592395174382"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T18:06:42.000Z",
+          "observedAt": "2026-11-12T12:56:29.685Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120214011451170817/img/p-eqRNRKImbCTq9L.jpg",
+            "alt": "Businesses in ChatGPT：企业资料与问答代理，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "30e641364e4e74da",
+          "rank": 6,
+          "title": "Andrew Blumson：Three.js 与 WebGPU 游戏演示",
+          "summary": "Andrew Blumson 发布网页游戏演示与可玩链接，标注 Fable 5.2、Three.js、WebGPU 和 ElevenLabs 音频。作者称无需外部美术资产、前三关已可玩，另外七关待加入；未实际运行或确认关卡完成度。",
+          "category": "AI 游戏开发",
+          "author": "Andrew Blumson @Andrew_Blumson",
+          "url": "https://x.com/Andrew_Blumson/status/2120599812512833557",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Andrew_Blumson/status/2120599812512833557"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T19:29:28.000Z",
+          "observedAt": "2026-11-12T13:02:53.205Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120599444978626560/img/D5TBJv54CEhSJmlR.jpg",
+            "alt": "Andrew Blumson：Three.js 与 WebGPU 游戏演示，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b05679c4e992bcd2",
+          "rank": 7,
+          "title": "Fazley：单 HTML 文件的 AI 编写 FPS",
+          "summary": "Fazley 展示单 HTML 文件的第一人称射击游戏，称 Claude Fable 5.2（high）生成了武器、手部、机器人和场景，使用 CC0 音频。约70分钟、2700万token及97%缓存等数字仅为作者自述，不作性能或成本结论。",
+          "category": "AI 游戏开发",
+          "author": "Fazley | AI Lab @itsfazley",
+          "url": "https://x.com/itsfazley/status/2120398367125803454",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/itsfazley/status/2120398367125803454"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T06:09:00.000Z",
+          "observedAt": "2026-11-12T13:02:59.794Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120397986228518913/img/EO4y3ONnjivYlCVb.jpg",
+            "alt": "Fazley：单 HTML 文件的 AI 编写 FPS，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7f2dd1289d72c6d4",
+          "rank": 8,
+          "title": "H3 Image：ComfyUI 原生图像生成与编辑支持",
+          "summary": "ComfyUI 官方宣布支持 MiniMax H3 Image，列出开放权重、6步生成、原生4096×4096输出，以及同模型文生图与多参考图编辑。可用自有 GPU 或 Partner Nodes；未核实许可证、显存需求、服务费用与实测效果。",
+          "category": "AI 内容制作",
+          "author": "ComfyUI @ComfyUI",
+          "url": "https://x.com/ComfyUI/status/2120249788050624629",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/ComfyUI/status/2120249788050624629"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T20:18:36.000Z",
+          "observedAt": "2026-11-12T12:56:08.177Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120249745801359360/img/1M1dCw0JDXGBb2k9.jpg",
+            "alt": "H3 Image：ComfyUI 原生图像生成与编辑支持，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "23e89c94f31249a7",
+          "rank": 9,
+          "title": "Boubou：同一 Wi-Fi 内共享的本地语音运行时",
+          "summary": "Bella Chai 介绍 Boubou：在笔记本上启动本地文字转语音运行时，让同一 Wi-Fi 下的手机、机器人或智能家居连接使用。作者提供 GitHub 链接并称完全本地运行；未安装、验证设备兼容性或审计网络行为。",
+          "category": "AI 本地工具",
+          "author": "Bella Chai @Jinyu_Chai",
+          "url": "https://x.com/Jinyu_Chai/status/2120509393666281835",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Jinyu_Chai/status/2120509393666281835"
+            }
+          ],
+          "publishedAtISO": "2026-11-11T13:30:11.000Z",
+          "observedAt": "2026-11-12T12:56:46.510Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2120508872226148352/img/irmtkmmvW6dHYIOH.jpg",
+            "alt": "Boubou：同一 Wi-Fi 内共享的本地语音运行时，原帖真实媒体预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "bc1a4dd4bc60d55a",
+          "rank": 10,
+          "title": "Open TTS Leaderboard：并排试听小型语音模型",
+          "summary": "Eric Bezzam 汇总五款小型文字转语音模型，并提供 Open TTS Leaderboard 的并排试听入口。原帖用于比较与试听，不作为统一质量排名、推理速度测试或商业许可结论。",
+          "category": "AI 音频制作",
+          "author": "Eric Bezzam @EricBezzam",
+          "url": "https://x.com/EricBezzam/status/2120211806753112182",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/EricBezzam/status/2120211806753112182"
+            }
+          ],
+          "publishedAtISO": "2026-11-10T17:47:41.000Z",
+          "observedAt": "2026-11-12T12:56:55.139Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/media/HWx-1QtXcAATNul?format=jpg&name=small",
+            "alt": "Open TTS Leaderboard：并排试听小型语音模型，原帖真实媒体预览",
+            "type": "image"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-11",
       "date": "2026-11-11",
