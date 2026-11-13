@@ -1,0 +1,138 @@
+{
+  "id": "2026-11-13",
+  "date": "2026-11-13",
+  "label": "11 月 13 日 · 9 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-13",
+  "items": [
+    {
+      "id": "item-769d3439db3c878d",
+      "title": "Cascadeur：即将推出的 AI 角色制作集成",
+      "summary": "Eugene Dyabin 用僵尸游戏原型介绍 Cascadeur 即将推出的第三方 AI 工具集成：TRELLIS.2 生成网格、SkinTokens 蒙皮、Kimodo 文字转动作、SAM 3D Body 视频动捕。原帖是预告，不代表功能已经发布，也未独立核实整套制作结果。",
+      "category": "AI 游戏开发",
+      "author": "Eugene Dyabin @EugeneDyabin",
+      "publishedAt": "2026-11-11T13:34:26.000Z",
+      "source": "https://x.com/EugeneDyabin/status/2120510464090357925",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120508900491362304/img/r82kEdgtPvZMtI2V.jpg",
+      "imageAlt": "Cascadeur：即将推出的 AI 角色制作集成，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-3c4ae57ea6b69d07",
+      "title": "ComfyUI：用控制曲线安排视频动作节奏",
+      "summary": "Nekodificador 展示在 ComfyUI 中以控制曲线调整视频动作节奏和发生时间的节点方法。作者称无需额外训练，适用于 Minimax H3 和 LTX；这是作者演示，未验证安装、可复现性、发布范围或许可证。",
+      "category": "AI 视频制作",
+      "author": "Nekodificador @Nekodificador",
+      "publishedAt": "2026-11-12T21:01:53.000Z",
+      "source": "https://x.com/Nekodificador/status/2120985455164305451",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120983591127547904/img/WrarHShxwDkyz5Vr.jpg",
+      "imageAlt": "ComfyUI：用控制曲线安排视频动作节奏，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-c9ede21ce7f98842",
+      "title": "Haru 4B：开放权重的全双工语音对话模型",
+      "summary": "higurashi 发布 Haru 4B 全双工语音对话模型，作者称用含日英等多语种的4000万小时数据预训练，并开放权重和推理代码。同一线程说明支持9种语言，可用文本或语音设定角色和音色，同时提醒预训练模型在微调前仍不稳定；未实测和核实许可证。",
+      "category": "AI 音频制作",
+      "author": "higurashi @HigurashiAI",
+      "publishedAt": "2026-11-13T00:54:16.000Z",
+      "source": "https://x.com/HigurashiAI/status/2121043937762889832",
+      "relatedLinks": [
+        {
+          "label": "作者补充：语言、角色音色与预训练限制",
+          "url": "https://x.com/HigurashiAI/status/2121046072441336139"
+        },
+        {
+          "label": "作者补充：全双工并行听说",
+          "url": "https://x.com/HigurashiAI/status/2121045842459246855"
+        },
+        {
+          "label": "作者补充：权重与推理代码",
+          "url": "https://x.com/HigurashiAI/status/2121046261591838884"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2121042817464303616/img/S53auApZRf9QROxc.jpg",
+      "imageAlt": "Haru 4B：开放权重的全双工语音对话模型，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-d28c936574a9d1cc",
+      "title": "Antigravity：浏览器操作接入开发流程",
+      "summary": "Google Antigravity 官方介绍逐步开放的浏览器操作能力，将资料研究、编码和实时验证连接起来。用户选择登录哪些服务，下载需批准，智能体可并行处理浏览器任务。未核实套餐、系统支持与开放范围。",
+      "category": "AI 开发工作流",
+      "author": "Google Antigravity @antigravity",
+      "publishedAt": "2026-11-11T16:37:04.000Z",
+      "source": "https://x.com/antigravity/status/2120556423474028576",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120556399142780928/img/Rv_YRA6zlem_f8x2.jpg",
+      "imageAlt": "Antigravity：浏览器操作接入开发流程，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-8b4c4c649b5ed2c3",
+      "title": "Nebius Physical AI：机器人训练 CLI 与 SDK",
+      "summary": "Nebius 官方介绍在 Nebius AI Cloud 上训练机器人的 Physical AI CLI 与 SDK，举例机械臂抓取、人形机器人行走和四足机器人奔跑。开源为官方自述，具体许可证、云服务费用及硬件兼容范围未核实；发布时间略超48小时。",
+      "category": "AI 机器人开发",
+      "author": "Nebius @nebiusai",
+      "publishedAt": "2026-11-11T12:16:57.000Z",
+      "source": "https://x.com/nebiusai/status/2120490966335549728",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120490763276754944/img/cJCCg6oTR5MLbNmo.jpg",
+      "imageAlt": "Nebius Physical AI：机器人训练 CLI 与 SDK，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-0480a270a7412629",
+      "title": "Milfi：VRChat 世界中的 AI 互动角色",
+      "summary": "miku 用日语介绍 VRChat 中的 AI 角色 Milfi，可抚摸、喂零食或一起休息。miku 是分享者，世界署名 Kurazia，不将作品归为其本人开发；底层模型、兼容平台和费用未核实。",
+      "category": "AI 游戏体验",
+      "author": "miku @mikuqkas",
+      "publishedAt": "2026-11-12T08:55:21.000Z",
+      "source": "https://x.com/mikuqkas/status/2120802619950240052",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120802586769199104/img/2asJ6raQxetyGp9C.jpg",
+      "imageAlt": "Milfi：VRChat 世界中的 AI 互动角色，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ac5243297911ed5f",
+      "title": "Jevlin：为编码智能体聚合搜索 API",
+      "summary": "Gaurav Shukla 介绍 Jevlin SuperSearch，称 Claude Code 或 Codex 智能体可通过一次调用查询八个搜索 API。原帖提供10美元起始免费额度，未列出后续价格、API清单与额度使用条件。",
+      "category": "AI 开发工作流",
+      "author": "Gaurav Shukla @RunnerElektrode",
+      "publishedAt": "2026-11-11T16:00:00.000Z",
+      "source": "https://x.com/RunnerElektrode/status/2120547096042541381",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2120541694521389056/img/O8VnOuf9P5zpLN-h.jpg",
+      "imageAlt": "Jevlin：为编码智能体聚合搜索 API，原帖真实视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-a47c63b6c9ed9cf2",
+      "title": "freeCodeCamp：Claude 智能体工程备考课程",
+      "summary": "freeCodeCamp 介绍由 Andrew 讲授的 Claude Certified Architect 备考课程，通过 Claude、MCP 与 Claude Agent SDK 构建智能体工作流，覆盖编排、工具设计、提示词和上下文管理。未核实考试资格、报名费用或课程与认证机构的合作关系。",
+      "category": "AI 学习工作流",
+      "author": "freeCodeCamp.org @freeCodeCamp",
+      "publishedAt": "2026-11-12T09:03:17.000Z",
+      "source": "https://x.com/freeCodeCamp/status/2120804614454775897",
+      "relatedLinks": [],
+      "image": "assets/news/item-a47c63b6c9ed9cf2-diagram.svg",
+      "imageAlt": "freeCodeCamp：Claude 智能体工程备考课程：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    },
+    {
+      "id": "item-d4046f5695fd472b",
+      "title": "marked.dev：通过 MCP 将参考资料送给智能体",
+      "summary": "Noe 展示 marked.dev 的参考资料保存与 MCP 连接机制，称已保存的参考资料可传递给用户的智能体。原帖未列出支持的客户端、资料类型、价格和权限范围；用户规模数字不作为独立核实结论。",
+      "category": "AI 实用工作流",
+      "author": "Noe @noechague",
+      "publishedAt": "2026-11-12T23:51:13.000Z",
+      "source": "https://x.com/noechague/status/2121028068794069381",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2121026333316653056/img/0nOedibviRTzst0N.jpg",
+      "imageAlt": "marked.dev：通过 MCP 将参考资料送给智能体，原帖真实视频封面",
+      "imageKind": "original"
+    }
+  ]
+}
