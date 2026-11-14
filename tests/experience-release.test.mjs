@@ -44,3 +44,39 @@ test('existing shared status and article anchors still reach the reading timelin
     assert.equal(destination,'journal.html?from=feed'+hash);
   }
 });
+
+test('chapter navigation plays camera transitions unless motion is disabled or explicitly skipped', async () => {
+  const app=await read('app.js');
+  const controller=app.match(/async function go\(next,[\s\S]*?\n\}/)[0];
+  const manifest=JSON.parse(await read('video-manifest.json'));
+  const configs={about:{frame:'panels',start:'entry',clip:'entry-panels'},works:{frame:'near',start:'panels',clip:'panels-near'},journal:{frame:'symbol',start:'arrival',clip:'arrival-symbol'},news:{frame:'street',start:'near',clip:'near-street'},home:{frame:'home'}};
+  for(const target of ['about','works','journal','news','home']) for(const mode of ['normal','boot','skip','disabled']) {
+    const calls=[],nodes=new Map();
+    const classList={add(){},remove(){},toggle(){}};
+    const state={
+      routes:Object.keys(configs),route:'home',requestedRoute:'home',routeVersion:0,
+      activeScene:'home',routeTransitioning:false,motionEnabled:mode!=='disabled',
+      entryAnimations:new Set(),manifestReady:Promise.resolve(),routeScenes:configs,
+      labels:{},chapterEnglish:{},document:{body:{classList,dataset:{}},querySelector:()=>({classList})},
+      $:id=>{if(!nodes.has(id))nodes.set(id,{});return nodes.get(id)},
+      stopAuto(){},cancelMotion(){},cameraPath:()=>null,
+      portalTo:async()=>true,
+      setPoster:frame=>{state.activeScene=frame;calls.push('poster:'+frame)},
+      moveScene:async(from,to,clip)=>{assert.equal(manifest[clip].status,'ready');state.activeScene=to;calls.push('video:'+clip);return true},
+      mountRoute:next=>{state.route=next;calls.push('mount:'+next)},
+      enterView:next=>calls.push('entrance:'+next),
+      requestAnimationFrame:fn=>fn(),syncHomeScroll:()=>calls.push('home-scroll'),runJourney(){}
+    };
+    const options=mode==='skip'?{instant:true}:mode==='boot'?{boot:true}:{};
+    await runInNewContext(controller+`;go(${JSON.stringify(target)},${JSON.stringify(options)})`,state);
+    assert.equal(state.route,target);
+    assert.equal(state.routeTransitioning,false);
+    assert(calls.includes('entrance:'+target));
+    const videos=calls.filter(c=>c.startsWith('video:'));
+    if(target!=='home'&&['normal','boot'].includes(mode)) {
+      assert.deepEqual(videos,['video:'+configs[target].clip]);
+      assert(calls.indexOf(videos[0])<calls.indexOf('mount:'+target));
+    }else assert.deepEqual(videos,[]);
+    if(target==='home')assert(calls.includes('home-scroll'));
+  }
+});

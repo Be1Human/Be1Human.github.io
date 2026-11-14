@@ -26,7 +26,7 @@ function setPoster(name){activeScene=name;$('scene').src='assets/'+name+'.webp';
 function releaseVideo(){idleCleanup?.();idleCleanup=null;const v=$('motion');v.pause();v.loop=false;v.classList.remove('playing');v.removeAttribute('src');v.load()}
 function cancelMotion(){transitionToken++;cancelPlayback?.();transitioning=false;document.body.classList.remove('is-transitioning');releaseVideo()}
 function updateMotion(){motionEnabled=motionEnabled&&!reduced.matches;document.body.classList.toggle('motion-off',!motionEnabled);$('motion-toggle').setAttribute('aria-pressed',String(motionEnabled));$('motion-toggle').querySelector('span').textContent=motionEnabled?'开':'关';if(!motionEnabled){stopAuto();cancelMotion();if(routeTransitioning)go(requestedRoute,{instant:true})}}
-updateMotion();$('motion-toggle').addEventListener('click',()=>{motionEnabled=!motionEnabled;try{localStorage.setItem('cloudboy-motion',motionEnabled?'on':'off')}catch{}updateMotion();if(motionEnabled)requestAnimationFrame(syncHomeScroll)});reduced.addEventListener('change',()=>{updateMotion();if(motionEnabled)requestAnimationFrame(syncHomeScroll)});
+updateMotion();$('motion-toggle').addEventListener('click',()=>{motionEnabled=!motionEnabled;try{localStorage.setItem('cloudboy-motion',motionEnabled?'on':'off')}catch{}updateMotion();if(motionEnabled){if(route==='home')requestAnimationFrame(syncHomeScroll);else go(route,{boot:true})}});reduced.addEventListener('change',()=>{updateMotion();if(motionEnabled)requestAnimationFrame(syncHomeScroll)});
 async function moveScene(from,to,clip,reverse=false,rate=1.8){
  if(transitioning)return false;transitioning=true;const token=++transitionToken;document.body.classList.add('is-transitioning');
  const target=await imageReady(to);if(token!==transitionToken)return false;if(!target){transitioning=false;document.body.classList.remove('is-transitioning');return false}
@@ -110,7 +110,7 @@ function mountRoute(next){
  if(next==='home')heroTarget=heroStep;
   window.scrollTo({top:0,behavior:'instant'});document.title=labels[next]+' · 克劳德梦见电子羊';$('footer-hint').textContent=next==='home'?'下滑推进 · 上滑倒回':next==='journey'?'正在穿梭创作世界 · 可随时暂停':'';$('announcement').textContent=labels[next];populateView();if(next==='works')requestAnimationFrame(updateFilm);
 }
-async function go(next,{boot=false,instant=next!=='journey'}={}){
+async function go(next,{boot=false,instant=false}={}){
  if(!routes.includes(next))next='home';requestedRoute=next;const version=++routeVersion;stopAuto();cancelMotion();entryAnimations.forEach(a=>a.cancel());entryAnimations.clear();$('scene-curtain').hidden=true;
  routeTransitioning=true;document.body.classList.toggle('is-routing',next!=='home'&&!instant);document.body.dataset.destination=next;$('transition-name').textContent=labels[next];$('transition-en').textContent=chapterEnglish[next];document.querySelector('#'+route)?.classList.add('departing');
  await manifestReady;if(version!==routeVersion)return;
