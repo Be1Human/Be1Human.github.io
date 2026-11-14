@@ -95,7 +95,7 @@ a,button{transition:color .18s,background .18s,border-color .18s}
 .endnote{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:36px;padding-top:25px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 .endnote a{color:var(--coral)}
 /* Portfolio archive. Image artwork keeps its own original colours. */
-.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:37px 26px}
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:37px 26px}
 .project-card{min-width:0;scroll-margin-top:130px}
 .project-image-link{position:relative;display:block;aspect-ratio:1.7;border:1px solid var(--line);overflow:hidden;background:#0b1b25}
 .project-image-link img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
