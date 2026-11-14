@@ -48,6 +48,28 @@
     }
   },
   {
+    "id": "cloudmind",
+    "title": "CloudMind",
+    "name": "CloudMind",
+    "kind": "Obsidian 思维导图插件",
+    "category": "tools",
+    "label": "笔记与工具",
+    "description": "在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。",
+    "image": "assets/images/cloudmind-cover.webp",
+    "imageAlt": "CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图",
+    "imageNote": "Obsidian 桌面版 · 项目演示库截图",
+    "tags": [
+      "Obsidian",
+      "Markdown",
+      "思维导图"
+    ],
+    "url": "https://github.com/Be1Human/obsidian-cloudmind#readme",
+    "action": "查看项目与下载",
+    "repository": "https://github.com/Be1Human/obsidian-cloudmind",
+    "documentation": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md",
+    "accent": "purple"
+  },
+  {
     "id": "rain-city",
     "title": "雨之城",
     "name": "雨之城",

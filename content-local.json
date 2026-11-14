@@ -41,6 +41,95 @@
       ]
     },
     {
+      "id": "cloudmind",
+      "title": "CloudMind",
+      "category": "tools",
+      "categoryLabel": "笔记与工具",
+      "subtitle": "Obsidian 思维导图插件",
+      "summary": "在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。",
+      "source": "https://github.com/Be1Human/obsidian-cloudmind/releases/latest",
+      "sourceLabel": "下载 CloudMind",
+      "image": "assets/images/cloudmind-cover.webp",
+      "imageAlt": "CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图",
+      "imageNote": "Obsidian 桌面版 · 项目演示库截图",
+      "imageWidth": 1440,
+      "imageHeight": 900,
+      "tags": [
+        "Obsidian",
+        "Markdown",
+        "思维导图"
+      ],
+      "links": [
+        {
+          "label": "中文使用说明",
+          "url": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md"
+        },
+        {
+          "label": "开源仓库",
+          "url": "https://github.com/Be1Human/obsidian-cloudmind"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/cloudmind-cover.webp",
+      "sections": [
+        {
+          "title": "一份笔记，两种整理方式",
+          "paragraphs": [
+            "写读书笔记时，标题和列表适合逐条记录；回头梳理观点之间的关系时，展开成一张图会更直观。CloudMind 把这两种方式接在同一份 Markdown 文件上，不用另存一份导图，再手动维护两边的内容。",
+            "已有笔记可以直接预览为导图，标题和列表的嵌套对应节点层级。在画布上双击修改文字，按 Tab 添加子节点，按 Enter 添加同级节点，也可以拖动分支调整结构，修改会写回原笔记。"
+          ]
+        },
+        {
+          "title": "从一个节点，打开另一篇笔记",
+          "paragraphs": [
+            "导图里的一个分支可能只需要写下结论，完整资料已经在另一篇笔记中。编辑节点时输入 [[，就能从库中的笔记列表里选择引用；Ctrl + 点击含链接的节点，可以在新标签页打开对应笔记。",
+            "保存的是 Obsidian 标准双链，所以反向链接和关系图谱仍能识别这些引用。导图可以成为资料的入口，而不必把所有正文塞进节点。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/cloudmind-wikilinks.webp",
+              "width": 1800,
+              "height": 1003,
+              "alt": "CloudMind 节点编辑中的双链笔记补全列表",
+              "caption": "项目演示界面 · 输入 [[ 引用库中笔记"
+            }
+          ]
+        },
+        {
+          "title": "按内容选择结构和主题",
+          "paragraphs": [
+            "梳理概念可以用双向思维导图，排列步骤可以用逻辑图，整理进程可以用时间轴。插件提供 8 种结构和 10 套主题，也可以单独调整节点颜色、添加备注和标签。每篇笔记会保留自己的结构与主题。",
+            "需要发给别人时，可以导出 PNG、SVG 或 .xmind 文件；导出结果保存在当前笔记所在的文件夹。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/cloudmind-themes.webp",
+              "width": 1800,
+              "height": 1003,
+              "alt": "CloudMind 主题面板展示方块、深色、蓝图、清新等主题",
+              "caption": "项目演示界面 · 主题面板与逻辑图"
+            }
+          ]
+        },
+        {
+          "title": "下载安装",
+          "paragraphs": [
+            "当前展示版本为 0.4.3，支持 Obsidian 1.5.0 及以上的桌面版。到 GitHub 发布页下载 main.js、manifest.json 和 styles.css，放进笔记库的 .obsidian/plugins/cloudmind/ 文件夹，再到第三方插件设置中刷新并启用。",
+            "只预览已有笔记不会改动文件。开始在导图里编辑后，插件会按标题和列表重新组织 Markdown，并加入保存样式的注释；如果需要保留原有排版，可以先复制笔记再编辑。关闭插件后，内容仍可作为普通 Markdown 阅读。"
+          ],
+          "links": [
+            {
+              "label": "下载最新版本",
+              "url": "https://github.com/Be1Human/obsidian-cloudmind/releases/latest"
+            },
+            {
+              "label": "查看图文安装教程",
+              "url": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "rain-city",
       "title": "雨之城",
       "category": "games",

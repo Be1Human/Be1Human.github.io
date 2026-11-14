@@ -4,6 +4,27 @@
   "productRuntimeTestedInThisReview": false,
   "projects": [
     {
+      "projectId": "cloudmind",
+      "repository": "https://github.com/Be1Human/obsidian-cloudmind",
+      "revision": "ba8df839128b9b6548dc610eddc301ec1d121f8f",
+      "documents": [
+        {
+          "path": "README.zh-CN.md",
+          "url": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md"
+        },
+        {
+          "path": "manifest.json",
+          "url": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/manifest.json"
+        }
+      ],
+      "descriptionBasis": [
+        "中文 README：Markdown 存储、导图编辑、双链、主题结构、导出与手动安装",
+        "manifest.json：版本 0.4.3、最低 Obsidian 1.5.0、仅桌面版",
+        "项目 docs/images：Obsidian 演示库及功能演示截图"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
       "projectId": "mineclaw",
       "repository": "https://github.com/Be1Human/MineClaw",
       "revision": "6674882648e1d45df7ad40429c06a3a28ccb3674",
