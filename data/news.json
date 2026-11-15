@@ -2,9 +2,214 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "c1a2c340651cf532e9b4d5566c19ad1d93a38809",
-  "syncedAt": "2026-11-14T12:37:43.800Z",
+  "sourceRevision": "927d9d10b1d11329e3a0a040f702ef04619b2d93",
+  "syncedAt": "2026-11-15T12:21:51.816Z",
   "editions": [
+    {
+      "id": "2026-11-15",
+      "date": "2026-11-15",
+      "label": "11 月 15 日 · 9 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-15",
+      "items": [
+        {
+          "id": "ea4f720977a94c24",
+          "rank": 1,
+          "title": "Antigravity SDK：本地与混合 Agent 工作流",
+          "summary": "Google 开发者账号再次介绍 SDK 本地模型能力。已核对原始博客为9月23日发布，不把11月帖子写成新发布；支持纯本地运行和云端规划、本地执行的混合模式。",
+          "category": "实用工作流",
+          "author": "Google for Developers India @GoogleDevsIN",
+          "url": "https://x.com/GoogleDevsIN/status/2121496602414342220",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/GoogleDevsIN/status/2121496602414342220"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://developers.googleblog.com/introducing-support-for-local-ai-models-in-the-antigravity-sdk/"
+            }
+          ],
+          "publishedAtISO": "2026-11-14T06:53:00.000Z",
+          "observedAt": "2026-11-15T12:08:32.569Z"
+        },
+        {
+          "id": "8c8ae05daf5aaaa1",
+          "rank": 2,
+          "title": "SolidCraft：多 Agent 协作开发 CAD 的采访",
+          "summary": "FabScene 对作者 Brennen Herbruck 的一手书面采访，介绍跨平台参数化 CAD、人和 AI 共同编辑的设计，以及并行代理、人工审阅和测试的实际分工。",
+          "category": "硬件创客",
+          "author": "FabScene（ファブシーン） @FabSceneJp",
+          "url": "https://x.com/FabSceneJp/status/2121458367726240130",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/FabSceneJp/status/2121458367726240130"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://fabscene.com/new/interview/solidcraft-open-source-cad-ai-1-5m-downloads-brennen-herbruck/"
+            }
+          ],
+          "publishedAtISO": "2026-11-14T04:21:04.000Z",
+          "observedAt": "2026-11-15T12:08:40.185Z"
+        },
+        {
+          "id": "0007c6889ac35c5d",
+          "rank": 3,
+          "title": "Tontaube V1.1：本地长文本语音合成",
+          "summary": "支持长文本朗读和声音克隆的开放权重模型；原帖介绍 CPU 与 GPU 部署，模型卡确认采用自定义社区许可，并非开源许可。未实测速度。",
+          "category": "内容制作",
+          "author": "David Hendrickson @TeksEdge",
+          "url": "https://x.com/TeksEdge/status/2121756314682708184",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/TeksEdge/status/2121756314682708184"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://huggingface.co/TontaubeAI/TontaubeV1.1"
+            }
+          ],
+          "publishedAtISO": "2026-11-15T00:05:00.000Z",
+          "observedAt": "2026-11-15T12:07:50.472Z"
+        },
+        {
+          "id": "dceeaed24fb40be0",
+          "rank": 4,
+          "title": "从 Blender 房间到八方向动画背景",
+          "summary": "作者分享 AI 动画背景制作步骤：确定平面布局，在 Blender 中构建房间，从三维底稿绘制四个正向视角，再由 H3 Max Turbo 生成环绕视角并重绘斜角，形成八方向背景。属于作者当前工作方法，不是已量化的一致性保证。",
+          "category": "内容制作",
+          "author": "よかっぱ @nagarekawa_",
+          "url": "https://x.com/nagarekawa_/status/2121361982049898510",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/nagarekawa_/status/2121361982049898510"
+            }
+          ],
+          "publishedAtISO": "2026-11-13T21:58:04.000Z",
+          "observedAt": "2026-11-15T12:16:40.734Z"
+        },
+        {
+          "id": "2436d827f1bf11a0",
+          "rank": 5,
+          "title": "Blender 制作书本式游戏主菜单",
+          "summary": "作者展示 MegaJam 游戏主菜单：书落到桌上、打开后菜单从书页立起，翻页进入怪物图鉴。作者自述约 6 小时完成，使用 Blender、Claude Fable 5.2、GPT Image 2.6、Tripo P2.0 与 Higgsfield MCP；工时为个人案例，未独立实测。",
+          "category": "AI 游戏开发",
+          "author": "Stefan 3D AI @Stefan_3D_AI",
+          "url": "https://x.com/Stefan_3D_AI/status/2121647529750311377",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/Stefan_3D_AI/status/2121647529750311377"
+            }
+          ],
+          "publishedAtISO": "2026-11-14T16:52:44.000Z",
+          "observedAt": "2026-11-15T12:16:22.836Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2121647404839849984/img/V6qmZciN5QE6aiJZ.jpg",
+            "alt": "Blender 制作书本式游戏主菜单原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "0e0a97273e7bbead",
+          "rank": 6,
+          "title": "Typd：单模型本地口述整理",
+          "summary": "Typd 将语音直接整理为完成稿，不再串联转写和清理两个模型。官方仓库确认 Windows NVIDIA GPU 和 Apple Silicon Mac 支持；主要面向英文，不能推断支持中文。",
+          "category": "实用工作流",
+          "author": "David Hendrickson @TeksEdge",
+          "url": "https://x.com/TeksEdge/status/2121698432863572281",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/TeksEdge/status/2121698432863572281"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/SameRainbows/typd-app"
+            }
+          ],
+          "publishedAtISO": "2026-11-14T20:15:00.000Z",
+          "observedAt": "2026-11-15T12:08:11.796Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2121691274936037376/img/-hhxEk6Mie1EzYIF.jpg",
+            "alt": "Typd：单模型本地口述整理原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "88e370b2f4f2c6fd",
+          "rank": 7,
+          "title": "ComfyUI 逐镜头电影分析演示",
+          "summary": "作者展示在 ComfyUI 中进行逐镜头影片拆解与分析，涵盖镜头、场景、运镜、人物及故事逻辑。原帖为演示，未给出节点包、费用或部署条件，不宣称已提供可复现工作流。",
+          "category": "内容制作",
+          "author": "jtydhr88 @jtydhr88",
+          "url": "https://x.com/jtydhr88/status/2121612041228063199",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/jtydhr88/status/2121612041228063199"
+            }
+          ],
+          "publishedAtISO": "2026-11-14T14:31:42.000Z",
+          "observedAt": "2026-11-15T12:16:32.284Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2121611669650497536/img/ItqD7EKo_ehRV72h.jpg",
+            "alt": "ComfyUI 逐镜头电影分析演示原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "52f7ab95f9f31522",
+          "rank": 8,
+          "title": "ComfyUI-PH3-Manga 漫画生成与文字编排",
+          "summary": "作者更新用于 ComfyUI 的漫画工作流，原帖列出气泡样式、字体设置及局部重绘。项目 README 说明生成与写植分离：P-H3 作画，字体负责文字；支持最多 3 位参考角色。代码和分格为 MIT，模型、字体和输入图像需另遵守各自许可，不保证气泡位置或角色一致性。",
+          "category": "内容制作",
+          "author": "Kamimoto（かみもと） @sep_is_heim",
+          "url": "https://x.com/sep_is_heim/status/2121516134407225524",
+          "sources": [
+            {
+              "title": "日文原帖",
+              "url": "https://x.com/sep_is_heim/status/2121516134407225524"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/sepiablue-ai/ComfyUI-PH3-Manga"
+            }
+          ],
+          "publishedAtISO": "2026-11-14T08:10:36.000Z",
+          "observedAt": "2026-11-15T12:16:37.117Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2121515906346147840/img/1Q0gN0g1vN3qaUGd.jpg",
+            "alt": "ComfyUI-PH3-Manga 漫画生成与文字编排原帖真实预览",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a1313781efa46120",
+          "rank": 9,
+          "title": "WendyOS：面向机器人与边缘设备的部署工具",
+          "summary": "作者公开 WendyOS，可使用 Docker 或 Compose 部署边缘应用，并通过 MCP 让编码助手检查设备和日志。仓库列出本地开发不需云账户，远程访问和设备群管理另属 Wendy Cloud。",
+          "category": "硬件创客",
+          "author": "Maximilian Alexander @signalgaining",
+          "url": "https://x.com/signalgaining/status/2121755101979463686",
+          "sources": [
+            {
+              "title": "英文原帖",
+              "url": "https://x.com/signalgaining/status/2121755101979463686"
+            },
+            {
+              "title": "项目一手资料",
+              "url": "https://github.com/wendylabsinc/WendyOS"
+            }
+          ],
+          "publishedAtISO": "2026-11-15T00:00:11.000Z",
+          "observedAt": "2026-11-15T12:08:28.293Z"
+        }
+      ]
+    },
     {
       "id": "2026-11-14",
       "date": "2026-11-14",
