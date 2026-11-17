@@ -2,9 +2,199 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "2cbb636a70561875734c3acd5f9efa26e16578dc",
-  "syncedAt": "2026-11-17T02:18:08.735Z",
+  "sourceRevision": "a377d2d43d25497db6589c05e31f71c98601575b",
+  "syncedAt": "2026-11-17T13:08:42.217Z",
   "editions": [
+    {
+      "id": "2026-11-17",
+      "date": "2026-11-17",
+      "label": "11 月 17 日 · 8 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-17",
+      "items": [
+        {
+          "id": "c9a345dbb79e960d",
+          "rank": 1,
+          "title": "4B 模型的机械臂仿真实验",
+          "summary": "作者用 Astra 的成功轨迹微调 Qwen3.5-4B，在 LIBERO 仿真中的未见布局报告 22.5% 成功率。模型通过双摄像头图像选择工具，并非直接输出电机指令；不是已验证的真实硬件部署。",
+          "category": "硬件创客",
+          "author": "@ishanxnagpal",
+          "url": "https://x.com/ishanxnagpal/status/2122460532909445176",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/ishanxnagpal/status/2122460532909445176"
+            },
+            {
+              "title": "作者实验设置",
+              "url": "https://x.com/ishanxnagpal/status/2122460534801142115"
+            },
+            {
+              "title": "作者训练数据与成绩",
+              "url": "https://x.com/ishanxnagpal/status/2122460536608879003"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T22:43:19.000Z",
+          "observedAt": "2026-11-17T13:00:01.830Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122457455624089600/img/pQrHC94d0pBQLvEo.jpg",
+            "alt": "4B 模型的机械臂仿真实验原帖媒体",
+            "type": "video"
+          }
+        },
+        {
+          "id": "83cce7a4e2895fc6",
+          "rank": 2,
+          "title": "Tripo 模型接入手游风格大厅",
+          "summary": "Nano 使用 Tripo 生成 3D 模型，再让 Claude Fable 5.2 搭建手游风格大厅。作者明确说明进行了两三轮反馈，背景及镜头也通过对话调整，并非一次提示完成。",
+          "category": "AI 游戏",
+          "author": "@Dstudio_ai",
+          "url": "https://x.com/Dstudio_ai/status/2122569461547098595",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Dstudio_ai/status/2122569461547098595"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T05:56:09.000Z",
+          "observedAt": "2026-11-17T13:00:04.057Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122567286624337920/img/LS8TotYyi6MM4g2t.jpg",
+            "alt": "Tripo 模型接入手游风格大厅原帖媒体",
+            "type": "video"
+          }
+        },
+        {
+          "id": "df1b34e1d2fcc6ae",
+          "rank": 3,
+          "title": "Blender 里的约 8000 三角面兔子",
+          "summary": "作者展示让 Claude Fable 5.2 在 Blender 中制作的圆润兔子，标注约 8000 个三角面。可作为低面数角色尝试的视觉参考，但原帖没有给出完整提示词、拓扑或性能测试。",
+          "category": "内容制作",
+          "author": "@fe_yukichi",
+          "url": "https://x.com/fe_yukichi/status/2122489950981779504",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/fe_yukichi/status/2122489950981779504"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T00:40:12.000Z",
+          "observedAt": "2026-11-17T13:00:06.049Z"
+        },
+        {
+          "id": "6bcec8fe3afa875c",
+          "rank": 4,
+          "title": "为 AI 编程补系统设计基础",
+          "summary": "Dilum 展示用于可视化学习系统设计的交互应用，强调架构知识能帮助写出更清楚的 AI 提示、预判应用扩展问题。原帖提供演示与项目地址；本次未验证应用所有交互，也不据此断言应用完全由 AI 制作。",
+          "category": "实用工作流",
+          "author": "@DilumSanjaya",
+          "url": "https://x.com/DilumSanjaya/status/2122373063560110320",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/DilumSanjaya/status/2122373063560110320"
+            },
+            {
+              "title": "作者项目入口（本次未完整验证）",
+              "url": "https://designed-to-scale.vercel.app/"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T16:55:44.000Z",
+          "observedAt": "2026-11-17T13:00:08.364Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122370581438078977/img/NNBRtOCEXD-NKSSf.jpg",
+            "alt": "为 AI 编程补系统设计基础原帖媒体",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2bf7e098657b0b69",
+          "rank": 5,
+          "title": "像素战机游戏：作者报告 38 分钟制作",
+          "summary": "Vib3Coded 展示用 Claude Fable 5.2 制作的像素战机游戏视频，报告耗时 38 分钟、费用 22.78 美元。这些数字是作者自述，不是本次实测；未核验完整代码与可玩版本。",
+          "category": "AI 游戏",
+          "author": "@vib3coded",
+          "url": "https://x.com/vib3coded/status/2122472401124401585",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/vib3coded/status/2122472401124401585"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T23:30:28.000Z",
+          "observedAt": "2026-11-17T13:00:19.766Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122471715292753920/img/bvzFEleJp65ek0o5.jpg",
+            "alt": "像素战机游戏：作者报告 38 分钟制作原帖媒体",
+            "type": "video"
+          }
+        },
+        {
+          "id": "286ddc50d2c48a03",
+          "rank": 6,
+          "title": "用 24 个动画名称明确界面需求",
+          "summary": "作者用两组演示整理应用动画用语，各 12 个，目的在于把“好看、流畅”等模糊要求换成更清晰的 AI 开发沟通。具体术语尚未逐项校对，不将这份演示称为标准规范。",
+          "category": "实用工作流",
+          "author": "@uchita_success",
+          "url": "https://x.com/uchita_success/status/2122616641028763993",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/uchita_success/status/2122616641028763993"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T09:03:38.000Z",
+          "observedAt": "2026-11-17T13:00:24.500Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122616612180418560/img/4AwdpYVLMHg_UaYh.jpg",
+            "alt": "用 24 个动画名称明确界面需求原帖媒体",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ee2669e8046bed31",
+          "rank": 7,
+          "title": "PyBot：Agent 写出的纯 Python 规则聊天器",
+          "summary": "官方仓库确认：超过 1000 个 Agent 编写并评估了 5000 多版，产出约 64 万行 Python 规则代码。运行时无需模型权重；SmolTalkBench 的 26% 胜率使用 LLM 裁判，不代表全面匹敌语言模型。",
+          "category": "实用工作流",
+          "author": "@lvwerra",
+          "url": "https://x.com/lvwerra/status/2122335119750975925",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/lvwerra/status/2122335119750975925"
+            },
+            {
+              "title": "官方项目说明",
+              "url": "https://github.com/huggingface/pybot"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T14:24:58.000Z",
+          "observedAt": "2026-11-17T13:00:29.333Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122329989467000832/img/G0dP2K9dOh7_gh6L.jpg",
+            "alt": "PyBot：Agent 写出的纯 Python 规则聊天器原帖媒体",
+            "type": "video"
+          }
+        },
+        {
+          "id": "d59c67771d7f3781",
+          "rank": 8,
+          "title": "家庭实验室 v3：本地 AI 与服务集群",
+          "summary": "Erdal 展示其家庭实验室设备组合：Dell Pro Max GB10 用于本地 AI，配合两台 M4 Mac mini、4090/128G Proxmox 服务器及 Elitedesk k3s 集群。是作者设备清单，不是购买建议或性能横评。",
+          "category": "硬件创客",
+          "author": "@ErdalToprak",
+          "url": "https://x.com/ErdalToprak/status/2122083228895134007",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/ErdalToprak/status/2122083228895134007"
+            }
+          ],
+          "publishedAtISO": "2026-11-15T21:44:02.000Z",
+          "observedAt": "2026-11-17T13:00:31.891Z"
+        }
+      ]
+    },
     {
       "id": "2026-11-16",
       "date": "2026-11-16",
