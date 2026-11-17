@@ -1,0 +1,148 @@
+{
+  "id": "2026-11-16",
+  "date": "2026-11-16",
+  "label": "11 月 16 日 · 10 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-16",
+  "items": [
+    {
+      "id": "item-eb0eaed903952aaa",
+      "title": "Getting There：手绘感的 14 章旅行游戏",
+      "summary": "作者用 Fable 5.2 制作了围绕孩子与狗展开的 2D 旅行游戏，称素材和声音均为程序化生成。保留作者的四小时制作说法，不将“降低皮质醇”的玩笑当作效果承诺。",
+      "category": "AI 游戏",
+      "author": "S @Rubzem",
+      "publishedAt": "2026-11-15T17:06:23.000Z",
+      "source": "https://x.com/Rubzem/status/2122013352755126431",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2122012845512744960/img/bkZQfV-qoBFjDMzz.jpg",
+      "imageAlt": "Getting There：手绘感的 14 章旅行游戏原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-c2449e2b1a75665f",
+      "title": "Three.js 魂系原型：模型、动画与多 Agent 分工",
+      "summary": "Meng To 分享三天制作浏览器动作游戏的流程：先做可玩关卡，再按灯光、特效、角色、UI 和声音拆分工作；概念图转成 GLB 后，再用代码处理绑定与动画。",
+      "category": "AI 游戏",
+      "author": "Meng To @MengTo",
+      "publishedAt": "2026-11-15T09:22:35.000Z",
+      "source": "https://x.com/MengTo/status/2121896633848017145",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/ext_tw_video_thumb/2121896455816548352/pu/img/64C320SXAJ7oPGQ8.jpg",
+      "imageAlt": "Three.js 魂系原型：模型、动画与多 Agent 分工原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ad6f2cbb914f3a55",
+      "title": "One More Take：Unreal 参赛游戏的完整工具链",
+      "summary": "Chong-U 公开 Epic AI Megajam 作品的制作视频：Claude Code 负责 C++ 与 MCP 编辑器操作，Tripo 负责角色、绑定与动画，Blender 脚本构建场景道具。Windows/macOS 已在作者说明中列出，Web/iOS 仍属计划。",
+      "category": "AI 游戏",
+      "author": "Chong-U @chongdashu",
+      "publishedAt": "2026-11-16T02:09:59.000Z",
+      "source": "https://x.com/chongdashu/status/2122150154316988471",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2122147913937932288/img/FDNy2oKQwJEaGel8.jpg",
+      "imageAlt": "One More Take：Unreal 参赛游戏的完整工具链原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-44b3744a2c5c1c31",
+      "title": "Blender MCP：参考图与 SVG 平面图搭建旧车站",
+      "summary": "作者分享 15 秒站台漫游，强调这是 AI 编写程序控制 Blender 建模和渲染，并非直接生成视频。线程介绍三张参考图、SVG 平面图与按部件拆分程序，另使用 Poly Haven 素材。",
+      "category": "内容制作",
+      "author": "ハヤシモン @hayashimon1",
+      "publishedAt": "2026-11-15T12:26:52.000Z",
+      "source": "https://x.com/hayashimon1/status/2121943011525624151",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2121942981351714816/img/PcKc25dp2osBoRVt.jpg",
+      "imageAlt": "Blender MCP：参考图与 SVG 平面图搭建旧车站原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-921fdc0fef1d2dba",
+      "title": "tiny-voca：18 MB 双音色英文 TTS",
+      "summary": "作者发布约 450 万参数、18 MB 的英文语音合成模型，使用合成语音训练。仓库确认可在 CPU 或浏览器运行，仅两种固定英文音色，不支持克隆，且尚无流式输出。",
+      "category": "硬件创客",
+      "author": "Nazeem @n4ze3m",
+      "publishedAt": "2026-11-15T02:57:51.000Z",
+      "source": "https://x.com/n4ze3m/status/2121799813679419515",
+      "relatedLinks": [
+        {
+          "label": "项目仓库与限制",
+          "url": "https://github.com/n4ze3m/tiny-voca"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2121799530547224576/img/xBVIjqnMBNUHS3Fd.jpg",
+      "imageAlt": "tiny-voca：18 MB 双音色英文 TTS原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-ce5be1599531de93",
+      "title": "Game Boy 卡带上的小模型对话实验",
+      "summary": "Tim Hwang 展示面向 Game Boy 优化的对话实验，称将 600 万参数模型压到 3.2 MB，花费一周及大量模型额度。尚未拿到足以独立验证硬件、推理速度或部署方式的资料，不视作可直接复用的方案。",
+      "category": "硬件创客",
+      "author": "Tim Hwang @timhwang",
+      "publishedAt": "2026-11-15T17:00:22.000Z",
+      "source": "https://x.com/timhwang/status/2122011842549600506",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2122011496393617408/img/OfcxQ5Hw1yTjpPQL.jpg",
+      "imageAlt": "Game Boy 卡带上的小模型对话实验原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-8f934559195045b7",
+      "title": "HTML-in-Canvas：Claude 桌面端的交互网页实验",
+      "summary": "Felix Rieseberg 介绍其为 Claude 桌面应用启用 HTML-in-Canvas 后制作的视觉交互示例。作者回复中仍希望扩展跨浏览器与移动端支持，因此不把桌面演示推论为所有平台都已兼容。",
+      "category": "实用工作流",
+      "author": "Felix Rieseberg @felixrieseberg",
+      "publishedAt": "2026-11-15T18:39:42.000Z",
+      "source": "https://x.com/felixrieseberg/status/2122036839238492493",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2122035111113986048/img/uIoRe-n1cy-O2pyS.jpg",
+      "imageAlt": "HTML-in-Canvas：Claude 桌面端的交互网页实验原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-c0bc5e91b0624595",
+      "title": "Claude × Meshy：拆分开发、3D 与纹理生产",
+      "summary": "Bogdan 展示团队的组合工作流：Claude 负责动画与开发、Meshy 负责 3D、GPT Image 2.6 负责图像与纹理。原帖未提供完整教程或可复现工程，适合作为工具分工参考而非现成资产包。",
+      "category": "内容制作",
+      "author": "Bogdan @bogdan_qclay",
+      "publishedAt": "2026-11-16T08:26:32.000Z",
+      "source": "https://x.com/bogdan_qclay/status/2122244915946225682",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2122244729429475328/img/PP-8wnD-lC4TytBq.jpg",
+      "imageAlt": "Claude × Meshy：拆分开发、3D 与纹理生产原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-0e65cb212aee51e3",
+      "title": "OBJECT STROBE：代码驱动的产品短片",
+      "summary": "AmirMušić 分享 Claude Code 与 Blender 制作产品短片的实验，并提供可替换 OBJECT 的提示词。作者明确经历九轮修改，也指出声音效果仍弱，不将演示描述为一键成片。",
+      "category": "内容制作",
+      "author": "AmirMušić @AmirMushich",
+      "publishedAt": "2026-11-15T15:04:11.000Z",
+      "source": "https://x.com/AmirMushich/status/2121982602122760352",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2121977622200471552/img/3xjD8lwPnfMitg45.jpg",
+      "imageAlt": "OBJECT STROBE：代码驱动的产品短片原帖视频封面",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-948c5daf013ce705",
+      "title": "Kitesurf 开源：面向 AI Agent 的实验浏览器",
+      "summary": "Cloudflare 再次介绍已开源的实验浏览器 Kitesurf。官方文章发布于 11 月 13 日，支持本地运行或部署到 Workers，并兼容 CDP；不将本日社交帖写成首次发布。",
+      "category": "实用工作流",
+      "author": "Cloudflare @Cloudflare",
+      "publishedAt": "2026-11-16T10:52:56.000Z",
+      "source": "https://x.com/Cloudflare/status/2122281760444580295",
+      "relatedLinks": [
+        {
+          "label": "11 月 13 日官方文章",
+          "url": "https://blog.cloudflare.com/kitesurf-open-source"
+        }
+      ],
+      "image": "assets/news/item-948c5daf013ce705-diagram.svg",
+      "imageAlt": "Kitesurf 开源：面向 AI Agent 的实验浏览器：主题示意图，非原帖图片",
+      "imageKind": "diagram"
+    }
+  ]
+}

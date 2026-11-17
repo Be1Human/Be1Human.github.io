@@ -2,13 +2,20 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/",
-  "sourceRevision": "927d9d10b1d11329e3a0a040f702ef04619b2d93",
-  "syncedAt": "2026-11-15T12:21:51.816Z",
-  "sourceSha256": "f00361144fa7b599a79a48968e17422c617f36c0bf9920b621a3066153198170",
-  "newest": "2026-11-15",
+  "sourceRevision": "2cbb636a70561875734c3acd5f9efa26e16578dc",
+  "syncedAt": "2026-11-17T02:18:08.735Z",
+  "sourceSha256": "119f938fd3e2f84120ccf4c56a4260054e6b93b24c8f2fe1faccbe29e3fa6481",
+  "newest": "2026-11-16",
   "oldest": "2026-10-13",
-  "totalItems": 445,
+  "totalItems": 455,
   "editions": [
+    {
+      "id": "2026-11-16",
+      "date": "2026-11-16",
+      "label": "11 月 16 日 · 10 条非中文原帖",
+      "count": 10,
+      "url": "assets/news/editions/2026-11-16.json"
+    },
     {
       "id": "2026-11-15",
       "date": "2026-11-15",
