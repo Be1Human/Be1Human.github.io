@@ -2,9 +2,232 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "a377d2d43d25497db6589c05e31f71c98601575b",
-  "syncedAt": "2026-11-17T13:08:42.217Z",
+  "sourceRevision": "ceb6b056a092f6846f0c684b67aeb3947a2f1cd3",
+  "syncedAt": "2026-11-18T12:57:26.497Z",
   "editions": [
+    {
+      "id": "2026-11-18",
+      "date": "2026-11-18",
+      "label": "11 月 18 日 · 10 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-18",
+      "items": [
+        {
+          "id": "ec41b29b325c609c",
+          "rank": 1,
+          "title": "Kasane Valley：可探索的日式山村",
+          "summary": "作者把参考图、自定义 Skill、Blender 和 Three.js 串成山村场景流程，并提供在线演示。模型与制作流程为作者自述，未独立复现。",
+          "category": "游戏开发",
+          "author": "@givros",
+          "url": "https://x.com/givros/status/2122816304071803109",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/givros/status/2122816304071803109"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T22:17:01.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122815661898440704/img/AzaaTFgNS_wRBNa0.jpg",
+            "alt": "Kasane Valley：可探索的日式山村",
+            "type": "video"
+          }
+        },
+        {
+          "id": "143086029e30b34f",
+          "rank": 2,
+          "title": "AnyMachine：从参考图到分件机械模型",
+          "summary": "作者在 Blender 中用代码搭建步行机械模型：多视角与关节特写参考、160 个部件、绑定和步态循环。液压和运动均属于虚拟模型演示，不是实物验证。",
+          "category": "硬件创客",
+          "author": "@apekshik",
+          "url": "https://x.com/apekshik/status/2122464141990588795",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/apekshik/status/2122464141990588795"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T22:57:39.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122463996800585728/img/ZewBtvwwCn80aIEo.jpg",
+            "alt": "AnyMachine：从参考图到分件机械模型",
+            "type": "video"
+          }
+        },
+        {
+          "id": "fb9264d2b04f2384",
+          "rank": 3,
+          "title": "单张角色图 → 矢量部件 → 动作讲解视频",
+          "summary": "作者公开角色解释视频的制作链：平涂化、360 度参考、角色表、分件矢量化，再由三维动作数据驱动。已查看日语原文，属于实验流程而非成品软件承诺。",
+          "category": "内容制作",
+          "author": "@grmchn4ai",
+          "url": "https://x.com/grmchn4ai/status/2122949636503879905",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/grmchn4ai/status/2122949636503879905"
+            }
+          ],
+          "publishedAtISO": "2026-11-18T07:06:50.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122948495233732608/img/Bn6djmQiODTj3xeb.jpg",
+            "alt": "单张角色图 → 矢量部件 → 动作讲解视频",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ca5ef405399d49bb",
+          "rank": 4,
+          "title": "ComfyUI：H3 视频 VAE 的计算优化",
+          "summary": "开发者报告 NVIDIA GPU 上的 H3 VAE 编解码优化，示例为 1344×768、129 帧往返耗时 24.3 秒降至 12.7 秒。结果是该测试设置下的作者报告，不代表所有 GPU 或完整视频生成速度。",
+          "category": "实用工作流",
+          "author": "@ComfyDevs",
+          "url": "https://x.com/ComfyDevs/status/2122484919725375494",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/ComfyDevs/status/2122484919725375494"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T00:20:13.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z"
+        },
+        {
+          "id": "82961bb8961cce23",
+          "rank": 5,
+          "title": "3D 平台游戏：从概念图到可玩关卡",
+          "summary": "作者让 Fable 5.2 调用图像工具并在 Blender 建模，覆盖概念图、角色表、纹理和关卡。作者明确说关卡设计仍需调整；一天制作时间为其自述。",
+          "category": "游戏开发",
+          "author": "@thegeomaster",
+          "url": "https://x.com/thegeomaster/status/2122421921790767239",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/thegeomaster/status/2122421921790767239"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T20:09:53.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122421507498336256/img/xCzu7D5bdVcN4e0Y.jpg",
+            "alt": "3D 平台游戏：从概念图到可玩关卡",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a5aea524608f64b5",
+          "rank": 6,
+          "title": "复古射击：三维模型转二维精灵",
+          "summary": "作者展示 GPT-6.2 Astra 制作的复古射击实验，使用 Blender 建模枪械与手部后转成二维精灵，敌人采用 billboard/sprite 表现。含游戏暴力画面；未独立测试可玩链接。",
+          "category": "游戏开发",
+          "author": "@Dimillian",
+          "url": "https://x.com/Dimillian/status/2122920777276162489",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Dimillian/status/2122920777276162489"
+            }
+          ],
+          "publishedAtISO": "2026-11-18T05:12:09.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122316915129368576/img/z3IH0XxZUR04wKaA.jpg",
+            "alt": "复古射击：三维模型转二维精灵",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c0b134d1a514b0a5",
+          "rank": 7,
+          "title": "Papertrails：沿途展开的纸艺世界",
+          "summary": "Shikhar 展示随探索展开的纸艺场景，使用 Fable 5.2、Opus 5.5 和 Three.js，线程提供提示词和流程。动态世界的效果来自作者展示，未独立运行。",
+          "category": "游戏开发",
+          "author": "@xikhar",
+          "url": "https://x.com/xikhar/status/2122682962647122403",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/xikhar/status/2122682962647122403"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T13:27:10.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122681462378139648/img/tOK8vGnGhVJhI0E7.jpg",
+            "alt": "Papertrails：沿途展开的纸艺世界",
+            "type": "video"
+          }
+        },
+        {
+          "id": "870212a24df39aed",
+          "rank": 8,
+          "title": "Patch：供代理调用的云端 Blender",
+          "summary": "Patch 官方演示云端真实 Blender 会话和 GPU 渲染，并称可同时运行 16 个。此处仅收录实质工具机制，不包含购买建议；并发能力、费用和稳定性未独立验证。",
+          "category": "实用工作流",
+          "author": "@patch_gg",
+          "url": "https://x.com/patch_gg/status/2122463639009702343",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/patch_gg/status/2122463639009702343"
+            }
+          ],
+          "publishedAtISO": "2026-11-16T22:55:39.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122463029791272960/img/YhXdOr7U1w6IB4_s.jpg",
+            "alt": "Patch：供代理调用的云端 Blender",
+            "type": "video"
+          }
+        },
+        {
+          "id": "0acfe5e796e00329",
+          "rank": 9,
+          "title": "同一 Blender 任务：建模、动作与迭代取舍",
+          "summary": "作者在 RTX 4070 笔记本上比较 Astra 与 Fable 对同一模型的建模和动画。原帖补充第二轮 Astra 的总 token 大幅增加，渲染改善但动画变差；不能只截取首轮成本宣布胜负。",
+          "category": "实用工作流",
+          "author": "@AmirMushich",
+          "url": "https://x.com/AmirMushich/status/2122815524124152216",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/AmirMushich/status/2122815524124152216"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T22:13:55.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122809858843934720/img/s_y6oxFM6SqunYUc.jpg",
+            "alt": "同一 Blender 任务：建模、动作与迭代取舍",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b6466660ded23b74",
+          "rank": 10,
+          "title": "参考图建模：Blender MCP 与界面操作",
+          "summary": "作者给 Astra High 一张参考图，允许使用 Blender MCP 和 computer use，并展示模型转动与参考图。已核对日语原文；一次完成是作者自述，不代表普遍成功率。",
+          "category": "游戏开发",
+          "author": "@gamemangaanime",
+          "url": "https://x.com/gamemangaanime/status/2122810072447521194",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/gamemangaanime/status/2122810072447521194"
+            }
+          ],
+          "publishedAtISO": "2026-11-17T21:52:15.000Z",
+          "observedAt": "2026-11-18T12:43:14.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2122809325395771392/img/jhH4DD0nA40LkqnC.jpg",
+            "alt": "参考图建模：Blender MCP 与界面操作",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-17",
       "date": "2026-11-17",
