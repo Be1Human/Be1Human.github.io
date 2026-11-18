@@ -205,8 +205,9 @@
       "projectId": "agentmem",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
-        "作者授权整理的项目介绍",
-        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
+        "对照客户端的记忆浏览、快捷检索、MCP 查询、同步和导出实现，以及聚合服务后台",
+        "对照 Self-Evolve、Injector、ShadwMonitor 和 ShadowFolk Upload 的界面与说明",
+        "用隔离的演示响应渲染原有前端并截图，未使用真实会话、账号或服务地址"
       ],
       "productRuntimeTestedInThisReview": false
     },

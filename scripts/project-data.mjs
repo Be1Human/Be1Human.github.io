@@ -21,9 +21,21 @@ export function validateProject(project, source) {
     if (source.reviewMode !== 'owner-authorized-showcase' || Object.keys(source).some(key => !evidenceKeys.has(key))) throw new Error('Private source evidence must remain outside the public data');
     const detail = project.detail;
     if (!detail || !detail.status || !/^\d{4}(?:–\d{4})?$/.test(detail.period) || !Array.isArray(detail.sections) || !detail.sections.length) throw new Error('Incomplete project overview');
-    if (Object.keys(detail).some(key => !['status', 'period', 'sections'].includes(key))) throw new Error('Unexpected field in project overview');
+    if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize'].includes(key))) throw new Error('Unexpected field in project overview');
+    const validSize = (width, height) => [width, height].every(value => Number.isInteger(value) && value > 0);
+    if (detail.coverSize !== undefined &&
+        (!Array.isArray(detail.coverSize) || detail.coverSize.length !== 2 || !validSize(...detail.coverSize))) {
+      throw new Error('Invalid project cover dimensions');
+    }
     for (const section of detail.sections) {
-      if (Object.keys(section).some(key => !['heading', 'paragraphs'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+      if (section.images === undefined) continue;
+      if (!Array.isArray(section.images) || section.images.some(image =>
+        !image || Object.keys(image).some(key => !['src', 'alt', 'caption', 'width', 'height'].includes(key)) ||
+        !/^assets\/images\/[\w-]+\.(?:webp|png|jpe?g)$/.test(image.src) ||
+        !validSize(image.width, image.height) ||
+        [image.alt, image.caption].some(value => typeof value !== 'string' || !value.trim())
+      )) throw new Error('Invalid project screenshot');
     }
   } else {
     if (project.presentation !== undefined) throw new Error('Invalid project presentation');

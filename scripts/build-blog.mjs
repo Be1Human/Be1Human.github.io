@@ -47,7 +47,6 @@ for (const entry of experienceContent.journal) {
   entry.title=post.title;entry.summary=post.summary;entry.updatedAt=post.updatedAt;entry.hideCover=post.hideCover;entry.image=post.image;entry.imageAlt=post.imageAlt;
   entry.sections=post.sections.map(section=>({title:section.heading,paragraphs:section.paragraphs,...(section.body?{body:renderRichContent(section.body)}:{})}));
 }
-pages.set('content-local.json',JSON.stringify(experienceContent,null,2)+'\n');
 // The interactive homepage fetches the small index and just one edition at a
 // time; keep it synchronized with the same authoritative public archive.
 for (const [path, content] of await buildExperienceNews({root, archive: news})) pages.set(path, content);
@@ -60,7 +59,22 @@ for (const project of projects) {
   const source = evidence.projects.find(source => source.projectId === project.id);
   validateProject(project, source);
   await access(resolve(root, project.image));
+  if (!project.detail?.coverSize) continue;
+  for (const section of project.detail.sections) {
+    for (const image of section.images ?? []) await access(resolve(root, image.src));
+  }
+  const entry = experienceContent.projects.find(entry => entry.id === project.id);
+  if (!entry) continue;
+  const [imageWidth, imageHeight] = project.detail.coverSize;
+  Object.assign(entry, {
+    summary: project.description, image: project.image, imageAlt: project.imageAlt, imageNote: project.imageNote,
+    imageWidth, imageHeight, sourceImage: origin + project.image,
+    sections: project.detail.sections.map(({ heading, paragraphs, images }) => ({
+      title: heading, paragraphs, ...(images?.length ? { images } : {}),
+    })),
+  });
 }
+pages.set('content-local.json',JSON.stringify(experienceContent,null,2)+'\n');
 for (const post of posts) {
   if (post.learningId && !learning.some(article=>article.id===post.learningId)) throw new Error('Unknown learning article link');
   if (!/^[a-z0-9-]+$/.test(post.id)) throw new Error('Invalid article ID');
@@ -137,8 +151,16 @@ pages.set('index.html', homepage);
 
 render('works.html', '作品集 — CLOUD BOY · 云上男孩', `游戏、视觉、工具与研究实验：CLOUD BOY 的 ${projects.length} 件作品及项目记录。`, 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(project => projectCard(project)).join('')}</div>${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
 
+function projectFigure({src, alt, caption, width, height}, cover = false) {
+  return renderRichContent(`<figure class="learn-figure"><img src="../${e(src)}" alt="${e(alt)}" width="${width}" height="${height}" ${cover ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"><figcaption>${e(caption)}</figcaption></figure>`);
+}
+
 for (const project of projects.filter(project => project.presentation === 'showcase')) {
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header><figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure><div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.body?renderRichContent(section.body):section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  const [width, height] = project.detail.coverSize ?? [1200, 706];
+  const cover = project.detail.coverSize
+    ? projectFigure({src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height}, true)
+    : `<figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure>`;
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}${(section.images ?? []).map(image => projectFigure(image)).join('')}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article');
 }
 
