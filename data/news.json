@@ -2,9 +2,175 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "8da128f6306e7826c004e50434034deecce1894e",
-  "syncedAt": "2026-11-20T12:18:21.988Z",
+  "sourceRevision": "57c6e2353d94bb2371d477b2ecf119cdf8880829",
+  "syncedAt": "2026-11-21T12:33:54.164Z",
   "editions": [
+    {
+      "id": "2026-11-21",
+      "date": "2026-11-21",
+      "label": "11 月 21 日 · 7 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-21",
+      "items": [
+        {
+          "id": "457cf6dbef852ff4",
+          "rank": 1,
+          "title": "从参考图到 Blender：把场景拆给并行会话",
+          "summary": "作者用 Nano Banana 参考图指导 Gemini 与 Blender 制作街景，将 70 多个资产拆给不同云端会话并行处理。耗时是作者这次制作的报告。",
+          "category": "游戏开发",
+          "author": "@Christos_antono",
+          "url": "https://x.com/Christos_antono/status/2123898932376006899",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Christos_antono/status/2123898932376006899"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T21:59:00.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123714997008445441/img/OF28km7-My9xar4f.jpg",
+            "alt": "从参考图到 Blender：把场景拆给并行会话",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ddb26ce408c8ecee",
+          "rank": 2,
+          "title": "京都雨巷：同提示词的三模型迭代",
+          "summary": "作者让 Fable 5.2、Astra 与 Neon 按相同提示在 Blender 中反复渲染、检查和修改。原帖说明使用 Poly Haven CC0 资产，雨声为合成。此案例不代表通用模型排名。",
+          "category": "内容创作",
+          "author": "@mizugame_22",
+          "url": "https://x.com/mizugame_22/status/2123756243827486822",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/mizugame_22/status/2123756243827486822"
+            },
+            {
+              "title": "作者的对照条件补充",
+              "url": "https://x.com/mizugame_22/status/2123757724211290375"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T12:32:00.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123756217856339968/img/RZVgvm13zOwM1QpC.jpg",
+            "alt": "京都雨巷：同提示词的三模型迭代",
+            "type": "video"
+          }
+        },
+        {
+          "id": "145685246688ca33",
+          "rank": 3,
+          "title": "同一艘船：Blender 与 Three.js 的制作对照",
+          "summary": "作者用同一模型分别走 Blender 和 Three.js 路线，并展示两艘船。2 小时与 28 分钟是本次个案，不等于两条管线的通用速度差。",
+          "category": "游戏开发",
+          "author": "@shmopixbzn",
+          "url": "https://x.com/shmopixbzn/status/2123902537937866974",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/shmopixbzn/status/2123902537937866974"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T22:13:19.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123901308344098816/img/a6Bg41a0IPGE9Svm.jpg",
+            "alt": "同一艘船：Blender 与 Three.js 的制作对照",
+            "type": "video"
+          }
+        },
+        {
+          "id": "f06ebc889b547ebf",
+          "rank": 4,
+          "title": "Three.js 高斯泼溅：浏览器场景样例",
+          "summary": "作者展示 Three.js 高斯泼溅案例，披露约 120 万个泼溅元素、283 MB 数据，并标注 Claude Fable 5.2 与 Suno MCP 的用途。已读取日文原文。",
+          "category": "游戏开发",
+          "author": "@seiiiiiiiiiiru",
+          "url": "https://x.com/seiiiiiiiiiiru/status/2123702907534979541",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/seiiiiiiiiiiru/status/2123702907534979541"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T09:00:04.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123678380902273024/img/Ft1xhbvyDDD9WCyF.jpg",
+            "alt": "Three.js 高斯泼溅：浏览器场景样例",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4f8ffd604c16ea02",
+          "rank": 5,
+          "title": "游戏 3D 资产：按流程拆解的开源工具清单",
+          "summary": "作者整理了 14 个项目，从 Blender 控制、建模、拓扑清理到 UV、材质、LOD 和导出。是按工序组织的选型清单，不是已验证的一键管线。",
+          "category": "实用工作流",
+          "author": "@0xKense1",
+          "url": "https://x.com/0xKense1/status/2123879132090245223",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/0xKense1/status/2123879132090245223"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T20:40:19.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123878827587674113/img/ijD3mZAoKrnKnp2Z.jpg",
+            "alt": "游戏 3D 资产：按流程拆解的开源工具清单",
+            "type": "video"
+          }
+        },
+        {
+          "id": "e7ba9e4311186441",
+          "rank": 6,
+          "title": "Claude 移动端：围绕代码与会话接续重做",
+          "summary": "参与设计的作者宣布新版移动体验开始逐步推出，目标包括让手机端更好支持代码、项目和 Artifacts，并简化外出时的新建和接续会话。",
+          "category": "实用工作流",
+          "author": "@daniel__designs",
+          "url": "https://x.com/daniel__designs/status/2123860186951516287",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/daniel__designs/status/2123860186951516287"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T19:25:02.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123856131634196480/img/ukYjxMTiBXafSYQh.jpg",
+            "alt": "Claude 移动端：围绕代码与会话接续重做",
+            "type": "video"
+          }
+        },
+        {
+          "id": "dcb9ca21a18aa21a",
+          "rank": 7,
+          "title": "Volcano：面向代理的云端执行环境",
+          "summary": "发布者介绍面向 AI 代理的 Volcano，功能包括沙箱、可持续执行的工作流、Postgres 和托管。自动恢复能力为产品方陈述，未独立测试。",
+          "category": "实用工作流",
+          "author": "@subnetmarco",
+          "url": "https://x.com/subnetmarco/status/2123424142569714004",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/subnetmarco/status/2123424142569714004"
+            }
+          ],
+          "publishedAtISO": "2026-11-19T14:32:21.000Z",
+          "observedAt": "2026-11-21T12:29:33.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123423927708119041/img/U7XP2pxzI6MlQF-Y.jpg",
+            "alt": "Volcano：面向代理的云端执行环境",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-20",
       "date": "2026-11-20",
