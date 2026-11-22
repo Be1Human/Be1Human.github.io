@@ -2,9 +2,342 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "57c6e2353d94bb2371d477b2ecf119cdf8880829",
-  "syncedAt": "2026-11-21T12:33:54.164Z",
+  "sourceRevision": "1dc7e1296631391c6d28df50b1b84c7fdacfa412",
+  "syncedAt": "2026-11-22T12:20:03.716Z",
   "editions": [
+    {
+      "id": "2026-11-22",
+      "date": "2026-11-22",
+      "label": "11 月 22 日 · 15 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-22",
+      "items": [
+        {
+          "id": "049c8f8837d4aebd",
+          "rank": 1,
+          "title": "Unity 地形植被：从照片到带 LOD 的资产",
+          "summary": "作者将照片转为可用地形笔刷布置的植物，披露 18 个模型、LOD、材质贴图与风动遮罩。成本和效果是作者记录。",
+          "category": "游戏开发",
+          "author": "@Stefan_3D_AI",
+          "url": "https://x.com/Stefan_3D_AI/status/2124152437493969090",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Stefan_3D_AI/status/2124152437493969090"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T14:46:20.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124152327565361152/img/ms8nq9PZyC4WVUS0.jpg",
+            "alt": "Unity 地形植被：从照片到带 LOD 的资产",
+            "type": "video"
+          }
+        },
+        {
+          "id": "5821f7007dd62057",
+          "rank": 2,
+          "title": "beanfx：把描述变成可修改的像素特效",
+          "summary": "作者发布面向游戏像素特效的 Claude Code 插件。草稿带 HTML 预览，生成的 Rust 可继续修改。",
+          "category": "游戏开发",
+          "author": "@dextune",
+          "url": "https://x.com/dextune/status/2124292022882406780",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/dextune/status/2124292022882406780"
+            }
+          ],
+          "publishedAtISO": "2026-11-22T00:01:00.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z"
+        },
+        {
+          "id": "7b0e2ee0037bc41c",
+          "rank": 3,
+          "title": "离线 RPG 原型：让 NPC 根据记忆和关系行动",
+          "summary": "作者展示本地运行的开放世界 RPG 实验：村民按个性、记忆和关系决定行动；作者只设资源和基本生存限制，测试中出现修理店与以物易物。",
+          "category": "游戏开发",
+          "author": "@GKCH2412",
+          "url": "https://x.com/GKCH2412/status/2124208795945763299",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/GKCH2412/status/2124208795945763299"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T18:30:17.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124208527908712448/img/qYC59HzGq1lWBQqs.jpg",
+            "alt": "离线 RPG 原型：让 NPC 根据记忆和关系行动",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ef699e75a4dad3bb",
+          "rank": 4,
+          "title": "Blender PBR 贴图：拆开记录三个耗时",
+          "summary": "AI Texturing 插件第 8 个原型样例在 RTX 4070 Ti 上分别记录纹理生成、放大和 PBR 处理耗时，不作为其他资产的性能承诺。",
+          "category": "游戏开发",
+          "author": "@MiladKambari",
+          "url": "https://x.com/MiladKambari/status/2124137410141507658",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/MiladKambari/status/2124137410141507658"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T13:46:37.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124137311906525184/img/AHR2RGfPKDuRmVX4.jpg",
+            "alt": "Blender PBR 贴图：拆开记录三个耗时",
+            "type": "video"
+          }
+        },
+        {
+          "id": "e815624acd9929a1",
+          "rank": 5,
+          "title": "ESP32 空调遥控：从协议分析到实体演示",
+          "summary": "作者用 Opus 5.5 分析自己的 Panasonic 空调遥控协议，并通过 ESP32 实现远程操作。这是单一设备演示，不保证适配其他型号。",
+          "category": "硬件创客",
+          "author": "@hugojm_",
+          "url": "https://x.com/hugojm_/status/2124169902437097931",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/hugojm_/status/2124169902437097931"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T15:55:44.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124169826104983552/img/-Jiam2DiaC-AfqxF.jpg",
+            "alt": "ESP32 空调遥控：从协议分析到实体演示",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4182065005f80a5a",
+          "rank": 6,
+          "title": "Reachy Mini：给对话角色接上实体机器人",
+          "summary": "作者以 Hugging Face 与 Pollen Robotics 的 Reachy Mini 为硬件，为 Shizuku 搭建定制对话系统。原帖展示原型，未披露完整技术栈。",
+          "category": "硬件创客",
+          "author": "@ShizukuResearch",
+          "url": "https://x.com/ShizukuResearch/status/2123974682550603835",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/ShizukuResearch/status/2123974682550603835"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T03:00:00.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123706416636760064/img/xD5m0yJGUNygbWjw.jpg",
+            "alt": "Reachy Mini：给对话角色接上实体机器人",
+            "type": "video"
+          }
+        },
+        {
+          "id": "0c6bd9bbc839b44c",
+          "rank": 7,
+          "title": "FR3 Duo：用机器人插件试做抓放",
+          "summary": "团队测试 Antigravity 机器人插件，让 Hydrogen 设置 FR3 Duo、执行挥手并将乐高放进盒子。两条提示与约 20 分钟为作者的单次记录。",
+          "category": "硬件创客",
+          "author": "@Nicolas_Keller",
+          "url": "https://x.com/Nicolas_Keller/status/2123818050755629257",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Nicolas_Keller/status/2123818050755629257"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T16:37:36.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123817748279197697/img/VFe8lGjz2wQJI_YU.jpg",
+            "alt": "FR3 Duo：用机器人插件试做抓放",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a3d91f8d61add03e",
+          "rank": 8,
+          "title": "pi-H3：两步预览与 25 步基线对照",
+          "summary": "作者用 RTX 5090 与 ComfyUI 对照 5 秒、768×1344 的文本转视频：Base 约 353 秒，pi-H3 约 24 秒；两步结果的部分细节偏糊。",
+          "category": "内容创作",
+          "author": "@DeepForest_Inc",
+          "url": "https://x.com/DeepForest_Inc/status/2124325277966967199",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/DeepForest_Inc/status/2124325277966967199"
+            }
+          ],
+          "publishedAtISO": "2026-11-22T02:13:08.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124323946631970816/img/P9HslITqw97OetMb.jpg",
+            "alt": "pi-H3：两步预览与 25 步基线对照",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b594d3becd215b13",
+          "rank": 9,
+          "title": "游戏原生引擎：用角色资产做预告片",
+          "summary": "作者让 Claude 用自己的游戏引擎做预告片，并拆开列出角色美术、模型、绑定与配音来源。",
+          "category": "内容创作",
+          "author": "@kevin_t_ngo",
+          "url": "https://x.com/kevin_t_ngo/status/2124213815697158160",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/kevin_t_ngo/status/2124213815697158160"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T18:50:14.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124213361152053248/img/_1ZpcxdvZ01YP8xm.jpg",
+            "alt": "游戏原生引擎：用角色资产做预告片",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b645f003cfe7f053",
+          "rank": 10,
+          "title": "像素条分层：不借助三维引擎做立体动画",
+          "summary": "作者组合两个开放的代理技能，以 11 层平面像素条叠加成动画，并合成声音。60 fps 是作者所述输出规格。",
+          "category": "内容创作",
+          "author": "@dwhitedesign",
+          "url": "https://x.com/dwhitedesign/status/2123928042711958000",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/dwhitedesign/status/2123928042711958000"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T23:54:40.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123927844245983232/img/hTTXe8Akt2hub5_O.jpg",
+            "alt": "像素条分层：不借助三维引擎做立体动画",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c56118f967ca53b5",
+          "rank": 11,
+          "title": "体素引擎重写：让动态对象真正占据三维空间",
+          "summary": "作者让 Claude 按旧引擎能力重写，展示动态体素对象与用于说明三维结构的谢尔宾斯基金字塔。既有 .vox 导入不属于本次重写。",
+          "category": "游戏开发",
+          "author": "@notch",
+          "url": "https://x.com/notch/status/2123893577873010869",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/notch/status/2123893577873010869"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T21:37:43.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123892406114189312/img/E1Yx_NHySbkulEoL.jpg",
+            "alt": "体素引擎重写：让动态对象真正占据三维空间",
+            "type": "video"
+          }
+        },
+        {
+          "id": "9106df173eb2dcd0",
+          "rank": 12,
+          "title": "Three.js 山坡城镇：用一套预制构件搭出不同建筑",
+          "summary": "作者用 GPT-6.2 与 Three.js 组织场景，先制作可复用房屋构件，再生成风车、钟楼等建筑，加上时段滑块和镜头路径。",
+          "category": "游戏开发",
+          "author": "@rewind02",
+          "url": "https://x.com/rewind02/status/2124108900299382873",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/rewind02/status/2124108900299382873"
+            }
+          ],
+          "publishedAtISO": "2026-11-21T11:53:20.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124108781046976512/img/tpBXpKY7pWeuR-mW.jpg",
+            "alt": "Three.js 山坡城镇：用一套预制构件搭出不同建筑",
+            "type": "video"
+          }
+        },
+        {
+          "id": "632ae44c814b2bb0",
+          "rank": 13,
+          "title": "Qwen Image 2.1：ComfyUI 本地工作流",
+          "summary": "ComfyUI 官方原帖介绍开放权重版接入及海报文字、换装、抠图案例。功能示例未独立复现。",
+          "category": "内容创作",
+          "author": "@ComfyUI",
+          "url": "https://x.com/ComfyUI/status/2123912612593484275",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/ComfyUI/status/2123912612593484275"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T22:53:21.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123912581165486080/img/OxdXT0QBbzY_rxNy.jpg",
+            "alt": "Qwen Image 2.1：ComfyUI 本地工作流",
+            "type": "video"
+          }
+        },
+        {
+          "id": "6a2acba4b283155a",
+          "rank": 14,
+          "title": "Colab 的 Blender 渲染接入 Gemini 视频生成",
+          "summary": "作者将 Blender 渲染与视频生成分成两步，通过 Antigravity 串起 Colab 与 Gemini Omni 1.2 Flash。",
+          "category": "内容创作",
+          "author": "@kodama_aiojisan",
+          "url": "https://x.com/kodama_aiojisan/status/2124344622327689338",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/kodama_aiojisan/status/2124344622327689338"
+            }
+          ],
+          "publishedAtISO": "2026-11-22T03:30:01.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124331335510810624/img/Bd-g0bS7cvDJ3yiC.jpg",
+            "alt": "Colab 的 Blender 渲染接入 Gemini 视频生成",
+            "type": "video"
+          }
+        },
+        {
+          "id": "2ebea84477e0df85",
+          "rank": 15,
+          "title": "Pocket City：用地图数据搭可旋转的微缩街区",
+          "summary": "作者发布 Pocket City 技能，从 OpenStreetMap 取空间信息，做成带当地天气与季节特征的微缩场景。并非实时气象或测绘验证。",
+          "category": "内容创作",
+          "author": "@Aprilzz423",
+          "url": "https://x.com/Aprilzz423/status/2123788440714260673",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Aprilzz423/status/2123788440714260673"
+            }
+          ],
+          "publishedAtISO": "2026-11-20T14:39:57.000Z",
+          "observedAt": "2026-11-22T12:11:22.000Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2123788215530508288/img/YDZVXU1owUTxGRHF.jpg",
+            "alt": "Pocket City：用地图数据搭可旋转的微缩街区",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-21",
       "date": "2026-11-21",
