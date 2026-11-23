@@ -1,0 +1,169 @@
+{
+  "id": "2026-11-23",
+  "date": "2026-11-23",
+  "label": "11 月 23 日 · 12 条非中文原帖",
+  "source": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-23",
+  "items": [
+    {
+      "id": "item-07d2a1f4f8b5e36e",
+      "title": "概念图到参数化模型：2,218 个零件",
+      "summary": "创作者给代理五张概念图，让它用参数化代码构建模型，而不是手工摆放顶点。原帖展示了样件，未验证可制造性或游戏交付规格。",
+      "category": "游戏开发",
+      "author": "@Kiyotaka_li",
+      "publishedAt": "2026-11-22T14:24:23.000Z",
+      "source": "https://x.com/Kiyotaka_li/status/2124509299552727096",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124509164508762112/img/HZZyAhnPYTpdgNm0.jpg",
+      "imageAlt": "概念图到参数化模型：2,218 个零件",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-90b3d3d9cc8f72f9",
+      "title": "Blender 到 UE：同一个大厅的渲染对照",
+      "summary": "作者在 Fable 5.2 指导下将大厅移植到 UE，报告 RTX 2080 上的两套渲染耗时。输出分辨率、渲染方法不同，不是等画质基准。",
+      "category": "游戏开发",
+      "author": "@hayashimon1",
+      "publishedAt": "2026-11-22T23:32:52.000Z",
+      "source": "https://x.com/hayashimon1/status/2124647333329862986",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124646393050796032/img/WBqtYcqow_Y108CX.jpg",
+      "imageAlt": "Blender 到 UE：同一个大厅的渲染对照",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-b0f79b92a7cdc6e1",
+      "title": "可探索机器人城市：用并行代理扩建房间",
+      "summary": "作者称让 28 个 Astra 子代理参与制作，约用 6 小时。作者跟帖说明基础游戏原已存在；这次是内容扩展，不是整个游戏从零完成。",
+      "category": "游戏开发",
+      "author": "@anshuc",
+      "publishedAt": "2026-11-22T00:14:07.000Z",
+      "source": "https://x.com/anshuc/status/2124295323602542976",
+      "relatedLinks": [
+        {
+          "label": "作者说明：基础游戏已存在",
+          "url": "https://x.com/anshuc/status/2124295326018552102"
+        }
+      ],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124295178743877632/img/WhSr2XohgahurawM.jpg",
+      "imageAlt": "可探索机器人城市：用并行代理扩建房间",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-cc297aa4b6507213",
+      "title": "Roblox 工具分工：试玩、同步与类型检查",
+      "summary": "作者整理 14 个关联项目。Studio MCP、Rojo 和 luau-lsp 分别用于编辑器操作、脚本同步和静态检查；清单不是经过验证的整套流水线。",
+      "category": "游戏开发",
+      "author": "@0xKense1",
+      "publishedAt": "2026-11-21T21:06:53.000Z",
+      "source": "https://x.com/0xKense1/status/2124248203629306061",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124244111339237376/img/BQ4eNRBNsYXaYokC.jpg",
+      "imageAlt": "Roblox 工具分工：试玩、同步与类型检查",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-0c20ada15e53e8ca",
+      "title": "Gemini 与 Blender：约 4,800 三角面的基础模型",
+      "summary": "作者用 Gemini 4 Neon 与 Blender 从一条提示生成基础模型，展示了三角面规模并在回复提供提示。基础模型不等于可直接投产的角色。",
+      "category": "游戏开发",
+      "author": "@fe_yukichi",
+      "publishedAt": "2026-11-22T11:48:28.000Z",
+      "source": "https://x.com/fe_yukichi/status/2124470064422527151",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124470047800426496/img/4lbMNiHb2-CzgWDf.jpg",
+      "imageAlt": "Gemini 与 Blender：约 4,800 三角面的基础模型",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-d25259fda307f12b",
+      "title": "WALL-OSS-1.0：机器人视觉、语言与动作基础模型",
+      "summary": "官方宣布 WALL-OSS-1.0，并发布 XR Harness。官方称在 312 项真实机器人任务上，未用针对性示范或微调时达 55.1%；此处未独立复验。",
+      "category": "硬件创客",
+      "author": "@XSquareRobot",
+      "publishedAt": "2026-11-23T07:30:35.000Z",
+      "source": "https://x.com/XSquareRobot/status/2124767551959757162",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124765200280694784/img/lav_mkOiZQBXQ0DK.jpg",
+      "imageAlt": "WALL-OSS-1.0：机器人视觉、语言与动作基础模型",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-3a27dec2e80be6ed",
+      "title": "Kintsugi 27B：面向 12 GB 显卡的本地代理模型",
+      "summary": "发布者介绍面向 12 GB 显卡的模型，附权重和代码；AppWorld 分数、长上下文和客户端兼容均为该项目的发布者报告。",
+      "category": "实用工作流",
+      "author": "@CaryPalmerr",
+      "publishedAt": "2026-11-21T21:44:40.000Z",
+      "source": "https://x.com/CaryPalmerr/status/2124257712926290133",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124239902879399936/img/JatzrM_YueC-BfCr.jpg",
+      "imageAlt": "Kintsugi 27B：面向 12 GB 显卡的本地代理模型",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-fbd7e7e7b75035fc",
+      "title": "Strata 0.2.19：新增本地模型支持",
+      "summary": "作者发布 Strata 更新，加入 Inkling 2 Mini，并报告 RTX 5090 上预填充与输出吞吐。实际速度取决于运行配置，未经独立复测。",
+      "category": "实用工作流",
+      "author": "@coldniko",
+      "publishedAt": "2026-11-22T11:43:34.000Z",
+      "source": "https://x.com/coldniko/status/2124468831175549262",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124457843126382592/img/3KSAz_89hUFYWgvA.jpg",
+      "imageAlt": "Strata 0.2.19：新增本地模型支持",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-189f1c3c73622b7f",
+      "title": "给设计代理一套参考：拆解排版决策",
+      "summary": "作者开源前端视觉方向 Skill，整理 247 个案例与 292 份字体研究记录，重点解释为什么采用这些排版与留白，而非照搬外观。",
+      "category": "实用工作流",
+      "author": "@rna4219",
+      "publishedAt": "2026-11-22T16:10:23.000Z",
+      "source": "https://x.com/rna4219/status/2124535975905026051",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124535454594969600/img/74fHKvvC26yiJAi9.jpg",
+      "imageAlt": "给设计代理一套参考：拆解排版决策",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-119a8f3c93e1db5c",
+      "title": "M3E Canvas 1.0：用 MCP 串联 UI 与 Android 开发",
+      "summary": "官方原帖发布免费开源的 M3E Canvas 1.0.0，新增 MCP，展示用 Claude Code 或 Codex 指示 UI 到 Android 的流程。未独立测试交付质量。",
+      "category": "实用工作流",
+      "author": "@lnkiai",
+      "publishedAt": "2026-11-23T09:27:09.000Z",
+      "source": "https://x.com/lnkiai/status/2124796886465044947",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124796856739999744/img/0tbjR2ZDpHjMSAZ1.jpg",
+      "imageAlt": "M3E Canvas 1.0：用 MCP 串联 UI 与 Android 开发",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-40a4924695e276b3",
+      "title": "航拍短片：把地形、歌词和节拍接成同一流程",
+      "summary": "作者展示在手机上用对话推动制作：按实际地形建模、生成傍晚航拍，并分析歌词时间和节拍来同步字幕与均衡器动画。",
+      "category": "内容创作",
+      "author": "@niramayo2096",
+      "publishedAt": "2026-11-23T05:47:00.000Z",
+      "source": "https://x.com/niramayo2096/status/2124741484125544880",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124726684222214144/img/jwbaPUOr8SeeuIwe.jpg",
+      "imageAlt": "航拍短片：把地形、歌词和节拍接成同一流程",
+      "imageKind": "original"
+    },
+    {
+      "id": "item-e12b5bdb6c1c9ae9",
+      "title": "MiniMax H3 微表情：把情绪变化拆成分镜",
+      "summary": "作者在 ComfyUI 中把他人提示词改为 12 秒测试，设置角色和连续性约束，用克制的小动作观察情绪过渡。它是样例，不是模型普遍表现。",
+      "category": "内容创作",
+      "author": "@EndFolding79421",
+      "publishedAt": "2026-11-22T21:43:29.000Z",
+      "source": "https://x.com/EndFolding79421/status/2124619802757202007",
+      "relatedLinks": [],
+      "image": "https://pbs.twimg.com/amplify_video_thumb/2124619508274933760/img/ZliORWw8CD9zGg-7.jpg",
+      "imageAlt": "MiniMax H3 微表情：把情绪变化拆成分镜",
+      "imageKind": "original"
+    }
+  ]
+}
