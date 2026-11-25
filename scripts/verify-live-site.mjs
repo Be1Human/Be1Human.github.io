@@ -23,7 +23,9 @@ let paths=['index.html','app.js','style.css','assets/site.css','assets/sheep.svg
 const visualAssets=new Set();
 for(const path of [...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(post=>'posts/'+post.id+'.html'),...illustratedProjects]){
  const html=await readFile(resolve(root,path),'utf8');
- for(const match of html.matchAll(/<img\b[^>]*src=['"]([^'"]+)['"]/g))if(match[1].startsWith('../assets/'))visualAssets.add(match[1].slice(3));
+ for(const match of html.matchAll(/<(?:img|video)\b[^>]*>/g)){
+  for(const attr of match[0].matchAll(/\b(?:src|poster)=['"]\.\.\/(assets\/[^'"]+)['"]/g))visualAssets.add(attr[1]);
+ }
 }
 paths=[...new Set([...paths,...illustratedProjects,...visualAssets,...posts.map(post=>post.image).filter(Boolean)])];
 const hash=b=>createHash('sha256').update(b).digest('hex');

@@ -135,7 +135,8 @@
     "action": "了解项目",
     "repository": "https://github.com/Be1Human/MineClaw",
     "accent": "green",
-    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
+    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md",
+    "group": "agent"
   },
   {
     "id": "duomind",
@@ -181,7 +182,8 @@
           ]
         }
       ]
-    }
+    },
+    "group": "agent"
   },
   {
     "id": "clawphone",
@@ -223,6 +225,312 @@
           "heading": "工程边界",
           "paragraphs": [
             "这是需要手机端、设备授权和自行部署服务配合的集成项目。桥接服务与手机执行端分工，工具层负责能力调用，经验层负责操作方法。"
+          ]
+        }
+      ]
+    },
+    "group": "agent"
+  },
+  {
+    "id": "clawpm",
+    "title": "ClawPM",
+    "kind": "Agent 协作与项目管理",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "下一位接手的 Agent 怎么知道任务做到哪一步？ClawPM 用需求树拆目标，用工作流跟踪执行，把验收条件、测试结果和交付证据保存在 Git 工程里。",
+    "image": "assets/images/clawpm-desktop-mindmap.jpg",
+    "imageAlt": "ClawPM 桌面端的需求思维导图",
+    "imageNote": "桌面端 · Markdown 导出演示项目",
+    "tags": [
+      "Agent 协作",
+      "项目管理",
+      "Electron"
+    ],
+    "url": "projects/clawpm.html",
+    "action": "查看项目",
+    "documentation": "projects/clawpm.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "本地桌面版 0.1.8",
+      "period": "2026",
+      "coverSize": [
+        1280,
+        720
+      ],
+      "sections": [
+        {
+          "heading": "先把目标拆成能验收的任务",
+          "paragraphs": [
+            "以 Markdown 导出为例，目标可以拆成保留标题层级、处理中文文件名、检查附件链接。每项有独立的通过条件，整条导出链路的回归测试要等三项都完成。",
+            "打开桌面端后，可以在思维导图里展开任务关系，也能用看板、任务列表和甘特图查看同一批任务。Agent 工作流按下一步分组，标明哪些等待依赖、哪些可以领取、哪些待测试。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/clawpm-desktop-delivery.webp",
+              "alt": "定义结果、拆分任务、领取与测试、交付验收四步",
+              "caption": "交付流程 · 先检查单项，再跑回归。",
+              "width": 1200,
+              "height": 690
+            },
+            {
+              "src": "assets/images/clawpm-desktop-workflow.jpg",
+              "alt": "ClawPM 工作流页按下一步呈现任务",
+              "caption": "Agent 工作流 · 可以看到每项任务接下来要做什么。",
+              "width": 1280,
+              "height": 720
+            }
+          ]
+        },
+        {
+          "heading": "测试通过后，留下能复查的证据",
+          "paragraphs": [
+            "领取任务时会记录当前执行者和租约期限。提交验收前，任务详情会检查验收标准、阻塞、依赖、子任务、测试验证和交付证据。需要测试的任务要留下通过记录，例如修改的代码路径和回归结果。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/clawpm-desktop-gate.jpg",
+              "alt": "ClawPM 任务详情中的完成检查与测试证据",
+              "caption": "任务验收面板 · 演示数据展示测试产物和交付路径。",
+              "width": 1280,
+              "height": 720
+            }
+          ]
+        },
+        {
+          "heading": "应用和 Agent 读写同一个任务库",
+          "paragraphs": [
+            "桌面端负责浏览、编辑和校验，配套 Skill 指导编程 Agent 领取任务、更新进度并写回证据。两边读写当前 Git 工程的 .clawpm 目录，任务各自保存为 JSON 文件。把它们和代码一起提交，就能按提交追溯状态变化。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/clawpm-desktop-architecture.webp",
+              "alt": "ClawPM 桌面端和编程 Agent 共用 Git 工程内的任务文件",
+              "caption": "桌面端与编程 Agent 通过本地任务文件交接。",
+              "width": 1200,
+              "height": 620
+            },
+            {
+              "src": "assets/images/clawpm-desktop-skill.jpg",
+              "alt": "ClawPM 工作流 Skill 安装界面",
+              "caption": "Skill 安装中心 · 支持 Claude Code、Cursor、Codex 和 CodeBuddy。",
+              "width": 1280,
+              "height": 720
+            }
+          ]
+        }
+      ]
+    },
+    "group": "agent"
+  },
+  {
+    "id": "smarttest",
+    "title": "SmartTest",
+    "kind": "Android 真机测试",
+    "category": "tools",
+    "label": "AI 与工具",
+    "description": "给视觉 Agent 一个目标，让它看着手机屏幕操作。SmartTest 记录模型动作和设备回执，再根据游戏状态判断用例是否通过。",
+    "image": "assets/images/smarttest-cover.webp",
+    "imageAlt": "SmartTest 的背包测试目标和动作时间轴",
+    "imageNote": "真机测试示例 · 从目标到动作回放",
+    "tags": [
+      "视觉 Agent",
+      "游戏测试",
+      "Android"
+    ],
+    "url": "projects/smarttest.html",
+    "action": "查看项目",
+    "documentation": "projects/smarttest.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "真机测试原型",
+      "period": "2026",
+      "coverSize": [
+        1280,
+        720
+      ],
+      "sections": [
+        {
+          "heading": "把测试目标交给视觉 Agent",
+          "paragraphs": [
+            "例如“打开背包，查看分类后返回大厅”。模型观察当前画面，选择点击或等待等动作，设备执行后返回结果。SmartTest 将动作、时点和回执记录在同一次运行里。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/smarttest-public-flow.webp",
+              "alt": "目标、读屏决策、真机执行与结果核验的四步流程",
+              "caption": "测试流程 · 状态核验与动作记录各自提供不同的证据。",
+              "width": 1200,
+              "height": 510
+            }
+          ]
+        },
+        {
+          "heading": "从录像定位模型在哪一步走错",
+          "paragraphs": [
+            "一次真机校准中，模型按要求寻找背包，却进了商城，随后给出过越界坐标。背包条件始终没有满足，这轮记为失败。录像和动作时间轴能定位走偏的时点，游戏状态用于判断是否满足用例条件。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/smarttest-timeline.webp",
+              "alt": "真机录像对应的模型点击和等待时间轴",
+              "caption": "动作时间轴 · 点击和等待可以和当时的设备画面对照。",
+              "width": 310,
+              "height": 545
+            }
+          ]
+        },
+        {
+          "heading": "复跑同一个用例",
+          "paragraphs": [
+            "测试界面、CLI 和 MCP 共用运行记录。调用方可以提交目标、等待结果，再读取这次运行的证据。遇到需要反复重现的步骤，也可以保存工作流的指定版本，沿同一套步骤复跑。"
+          ]
+        }
+      ]
+    },
+    "group": "agent"
+  },
+  {
+    "id": "digital-performance",
+    "title": "数字人表演生成",
+    "kind": "Unreal Engine · 角色动画",
+    "category": "visuals",
+    "label": "视觉与设计",
+    "description": "用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。",
+    "image": "assets/images/digital-performance-cover.webp",
+    "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
+    "imageNote": "Unreal Engine · 角色全身表演",
+    "tags": [
+      "UE",
+      "动作重定向",
+      "数字人"
+    ],
+    "url": "projects/digital-performance.html",
+    "action": "查看项目",
+    "documentation": "projects/digital-performance.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "角色动画工作流演示",
+      "period": "2026",
+      "coverSize": [
+        1280,
+        720
+      ],
+      "sections": [
+        {
+          "heading": "先让参考视频覆盖整段戏",
+          "paragraphs": [
+            "先在单人剧本里定下台词、情绪和时长，再生成一条固定构图的全身表演作为参考。身体动作和对白来自同一条视频，后面就能沿用相同的时间点检查动作与台词。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/digital-performance-workflow.png",
+              "alt": "单人剧本经过参考视频、身体动作、眉眼和口型，最终写入场景序列",
+              "caption": "制作流程 · 动作、表情和口型汇入同一条角色时间轴。",
+              "width": 1672,
+              "height": 941
+            }
+          ]
+        },
+        {
+          "heading": "把动作和对白放进 UE 场景",
+          "paragraphs": [
+            "从参考画面提取人体姿态，再重定向到 UE 角色骨架。从原声对齐音素，生成口型轨。表情曲线需要连续、可用的眉眼画面，这次全身参考提供的面部信息有限，演示主要呈现了身体动作和口型。",
+            "各条轨道在角色时间轴里对齐后，把子序列写入目标场景的 Sequence。播放时可以检查捂胸、弯腰与台词是否同拍。"
+          ],
+          "video": {
+            "src": "assets/project-media/digital-performance.mp4",
+            "poster": "assets/images/digital-performance-cover.webp",
+            "caption": "UE 角色表演实录 · 约 12 秒，含对白",
+            "width": 960,
+            "height": 544
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "aixiaochu",
+    "title": "仙侠世界 · 三消玩法原型",
+    "kind": "网页游戏 · 回合对战",
+    "category": "games",
+    "label": "游戏项目",
+    "description": "把三消做成一场回合对战。双方轮流使用同一块棋盘，消除产生攻击或护盾，战斗之外则通过地图探索、灵兽配队和宗门推进冒险。",
+    "image": "assets/images/aixiaochu-showcase.webp",
+    "imageAlt": "左侧是云雾地图，中间是 Boss 战斗，右侧是灵兽阵容",
+    "imageNote": "原型实机 · 地图、战斗与阵容",
+    "tags": [
+      "三消",
+      "回合对战",
+      "地图探索"
+    ],
+    "url": "projects/aixiaochu.html",
+    "action": "查看项目",
+    "documentation": "projects/aixiaochu.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "网页玩法原型",
+      "period": "2026",
+      "coverSize": [
+        1200,
+        720
+      ],
+      "sections": [
+        {
+          "heading": "对手也会用你的棋盘",
+          "paragraphs": [
+            "交换相邻灵印，连成三枚或更多就会消除。棋盘由双方共享，所以这一步既要看自己能打出什么，也要看结算后给对手留下了什么。遇到 Boss 时，攻击、护盾和功法释放的时机都影响下一回合。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/aixiaochu-boss.webp",
+              "alt": "序章 Boss 战的棋盘和双方状态",
+              "caption": "序章教学 · 我方与 Boss 共用一块棋盘。",
+              "width": 414,
+              "height": 896
+            },
+            {
+              "src": "assets/images/aixiaochu-combo.webp",
+              "alt": "连续消除后的攻击和护盾结算",
+              "caption": "结算反馈 · 连锁后可看到攻击和护盾变化。",
+              "width": 414,
+              "height": 896
+            }
+          ],
+          "video": {
+            "src": "assets/project-media/aixiaochu-boss.mp4",
+            "poster": "assets/images/aixiaochu-boss-poster.webp",
+            "caption": "Boss 对战实录节选 · 24 秒",
+            "width": 420,
+            "height": 898
+          }
+        },
+        {
+          "heading": "在地图里找下一场冒险",
+          "paragraphs": [
+            "从等距地图出发，走近未探索区域才会揭开云雾，看到城镇、驿站或遗迹。城镇内可以补给，阵容界面用来选择出战灵兽，宗门驻地则连接功法传承与建设。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/aixiaochu-map.webp",
+              "alt": "一部分被云雾覆盖的等距地图",
+              "caption": "地图探索 · 角色走近后，周围地形才逐步显露。",
+              "width": 414,
+              "height": 896
+            },
+            {
+              "src": "assets/images/aixiaochu-team.webp",
+              "alt": "灵兽伙伴和当前出战阵容",
+              "caption": "阵容 · 出战伙伴与待选伙伴分开展示。",
+              "width": 414,
+              "height": 896
+            },
+            {
+              "src": "assets/images/aixiaochu-sect.webp",
+              "alt": "宗门驻地和可用功能",
+              "caption": "宗门 · 驻地串联传承与养成。",
+              "width": 414,
+              "height": 896
+            }
           ]
         }
       ]
@@ -271,7 +579,8 @@
           ]
         }
       ]
-    }
+    },
+    "group": "agent"
   },
   {
     "id": "agentmem",
@@ -410,7 +719,8 @@
           ]
         }
       ]
-    }
+    },
+    "group": "agent"
   },
   {
     "id": "petgo",
@@ -500,7 +810,8 @@
           ]
         }
       ]
-    }
+    },
+    "group": "agent"
   },
   {
     "id": "wallpaper-workshop",
@@ -655,30 +966,8 @@
     "action": "查看 Skill",
     "repository": "https://github.com/Be1Human/video-to-game-animation",
     "accent": "gray",
-    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
-  },
-  {
-    "id": "clawpm",
-    "title": "ClawPM",
-    "name": "ClawPM",
-    "kind": "自托管项目管理",
-    "category": "tools",
-    "label": "AI 与工具",
-    "description": "可自托管的项目管理 Web 应用，提供需求节点、思维导图、看板、任务列表、甘特图和迭代管理。通过 MCP 让 AI Agent 领取任务、上报进度；使用前需自行部署服务。",
-    "image": "assets/images/clawpm-logo.png",
-    "imageAlt": "ClawPM 项目标志",
-    "imageNote": "项目标志",
-    "tags": [
-      "MCP",
-      "TypeScript",
-      "项目管理"
-    ],
-    "url": "https://github.com/Be1Human/clawpm#features",
-    "action": "了解项目",
-    "repository": "https://github.com/Be1Human/clawpm",
-    "accent": "violet",
-    "artwork": "clawpm",
-    "documentation": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md"
+    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md",
+    "group": "agent"
   },
   {
     "id": "voxelspace",

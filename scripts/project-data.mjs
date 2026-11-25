@@ -1,10 +1,12 @@
 import { httpsUrl } from './news-data.mjs';
 
 export const projectCategories = {all: '全部作品', games: '游戏项目', visuals: '视觉与设计', tools: 'AI 与工具', experiments: '研究与实验'};
+export const projectGroups = {agent: 'Agent 项目', other: '其他作品'};
 export const projectPagePath = project => `projects/${project.id}.html`;
 
 export function validateProject(project, source) {
   if (!/^[a-z0-9-]+$/.test(project.id) || !projectCategories[project.category] || project.category === 'all') throw new Error('Invalid project');
+  if (project.group !== undefined && !Object.hasOwn(projectGroups, project.group)) throw new Error('Invalid project group');
   for (const key of ['title', 'description', 'imageAlt', 'imageNote', 'kind', 'action', 'label']) {
     if (typeof project[key] !== 'string' || !project[key].trim()) throw new Error(`Missing project ${key}`);
   }
@@ -14,7 +16,7 @@ export function validateProject(project, source) {
 
   if (project.presentation === 'showcase') {
     // Only an authored overview is published for a project whose source stays private.
-    const allowed = new Set(['id', 'title', 'name', 'kind', 'category', 'label', 'description', 'image', 'imageAlt', 'imageNote', 'tags', 'url', 'action', 'documentation', 'presentation', 'detail']);
+    const allowed = new Set(['id', 'title', 'name', 'kind', 'category', 'group', 'label', 'description', 'image', 'imageAlt', 'imageNote', 'tags', 'url', 'action', 'documentation', 'presentation', 'detail']);
     if (Object.keys(project).some(key => !allowed.has(key))) throw new Error('Unexpected field in project showcase');
     if (project.url !== projectPagePath(project) || project.documentation !== projectPagePath(project)) throw new Error('Showcase must link to its local overview');
     const evidenceKeys = new Set(['projectId', 'reviewMode', 'descriptionBasis', 'productRuntimeTestedInThisReview']);
@@ -28,7 +30,15 @@ export function validateProject(project, source) {
       throw new Error('Invalid project cover dimensions');
     }
     for (const section of detail.sections) {
-      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+      const video = section.video;
+      if (video !== undefined && (
+        !video || Object.keys(video).some(key => !['src', 'poster', 'caption', 'width', 'height'].includes(key)) ||
+        !/^assets\/project-media\/[\w-]+\.mp4$/.test(video.src) ||
+        !/^assets\/images\/[\w-]+\.(?:webp|png|jpe?g)$/.test(video.poster) ||
+        !validSize(video.width, video.height) ||
+        typeof video.caption !== 'string' || !video.caption.trim()
+      )) throw new Error('Invalid project video');
       if (section.images === undefined) continue;
       if (!Array.isArray(section.images) || section.images.some(image =>
         !image || Object.keys(image).some(key => !['src', 'alt', 'caption', 'width', 'height'].includes(key)) ||

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>数字人表演生成 — 克劳德梦见电子羊</title>
+  <meta name="description" content="用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。">
+  <link rel="canonical" href="https://be1human.github.io/projects/digital-performance.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="数字人表演生成 — 克劳德梦见电子羊">
+  <meta property="og:description" content="用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。">
+  <meta property="og:url" content="https://be1human.github.io/projects/digital-performance.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=4e66e2bda97a">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
+  <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+  <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
+
+</head>
+<body id="top" data-page="works" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#digital-performance">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>2026</span></strong><p>Unreal Engine · 角色动画<span>·</span>角色动画工作流演示</p></div></div><h1>数字人表演生成</h1><p class="article-lede">用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/digital-performance-cover.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/digital-performance-cover.webp" alt="Unreal Engine 场景中正在表演的数字角色" width="1280" height="720" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>Unreal Engine · 角色全身表演</figcaption></figure><div class="prose"><section id="section-1"><h2>先让参考视频覆盖整段戏</h2><p>先在单人剧本里定下台词、情绪和时长，再生成一条固定构图的全身表演作为参考。身体动作和对白来自同一条视频，后面就能沿用相同的时间点检查动作与台词。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/digital-performance-workflow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/digital-performance-workflow.png" alt="单人剧本经过参考视频、身体动作、眉眼和口型，最终写入场景序列" width="1672" height="941" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>制作流程 · 动作、表情和口型汇入同一条角色时间轴。</figcaption></figure></section><section id="section-2"><h2>把动作和对白放进 UE 场景</h2><p>从参考画面提取人体姿态，再重定向到 UE 角色骨架。从原声对齐音素，生成口型轨。表情曲线需要连续、可用的眉眼画面，这次全身参考提供的面部信息有限，演示主要呈现了身体动作和口型。</p><p>各条轨道在角色时间轴里对齐后，把子序列写入目标场景的 Sequence。播放时可以检查捂胸、弯腰与台词是否同拍。</p><figure class="project-video"><video src="../assets/project-media/digital-performance.mp4" poster="../assets/images/digital-performance-cover.webp" width="960" height="544" controls playsinline preload="none" aria-label="UE 角色表演实录 · 约 12 秒，含对白"></video><figcaption>UE 角色表演实录 · 约 12 秒，含对白</figcaption></figure></section></div><footer class="article-end"><div class="tags"><span>UE</span><span>动作重定向</span><span>数字人</span></div><a class="back-link" href="../works.html#digital-performance">← 返回作品集</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

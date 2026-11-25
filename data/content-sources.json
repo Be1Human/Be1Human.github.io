@@ -144,26 +144,12 @@
     },
     {
       "projectId": "clawpm",
-      "repository": "https://github.com/Be1Human/clawpm",
-      "revision": "16eb182d435cd4f88af5e94a8199c2cbe406beb7",
-      "documents": [
-        {
-          "path": "README.md",
-          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/README.md"
-        },
-        {
-          "path": "package.json",
-          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/package.json"
-        },
-        {
-          "path": "server/package.json",
-          "url": "https://github.com/Be1Human/clawpm/blob/16eb182d435cd4f88af5e94a8199c2cbe406beb7/server/package.json"
-        }
-      ],
+      "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
-        "README：自托管项目管理、思维导图、看板、任务列表、甘特图、迭代与 MCP",
-        "server/package.json：Fastify、SQLite 与 MCP 服务依赖"
-      ]
+        "已在作品集中展示的 ClawPM 桌面版界面",
+        "本地工程任务模型及 Markdown 导出演示"
+      ],
+      "productRuntimeTestedInThisReview": false
     },
     {
       "projectId": "rain-city",
@@ -281,6 +267,33 @@
         "作者提供的 Haimian 深空外设使用教程：旋钮按键交互、Windows USB 控制台、WiFi 配网与存档接续。",
         "作品页依据教程整理功能说明；公开内容不包含网络配置值、默认服务地址或存档标识。",
         "配图依据设备结构绘制为 SVG 示意图，并明确标注非运行截图。"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "smarttest",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "作品集中的 Android 真机测试说明",
+        "演示运行记录与动作时间轴"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "digital-performance",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "角色表演流程图",
+        "Unreal Engine 角色表演实录"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
+      "projectId": "aixiaochu",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "三消玩法原型实机截图",
+        "Boss 战实机录屏节选"
       ],
       "productRuntimeTestedInThisReview": false
     }

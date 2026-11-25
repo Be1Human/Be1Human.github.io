@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>SmartTest — 克劳德梦见电子羊</title>
+  <meta name="description" content="给视觉 Agent 一个目标，让它看着手机屏幕操作。SmartTest 记录模型动作和设备回执，再根据游戏状态判断用例是否通过。">
+  <link rel="canonical" href="https://be1human.github.io/projects/smarttest.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="SmartTest — 克劳德梦见电子羊">
+  <meta property="og:description" content="给视觉 Agent 一个目标，让它看着手机屏幕操作。SmartTest 记录模型动作和设备回执，再根据游戏状态判断用例是否通过。">
+  <meta property="og:url" content="https://be1human.github.io/projects/smarttest.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=4e66e2bda97a">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
+  <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+  <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
+
+</head>
+<body id="top" data-page="works" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#smarttest">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>2026</span></strong><p>Android 真机测试<span>·</span>真机测试原型</p></div></div><h1>SmartTest</h1><p class="article-lede">给视觉 Agent 一个目标，让它看着手机屏幕操作。SmartTest 记录模型动作和设备回执，再根据游戏状态判断用例是否通过。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/smarttest-cover.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/smarttest-cover.webp" alt="SmartTest 的背包测试目标和动作时间轴" width="1280" height="720" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>真机测试示例 · 从目标到动作回放</figcaption></figure><div class="prose"><section id="section-1"><h2>把测试目标交给视觉 Agent</h2><p>例如“打开背包，查看分类后返回大厅”。模型观察当前画面，选择点击或等待等动作，设备执行后返回结果。SmartTest 将动作、时点和回执记录在同一次运行里。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/smarttest-public-flow.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/smarttest-public-flow.webp" alt="目标、读屏决策、真机执行与结果核验的四步流程" width="1200" height="510" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>测试流程 · 状态核验与动作记录各自提供不同的证据。</figcaption></figure></section><section id="section-2"><h2>从录像定位模型在哪一步走错</h2><p>一次真机校准中，模型按要求寻找背包，却进了商城，随后给出过越界坐标。背包条件始终没有满足，这轮记为失败。录像和动作时间轴能定位走偏的时点，游戏状态用于判断是否满足用例条件。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/smarttest-timeline.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/smarttest-timeline.webp" alt="真机录像对应的模型点击和等待时间轴" width="310" height="545" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>动作时间轴 · 点击和等待可以和当时的设备画面对照。</figcaption></figure></section><section id="section-3"><h2>复跑同一个用例</h2><p>测试界面、CLI 和 MCP 共用运行记录。调用方可以提交目标、等待结果，再读取这次运行的证据。遇到需要反复重现的步骤，也可以保存工作流的指定版本，沿同一套步骤复跑。</p></section></div><footer class="article-end"><div class="tags"><span>视觉 Agent</span><span>游戏测试</span><span>Android</span></div><a class="back-link" href="../works.html#smarttest">← 返回作品集</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

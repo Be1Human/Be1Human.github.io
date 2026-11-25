@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>ClawPM — 克劳德梦见电子羊</title>
+  <meta name="description" content="下一位接手的 Agent 怎么知道任务做到哪一步？ClawPM 用需求树拆目标，用工作流跟踪执行，把验收条件、测试结果和交付证据保存在 Git 工程里。">
+  <link rel="canonical" href="https://be1human.github.io/projects/clawpm.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="ClawPM — 克劳德梦见电子羊">
+  <meta property="og:description" content="下一位接手的 Agent 怎么知道任务做到哪一步？ClawPM 用需求树拆目标，用工作流跟踪执行，把验收条件、测试结果和交付证据保存在 Git 工程里。">
+  <meta property="og:url" content="https://be1human.github.io/projects/clawpm.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=4e66e2bda97a">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
+  <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+  <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
+
+</head>
+<body id="top" data-page="works" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#clawpm">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>2026</span></strong><p>Agent 协作与项目管理<span>·</span>本地桌面版 0.1.8</p></div></div><h1>ClawPM</h1><p class="article-lede">下一位接手的 Agent 怎么知道任务做到哪一步？ClawPM 用需求树拆目标，用工作流跟踪执行，把验收条件、测试结果和交付证据保存在 Git 工程里。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/clawpm-desktop-mindmap.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/clawpm-desktop-mindmap.jpg" alt="ClawPM 桌面端的需求思维导图" width="1280" height="720" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>桌面端 · Markdown 导出演示项目</figcaption></figure><div class="prose"><section id="section-1"><h2>先把目标拆成能验收的任务</h2><p>以 Markdown 导出为例，目标可以拆成保留标题层级、处理中文文件名、检查附件链接。每项有独立的通过条件，整条导出链路的回归测试要等三项都完成。</p><p>打开桌面端后，可以在思维导图里展开任务关系，也能用看板、任务列表和甘特图查看同一批任务。Agent 工作流按下一步分组，标明哪些等待依赖、哪些可以领取、哪些待测试。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/clawpm-desktop-delivery.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/clawpm-desktop-delivery.webp" alt="定义结果、拆分任务、领取与测试、交付验收四步" width="1200" height="690" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>交付流程 · 先检查单项，再跑回归。</figcaption></figure><figure class="learn-figure"><a class="figure-open" href="../assets/images/clawpm-desktop-workflow.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/clawpm-desktop-workflow.jpg" alt="ClawPM 工作流页按下一步呈现任务" width="1280" height="720" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>Agent 工作流 · 可以看到每项任务接下来要做什么。</figcaption></figure></section><section id="section-2"><h2>测试通过后，留下能复查的证据</h2><p>领取任务时会记录当前执行者和租约期限。提交验收前，任务详情会检查验收标准、阻塞、依赖、子任务、测试验证和交付证据。需要测试的任务要留下通过记录，例如修改的代码路径和回归结果。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/clawpm-desktop-gate.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/clawpm-desktop-gate.jpg" alt="ClawPM 任务详情中的完成检查与测试证据" width="1280" height="720" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>任务验收面板 · 演示数据展示测试产物和交付路径。</figcaption></figure></section><section id="section-3"><h2>应用和 Agent 读写同一个任务库</h2><p>桌面端负责浏览、编辑和校验，配套 Skill 指导编程 Agent 领取任务、更新进度并写回证据。两边读写当前 Git 工程的 .clawpm 目录，任务各自保存为 JSON 文件。把它们和代码一起提交，就能按提交追溯状态变化。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/clawpm-desktop-architecture.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/clawpm-desktop-architecture.webp" alt="ClawPM 桌面端和编程 Agent 共用 Git 工程内的任务文件" width="1200" height="620" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>桌面端与编程 Agent 通过本地任务文件交接。</figcaption></figure><figure class="learn-figure"><a class="figure-open" href="../assets/images/clawpm-desktop-skill.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/clawpm-desktop-skill.jpg" alt="ClawPM 工作流 Skill 安装界面" width="1280" height="720" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>Skill 安装中心 · 支持 Claude Code、Cursor、Codex 和 CodeBuddy。</figcaption></figure></section></div><footer class="article-end"><div class="tags"><span>Agent 协作</span><span>项目管理</span><span>Electron</span></div><a class="back-link" href="../works.html#clawpm">← 返回作品集</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>
