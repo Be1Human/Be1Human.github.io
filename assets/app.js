@@ -10,7 +10,8 @@ for (const root of document.querySelectorAll('[data-filterable]')) {
     const query = input.value.trim().normalize('NFKC').toLocaleLowerCase();
     let visible = 0;
     for (const card of cards) {
-      const show = (selected === 'all' || card.dataset.category === selected) && card.dataset.search.normalize('NFKC').toLocaleLowerCase().includes(query);
+      const categories = (card.dataset.categories || card.dataset.category).split(' ');
+      const show = (selected === 'all' || categories.includes(selected)) && card.dataset.search.normalize('NFKC').toLocaleLowerCase().includes(query);
       card.hidden = !show;
       if (show) visible++;
     }

@@ -1,51 +1,187 @@
 [
   {
     "id": "haimian-deep-space",
-    "title": "Haimian · 深空外设",
-    "name": "Haimian · 深空外设",
-    "kind": "桌面硬件与实体交互",
-    "category": "experiments",
-    "label": "硬件与交互",
-    "description": "把「深空」带到桌面：用旋钮选择、按键确认，在实体小屏上继续游戏。配合 Windows USB 控制台切换应用与主题，也能通过 WiFi 接入服务并接续存档。",
-    "image": "assets/images/haimian-deep-space-cover.svg",
-    "imageAlt": "Haimian 桌面小屏、旋钮与确认按键的结构示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
+    "title": "深空 · 游戏与 Haimian 外设",
+    "name": "深空",
+    "kind": "科幻叙事游戏与桌面外设",
+    "category": "games",
+    "label": "游戏与交互硬件",
+    "description": "在《深空》中，你通过虫洞回应来自 2826 年的宇航员 E-17，帮他做出选择。Haimian 把这段对话搬到桌面，小屏显示来讯，旋钮选择，按键回复。",
+    "image": "assets/images/haimian/game-device-cover.webp",
+    "imageAlt": "左边为深空游戏宣传图，右边为显示游戏对话的 Haimian 实体样机。",
+    "imageNote": "游戏宣传图与样机",
     "tags": [
-      "实体交互",
-      "深空",
-      "桌面小屏"
+      "科幻叙事",
+      "旋钮交互",
+      "ESP8266"
     ],
     "url": "projects/haimian-deep-space.html",
     "action": "查看项目介绍",
     "documentation": "projects/haimian-deep-space.html",
     "presentation": "showcase",
     "detail": {
-      "status": "实体外设原型与配套使用教程",
+      "status": "游戏与外设原型",
       "period": "2026",
       "sections": [
         {
-          "heading": "旋钮、按键与三种应用",
+          "heading": "一条跨时空来讯",
           "paragraphs": [
-            "Haimian 把小屏、旋钮和确认按键放进一台桌面设备。旋转用于选择主题或选项，短按确认，长按切换功能，让屏幕中的内容通过实体操作继续展开。",
-            "配套教程展示了 Deep Space、额度屏和时钟三个应用。深空作为其中的游戏入口，可以在桌面小屏上显示内容并进行选择。"
+            "2826 年的宇航员 E-17 通过虫洞联系到 2026 年的你。他会告诉你眼前发生了什么，你可以从建议回复中选择，也能在网页端自由打字。",
+            "选择会影响燃料、氧气、信号和信任。部分行动要等一段时间才有结果，回到游戏后再看 E-17 的回联。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/game-loop.webp",
+              "alt": "阅读 E-17 来讯、发送回复、查看结果或等待回联。四项资源包括燃料、氧气、信号、信任。",
+              "caption": "游戏回合",
+              "width": 1200,
+              "height": 566
+            },
+            {
+              "src": "assets/images/haimian/game-opening.webp",
+              "alt": "深空网页游戏界面，显示航行员 E-17 的对话与回复入口",
+              "caption": "游戏实机",
+              "width": 760,
+              "height": 1560
+            }
           ]
         },
         {
-          "heading": "Windows USB 控制台",
+          "heading": "剧情分两层生成",
           "paragraphs": [
-            "设备通过 USB 连接 Windows 后，可在配套控制台中查看连接状态或重新检测设备，再选择应用与主题并应用到小屏。控制台同时提供启动、停止和时间同步等入口。",
-            "应用与主题切换、时间同步可以通过 USB 在本地完成。控制台与实体设备各自承担配置和显示交互，让同一块小屏可以在不同应用之间切换。"
+            "规划层先为一章安排目标、选择点和各选项的走向。玩家发来内容后，叙述层结合当前节点与前情生成 E-17 的对话，并返回资源变化。服务端把结构化结果写入游戏状态。",
+            "进入等待时，服务端可在后台提前生成行动结果，到时间再揭晓。每章结束时异步整理章节纪要和关键事实，供后续生成引用。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/story-engine.webp",
+              "alt": "规划层输出章节与选择点。叙述层接收玩家回话和前情纪要，返回本轮对话和资源变化。",
+              "caption": "剧情生成",
+              "width": 1200,
+              "height": 670
+            }
           ]
         },
         {
-          "heading": "WiFi 连接与存档接续",
+          "heading": "同一局，接着玩",
           "paragraphs": [
-            "设备可进入 AP 配网模式，在配网页中选择 2.4 GHz WiFi，保存并重启后连接深空服务。游戏服务的交互需要网络连接。",
-            "配网页提供服务器设置和存档接续入口，可使用手机端已有的存档标识继续会话，让桌面外设与原有游戏进度接上。"
+            "网页端和 Haimian 都向同一个游戏服务读写进度。服务端按存档标识保存状态，网页端保存当前存档的标识。外设连接 WiFi 后，在配网页载入同一个存档，就能接着读已有对话和选项。",
+            "游戏服务负责剧情和存档。Haimian 通过设备版接口取得精简状态，异步提交选项，并轮询后续回复。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/shared-session.webp",
+              "alt": "网页端和桌面设备接入同一游戏服务，使用存档标识继续同一局。",
+              "caption": "跨端续玩",
+              "width": 1200,
+              "height": 640
+            },
+            {
+              "src": "assets/images/haimian/device-game.webp",
+              "alt": "桌面设备实拍，240 × 240 彩屏上已显示深空对话，底部是旋钮和确认键。",
+              "caption": "外设运行实拍",
+              "width": 1279,
+              "height": 1706
+            }
+          ]
+        },
+        {
+          "heading": "旋钮选，按键发",
+          "paragraphs": [
+            "旋转编码器识别转动方向，固件用它移动选项焦点，或在历史页滚动。短按提交当前选项，历史页和生成中的短按会被忽略，避免回看时误发。",
+            "长按进入配网。外设先更新本地焦点，确认后才向游戏服务提交；服务返回新的回合状态后，小屏继续显示对话。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/device-input-loop.webp",
+              "alt": "旋钮方向改变本地焦点，短按提交选项，轮询拿到新回复后更新小屏。",
+              "caption": "外设交互",
+              "width": 1200,
+              "height": 618
+            }
+          ]
+        },
+        {
+          "heading": "小屏怎样刷新",
+          "paragraphs": [
+            "样机使用 ESP8266 和 240 × 240 的 ST7789 彩屏。固件以 TFT_eSPI 绘制界面，区分内容更换、聊天视口移动和选项高亮变化。一格旋钮只改变高亮时，重绘对应位置。",
+            "固件用小块像素缓冲处理部分中文字形，以成块传输减少逐段写屏。项目文档比较了两版固件，点按到画面响应约从 570 ms 缩到 25 ms。对照包含 CPU 与 SPI 时钟调整和绘制优化，这组计时从点按开始，到本地画面更新为止。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/display-refresh.webp",
+              "alt": "示意屏幕状态栏、聊天视口与选项高亮的分区，并列出项目两版固件的点按响应测试。",
+              "caption": "固件实测对照",
+              "width": 1200,
+              "height": 660
+            }
+          ]
+        },
+        {
+          "heading": "外壳怎样装起来",
+          "paragraphs": [
+            "样机把倾斜彩屏、前置旋钮和确认键固定到前壳。PCB、后盖和底座在结构模型中分件，爆炸图用来检查各零件的装配位置。",
+            "打印出多版外壳后，再试装屏幕和电子模块，检查开孔位置和壳体空间。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/exploded.webp",
+              "alt": "装配爆炸图，包含屏幕、旋钮、按键、前壳、后盖和底座。",
+              "caption": "结构爆炸图",
+              "width": 1800,
+              "height": 1109
+            },
+            {
+              "src": "assets/images/haimian/printed-prototypes.webp",
+              "alt": "多件白色打印外壳样件摆在桌面上。",
+              "caption": "打印样件",
+              "width": 1064,
+              "height": 983
+            },
+            {
+              "src": "assets/images/haimian/assembly-sequence.webp",
+              "alt": "三段装配示意图，依次展示组件进入、固定屏幕和闭合后盖。",
+              "caption": "装配步骤",
+              "width": 1800,
+              "height": 908
+            }
+          ]
+        },
+        {
+          "heading": "USB 管理设备",
+          "paragraphs": [
+            "Windows 控制台通过 USB 串口识别设备，提供应用切换、主题设置和时间同步。除《深空》外，同一块屏幕还能显示额度屏和时钟。",
+            "USB 负责本地配置，游戏剧情和存档由设备的 WiFi 连接到游戏服务。初次联网时可进入外设的配网模式，再连接 2.4 GHz WiFi。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/haimian/usb-console.webp",
+              "alt": "Windows 控制台经 USB 连接桌面设备，在本地切换应用、调整主题和同步时间。",
+              "caption": "USB 配置链路",
+              "width": 1200,
+              "height": 570
+            },
+            {
+              "src": "assets/images/haimian/pc-console.webp",
+              "alt": "Windows 控制台截图，展示 USB 状态、应用切换和额度屏主题。",
+              "caption": "控制台截图",
+              "width": 1088,
+              "height": 1263
+            }
           ]
         }
-      ]
-    }
+      ],
+      "coverSize": [
+        1440,
+        860
+      ],
+      "layout": "slides",
+      "website": "https://dsgame.archerpeng.com/"
+    },
+    "categories": [
+      "games",
+      "experiments"
+    ]
   },
   {
     "id": "cloudmind",

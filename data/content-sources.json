@@ -200,9 +200,9 @@
       "projectId": "haimian-deep-space",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
-        "作者提供的 Haimian 深空外设使用教程：旋钮按键交互、Windows USB 控制台、WiFi 配网与存档接续。",
-        "作品页依据教程整理功能说明；公开内容不包含网络配置值、默认服务地址或存档标识。",
-        "配图依据设备结构绘制为 SVG 示意图，并明确标注非运行截图。"
+        "作者提供的游戏工程、外设固件与使用教程",
+        "深空游戏官网、项目宣传图和外设实拍",
+        "项目文档中的两版固件点按响应对照"
       ],
       "productRuntimeTestedInThisReview": false
     },

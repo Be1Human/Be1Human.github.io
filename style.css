@@ -165,3 +165,11 @@ body.motion-off .chapter-face,body.motion-off .chapter-face *{transition:none!im
 .works-view #agent-projects-title{color:var(--cyan)}
 .reader-body .project-video video{display:block;width:auto;height:auto;max-width:100%;max-height:min(65vh,540px);margin:0 auto;background:#0b1922}
 .reader-body .project-video figcaption{text-align:center}
+
+.has-project-slides .reader-full-slides{display:inline-block;margin:0 0 6px}
+.reader-slide{padding:clamp(14px,2.7vw,30px);background:#162936;border:1px solid var(--line)}
+.reader-slide .reader-gallery{gap:13px;margin:16px 0}
+.reader-slide .reader-gallery img{max-height:420px}
+.reader-slide details{padding-top:10px;border-top:1px solid var(--line)}
+.reader-slide summary{font-size:13px;color:var(--cyan);cursor:pointer}
+@media(max-width:560px){.reader-slide .reader-gallery{display:block}.reader-slide .reader-gallery .reader-figure + .reader-figure{margin-top:14px}}

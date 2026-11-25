@@ -31,6 +31,7 @@ const directoryScriptVersion = await assetVersion('assets/learn-directory.js');
 const readingStyleVersion = await assetVersion('assets/reading.css');
 const readingScriptVersion = await assetVersion('assets/reading.js');
 const attentionScriptVersion = await assetVersion('assets/attention.js');
+const projectSlidesStyleVersion = await assetVersion('assets/project-slides.css');
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -78,6 +79,9 @@ for (const project of projects) {
       title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
     })),
   });
+  if (project.detail.layout === 'slides') entry.layout = 'slides';
+  if (project.detail.website) entry.links = [{ label: '打开游戏', url: project.detail.website }];
+  if (experienceContent.featuredProject?.id === entry.id) Object.assign(experienceContent.featuredProject, entry);
 }
 pages.set('content-local.json',JSON.stringify(experienceContent,null,2)+'\n');
 for (const post of posts) {
@@ -127,8 +131,9 @@ function projectCard(project) {
   const local = project.presentation === 'showcase';
   const linkAttributes = local ? '' : external;
   const arrow = local ? '→' : '↗';
-  return `<article class="project-card" id="${e(project.id)}" data-filter-item data-category="${e(project.category)}" data-search="${e([project.title, project.description, project.kind, ...project.tags].join(' '))}">
-    <a class="project-image-link ${project.artwork === 'clawpm' ? 'logo-art' : ''}" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}"><img src="${e(project.image)}" alt="${e(project.imageAlt)}" loading="lazy" width="1200" height="706"><span class="image-note">${e(project.imageNote)}</span><span class="image-arrow" aria-hidden="true">${arrow}</span></a>
+  const [width, height] = project.detail?.coverSize ?? [1200, 706];
+  return `<article class="project-card" id="${e(project.id)}" data-filter-item data-category="${e(project.category)}"${project.categories ? ` data-categories="${e(project.categories.join(' '))}"` : ''} data-search="${e([project.title, project.description, project.kind, ...project.tags].join(' '))}">
+    <a class="project-image-link ${project.artwork === 'clawpm' ? 'logo-art' : ''}" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}"><img src="${e(project.image)}" alt="${e(project.imageAlt)}" loading="lazy" width="${width}" height="${height}"><span class="image-note">${e(project.imageNote)}</span><span class="image-arrow" aria-hidden="true">${arrow}</span></a>
     <div class="project-body"><div class="meta"><span class="category-label">${e(project.label)}</span><span>${e(project.kind)}</span></div><h3><a href="${e(project.url)}" ${linkAttributes}>${e(project.title)} <span aria-hidden="true">${arrow}</span></a></h3><p>${e(project.description)}</p><div class="project-bottom"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="subtle-link" href="${e(project.documentation)}" ${linkAttributes}>${local ? '查看项目' : '项目说明'} ${arrow}</a></div></div>
   </article>`;
 }
@@ -168,11 +173,28 @@ function projectVideo({src, poster, caption, width, height}) {
   return `<figure class="project-video"><video src="../${e(src)}" poster="../${e(poster)}" width="${width}" height="${height}" controls playsinline preload="none" aria-label="${e(caption)}"></video><figcaption>${e(caption)}</figcaption></figure>`;
 }
 
+function renderProjectSlides(project, cover) {
+  const slides = project.detail.sections.map(({heading, paragraphs, images = []}, index) => {
+    const hasPortrait = images.length === 2 && images[0].width > images[0].height && images[1].width < images[1].height;
+    const layout = hasPortrait ? ' slide-pair' : images.length > 1 ? ' slide-grid' : '';
+    return `<section class="project-slide" id="section-${index + 1}"><h2>${e(heading)}</h2><div class="slide-media${layout}">${images.map(image => projectFigure(image)).join('')}</div><details class="slide-notes"><summary>实现细节</summary><div>${paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</div></details></section>`;
+  }).join('');
+  const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
+  const play = project.detail.website ? `<a class="slide-play" href="${e(project.detail.website)}" ${external}>打开游戏 ↗</a>` : '';
+  return `<article class="site-panel project-slides"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><header class="slides-hero"><div class="slides-intro"><p class="slides-category">${e(project.detail.status)} · ${e(project.detail.period)}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p>${play}</div>${cover}</header><nav class="slides-nav" aria-label="项目章节">${links}</nav><div class="slides-body">${slides}</div><footer class="slides-footer">${play}<a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></article>`;
+}
+
 for (const project of projects.filter(project => project.presentation === 'showcase')) {
   const [width, height] = project.detail.coverSize ?? [1200, 706];
   const cover = project.detail.coverSize
     ? projectFigure({src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height}, true)
     : `<figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure>`;
+  if (project.detail.layout === 'slides') {
+    const path = projectPagePath(project);
+    render(path, `${project.title} — CLOUD BOY`, project.description, 'works', renderProjectSlides(project, cover), 'article');
+    pages.set(path, pages.get(path).replace('</head>', `<link rel="stylesheet" href="../assets/project-slides.css?v=${projectSlidesStyleVersion}">\n</head>`));
+    continue;
+  }
   const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article');
 }
