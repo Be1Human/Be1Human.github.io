@@ -40,7 +40,9 @@
       ],
       "descriptionBasis": [
         "README：为什么是 MineClaw、核心能力、快速开始、开发状态",
-        "运行时 package.json：Mineflayer 依赖与应用目录"
+        "运行时 package.json：Mineflayer 依赖与应用目录",
+        "作者提供的 MineClaw-workspace 客户端实录、界面截图与执行框架图",
+        "2026-10-19 至 2026-11-06 的模型调用轨迹汇总，190 次调用"
       ]
     },
     {

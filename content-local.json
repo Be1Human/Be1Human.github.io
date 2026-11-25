@@ -72,8 +72,8 @@
       "title": "MineClaw",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "image": "assets/images/mineclaw.jpg",
-      "imageAlt": "MineClaw 控制台待连接界面，背包栏尚无数据",
+      "image": "assets/images/mineclaw-capabilities.png",
+      "imageAlt": "MineClaw 伙伴能力面板，列出聊天、记忆、Minecraft 和语音能力。",
       "tags": [
         "TypeScript",
         "Minecraft",

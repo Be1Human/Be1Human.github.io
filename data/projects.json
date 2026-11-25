@@ -1162,10 +1162,10 @@
     "kind": "Minecraft AI 伙伴",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。",
-    "image": "assets/images/mineclaw.jpg",
-    "imageAlt": "MineClaw 控制台待连接界面，背包栏尚无数据",
-    "imageNote": "控制台界面（待连接）",
+    "description": "和 Minecraft 伙伴聊天，交给它一个游戏目标，再从调用轨迹查看它怎样行动、怎样核对结果。",
+    "image": "assets/images/mineclaw-capabilities.png",
+    "imageAlt": "MineClaw 伙伴能力面板，列出聊天、记忆、Minecraft 和语音能力。",
+    "imageNote": "客户端实拍 · MineClawTest 的伙伴能力",
     "tags": [
       "TypeScript",
       "Minecraft",
@@ -1179,27 +1179,148 @@
     "detail": {
       "status": "持续开发",
       "coverSize": [
-        1440,
+        1500,
         900
       ],
       "sections": [
         {
-          "heading": "从聊天到游戏行动",
+          "heading": "从伙伴互动切到调用轨迹",
           "paragraphs": [
-            "玩家可以在 Minecraft 里和伙伴聊天，也可以请它完成一个目标。例如请它去取木头，运行时先理解目标，再根据角色位置、背包和附近方块规划行动。任务执行和日常对话由不同的流程处理。"
+            "在客户端选中 MineClawTest，依次打开「大脑 → 能力」和「轨迹」。这段约 10 秒的操作实录展示的是已保存的会话，录制时伙伴尚未进服。"
+          ],
+          "video": {
+            "src": "assets/project-media/mineclaw-workspace-tour.mp4",
+            "poster": "assets/images/mineclaw-capabilities.png",
+            "caption": "客户端操作实录 · 伙伴能力与历史调用",
+            "width": 1500,
+            "height": 900
+          }
+        },
+        {
+          "heading": "玩家的目标如何走到身体执行？",
+          "paragraphs": [
+            "以「去取木头」为例。主脑把目标交给 GoalAgent，目标执行器结合位置、背包和附近方块准备行动。第一张图从目标编译画到动作回执。",
+            "第二张图说明怎样判定完成。取物后检查背包变化，证据满足才提交结果，信息不足时重新观察。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/mineclaw/architecture.png",
+              "alt": "MineClaw 目标执行框架，展示目标编译、执行前校验、身体执行和回执。",
+              "caption": "目标执行框架 · 点击图片可放大查看。",
+              "width": 2240,
+              "height": 1820
+            },
+            {
+              "src": "assets/images/mineclaw/evidence.png",
+              "alt": "结果验真流程，标出完成、继续规划和重新观察的条件。",
+              "caption": "结果验真 · 动作返回后，用世界状态核对结果。",
+              "width": 2240,
+              "height": 920
+            }
           ]
         },
         {
-          "heading": "怎样知道木头拿到了",
+          "heading": "玩家客户端里能看到什么？",
           "paragraphs": [
-            "Mineflayer 提供游戏角色和实时世界状态。目标执行器调用可复用的技能，检查行动前后的状态，再决定任务完成、继续尝试或说明当前卡点。对取物任务，可以用背包变化核对结果。"
+            "互动页把伙伴选择、游戏预览和对话放在一起。切到轨迹页，可以展开每个回合，查看这一轮调用了哪些模型和工具。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/mineclaw/interaction.png",
+              "alt": "互动页面，左侧是伙伴列表，中间是预览，右侧是角色与对话。",
+              "caption": "互动 · 选择伙伴并查看角色交流。",
+              "width": 1500,
+              "height": 900
+            },
+            {
+              "src": "assets/images/mineclaw/trace.png",
+              "alt": "调用轨迹页面，展示历史会话和按回合组织的调用。",
+              "caption": "轨迹 · 此次打开的历史会话有 37 个回合、190 次调用。",
+              "width": 1500,
+              "height": 900
+            }
           ]
         },
         {
-          "heading": "控制台能看到什么",
+          "heading": "哪些调用复用了模型输入？",
           "paragraphs": [
-            "本地控制台展示对话、实时感知、任务事件和完成证据，可用来追踪模型决定了什么、游戏里实际发生了什么。运行需要 Minecraft Java 版服务器和模型服务，实际能力取决于版本、配置和现场状态。"
+            "2026 年 10 月 19 日至 11 月 6 日，工作区记录了 190 次 DeepSeek 调用。647,940 个可缓存输入 token 中，有 476,156 个命中缓存，合计 73.5%。",
+            "主脑的 19 对相邻请求使用了相同工具，其中 8 对最早在「最近对话记录」处分叉。较早的消息一旦被改写，后续相同的内容也难以复用。",
+            "待验证的优化是保留原始对话和工具结果，将本轮游戏状态与新问题追加在末尾。重放同一段追问，比较每个成功任务的未命中 token，同时核对回答里的最新进度。"
+          ],
+          "tables": [
+            {
+              "caption": "按调用方统计 · deepseek-v4-flash",
+              "columns": [
+                "调用方",
+                "调用次数",
+                "输入命中率",
+                "未命中 token"
+              ],
+              "rows": [
+                [
+                  "主脑",
+                  "34",
+                  "42.7%",
+                  "72,271"
+                ],
+                [
+                  "任务执行",
+                  "42",
+                  "80.2%",
+                  "66,223"
+                ],
+                [
+                  "记忆整理",
+                  "114",
+                  "82.2%",
+                  "33,290"
+                ]
+              ]
+            }
           ]
+        },
+        {
+          "heading": "调用事件和进服记录",
+          "paragraphs": [
+            "下面两张工作区留档记录了不同的时刻。LanYi 的截图选中了一个调用事件，MineClawTest 的截图则显示了伙伴进服后的坐标和生命值。运行游戏行动需要配置 Minecraft Java 版服务器与模型接口。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/mineclaw/trace-archive.png",
+              "alt": "LanYi 调用事件的时间线，以及选中事件的详情。",
+              "caption": "LanYi · 一次调用如何对应到具体事件。",
+              "width": 3828,
+              "height": 1911
+            },
+            {
+              "src": "assets/images/mineclaw/online-archive.jpg",
+              "alt": "MineClawTest 进服后的角色卡，显示坐标、生命值和饥饿值。",
+              "caption": "MineClawTest · 进服状态留档。",
+              "width": 731,
+              "height": 900
+            }
+          ]
+        }
+      ],
+      "period": "2026",
+      "tableOfContents": true,
+      "references": [
+        {
+          "title": "目标执行框架 · SVG 原图",
+          "url": "https://be1human.github.io/assets/images/mineclaw/architecture.svg"
+        },
+        {
+          "title": "结果验真 · SVG 原图",
+          "url": "https://be1human.github.io/assets/images/mineclaw/evidence.svg"
+        },
+        {
+          "title": "客户端实录 · MP4",
+          "url": "https://be1human.github.io/assets/project-media/mineclaw-workspace-tour.mp4"
+        },
+        {
+          "title": "DeepSeek 前缀缓存说明",
+          "url": "https://api-docs.deepseek.com/zh-cn/guides/kv_cache/"
         }
       ]
     }
