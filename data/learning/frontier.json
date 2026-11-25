@@ -68,135 +68,177 @@
   },
   {
     "id": "agent-memory",
-    "title": "Agent 记忆原理",
+    "title": "Agent 记忆如何实现？从会话续跑到跨会话复用",
     "eyebrow": "AGENT MEMORY",
-    "summary": "Agent 记忆把过去有用的信息保存下来，需要时再提供给模型。要让记忆可信，还得处理新旧信息冲突、时间变化，以及用户要求的删除。",
+    "summary": "先看记忆的写入、读取和会话恢复框架，再用一次版本更新讲清旧记忆怎样失效。对比 LangGraph、Mem0、Graphiti 和 GitHub Copilot Memory 的实现与代价。",
     "category": "上下文与协作",
     "level": "基础",
-    "minutes": 15,
-    "updated": "2026-11-08",
+    "minutes": 10,
+    "updated": "2026-11-25",
     "sections": [
       {
         "id": "definition",
-        "title": "记忆怎样帮到下一次任务",
-        "body": "<p>Agent 记忆是保存并再次使用过去信息的办法。模型当前能看到的内容有限，也不会自动读到其他会话。程序可以把有用的信息存到外部文件或数据库，需要时查出来，放进本次模型输入。新增这些记录，通常只是增加程序保存的资料，不会重新训练模型。<a href=\"#ref-1\">[1]</a></p><p>保存的内容可以有不同用途：任务进度说明当前还没做完什么；事件记录保存过去发生过什么；事实记录保存带来源的信息；经验记录保存某种做法在什么条件下有效。Generative Agents 会保存经历、整理经验，再按当前任务取出相关记录。<a href=\"#ref-2\">[2]</a>这些内容不应都被当成已经确认的事实。</p>"
+        "title": "整体框架 · 写入、读取与会话恢复",
+        "body": "<p>Agent 记忆让一次交互里的有用信息，在之后的任务里继续发挥作用。以技术支持助手为例，用户可以下周回来接着做未完成的升级检查，也可以在新会话里沿用已经明确的文档语言和示例版本。前者要恢复任务进度，后者要读到一份跨会话的偏好。两类数据需要不同的读写路径。</p><h3>长期记忆的写入</h3><div class=\"learn-flow\"><div><strong>接收事件</strong><span>用户指令、消息或已验证的结果</span></div><div><strong>筛选归类</strong><span>识别偏好、事实、临时指令</span></div><div><strong>归并校验</strong><span>核对归属、版本和来源</span></div><div><strong>持久化</strong><span>更新有效记录，按需建立索引</span></div></div><h3>每次请求的读取</h3><div class=\"learn-flow\"><div><strong>识别本次范围</strong><span>服务端确定用户、项目与会话</span></div><div><strong>恢复任务状态</strong><span>按会话 ID 读检查点</span></div><div><strong>查找长期记忆</strong><span>按键读取或在授权范围内搜索</span></div><div><strong>组装模型输入</strong><span>合并本次指令、任务状态和适用记忆</span></div></div><p>检查点（checkpoint）是工作流某一步保存的状态快照，能让任务从中断处恢复。长期记忆库按用户、项目等范围保存偏好或经过验证的事实。向量索引可以帮忙找语义相近的记录，读写的入口仍由应用控制。在线环境的版本、工单状态这类实时事实需要查原系统。</p>"
       },
       {
         "id": "write-read",
-        "title": "怎样存入、修改和取出记忆",
-        "body": "<ol><li><strong>存入：</strong>挑出以后有用的信息，写清是谁说的、原话在哪里、什么时候说的，以及这是事实、计划还是推测。</li><li><strong>修改：</strong>新信息与旧记录不同时，判断是纠错、情况变了，还是提出了未来计划；需要查历史时，就保留旧版本。</li><li><strong>取出：</strong>根据当前问题查找记录，再筛掉人物不对、时间不对或无权访问的内容。</li><li><strong>回答：</strong>模型根据取出的记录回答；没有资料或冲突还没解决，就说明还不知道。</li></ol><p>向量检索会把内容转成一组数字，用来查找意思相近的句子。它不自动判断哪句已经过时，也不自动区分“计划搬家”与“已经搬家”。人物、日期和记录类型需要另外检查。</p>"
+        "title": "哪些数据该进检查点、偏好表或知识库",
+        "body": "<p>假设支持助手正在替用户准备 Kubernetes 升级检查。它接到三条信息后，下次怎样找到它们，取决于当时写到了哪里。</p><table><caption>同一个助手的三条读取路径</caption><thead><tr><th scope=\"col\">信息</th><th scope=\"col\">保存位置</th><th scope=\"col\">下次怎样用</th></tr></thead><tbody><tr><th scope=\"row\">工单 MIG-42 已核对 API，下一步等审批</th><td>会话检查点，按会话 ID 关联</td><td>恢复该工单的阶段、草稿和下一步。审批结果仍由工单系统提供</td></tr><tr><th scope=\"row\">以后给我的升级示例默认使用 Kubernetes 1.25</th><td>用户偏好，按用户和偏好键保存</td><td>新会话没指定版本时，读取默认示例版本</td></tr><tr><th scope=\"row\">某个集群当前运行 Kubernetes 1.24</th><td>集群资产系统的实时记录</td><td>操作或回答前查询当前值。偏好与会话记录可以提供查询线索</td></tr></tbody></table><p>LangGraph 把前两条路径做成了两个接口。Checkpointer 按 <code>thread_id</code> 保存有状态工作流的快照，Store 保存跨线程的应用数据。线程 ID 和 Store 的命名空间是定位数据的方式，应用仍要根据当前身份授权查询。对话很长时，可以在读检查点后再选取近期消息和摘要，控制传给模型的上下文。<a href=\"#ref-1\">[1]</a></p>"
       },
       {
         "id": "mechanism",
-        "title": "两种时间分别记录什么",
-        "body": "<p>“内容说的是哪段时间”和“系统什么时候记下这条内容”不是同一个问题。前者叫有效时间（valid time），后者叫系统时间（system time）。同时记录这两个时间，就能查询某天的情况，也能回看系统在过去某一刻知道什么。</p><p>教学对话中，用户 10 月 1 日说“目前常驻深圳”，20 日补充“计划 28 日开始常驻杭州”。20 日更新时，系统保留原版深圳记录，再增加按新计划修改的深圳记录和杭州计划。这样，查询 10 日时，仍能看到当时不知道结束日期的那一版。</p><table><thead><tr><th>哪一版记录</th><th>说的是哪段时间 [from,to)</th><th>系统何时保留这一版 [from,to)</th><th>这条信息的性质</th></tr></thead><tbody><tr><td>深圳 v1</td><td>10-01 ～ 未知终点</td><td>10-01 ～ 10-20</td><td>用户当时的常驻说法</td></tr><tr><td>深圳 v2</td><td>10-01 ～ 10-28</td><td>10-20 ～ 当前</td><td>按新计划修订的区间</td></tr><tr><td>杭州 v1</td><td>10-28 ～ 未知终点</td><td>10-20 ～ 当前</td><td>计划，尚未确认发生</td></tr></tbody></table><figure class=\"learn-figure\"><img src=\"../assets/learning/agent-memory-time.svg\" width=\"1200\" height=\"920\" alt=\"10月10日的记录只有深圳说法；10月21日的记录增加杭州计划，并保留旧版供历史查询\"><figcaption>每组记录展示系统在那个时刻知道什么。内容里的日期与记下它的日期分开保存；杭州一直标为计划，没有当成已经搬到。本站原创教学图。</figcaption></figure><p>表里的 <code>[from,to)</code> 表示包含开始日期，不包含结束日期。深圳 v2 的结束日期来自 20 日的新计划，所以要同时关联两次消息。杭州计划不能直接证明用户实际搬迁，更不能用来推断某次出差从哪里出发。这组字段是教学设计，不是所有记忆系统的统一格式。</p>"
+        "title": "一次版本更新怎样改变下次回答",
+        "body": "<p>延续上面的示例。用户先把默认示例版本设为 1.25，之后为一次旧集群排查临时选了 1.24，最后明确将长期默认值改成 1.26。三条消息都可能被语义检索命中，应用要靠范围和写入规则决定哪条生效。</p><table><caption>同一偏好的写入与读回</caption><thead><tr><th scope=\"col\">输入</th><th scope=\"col\">写入动作</th><th scope=\"col\">之后另开会话</th></tr></thead><tbody><tr><th scope=\"row\">以后默认用 1.25</th><td>更新偏好键 <code>default_k8s_version</code>，附原消息 ID</td><td>未指定版本时用 1.25</td></tr><tr><th scope=\"row\">本次按 1.24 排查</th><td>仅写当前任务状态，作为本次覆盖</td><td>新会话的默认值仍是 1.25</td></tr><tr><th scope=\"row\">以后默认改成 1.26</th><td>同一键更新为 1.26，旧版本退出当前读取</td><td>未指定版本时用 1.26</td></tr></tbody></table><p>对这种明确的设置，一张有唯一键的偏好表就够用。可用 <code>(tenant_id, user_id, key)</code> 定位当前值，保存来源和修订号，使用源事件 ID 去重。若写入异步执行，再按来源的修订顺序更新，避免较早的消息重试后把新值覆盖回去。确实需要追溯历史时，再保留可查询的旧版本。</p><p>有些信息还要区分<strong>事实何时生效</strong>与<strong>系统何时获知</strong>。例如 10 日得知值班人将于 15 日变更，查询 12 日的值班人和追查 9 日系统是否已知这次变更，是两个问题。只有需要回答这两类时间问题时，两条时间轴才值得进入数据模型。</p>"
       },
       {
         "id": "example",
-        "title": "按两个时间查记录",
-        "body": "<p>下面是可直接运行的单用户教学代码。<code>valid_at</code> 表示想问哪天的说法，<code>known_at</code> 表示只使用系统截至哪天已经知道的信息。日期统一写成 <code>YYYY-MM-DD</code>；日期区间不包含右端那一天。</p><pre><code class=\"language-python\">def row(value, kind, vf, vt, sf, st):\n    return dict(value=value, kind=kind, valid_from=vf, valid_to=vt,\n                system_from=sf, system_to=st)\n\nfacts = [\n    row(&quot;深圳&quot;, &quot;reported&quot;, &quot;2026-10-01&quot;, None,\n        &quot;2026-10-01&quot;, &quot;2026-10-20&quot;),\n    row(&quot;深圳&quot;, &quot;reported&quot;, &quot;2026-10-01&quot;, &quot;2026-10-28&quot;,\n        &quot;2026-10-20&quot;, None),\n    row(&quot;杭州&quot;, &quot;planned&quot;, &quot;2026-10-28&quot;, None,\n        &quot;2026-10-20&quot;, None),\n]\n\ndef lookup(valid_at, known_at):\n    return [f for f in facts\n            if f[&quot;valid_from&quot;] &lt;= valid_at &lt; (f[&quot;valid_to&quot;] or &quot;9999-12-31&quot;)\n            and f[&quot;system_from&quot;] &lt;= known_at &lt; (f[&quot;system_to&quot;] or &quot;9999-12-31&quot;)]\n\nassert lookup(&quot;2026-10-25&quot;, &quot;2026-10-21&quot;)[0][&quot;value&quot;] == &quot;深圳&quot;\nassert lookup(&quot;2026-11-01&quot;, &quot;2026-10-10&quot;)[0][&quot;value&quot;] == &quot;深圳&quot;\nfuture = lookup(&quot;2026-11-01&quot;, &quot;2026-10-21&quot;)[0]\nassert (future[&quot;value&quot;], future[&quot;kind&quot;]) == (&quot;杭州&quot;, &quot;planned&quot;)</code></pre><p>第二条检查验证“系统截至 10 日持有的说法”，不是证明用户 11 月 1 日实际在深圳。第三条检查得到杭州计划，回答应继续说明计划来自 20 日，尚未收到已经搬迁的确认。后来若用户确认搬迁，再增加确认记录，不能自动把计划改成事实。</p>"
+        "title": "行业实现怎样写入和取回记忆",
+        "body": "<h3>LangGraph 与结构化存储</h3><p>工作流用 Checkpointer 恢复执行状态，跨会话数据通过 Store 或产品自己的数据库读写。使用持久化后端才能跨进程重启恢复。对于字段可枚举的偏好，精准读写和更新权限都能由应用直接定义，代价是团队要维护字段、版本和保留策略。<a href=\"#ref-1\">[1]</a></p><h3>Mem0 的提取与搜索</h3><p>应用把选定的交互交给 Mem0 的 <code>add</code>，由它从对话提取可保存的信息。回答前，应用按用户等范围调用 <code>search</code>，再决定哪些结果进提示词。对于已经明确的数据，<code>infer=False</code> 可以直接保存传入内容。引入自动提取后，需要用自己的会话测它会不会把一次性请求记成长期偏好，以及更新后还能否召回旧值。<a href=\"#ref-2\">[2]</a></p><h3>Graphiti 的时序知识图谱</h3><p>Graphiti 把原始交互作为 episode 保存，从中提取实体及关系。关系有有效时间，可追溯到产生它的记录，查询可结合语义、关键词及图遍历。适合频繁问「某天谁负责某客户的哪个项目」这类跨实体、跨时间的问题。写入要做实体归并和关系抽取，系统也要维护图数据与纠错流程。单个默认版本字段用关系型表更直接。<a href=\"#ref-4\">[4]</a></p><h3>GitHub Copilot Memory 的取用前核验</h3><p>GitHub 工程团队公开过一个案例。代码代理在一次任务中发现 API 版本散落在多个文件里，将这些位置存进仓库范围的记忆。后续任务可以先找到这条线索，再按引用核对当前分支的文件是否仍支持它。这个实现省下的是重新发现代码关系的工作，仓库仍是事实来源。<a href=\"#ref-5\">[5]</a></p>"
       },
       {
         "id": "rag",
-        "title": "记忆与文档检索有什么不同",
-        "body": "<p>对话记忆和文档问答都可以先查资料，再把查到的内容交给模型。不同之处主要在保存和更新：文档系统通常读取已有文档；对话记忆还要判断用户这句话是否值得保存、与哪条旧记录有关、以后怎样纠错或删除。</p><p>查询“我在哪工作”可能同时找到深圳和杭州，旧句子甚至更像这个问题。应该先检查所问日期与记录日期，再比较相关程度。返回时仍要标明它是用户说法、未来计划还是已经确认的事件。</p>"
+        "title": "选型取决于下次要找回什么",
+        "body": "<table><caption>把四种实现放进同一组工程问题</caption><thead><tr><th scope=\"col\">方案</th><th scope=\"col\">主要读回什么</th><th scope=\"col\">值得用的条件</th><th scope=\"col\">要承担的代价</th></tr></thead><tbody><tr><th scope=\"row\">检查点 + 结构化表</th><td>执行状态或明确字段</td><td>恢复流程、应用已知偏好</td><td>应用维护字段和写入规则</td></tr><tr><th scope=\"row\">Mem0</th><td>从自然语言交互提取的条目</td><td>偏好类型多，用户经常用不同方式表达</td><td>评估提取、归并和搜索错误</td></tr><tr><th scope=\"row\">Graphiti</th><td>带来源与有效时间的实体关系</td><td>经常跨实体查询或追溯历史状态</td><td>图存储、实体去重与失效维护</td></tr><tr><th scope=\"row\">Copilot Memory 的做法</th><td>有代码出处的仓库经验</td><td>旧线索有价值，当前分支可以核验</td><td>读回时重新查源，代码变化后需校正</td></tr></tbody></table><p>长期记忆和文档问答可以共用搜索技术。记忆写入源于用户交互或任务观察，需要管理更正和删除。文档问答的依据通常来自资料所有者维护的版本。升级助手可以用记忆取得默认版本，再用文档检索回答那个版本支持什么。应用在这两步分别核对偏好的适用范围和文档出处。</p><p>如果难点是把几份文档里的证据组合起来，可接着读 <a href=\"agentic-rag.html\">Agentic RAG</a>。</p>"
       },
       {
         "id": "evaluation",
-        "title": "怎样测试记忆是否可靠",
-        "body": "<p>LongMemEval 分别检查五种能力：从对话找出信息、结合多次会话回答、理解时间、更新旧信息，以及资料不足时不乱答。只测试还能不能复述一句旧话，无法知道更新是否正确。<a href=\"#ref-3\">[3]</a></p><p>这组对话要同时检查：25 日按最新说法是深圳；11 月只有杭州计划；截至 10 日还不知道杭州计划；从未提供的家庭住址应回答资料不足。除了核对答案，还要检查用了哪条记录、它在当时是否已经存在。</p>"
+        "title": "怎么判断记忆真的帮到了用户",
+        "body": "<p>LongMemEval 把能力拆成信息提取、多会话推理、时间推理、信息更新和资料不足时不给出猜测。拿默认版本的例子做验收时，复述 1.25 只是最容易的一题。更有区分度的案例是用户临时要求 1.24、随后改成 1.26、删掉偏好，或换另一个用户发出同样的提问。<a href=\"#ref-3\">[3]</a></p><p>用同一组交互回放比较结构化表和自动提取两套方案。每条测试都记录期望值、应读取的来源、实际读到的条目以及最终输出。读到了 1.26 但仍答 1.25，要检查模型输入和生成。压根没读到 1.26，要检查写入、索引和过滤。再记录漏记、错记与过期命中数，以及写入完成时间和读取的 P95 延迟，才能判断新增组件是否值得。</p>"
       },
       {
         "id": "practice",
-        "title": "删除要检查哪些副本",
-        "body": "<p>用户要求删除地点记忆时，不能只删主记录，还要检查由它生成的摘要、向量索引和缓存。向量索引用于查找相近内容，缓存保存以前的查询结果；它们都可能把已经删除的信息重新带回模型输入。</p><p>删除后，可以再问杭州计划及意思相近的问题，检查相关内容是否还会出现。原始审计记录是否保留、保留多久，要按产品的数据规则处理。</p>"
+        "title": "更正和删除要沿数据路径验收",
+        "body": "<p>一次更正会影响当前记录以及它的摘要、索引和缓存。写入主记录后，如果派生索引晚一步更新，查询层可以在回源时校验当前修订号，只使用仍有效的条目。删除也沿相同路径检查，确认派生数据不会把旧值重新塞进提示词。原始会话和审计数据按照产品保留规则管理，并明确是否仍可作为记忆来源。</p><p>落地时先做能独立测量的最小版本。需要继续未完成的工作，就实现检查点。需要记住少数明确设置，就写结构化偏好。等回放里出现大量靠这些方式找不到、但确实有重复价值的信息，再考虑自动提取或时序图谱。</p>"
       }
     ],
     "sources": [
       {
         "id": "ref-1",
-        "title": "MemGPT: Towards LLMs as Operating Systems",
-        "url": "https://arxiv.org/abs/2310.08560",
-        "note": "Packer 等；有限上下文与分层记忆管理。"
+        "title": "LangGraph · Persistence",
+        "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+        "note": "Checkpointer、Store、线程范围及持久化后端。"
       },
       {
         "id": "ref-2",
-        "title": "Generative Agents: Interactive Simulacra of Human Behavior",
-        "url": "https://arxiv.org/abs/2304.03442",
-        "note": "Park 等；观察、记忆、反思与行为规划。"
+        "title": "Mem0 · How Mem0 Works",
+        "url": "https://docs.mem0.ai/core-concepts/how-it-works",
+        "note": "交互提取、写入与搜索，及应用怎样取用记忆。"
       },
       {
         "id": "ref-3",
-        "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+        "title": "Wu 等 · LongMemEval",
         "url": "https://arxiv.org/abs/2410.10813",
-        "note": "Wu 等；ICLR 2025，长期交互记忆能力评测。"
+        "note": "长期交互记忆的五项评测能力。"
+      },
+      {
+        "id": "ref-4",
+        "title": "Graphiti · 开源实现与架构说明",
+        "url": "https://github.com/getzep/graphiti",
+        "note": "Episode、时序关系、出处和混合检索。"
+      },
+      {
+        "id": "ref-5",
+        "title": "GitHub Engineering · Building an agentic memory system for GitHub Copilot",
+        "url": "https://github.blog/ai-and-ml/github-copilot/building-an-agentic-memory-system-for-github-copilot/",
+        "note": "跨文件版本同步案例与仓库范围的取用前核验。"
       }
     ]
   },
   {
     "id": "agentic-rag",
-    "title": "Agentic RAG 原理",
+    "title": "Agentic RAG 如何实现？从单次检索到按证据补查",
     "eyebrow": "AGENTIC RETRIEVAL",
-    "summary": "RAG 先查外部资料，再让模型依据资料回答。Agentic RAG 还会检查资料够不够，决定要不要换个问题继续查，以及什么时候可以回答。",
+    "summary": "先看文档入库与在线检索框架，再用 Kubernetes 1.25 的真实迁移文档，比较固定检索、并行子查询、托管迭代与应用自己控制的补查。",
     "category": "上下文与协作",
     "level": "进阶",
-    "minutes": 15,
-    "updated": "2026-11-08",
+    "minutes": 11,
+    "updated": "2026-11-25",
     "sections": [
       {
         "id": "definition",
-        "title": "RAG 怎样让模型使用外部资料",
-        "body": "<p>检索增强生成（Retrieval-Augmented Generation，RAG）就是“先查资料，再根据资料生成答案”。程序从外部文档中找出相关内容，把它和用户问题一起交给模型。模型因此能使用本次查到的信息，而不只依赖自己训练时学过的知识。经典 RAG 论文把外部资料检索与语言模型生成连接在一起。<a href=\"#ref-1\">[1]</a></p><p>文档通常先经过准备：读取内容，切成适合查找的小段，保存版本和来源，并建立索引——帮助快速定位片段的目录。用户提问后，系统查找相关片段，筛选或重新排序，再让模型依据它们回答。更新文档库会改变能查到的资料，不等于重新训练模型。</p>"
+        "title": "整体框架 · 文档如何进入答案",
+        "body": "<p>检索增强生成（RAG）把外部资料提供给模型，使答案可以依据当前可查的文档。固定 RAG 的查询路径由应用预先安排。Agentic RAG 在在线路径里加了检索决策，允许模型拆分问题、选择来源，或者读到证据后决定下一步查什么。两者可以使用同一套文档和索引。<a href=\"#ref-1\">[1]</a></p><h3>离线准备文档</h3><div class=\"learn-flow\"><div><strong>接入来源</strong><span>手册、发布说明、内部知识库</span></div><div><strong>切分与标记</strong><span>保留标题、版本、出处和访问范围</span></div><div><strong>建立索引</strong><span>关键词、语义向量或两者并用</span></div></div><h3>在线回答问题</h3><div class=\"learn-flow\"><div><strong>确定任务范围</strong><span>识别产品、目标版本与用户权限</span></div><div><strong>检索候选证据</strong><span>可直接查，也可拆成子查询</span></div><div><strong>判断证据覆盖</strong><span>核对版本与每个结论，缺哪条就补哪条</span></div><div><strong>生成带出处的答案</strong><span>给出有证据的结论，指出仍缺的依据</span></div></div><p>证据检查涵盖全部要点时，系统进入答案生成。发现缺口时，系统回到检索，换查询词或来源。应用可以在这里设定最大轮数、截止时间和允许访问的数据源。</p>"
       },
       {
         "id": "mechanism",
-        "title": "Agent 怎样决定还要不要查",
-        "body": "<p>普通 RAG 可以按预先写好的步骤查一次，再生成答案。Agentic RAG 允许模型根据已经查到的内容，决定下一次查什么、去哪里查、是否需要拆成几个问题。区别在于：新资料会影响后续动作。</p><ol><li>先弄清问题需要回答哪几部分，以及对应的产品、版本和日期。</li><li>调用工具，取得相关资料和来源。</li><li>检查资料是否适用、是否互相冲突，以及有没有回答问题的全部部分。</li><li>还缺资料就继续查；已经足够就回答；查到限制仍没找到，就说明已知内容和缺口。</li></ol><p>搜索“命中”只表示找到了一段内容，不表示它一定能支持答案。即使资料都正确，模型也可能在组合时把条件理解错。</p>"
+        "title": "先用什么当检索基线",
+        "body": "<p>以技术支持助手为例。一条查询若只问「PodSecurityPolicy 是在哪个 Kubernetes 版本移除的」，带专有名词的关键词搜索通常能找到发布说明。一个可复用的基线是先按产品和可访问范围筛选，再对关键词和语义匹配结果重排，把少量带出处的段落交给生成器。</p><p>索引要能区分文档版本与内容适用版本。例如一篇后来更新的废弃指南仍可明确说明某个 API 在 1.25 移除。直接用文档发布时间过滤，会把这类证据一起丢掉。系统可以记录文档分支及可确定的适用范围，对版本不明的片段保留待确认状态。</p><p>如果用户同时问旧功能是否保留、替代能力如何配置、上线前如何验证，单一搜索的前几个片段可能反复解释同一件事。先判断这些子问题是否独立。彼此独立就能并行找资料。有一项必须等前面的答案出来才知道查什么时，再引入后续检索。</p>"
       },
       {
         "id": "evidence-example",
-        "title": "示例：升级后还能不能导出",
-        "body": "<p>教学资料库有三份文档：v1.8 用户手册说“批量导出默认开启”；v2.1 迁移说明说“批量导出默认关闭，旧授权不自动继承”；v2.1 管理员手册说可以另行授予 export.bulk 权限。用户问：“升级到 2.1 后，旧账号还能直接导出吗？”</p><figure class=\"learn-figure\"><img src=\"../assets/learning/agentic-rag-coverage.svg\" width=\"1200\" height=\"760\" alt=\"先发现旧手册版本不符，再分别查清新版默认权限、旧账号是否继承，以及能否重新设置\"><figcaption>图中分别查清三个问题：默认能不能用、旧账号是否继承、能不能重新开启。本站原创教学图。</figcaption></figure><p>旧手册只能说明以前怎样工作。迁移说明回答了新版默认关闭、旧授权不继承；管理员手册补充了可以重新授权。最后应回答“默认不能直接用，获得新授权后可以”。下面的记录表示第三个问题还没查完：</p><pre><code class=\"language-json\">{\n  &quot;question_version&quot;: &quot;2.1&quot;,\n  &quot;claims&quot;: [\n    {&quot;id&quot;:&quot;default&quot;,&quot;status&quot;:&quot;supported&quot;,&quot;source&quot;:&quot;migration-2.1#3&quot;},\n    {&quot;id&quot;:&quot;inherit&quot;,&quot;status&quot;:&quot;supported&quot;,&quot;source&quot;:&quot;migration-2.1#3&quot;},\n    {&quot;id&quot;:&quot;configure&quot;,&quot;status&quot;:&quot;missing&quot;,&quot;next_query&quot;:&quot;2.1 export.bulk&quot;}\n  ],\n  &quot;discarded&quot;: [{&quot;source&quot;:&quot;manual-1.8#8&quot;,&quot;reason&quot;:&quot;version_mismatch&quot;}]\n}</code></pre>"
+        "title": "真实案例 · Kubernetes 1.25 的迁移问答",
+        "body": "<blockquote><p>从 Kubernetes 1.24 升到 1.25，现有 PodSecurityPolicy 还会生效吗？怎样先检查指定命名空间里的现有 Pod 是否违反 <code>restricted</code>，又不实际开启强制策略？</p></blockquote><p>这道题来自真实版本变更。下面的证据对照使用 Kubernetes 上游资料，演示检索和核验过程。</p><table><caption>每条结论分别由哪段官方资料支撑</caption><thead><tr><th scope=\"col\">待回答的问题</th><th scope=\"col\">核对的资料</th><th scope=\"col\">能得出的结论</th></tr></thead><tbody><tr><th scope=\"row\">现有 PSP 是否继续生效</th><td>Kubernetes API 废弃指南的 v1.25 条目 <a href=\"#ref-2\">[2]</a></td><td>v1.25 不再提供 PodSecurityPolicy API，旧准入控制器也移除。</td></tr><tr><th scope=\"row\">改用什么机制</th><td>上游 v1.25 的命名空间标签说明 <a href=\"#ref-3\">[3]</a></td><td>可用内置 Pod Security Admission，在命名空间通过标签配置 Pod Security Standards。</td></tr><tr><th scope=\"row\">怎样预检现有 Pod</th><td>同一份标签说明中的服务端 dry run <a href=\"#ref-3\">[3]</a></td><td>对目标命名空间试设 <code>enforce=restricted</code>，标签不会落库，服务端会给出已有 Pod 的违规警告。</td></tr></tbody></table><p>因此可以回答，旧 PSP 在 1.25 已被移除。假设目标命名空间名为 <code>payments</code>，可以通过下面的命令预检已有 Pod。这个示例按上游文档改写，部署中需由实际集群的服务端返回结果。</p><pre><code class=\"language-bash\">kubectl label --dry-run=server --overwrite ns payments \\\n  pod-security.kubernetes.io/enforce=restricted \\\n  pod-security.kubernetes.io/enforce-version=v1.25</code></pre><p>这一步只检查现有 Pod 并返回警告。持续观察未来请求时，可以在迁移阶段用 <code>audit</code> 或 <code>warn</code>，分别在审计事件里记录违规或向客户端发出警告。旧 PSP 若同时负责修改 Pod 默认值，还要核对工作负载是否依赖这些修改。<a href=\"#ref-4\">[4]</a></p>"
       },
       {
         "id": "example",
-        "title": "怎样限制重复查找",
-        "body": "<p>循环要记住还缺什么资料、还能去哪里查，以及最多再查几次。如果找不到 2.1 管理员手册，可以改查官方发布说明；连续三次仍只找到 1.8 手册，就该记录缺口，不能因为结果越来越多而假装答案已经确定。</p><p>下面是说明流程的伪代码，不是可直接运行的完整程序。<code>coverage</code> 记录问题的各个部分是否已有资料支持：</p><pre><code class=\"language-pseudocode\"># 教学伪代码：以证据覆盖驱动下一次读取\ncoverage = {&quot;default&quot;: None, &quot;inherit&quot;: None, &quot;configure&quot;: None}\nfor step in range(search_limit):\n    query = query_for_missing_claim(coverage)\n    passages = retrieve(query, product=&quot;Export&quot;, version=&quot;2.1&quot;)\n    coverage = inspect_sources_and_conditions(passages, coverage)\n    if all_claims_supported(coverage):\n        return compose_conditional_answer(coverage)\nreturn answer_known_parts_and_list_gaps(coverage)</code></pre><p>这个检查也可能出错。程序可以核对版本号与引用编号；一段话是否真的支持结论，还需要按问题检查内容，必要时人工复核。因此，“已经有依据”的记录也要带上来源，方便后续纠正。</p>"
+        "title": "证据缺一条时，下一轮应该查什么",
+        "body": "<p>假设首轮只查到废弃指南。系统已经能确认旧 API 被移除，但还缺预检方式。第二轮可以把目标缩成 <code>Pod Security Admission namespace enforce dry-run existing pods</code>，并限定上游 Kubernetes 文档。若首轮已经拿齐两份资料，就可以直接回答。</p><table><caption>一次按缺口补查的示例轨迹</caption><thead><tr><th scope=\"col\">阶段</th><th scope=\"col\">证据状态</th><th scope=\"col\">下一步</th></tr></thead><tbody><tr><th scope=\"row\">读取废弃指南</th><td>已证实 PSP 移除，预检步骤仍缺依据</td><td>只为预检步骤生成下一条查询</td></tr><tr><th scope=\"row\">读取 v1.25 标签说明</th><td>找到服务端 dry run 的行为与示例命令</td><td>将命令和对应出处一起交给生成器</td></tr><tr><th scope=\"row\">到达预算或仍无进展</th><td>可回答已证实的部分</td><td>交代缺少哪段文档或哪个版本的依据</td></tr></tbody></table><p>工程上可以把状态存成「要验证的结论、当前片段编号、待查项、已查过的查询」。程序检查文档权限、版本、重复查询和剩余预算。模型负责判断段落是否支持某个结论，应用保留其对应的原始片段，便于复核。语义相似度只能帮助排序，不能替代证据核对。</p>"
       },
       {
         "id": "research",
-        "title": "Self-RAG 和 CRAG 分别改了什么",
-        "body": "<p>Self-RAG 会训练模型使用特定标记，表示是否需要查资料、资料是否相关、生成内容有没有依据。它改动了模型训练和生成过程中的控制方式。仅在提示词里加一句“检查一下”，并不等于实现了 Self-RAG。<a href=\"#ref-2\">[2]</a></p><p>CRAG 在查到资料后，先检查资料质量，再决定接下来怎样补救，必要时扩大到网页搜索。它主要处理“第一次没查好，下一步怎么办”。<a href=\"#ref-3\">[3]</a></p><table><thead><tr><th>做法</th><th>怎样决定下一步</th><th>主要看什么</th></tr></thead><tbody><tr><td>固定 RAG 流程</td><td>按预先写好的查询和回答步骤执行</td><td>问题与查找结果</td></tr><tr><td>一般的 Agentic RAG</td><td>根据现有资料选择下一次查找</td><td>还缺什么、还能查多少次</td></tr><tr><td>Self-RAG</td><td>使用专门训练出的标记控制查找与生成</td><td>是否需要资料、内容是否有依据</td></tr><tr><td>CRAG</td><td>先检查查找结果，再选择补救方式</td><td>第一次查到的资料质量</td></tr></tbody></table>"
+        "title": "行业方案把检索决策放在哪里",
+        "body": "<table><caption>用同一组问题比较四种实现</caption><thead><tr><th scope=\"col\">方案</th><th scope=\"col\">谁决定下一步</th><th scope=\"col\">怎么用在这个案例</th><th scope=\"col\">主要代价</th></tr></thead><tbody><tr><th scope=\"row\">固定检索 · Amazon Bedrock <code>Retrieve</code> <a href=\"#ref-5\">[5]</a></th><td>应用发一次预定查询，知识库返回相关片段</td><td>单问移除版本时直接查；固定类型的复合问题也可预设多条查询</td><td>接入简单，遇到缺证据要由应用自己决定是否补查</td></tr><tr><th scope=\"row\">并行拆题 · Azure AI Search <a href=\"#ref-6\">[6]</a></th><td>启用 LLM 查询规划后，由知识库拆分并并行执行子查询</td><td>分别查废弃版本与命名空间预检，检查返回引用和活动日志</td><td>要承担规划与多个查询的成本；查询规划属于预览能力</td></tr><tr><th scope=\"row\">托管迭代 · Amazon Bedrock <code>AgenticRetrieveStream</code> <a href=\"#ref-7\">[7]</a></th><td>模型根据已有资料判断是否继续，受配置迭代上限约束</td><td>首轮读到废弃条目后，可在托管知识库内继续找预检文档，追踪事件会记录过程</td><td>依赖托管知识库，业务方仍要验收哪些证据算充分</td></tr><tr><th scope=\"row\">应用内编排 · LangGraph <a href=\"#ref-8\">[8]</a></th><td>开发者定义节点和分支，模型可以负责相关性判定或改写</td><td>在图里实现版本校验、找缺失证据、补查与超时返回</td><td>可控制每个分支，要自己维护工具、状态、权限和评测</td></tr></tbody></table><p>这些能力可以组合。比如用 Azure 提供的查询计划找候选资料，再由应用检查证据是否覆盖全部子问题。LangGraph 官方示例的补查条件是资料相关性，按版本和结论逐项验收是本例扩展的业务规则，需要由应用实现。</p>"
       },
       {
         "id": "limits",
-        "title": "查找次数与旧结果缓存",
-        "body": "<p>资料已经齐全时，继续查只会增加等待。如果库里根本没有新版文档，换一种问法也不能制造依据。网页搜索还可能带回非官方转载，让冲突更难处理。因此需要限制次数、来源和允许读取的数据范围。</p><p>缓存是保存以前的查询结果，以便下次直接复用。如果它还保存着 1.8 的旧回答，新问题可能跳过新版查找。判断能否复用时，应同时检查产品、版本和访问范围；文档更新后，也要让相关旧答案与片段不再被直接使用。</p>"
+        "title": "什么时候追加一轮有收益",
+        "body": "<p>移除版本和预检步骤可分别找到时，固定路由或并行拆题通常已经满足这个问题。需要顺序补查的情形是，先发现实际启用的是某个第三方准入组件，再依据组件名去匹配对应版本的手册。前一轮结果决定后一轮查什么，提前生成的查询未必覆盖得到。</p><p>如果资料库缺了目标版本，扩大同一检索范围仍可能只有旧资料。若文档都已取回但最终把「预检警告」说成「拒绝现有 Pod」，错误发生在解释阶段，要检查结论与引用对应关系。每轮都要把证据限制在用户已获授权的来源，并设置停止条件，避免重复搜索消耗时间。</p>"
       },
       {
         "id": "practice",
-        "title": "分别检查查找和回答",
-        "body": "<p>可以把三份教学文档放进一个固定小资料库，再分别拿掉迁移说明、改掉版本号、加入相似的非官方页面。每次保存问了什么、读了哪段、排除了什么，以及答案引用了哪里。</p><p>对照“固定查一次”和“允许有限次补查”，分别检查问题有没有查全、版本是否适用、最终答案是否正确，以及多花了多少成本。读过全部文档也可能答错，例如把“可以配置开启”说成“默认开启”。这种错误发生在理解和组合资料时，继续增加搜索结果通常修不好它。</p>"
+        "title": "用同一批问题验证质量与成本",
+        "body": "<p>准备一组有人工标注的技术支持问题，覆盖单点查询、多证据查询、缺文档和版本冲突。对每题标出必须回答的结论、支持它的原文位置，以及资料不足时应该停止的位置。比较固定检索、并行拆题和按缺口补查时，先固定语料快照、权限和最终生成模型，再记录进入最终提示词的证据与各方案的实际成本。</p><table><caption>一轮对比至少记录这些指标</caption><thead><tr><th scope=\"col\">指标</th><th scope=\"col\">检查方法</th></tr></thead><tbody><tr><th scope=\"row\">证据覆盖</th><td>有有效片段支持的必答项数 ÷ 应有证据的必答项数</td></tr><tr><th scope=\"row\">引用忠实度</th><td>引用确实支持结论的声明数 ÷ 带引用的声明数，同时记录无依据却给结论的次数</td></tr><tr><th scope=\"row\">成本与等待</th><td>每题的检索调用数、模型 token 用量、端到端 P50／P95 延迟</td></tr></tbody></table><p>如果缺口集中在单一索引漏召回，优先改切分、过滤和排序。只有当复杂题的证据覆盖与答案质量有稳定提升、额外延迟也在业务预算内时，才值得为这类题开启迭代检索。</p>"
       }
     ],
     "sources": [
       {
         "id": "ref-1",
-        "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "title": "Lewis 等 · Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
         "url": "https://arxiv.org/abs/2005.11401",
-        "note": "Lewis 等；NeurIPS 2020，参数与非参数知识结合的经典研究。"
+        "note": "连接外部检索与语言模型生成的早期代表性研究。"
       },
       {
         "id": "ref-2",
-        "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
-        "url": "https://arxiv.org/abs/2310.11511",
-        "note": "Asai 等；按需检索与反思标记机制。"
+        "title": "Kubernetes · Deprecated API Migration Guide",
+        "url": "https://kubernetes.io/docs/reference/using-api/deprecation-guide/#psp-v125",
+        "note": "v1.25 的 PodSecurityPolicy API 与准入控制器移除。"
       },
       {
         "id": "ref-3",
-        "title": "Corrective Retrieval Augmented Generation",
-        "url": "https://arxiv.org/abs/2401.15884",
-        "note": "Yan 等；检索质量评估与纠正性检索。"
+        "title": "Kubernetes v1.25 · Enforce Pod Security Standards with Namespace Labels",
+        "url": "https://github.com/kubernetes/website/blob/release-1.25/content/en/docs/tasks/configure-pod-container/enforce-standards-namespace-labels.md",
+        "note": "与案例版本对应的标签配置、版本固定及服务端 dry run 示例。"
+      },
+      {
+        "id": "ref-4",
+        "title": "Kubernetes · Migrate from PodSecurityPolicy",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/",
+        "note": "迁移顺序、audit／warn 模式与旧 PSP 的修改行为。"
+      },
+      {
+        "id": "ref-5",
+        "title": "Amazon Bedrock · Retrieve from Knowledge Bases",
+        "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-retrieval.html",
+        "note": "单次检索与文档片段返回。"
+      },
+      {
+        "id": "ref-6",
+        "title": "Azure AI Search · Agentic Retrieval",
+        "url": "https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-overview",
+        "note": "托管子查询规划、并行执行、活动日志与预览能力边界。"
+      },
+      {
+        "id": "ref-7",
+        "title": "Amazon Bedrock · AgenticRetrieveStream",
+        "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-agentic-retrieve.html",
+        "note": "托管迭代、轮数控制、证据片段与检索轨迹。"
+      },
+      {
+        "id": "ref-8",
+        "title": "LangGraph · Build a custom RAG agent",
+        "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+        "note": "检索工具、相关性判定、条件分支及查询改写。"
       }
     ]
   },
