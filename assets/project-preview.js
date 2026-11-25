@@ -8,7 +8,7 @@ class ProjectPreview extends HTMLElement {
     let visible = false;
     this.sync = () => {
       if (visible && !document.hidden && !reducedMotion.matches && !navigator.connection?.saveData
-          && !document.body.classList.contains('motion-off') && !document.querySelector('dialog[open]') && !video.ended) {
+          && !document.body.classList.contains('motion-off') && !video.ended) {
         video.play().catch(() => { /* The poster remains available if autoplay is disabled. */ });
       } else {
         video.pause();
@@ -21,8 +21,6 @@ class ProjectPreview extends HTMLElement {
     this.observer.observe(video);
     this.stateObserver = new MutationObserver(this.sync);
     this.stateObserver.observe(document.body, {attributes:true, attributeFilter:['class']});
-    const reader = document.getElementById('reader');
-    if (reader) this.stateObserver.observe(reader, {attributes:true, attributeFilter:['open']});
     document.addEventListener('visibilitychange', this.sync);
     reducedMotion.addEventListener('change', this.sync);
   }

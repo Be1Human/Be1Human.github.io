@@ -39,10 +39,10 @@ test('project overviews cannot publish private repository links, configuration o
   }
 });
 
-test('every showcased project opens a complete local overview and can return to its portfolio entry', async () => {
+test('every project opens a complete local overview and can return to its portfolio entry', async () => {
   const works = await read('works.html');
   const sitemap = await read('sitemap.xml');
-  for (const project of projects.filter(project => project.presentation === 'showcase')) {
+  for (const project of projects) {
     const path = projectPagePath(project);
     const html = await read(path);
     assert.ok(works.includes(`id="${project.id}"`));
@@ -69,7 +69,18 @@ test('every showcased project opens a complete local overview and can return to 
         assert.ok(html.includes('preload="none"'));
       }
     }
-    assert.ok(!/github\.com\/Be1Human\//.test(html), `${path}: private source link must not be exposed`);
+    if (project.presentation === 'showcase') {
+      assert.ok(!/github\.com\/Be1Human\//.test(html), `${path}: private source link must not be exposed`);
+    }
+    const projectUrl = project.detail.website || (project.presentation === 'showcase' ? null : project.url);
+    if (projectUrl) {
+      const link = `<a href="${projectUrl}"`;
+      const index = html.indexOf(link);
+      const lastSection = html.indexOf(`id="section-${project.detail.sections.length}"`);
+      const linkSection = html.indexOf('class="article-links project-links"');
+      assert.ok(lastSection !== -1 && linkSection > lastSection && index > linkSection, path);
+      assert.equal(index, html.lastIndexOf(link), path);
+    }
     assert.ok(!html.includes('.qa/project-review'));
   }
 });
@@ -77,26 +88,30 @@ test('every showcased project opens a complete local overview and can return to 
 test('both works pages show every project once in a single list', async () => {
   const experience = JSON.parse(await read('content-local.json'));
   const ids = projects.map(project => project.id);
-  assert.deepEqual(experience.projects.map(project => project.id).sort(), [...ids].sort());
+  assert.deepEqual(experience.projects.map(({id, page}) => [id, page]), projects.map(project => [project.id, projectPagePath(project)]));
+  assert.ok(!('featuredProject' in experience));
+  assert.ok(experience.projects.every(project => !('sections' in project) && !('source' in project)));
+  for (const entry of experience.journal) assert.match(entry.page, /^(?:posts|learn)\/[a-z0-9-]+\.html$/);
   for (const path of ['index.html', 'works.html']) {
     const html = await read(path);
     assert.equal([...html.matchAll(/class="project-grid"/g)].length, 1);
     assert.doesNotMatch(html, /class="project-group"/);
     assert.deepEqual([...html.matchAll(/<article class="project-card" id="([^"]+)"/g)].map(match => match[1]), ids);
+    for (const card of html.matchAll(/<article class="project-card" id="([^"]+)"[\s\S]*?<\/article>/g)) {
+      const hrefs = [...card[0].matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(link => link[1]);
+      assert.ok(hrefs.length && hrefs.every(href => href === projectPagePath({id:card[1]})), path);
+    }
   }
 });
 
-test('authored workflows render the same ordered steps in the project page and homepage reader', async () => {
-  const experience = JSON.parse(await read('content-local.json'));
+test('authored workflows keep their ordered steps in the project page', async () => {
   const example = projects.find(project => project.detail?.sections.some(section => section.workflow));
   const source = evidence.projects.find(entry => entry.projectId === example.id);
   const page = await read(projectPagePath(example));
-  const reader = experience.projects.find(entry => entry.id === example.id);
   assert.match(page, /assets\/project-workflow\.css\?v=[a-f0-9]+/);
   for (const [index, section] of example.detail.sections.entries()) {
     if (!section.workflow) continue;
-    const content = reader.sections[index].body;
-    assert.ok(page.includes(content));
+    const content = page.split(`id="section-${index + 1}"`)[1].split("</section>")[0].match(/<ol class="project-workflow"[^>]*>([\s\S]*?)<\/ol>/)[1];
     assert.equal([...content.matchAll(/<li>/g)].length, section.workflow.length);
   }
   const sections = example.detail.sections.map(section => section.workflow

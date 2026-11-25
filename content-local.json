@@ -14,615 +14,55 @@
       "title": "深空 · 游戏与 Haimian 外设",
       "category": "games",
       "categoryLabel": "游戏与交互硬件",
-      "subtitle": "科幻叙事游戏与桌面外设",
-      "summary": "回应来自 2826 年的宇航员，用 Haimian 小屏接着玩。",
-      "source": "https://be1human.github.io/projects/haimian-deep-space.html",
       "image": "assets/images/haimian/device-game.webp",
       "imageAlt": "Haimian 运行实拍，屏幕下方是旋钮和蓝色确认键。",
-      "imageNote": "Haimian 样机实拍",
       "tags": [
         "科幻叙事",
         "旋钮交互",
         "ESP8266"
       ],
-      "links": [
-        {
-          "label": "打开游戏",
-          "url": "https://dsgame.archerpeng.com/"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/haimian/device-game.webp",
-      "imageWidth": 1279,
-      "imageHeight": 1706,
-      "categories": [
-        "games",
-        "experiments"
-      ],
-      "sections": [
-        {
-          "title": "一轮怎样玩",
-          "paragraphs": [
-            "读 E-17 的消息，用选项或自由输入作出决定。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/game-opening-compact.webp",
-              "alt": "《深空》网页实机，E-17 发来消息，底部提供三条建议回复和输入框。",
-              "caption": "游戏实机截图",
-              "width": 840,
-              "height": 1200
-            }
-          ],
-          "steps": [
-            "收到来讯",
-            "选择或输入",
-            "查看回联"
-          ]
-        },
-        {
-          "title": "剧情怎样推进",
-          "paragraphs": [
-            "章节规划和当轮对白各有一层。"
-          ],
-          "diagramHtml": "<div class=\"project-diagram\" role=\"group\" aria-label=\"剧情生成\"><div class=\"project-track\"><strong class=\"project-track-label\">回合</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>章节规划</strong><span>目标 · 选项</span></li><li><strong>本轮叙述</strong><span>前情＋玩家回复</span></li><li><strong>保存结果</strong><span>消息 · 资源</span></li></ol></div></div><div class=\"project-track\"><strong class=\"project-track-label\">等待</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>行动开始</strong><span>进入等待</span></li><li><strong>后台生成</strong><span>预备行动结果</span></li><li><strong>到时回联</strong><span>显示结果</span></li></ol></div></div><div class=\"project-track\"><strong class=\"project-track-label\">记忆</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>章节结束</strong><span>汇总本章记录</span></li><li><strong>异步提炼</strong><span>纪要 · 关键事实</span></li><li><strong>后续生成</strong><span>注入前情</span></li></ol></div></div></div>"
-        },
-        {
-          "title": "两端共用一局",
-          "paragraphs": [
-            "同一个存档标识指向同一份游戏状态。"
-          ],
-          "diagramHtml": "<div class=\"project-diagram\" role=\"group\" aria-label=\"双端与存档\"><div class=\"project-track\"><strong class=\"project-track-label\">网页</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>浏览器</strong><span>读取存档标识</span></li><li><strong>游戏服务</strong><span>获取最新轮次</span></li><li><strong>网页交互</strong><span>输入或选项</span></li></ol></div></div><div class=\"project-track\"><strong class=\"project-track-label\">外设</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>WiFi 配网</strong><span>录入存档标识</span></li><li><strong>设备接口</strong><span>获取精简状态</span></li><li><strong>实体交互</strong><span>提交选项 · 轮询</span></li></ol></div></div></div>"
-        },
-        {
-          "title": "旋钮与按键",
-          "paragraphs": [
-            "选中项是本地状态，确认时才发送。"
-          ],
-          "diagramHtml": "<fieldset class=\"project-diagram project-switchboard\"><legend>选择操作</legend><div class=\"project-choices\"><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-1\" aria-controls=\"haimian-deep-space-reader-4-1-result\" checked><label for=\"haimian-deep-space-reader-4-1\">转旋钮</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-1-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>选项页转动</strong><span>检测旋转方向</span></li><li><strong>移动焦点</strong><span>更新选中项</span></li><li><strong>小屏反馈</strong><span>高亮卡片</span></li></ol></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-2\" aria-controls=\"haimian-deep-space-reader-4-2-result\"><label for=\"haimian-deep-space-reader-4-2\">翻历史</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-2-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>历史页转动</strong><span>检测旋转方向</span></li><li><strong>滚动视口</strong><span>切换可见对话</span></li><li><strong>到达页边界</strong><span>按需取历史</span></li></ol></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-3\" aria-controls=\"haimian-deep-space-reader-4-3-result\"><label for=\"haimian-deep-space-reader-4-3\">短按</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-3-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>短按确认</strong><span>仅在可回复时</span></li><li><strong>提交选项</strong><span>异步发送</span></li><li><strong>等待回联</strong><span>继续轮询</span></li></ol></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-4\" aria-controls=\"haimian-deep-space-reader-4-4-result\"><label for=\"haimian-deep-space-reader-4-4\">长按</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-4-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>识别长按</strong><span>进入配网</span></li><li><strong>打开配网页</strong><span>设置 WiFi 或存档</span></li></ol></div></div></div></fieldset>"
-        },
-        {
-          "title": "小屏怎样刷新",
-          "paragraphs": [
-            "ESP8266 · ST7789（240 × 240）",
-            "字形写入 704 B 缓冲，再批量写屏。"
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>两版原型实测</caption><thead><tr><th scope=\"col\">测量项</th><th scope=\"col\">改造前</th><th scope=\"col\">改造后</th></tr></thead><tbody><tr><th scope=\"row\">点按到本地画面</th><td>约 570 ms</td><td>约 25 ms</td></tr><tr><th scope=\"row\">CPU / SPI</th><td>80 / 27 MHz</td><td>160 / 40 MHz</td></tr><tr><th scope=\"row\">聊天区绘制</th><td>222–599 ms</td><td>21.7 ms</td></tr><tr><th scope=\"row\">绘制 14 个汉字</th><td>21.5 ms</td><td>7.9 ms</td></tr></tbody></table>",
-          "diagramHtml": "<fieldset class=\"project-diagram project-switchboard\"><legend>切换界面状态</legend><div class=\"project-choices\"><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-1\" aria-controls=\"haimian-deep-space-reader-5-1-result\" checked><label for=\"haimian-deep-space-reader-5-1\">选项高亮</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-1-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>焦点移动</strong><span>同一可见窗口</span></li><li><strong>刷新卡片</strong><span>先新高亮，再旧项</span></li></ol><div class=\"project-screen\" data-region=\"options\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-2\" aria-controls=\"haimian-deep-space-reader-5-2-result\"><label for=\"haimian-deep-space-reader-5-2\">历史滚动</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-2-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>视口变化</strong><span>聊天位置更新</span></li><li><strong>刷新阅读区</strong><span>重绘可见内容</span></li></ol><div class=\"project-screen\" data-region=\"chat\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-3\" aria-controls=\"haimian-deep-space-reader-5-3-result\"><label for=\"haimian-deep-space-reader-5-3\">页面切换</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-3-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>页面状态改变</strong><span>连接或回合切换</span></li><li><strong>整屏重绘</strong><span>重置滚动状态</span></li></ol><div class=\"project-screen\" data-region=\"all\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-4\" aria-controls=\"haimian-deep-space-reader-5-4-result\"><label for=\"haimian-deep-space-reader-5-4\">状态灯</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-4-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>周期刷新</strong><span>经过 20 ms 门控</span></li><li><strong>刷新连接灯</strong><span>更新小区域</span></li></ol><div class=\"project-screen\" data-region=\"status\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div></div></fieldset>"
-        },
-        {
-          "title": "样机怎么装",
-          "paragraphs": [
-            "屏幕、旋钮和确认键固定在前壳。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/exploded.webp",
-              "alt": "装配爆炸图，包含屏幕、旋钮、按键、前壳、后盖和底座。",
-              "caption": "结构爆炸图",
-              "width": 1800,
-              "height": 1109
-            },
-            {
-              "src": "assets/images/haimian/printed-prototypes.webp",
-              "alt": "多件白色打印外壳样件摆在桌面上。",
-              "caption": "打印样件",
-              "width": 1064,
-              "height": 983
-            },
-            {
-              "src": "assets/images/haimian/assembly-sequence.webp",
-              "alt": "三段装配示意图，依次展示组件进入、固定屏幕和闭合后盖。",
-              "caption": "装配步骤",
-              "width": 1800,
-              "height": 908
-            }
-          ],
-          "steps": [
-            "结构建模",
-            "打印试装",
-            "固定组件"
-          ]
-        },
-        {
-          "title": "本地配置",
-          "paragraphs": [
-            "USB 管应用和主题，WiFi 接游戏服务。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/haimian/pc-console.webp",
-              "alt": "Windows 控制台截图，展示 USB 状态、应用切换和额度屏主题。",
-              "caption": "控制台截图",
-              "width": 1088,
-              "height": 1263
-            }
-          ],
-          "steps": [
-            "识别设备",
-            "应用与主题",
-            "同步时间"
-          ]
-        }
-      ],
-      "layout": "slides"
+      "page": "projects/haimian-deep-space.html"
     },
     {
       "id": "cloudmind",
       "title": "CloudMind",
       "category": "tools",
       "categoryLabel": "笔记与工具",
-      "subtitle": "Obsidian 思维导图插件",
-      "summary": "在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。",
-      "source": "https://github.com/Be1Human/obsidian-cloudmind/releases/latest",
-      "sourceLabel": "下载 CloudMind",
       "image": "assets/images/cloudmind-cover.webp",
       "imageAlt": "CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图",
-      "imageNote": "Obsidian 桌面版 · 项目演示库截图",
-      "imageWidth": 1440,
-      "imageHeight": 900,
       "tags": [
         "Obsidian",
         "Markdown",
         "思维导图"
       ],
-      "links": [
-        {
-          "label": "中文使用说明",
-          "url": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md"
-        },
-        {
-          "label": "开源仓库",
-          "url": "https://github.com/Be1Human/obsidian-cloudmind"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/cloudmind-cover.webp",
-      "sections": [
-        {
-          "title": "一份笔记，两种整理方式",
-          "paragraphs": [
-            "写读书笔记时，标题和列表适合逐条记录；回头梳理观点之间的关系时，展开成一张图会更直观。CloudMind 把这两种方式接在同一份 Markdown 文件上，不用另存一份导图，再手动维护两边的内容。",
-            "已有笔记可以直接预览为导图，标题和列表的嵌套对应节点层级。在画布上双击修改文字，按 Tab 添加子节点，按 Enter 添加同级节点，也可以拖动分支调整结构，修改会写回原笔记。"
-          ]
-        },
-        {
-          "title": "从一个节点，打开另一篇笔记",
-          "paragraphs": [
-            "导图里的一个分支可能只需要写下结论，完整资料已经在另一篇笔记中。编辑节点时输入 [[，就能从库中的笔记列表里选择引用；Ctrl + 点击含链接的节点，可以在新标签页打开对应笔记。",
-            "保存的是 Obsidian 标准双链，所以反向链接和关系图谱仍能识别这些引用。导图可以成为资料的入口，而不必把所有正文塞进节点。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/cloudmind-wikilinks.webp",
-              "width": 1800,
-              "height": 1003,
-              "alt": "CloudMind 节点编辑中的双链笔记补全列表",
-              "caption": "项目演示界面 · 输入 [[ 引用库中笔记"
-            }
-          ]
-        },
-        {
-          "title": "按内容选择结构和主题",
-          "paragraphs": [
-            "梳理概念可以用双向思维导图，排列步骤可以用逻辑图，整理进程可以用时间轴。插件提供 8 种结构和 10 套主题，也可以单独调整节点颜色、添加备注和标签。每篇笔记会保留自己的结构与主题。",
-            "需要发给别人时，可以导出 PNG、SVG 或 .xmind 文件；导出结果保存在当前笔记所在的文件夹。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/cloudmind-themes.webp",
-              "width": 1800,
-              "height": 1003,
-              "alt": "CloudMind 主题面板展示方块、深色、蓝图、清新等主题",
-              "caption": "项目演示界面 · 主题面板与逻辑图"
-            }
-          ]
-        },
-        {
-          "title": "下载安装",
-          "paragraphs": [
-            "当前展示版本为 0.4.3，支持 Obsidian 1.5.0 及以上的桌面版。到 GitHub 发布页下载 main.js、manifest.json 和 styles.css，放进笔记库的 .obsidian/plugins/cloudmind/ 文件夹，再到第三方插件设置中刷新并启用。",
-            "只预览已有笔记不会改动文件。开始在导图里编辑后，插件会按标题和列表重新组织 Markdown，并加入保存样式的注释；如果需要保留原有排版，可以先复制笔记再编辑。关闭插件后，内容仍可作为普通 Markdown 阅读。"
-          ],
-          "links": [
-            {
-              "label": "下载最新版本",
-              "url": "https://github.com/Be1Human/obsidian-cloudmind/releases/latest"
-            },
-            {
-              "label": "查看图文安装教程",
-              "url": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md"
-            }
-          ]
-        }
-      ]
+      "page": "projects/cloudmind.html"
     },
     {
       "id": "rain-city-character-reconstruction",
       "title": "基于 3D 高斯的角色模型重建尝试",
-      "category": "visual",
+      "category": "visuals",
       "categoryLabel": "视觉与设计",
-      "subtitle": "角色重建实验",
-      "summary": "用《雨之城》Sayuki 的单张正面设定图生成环绕视频，逐轮比较高斯加密、Alpha 监督、Mip 滤波和网格提取的效果。",
-      "source": "https://be1human.github.io/projects/rain-city-character-reconstruction.html",
       "image": "assets/images/character-orbit-cover.webp",
       "imageAlt": "3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面",
-      "imageNote": "本次实验的 3DGS 渲染 · 侧面、正面与背面",
       "tags": [
         "360° Orbit",
         "3D Gaussian Splatting",
         "COLMAP",
         "MILo"
       ],
-      "links": [],
-      "imageWidth": 1200,
-      "imageHeight": 706,
-      "sourceImage": "https://be1human.github.io/assets/images/character-orbit-cover.webp",
-      "sections": [
-        {
-          "title": "从单图到可对比的三维结果",
-          "paragraphs": [
-            "输入只提供角色正面。侧面和背面来自视频模型的推断，再用这批合成视角拟合一个静态 3D 模型。本实验同时比较相同机位下的颜色、相邻机位之间的稳定性，以及抽取出的网格表面。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-diagram-workflow.webp",
-              "alt": "单张正面设定图、多张环绕视角卡片与椭球高斯模型",
-              "caption": "原理示意 · 单图经环绕生成多视角，再进行三维拟合。",
-              "width": 1536,
-              "height": 1024
-            }
-          ],
-          "body": "<ol class=\"project-workflow\" role=\"list\"><li><strong>准备正面图</strong><span class=\"workflow-tool\">输入图预处理</span><span class=\"workflow-output\">裁去边框与标注</span></li><li><strong>补足视角</strong><span class=\"workflow-tool\">ComfyUI · MiniMax-H3</span><span class=\"workflow-output\">73 帧环绕</span></li><li><strong>求解相机</strong><span class=\"workflow-tool\">FFmpeg → COLMAP</span><span class=\"workflow-output\">相机位姿与稀疏点</span></li><li><strong>训练高斯</strong><span class=\"workflow-tool\">MILo → RaDeGS</span><span class=\"workflow-output\">外观与环绕渲染</span></li><li><strong>导出表面</strong><span class=\"workflow-tool\">SDF → Blender</span><span class=\"workflow-output\">带顶点颜色的 GLB</span></li></ol><p>输入只提供角色正面。侧面和背面来自视频模型的推断，再用这批合成视角拟合一个静态 3D 模型。本实验同时比较相同机位下的颜色、相邻机位之间的稳定性，以及抽取出的网格表面。</p>"
-        },
-        {
-          "title": "ComfyUI 工作流 · 单图生成环绕",
-          "paragraphs": [
-            "加载 H3 模型和 360-Orbit LoRA 后，BasicGuider 将模型接入视频条件，BasicScheduler 生成采样的噪声调度。提示词将运动限制在相机，角色保持原姿势。最终视频约 3 秒，共 73 帧。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-input.webp",
-              "alt": "灰底上的贝雷帽角色正面全身图",
-              "caption": "送入视频模型的正面设定图",
-              "width": 768,
-              "height": 768
-            }
-          ],
-          "video": {
-            "src": "assets/project-media/character-orbit-h3.mp4",
-            "poster": "assets/images/character-orbit-h3-poster.webp",
-            "caption": "MiniMax-H3 的原始环绕视频 · 高斯训练的多视角输入",
-            "width": 768,
-            "height": 768
-          },
-          "body": "<ol class=\"project-workflow\" role=\"list\"><li><strong>首尾同图</strong><span class=\"workflow-tool\">LoadImage</span><span class=\"workflow-output\">同一张图接入首帧与末帧</span></li><li><strong>构造条件</strong><span class=\"workflow-tool\">MiniMaxH3ImageToVideo</span><span class=\"workflow-output\">由图像和提示词得到条件与潜变量</span></li><li><strong>潜变量采样</strong><span class=\"workflow-tool\">SamplerCustomAdvanced</span><span class=\"workflow-output\">使用 Orbit LoRA · 28 步</span></li><li><strong>解码并存储</strong><span class=\"workflow-tool\">VAEDecode → CreateVideo → SaveVideo</span><span class=\"workflow-output\">768 × 768 · 24 fps</span></li></ol><p>加载 H3 模型和 360-Orbit LoRA 后，BasicGuider 将模型接入视频条件，BasicScheduler 生成采样的噪声调度。提示词将运动限制在相机，角色保持原姿势。最终视频约 3 秒，共 73 帧。</p>"
-        },
-        {
-          "title": "第一轮｜带网格约束的高斯基线",
-          "paragraphs": [
-            "将视频解码成帧，对每帧生成前景图和特征遮罩，再通过 COLMAP 求相机位姿。实跑注册 73/73 帧，方位覆盖约 354°，平均重投影误差约 0.74 像素。",
-            "用 MILo 训练 18,000 步，启用训练中的网格约束，最后得到 88,286 个高斯。相同视角下，贝雷帽、制服和双腿的轮廓可辨认，眼睛、手指和细小饰物仍偏模糊。下方环绕来自这轮基线的 RaDeGS 渲染。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-mask-comparison.webp",
-              "alt": "视频中的第37帧后视图及其白色前景遮罩",
-              "caption": "第 37 帧 · 左为生成帧，右为 COLMAP 使用的特征遮罩。",
-              "width": 680,
-              "height": 512
-            },
-            {
-              "src": "assets/images/character-orbit-render-comparison.webp",
-              "alt": "同一侧前视角下的原视频画面和第一轮高斯渲染",
-              "caption": "第 10 帧 · 左为合成观测，右为同机位的高斯渲染。",
-              "width": 680,
-              "height": 512
-            }
-          ],
-          "video": {
-            "src": "assets/project-media/character-orbit-3dgs.mp4",
-            "poster": "assets/images/character-orbit-3dgs-poster.webp",
-            "caption": "3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染",
-            "width": 768,
-            "height": 768
-          }
-        },
-        {
-          "title": "第二轮｜增加高斯密度，拟合面部和手部",
-          "paragraphs": [
-            "从基线继续训练 6,000 步，在原始分辨率下让更多高斯分裂，并增加脸、手和图像梯度的监督。高斯数量上限提高到 50 万。",
-            "第 1 帧正面脸部区域的 SSIM 从 0.893 升到 0.956，眼睛和刘海边缘更贴近输入。手指间仍有灰色残影。这一轮的 SSIM 来自已用于训练的视角，衡量的是对合成图像的拟合。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-diagram-refinement.webp",
-              "alt": "概念图对比大椭球与小椭球的轮廓拟合，并示意指缝处的透明度与背景浮点",
-              "caption": "原理示意 · 增密改变椭球的大小与数量，Alpha 监督约束轮廓和背景。",
-              "width": 1536,
-              "height": 1024
-            },
-            {
-              "src": "assets/images/character-orbit-frequency-round.webp",
-              "alt": "同一帧中源图、基线、普通续训、细节续训和高频续训的脸部、胸口与右手局部",
-              "caption": "真实对照 · 同一帧同一裁切。末列是高频续训 6,000 步，前四列依次为源图、基线、对照续训和细节续训。",
-              "width": 1150,
-              "height": 784
-            }
-          ]
-        },
-        {
-          "title": "第三轮｜用 Alpha 监督约束边缘和背景",
-          "paragraphs": [
-            "为 73 帧重算全分辨率的前景 Alpha，在灰底上估算发梢、衣边和手指附近的混合边缘。沿用高频分支再训 2,000 步，给前景与背景分别加入 Alpha 损失。",
-            "相对于第二轮，固定远背景区域的平均渲染 Alpha 下降 86%。九个机位的人物内部 SSIM 从 0.969 到 0.970。手部对照里仍能看到灰色指缝，一处手部区域的拟合还略有回退。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-alpha-round.webp",
-              "alt": "正面全身的源帧、高频增密结果、Alpha 监督结果和固定灰背景评估区域",
-              "caption": "真实对照 · 从左到右为源帧、高频续训、加入 Alpha 监督、固定灰背景评估区域。",
-              "width": 1024,
-              "height": 286
-            },
-            {
-              "src": "assets/images/character-orbit-alpha-hands.webp",
-              "alt": "同一机位下正面两只手在不同续训版本的像素裁切",
-              "caption": "真实对照 · 同机位的两只手。源图之后各列依次是基线、高频续训和加入 Alpha 监督。",
-              "width": 920,
-              "height": 520
-            }
-          ]
-        },
-        {
-          "title": "第四轮｜调低 Mip 滤波，检查新视角",
-          "paragraphs": [
-            "在 Alpha 分支上降低 Mip 平滑幅度，再训 1,500 步。第 1 帧正面脸部的训练集 SSIM 升到 0.972，九个机位的人物内部 SSIM 约 0.973。",
-            "把相机放在相邻标定机位之间检查连贯性，仍能看到手边颗粒、灰色指缝和局部残片。后来用同一模型与机位修正网页查看器的椭圆协方差计算，复看后仍保留首轮基线作为展示版本。后三轮同时调整了采样、监督或滤波，并省略了原始网格约束，记录没有单独隔离这些因素的影响。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-mip-round.webp",
-              "alt": "对齐的源图、高频增密、Alpha 监督和较低 Mip 滤波的脸部及制服细节",
-              "caption": "真实对照 · 第 1 帧的脸部与制服，最右为降低 Mip 滤波后的结果。",
-              "width": 920,
-              "height": 520
-            },
-            {
-              "src": "assets/images/character-orbit-mip-new-view.webp",
-              "alt": "全身、头部和一只手在标定机位及两个分支的插值机位下的对照",
-              "caption": "真实对照 · 第三和第五列使用同一插值机位，分别渲染低 Mip 与 Alpha 监督分支。",
-              "width": 1280,
-              "height": 726
-            }
-          ]
-        },
-        {
-          "title": "第五轮｜从 SDF 与 GOF 提取角色表面",
-          "paragraphs": [
-            "基线从学习得到的有符号距离场（SDF）抽取三角网格，再按多机位前景轮廓过滤帽顶和脚下残片。另一条路线通过 GOF 从高斯不透明度场抽取表面，分别测试原始高斯和 Alpha 监督后的增密高斯。",
-            "用相同 COLMAP 机位和灰模材质比较：旧版 GOF 的部分轮廓更连续，增密分支的 GOF 网格却有更密集的颗粒，脸和手指没有恢复。最终 GLB 来自经过轮廓过滤的 SDF 网格，在 Blender 清理与减面后保留了顶点颜色。局部孔洞和形变仍需修整，尤其是手与鞋底。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/character-orbit-diagram-surface.webp",
-              "alt": "机械外壳从椭球高斯表示、场边界剖面到带缺口的三角网格",
-              "caption": "原理示意 · 以机械外壳为例，在场上确定边界后生成三角网格，再检查连通和缺损。",
-              "width": 1536,
-              "height": 1024
-            },
-            {
-              "src": "assets/images/character-orbit-gof-round.webp",
-              "alt": "正面和侧前方的输入帧与 SDF、原始高斯 GOF、增密高斯 GOF 的实测灰模",
-              "caption": "真实对照 · 每行是一个固定机位。四列为输入帧、过滤后的 SDF、原始高斯 GOF、增密高斯 GOF。",
-              "width": 1280,
-              "height": 686
-            },
-            {
-              "src": "assets/images/character-orbit-sdf-comparison.webp",
-              "alt": "同机位下 SDF 的原始网格及轮廓过滤后的网格",
-              "caption": "真实对照 · 左为原始 SDF 网格，右为多视角轮廓过滤后。",
-              "width": 600,
-              "height": 384
-            },
-            {
-              "src": "assets/images/character-orbit-mesh.webp",
-              "alt": "Blender 斜视渲染中可见角色手部和腿部的网格缺损",
-              "caption": "清理后的网格 · Blender 斜视渲染",
-              "width": 512,
-              "height": 512
-            },
-            {
-              "src": "assets/images/character-orbit-wireframe.webp",
-              "alt": "角色正面的三角网格线框，衣服和四肢边缘可见不规则拓扑",
-              "caption": "同一模型的线框 · 检查拓扑与轮廓",
-              "width": 512,
-              "height": 512
-            }
-          ]
-        }
-      ]
+      "page": "projects/rain-city-character-reconstruction.html"
     },
     {
       "id": "digital-performance",
       "title": "数字人表演生成",
       "category": "visuals",
       "categoryLabel": "视觉与设计",
-      "subtitle": "Unreal Engine · 角色动画",
-      "summary": "以一段 11.55 秒的独白为例，拆解视频怎样变成 UE 中可编辑的角色子序列，以及身体、口型和眉眼如何分别恢复与验收。",
-      "source": "https://be1human.github.io/projects/digital-performance.html",
       "image": "assets/images/digital-performance-cover.webp",
       "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
-      "imageNote": "Unreal Engine · 角色全身表演",
       "tags": [
         "UE",
         "动作重定向",
         "数字人"
-      ],
-      "links": [],
-      "imageWidth": 1280,
-      "imageHeight": 720,
-      "sourceImage": "https://be1human.github.io/assets/images/digital-performance-cover.webp",
-      "sections": [
-        {
-          "title": "这场戏交付的是可编辑的序列",
-          "paragraphs": [
-            "胡亥有一段约 11.55 秒的独白。项目把这场戏拆成单角色剧本，保留台词、动作提示和角色造型参考，再用 MiniMax H3 生成固定机位的单人全身参考。参考视频提供了捂胸、前倾和对白的节奏。",
-            "目标产物是 UE Sequencer 能编辑和重载的角色子序列。制片可以改变这个片段在场景中的起点，动画师也能分别处理身体轨、面部轨和原声音轨。要做到这一点，生成的视频要先拆回带时间信息的动画数据。"
-          ],
-          "video": {
-            "src": "assets/project-media/digital-performance.mp4",
-            "poster": "assets/images/digital-performance-cover.webp",
-            "caption": "UE 成片，11.55 秒，含参考视频原声。",
-            "width": 960,
-            "height": 544
-          }
-        },
-        {
-          "title": "同一段表演，参考视频与 UE 输出",
-          "paragraphs": [
-            "左边是工程选中的 H3 全身参考，右边是用它生成的 UE 成片。参考文件的 SHA-256 与烘焙记录一致。两个画面从 0 秒开始，都是 24 fps、277 帧，播放一条参考原声。",
-            "可以拖到约 6 秒并暂停，核对两边捂胸时肩、肘和躯干怎样变化。捂胸与前倾在同一段对白附近出现，手指形状和脚底接触还需要结合具体帧检查。"
-          ],
-          "video": {
-            "src": "assets/project-media/digital-performance-source-vs-ue.mp4",
-            "poster": "assets/images/digital-performance-source-vs-ue-poster.webp",
-            "width": 1600,
-            "height": 518,
-            "caption": "并排对照 · H3 全身参考与 UE 成片 · 11.55 秒，含原声"
-          }
-        },
-        {
-          "title": "同一份媒体怎样进入三条处理链",
-          "paragraphs": [
-            "媒体校验先确认参考视频可解码、原声存在，并为每帧保留显示时间戳 PTS。每条恢复链之后都回到这份时间基准。忽略音频起点会造成固定的口型错位，帧间隔变化时还要按每帧的实际时间取样。",
-            "项目另做了一次带偏移的原声导入验证。音频比画面晚 0.1375 秒，在 24 fps 下相当于第 3.3 帧。若直接写到第 3 帧，声音会提前 12.5 毫秒。导入器用更细的 Sequencer tick 保存入点，重载后仍保持了 0.1375 秒的偏移。",
-            "身体由 GEM-X 的时序人体模型估计 SOMA77 骨骼姿态。重定向要对齐源骨架和目标骨架的参考姿态，再把姿态写进 UE 的 AnimSequence。中间轨按源时间戳取样，旋转用四元数插值，平移单独插值。",
-            "对白先用语音识别核对台词和词边界，再用强制对齐找出每个音素的时间段。项目把音素转成用于表现发音的口型控制曲线，落到 Face Control Rig。用于识别和对齐的分析音频只参与计算，播放轨沿用参考视频原声。",
-            "眉眼从画面中的人脸恢复得到。检测器的观测需要满足源画尺寸和时间连续性要求，才能形成可烘焙的眉眼曲线。眉眼控制和发音控制各自有写入范围，眉眼素材不足时仍可保存音频驱动的口型。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/digital-performance-architecture.webp",
-              "alt": "剧本经 MiniMax H3 生成参考视频，媒体校验后分三路处理身体、眉眼和对白，最后进入角色子序列和场景 Sequence",
-              "caption": "工程流程图。身体、眉眼、口型分别生成控制数据，播放原声沿用原视频的音轨。",
-              "width": 1500,
-              "height": 1040
-            }
-          ]
-        },
-        {
-          "title": "为什么能跟上对白，却没有连续哭相",
-          "paragraphs": [
-            "全身参考有 277 帧。人脸恢复报告显示，179 帧检测到了脸，被检测到的脸部尺寸中位数约为 38.5 × 44.9 像素。恢复逻辑在放大局部图像做推理后，把检测结果换算回原画坐标，再使用原画短边至少 64 像素的项目阈值判断观测是否可用。最终只有 1 帧达到门槛。",
-            "时间连续性是另一道检查。实现允许在前后都有连续观测时沿源时间戳插补短缺口，长时间遮挡则向中性过渡。只有一个孤立观测时，这一帧无法给出动作的起止和变化过程，所以这版不输出连续眉眼表情。口型取自音素时间段，仍能按对白工作。",
-            "独立的原片近景中，130 帧有 112 帧过了相同的尺寸门槛。全身取景保留了重心、捂胸和弯腰，近景让眉眼占据更多源像素。两条素材的镜头和时长不同，这个对比用于判断观测可用性。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/digital-performance-face-coverage.webp",
-              "alt": "全身样本 277 帧中 1 帧通过源画尺寸门槛，独立的连续近景样本 130 帧中 112 帧通过",
-              "caption": "两份人脸观测记录使用相同的 64 像素短边门槛。镜头来源与时长不同。",
-              "width": 1500,
-              "height": 760
-            },
-            {
-              "src": "assets/images/digital-performance-face-preview.webp",
-              "width": 1366,
-              "height": 806,
-              "alt": "实际角色表演编辑器显示表情可用 1/277 帧，右侧为提眉、皱眉、眨眼和面颊调整",
-              "caption": "编辑器实拍。面部精修页显示可用帧，并支持定位后添加眉眼关键帧。"
-            }
-          ]
-        },
-        {
-          "title": "同一段双人输入，两版身体恢复",
-          "paragraphs": [
-            "这是项目中另一段 5.175 秒的双人验证片。三联画左边是固定的参考视频，中间是早期用 MediaPipe 逐帧恢复后的 UE 输出，右边是采用 GEM-X 时序姿态与下身接触处理的 UE 输出。两次运行记录引用同一输入指纹，均保存了 124 帧的重载骨骼取样。",
-            "约 1.25 秒时，可以看到黄色上衣角色在中间版本里的手肘偏向身后，右侧版本的双臂姿态更接近参考。两版同时涉及恢复和重定向设置的变化，画面比较的是整条身体处理链的结果。"
-          ],
-          "video": {
-            "src": "assets/project-media/digital-performance-body-variants.mp4",
-            "poster": "assets/images/digital-performance-body-variants-poster.webp",
-            "width": 1920,
-            "height": 426,
-            "caption": "三联对照 · 同一参考、早期逐帧恢复、时序恢复与下身接触处理 · 5.175 秒"
-          }
-        },
-        {
-          "title": "把身体与表情拆开后，怎样取舍",
-          "paragraphs": [
-            "单段全身参考已经能为同一套时间轴提供身体和原声。若交付目标加上细微哭相，近景可以作为额外的眉眼观测来源。接入前要对齐角色、台词时间点和姿势，并核对表情控制是否覆盖了口型控制。这里的近景用于验证观测条件，本次成片的配方仍是全身参考加原声。",
-            "身体分支也有过方案调整。项目历史记录里，早期逐帧 MediaPipe 身体草稿出现过肘部姿态跳变和掌面翻转。后来保留 GEM-X 时序结果，并在下身派生分支中使用接触处理后的根平移和腿部旋转，上身局部姿态沿用原估计。"
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>表演素材方案对比</caption><thead><tr><th scope=\"col\">方案</th><th scope=\"col\">本次证据</th><th scope=\"col\">适用范围与代价</th></tr></thead><tbody><tr><th scope=\"row\">单段全身参考</th><td>1 / 277 帧通过面部尺寸门槛。UE 成片可见捂胸和前倾，保留对白与口型。</td><td>同一条媒体提供身体时序与原声，有限的面部像素难以支撑近景级表情。</td></tr><tr><th scope=\"row\">独立近景观测</th><td>112 / 130 帧通过同一门槛。</td><td>适合补充眉眼观测，接入身体表演前需要额外做时间和姿态对齐。</td></tr><tr><th scope=\"row\">把缺失的面部帧直接补满</th><td>本次实现只插补有连续锚点的短缺口，忽略孤立观测。</td><td>可以增加曲线覆盖时间。缺少连续锚点时，插补结果无法体现表情真实的变化过程。</td></tr></tbody></table>"
-        },
-        {
-          "title": "一句对白的四种表情预设",
-          "paragraphs": [
-            "面部工具另做了一组固定条件的测试。角色、机位、对白和帧数相同，在 UE 中分别渲染中性、愤怒、喜悦和悲伤。合片共用一条声音轨，可以同时看眉眼变化和发音。",
-            "这是独立的人工预设试验，展示的是在口型之外调整表情的方式。若任务要恢复这段胡亥戏的眉眼，仍需对应的画面观测或动画师的关键帧。"
-          ],
-          "video": {
-            "src": "assets/project-media/digital-performance-expression-presets.mp4",
-            "poster": "assets/images/digital-performance-expression-presets-poster.webp",
-            "width": 1280,
-            "height": 720,
-            "caption": "UE 四格实录 · 中性基线、愤怒 0.7、喜悦眉眼 0.7、悲伤 0.7 · 共用一条音轨"
-          }
-        },
-        {
-          "title": "每个阶段留下哪些可复查的记录",
-          "paragraphs": [
-            "工作流按节点保存尝试。执行前冻结参数、上游结果描述和实现版本。执行后登记产物路径及 SHA-256，并把本次结果与尝试编号关联。替换参考视频会让依赖它的媒体、身体、脸部、配准、烘焙和验证节点失效，之前的输入与结果仍能拿来对照。",
-            "复查时先追到选中的视频，再沿身体、脸部和对白的产物追到 UE 重载报告。工程界面把复查分成全身对照、面部精修和场景 Sequencer 三种视图，能分别回到动作时序、表情观测和写入位置。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/digital-performance-trace-framework.webp",
-              "width": 1500,
-              "height": 780,
-              "alt": "输入快照、尝试记录、产物索引、独立重载和场景写入的五段记录链，显示上游更改后的依赖失效",
-              "caption": "由工作流执行和校验代码整理。历史尝试留档，最新产物要通过输入和依赖核对后才能复用。"
-            },
-            {
-              "src": "assets/images/digital-performance-script-import.webp",
-              "width": 1050,
-              "height": 650,
-              "alt": "UE 角色表演编辑器导入单角色剧本后的状态，右侧有剧情和对白，下方可生成参考视频",
-              "caption": "编辑器实拍。导入剧本后确认角色、剧情与对白，再从同一界面生成参考视频。"
-            },
-            {
-              "src": "assets/images/digital-performance-sync-preview.webp",
-              "width": 1366,
-              "height": 806,
-              "alt": "角色表演编辑器左边显示参考视频，右边显示 UE 角色，两个画面停在 6.08 秒",
-              "caption": "编辑器实拍。全身对照页停在 6.08 秒，底部能看到一条原声音轨。"
-            }
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>这次全身表演的阶段记录</caption><thead><tr><th scope=\"col\">阶段</th><th scope=\"col\">留存证据</th><th scope=\"col\">本例可复核值</th></tr></thead><tbody><tr><th scope=\"row\">剧本与选片</th><td>节点输入、尝试编号与选中视频的文件指纹</td><td>工作流保留 3 次视频节点记录，可追溯当前选片。</td></tr><tr><th scope=\"row\">媒体与原声</th><td>视频帧时间戳、解码后的原声和播放时间轴</td><td>24 fps、277 帧。UE 原声重载为 32 kHz，音频 11.55 秒。</td></tr><tr><th scope=\"row\">身体与口型</th><td>时序姿态、目标骨骼重定向、原声音素对齐</td><td>独立重载后可读取 277 帧身体取样，面部控制键保留。</td></tr><tr><th scope=\"row\">眉眼观测</th><td>逐帧人脸观测与尺寸统计</td><td>检测到脸 179 帧，达到 64 px 短边门槛 1 帧。</td></tr><tr><th scope=\"row\">资产核验</th><td>独立进程重载报告</td><td>播放轨 1 条，PCM 核验通过，表现质量状态保留待审阅。</td></tr><tr><th scope=\"row\">场景写入</th><td>目标序列、子序列、起点和时长</td><td>场景入点 0 秒，子序列 11.55 秒。</td></tr></tbody></table>"
-        },
-        {
-          "title": "保存成功之后，用什么证据验收",
-          "paragraphs": [
-            "这一版把角色子序列放到场景的第 0 秒，写入记录给出的时长是 11.55 秒。随后由独立 UE 进程重新打开保存的资产，验证原声 PCM 内容一致、播放轨只有一条，以及身体动画烘焙后面部控制键仍可读取。重载报告保存了 277 帧骨骼取样，能把动作异常定位到具体时间点。",
-            "实际成片能看出角色由站姿进入捂胸和前倾。原片有低位仰脸的姿态，生成参考从站姿进入弯腰，重定向沿用了参考视频的动作。工程记录把这版质量留在待审阅，连续哭相、与原片逐动作一致以及精确接触还要单独检验。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/digital-performance-render-samples.webp",
-              "alt": "UE 同一段成片的 0.50、4.00 和 9.75 秒画面，角色由站姿进入捂胸和前倾",
-              "caption": "从已公开的 UE 成片取样。三个时点对应站姿、捂胸和前倾。",
-              "width": 1500,
-              "height": 550
-            },
-            {
-              "src": "assets/images/digital-performance-sequence-check.webp",
-              "width": 1368,
-              "height": 808,
-              "alt": "UE Sequencer 重新打开教学场景后的角色表演轨，时间标尺从第 0 帧开始",
-              "caption": "Sequencer 实拍。重新打开目标场景后，角色子序列从零点开始，轨道范围可直接检查。"
-            }
-          ]
-        }
       ],
       "page": "projects/digital-performance.html"
     },
@@ -631,1134 +71,240 @@
       "title": "从行车视频到可驾驶的 3D 高斯城市",
       "category": "experiments",
       "categoryLabel": "研究与实验",
-      "subtitle": "视频重建 · C7 街区",
-      "summary": "先在俯视图上读懂路线，再从行车视频里求出相机、训练街景。用一段真实驾驶录像和同机位对照，记录八秒样段怎样延长、何处接得上、为什么转身会露出空洞。",
-      "source": "https://be1human.github.io/projects/c7-video-city-3dgs.html",
       "image": "assets/images/c7-city-drive.webp",
       "imageAlt": "沿高斯重建的城市干道驾驶，树木、建筑和路面来自视频重建",
-      "imageNote": "城市 3DGS 样段 · 浏览器实际驾驶",
       "tags": [
         "城市重建",
         "3DGS",
         "视频位姿",
         "PlayCanvas"
       ],
-      "links": [],
-      "coverVideo": {
-        "src": "assets/project-media/c7-city-drive.mp4",
-        "poster": "assets/images/c7-city-drive.webp",
-        "caption": "城市 3DGS 样段 · 浏览器实际驾驶。新录的 7.5 秒展示从起步到 A 段限位，静态街景来自 2,020,318 个高斯，车辆是可控制的前景层。",
-        "width": 1280,
-        "height": 720
-      },
-      "imageWidth": 1280,
-      "imageHeight": 720,
-      "sourceImage": "https://be1human.github.io/assets/images/c7-city-drive.webp",
-      "sections": [
-        {
-          "title": "先从俯视图读懂路线",
-          "paragraphs": [
-            "一段沿街行驶的视频，可以恢复路面和建筑的哪些部分？我们先用俯视图标出干道、路口、转弯和终点，再回到《雨之城》宣传片逐段找对应镜头。图上可见的转向和地标用来定位，未拍全的支路、尺度和楼背保留为规划估计。",
-            "按 A / J1 / B / C / J2 / D / E / F / Y 梳理全线后，在 21:12–24:56 范围规划了 36 个相互重叠的视频窗口。后文有三种不同的覆盖范围：规划图画到终点，相机位置已接到 22:20，有真实高斯且经过跨块驾驶验证的范围是 21:12–21:32。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-route.webp",
-              "width": 1850,
-              "height": 1617,
-              "alt": "C7 俯视路线设计图，标出街区、转弯和地标",
-              "caption": "原项目俯视规划图，可点击放大。道路走向用于组织视频，图上的空白和设计估计保留其原意。"
-            },
-            {
-              "src": "assets/images/c7-city-guide-windows.webp",
-              "alt": "俯视路线下展开视频时间带，用两个采样窗口共享的帧示意后续配准",
-              "caption": "AI 技术示意 · 先按路段划窗口，保留同一时刻的重叠源帧。图中建筑用于说明分窗方法。",
-              "width": 1536,
-              "height": 1024
-            }
-          ],
-          "body": "<ol class=\"project-workflow\" role=\"list\"><li><strong>对照俯视路线</strong><span class=\"workflow-tool\">视频时间码与地标</span><span class=\"workflow-output\">分段与重叠窗口</span></li><li><strong>恢复观察位置</strong><span class=\"workflow-tool\">前景遮罩与 COLMAP</span><span class=\"workflow-output\">相机位姿及稀疏点</span></li><li><strong>拟合街景</strong><span class=\"workflow-tool\">LingBot 深度与 Brush</span><span class=\"workflow-output\">分块高斯 PLY</span></li><li><strong>检验可交互范围</strong><span class=\"workflow-tool\">PlayCanvas 与键盘输入</span><span class=\"workflow-output\">沿线驾驶、偏视角与接缝结果</span></li></ol><p>一段沿街行驶的视频，可以恢复路面和建筑的哪些部分？我们先用俯视图标出干道、路口、转弯和终点，再回到《雨之城》宣传片逐段找对应镜头。图上可见的转向和地标用来定位，未拍全的支路、尺度和楼背保留为规划估计。</p><p>按 A / J1 / B / C / J2 / D / E / F / Y 梳理全线后，在 21:12–24:56 范围规划了 36 个相互重叠的视频窗口。后文有三种不同的覆盖范围：规划图画到终点，相机位置已接到 22:20，有真实高斯且经过跨块驾驶验证的范围是 21:12–21:32。</p>"
-        },
-        {
-          "title": "先解决相机在哪里，再训练街景",
-          "paragraphs": [
-            "宣传片包含剪辑、运动中的车辆和被前车遮住的路面。最初挑的 6 秒追车镜头只注册了 2/24 帧；初次市区驾驶试验放宽约束后也只有 18/32 帧。少量匹配点不足以支撑这一段相机运动，我们转而使用连续的 1080p 街道样段，并遮掉会移动的像素。",
-            "在 A 段 21:12–21:20，以每秒 8 帧取样，64 帧全部获得局部相机位姿。COLMAP 根据多帧可重认的静态特征求相机相对位置；LingBot 给出视频深度，经过尺度对齐和筛选后，为高斯训练提供约 4 万个初始点。原录像里的车从静态训练中遮掉；被遮住的路面仍缺少直接观测。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-guide-geometry.webp",
-              "alt": "相邻帧中的楼角特征连向相机，右侧用椭球示意建筑表面",
-              "caption": "AI 技术示意 · 先由静态特征恢复相机，再用带方向、尺度和透明度的高斯拟合画面。",
-              "width": 1536,
-              "height": 1024
-            },
-            {
-              "src": "assets/images/c7-city-mask.webp",
-              "width": 1280,
-              "height": 1080,
-              "alt": "A 段视频多帧与紫色动态遮罩接触表",
-              "caption": "实际遮罩检查。紫色区域标出本轮屏蔽的位置，可见它随原片车辆的位置改变。"
-            }
-          ]
-        },
-        {
-          "title": "第一份能打开的高斯模型，能看到什么？",
-          "paragraphs": [
-            "在同一段 8 秒视频上，我们先试了 MLX3D 的直接视频入口。内置位姿估计注册了 32 帧中的 18 帧，最后只剩 14 个稀疏点，训练在初始化前就停了。补入焦距先验后能注册到 26 帧，仍有 6 帧缺失。",
-            "换用 LingBot 的视频几何作为初值后，MLX3D 训练 2,000 步，导出了 43,885 个高斯。沿原方向能辨认出树冠和道路，但路面模糊，还残留车辆轮廓。把查看器转到侧面，街区只剩一条窄带。这个结果促使我们改用已解算的 64 个机位、动态遮罩和 Brush，分别检查原视角精度与偏视角覆盖。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-first-ply.webp",
-              "width": 1704,
-              "height": 386,
-              "alt": "原片、MLX3D 早期模糊街景与偏轨迹查看器中的窄带和空洞",
-              "caption": "实测早期尝试。左图是起始原片，中图是 MLX3D 从起始机位渲染的街景，右图是同一份高斯模型在查看器中从另一方向观察。"
-            }
-          ]
-        },
-        {
-          "title": "同一批留出帧上，多训一倍值多少？",
-          "paragraphs": [
-            "在这台 Mac 上，Brush 把初始点优化为带位置、方向、尺度、颜色和透明度的高斯。先固定相机、输入图、遮罩和随机种子，用相同的 8 张留出帧比较 6,000 步与 12,000 步，在遮罩外的静态区域计算误差。",
-            "先只改初始点，以相同的 6,000 步比较：稀疏初始化的平均 PSNR 为 25.664 dB，加入对齐后的视频深度点，升至 25.770 dB。下图再固定这组深度初值，只改变训练步数。",
-            "高斯数从 2,020,318 增至 3,922,699，PLY 从 477 MB 增至 926 MB。平均 PSNR 从 25.770 升到 26.055 dB，RGB 平均绝对误差从 8.517 降到 8.160（0–255）。训练时间加长后，原机位的平均误差略降，但远处立面和车道纹理仍显得松散。试玩沿用较轻的 6,000 步版本。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-fit.webp",
-              "width": 1704,
-              "height": 369,
-              "alt": "同一帧的原片、六千步和一万二千步高斯结果横向对照",
-              "caption": "实际同机位对照。先看近处人行道边缘，再看远处道路与立面。原片中的车辆属于训练时排除的动态内容。"
-            }
-          ]
-        },
-        {
-          "title": "离开原车道以后，画面怎样变化？",
-          "paragraphs": [
-            "原机位附近，楼体边缘和路面纹理能在图像平面上对齐；多个不同深度的高斯也可能投在相近的像素位置。相机移向一侧，这些点之间的深度差就会显现。侧面或背面长期被遮住的建筑，视频能提供的约束更少。",
-            "我们让同一份 PLY 沿原轨迹重放，然后横移、转身。下方短片前 8 秒采用原相机轨迹，后 4 秒检查偏视角。地面出现拖长的纹理，转身画面有明显空洞。留出帧 PSNR 评价的是原机位附近的投影，自由观察还需要这种偏轨迹试验。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-guide-novel.webp",
-              "alt": "相机离开原轨迹后，树后原来不可见的墙面进入视野",
-              "caption": "AI 技术示意 · 青色代表原轨迹可见的区域，橙色代表侧移后需要检验的遮挡区域。",
-              "width": 1536,
-              "height": 1024
-            },
-            {
-              "src": "assets/images/c7-city-novel.webp",
-              "width": 1704,
-              "height": 369,
-              "alt": "第二块高斯沿原方向、右移和原地转身时的三个真实渲染",
-              "caption": "第二块 21:30 附近。左图沿原方向，中图横移，右图原地转身 90°；同一模型的道路和建筑出现不同程度的拉丝。"
-            }
-          ],
-          "video": {
-            "src": "assets/project-media/c7-city-sweep.mp4",
-            "poster": "assets/images/c7-city-sweep.webp",
-            "caption": "A 段实际高斯渲染 · 12 秒。前 8 秒沿 64 个原相机位置，后 4 秒横移与转身。",
-            "width": 960,
-            "height": 540
-          }
-        },
-        {
-          "title": "两块地图在什么地方能接上？",
-          "paragraphs": [
-            "先把第一块延长到 21:26，再训练第二块 21:24–21:32。两块包含 16 张完全相同的重叠源帧。用共享机位拟合局部坐标之间的平移、旋转和统一尺度，并留出部分共享机位检查对齐误差。相邻路段可以由此接上，同时保留 COLMAP 的任意尺度。",
-            "把相机统一后，前十个窗口的轨迹共有 544 个不同机位，延至 22:20。双块可视实验只覆盖其中开头 20 秒，在 21:25 附近切换。第二块的 8 张留出帧平均 PSNR 为 22.172 dB。相同机位下，两块路面区域的平均绝对差达 18.548/255，肉眼能看到车道线和路面纹理跳变。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-guide-stitch.webp",
-              "alt": "两块独立街区的相机在重叠机位处配准，随后对照道路接缝",
-              "caption": "AI 技术示意 · 先对齐局部坐标，再从同一机位比较两块高斯的画面。图中的亮线标记待核对位置。",
-              "width": 1536,
-              "height": 1024
-            },
-            {
-              "src": "assets/images/c7-city-track.webp",
-              "width": 1280,
-              "height": 800,
-              "alt": "前十个窗口在同一局部坐标系里的俯视相机轨迹",
-              "caption": "实测相机中心的俯视投影。连线表示恢复出的相机运动，坐标为任意单位。"
-            },
-            {
-              "src": "assets/images/c7-city-seam.webp",
-              "width": 1136,
-              "height": 369,
-              "alt": "21:25 同一机位在两个独立训练的高斯块中的道路画面",
-              "caption": "接缝实测。两幅图使用同一原片时刻；比较车道线弯曲程度和近处沥青纹理。"
-            }
-          ]
-        },
-        {
-          "title": "让键盘驱动相机，实测跨块到终点",
-          "paragraphs": [
-            "浏览器用 PlayCanvas 绘制高斯城市。路线记录提供纵向位置、道路朝向和相机；输入油门、刹车或方向键会改变沿线速度和横向偏移。车辆作为独立的可控层叠加到画面中。道路边界和接触阴影由代理提供，速度使用相对单位。",
-            "封面选择 A 段完整密度下的实机驾驶。双块实验则同时预载 1,005,514 和 916,315 个高斯，在重叠段切换显示。本次再录制时从约 41% 进度开始，经方向键前进到 100% 限位；下方保留这段跨块操作。原实测另已验证暂停、复位及返回第一块。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/c7-city-live.webp",
-              "width": 1280,
-              "height": 720,
-              "alt": "浏览器双块样段中的驾驶界面与速度、路线进度",
-              "caption": "本次双块实录中的运行界面。进度与速度来自交互程序，不代表真实道路里程。"
-            }
-          ],
-          "video": {
-            "src": "assets/project-media/c7-city-stitch.mp4",
-            "poster": "assets/images/c7-city-stitch.webp",
-            "caption": "双块场景实机驾驶录像 · 从约 41% 进度驶过切换点并到达限位。",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        {
-          "title": "这次真正还原了多少城市？",
-          "paragraphs": [
-            "已经跑通的是一条完整的局部制作流程：俯视规划定位镜头、视频求相机、训练静态街区、恢复共享坐标，最后让用户在浏览器里沿街驾驶。主样段覆盖 8 秒原片，最长已验证的双块驾驶实验覆盖 20 秒。",
-            "限制也能定位到具体环节。增加高斯对原视角有小幅收益，侧面缺少观测时仍会拉丝；相机配准可以通过，路面的视觉接缝依然明显。要向整线和自由漫游扩展，需要更多偏离原车道的观测、逐块接缝验证，以及可卸载的分块加载。"
-          ]
-        }
-      ]
+      "page": "projects/c7-video-city-3dgs.html"
     },
     {
       "id": "mineclaw",
       "title": "MineClaw",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "subtitle": "Minecraft AI 伙伴",
-      "summary": "面向 Minecraft Java 版的具身 AI 伙伴，可进行日常对话，按目标在游戏中执行任务，并在本地控制台查看感知与任务记录。仍在开发，使用前需配置 Minecraft 服务器与模型接口。",
-      "source": "https://github.com/Be1Human/MineClaw#quick-start",
-      "image": "assets/cbb91d2e0275.webp",
+      "image": "assets/images/mineclaw.jpg",
       "imageAlt": "MineClaw 控制台待连接界面，背包栏尚无数据",
-      "imageNote": "控制台界面（待连接）",
       "tags": [
         "TypeScript",
         "Minecraft",
         "AI Agent"
       ],
-      "links": [
-        {
-          "label": "项目说明",
-          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/mineclaw.jpg"
+      "page": "projects/mineclaw.html"
     },
     {
       "id": "clawpm",
       "title": "ClawPM",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "subtitle": "Agent 协作与项目管理",
-      "summary": "下一位接手的 Agent 怎么知道任务做到哪一步？ClawPM 用需求树拆目标，用工作流跟踪执行，把验收条件、测试结果和交付证据保存在 Git 工程里。",
-      "source": "https://be1human.github.io/projects/clawpm.html",
       "image": "assets/images/clawpm-desktop-mindmap.jpg",
       "imageAlt": "ClawPM 桌面端的需求思维导图",
-      "imageNote": "桌面端 · Markdown 导出演示项目",
       "tags": [
         "Agent 协作",
         "项目管理",
         "Electron"
       ],
-      "links": [
-        {
-          "label": "旧版 Web 项目",
-          "url": "https://github.com/Be1Human/clawpm"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/clawpm-desktop-mindmap.jpg",
-      "imageWidth": 1280,
-      "imageHeight": 720,
-      "sections": [
-        {
-          "title": "先把目标拆成能验收的任务",
-          "paragraphs": [
-            "以 Markdown 导出为例，目标可以拆成保留标题层级、处理中文文件名、检查附件链接。每项有独立的通过条件，整条导出链路的回归测试要等三项都完成。",
-            "打开桌面端后，可以在思维导图里展开任务关系，也能用看板、任务列表和甘特图查看同一批任务。Agent 工作流按下一步分组，标明哪些等待依赖、哪些可以领取、哪些待测试。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/clawpm-desktop-delivery.webp",
-              "alt": "定义结果、拆分任务、领取与测试、交付验收四步",
-              "caption": "交付流程 · 先检查单项，再跑回归。",
-              "width": 1200,
-              "height": 690
-            },
-            {
-              "src": "assets/images/clawpm-desktop-workflow.jpg",
-              "alt": "ClawPM 工作流页按下一步呈现任务",
-              "caption": "Agent 工作流 · 可以看到每项任务接下来要做什么。",
-              "width": 1280,
-              "height": 720
-            }
-          ]
-        },
-        {
-          "title": "测试通过后，留下能复查的证据",
-          "paragraphs": [
-            "领取任务时会记录当前执行者和租约期限。提交验收前，任务详情会检查验收标准、阻塞、依赖、子任务、测试验证和交付证据。需要测试的任务要留下通过记录，例如修改的代码路径和回归结果。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/clawpm-desktop-gate.jpg",
-              "alt": "ClawPM 任务详情中的完成检查与测试证据",
-              "caption": "任务验收面板 · 演示数据展示测试产物和交付路径。",
-              "width": 1280,
-              "height": 720
-            }
-          ]
-        },
-        {
-          "title": "应用和 Agent 读写同一个任务库",
-          "paragraphs": [
-            "桌面端负责浏览、编辑和校验，配套 Skill 指导编程 Agent 领取任务、更新进度并写回证据。两边读写当前 Git 工程的 .clawpm 目录，任务各自保存为 JSON 文件。把它们和代码一起提交，就能按提交追溯状态变化。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/clawpm-desktop-architecture.webp",
-              "alt": "ClawPM 桌面端和编程 Agent 共用 Git 工程内的任务文件",
-              "caption": "桌面端与编程 Agent 通过本地任务文件交接。",
-              "width": 1200,
-              "height": 620
-            },
-            {
-              "src": "assets/images/clawpm-desktop-skill.jpg",
-              "alt": "ClawPM 工作流 Skill 安装界面",
-              "caption": "Skill 安装中心 · 支持 Claude Code、Cursor、Codex 和 CodeBuddy。",
-              "width": 1280,
-              "height": 720
-            }
-          ]
-        }
-      ]
+      "page": "projects/clawpm.html"
     },
     {
       "id": "smarttest",
       "title": "SmartTest",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "subtitle": "Agent 自动化测试框架",
-      "summary": "SmartTest 是面向 Agent 的自动化测试框架。Agent 通过 MCP 操作真机，把已验证的步骤编排成可重复运行的工作流，也可以把视觉操作交给本地 GUI-Owl 1.5 4B。每次运行都能查到动作回执和验收结果。",
-      "source": "https://be1human.github.io/projects/smarttest.html",
       "image": "assets/images/smarttest-cover.webp",
       "imageAlt": "SmartTest 背包测试目标及 Android 真机任务的回放时间轴",
-      "imageNote": "SmartTest 测试场景。左侧是背包目标，右侧是另一条真机任务的动作回放。",
       "tags": [
         "MCP",
         "工作流编排",
         "GUI-Owl",
         "Android 真机"
       ],
-      "links": [],
-      "imageWidth": 1280,
-      "imageHeight": 720,
-      "sourceImage": "https://be1human.github.io/assets/images/smarttest-cover.webp",
-      "sections": [
-        {
-          "title": "Agent 怎样接手真机测试",
-          "paragraphs": [
-            "以「打开游戏背包、找到时装、返回大厅」为例。外部 Agent 可以通过 MCP 申请一个独占设备会话，读取屏幕，决定下一步操作，再从新截图确认落点。它也可以一次提交目标、允许操作的应用和验收条件，让本地视觉模型逐步操作手机。",
-            "路线确定后，Agent 可以把设备操作和断言写成节点图，测试人员也可以在工作台画布上编排。同一份流程按版本保存。下一次换包做回归时，执行器沿已保存的连线重跑，用同一组条件验收。",
-            "动作有没有发到手机、游戏有没有达到目标，是两项单独记录的结果。即使点击已发送，若游戏只读接口没有观察到「时装」节点，背包检查仍无法通过。Agent 可以按任务 ID 取回失败步骤和截图，定位哪一步走偏。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-architecture.webp",
-              "alt": "工作台、CLI 和 MCP 进入同一个本地服务，分别进入视觉任务与固定回归，结果汇入同一任务记录",
-              "caption": "框架架构图。两条路径共用任务记录，在各自的执行进程中独占设备。",
-              "width": 1440,
-              "height": 1000
-            }
-          ]
-        },
-        {
-          "title": "本地视觉模型 GUI-Owl",
-          "paragraphs": [
-            "框架内置 GUI-Owl 的调用接口，真机评测使用 GUI-Owl 1.5 4B Instruct 的 Q8_0 量化版本。模型权重单独安装，Ollama 在本机运行推理。外部 Agent 可以通过 run_local_model_test 委派视觉任务。固定工作流可独立运行。",
-            "Android 执行器通过 ADB 采集屏幕。模型读取当前画面、最多三张历史截图和最近的动作回执，每轮通过 mobile_use 提议一个动作，例如点击、滑动、输入、按返回键或等待。点击和滑动使用 0–1000 的归一化坐标，执行器再换算成设备像素。",
-            "动作发送前检查前台应用范围、只读约束和坐标，设备会话再次核对会话控制权和观察状态。等待只消耗时间。每次操作后重新观察，截图、观察 ID、模型动作及回执共同记录。",
-            "过程断言保留曾出现的目标证据，结束断言检查最后一帧的状态。模型报告完成时，已配置的独立断言必须全部通过才算成功。游戏状态无法读取时可以得到未能确认的结果。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-goal.webp",
-              "alt": "SmartTest 测试现场显示背包目标、Android 设备、步数、允许的应用、只读和录屏选项",
-              "caption": "测试现场的真实界面。这里为一轮视觉任务配置目标、动作范围和独立验收条件。",
-              "width": 1600,
-              "height": 1050
-            }
-          ]
-        },
-        {
-          "title": "背包测试失败复盘",
-          "paragraphs": [
-            "这轮真机校准耗时 79.5 秒。模型做了 10 次决策，8 次触控送到手机。第 2 步点进商城，后续连续滑动也没回到背包。",
-            "第 10 步的滑动终点越界，执行器拦截了动作。最终只有「游戏仍在前台」通过，未观察到「时装」分类，也未回到大厅。"
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>背包用例的模型决策和设备回执</caption><thead><tr><th scope=\"col\">步骤</th><th scope=\"col\">模型动作</th><th scope=\"col\">执行情况</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>试图点击底栏的「背包」</td><td>已发送</td></tr><tr><th scope=\"row\">2</th><td>点击「商场逛逛」</td><td>已发送，进入商城</td></tr><tr><th scope=\"row\">3</th><td>等待页面加载</td><td>本地等待 2 秒</td></tr><tr><th scope=\"row\">4–9</th><td>连续六次滑动分类栏</td><td>六次均已发送</td></tr><tr><th scope=\"row\">10</th><td>滑动终点纵坐标为 1035</td><td>超出 0–1000 范围，拦截并结束任务</td></tr></tbody></table>",
-          "diagramHtml": "<div class=\"project-diagram\" role=\"group\" aria-label=\"背包用例的三个关键步骤\"><div class=\"project-track\"><strong class=\"project-track-label\">关键步骤</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>第 1 步</strong><span>尝试打开背包</span></li><li><strong>第 2 步</strong><span>误入商城</span></li><li><strong>第 10 步</strong><span>滑动越界被拦截</span></li></ol></div></div></div>"
-        },
-        {
-          "title": "把测试步骤编排成回归用例",
-          "paragraphs": [
-            "工作流有两类连线。执行线决定先做哪一步、在哪处分支。数据线把上一步的结果送到下一个节点。例如制品校验输出 VerifiedPackageRef，安装节点据此选择已校验的包。UI 定位输出 ElementRef，点击时还要检查这个控件引用对当前页面是否有效。",
-            "外部 Agent 先用 capabilities 读取支持的节点和参数，再用 validate_workflow 检查连线、端口类型和引用，校验通过后用 save_workflow 保存。更新已有流程需要提交当前修订号，避免覆盖别人的编辑。",
-            "回归时，run_saved_workflow 接收流程 ID、修订号和目标设备。独立工作进程执行当时的图，逐节点记录耗时、断言和产物。即使后来调整了画布，仍能查回此前那一轮实际执行的版本。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-workflow.webp",
-              "alt": "SmartTest 工作流编辑器中的节点库、设备会话和应用准备分组，以及端口检查面板",
-              "caption": "工作流编辑器实录。图中运行环境为本地验收靶场，真机启动回归的结果见下一节。",
-              "width": 1905,
-              "height": 1072
-            }
-          ]
-        },
-        {
-          "title": "五轮冷启动回归",
-          "paragraphs": [
-            "Android 游戏启动模板由 22 个业务节点组成，从取包校验、安装与资源准备、登录进大厅，走到冷启动、Trace 导出、解析和清理。",
-            "录制能力在取包前校验。能安装并进入大厅的构建也可能关闭 Unreal Insights，提前检查可以避免五轮都跑完才拿到无效产物。",
-            "在开启录制的构建上，五轮冷启动均重新满足大厅断言，共得到 5 份 Trace，解码 6,092,247 个事件，解码错误为 0。该轮验收覆盖本地 Trace 内容核验与清理。"
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>固定回归各阶段的检查和产物</caption><thead><tr><th scope=\"col\">阶段</th><th scope=\"col\">实际检查</th></tr></thead><tbody><tr><th scope=\"row\">制品准备</th><td>确认构建开启 Unreal Insights，校验测试包</td></tr><tr><th scope=\"row\">真机准备</th><td>安装、检查资源状态、登录并确认大厅</td></tr><tr><th scope=\"row\">五轮采集</th><td>逐轮冷启动，恢复测试会话并重新断言大厅</td></tr><tr><th scope=\"row\">本地验收</th><td>确认五份 Trace 可解析，核对下载及清理回执</td></tr></tbody></table>"
-        },
-        {
-          "title": "真机评测结果",
-          "paragraphs": [
-            "2026 年 10 月 30 日的六项游戏界面校准跨实现版本，每个目标单独运行一次。共 49 次决策、40 次动作发送，只有大厅满足当时配置的条件。",
-            "另一次基础手机评测中，三个目标各运行两次。设备信息查询和游戏启动状态各完整通过一次，设置搜索未通过，两批都属于小样本真机记录。",
-            "有阶段回执的校准样本中，观察、推理、独立校验和动作处理的中位数分别是 1.906、2.297、0.531 和 1.953 秒。各阶段样本数有差异，单个任务的总耗时见表。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-accepted.webp",
-              "alt": "Android 设备信息查询结果卡，列出五项过程和结束检查",
-              "caption": "另一组真机评测的通过记录。设备型号、系统版本、处理器与分辨率属于过程检查，返回桌面属于结束检查。",
-              "width": 1304,
-              "height": 716
-            }
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>六项游戏界面校准</caption><thead><tr><th scope=\"col\">目标</th><th scope=\"col\">决策 / 发送</th><th scope=\"col\">耗时</th><th scope=\"col\">结束证据</th></tr></thead><tbody><tr><th scope=\"row\">大厅</th><td>2 / 0</td><td>16.2 秒</td><td>当前应用与大厅节点满足条件</td></tr><tr><th scope=\"row\">背包</th><td>10 / 8</td><td>79.5 秒</td><td>目标分类未出现，滑动坐标越界</td></tr><tr><th scope=\"row\">邮箱</th><td>14 / 13</td><td>85.9 秒</td><td>达到决策上限</td></tr><tr><th scope=\"row\">活动</th><td>4 / 2</td><td>22.5 秒</td><td>操作被只读检查拦截</td></tr><tr><th scope=\"row\">设置</th><td>11 / 9</td><td>123.8 秒</td><td>出现过设置页，推理连接失败</td></tr><tr><th scope=\"row\">更多</th><td>8 / 8</td><td>134.1 秒</td><td>推理连接失败，未返回大厅</td></tr></tbody></table>"
-        },
-        {
-          "title": "Agent 怎样读取测试证据",
-          "paragraphs": [
-            "工作台、CLI 和 MCP 共用本地服务。Agent 通过 read_run_events 从上次的游标继续读事件，用 run_status 查节点回执、断言结果和设备清理状态，再用 read_artifact 按需取回截图或录屏。一次背包测试失败后，Agent 和工作台上的测试人员可以检查同一条运行记录。",
-            "知识库保存操作方法和判定标准。Agent 可以列出资料目录、通过 SQLite FTS5 按关键词检索，再按版本读取文档片段。用于固定流程的资料引用随运行一起保存，便于查回当时的判定依据。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-library.webp",
-              "alt": "SmartTest 本地知识库的资料分类、标题和别名搜索框",
-              "caption": "知识库工作台。资料按测试用途分类，MCP 可读取指定版本。",
-              "width": 1600,
-              "height": 1050
-            }
-          ]
-        }
-      ],
-      "layout": "slides"
+      "page": "projects/smarttest.html"
     },
     {
       "id": "aixiaochu",
       "title": "仙侠世界 · 三消玩法原型",
       "category": "games",
       "categoryLabel": "游戏项目",
-      "subtitle": "网页游戏 · 回合对战",
-      "summary": "把三消做成一场回合对战。双方轮流使用同一块棋盘，消除产生攻击或护盾，战斗之外则通过地图探索、灵兽配队和宗门推进冒险。",
-      "source": "https://be1human.github.io/projects/aixiaochu.html",
       "image": "assets/images/aixiaochu-showcase.webp",
       "imageAlt": "左侧是云雾地图，中间是 Boss 战斗，右侧是灵兽阵容",
-      "imageNote": "原型实机 · 地图、战斗与阵容",
       "tags": [
         "三消",
         "回合对战",
         "地图探索"
       ],
-      "links": [],
-      "imageWidth": 1200,
-      "imageHeight": 720,
-      "sourceImage": "https://be1human.github.io/assets/images/aixiaochu-showcase.webp",
-      "sections": [
-        {
-          "title": "对手也会用你的棋盘",
-          "paragraphs": [
-            "交换相邻灵印，连成三枚或更多就会消除。棋盘由双方共享，所以这一步既要看自己能打出什么，也要看结算后给对手留下了什么。遇到 Boss 时，攻击、护盾和功法释放的时机都影响下一回合。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/aixiaochu-boss.webp",
-              "alt": "序章 Boss 战的棋盘和双方状态",
-              "caption": "序章教学 · 我方与 Boss 共用一块棋盘。",
-              "width": 414,
-              "height": 896
-            },
-            {
-              "src": "assets/images/aixiaochu-combo.webp",
-              "alt": "连续消除后的攻击和护盾结算",
-              "caption": "结算反馈 · 连锁后可看到攻击和护盾变化。",
-              "width": 414,
-              "height": 896
-            }
-          ],
-          "video": {
-            "src": "assets/project-media/aixiaochu-boss.mp4",
-            "poster": "assets/images/aixiaochu-boss-poster.webp",
-            "caption": "Boss 对战实录节选 · 24 秒",
-            "width": 420,
-            "height": 898
-          }
-        },
-        {
-          "title": "在地图里找下一场冒险",
-          "paragraphs": [
-            "从等距地图出发，走近未探索区域才会揭开云雾，看到城镇、驿站或遗迹。城镇内可以补给，阵容界面用来选择出战灵兽，宗门驻地则连接功法传承与建设。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/aixiaochu-map.webp",
-              "alt": "一部分被云雾覆盖的等距地图",
-              "caption": "地图探索 · 角色走近后，周围地形才逐步显露。",
-              "width": 414,
-              "height": 896
-            },
-            {
-              "src": "assets/images/aixiaochu-team.webp",
-              "alt": "灵兽伙伴和当前出战阵容",
-              "caption": "阵容 · 出战伙伴与待选伙伴分开展示。",
-              "width": 414,
-              "height": 896
-            },
-            {
-              "src": "assets/images/aixiaochu-sect.webp",
-              "alt": "宗门驻地和可用功能",
-              "caption": "宗门 · 驻地串联传承与养成。",
-              "width": 414,
-              "height": 896
-            }
-          ]
-        }
-      ]
+      "page": "projects/aixiaochu.html"
     },
     {
       "id": "agentmem",
       "title": "AgentMem",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "subtitle": "跨设备 AI 编程记忆",
-      "summary": "让 AI 编程的上下文接着用。按项目收集会话、操作和摘要，用快捷搜索或 MCP 找回历史，也能在多台设备之间聚合记录，并通过插件整理规则、部署规范和补充桌面活动。",
-      "source": "https://be1human.github.io/projects/agentmem.html",
       "image": "assets/images/agentmem-overview.jpg",
       "imageAlt": "AgentMem 的跨设备视图，显示三条来自不同设备和编程工具的会话摘要",
-      "imageNote": "跨设备记忆浏览器 · 演示数据",
       "tags": [
         "TypeScript",
         "SQLite",
         "记忆同步"
       ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/agentmem.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/agentmem-overview.jpg",
-      "imageWidth": 1272,
-      "imageHeight": 786,
-      "sections": [
-        {
-          "title": "把断开的会话接起来",
-          "paragraphs": [
-            "假设你昨天用 Codex 修了 Markdown 导出，今天换到笔记本，在 Cursor 里补测试。新会话要先弄清两件事：上次改了什么，这次还要验证什么。AgentMem 把编程过程中的操作和会话结果按项目保存，让人和接手的 Agent 都能找到这些信息。",
-            "接入工具后，客户端按各平台提供的方式记录会话和操作。例如 CodeBuddy 和 Cursor 的 Hook 可以捕获工具调用与文件编辑，再将记录写入本机 SQLite。图中的演示项目在两台设备之间接续，摘要卡上的标签标记了项目、编程工具和设备。浏览器把记录分成会话、观察记录和摘要。摘要用来看任务结果和接下来的工作，观察记录用来追查具体的改动。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-observations.jpg",
-              "alt": "观察记录页列出 Markdown 导出修复、定位过程和回归检查",
-              "caption": "从摘要切到 Observations，可以看到定位原因、修复层级和补测试这几条单独的记录。",
-              "width": 1272,
-              "height": 935
-            }
-          ]
-        },
-        {
-          "title": "从搜索结果回到具体改动",
-          "paragraphs": [
-            "忘了是哪次会话改了导出逻辑，可以在桌面快捷搜索输入「Markdown 导出」，选定 orbit-notes 项目，再从摘要或观察记录打开完整条目。快捷窗口用的是文本匹配，适合记得文件名、报错或一段原话的时候。",
-            "Agent 也能通过 MCP 搜索历史，先看命中的索引和前后记录，再按编号读取详情。主动检索还可将 SQLite 全文搜索与向量检索的排名合并。启用了上下文注入的客户端，可以在会话开始或提交消息时带入近期的项目记忆。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-quick-search.jpg",
-              "alt": "桌面快捷搜索按 orbit-notes 项目查找 Markdown 导出相关记忆",
-              "caption": "限定项目后，搜索结果分成摘要和观察记录，可以直接跳到完整浏览器。",
-              "width": 560,
-              "height": 610
-            }
-          ]
-        },
-        {
-          "title": "跨设备查看，也能带走一份 Markdown",
-          "paragraphs": [
-            "单机使用时，在浏览器选择 Local 就能查看本机记录。两台设备各自连接同一聚合服务后，Remote 视图把同步过来的记录放在一起，并保留设备来源。服务端概览能看到账号、设备和各类记录的同步情况。",
-            "需要交接或留档时，可以在记忆浏览器按项目筛选，再点「导出 MD」保存 Markdown。实时同步适合继续查找新增记忆，导出的文件适合发给没有接入 AgentMem 的人。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-server.jpg",
-              "alt": "AgentMem 个人服务后台概览，显示一个演示账号、两台设备和各类记忆计数",
-              "caption": "聚合服务后台用设备数和各账号最近同步情况来检查记录有没有到达。",
-              "width": 1272,
-              "height": 600
-            }
-          ]
-        },
-        {
-          "title": "Self-Evolve 把经验变成待审阅的规则",
-          "paragraphs": [
-            "「上次修复时保留了标题层级」是一条历史记录。「每次改导出都要测二级和三级标题」才是今后能重复使用的规则。Self-Evolve 可以从项目会话中提炼 Rules 和 Skills，并让人检查候选规则、批准或归档。图中的规则仍待审阅，批准后才进入对应工具的写入流程。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-self-evolve.jpg",
-              "alt": "Self-Evolve 规则库存与待审阅的 Markdown 导出规则",
-              "caption": "待审核和已批准的候选规则在同一面板里可以区分。",
-              "width": 1272,
-              "height": 1336
-            }
-          ]
-        },
-        {
-          "title": "Injector 把选好的规范装进项目",
-          "paragraphs": [
-            "当一个工作区在 Cursor 和 Codex 里都要执行同一套导出验收时，可以在 Injector 选目标工作区、目标工具和要部署的内容。它支持 Skills、Rules、MCP、规范文件和成套 Bundle。预览可以先看将写入哪些位置，写入后可在已注入清单核对。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-injector.jpg",
-              "alt": "Injector 中为 orbit-notes 选中 Cursor、Codex 以及两项规范",
-              "caption": "同一个工作区选中两种工具和两项内容，底部可进入预览。",
-              "width": 1272,
-              "height": 716
-            }
-          ]
-        },
-        {
-          "title": "ShadwMonitor 补上编辑器之外的上下文",
-          "paragraphs": [
-            "有些工作发生在终端或浏览器，例如运行回归测试、打开导出页面检查附件。启用 ShadwMonitor 后，它通过截图、OCR 和摘要整理桌面活动。再开启桥接，短时活动摘要就能进入 AgentMem 的记忆检索；原始截图由插件本地保存。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-shadwmonitor.jpg",
-              "alt": "ShadwMonitor 显示演示活动时间线和已镜像的时刻摘要",
-              "caption": "终端测试、浏览器验收等活动显示在时间线和 L1 时刻列表中。",
-              "width": 1272,
-              "height": 952
-            }
-          ]
-        },
-        {
-          "title": "ShadowFolk Upload 单独安排工作区上传",
-          "paragraphs": [
-            "如果某个工作区还要把记忆交给 ShadowFolk 处理，可以单独指定上传的工作区和每日时间，也可以手动上传一次。它从本地读观察记录和会话摘要，按自己的计划发送，和 AgentMem 的跨设备同步各自运行。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/agentmem-shadowfolk.jpg",
-              "alt": "ShadowFolk Upload 设置显示演示工作区、定时计划和最近上传结果",
-              "caption": "上传设置可以按工作区维护，并查看最近一次推送的观察记录和摘要数量。",
-              "width": 680,
-              "height": 715
-            }
-          ]
-        }
-      ]
+      "page": "projects/agentmem.html"
     },
     {
       "id": "petgo",
       "title": "PetGo · 宠物梦视",
       "category": "visuals",
       "categoryLabel": "视觉与设计",
-      "subtitle": "AI 宠物影像产品设计",
-      "summary": "围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。",
-      "source": "https://be1human.github.io/projects/petgo.html",
-      "image": "assets/fd82ba66e003.svg",
+      "image": "assets/images/petgo-cover.svg",
       "imageAlt": "PetGo · 宠物梦视的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
       "tags": [
         "AI 影像",
         "产品设计",
         "多模态"
       ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/petgo.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/petgo-cover.svg"
+      "page": "projects/petgo.html"
     },
     {
       "id": "wallpaper-workshop",
       "title": "AI Wallpaper Workshop",
       "category": "visuals",
       "categoryLabel": "动态视觉",
-      "subtitle": "动态壁纸案例与 Skill",
-      "summary": "包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。",
-      "source": "https://be1human.github.io/starry-night-train/",
-      "image": "assets/a5b585b46ae1.webp",
+      "image": "assets/images/starry-night.png",
       "imageAlt": "星空、云层、列车与水面倒影的实际 Shader 渲染",
-      "imageNote": "实际渲染截图",
       "tags": [
         "WebGL",
         "GLSL",
         "动态壁纸"
       ],
-      "links": [
-        {
-          "label": "项目说明",
-          "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/starry-night.png"
+      "page": "projects/wallpaper-workshop.html"
     },
     {
       "id": "titan-town",
       "title": "Titan Town · 墙内小镇",
       "category": "games",
       "categoryLabel": "游戏项目",
-      "subtitle": "浏览器游戏",
-      "summary": "浏览器中的可破坏体素围城游戏。玩家使用钩索和喷气装备在小镇移动、破坏建筑、应对巨人并完成 7 个任务；支持中英文，需本地启动网页服务。",
-      "source": "https://github.com/Be1Human/titan-town#run",
-      "image": "assets/6507a8df2f67.webp",
+      "image": "assets/images/titan-town.png",
       "imageAlt": "Titan Town 的实际游戏画面，体素城镇和高墙",
-      "imageNote": "实际游戏截图",
       "tags": [
         "Three.js",
         "Rapier",
         "体素破坏"
       ],
-      "links": [
-        {
-          "label": "项目说明",
-          "url": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/titan-town.png"
+      "page": "projects/titan-town.html"
     },
     {
       "id": "hades-study",
       "title": "Hades 学习 Demo · 冥界试炼",
       "category": "games",
       "categoryLabel": "游戏项目",
-      "subtitle": "非商业学习 Demo",
-      "summary": "基于 Godot 的三房间动作游戏学习 Demo，包含战斗、奖励与祝福选择、Boss 波次及胜负结算。提供 Windows 版本和中文游戏界面；项目非官方，仅限非商业学习。",
-      "source": "https://github.com/Be1Human/hades-learning-demo/releases",
-      "image": "assets/8db40613c851.webp",
+      "image": "assets/images/hades-combat.png",
       "imageAlt": "学习 Demo 的实际战斗截图，角色在双坑房间施展剑击",
-      "imageNote": "学习 Demo 实际截图 · 非原作画面",
       "tags": [
         "Godot",
         "动作战斗",
         "Windows"
       ],
-      "links": [
-        {
-          "label": "项目说明",
-          "url": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/hades-combat.png"
+      "page": "projects/hades-study.html"
     },
     {
       "id": "network-diary",
       "title": "大小姐的网络手账",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "subtitle": "macOS / Windows 应用",
-      "summary": "面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。",
-      "source": "https://github.com/Be1Human/claude-ojousama-network/releases/latest",
-      "image": "assets/afe478d1def7.webp",
+      "image": "assets/images/network-diary.png",
       "imageAlt": "大小姐的网络手账实际应用界面，截图使用演示数据",
-      "imageNote": "实际应用截图 · 演示数据",
       "tags": [
         "Electron",
         "macOS / Windows",
         "本地优先"
       ],
-      "links": [
-        {
-          "label": "项目说明",
-          "url": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/network-diary.png"
+      "page": "projects/network-diary.html"
     },
     {
       "id": "animation-workflow",
       "title": "Video to Game Animation",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "subtitle": "动画制作与评审 Skill",
-      "summary": "面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。",
-      "source": "https://github.com/Be1Human/video-to-game-animation#实际效果与过程",
-      "image": "assets/7ffde24538c6.webp",
+      "image": "assets/images/animation.jpg",
       "imageAlt": "同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面",
-      "imageNote": "角色肩袖修正前后对比",
       "tags": [
         "Blender",
         "动画",
         "Agent Skill"
       ],
-      "links": [
-        {
-          "label": "项目说明",
-          "url": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/animation.jpg"
+      "page": "projects/animation-workflow.html"
     },
     {
       "id": "clawphone",
       "title": "ClawPhone",
       "category": "experiments",
       "categoryLabel": "硬件与交互",
-      "subtitle": "机械臂控制",
-      "summary": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
-      "source": "https://be1human.github.io/projects/clawphone.html",
       "image": "assets/images/clawphone-cover.svg",
       "imageAlt": "ClawPhone 实体机械臂概念图",
-      "imageNote": "机械臂概念示意图",
       "tags": [
         "机械臂",
         "硬件控制"
       ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/clawphone.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/clawphone-cover.svg",
-      "imageWidth": 1200,
-      "imageHeight": 706,
-      "sections": [
-        {
-          "title": "从指令到机械动作",
-          "paragraphs": [
-            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
-          ]
-        }
-      ]
+      "page": "projects/clawphone.html"
     }
   ],
   "journal": [
     {
       "id": "softmax-attention",
       "title": "Softmax 与 Attention 原理：公式、计算与注意力稀释",
-      "date": "2026-11-08",
       "summary": "Attention 决定从前文各处取多少信息，Softmax 负责把分数换成比例。从 Q、K、V 的含义开始，逐步算出这些比例，再说明内容变多时，为什么一条信息分到的比例可能变小。",
-      "source": "https://be1human.github.io/learn/softmax-attention.html",
-      "sourceLabel": "阅读全文与交互计算",
+      "date": "2026-11-08",
       "image": "assets/images/attention-cover.svg",
       "imageAlt": "Attention 的计算：先打分，再把分数换成比例，最后按比例取信息",
-      "tags": [
-        "Attention",
-        "Softmax",
-        "Transformer"
-      ],
-      "sections": [
-        {
-          "title": "Attention 和 Softmax 各做什么",
-          "paragraphs": [
-            "Attention 决定从各处取多少信息；Softmax 把一组分数换成加起来为 1 的比例。"
-          ],
-          "body": "<p>Attention 可以理解为按比例从不同位置取信息。Query 表示当前要找什么，Key 用来与它比较，Value 是实际取出的信息。先比较 Query 和各个 Key，再用 Softmax 把分数换成比例，最后按这些比例把 Value 合在一起。</p><p>所以，Softmax 算出的比例只是中间一步，还不是 Attention 最后交出的信息。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/attention-qkv-flow.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/attention-qkv-flow.svg\" alt=\"单个查询与三个键计算分数，经过Softmax后聚合对应值向量\" width=\"1200\" height=\"825\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>原创教学图。图中演示一组数怎样依次算出分数、比例和结果，完整公式与代码见学习页。</figcaption></figure>"
-        },
-        {
-          "title": "内容多了，比例为什么可能变小",
-          "paragraphs": [
-            "目标比分数相同的其它项高出 Δ 分，有 N 个其它项时，目标比例为 1 / (1 + N exp(−Δ))。"
-          ],
-          "body": "<p>先固定分数不变：目标比每个其它项高出 Δ 分，另外共有 N 项。目标分到的比例是 <code>1 / (1 + N exp(−Δ))</code>。其中 <code>exp(−Δ)</code> 就是 e 的 −Δ 次方。其它项越来越多，它们合起来占的份额就会增加。</p><p>学习页从具体数字开始，一步步说明公式里的分子、分母和数量。也会说明：某一处的比例变小，不等于 AI 一定忘了整条规则，更不能直接换算成任务出错的概率。</p>"
-        }
-      ],
-      "links": [
-        {
-          "label": "阅读全文：Softmax 与 Attention 原理",
-          "url": "https://be1human.github.io/learn/softmax-attention.html"
-        },
-        {
-          "label": "Attention Is All You Need",
-          "url": "https://arxiv.org/abs/1706.03762"
-        }
-      ],
-      "updatedAt": "2026-11-08",
-      "hideCover": true
+      "page": "learn/softmax-attention.html"
     },
     {
       "id": "supervisor-verify-eval",
       "title": "Supervisor、Verify 与 Eval：职责、机制与对比",
-      "source": "https://be1human.github.io/learn/supervisor-verify-eval.html",
-      "sourceLabel": "阅读全文与图解对比",
-      "date": "2026-11-08",
       "summary": "Supervisor 决定下一步做什么，Verify 检查眼前的结果是否符合要求，Eval 记录并比较任务做得怎样。这篇说明三者怎样配合，以及漏检和误拦怎样计算。",
+      "date": "2026-11-08",
       "image": "assets/images/supervisor-verify-eval.svg",
       "imageAlt": "调度、验证与评测：同一任务的三种职责，原创教学结构示意",
-      "imageNote": "原创教学结构示意，非实验结果",
-      "tags": [
-        "Supervisor",
-        "Verify",
-        "Eval"
-      ],
-      "sections": [
-        {
-          "title": "谁安排下一步，谁负责检查",
-          "paragraphs": [
-            "Supervisor 安排下一步；Verify 检查当前答案或动作；Eval 用事先定好的条件检查一次或一批任务。"
-          ],
-          "body": "<p>Supervisor 可以理解为安排任务的主管：决定接着查资料、修改、等待，还是结束。Verify 是当前这一步的检查：答案或动作是否满足要求，哪里没过，哪里还无法确认。Eval 是评测：用事先定好的条件，检查任务质量、花费和是否稳定。</p><p>它们都可能由程序规则或模型来做。区别要看检查结果用在哪里：是马上影响这次任务下一步，还是保存下来，供之后比较不同版本。一个评分如果被用来决定当前动作能否继续，也就在做放行检查。</p>"
-        },
-        {
-          "title": "同一份草稿怎样经过三种处理",
-          "paragraphs": [
-            "文章用 D23 与 D24 两份版本资料说明：补到新资料以后，还要重新检查草稿内容。"
-          ],
-          "body": "<p>草稿问的是 2.4 版，却引用了 2.3 版文档 D23。补查 2.4 版文档 D24 后，还要核对里面的参数，再把 8000 毫秒换成 8 秒。只把引用编号换掉，不能证明内容已经改对。</p><p>修改后的第二版草稿还要再检查一遍。草稿准备好，也不代表已经提交。评测可以记录这次修订的结果，也可以把一批任务放在一起，看改动有没有减少错误、增加多少花费。</p>"
-        }
-      ],
-      "links": [
-        {
-          "label": "阅读全文：Supervisor、Verify、Eval 的职责与边界",
-          "url": "https://be1human.github.io/learn/supervisor-verify-eval.html"
-        },
-        {
-          "label": "Agent Loop：运行时如何推进任务",
-          "url": "https://be1human.github.io/learn/agent-loop.html"
-        },
-        {
-          "label": "Agent 评测综述解读",
-          "url": "https://be1human.github.io/learn/agent-evaluation.html"
-        }
-      ],
-      "updatedAt": "2026-11-08"
+      "page": "learn/supervisor-verify-eval.html"
     },
     {
       "id": "agent-learning-guide",
       "title": "Agent 学习目录",
-      "source": "https://be1human.github.io/learn.html",
-      "sourceLabel": "进入 Agent 学习 Wiki",
-      "date": "2026-11-08",
       "summary": "从 Attention 怎样取信息，到 AI 怎样查资料、用工具、记住事情和检查结果，按问题查阅 15 篇学习文章。",
+      "date": "2026-11-08",
       "image": "assets/images/agent-learning-cover.svg",
       "imageAlt": "从三个角度看同一任务：资料怎样改变下一步、任务怎样继续、结果怎样检查",
-      "imageNote": "原创学习地图示意",
-      "tags": [
-        "Agent",
-        "论文解读",
-        "学习笔记"
-      ],
-      "sections": [
-        {
-          "title": "同一个任务，可以从三个角度看",
-          "paragraphs": [
-            "ReAct 解释新资料怎样改变下一步；Loop 解释任务怎样继续或恢复；Eval 检查是否做成、再试一次是否还行。"
-          ],
-          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/notes-reading-map.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/notes-reading-map.svg\" alt=\"同一文档比较任务在ReAct、Loop与Eval三个观察角度的阅读地图\" width=\"1200\" height=\"590\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>图中用比较两份版本文档的教学任务，说明三个不同问题：看到新资料后怎么办，任务中断后怎么办，最后怎样检查有没有做好。</figcaption></figure>"
-        },
-        {
-          "title": "按想弄明白的问题找文章",
-          "paragraphs": [
-            "资料不对就看资料选择与检索；任务停不下来就看循环和调度；不知道改动有没有用就看评测和运行记录。"
-          ],
-          "body": "<p>想知道模型怎样从前文取信息，可以先看 Softmax 与 Attention。想知道 AI 为什么需要再查一次资料，可以看 ReAct。资料过期或互相矛盾时，可以看上下文工程（给模型准备本次要看的内容）、记忆和 Agentic RAG（边查边判断资料够不够）。</p><p>任务一直重复调用工具，可以看 Agent Loop——让任务反复执行、检查并决定何时停止的程序。如果想分清谁安排下一步、谁检查当前结果、谁比较整体表现，可以看 Supervisor、Verify 与 Eval。</p><p>目录目前有 15 篇。各篇保留原始资料，在相关说明旁放图解和代码。论文中测得的结果与本站教学例子分别注明。</p>"
-        }
-      ],
-      "links": [
-        {
-          "label": "打开 Agent 学习 Wiki",
-          "url": "https://be1human.github.io/learn.html"
-        },
-        {
-          "label": "ReAct 框架原理",
-          "url": "https://be1human.github.io/learn/react.html"
-        },
-        {
-          "label": "Agent Loop 原理",
-          "url": "https://be1human.github.io/learn/agent-loop.html"
-        },
-        {
-          "label": "Agent 评测综述解读",
-          "url": "https://be1human.github.io/learn/agent-evaluation.html"
-        }
-      ],
-      "updatedAt": "2026-11-08",
-      "hideCover": true
+      "page": "posts/agent-learning-guide.html"
     },
     {
       "id": "jev-co-creation",
       "title": "Jev 阅读笔记：选好类别以后，程序还要检查什么",
-      "source": "https://be1human.github.io/posts/jev-co-creation.html",
-      "sourceLabel": "打开独立文章页",
-      "date": "2026-11-04",
       "summary": "用一条新闻说明怎样给 AI 准备材料和选项，以及怎样读它返回的概率。选中了类别，并不等于可以直接发布。",
+      "date": "2026-11-04",
       "image": "assets/images/jev-decision-cover.svg",
       "imageAlt": "先给新闻选类别，再由程序决定是否发布或交给人复核",
-      "imageNote": "阅读手记示意：一种协作设计的设想。",
-      "tags": [
-        "Jev",
-        "人与 AI",
-        "学习心得"
-      ],
-      "sections": [
-        {
-          "title": "先定分类规则，再决定是否发布",
-          "paragraphs": [
-            "“属于哪类”和“能否发布”是两个问题，不能只选中一个标签就直接发布。"
-          ],
-          "body": "<p>一条关于 Minecraft AI 伙伴的更新，既与游戏有关，也像开发工具。如果只能选一个主分类，就要先定规则：按使用场景分，还是按产品形态分？规则不同，模型和人都可能给出不同答案。</p><p>Jev 课程介绍了“有限答案”的做法，也就是先列好允许选择的答案。把这次判断能用的材料放进 <code>state</code>，可以把它理解为一包资料；再写清问题和选项。这样返回的答案方便程序读取，但能不能发布，仍要由程序检查。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/notes-decision.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/notes-decision.svg\" alt=\"新闻进入标签判断后，再由程序根据规则决定发布或复核\" width=\"1200\" height=\"620\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>两组结果选中的类别相同，但给各类别的概率不同。数字只是教学设定，不能当成接口准确率、速度或概率是否可信的实测结果。</figcaption></figure>"
-        },
-        {
-          "title": "State 这包资料里放什么",
-          "paragraphs": [
-            "state 保存这次判断可以看的资料，例如标题、正文、来源和日期。"
-          ],
-          "body": "<p>新闻归档可以提供标题、正文、原始来源和发布时间。做测试时，不能把人工确认的最终类别也放进去，否则等于先把答案告诉了模型。下面只演示资料怎样摆放，不是可以直接调用 Jev 的完整代码。</p><div class=\"code-frame\"><div class=\"code-toolbar\"><span>JSON</span><small>20 行</small><button type=\"button\" data-copy-code aria-label=\"复制代码\">复制</button></div><pre><code class=\"language-json\"><span class=\"token punctuation\">{</span>\n  <span class=\"token property\">\"state\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"title\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"Minecraft 伙伴新增目标执行\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token property\">\"source\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"项目发布记录\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token property\">\"text\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"增加任务日志与游戏状态检查。\"</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"question\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"按产品形态选择主分类\"</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"choices\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n    <span class=\"token string\">\"开发工具\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token string\">\"游戏\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token string\">\"硬件\"</span>\n  <span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"policy\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"ambiguous\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"人工复核\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token property\">\"publish_requires\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n      <span class=\"token string\">\"来源可访问\"</span><span class=\"token punctuation\">,</span>\n      <span class=\"token string\">\"发布时间已核对\"</span>\n    <span class=\"token punctuation\">]</span>\n  <span class=\"token punctuation\">}</span>\n<span class=\"token punctuation\">}</span></code></pre></div><p>如果一条新闻可以有多个标签，就不必硬挤成一个选项。也可以分成“主分类是什么”和“还要加哪些标签”两个问题，分别说明怎样选。</p>"
-        },
-        {
-          "title": "返回 0.99，就一定比 0.51 靠谱吗",
-          "paragraphs": [
-            "要看概率是否可信，需要对照一批已经知道正确类别的新闻，不能只看一个数字。"
-          ],
-          "body": "<p>按“开发工具、游戏、硬件”的顺序，两组教学结果分别是 <code>[0.51, 0.49, 0]</code> 和 <code>[0.99, 0.01, 0]</code>。它们都把开发工具放在第一位，但第一组与游戏很接近，第二组给开发工具的概率高得多。硬件为 0 是这里的示例设定，不是接口实测。</p><p>第二组是不是更可信，需要对照一批人工确认过类别的新闻。“这条分对了吗”看这条的正确答案；“给出的概率准不准”则要看一批结果。例如很多次报 0.8 时，是否真的大约八成分对了。这种概率与实际正确比例是否对得上的检查，叫校准。</p><p>分类错了，先看错在哪里：分类规则是否含糊，资料是否不够，还是负责分类的模型表现不合适。把原因都说成“模型不够聪明”，很难知道下一步该改什么。需要人工复核的记录，也应保留为什么送去复核。</p>"
-        }
-      ],
-      "links": [
-        {
-          "label": "阅读课程原文：认识 Jev",
-          "url": "https://datawhalechina.github.io/jev-cookbook/course/01/"
-        },
-        {
-          "label": "延伸阅读：第二章 · 核心概念",
-          "url": "https://datawhalechina.github.io/jev-cookbook/course/02/"
-        }
-      ],
       "imageFit": "contain",
-      "updatedAt": "2026-11-08",
-      "hideCover": true
+      "page": "posts/jev-co-creation.html"
     },
     {
       "id": "a-train-through-the-clouds",
       "title": "动态壁纸：图片分层与用程序画图",
-      "source": "https://be1human.github.io/posts/a-train-through-the-clouds.html",
-      "date": "2026-10-30",
       "summary": "蓝天列车把透明图片与绘图程序合在一起，星空列车则用程序绘制。这里说明分层、遮挡和远近移动速度怎样处理。",
+      "date": "2026-10-30",
       "image": "assets/images/starry-night.png",
       "imageAlt": "动态壁纸工作坊里，程序实际绘出的星空列车画面",
-      "imageNote": "动态壁纸工作坊中的星空列车实际渲染截图",
-      "sections": [
-        {
-          "title": "两种画面，用了不同做法",
-          "paragraphs": [
-            "蓝天列车把透明图片与 Shader 绘图程序合在一起；星空列车用 GLSL 语言实时绘制。"
-          ],
-          "body": "<p>Shader 可以理解为负责画面效果的绘图程序，GLSL 是编写这类程序的语言。蓝天案例把透明图片与 Shader 合在一起；星空案例则用 GLSL 绘出场景。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/blue-sky-train.png\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/blue-sky-train.png\" alt=\"蓝天湖景列车的实际画面\" width=\"2048\" height=\"768\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>蓝天湖景列车：先用透明图片组成场景，再分别处理远近层的移动、前后遮挡、水面和小幅运动。</figcaption></figure><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/starry-night.png\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/starry-night.png\" alt=\"星空列车桥梁与水面的实际渲染\" width=\"1920\" height=\"1080\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>星空列车：星空、云、桥、列车、蒸汽和水面由 GLSL 绘出。这是项目已有的实际画面截图。</figcaption></figure>"
-        },
-        {
-          "title": "为什么远山和近景不能移动得一样快",
-          "paragraphs": [
-            "视点移动时，远处和近处看起来移动速度不同，这种差别叫视差。"
-          ],
-          "body": "<p>画面拆成天空、云、远山、桥、列车和水面后，各层不能简单地移动相同距离。远处通常变化较慢，近处变化较快，这就是这里要做的视差。列车经过山体、枝叶和桥梁时，谁在前、谁在后，也要保持一致。</p><p>下面用三个系数演示：镜头偏移 <code>camera_offset</code> 同样是 100，天空移动 10，山移动 35，近景移动 80。它是教学代码，不是项目源码摘录。系数决定移动多少，不能自动画出原来被挡住的背景。</p><div class=\"code-frame\"><div class=\"code-toolbar\"><span>Python</span><small>4 行</small><button type=\"button\" data-copy-code aria-label=\"复制代码\">复制</button></div><pre><code class=\"language-python\">camera_offset <span class=\"token operator\">=</span> <span class=\"token number\">100</span>\nparallax <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token string\">\"sky\"</span><span class=\"token punctuation\">:</span> <span class=\"token number\">0.1</span><span class=\"token punctuation\">,</span> <span class=\"token string\">\"mountain\"</span><span class=\"token punctuation\">:</span> <span class=\"token number\">0.35</span><span class=\"token punctuation\">,</span> <span class=\"token string\">\"foreground\"</span><span class=\"token punctuation\">:</span> <span class=\"token number\">0.8</span><span class=\"token punctuation\">}</span>\noffsets <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span>layer<span class=\"token punctuation\">:</span> camera_offset <span class=\"token operator\">*</span> k <span class=\"token keyword\">for</span> layer<span class=\"token punctuation\">,</span> k <span class=\"token keyword\">in</span> parallax<span class=\"token punctuation\">.</span>items<span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">}</span>\n<span class=\"token comment\"># {\"sky\": 10, \"mountain\": 35, \"foreground\": 80}</span></code></pre></div><p>项目保留的一份技术美术（TA）图层拆解里，有 37 个可见图层。但那份参考图与动态蓝天案例不是同一张图。把原图拼回去对得上，不代表被挡住的背景已经补齐，也不代表画面已经能一直延伸和运动。</p>"
-        },
-        {
-          "title": "画面好看之后，还要检查运动和导出",
-          "paragraphs": [
-            "画面、运动、运行是否顺畅、导出的文件是否完整，需要分开检查。"
-          ],
-          "body": "<p>壁纸运动时，水面倒影要对应选中的对象；近景运动要能重复；镜头前进或倒退时，画面不能突然跳变。导出后还要确认用到的素材都带齐了。</p><p>项目提供制作和验收两份 Skill，也就是给助手执行时遵循的操作说明；另有本地运行和导出文档。现有检查适配蓝天案例。其它主题、星空案例和原生 Wallpaper Engine 分别检查到了哪里，需要各看报告，不能用一份“通过”替全部内容作保证。</p>"
-        }
-      ],
-      "links": [
-        {
-          "label": "打开动态壁纸工作坊",
-          "url": "https://be1human.github.io/starry-night-train/"
-        },
-        {
-          "label": "阅读项目说明",
-          "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
-        }
-      ],
-      "tags": [
-        "WebGL",
-        "Shader",
-        "动态视觉"
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/starry-night.png",
-      "updatedAt": "2026-11-08",
-      "hideCover": true
+      "page": "posts/a-train-through-the-clouds.html"
     },
     {
       "id": "meet-mineclaw",
       "title": "MineClaw：检查游戏里是否真的完成任务",
-      "source": "https://be1human.github.io/posts/meet-mineclaw.html",
-      "date": "2026-10-30",
       "summary": "用“背包里至少有四个原木”的教学例子说明：工具说成功，还要看游戏里的实际结果。现有控制台截图展示的是待连接界面。",
+      "date": "2026-10-30",
       "image": "assets/images/mineclaw.jpg",
       "imageAlt": "MineClaw 控制台待连接界面，背包栏暂无数据",
-      "imageNote": "MineClaw 本地控制台截图",
-      "sections": [
-        {
-          "title": "界面显示出来，不等于任务已经完成",
-          "paragraphs": [
-            "控制台能显示任务、背包和日志；这张截图还没有背包数据，不能据此判断任务成功。"
-          ],
-          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/mineclaw.jpg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/mineclaw.jpg\" alt=\"MineClaw 控制台待连接界面，背包栏显示暂无背包数据\" width=\"1440\" height=\"900\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>项目现有控制台截图。背包栏写着“暂无背包数据”，可以看到界面布局，还看不到一次任务成功的结果。</figcaption></figure><p>公开版本把聊天和做任务分开：MainBrain 负责日常对话，GoalAgent 负责推进目标任务；基于 Mineflayer 的连接程序负责与游戏交流。控制台显示工具调用、发生的事件，以及完成任务的依据。是否完成，要检查背包、方块、容器或距离等实际结果。</p>"
-        },
-        {
-          "title": "挖掘成功后，为什么还要看背包",
-          "paragraphs": [
-            "目标是背包至少有四个原木。挖掘成功时，原木可能还掉在地上，并没进背包。"
-          ],
-          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/notes-inventory.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/notes-inventory.svg\" alt=\"目标为背包四个原木，工具成功时背包仍为一，拾取后达到四才通过\" width=\"1200\" height=\"620\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>这是教学检查过程，用来说明项目 README 所说的“用游戏实际状态确认结果”，不是一次真实游戏测试记录。</figcaption></figure><p>如果方块消失了，背包数量却没增加，下一步应该检查掉落物有没有被拾取、背包有没有更新。如果原木已经够了，就该停止。工具返回“成功”和用户的目标完成，是两件需要分别检查的事。</p><div class=\"code-frame\"><div class=\"code-toolbar\"><span>JSON</span><small>14 行</small><button type=\"button\" data-copy-code aria-label=\"复制代码\">复制</button></div><pre><code class=\"language-json\"><span class=\"token punctuation\">{</span>\n  <span class=\"token property\">\"goal\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"item\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"oak_log\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token property\">\"inventory_at_least\"</span><span class=\"token operator\">:</span> <span class=\"token number\">4</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"tool_result\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"dig\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"success\"</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"observation\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"oak_log\"</span><span class=\"token operator\">:</span> <span class=\"token number\">1</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"verdict\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"not_complete\"</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"next_check\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"掉落物与拾取结果\"</span>\n<span class=\"token punctuation\">}</span></code></pre></div>"
-        },
-        {
-          "title": "项目包含什么，怎样判断实际能力",
-          "paragraphs": [
-            "运行需要 Minecraft Java 服务器和模型接口；上面的例子不是成功率报告。"
-          ],
-          "body": "<p>公开仓库包含伙伴实际运行的程序、网页控制台、功能测试，以及用来比较表现的一组测试任务（Benchmark）。游戏服务器、世界存档、账号设置和正在使用的数据库不在公开内容里。伙伴运行程序与网页控制台分别启动，是两个独立程序。</p><p>这篇记录依据下方链接锁定版本的项目说明。上面的四原木例子，只说明怎样检查任务是否完成。要知道真实伙伴能完成多少任务，还需要固定服务器、材料和模型设置，再重复运行测试。</p>"
-        }
-      ],
-      "links": [
-        {
-          "label": "前往 MineClaw 仓库",
-          "url": "https://github.com/Be1Human/MineClaw"
-        },
-        {
-          "label": "阅读项目说明",
-          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
-        }
-      ],
-      "tags": [
-        "AI Agent",
-        "Minecraft",
-        "开发记录"
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/mineclaw.jpg",
-      "updatedAt": "2026-11-08",
-      "hideCover": true
+      "page": "posts/meet-mineclaw.html"
     }
   ],
   "news": {
@@ -1980,144 +526,6 @@
         "imageKind": "original"
       }
     ]
-  },
-  "featuredProject": {
-    "id": "haimian-deep-space",
-    "title": "深空 · 游戏与 Haimian 外设",
-    "source": "https://be1human.github.io/projects/haimian-deep-space.html",
-    "date": null,
-    "summary": "回应来自 2826 年的宇航员，用 Haimian 小屏接着玩。",
-    "image": "assets/images/haimian/device-game.webp",
-    "imageAlt": "Haimian 运行实拍，屏幕下方是旋钮和蓝色确认键。",
-    "imageNote": "Haimian 样机实拍",
-    "sections": [
-      {
-        "title": "一轮怎样玩",
-        "paragraphs": [
-          "读 E-17 的消息，用选项或自由输入作出决定。"
-        ],
-        "images": [
-          {
-            "src": "assets/images/haimian/game-opening-compact.webp",
-            "alt": "《深空》网页实机，E-17 发来消息，底部提供三条建议回复和输入框。",
-            "caption": "游戏实机截图",
-            "width": 840,
-            "height": 1200
-          }
-        ],
-        "steps": [
-          "收到来讯",
-          "选择或输入",
-          "查看回联"
-        ]
-      },
-      {
-        "title": "剧情怎样推进",
-        "paragraphs": [
-          "章节规划和当轮对白各有一层。"
-        ],
-        "diagramHtml": "<div class=\"project-diagram\" role=\"group\" aria-label=\"剧情生成\"><div class=\"project-track\"><strong class=\"project-track-label\">回合</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>章节规划</strong><span>目标 · 选项</span></li><li><strong>本轮叙述</strong><span>前情＋玩家回复</span></li><li><strong>保存结果</strong><span>消息 · 资源</span></li></ol></div></div><div class=\"project-track\"><strong class=\"project-track-label\">等待</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>行动开始</strong><span>进入等待</span></li><li><strong>后台生成</strong><span>预备行动结果</span></li><li><strong>到时回联</strong><span>显示结果</span></li></ol></div></div><div class=\"project-track\"><strong class=\"project-track-label\">记忆</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>章节结束</strong><span>汇总本章记录</span></li><li><strong>异步提炼</strong><span>纪要 · 关键事实</span></li><li><strong>后续生成</strong><span>注入前情</span></li></ol></div></div></div>"
-      },
-      {
-        "title": "两端共用一局",
-        "paragraphs": [
-          "同一个存档标识指向同一份游戏状态。"
-        ],
-        "diagramHtml": "<div class=\"project-diagram\" role=\"group\" aria-label=\"双端与存档\"><div class=\"project-track\"><strong class=\"project-track-label\">网页</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>浏览器</strong><span>读取存档标识</span></li><li><strong>游戏服务</strong><span>获取最新轮次</span></li><li><strong>网页交互</strong><span>输入或选项</span></li></ol></div></div><div class=\"project-track\"><strong class=\"project-track-label\">外设</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>WiFi 配网</strong><span>录入存档标识</span></li><li><strong>设备接口</strong><span>获取精简状态</span></li><li><strong>实体交互</strong><span>提交选项 · 轮询</span></li></ol></div></div></div>"
-      },
-      {
-        "title": "旋钮与按键",
-        "paragraphs": [
-          "选中项是本地状态，确认时才发送。"
-        ],
-        "diagramHtml": "<fieldset class=\"project-diagram project-switchboard\"><legend>选择操作</legend><div class=\"project-choices\"><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-1\" aria-controls=\"haimian-deep-space-reader-4-1-result\" checked><label for=\"haimian-deep-space-reader-4-1\">转旋钮</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-1-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>选项页转动</strong><span>检测旋转方向</span></li><li><strong>移动焦点</strong><span>更新选中项</span></li><li><strong>小屏反馈</strong><span>高亮卡片</span></li></ol></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-2\" aria-controls=\"haimian-deep-space-reader-4-2-result\"><label for=\"haimian-deep-space-reader-4-2\">翻历史</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-2-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>历史页转动</strong><span>检测旋转方向</span></li><li><strong>滚动视口</strong><span>切换可见对话</span></li><li><strong>到达页边界</strong><span>按需取历史</span></li></ol></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-3\" aria-controls=\"haimian-deep-space-reader-4-3-result\"><label for=\"haimian-deep-space-reader-4-3\">短按</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-3-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>短按确认</strong><span>仅在可回复时</span></li><li><strong>提交选项</strong><span>异步发送</span></li><li><strong>等待回联</strong><span>继续轮询</span></li></ol></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-4\" id=\"haimian-deep-space-reader-4-4\" aria-controls=\"haimian-deep-space-reader-4-4-result\"><label for=\"haimian-deep-space-reader-4-4\">长按</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-4-4-result\"><div class=\"project-path\"><ol role=\"list\"><li><strong>识别长按</strong><span>进入配网</span></li><li><strong>打开配网页</strong><span>设置 WiFi 或存档</span></li></ol></div></div></div></fieldset>"
-      },
-      {
-        "title": "小屏怎样刷新",
-        "paragraphs": [
-          "ESP8266 · ST7789（240 × 240）",
-          "字形写入 704 B 缓冲，再批量写屏。"
-        ],
-        "tablesHtml": "<table class=\"project-detail-table\"><caption>两版原型实测</caption><thead><tr><th scope=\"col\">测量项</th><th scope=\"col\">改造前</th><th scope=\"col\">改造后</th></tr></thead><tbody><tr><th scope=\"row\">点按到本地画面</th><td>约 570 ms</td><td>约 25 ms</td></tr><tr><th scope=\"row\">CPU / SPI</th><td>80 / 27 MHz</td><td>160 / 40 MHz</td></tr><tr><th scope=\"row\">聊天区绘制</th><td>222–599 ms</td><td>21.7 ms</td></tr><tr><th scope=\"row\">绘制 14 个汉字</th><td>21.5 ms</td><td>7.9 ms</td></tr></tbody></table>",
-        "diagramHtml": "<fieldset class=\"project-diagram project-switchboard\"><legend>切换界面状态</legend><div class=\"project-choices\"><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-1\" aria-controls=\"haimian-deep-space-reader-5-1-result\" checked><label for=\"haimian-deep-space-reader-5-1\">选项高亮</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-1-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>焦点移动</strong><span>同一可见窗口</span></li><li><strong>刷新卡片</strong><span>先新高亮，再旧项</span></li></ol><div class=\"project-screen\" data-region=\"options\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-2\" aria-controls=\"haimian-deep-space-reader-5-2-result\"><label for=\"haimian-deep-space-reader-5-2\">历史滚动</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-2-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>视口变化</strong><span>聊天位置更新</span></li><li><strong>刷新阅读区</strong><span>重绘可见内容</span></li></ol><div class=\"project-screen\" data-region=\"chat\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-3\" aria-controls=\"haimian-deep-space-reader-5-3-result\"><label for=\"haimian-deep-space-reader-5-3\">页面切换</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-3-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>页面状态改变</strong><span>连接或回合切换</span></li><li><strong>整屏重绘</strong><span>重置滚动状态</span></li></ol><div class=\"project-screen\" data-region=\"all\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div><input type=\"radio\" class=\"project-choice sr-only\" name=\"haimian-deep-space-reader-5\" id=\"haimian-deep-space-reader-5-4\" aria-controls=\"haimian-deep-space-reader-5-4-result\"><label for=\"haimian-deep-space-reader-5-4\">状态灯</label><div class=\"project-choice-panel\" id=\"haimian-deep-space-reader-5-4-result\"><div class=\"project-path project-path-with-screen\"><ol role=\"list\"><li><strong>周期刷新</strong><span>经过 20 ms 门控</span></li><li><strong>刷新连接灯</strong><span>更新小区域</span></li></ol><div class=\"project-screen\" data-region=\"status\" aria-hidden=\"true\"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div></div></div></div></fieldset>"
-      },
-      {
-        "title": "样机怎么装",
-        "paragraphs": [
-          "屏幕、旋钮和确认键固定在前壳。"
-        ],
-        "images": [
-          {
-            "src": "assets/images/haimian/exploded.webp",
-            "alt": "装配爆炸图，包含屏幕、旋钮、按键、前壳、后盖和底座。",
-            "caption": "结构爆炸图",
-            "width": 1800,
-            "height": 1109
-          },
-          {
-            "src": "assets/images/haimian/printed-prototypes.webp",
-            "alt": "多件白色打印外壳样件摆在桌面上。",
-            "caption": "打印样件",
-            "width": 1064,
-            "height": 983
-          },
-          {
-            "src": "assets/images/haimian/assembly-sequence.webp",
-            "alt": "三段装配示意图，依次展示组件进入、固定屏幕和闭合后盖。",
-            "caption": "装配步骤",
-            "width": 1800,
-            "height": 908
-          }
-        ],
-        "steps": [
-          "结构建模",
-          "打印试装",
-          "固定组件"
-        ]
-      },
-      {
-        "title": "本地配置",
-        "paragraphs": [
-          "USB 管应用和主题，WiFi 接游戏服务。"
-        ],
-        "images": [
-          {
-            "src": "assets/images/haimian/pc-console.webp",
-            "alt": "Windows 控制台截图，展示 USB 状态、应用切换和额度屏主题。",
-            "caption": "控制台截图",
-            "width": 1088,
-            "height": 1263
-          }
-        ],
-        "steps": [
-          "识别设备",
-          "应用与主题",
-          "同步时间"
-        ]
-      }
-    ],
-    "links": [
-      {
-        "label": "打开游戏",
-        "url": "https://dsgame.archerpeng.com/"
-      }
-    ],
-    "tags": [
-      "科幻叙事",
-      "旋钮交互",
-      "ESP8266"
-    ],
-    "sourceImage": "https://be1human.github.io/assets/images/haimian/device-game.webp",
-    "imageWidth": 1279,
-    "imageHeight": 1706,
-    "category": "games",
-    "categories": [
-      "games",
-      "experiments"
-    ],
-    "categoryLabel": "游戏与交互硬件",
-    "subtitle": "科幻叙事游戏与桌面外设",
-    "layout": "slides"
   },
   "provenance": {
     "extractedAt": "2026-11-02",

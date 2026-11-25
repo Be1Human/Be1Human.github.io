@@ -412,11 +412,48 @@
       "Markdown",
       "思维导图"
     ],
-    "url": "https://github.com/Be1Human/obsidian-cloudmind#readme",
-    "action": "查看项目与下载",
+    "url": "https://github.com/Be1Human/obsidian-cloudmind/releases/latest",
+    "action": "下载 Obsidian 插件",
     "repository": "https://github.com/Be1Human/obsidian-cloudmind",
     "documentation": "https://github.com/Be1Human/obsidian-cloudmind/blob/ba8df839128b9b6548dc610eddc301ec1d121f8f/README.zh-CN.md",
-    "accent": "purple"
+    "accent": "purple",
+    "detail": {
+      "status": "Obsidian 插件",
+      "coverSize": [
+        1440,
+        900
+      ],
+      "sections": [
+        {
+          "heading": "一份笔记，两种整理方式",
+          "paragraphs": [
+            "写读书笔记时，标题和列表适合逐条记录；回头梳理观点之间的关系时，展开成一张图会更直观。CloudMind 把这两种方式接在同一份 Markdown 文件上，不用另存一份导图，再手动维护两边的内容。",
+            "已有笔记可以直接预览为导图，标题和列表的嵌套对应节点层级。在画布上双击修改文字，按 Tab 添加子节点，按 Enter 添加同级节点，也可以拖动分支调整结构，修改会写回原笔记。"
+          ]
+        },
+        {
+          "heading": "从一个节点，打开另一篇笔记",
+          "paragraphs": [
+            "导图里的一个分支可能只需要写下结论，完整资料已经在另一篇笔记中。编辑节点时输入 [[，就能从库中的笔记列表里选择引用；Ctrl + 点击含链接的节点，可以在新标签页打开对应笔记。",
+            "保存的是 Obsidian 标准双链，所以反向链接和关系图谱仍能识别这些引用。导图可以成为资料的入口，而不必把所有正文塞进节点。"
+          ]
+        },
+        {
+          "heading": "按内容选择结构和主题",
+          "paragraphs": [
+            "梳理概念可以用双向思维导图，排列步骤可以用逻辑图，整理进程可以用时间轴。插件提供 8 种结构和 10 套主题，也可以单独调整节点颜色、添加备注和标签。每篇笔记会保留自己的结构与主题。",
+            "需要发给别人时，可以导出 PNG、SVG 或 .xmind 文件；导出结果保存在当前笔记所在的文件夹。"
+          ]
+        },
+        {
+          "heading": "下载安装",
+          "paragraphs": [
+            "展示版本为 0.4.3，适用于 Obsidian 桌面版。手动安装时，从发布页下载 main.js、manifest.json 和 styles.css，放入笔记库的 .obsidian/plugins/cloudmind/ 文件夹，再在第三方插件设置中启用。",
+            "预览已有笔记时保持文件原样。在导图里编辑后，插件会用标题和列表重新组织 Markdown，并通过注释保存节点样式。关闭插件后，笔记仍可用普通 Markdown 编辑器打开。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "rain-city-character-reconstruction",
@@ -934,7 +971,6 @@
           ]
         }
       ],
-      "directPage": true,
       "references": [
         {
           "title": "GEM-X 官方仓库",
@@ -944,7 +980,8 @@
           "title": "Unreal Engine Sequencer 子序列文档",
           "url": "https://dev.epicgames.com/documentation/unreal-engine/sequences-shots-and-takes-in-unreal-engine"
         }
-      ]
+      ],
+      "tableOfContents": true
     }
   },
   {
@@ -1194,10 +1231,37 @@
       "AI Agent"
     ],
     "url": "https://github.com/Be1Human/MineClaw#quick-start",
-    "action": "了解项目",
+    "action": "查看源码与启动说明",
     "repository": "https://github.com/Be1Human/MineClaw",
     "accent": "green",
-    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
+    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md",
+    "detail": {
+      "status": "持续开发",
+      "coverSize": [
+        1440,
+        900
+      ],
+      "sections": [
+        {
+          "heading": "从聊天到游戏行动",
+          "paragraphs": [
+            "玩家可以在 Minecraft 里和伙伴聊天，也可以请它完成一个目标。例如请它去取木头，运行时先理解目标，再根据角色位置、背包和附近方块规划行动。任务执行和日常对话由不同的流程处理。"
+          ]
+        },
+        {
+          "heading": "怎样知道木头拿到了",
+          "paragraphs": [
+            "Mineflayer 提供游戏角色和实时世界状态。目标执行器调用可复用的技能，检查行动前后的状态，再决定任务完成、继续尝试或说明当前卡点。对取物任务，可以用背包变化核对结果。"
+          ]
+        },
+        {
+          "heading": "控制台能看到什么",
+          "paragraphs": [
+            "本地控制台展示对话、实时感知、任务事件和完成证据，可用来追踪模型决定了什么、游戏里实际发生了什么。运行需要 Minecraft Java 版服务器和模型服务，实际能力取决于版本、配置和现场状态。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "clawpm",
@@ -1846,10 +1910,46 @@
       "动态壁纸"
     ],
     "url": "https://be1human.github.io/starry-night-train/",
-    "action": "查看案例",
+    "action": "打开星空列车演示",
     "repository": "https://github.com/Be1Human/starry-night-train",
     "accent": "blue",
-    "documentation": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
+    "documentation": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md",
+    "detail": {
+      "status": "可运行的动态壁纸案例",
+      "coverSize": [
+        1920,
+        1080
+      ],
+      "sections": [
+        {
+          "heading": "蓝天列车用分层素材搭出远近",
+          "paragraphs": [
+            "山体、草岸和列车拆成透明素材，随镜头移动采用不同速度。局部遮挡和选择性倒影决定了物体怎样穿过场景，水波、蒸汽和枝叶微动由程序叠加。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/blue-sky-train.png",
+              "alt": "蓝天湖景列车的运行截图",
+              "caption": "蓝天湖景列车 · 分层素材与 Shader 组合",
+              "width": 2048,
+              "height": 768
+            }
+          ]
+        },
+        {
+          "heading": "星空列车由 Shader 实时画出",
+          "paragraphs": [
+            "星空、层云、桥、列车和水面用 GLSL 绘制。这个案例保留了单文件 HTML 和参数面板，适合观察速度、背景与水面效果如何一起变化。"
+          ]
+        },
+        {
+          "heading": "从拆解推进到交付",
+          "paragraphs": [
+            "项目内的第一份 Skill 把场景拆成图层、素材与渲染职责，第二份 Skill 用基线检查画面、运行表现和离线导出。工作台可以分别查看动态合成、单层效果、独立素材和参考画面。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "titan-town",
@@ -1871,7 +1971,34 @@
     "action": "本地运行说明",
     "repository": "https://github.com/Be1Human/titan-town",
     "accent": "green",
-    "documentation": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md"
+    "documentation": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md",
+    "detail": {
+      "status": "可运行的浏览器游戏",
+      "coverSize": [
+        1065,
+        875
+      ],
+      "sections": [
+        {
+          "heading": "用飞索穿过会倒塌的小镇",
+          "paragraphs": [
+            "玩家用钩索和喷气装备在房顶与街道间移动，在三条命内完成七个任务。地面巨人会追踪动静、拆毁建筑，开阔地还有城墙上的投石威胁。楼房被破坏后，原来可以走的路线也可能发生变化。"
+          ]
+        },
+        {
+          "heading": "体素破坏怎样接进任务",
+          "paragraphs": [
+            "场景由体素组成，游戏处理方块受损后剩余结构的支撑关系，并用刚体表现掉落与坍塌。渲染用 Three.js，物理用 Rapier，巨人行为和任务逻辑在浏览器端运行。"
+          ]
+        },
+        {
+          "heading": "本地游玩",
+          "paragraphs": [
+            "源码附带静态服务，启动后用支持 WebGL2 和 WebAssembly SIMD 的浏览器打开。主菜单可以切换简体中文与英文，游戏内的帮助面板列出完整按键。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "hades-study",
@@ -1893,7 +2020,34 @@
     "action": "下载 Windows 版",
     "repository": "https://github.com/Be1Human/hades-learning-demo",
     "accent": "red",
-    "documentation": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md"
+    "documentation": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md",
+    "detail": {
+      "status": "非官方 Godot 学习 Demo",
+      "coverSize": [
+        1440,
+        900
+      ],
+      "sections": [
+        {
+          "heading": "三间房走完一局试炼",
+          "paragraphs": [
+            "玩家从前厅选择雷电、守护或潮汐属性，进入双火池厅迎战两波敌人。清场后选一项祝福，再到守卫柱廊打 Boss。胜负结算后可以重试或回到主菜单。"
+          ]
+        },
+        {
+          "heading": "属性与祝福之间的关系",
+          "paragraphs": [
+            "属性会改变攻击行为和特效，清场祝福分别调整伤害、生命上限或冲刺冷却。两类选择落在同一轮战斗中，可以看到基础攻击和奖励如何共同影响后续打法。"
+          ]
+        },
+        {
+          "heading": "Windows 版",
+          "paragraphs": [
+            "项目用 Godot 制作，发布包包含可执行文件和同目录的资源包，解压后即可启动中文演示。作品仅供非商业学习。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "network-diary",
@@ -1915,7 +2069,34 @@
     "action": "下载桌面版",
     "repository": "https://github.com/Be1Human/claude-ojousama-network",
     "accent": "orange",
-    "documentation": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
+    "documentation": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md",
+    "detail": {
+      "status": "桌面网络观察工具",
+      "coverSize": [
+        2800,
+        2092
+      ],
+      "sections": [
+        {
+          "heading": "同一个出口维持了多久",
+          "paragraphs": [
+            "总览记录 Claude Code 模型服务探测路径观测到的出口 IP。地址归属明确且符合计时条件时，同一个 IP 连续出现才累计时长。换 IP、探测失败或休眠造成采样缺口时，记录会停在最后一次确认的时间。"
+          ]
+        },
+        {
+          "heading": "遇到一次变化时怎么查",
+          "paragraphs": [
+            "在历史里查看变化发生的时间、所用探测路径和前后地址。浏览器近似路径与模型服务探测结果分别显示，便于判断两条路径在同一时段看到的出口是否一致。"
+          ]
+        },
+        {
+          "heading": "本机保存与导出",
+          "paragraphs": [
+            "应用可在 macOS 或 Windows 托盘中继续采样。历史保存在本机 SQLite 数据库，可以筛选记录或导出 CSV。地理归属采用第三方估计。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "animation-workflow",
@@ -1937,7 +2118,34 @@
     "action": "查看 Skill",
     "repository": "https://github.com/Be1Human/video-to-game-animation",
     "accent": "gray",
-    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
+    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md",
+    "detail": {
+      "status": "制作与评审 Skill",
+      "coverSize": [
+        1200,
+        704
+      ],
+      "sections": [
+        {
+          "heading": "从关节点估计到角色骨架",
+          "paragraphs": [
+            "流程从视频估计关节点，先复核捕捉置信度和肢体方向，再切分动作。把动作放到游戏角色上前，需要对齐静止姿态和骨轴，并用参考动作补足单目视频里难以判断的扭转。"
+          ]
+        },
+        {
+          "heading": "先确认脚何时接触地面",
+          "paragraphs": [
+            "步跑和起停切换用同一侧脚的接触事件对齐相位。Blender 可以回看支撑阶段的脚掌路径，游戏里则要结合碰撞后的位移核对滑步、收脚和停步效果。"
+          ]
+        },
+        {
+          "heading": "同一个姿势比较肩袖变形",
+          "paragraphs": [
+            "封面用同一帧的正面、侧面和背面对比修订前后的蒙皮。修正肩袖时同时核对肘部、肩背和躯干，避免调整一个局部后把变形推到其他部位。仓库提供制作与评审用的脚本，也记录了这些检查的测量范围。"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "clawphone",

@@ -12,9 +12,9 @@ test('archive and article routes share navigation, identity, footer and styleshe
   const routes = [
     ['journal.html', 'index.html#journal'],
     ['works.html', 'index.html#works'], ['news.html', 'index.html#news'],
-    ...posts.map(post => [`posts/${post.id}.html`, 'index.html#journal']),
+    ...posts.filter(post => !post.learningId).map(post => [`posts/${post.id}.html`, 'index.html#journal']),
     ...news.editions.map(edition => [`news/${edition.id}.html`, 'index.html#news']),
-    ...projects.filter(project => project.presentation === 'showcase').map(project => [project.url, 'index.html#works']),
+    ...projects.map(project => [`projects/${project.id}.html`, 'index.html#works']),
     ...learning.map(article => [`learn/${article.id}.html`, 'learn.html']),
   ];
   const home = await read('journal.html');

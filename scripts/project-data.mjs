@@ -26,75 +26,75 @@ export function validateProject(project, source) {
     if (project.url !== projectPagePath(project) || project.documentation !== projectPagePath(project)) throw new Error('Showcase must link to its local overview');
     const evidenceKeys = new Set(['projectId', 'reviewMode', 'descriptionBasis', 'productRuntimeTestedInThisReview']);
     if (source.reviewMode !== 'owner-authorized-showcase' || Object.keys(source).some(key => !evidenceKeys.has(key))) throw new Error('Private source evidence must remain outside the public data');
-    const detail = project.detail;
-    if (!detail || !detail.status || !/^\d{4}(?:–\d{4})?$/.test(detail.period) || !Array.isArray(detail.sections) || !detail.sections.length) throw new Error('Incomplete project overview');
-    if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website', 'coverVideo', 'directPage', 'references'].includes(key))) throw new Error('Unexpected field in project overview');
-    if (detail.layout !== undefined && detail.layout !== 'slides') throw new Error('Invalid project overview layout');
-    if (detail.website !== undefined) httpsUrl(detail.website);
-    if (detail.directPage !== undefined && typeof detail.directPage !== 'boolean') throw new Error('Invalid project page preference');
-    if (detail.references !== undefined) {
-      if (!Array.isArray(detail.references) || detail.references.some(link =>
-        !link || Object.keys(link).some(key => !['title', 'url'].includes(key)) || !hasText(link.title)
-      )) throw new Error('Invalid project references');
-      for (const link of detail.references) httpsUrl(link.url);
-    }
-    const validSize = (width, height) => [width, height].every(value => Number.isInteger(value) && value > 0);
-    if (detail.coverSize !== undefined &&
-        (!Array.isArray(detail.coverSize) || detail.coverSize.length !== 2 || !validSize(...detail.coverSize))) {
-      throw new Error('Invalid project cover dimensions');
-    }
-    if (detail.coverVideo !== undefined && (!detail.coverSize || typeof detail.coverVideo !== 'string' ||
-        !detail.sections.some(section => section.video?.src === detail.coverVideo))) throw new Error('Unknown project cover video');
-    for (const section of detail.sections) {
-      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
-      const { workflow } = section;
-      const stepFields = ['title', 'tool', 'output'];
-      if (workflow !== undefined && (
-        !Array.isArray(workflow) || workflow.length < 2 || workflow.some(step =>
-          !step || Object.keys(step).some(key => !stepFields.includes(key)) ||
-          stepFields.some(key => typeof step[key] !== 'string' || !step[key].trim())
-        )
-      )) throw new Error('Invalid project workflow');
-      if (section.steps !== undefined && (!Array.isArray(section.steps) || !section.steps.length ||
-          section.steps.some(step => typeof step !== 'string' || !step.trim()))) throw new Error('Invalid project steps');
-      const diagram = section.diagram;
-      if (diagram !== undefined && (detail.layout !== 'slides' || !diagram ||
-          Object.keys(diagram).some(key => !['caption', 'switchable', 'paths'].includes(key)) ||
-          !hasText(diagram.caption) || typeof diagram.switchable !== 'boolean' ||
-          !Array.isArray(diagram.paths) || !diagram.paths.length || diagram.paths.some(path =>
-            !path || Object.keys(path).some(key => !['name', 'nodes', 'screen'].includes(key)) ||
-            !hasText(path.name) || !Array.isArray(path.nodes) || !path.nodes.length ||
-            path.nodes.some(node => !node || Object.keys(node).some(key => !['title', 'note'].includes(key)) ||
-              !hasText(node.title) || !hasText(node.note)) ||
-            (path.screen !== undefined && !['all', 'chat', 'options', 'status'].includes(path.screen))
-          ))) throw new Error('Invalid project diagram');
-      if (section.tables !== undefined && (!Array.isArray(section.tables) ||
-          !section.tables.length || section.tables.some(table =>
-            !table || Object.keys(table).some(key => !['caption', 'columns', 'rows'].includes(key)) ||
-            !hasText(table.caption) || !Array.isArray(table.columns) || table.columns.length < 2 ||
-            !table.columns.every(hasText) || !Array.isArray(table.rows) || !table.rows.length ||
-            table.rows.some(row => !Array.isArray(row) || row.length !== table.columns.length || !row.every(hasText))
-          ))) throw new Error('Invalid project measurement table');
-      const video = section.video;
-      if (video !== undefined && (
-        !video || Object.keys(video).some(key => !['src', 'poster', 'caption', 'width', 'height'].includes(key)) ||
-        !/^assets\/project-media\/[\w-]+\.mp4$/.test(video.src) ||
-        !/^assets\/images\/[\w-]+\.(?:webp|png|jpe?g)$/.test(video.poster) ||
-        !validSize(video.width, video.height) ||
-        typeof video.caption !== 'string' || !video.caption.trim()
-      )) throw new Error('Invalid project video');
-      if (section.images === undefined) continue;
-      if (!Array.isArray(section.images) || section.images.some(image =>
-        !image || Object.keys(image).some(key => !['src', 'alt', 'caption', 'width', 'height'].includes(key)) ||
-        !imagePath.test(image.src) ||
-        !validSize(image.width, image.height) ||
-        [image.alt, image.caption].some(value => typeof value !== 'string' || !value.trim())
-      )) throw new Error('Invalid project screenshot');
-    }
   } else {
     if (project.presentation !== undefined) throw new Error('Invalid project presentation');
     for (const field of ['url', 'documentation', 'repository']) httpsUrl(project[field]);
     if (!project.documentation.startsWith(`${project.repository}/blob/${source.revision}/`) || !source.documents?.some(doc => doc.url === project.documentation)) throw new Error('Project documentation does not match its recorded source');
+  }
+  const detail = project.detail;
+  if (!detail || !hasText(detail.status) || (detail.period !== undefined && !/^\d{4}(?:–\d{4})?$/.test(detail.period)) || !Array.isArray(detail.sections) || !detail.sections.length) throw new Error('Incomplete project overview');
+  if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website', 'coverVideo', 'tableOfContents', 'references'].includes(key))) throw new Error('Unexpected field in project overview');
+  if (detail.layout !== undefined && detail.layout !== 'slides') throw new Error('Invalid project overview layout');
+  if (detail.website !== undefined) httpsUrl(detail.website);
+  if (detail.tableOfContents !== undefined && typeof detail.tableOfContents !== 'boolean') throw new Error('Invalid project table of contents');
+  if (detail.references !== undefined) {
+    if (!Array.isArray(detail.references) || detail.references.some(link =>
+      !link || Object.keys(link).some(key => !['title', 'url'].includes(key)) || !hasText(link.title)
+    )) throw new Error('Invalid project references');
+    for (const link of detail.references) httpsUrl(link.url);
+  }
+  const validSize = (width, height) => [width, height].every(value => Number.isInteger(value) && value > 0);
+  if (detail.coverSize !== undefined &&
+      (!Array.isArray(detail.coverSize) || detail.coverSize.length !== 2 || !validSize(...detail.coverSize))) {
+    throw new Error('Invalid project cover dimensions');
+  }
+  if (detail.coverVideo !== undefined && (!detail.coverSize || typeof detail.coverVideo !== 'string' ||
+      !detail.sections.some(section => section.video?.src === detail.coverVideo))) throw new Error('Unknown project cover video');
+  for (const section of detail.sections) {
+    if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+    const { workflow } = section;
+    const stepFields = ['title', 'tool', 'output'];
+    if (workflow !== undefined && (
+      !Array.isArray(workflow) || workflow.length < 2 || workflow.some(step =>
+        !step || Object.keys(step).some(key => !stepFields.includes(key)) ||
+        stepFields.some(key => typeof step[key] !== 'string' || !step[key].trim())
+      )
+    )) throw new Error('Invalid project workflow');
+    if (section.steps !== undefined && (!Array.isArray(section.steps) || !section.steps.length ||
+        section.steps.some(step => typeof step !== 'string' || !step.trim()))) throw new Error('Invalid project steps');
+    const diagram = section.diagram;
+    if (diagram !== undefined && (detail.layout !== 'slides' || !diagram ||
+        Object.keys(diagram).some(key => !['caption', 'switchable', 'paths'].includes(key)) ||
+        !hasText(diagram.caption) || typeof diagram.switchable !== 'boolean' ||
+        !Array.isArray(diagram.paths) || !diagram.paths.length || diagram.paths.some(path =>
+          !path || Object.keys(path).some(key => !['name', 'nodes', 'screen'].includes(key)) ||
+          !hasText(path.name) || !Array.isArray(path.nodes) || !path.nodes.length ||
+          path.nodes.some(node => !node || Object.keys(node).some(key => !['title', 'note'].includes(key)) ||
+            !hasText(node.title) || !hasText(node.note)) ||
+          (path.screen !== undefined && !['all', 'chat', 'options', 'status'].includes(path.screen))
+        ))) throw new Error('Invalid project diagram');
+    if (section.tables !== undefined && (!Array.isArray(section.tables) ||
+        !section.tables.length || section.tables.some(table =>
+          !table || Object.keys(table).some(key => !['caption', 'columns', 'rows'].includes(key)) ||
+          !hasText(table.caption) || !Array.isArray(table.columns) || table.columns.length < 2 ||
+          !table.columns.every(hasText) || !Array.isArray(table.rows) || !table.rows.length ||
+          table.rows.some(row => !Array.isArray(row) || row.length !== table.columns.length || !row.every(hasText))
+        ))) throw new Error('Invalid project measurement table');
+    const video = section.video;
+    if (video !== undefined && (
+      !video || Object.keys(video).some(key => !['src', 'poster', 'caption', 'width', 'height'].includes(key)) ||
+      !/^assets\/project-media\/[\w-]+\.mp4$/.test(video.src) ||
+      !/^assets\/images\/[\w-]+\.(?:webp|png|jpe?g)$/.test(video.poster) ||
+      !validSize(video.width, video.height) ||
+      typeof video.caption !== 'string' || !video.caption.trim()
+    )) throw new Error('Invalid project video');
+    if (section.images === undefined) continue;
+    if (!Array.isArray(section.images) || section.images.some(image =>
+      !image || Object.keys(image).some(key => !['src', 'alt', 'caption', 'width', 'height'].includes(key)) ||
+      !imagePath.test(image.src) ||
+      !validSize(image.width, image.height) ||
+      [image.alt, image.caption].some(value => typeof value !== 'string' || !value.trim())
+    )) throw new Error('Invalid project screenshot');
   }
   return project;
 }

@@ -58,13 +58,13 @@ test('date-style news links retain search filters and the selected item after re
   assert.equal(destination, 'https://be1human.github.io/news/2026-10-30.html?q=AI&category=tools#item-306fd8fd45fa4e83');
 });
 
-test('DuoMind links now open the MineClaw portfolio entry', async () => {
+test('DuoMind links open the MineClaw project page', async () => {
   const works = await read('works.html');
   assert.ok(works.includes('id="mineclaw"'));
   assert.ok(!works.includes('id="duomind"'));
   assert.ok(!(await read('sitemap.xml')).includes('projects/duomind.html'));
   for (const path of ['projects/duomind.html', 'portfolio/projects/duomind.html']) {
-    assert.ok((await read(path)).includes('<meta http-equiv="refresh" content="0;url=https://be1human.github.io/works.html#mineclaw">'));
+    assert.ok((await read(path)).includes('<meta http-equiv="refresh" content="0;url=https://be1human.github.io/projects/mineclaw.html">'));
   }
 });
 
@@ -74,5 +74,18 @@ test('old homepage learning anchors open the independent learning page', async (
     let destination;
     runInNewContext(script, {location: {hash, search: '?from=bookmark', replace: value => { destination = value; }}});
     assert.equal(destination,'learn.html?from=bookmark');
+  }
+});
+
+test('old shortened articles point to their canonical learning pages', async () => {
+  const posts = JSON.parse(await read('data/posts.json'));
+  const sitemap = await read('sitemap.xml');
+  for (const post of posts.filter(post => post.learningId)) {
+    const path = `posts/${post.id}.html`;
+    const target = `https://be1human.github.io/learn/${post.learningId}.html`;
+    const redirect = await read(path);
+    assert.ok(redirect.includes(`<meta http-equiv="refresh" content="0;url=${target}">`));
+    assert.equal(await read(`portfolio/${path}`), redirect);
+    assert.ok(!sitemap.includes(path));
   }
 });

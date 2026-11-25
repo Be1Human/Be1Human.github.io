@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>CloudMind — 克劳德梦见电子羊</title>
+  <meta name="description" content="在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。">
+  <link rel="canonical" href="https://be1human.github.io/projects/cloudmind.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="CloudMind — 克劳德梦见电子羊">
+  <meta property="og:description" content="在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。">
+  <meta property="og:url" content="https://be1human.github.io/projects/cloudmind.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=9a8ce05f1d8d">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
+  <script src="../assets/app.js?v=6caf86876420" defer></script>
+  <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
+
+</head>
+<body id="top" data-page="works" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#cloudmind">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩</strong><p>Obsidian 思维导图插件<span>·</span>Obsidian 插件</p></div></div><h1>CloudMind</h1><p class="article-lede">在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/cloudmind-cover.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/cloudmind-cover.webp" alt="CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图" width="1440" height="900" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>Obsidian 桌面版 · 项目演示库截图</figcaption></figure><div class="prose"><section id="section-1"><h2>一份笔记，两种整理方式</h2><p>写读书笔记时，标题和列表适合逐条记录；回头梳理观点之间的关系时，展开成一张图会更直观。CloudMind 把这两种方式接在同一份 Markdown 文件上，不用另存一份导图，再手动维护两边的内容。</p><p>已有笔记可以直接预览为导图，标题和列表的嵌套对应节点层级。在画布上双击修改文字，按 Tab 添加子节点，按 Enter 添加同级节点，也可以拖动分支调整结构，修改会写回原笔记。</p></section><section id="section-2"><h2>从一个节点，打开另一篇笔记</h2><p>导图里的一个分支可能只需要写下结论，完整资料已经在另一篇笔记中。编辑节点时输入 [[，就能从库中的笔记列表里选择引用；Ctrl + 点击含链接的节点，可以在新标签页打开对应笔记。</p><p>保存的是 Obsidian 标准双链，所以反向链接和关系图谱仍能识别这些引用。导图可以成为资料的入口，而不必把所有正文塞进节点。</p></section><section id="section-3"><h2>按内容选择结构和主题</h2><p>梳理概念可以用双向思维导图，排列步骤可以用逻辑图，整理进程可以用时间轴。插件提供 8 种结构和 10 套主题，也可以单独调整节点颜色、添加备注和标签。每篇笔记会保留自己的结构与主题。</p><p>需要发给别人时，可以导出 PNG、SVG 或 .xmind 文件；导出结果保存在当前笔记所在的文件夹。</p></section><section id="section-4"><h2>下载安装</h2><p>展示版本为 0.4.3，适用于 Obsidian 桌面版。手动安装时，从发布页下载 main.js、manifest.json 和 styles.css，放入笔记库的 .obsidian/plugins/cloudmind/ 文件夹，再在第三方插件设置中启用。</p><p>预览已有笔记时保持文件原样。在导图里编辑后，插件会用标题和列表重新组织 Markdown，并通过注释保存节点样式。关闭插件后，笔记仍可用普通 Markdown 编辑器打开。</p></section><section class="article-links project-links"><h2>项目链接</h2><ul><li><a href="https://github.com/Be1Human/obsidian-cloudmind/releases/latest" target="_blank" rel="noopener noreferrer">下载 Obsidian 插件 ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span>Obsidian</span><span>Markdown</span><span>思维导图</span></div><a class="back-link" href="../works.html#cloudmind">← 返回作品集</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

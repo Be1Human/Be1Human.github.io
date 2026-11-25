@@ -20,6 +20,8 @@ export function validateUpdate(update) {
   return update;
 }
 
+export const postPagePath = post => post.learningId ? `learn/${post.learningId}.html` : `posts/${post.id}.html`;
+
 export function buildFeed(posts, updates) {
   const ids = new Set();
   for (const update of updates) {
@@ -34,7 +36,7 @@ export function buildFeed(posts, updates) {
   }
   const entries = [
     ...updates.map(update => ({...update, type: 'status', permalink: `index.html#status-${update.id}`})),
-    ...posts.filter(post => post.inFeed !== false).map(post => ({...post, type: 'article', permalink: post.learningId ? `learn/${post.learningId}.html` : `posts/${post.id}.html`})),
+    ...posts.filter(post => post.inFeed !== false).map(post => ({...post, type: 'article', permalink: postPagePath(post)})),
   ];
   // Undated times retain their existing order; new posts can be ordered precisely within a day.
   return entries.sort((a, b) => b.date.localeCompare(a.date) || (b.publishedAt ? Date.parse(b.publishedAt) : 0) - (a.publishedAt ? Date.parse(a.publishedAt) : 0));

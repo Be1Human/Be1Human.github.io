@@ -16,19 +16,17 @@ const manifest=JSON.parse(await readFile(resolve(root,'video-manifest.json'),'ut
 const archive=JSON.parse(await readFile(resolve(root,'assets/news/archive.json'),'utf8'));
 const project=content.projects.find(p=>p.id==='haimian-deep-space');
 const posts=JSON.parse(await readFile(resolve(root,'data/posts.json'),'utf8'));
-const illustratedProjects=JSON.parse(await readFile(resolve(root,'data/projects.json'),'utf8'))
- .filter(project=>project.presentation==='showcase'&&project.detail.coverSize)
- .map(project=>project.url);
+const projectPages=content.projects.map(project=>project.page);
 const learningIds=JSON.parse(await readFile(resolve(root,'assets/learning-search.json'),'utf8')).map(a=>a.id);
 let paths=['index.html','app.js','style.css','assets/site.css','assets/sheep.svg','journal.html','works.html','news.html','content-local.json','video-manifest.json','assets/news/archive.json',archive.editions[0].url,'posts/jev-co-creation.html','assets/journal/jev-co-creation.svg',project.image,'learn.html','assets/learn-directory.css','assets/learn-directory.js','assets/learn.css','assets/learn.js','assets/reading.css','assets/reading.js','assets/attention.js','assets/learning-search.json',...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(entry=>'posts/'+entry.id+'.html')];
 const visualAssets=new Set();
-for(const path of [...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(post=>'posts/'+post.id+'.html'),...illustratedProjects]){
+for(const path of [...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(post=>'posts/'+post.id+'.html'),...projectPages]){
  const html=await readFile(resolve(root,path),'utf8');
  for(const match of html.matchAll(/<(?:img|video)\b[^>]*>/g)){
   for(const attr of match[0].matchAll(/\b(?:src|poster)=['"]\.\.\/(assets\/[^'"]+)['"]/g))visualAssets.add(attr[1]);
  }
 }
-paths=[...new Set([...paths,'sitemap.xml','assets/archive.css','assets/app.js','assets/project-slides.css','assets/project-workflow.css','projects/duomind.html','portfolio/projects/duomind.html','posts/ue-character-performance-pipeline.html','portfolio/posts/ue-character-performance-pipeline.html',...illustratedProjects,...visualAssets,...posts.map(post=>post.image).filter(Boolean)])];
+paths=[...new Set([...paths,'sitemap.xml','assets/archive.css','assets/app.js','assets/project-preview.js','assets/project-slides.css','assets/project-workflow.css','projects/duomind.html','portfolio/projects/duomind.html','posts/ue-character-performance-pipeline.html','portfolio/posts/ue-character-performance-pipeline.html',...projectPages,...visualAssets,...posts.map(post=>post.image).filter(Boolean)])];
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const expected=new Map(await Promise.all(paths.map(async path=>[path,hash(execFileSync('git',['show',commit+':'+path],{cwd:root,maxBuffer:16*1024*1024}))])));
 let failures=[];
