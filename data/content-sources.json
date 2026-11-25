@@ -202,8 +202,9 @@
       "projectId": "smarttest",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
-        "作品集中的 Android 真机测试说明",
-        "演示运行记录与动作时间轴"
+        "SmartTest 视觉执行器、UE 只读断言、工作流校验和版本化运行实现",
+        "Android 真机校准记录及工作台、工作流、回放和验收界面截图",
+        "五轮 Unreal Insights Trace 采集与本地解析验收记录"
       ],
       "productRuntimeTestedInThisReview": false
     },

@@ -208,7 +208,7 @@ function renderProjectSlides(project, cover) {
   }).join('');
   const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
   const play = project.detail.website ? `<a class="slide-play" href="${e(project.detail.website)}" ${external}>打开游戏 ↗</a>` : '';
-  return `<article class="site-panel project-slides"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><header class="slides-hero"><div class="slides-intro"><p class="slides-category">${e(project.detail.status)} · ${e(project.detail.period)}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p>${play}</div>${cover}</header><nav class="slides-nav" aria-label="项目章节">${links}</nav><div class="slides-body">${slides}</div><footer class="slides-footer">${play}<a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></article>`;
+  return `<article class="site-panel project-slides" id="${e(project.id)}"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><header class="slides-hero"><div class="slides-intro"><p class="slides-category">${e(project.detail.status)} · ${e(project.detail.period)}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p>${play}</div>${cover}</header><nav class="slides-nav" aria-label="项目章节">${links}</nav><div class="slides-body">${slides}</div><footer class="slides-footer">${play}<a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></article>`;
 }
 
 for (const project of projects.filter(project => project.presentation === 'showcase')) {
