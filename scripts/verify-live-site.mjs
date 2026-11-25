@@ -18,7 +18,7 @@ const project=content.projects.find(p=>p.id==='haimian-deep-space');
 const posts=JSON.parse(await readFile(resolve(root,'data/posts.json'),'utf8'));
 const projectPages=content.projects.map(project=>project.page);
 const learningIds=JSON.parse(await readFile(resolve(root,'assets/learning-search.json'),'utf8')).map(a=>a.id);
-let paths=['index.html','app.js','style.css','assets/site.css','assets/sheep.svg','journal.html','works.html','news.html','content-local.json','video-manifest.json','assets/news/archive.json',archive.editions[0].url,'posts/jev-co-creation.html','assets/journal/jev-co-creation.svg',project.image,'learn.html','assets/learn-directory.css','assets/learn-directory.js','assets/learn.css','assets/learn.js','assets/reading.css','assets/reading.js','assets/attention.js','assets/learning-search.json',...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(entry=>'posts/'+entry.id+'.html')];
+let paths=['index.html','app.js','style.css','assets/site.css','assets/sheep.svg','journal.html','works.html','news.html','content-local.json','video-manifest.json','assets/news/archive.json',archive.editions[0].url,'posts/jev-co-creation.html','assets/journal/jev-co-creation.svg',project.image,'learn.html','assets/learn-directory.css','assets/learn-directory.js','assets/learn.css','assets/learn.js','assets/reading.css','assets/reading.js','assets/attention.js','assets/kv-cache.js','assets/learning-search.json',...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(entry=>'posts/'+entry.id+'.html')];
 const visualAssets=new Set();
 for(const path of [...learningIds.map(id=>'learn/'+id+'.html'),...posts.map(post=>'posts/'+post.id+'.html'),...projectPages]){
  const html=await readFile(resolve(root,path),'utf8');

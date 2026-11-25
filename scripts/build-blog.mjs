@@ -33,6 +33,11 @@ const readingScriptVersion = await assetVersion('assets/reading.js');
 const workflowStyle = 'assets/project-workflow.css';
 const workflowStyleVersion = await assetVersion(workflowStyle);
 const attentionScriptVersion = await assetVersion('assets/attention.js');
+const kvCacheScriptVersion = await assetVersion('assets/kv-cache.js');
+const learningModules = {
+  'learn/softmax-attention.html': ['attention.js', attentionScriptVersion],
+  'learn/kv-cache.html': ['kv-cache.js', kvCacheScriptVersion],
+};
 const projectSlidesStyleVersion = await assetVersion('assets/project-slides.css');
 const archiveStyleVersion = await assetVersion('assets/archive.css');
 const archiveHead = (base = '') => `<link rel="stylesheet" href="${base}assets/archive.css?v=${archiveStyleVersion}">`;
@@ -109,7 +114,8 @@ function render(path, title, description, active, content, ogtype = 'website', e
   const base = path.includes('/') ? '../' : '';
   const nav = renderSiteNavigation({base, active});
   let html = template;
-  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>${path==='learn.html'?`<link rel="stylesheet" href="assets/learn-directory.css?v=${directoryStyleVersion}"><script src="assets/learn-directory.js?v=${directoryScriptVersion}" defer></script>`:''}${path==='learn/softmax-attention.html'?`<script type="module" src="${base}assets/attention.js?v=${attentionScriptVersion}"></script>`:''}` : '';
+  const learningModule = learningModules[path];
+  const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>${path==='learn.html'?`<link rel="stylesheet" href="assets/learn-directory.css?v=${directoryStyleVersion}"><script src="assets/learn-directory.js?v=${directoryScriptVersion}" defer></script>`:''}${learningModule?`<script type="module" src="${base}assets/${learningModule[0]}?v=${learningModule[1]}"></script>`:''}` : '';
   const brandedTitle = title.replaceAll('CLOUD BOY · 云上男孩', '克劳德梦见电子羊').replaceAll('— CLOUD BOY', '— 克劳德梦见电子羊');
   const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: path==='learn.html'?'learning-directory':active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, READING_STYLE_VERSION:readingStyleVersion, READING_SCRIPT_VERSION:readingScriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead + extraPageHead};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);

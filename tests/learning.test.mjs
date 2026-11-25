@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {readLearning, validateLearning, learningPages, learningOrder} from '../scripts/learning.mjs';
+import {kvCacheBytes} from '../assets/kv-cache.js';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const read=path=>readFile(new URL('../'+path,import.meta.url),'utf8');
 
@@ -43,4 +44,13 @@ test('all learning pages are discoverable without JavaScript and searchable with
  const evaluation=articles.find(a=>a.id==='agent-evaluation');
  assert.ok(evaluation.sources.some(s=>s.url==='https://aclanthology.org/2026.findings-acl.1330/'));
  assert.ok(evaluation.sources.some(s=>s.url==='https://aclanthology.org/2026.findings-emnlp.1162/'));
+});
+
+test('KV Cache estimates distinguish sequence lengths, KV heads and batch size',()=>{
+ const baseline={length:8192,batch:1,kvHeads:8};
+ assert.equal(kvCacheBytes({...baseline,length:1}),128*2**10);
+ assert.equal(kvCacheBytes(baseline),2**30);
+ assert.equal(kvCacheBytes({...baseline,length:32768}),4*2**30);
+ assert.equal(kvCacheBytes({...baseline,batch:4}),4*2**30);
+ assert.equal(kvCacheBytes({...baseline,kvHeads:32}),4*2**30);
 });

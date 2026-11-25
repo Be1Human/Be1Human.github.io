@@ -1,0 +1,45 @@
+[
+  {
+    "id": "kv-cache",
+    "title": "KV Cache 如何加速解码，又占多少显存？",
+    "eyebrow": "TRANSFORMER INFERENCE · KV CACHE",
+    "summary": "用三个输入 token 和两步解码，看看 Transformer 怎样复用过去的 Key 和 Value。再用显存计算器比较上下文长度、KV 头数和并发对缓存大小的影响。",
+    "category": "核心机制",
+    "level": "基础",
+    "minutes": 8,
+    "updated": "2026-11-25",
+    "sections": [
+      {
+        "id": "what-is-cached",
+        "title": "为什么历史 token 的 K 和 V 可以复用",
+        "body": "<p>假设一个仅解码器 Transformer 已读完输入，现在要接着生成下一个 token。自注意力会用当前位置的 Query（Q）和可见位置的 Key（K）算匹配分数，再按权重读这些位置的 Value（V）。公式和一个具体的加权计算可接着看 <a href=\"softmax-attention.html\">Softmax 与 Attention</a>。</p><p>因为因果掩码只允许每个位置读取它自己和更早的位置，追加一个 token 时，旧位置看不到新内容。在同一次推理中，模型权重、位置编码和旧前缀固定，旧位置在每层的 K 和 V 就可以沿用。KV Cache 存的是这些逐层累积的张量。下一步需要的是新 token 的 Q，旧位置的 Q 已经用完了。<a href=\"#ref-cache\">[1]</a></p>"
+      },
+      {
+        "id": "prefill-decode",
+        "title": "把一次生成拆成预填充和解码",
+        "body": "<p>用 A、B、C 表示三个输入 token，D、E、F 表示依次采样出的 token。预填充（prefill）用整段输入填好每层的 K、V，并从最后一个位置得到预测 D 的概率。解码（decode）再把刚选出的 D 送入模型，借助已有缓存推算 E。</p><table><caption>三个输入 token 的生成示例</caption><thead><tr><th scope=\"col\">阶段</th><th scope=\"col\">本轮输入</th><th scope=\"col\">本轮写入 K/V</th><th scope=\"col\">本轮输出</th></tr></thead><tbody><tr><th scope=\"row\">预填充</th><td>A、B、C</td><td>A、B、C</td><td>采样 D</td></tr><tr><th scope=\"row\">解码 1</th><td>D</td><td>追加 D</td><td>采样 E</td></tr><tr><th scope=\"row\">解码 2</th><td>E</td><td>追加 E</td><td>采样 F</td></tr></tbody></table><p>第一步解码用 <code>Q_D</code> 查询 <code>[K_A, K_B, K_C, K_D]</code>，再对对应的 V 做加权。此时缓存长度为 4。下一步输入 E 后才把 E 的 K 和 V 放进缓存，所以刚采样出的 F 要等到下一轮前向才会入缓存。<a href=\"#ref-cache\">[1]</a></p>"
+      },
+      {
+        "id": "compute",
+        "title": "少算的是旧位置，新增位置仍要读历史",
+        "body": "<p>以第一步解码为例。朴素做法会重新输入 A、B、C、D，重复计算旧位置的投影、注意力和后续层。缓存方式只为 D 执行各层的前向，并读出先前存好的 A、B、C 的 K 和 V。在这一层，查询与键的计算形状从 4×4 缩到 1×4。</p><p>令 S 是本轮可见的 token 数。固定模型宽度，按普通全注意力的计算量估算，每步重算整个前缀的注意力是 <code>O(S²)</code>，而缓存后的单 token 解码只算一行，是 <code>O(S)</code>。首次预填充仍要处理完整的输入，后续解码也要逐步读取变长的 K/V。长上下文时，缓存读写会占用更多内存带宽，实际时延还取决于批量大小、内核实现和硬件。</p>"
+      },
+      {
+        "id": "memory",
+        "title": "从模型参数估算 KV Cache 显存",
+        "body": "<p>先算标准全长缓存的原始张量大小。同一批次内各序列都长 S 时，乘上并发序列数 B、层数 L、每层 KV 头数 H、每个头的维度 D，以及单个数值的字节数。乘 2 是因为 K 和 V 分别存一份。</p><p class=\"learn-callout\"><strong>KV 字节数</strong> = B × S × L × 2 × H × D × 单个数值的字节数</p><p>以 32 层、8 个 KV 头、头维度 128、BF16（2 字节）为例，每个 token 的缓存是 <strong>128 KiB</strong>。单条序列缓存 8,192 token 时是 <strong>1 GiB</strong>，到 32,768 token 时是 <strong>4 GiB</strong>。四条同样长的 8,192-token 序列合计也是 4 GiB。长度各异时，把每条序列的有效缓存长度相加。实际显存还包括模型权重、临时工作区、分配粒度和框架开销。</p><div class=\"learn-demo kv-estimator\" data-kv-estimator hidden><p class=\"kv-estimator-heading\"><strong>KV Cache 显存计算器</strong><span>32 层 · 头维度 128 · BF16</span></p><div class=\"kv-estimator-controls\"><label>每条序列的缓存长度<select data-kv-length><option value=\"1024\">1,024 token</option><option value=\"8192\" selected>8,192 token</option><option value=\"32768\">32,768 token</option><option value=\"131072\">131,072 token</option></select></label><label>每层 KV 头数<select data-kv-heads><option value=\"1\">1</option><option value=\"8\" selected>8</option><option value=\"32\">32</option></select></label><label>同长度序列数<select data-kv-batch><option value=\"1\" selected>1</option><option value=\"4\">4</option><option value=\"8\">8</option></select></label></div><p class=\"kv-estimator-total\">原始缓存 <output data-kv-total aria-live=\"polite\">1.00 GiB</output></p></div><p>在 GQA（分组查询注意力）里，一组查询头共享一个 KV 头。一个有 32 个查询头、8 个 KV 头的模型，用 8 代入公式。假设其他参数相同，它的原始 KV 张量是 32 个 KV 头的模型的四分之一。<a href=\"#ref-gqa\">[2]</a></p>"
+      },
+      {
+        "id": "serving",
+        "title": "前缀缓存和分页分别优化哪一步",
+        "body": "<p>在推理服务里，单次生成已经能复用自身的历史。如果多个请求反复提交同一段长文档，前缀缓存还能复用已命中的前缀块，省掉这段前缀的重复预填充。匹配依据包括 token 序列及其前序块。把同一份文档放在同样的提示前缀里，后面再接不同的问题，前面的完整块就有机会复用。<a href=\"#ref-prefix\">[4]</a></p><p>并发请求的上下文长短不同，缓存也随解码逐步增长。PagedAttention 将一条序列的 K/V 按固定长度的块管理，按需分配，允许块在物理内存中不连续。它处理的是缓存的分配和碎片，GQA 改变的是模型每个 token 要存多少个 KV 头，两者可以组合。<a href=\"#ref-paged\">[3]</a></p><p>用计算器做个小练习。先把长度从 8,192 调到 32,768，再把长度调回 8,192、把并发调成 4。两种情况下原始张量都变成 4 GiB，但前者每条序列要读更长的历史，后者要同时服务更多序列。容量公式适合先估显存，吞吐和延迟仍要按实际服务形态测量。</p>"
+      }
+    ],
+    "sources": [
+      {"id":"ref-cache","title":"Hugging Face Transformers · How caching works","url":"https://huggingface.co/docs/transformers/main/en/cache_explanation","note":"解释因果解码、历史 K/V 的复用，以及输入与缓存的递增。"},
+      {"id":"ref-gqa","title":"Ainslie 等 · GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints","url":"https://aclanthology.org/2023.emnlp-main.298/","note":"分组查询注意力通过共享 K/V 头减少缓存维度。"},
+      {"id":"ref-paged","title":"Kwon 等 · Efficient Memory Management for Large Language Model Serving with PagedAttention","url":"https://arxiv.org/abs/2309.06180","note":"用块管理 K/V 的物理内存，以及缓存分配和共享。"},
+      {"id":"ref-prefix","title":"vLLM · Automatic Prefix Caching","url":"https://docs.vllm.ai/en/latest/design/prefix_caching/","note":"前缀块的哈希匹配及跨请求复用。"}
+    ]
+  }
+]

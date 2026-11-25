@@ -33,6 +33,15 @@ body[data-page="learning"] .blog-footer{max-width:1480px;width:calc(100% - 64px)
 @media(prefers-reduced-motion:reduce){body[data-page="learning"] *{scroll-behavior:auto!important;transition:none!important}}
 @media print{body[data-page="learning"] .blog-header,.learn-sidebar,.learn-toc,.learn-mobile-menu,.learn-mobile-toc,.learn-search-dialog,.learn-copy,.learn-progress,.learn-pagination{display:none!important}.learn-layout{display:block;padding:0;max-width:none}.learn-main{padding:0}.learn-prose details{display:block}.learn-prose details>*{display:block!important}.learn-prose pre{white-space:pre-wrap}.learn-demo-tabs{display:none}.learn-demo-panel[hidden]{display:block!important}.learn-prose a{color:inherit}}
 
+.kv-estimator .kv-estimator-heading{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin:0 0 16px}
+.kv-estimator-heading>span{font:11px var(--mono);color:#a5b6ba}
+.kv-estimator-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,135px),1fr));gap:12px}
+.kv-estimator-controls label{display:grid;gap:4px;font-size:12px;color:#cfdbda}
+.kv-estimator-controls select{width:100%;min-height:40px;padding:6px 10px;border:1px solid #5b7988;border-radius:4px;background:#132c3a;color:#e9dfcd;font:inherit;color-scheme:dark}
+.kv-estimator-controls select:focus-visible{outline:2px solid #8bccce;outline-offset:3px}
+.kv-estimator .kv-estimator-total{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:18px 0 0;padding-top:12px;border-top:1px solid #3a5563;font-size:13px}
+.kv-estimator-total output{font:650 clamp(20px,3vw,28px) var(--mono);color:#8bccce}
+
 @media(max-width:760px){body[data-page="learning"] .blog-header{flex-wrap:nowrap}body[data-page="learning"] .blog-header nav{width:auto;justify-content:flex-end}}
 
 /* The learning space shares the current electronic-sheep identity. */

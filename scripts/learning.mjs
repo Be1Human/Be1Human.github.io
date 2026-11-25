@@ -3,14 +3,21 @@ import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 
 const categories = [
-  {title:'核心机制', caption:'注意力、推理与行动控制', ids:['softmax-attention','react','agent-loop','supervisor-verify-eval','tool-calling','workflows-vs-agents']},
+  {title:'核心机制', caption:'注意力、推理与行动控制', ids:['softmax-attention','kv-cache','react','agent-loop','supervisor-verify-eval','tool-calling','workflows-vs-agents']},
   {title:'上下文与协作', caption:'让信息、记忆与工具各就其位', ids:['context-engineering','agent-memory','agentic-rag','planning-and-reflection','multi-agent','mcp']},
   {title:'评测与进阶', caption:'用可观察的结果检验能力', ids:['agent-evaluation','test-time-compute','agent-observability']},
 ];
 export const learningOrder = categories.flatMap(category=>category.ids);
 const e = value => String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain = value => value.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-const label = {'softmax-attention':'Softmax 与 Attention',react:'ReAct 框架', 'agent-loop':'Agent Loop', 'supervisor-verify-eval':'Supervisor · Verify · Eval', 'tool-calling':'工具与函数调用', 'workflows-vs-agents':'Workflow 与 Agent', 'context-engineering':'上下文工程', 'agent-memory':'Agent 记忆', 'agentic-rag':'Agentic RAG', 'planning-and-reflection':'规划与反思', 'multi-agent':'多 Agent 协作', mcp:'MCP 协议', 'agent-evaluation':'Agent 评测综述', 'test-time-compute':'推理时计算', 'agent-observability':'可观测性与追踪'};
+const label = {'softmax-attention':'Softmax 与 Attention', 'kv-cache':'KV Cache', react:'ReAct 框架', 'agent-loop':'Agent Loop', 'supervisor-verify-eval':'Supervisor · Verify · Eval', 'tool-calling':'工具与函数调用', 'workflows-vs-agents':'Workflow 与 Agent', 'context-engineering':'上下文工程', 'agent-memory':'Agent 记忆', 'agentic-rag':'Agentic RAG', 'planning-and-reflection':'规划与反思', 'multi-agent':'多 Agent 协作', mcp:'MCP 协议', 'agent-evaluation':'Agent 评测综述', 'test-time-compute':'推理时计算', 'agent-observability':'可观测性与追踪'};
+const relatedByArticle = {
+  'softmax-attention':['kv-cache','context-engineering','test-time-compute'],
+  'kv-cache':['softmax-attention','context-engineering','test-time-compute'],
+  'supervisor-verify-eval':['agent-loop','agent-evaluation','agent-observability'],
+  react:['agent-loop','tool-calling','planning-and-reflection'],
+  'agent-evaluation':['supervisor-verify-eval','agent-observability','test-time-compute'],
+};
 
 export function validateLearning(articles) {
   if (!articles.length || new Set(articles.map(a=>a.id)).size !== articles.length) throw Error('Learning articles must have unique IDs');
@@ -28,7 +35,7 @@ export function validateLearning(articles) {
 }
 
 export async function readLearning(root) {
-  const lists = await Promise.all(['foundations','frontier','evaluation','comparisons','attention'].map(name=>readFile(resolve(root,`data/learning/${name}.json`),'utf8').then(JSON.parse)));
+  const lists = await Promise.all(['foundations','frontier','evaluation','comparisons','attention','kv-cache'].map(name=>readFile(resolve(root,`data/learning/${name}.json`),'utf8').then(JSON.parse)));
   const articles = lists.flat().sort((a,b)=>learningOrder.indexOf(a.id)-learningOrder.indexOf(b.id));
   validateLearning(articles);
   if (articles.length !== learningOrder.length) throw Error('The first learning collection is incomplete');
@@ -48,7 +55,7 @@ export function learningPages(articles) {
   const directory = `<div class="learning-background" data-learning-background aria-hidden="true"><img src="assets/home.webp" alt="" width="1536" height="1024" fetchpriority="high"><video muted loop playsinline preload="none" data-src="assets/video/home-idle.mp4" poster="assets/home.webp" disablepictureinpicture></video><div class="learning-background-shade"></div></div><div class="learning-wiki-layout"><aside class="learn-sidebar">${sidebar(null,'')}</aside><section class="learning-wiki-stage" aria-labelledby="learning-directory-title"><h1 id="learning-directory-title" class="learning-directory-title">Agent 学习</h1><details class="learn-mobile-menu"><summary>☰ 学习目录</summary>${sidebar(null,'')}</details><button class="learning-motion" type="button" data-learning-motion aria-pressed="true" hidden>暂停背景</button></section></div>${search('')}`;
   const pages = [{path:'learn.html',title:'Agent 学习 — 克劳德梦见电子羊',summary:'Agent 学习笔记：Attention、ReAct、工具调用、检索、记忆和评测。',body:directory}];
   for (const [index,article] of articles.entries()) {
-    const related = article.id==='softmax-attention' ? ['context-engineering','react','test-time-compute'] : article.id==='supervisor-verify-eval' ? ['agent-loop','agent-evaluation','agent-observability'] : article.id==='react' ? ['agent-loop','tool-calling','planning-and-reflection'] : article.id==='agent-evaluation' ? ['supervisor-verify-eval','agent-observability','test-time-compute'] : [articles[(index+1)%articles.length].id,articles[(index+3)%articles.length].id];
+    const related = relatedByArticle[article.id] ?? [articles[(index+1)%articles.length].id,articles[(index+3)%articles.length].id];
     const content = `<header class="learn-intro"><p class="learn-eyebrow">${e(article.eyebrow)}</p><h1>${e(article.title)}</h1><p class="learn-lede">${e(article.summary)}</p><div class="learn-meta"><span>${e(article.level)}</span><span>约 ${article.minutes} 分钟</span><time datetime="${article.updated}">更新于 ${article.updated.replaceAll('-','.')}</time></div></header>${tocMobile(article)}<div class="learn-prose">${article.sections.map(section=>`<section id="${section.id}"><h2>${e(section.title)}<a class="learn-anchor" href="#${section.id}" aria-label="链接到${e(section.title)}">#</a></h2>${renderRichContent(section.body)}</section>`).join('')}<section id="references"><h2>参考资料</h2><p class="learn-source-note">论文、官方文档与案例依据。</p><ol class="learn-references">${article.sources.map((s,i)=>`<li id="${s.id}"><span>[${i+1}]</span><div><a href="${e(s.url)}" target="_blank" rel="noopener noreferrer">${e(s.title)} ↗</a>${s.note?`<p>${e(s.note)}</p>`:''}</div></li>`).join('')}</ol></section></div><section class="learn-related"><h2>关联阅读</h2><div>${related.map(id=>`<a href="${id}.html">${e(label[id])}<span>→</span></a>`).join('')}</div></section><nav class="learn-pagination" aria-label="文章前后导航">${index?`<a href="${articles[index-1].id}.html"><small>← 上一篇</small><strong>${e(label[articles[index-1].id])}</strong></a>`:'<a href="../learn.html"><small>← 返回</small><strong>学习指南</strong></a>'}${index<articles.length-1?`<a href="${articles[index+1].id}.html"><small>下一篇 →</small><strong>${e(label[articles[index+1].id])}</strong></a>`:'<a href="../learn.html"><small>继续探索 →</small><strong>全部文章</strong></a>'}</nav>`;
     pages.push({path:pathFor(article.id),title:`${article.title} — Agent 学习`,summary:article.summary,body:shell(article.id,article,content)});
   }
