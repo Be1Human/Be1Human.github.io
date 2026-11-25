@@ -207,11 +207,11 @@
   },
   {
     "id": "rain-city-character-reconstruction",
-    "title": "雨之城 · 360° 角色重建",
-    "kind": "单图到 3D 角色实验",
+    "title": "基于 3D 高斯的角色模型重建尝试",
+    "kind": "角色重建实验",
     "category": "visuals",
     "label": "视觉与设计",
-    "description": "从一张角色正面图生成 360° 环绕，再重建可换角度观察的高斯模型，并抽取三角网格。",
+    "description": "用《雨之城》Sayuki 的单张正面设定图生成环绕视频，逐轮比较高斯加密、Alpha 监督、Mip 滤波和网格提取的效果。",
     "image": "assets/images/character-orbit-cover.webp",
     "imageAlt": "3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面",
     "imageNote": "本次实验的 3DGS 渲染 · 侧面、正面与背面",
@@ -222,7 +222,7 @@
       "MILo"
     ],
     "url": "projects/rain-city-character-reconstruction.html",
-    "action": "查看重建效果",
+    "action": "查看实验对比",
     "documentation": "projects/rain-city-character-reconstruction.html",
     "presentation": "showcase",
     "detail": {
@@ -234,22 +234,73 @@
       ],
       "sections": [
         {
-          "heading": "高斯重建的环绕效果",
-          "paragraphs": [
-            "以《雨之城》Sayuki 的造型为参考，测试单张正面设定图能重建出多少角色细节。高斯模型保住了贝雷帽、制服层次、双腿和鞋的整体轮廓。"
+          "heading": "从单图到可对比的三维结果",
+          "workflow": [
+            {
+              "title": "准备正面图",
+              "tool": "输入图预处理",
+              "output": "裁去边框与标注"
+            },
+            {
+              "title": "补足视角",
+              "tool": "ComfyUI · MiniMax-H3",
+              "output": "73 帧环绕"
+            },
+            {
+              "title": "求解相机",
+              "tool": "FFmpeg → COLMAP",
+              "output": "相机位姿与稀疏点"
+            },
+            {
+              "title": "训练高斯",
+              "tool": "MILo → RaDeGS",
+              "output": "外观与环绕渲染"
+            },
+            {
+              "title": "导出表面",
+              "tool": "SDF → Blender",
+              "output": "带顶点颜色的 GLB"
+            }
           ],
-          "video": {
-            "src": "assets/project-media/character-orbit-3dgs.mp4",
-            "poster": "assets/images/character-orbit-3dgs-poster.webp",
-            "caption": "3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染",
-            "width": 768,
-            "height": 768
-          }
+          "paragraphs": [
+            "输入只提供角色正面。侧面和背面来自视频模型的推断，再用这批合成视角拟合一个静态 3D 模型。本实验同时比较相同机位下的颜色、相邻机位之间的稳定性，以及抽取出的网格表面。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-diagram-workflow.webp",
+              "alt": "单张正面设定图、多张环绕视角卡片与椭球高斯模型",
+              "caption": "原理示意 · 单图经环绕生成多视角，再进行三维拟合。",
+              "width": 1536,
+              "height": 1024
+            }
+          ]
         },
         {
-          "heading": "用一张图生成多视角",
+          "heading": "ComfyUI 工作流 · 单图生成环绕",
+          "workflow": [
+            {
+              "title": "首尾同图",
+              "tool": "LoadImage",
+              "output": "同一张图接入首帧与末帧"
+            },
+            {
+              "title": "构造条件",
+              "tool": "MiniMaxH3ImageToVideo",
+              "output": "由图像和提示词得到条件与潜变量"
+            },
+            {
+              "title": "潜变量采样",
+              "tool": "SamplerCustomAdvanced",
+              "output": "使用 Orbit LoRA · 28 步"
+            },
+            {
+              "title": "解码并存储",
+              "tool": "VAEDecode → CreateVideo → SaveVideo",
+              "output": "768 × 768 · 24 fps"
+            }
+          ],
           "paragraphs": [
-            "先裁掉输入图的边框和标注，分出人物前景，再在 ComfyUI 用 MiniMax-H3 和 360-Orbit LoRA 生成环绕。首尾使用同一张图，视频输出 73 帧，分辨率为 768 × 768。侧面和背面的服装细节来自模型推断。"
+            "加载 H3 模型和 360-Orbit LoRA 后，BasicGuider 将模型接入视频条件，BasicScheduler 生成采样的噪声调度。提示词将运动限制在相机，角色保持原姿势。最终视频约 3 秒，共 73 帧。"
           ],
           "images": [
             {
@@ -269,19 +320,132 @@
           }
         },
         {
-          "heading": "解算相机，再训练高斯",
+          "heading": "第一轮｜带网格约束的高斯基线",
           "paragraphs": [
-            "对视频抽帧后，为 COLMAP 生成独立的前景特征遮罩，减少背景对特征匹配的干扰。COLMAP 注册了全部 73 帧，解得约 354° 的方位覆盖，平均重投影误差约 0.74 像素。",
-            "用求解出的相机位姿和前景图训练 MILo，做了 18,000 步高斯优化，并在训练中加入网格约束。上方视频来自这次训练的检查点，可以对照 AI 视频观察转到背面时的轮廓和衣服细节。"
+            "将视频解码成帧，对每帧生成前景图和特征遮罩，再通过 COLMAP 求相机位姿。实跑注册 73/73 帧，方位覆盖约 354°，平均重投影误差约 0.74 像素。",
+            "用 MILo 训练 18,000 步，启用训练中的网格约束，最后得到 88,286 个高斯。相同视角下，贝雷帽、制服和双腿的轮廓可辨认，眼睛、手指和细小饰物仍偏模糊。下方环绕来自这轮基线的 RaDeGS 渲染。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-mask-comparison.webp",
+              "alt": "视频中的第37帧后视图及其白色前景遮罩",
+              "caption": "第 37 帧 · 左为生成帧，右为 COLMAP 使用的特征遮罩。",
+              "width": 680,
+              "height": 512
+            },
+            {
+              "src": "assets/images/character-orbit-render-comparison.webp",
+              "alt": "同一侧前视角下的原视频画面和第一轮高斯渲染",
+              "caption": "第 10 帧 · 左为合成观测，右为同机位的高斯渲染。",
+              "width": 680,
+              "height": 512
+            }
+          ],
+          "video": {
+            "src": "assets/project-media/character-orbit-3dgs.mp4",
+            "poster": "assets/images/character-orbit-3dgs-poster.webp",
+            "caption": "3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染",
+            "width": 768,
+            "height": 768
+          }
+        },
+        {
+          "heading": "第二轮｜增加高斯密度，拟合面部和手部",
+          "paragraphs": [
+            "从基线继续训练 6,000 步，在原始分辨率下让更多高斯分裂，并增加脸、手和图像梯度的监督。高斯数量上限提高到 50 万。",
+            "第 1 帧正面脸部区域的 SSIM 从 0.893 升到 0.956，眼睛和刘海边缘更贴近输入。手指间仍有灰色残影。这一轮的 SSIM 来自已用于训练的视角，衡量的是对合成图像的拟合。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-diagram-refinement.webp",
+              "alt": "概念图对比大椭球与小椭球的轮廓拟合，并示意指缝处的透明度与背景浮点",
+              "caption": "原理示意 · 增密改变椭球的大小与数量，Alpha 监督约束轮廓和背景。",
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "src": "assets/images/character-orbit-frequency-round.webp",
+              "alt": "同一帧中源图、基线、普通续训、细节续训和高频续训的脸部、胸口与右手局部",
+              "caption": "真实对照 · 同一帧同一裁切。末列是高频续训 6,000 步，前四列依次为源图、基线、对照续训和细节续训。",
+              "width": 1150,
+              "height": 784
+            }
           ]
         },
         {
-          "heading": "抽取网格并检查细节",
+          "heading": "第三轮｜用 Alpha 监督约束边缘和背景",
           "paragraphs": [
-            "从可学习的有符号距离场（SDF）提取三角网格，再用多视角轮廓过滤帽顶和脚下的残片。用 Blender 清理和减面，最后导出保留顶点颜色的 GLB。",
-            "输入视角集中在同一高度，手指、头顶和鞋底缺少充分的观察。提取的网格仍有粗糙表面和局部孔洞，骨骼绑定前需要手工修整。"
+            "为 73 帧重算全分辨率的前景 Alpha，在灰底上估算发梢、衣边和手指附近的混合边缘。沿用高频分支再训 2,000 步，给前景与背景分别加入 Alpha 损失。",
+            "相对于第二轮，固定远背景区域的平均渲染 Alpha 下降 86%。九个机位的人物内部 SSIM 从 0.969 到 0.970。手部对照里仍能看到灰色指缝，一处手部区域的拟合还略有回退。"
           ],
           "images": [
+            {
+              "src": "assets/images/character-orbit-alpha-round.webp",
+              "alt": "正面全身的源帧、高频增密结果、Alpha 监督结果和固定灰背景评估区域",
+              "caption": "真实对照 · 从左到右为源帧、高频续训、加入 Alpha 监督、固定灰背景评估区域。",
+              "width": 1024,
+              "height": 286
+            },
+            {
+              "src": "assets/images/character-orbit-alpha-hands.webp",
+              "alt": "同一机位下正面两只手在不同续训版本的像素裁切",
+              "caption": "真实对照 · 同机位的两只手。源图之后各列依次是基线、高频续训和加入 Alpha 监督。",
+              "width": 920,
+              "height": 520
+            }
+          ]
+        },
+        {
+          "heading": "第四轮｜调低 Mip 滤波，检查新视角",
+          "paragraphs": [
+            "在 Alpha 分支上降低 Mip 平滑幅度，再训 1,500 步。第 1 帧正面脸部的训练集 SSIM 升到 0.972，九个机位的人物内部 SSIM 约 0.973。",
+            "把相机放在相邻标定机位之间检查连贯性，仍能看到手边颗粒、灰色指缝和局部残片。后来用同一模型与机位修正网页查看器的椭圆协方差计算，复看后仍保留首轮基线作为展示版本。后三轮同时调整了采样、监督或滤波，并省略了原始网格约束，记录没有单独隔离这些因素的影响。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-mip-round.webp",
+              "alt": "对齐的源图、高频增密、Alpha 监督和较低 Mip 滤波的脸部及制服细节",
+              "caption": "真实对照 · 第 1 帧的脸部与制服，最右为降低 Mip 滤波后的结果。",
+              "width": 920,
+              "height": 520
+            },
+            {
+              "src": "assets/images/character-orbit-mip-new-view.webp",
+              "alt": "全身、头部和一只手在标定机位及两个分支的插值机位下的对照",
+              "caption": "真实对照 · 第三和第五列使用同一插值机位，分别渲染低 Mip 与 Alpha 监督分支。",
+              "width": 1280,
+              "height": 726
+            }
+          ]
+        },
+        {
+          "heading": "第五轮｜从 SDF 与 GOF 提取角色表面",
+          "paragraphs": [
+            "基线从学习得到的有符号距离场（SDF）抽取三角网格，再按多机位前景轮廓过滤帽顶和脚下残片。另一条路线通过 GOF 从高斯不透明度场抽取表面，分别测试原始高斯和 Alpha 监督后的增密高斯。",
+            "用相同 COLMAP 机位和灰模材质比较：旧版 GOF 的部分轮廓更连续，增密分支的 GOF 网格却有更密集的颗粒，脸和手指没有恢复。最终 GLB 来自经过轮廓过滤的 SDF 网格，在 Blender 清理与减面后保留了顶点颜色。局部孔洞和形变仍需修整，尤其是手与鞋底。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-diagram-surface.webp",
+              "alt": "机械外壳从椭球高斯表示、场边界剖面到带缺口的三角网格",
+              "caption": "原理示意 · 以机械外壳为例，在场上确定边界后生成三角网格，再检查连通和缺损。",
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "src": "assets/images/character-orbit-gof-round.webp",
+              "alt": "正面和侧前方的输入帧与 SDF、原始高斯 GOF、增密高斯 GOF 的实测灰模",
+              "caption": "真实对照 · 每行是一个固定机位。四列为输入帧、过滤后的 SDF、原始高斯 GOF、增密高斯 GOF。",
+              "width": 1280,
+              "height": 686
+            },
+            {
+              "src": "assets/images/character-orbit-sdf-comparison.webp",
+              "alt": "同机位下 SDF 的原始网格及轮廓过滤后的网格",
+              "caption": "真实对照 · 左为原始 SDF 网格，右为多视角轮廓过滤后。",
+              "width": 600,
+              "height": 384
+            },
             {
               "src": "assets/images/character-orbit-mesh.webp",
               "alt": "Blender 斜视渲染中可见角色手部和腿部的网格缺损",

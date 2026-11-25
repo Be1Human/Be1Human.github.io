@@ -30,6 +30,8 @@ const directoryStyleVersion = await assetVersion('assets/learn-directory.css');
 const directoryScriptVersion = await assetVersion('assets/learn-directory.js');
 const readingStyleVersion = await assetVersion('assets/reading.css');
 const readingScriptVersion = await assetVersion('assets/reading.js');
+const workflowStyle = 'assets/project-workflow.css';
+const workflowStyleVersion = await assetVersion(workflowStyle);
 const attentionScriptVersion = await assetVersion('assets/attention.js');
 const projectSlidesStyleVersion = await assetVersion('assets/project-slides.css');
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
@@ -62,7 +64,7 @@ for (const project of projects) {
   await access(resolve(root, project.image));
   const entry = experienceContent.projects.find(entry => entry.id === project.id);
   if (entry) entry.group = project.group ?? 'other';
-  if (!project.detail?.coverSize) continue;
+  if (!project.detail?.coverSize && !project.detail?.sections.some(section => section.workflow)) continue;
   for (const section of project.detail.sections) {
     for (const image of section.images ?? []) await access(resolve(root, image.src));
     if (section.video) {
@@ -71,13 +73,17 @@ for (const project of projects) {
     }
   }
   if (!entry) continue;
-  const [imageWidth, imageHeight] = project.detail.coverSize;
+  const [imageWidth, imageHeight] = project.detail.coverSize ?? [1200, 706];
   Object.assign(entry, {
     summary: project.description, image: project.image, imageAlt: project.imageAlt, imageNote: project.imageNote,
     imageWidth, imageHeight, sourceImage: origin + project.image,
-    sections: project.detail.sections.map(({ heading, paragraphs, images, video }) => ({
-      title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
-    })),
+    sections: project.detail.sections.map(section => {
+      const { heading, paragraphs, images, video, workflow } = section;
+      return {
+        title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
+        ...(workflow ? { body: projectSectionBody(section) } : {}),
+      };
+    }),
   });
   if (project.detail.layout === 'slides') entry.layout = 'slides';
   if (project.detail.website) entry.links = [{ label: '打开游戏', url: project.detail.website }];
@@ -111,13 +117,13 @@ news.editions.sort((a, b) => b.id.localeCompare(a.id));
 const latest = news.editions[0];
 const redirectVersion = await assetVersion('assets/legacy-redirect.js');
 
-function render(path, title, description, active, content, ogtype = 'website') {
+function render(path, title, description, active, content, ogtype = 'website', extraPageHead = '') {
   const base = path.includes('/') ? '../' : '';
   const nav = renderSiteNavigation({base, active});
   let html = template;
   const extraHead = active === 'learning' ? `<link rel="stylesheet" href="${base}assets/learn.css?v=${learnStyleVersion}"><script src="${base}assets/learn.js?v=${learnScriptVersion}" defer></script>${path==='learn.html'?`<link rel="stylesheet" href="assets/learn-directory.css?v=${directoryStyleVersion}"><script src="assets/learn-directory.js?v=${directoryScriptVersion}" defer></script>`:''}${path==='learn/softmax-attention.html'?`<script type="module" src="${base}assets/attention.js?v=${attentionScriptVersion}"></script>`:''}` : '';
   const brandedTitle = title.replaceAll('CLOUD BOY · 云上男孩', '克劳德梦见电子羊').replaceAll('— CLOUD BOY', '— 克劳德梦见电子羊');
-  const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: path==='learn.html'?'learning-directory':active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, READING_STYLE_VERSION:readingStyleVersion, READING_SCRIPT_VERSION:readingScriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead};
+  const variables = {TITLE: e(brandedTitle), DESCRIPTION: e(description), CANONICAL: origin + (path === 'index.html' ? '' : path), OGTYPE: ogtype, BASE: base, PAGE: path==='learn.html'?'learning-directory':active, STYLE_VERSION: styleVersion, SCRIPT_VERSION: scriptVersion, READING_STYLE_VERSION:readingStyleVersion, READING_SCRIPT_VERSION:readingScriptVersion, NAV: nav, CONTENT: content, EXTRA_HEAD: extraHead + extraPageHead};
   for (const [key, value] of Object.entries(variables)) html = html.replaceAll(`{{${key}}}`, value);
   if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error(`Unfilled template: ${path}`);
   pages.set(path, html);
@@ -154,9 +160,11 @@ function feedEntry(entry) {
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
 // Preserve the approved interactive homepage when rebuilding news and archives.
 const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
-const homeReadingAssets = new Map([['assets/reading.css',readingStyleVersion],['assets/reading.js',readingScriptVersion]]);
+const homepageAssets = new Map([
+  ['assets/reading.css', readingStyleVersion], ['assets/reading.js', readingScriptVersion], [workflowStyle, workflowStyleVersion],
+]);
 let homepage = homepageTemplate.replace('<!--SITE_NAVIGATION-->',`<!--HOME_NAV_START-->${renderSiteNavigation({interactive:true})}<!--HOME_NAV_END-->`);
-for (const [path,version] of homeReadingAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
+for (const [path,version] of homepageAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
 pages.set('index.html', homepage);
 
 const projectSections = Object.entries(projectGroups).map(([group, label]) => {
@@ -171,6 +179,15 @@ function projectFigure({src, alt, caption, width, height}, cover = false) {
 
 function projectVideo({src, poster, caption, width, height}) {
   return `<figure class="project-video"><video src="../${e(src)}" poster="../${e(poster)}" width="${width}" height="${height}" controls playsinline preload="none" aria-label="${e(caption)}"></video><figcaption>${e(caption)}</figcaption></figure>`;
+}
+
+function projectSectionBody({ paragraphs, workflow }) {
+  const text = paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('');
+  if (!workflow) return text;
+  const steps = workflow.map(({ title, tool, output }) =>
+    `<li><strong>${e(title)}</strong><span class="workflow-tool">${e(tool)}</span><span class="workflow-output">${e(output)}</span></li>`
+  ).join('');
+  return `<ol class="project-workflow" role="list">${steps}</ol>${text}`;
 }
 
 function renderProjectSlides(project, cover) {
@@ -195,8 +212,11 @@ for (const project of projects.filter(project => project.presentation === 'showc
     pages.set(path, pages.get(path).replace('</head>', `<link rel="stylesheet" href="../assets/project-slides.css?v=${projectSlidesStyleVersion}">\n</head>`));
     continue;
   }
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
-  render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article');
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  const workflowHead = project.detail.sections.some(section => section.workflow)
+    ? `<link rel="stylesheet" href="../${workflowStyle}?v=${workflowStyleVersion}">`
+    : '';
+  render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article', workflowHead);
 }
 
 render('journal.html', '克劳德梦见电子羊 · 手记', '云上男孩的文字动态与长文章，按发布时间排列。', 'journal', home);

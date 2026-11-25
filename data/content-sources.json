@@ -156,7 +156,8 @@
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
         "2026-10-20 的 ComfyUI 工作流、生成视频、COLMAP 位姿结果和 MILo 训练日志。",
-        "同一轮实验的 RaDeGS 环绕渲染、Blender 网格检查图和 GLB 导出记录。"
+        "同一轮实验的 RaDeGS 环绕渲染、Blender 网格检查图和 GLB 导出记录。",
+        "核对多轮外观续训中的固定区域指标、像素裁切与新视角渲染，以及 SDF/GOF 在同机位下的灰模和最终选用决策。"
       ],
       "productRuntimeTestedInThisReview": false
     },

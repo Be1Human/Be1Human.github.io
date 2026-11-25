@@ -65,3 +65,22 @@ test('personal site project lists agree on group membership', async () => {
     assert.deepEqual(experience.projects.filter(project => project.group === group).map(project => project.id).sort(), expected);
   }
 });
+
+test('authored workflows render the same ordered steps in the project page and homepage reader', async () => {
+  const experience = JSON.parse(await read('content-local.json'));
+  const example = projects.find(project => project.detail?.sections.some(section => section.workflow));
+  const source = evidence.projects.find(entry => entry.projectId === example.id);
+  const page = await read(projectPagePath(example));
+  const reader = experience.projects.find(entry => entry.id === example.id);
+  assert.match(page, /assets\/project-workflow\.css\?v=[a-f0-9]+/);
+  for (const [index, section] of example.detail.sections.entries()) {
+    if (!section.workflow) continue;
+    const content = reader.sections[index].body;
+    assert.ok(page.includes(content));
+    assert.equal([...content.matchAll(/<li>/g)].length, section.workflow.length);
+  }
+  const sections = example.detail.sections.map(section => section.workflow
+    ? {...section, workflow: [{...section.workflow[0], html: '<a href="private">other</a>'}, ...section.workflow.slice(1)]}
+    : section);
+  assert.throws(() => validateProject({...example, detail: {...example.detail, sections}}, source), /Invalid project workflow/);
+});

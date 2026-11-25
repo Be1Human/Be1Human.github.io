@@ -7,7 +7,7 @@ const read = p => readFile(new URL('../'+p, import.meta.url), 'utf8');
 test('the generated homepage preserves the approved experience and its runtime assets', async () => {
   const html=await read('index.html');
   const template=await read('src/experience/index.html');
-  const normalized=html.replace(/<!--HOME_NAV_START-->[\s\S]*?<!--HOME_NAV_END-->/,'<!--SITE_NAVIGATION-->').replace(/(assets\/(?:learn|reading)\.(?:css|js))\?v=[a-f0-9]+/g,'$1');
+  const normalized=html.replace(/<!--HOME_NAV_START-->[\s\S]*?<!--HOME_NAV_END-->/,'<!--SITE_NAVIGATION-->').replace(/(assets\/(?:learn|reading|project-workflow)\.(?:css|js))\?v=[a-f0-9]+/g,'$1');
   assert.equal(normalized,template);
   assert(!html.includes('id="learning"'));
   assert(!html.includes('id="index"'));

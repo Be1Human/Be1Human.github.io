@@ -10,7 +10,7 @@
 - **MineClaw**：实时感知控制台截图，来自 [MineClaw](https://github.com/Be1Human/MineClaw)。Minecraft 及相关商标属于对应权利人。
 - **大小姐的网络手账**：使用演示数据的实际应用截图，来自 [claude-ojousama-network](https://github.com/Be1Human/claude-ojousama-network)。角色是来源项目中的原创同人风格形象，项目不是 Anthropic 官方产品。
 - **Video to Game Animation**：同姿势肩袖蒙皮修正前后对比图，来自 [video-to-game-animation](https://github.com/Be1Human/video-to-game-animation)。角色及媒体范围见其 docs/showcase/MEDIA.md。
-- **雨之城 · 360° 角色重建**：配图和视频来自 2026 年 10 月 20 日的单图重建实验。角色造型参考《雨之城》的 Sayuki。本页展示个人技术原型。
+- **基于 3D 高斯的角色模型重建尝试**：效果对比图和视频来自实际实验，角色造型参考《雨之城》的 Sayuki。三张原理图由 ImageGen 生成并在项目页标注。
 - **ClawPM**：项目标志，来自 [clawpm](https://github.com/Be1Human/clawpm)。页面网格背景及排字属于本主页的展示设计，不是应用截图。
 
 - **《深空》与 Haimian 外设**：项目宣传图、外设实拍、结构模型和控制台截图来自项目资料。剧情、跨端存档、设备交互和局部刷新图解根据游戏工程、外设固件及实测笔记绘制。游戏开场截图来自[《深空》官网](https://dsgame.archerpeng.com/)。

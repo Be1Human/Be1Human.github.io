@@ -134,5 +134,77 @@
     "type": "authorized-project-media",
     "description": "MILo 检查点通过 RaDeGS 渲染的环绕视频。",
     "bytes": 408807
+  },
+  {
+    "file": "assets/images/character-orbit-mask-comparison.webp",
+    "type": "authorized-project-media",
+    "description": "第 37 帧原画与 COLMAP 特征遮罩的并排对照。",
+    "bytes": 16154
+  },
+  {
+    "file": "assets/images/character-orbit-render-comparison.webp",
+    "type": "authorized-project-media",
+    "description": "第 10 帧原画与 18k 基线 RaDeGS 渲染的并排对照。",
+    "bytes": 21134
+  },
+  {
+    "file": "assets/images/character-orbit-frequency-round.webp",
+    "type": "authorized-project-media",
+    "description": "第 1 帧的固定裁切，对照增密和高频续训实验。",
+    "bytes": 95598
+  },
+  {
+    "file": "assets/images/character-orbit-alpha-round.webp",
+    "type": "authorized-project-media",
+    "description": "第 1 帧的高频分支、Alpha 分支和固定灰背景评估区。",
+    "bytes": 21192
+  },
+  {
+    "file": "assets/images/character-orbit-alpha-hands.webp",
+    "type": "authorized-project-media",
+    "description": "相同机位的双手裁切，比较基线、高频与 Alpha 分支。",
+    "bytes": 30246
+  },
+  {
+    "file": "assets/images/character-orbit-mip-round.webp",
+    "type": "authorized-project-media",
+    "description": "第 1 帧的脸和服装裁切，比较高频、Alpha 和低 Mip 分支。",
+    "bytes": 65092
+  },
+  {
+    "file": "assets/images/character-orbit-mip-new-view.webp",
+    "type": "authorized-project-media",
+    "description": "同一插值位姿下的低 Mip 与 Alpha 分支渲染，附相邻标定机位。",
+    "bytes": 108348
+  },
+  {
+    "file": "assets/images/character-orbit-sdf-comparison.webp",
+    "type": "authorized-project-media",
+    "description": "同机位的原始 SDF 网格与多视角轮廓过滤后的灰模。",
+    "bytes": 27908
+  },
+  {
+    "file": "assets/images/character-orbit-gof-round.webp",
+    "type": "authorized-project-media",
+    "description": "相同 COLMAP 机位和灰模材质下的 SDF 与两种 GOF 网格对照。",
+    "bytes": 158552
+  },
+  {
+    "file": "assets/images/character-orbit-diagram-workflow.webp",
+    "type": "ai-generated-explanatory-illustration",
+    "description": "ImageGen 生成的单图、相机环绕与各向异性高斯原理图。",
+    "bytes": 89892
+  },
+  {
+    "file": "assets/images/character-orbit-diagram-refinement.webp",
+    "type": "ai-generated-explanatory-illustration",
+    "description": "ImageGen 生成的高斯分裂与 Alpha 监督原理图。",
+    "bytes": 63542
+  },
+  {
+    "file": "assets/images/character-orbit-diagram-surface.webp",
+    "type": "ai-generated-explanatory-illustration",
+    "description": "ImageGen 生成的高斯、场边界和三角网格提取原理图。",
+    "bytes": 72932
   }
 ]
