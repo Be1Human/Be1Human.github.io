@@ -481,6 +481,20 @@
           }
         },
         {
+          "title": "同一段表演，参考视频与 UE 输出",
+          "paragraphs": [
+            "左边是工程选中的 H3 全身参考，右边是用它生成的 UE 成片。参考文件的 SHA-256 与烘焙记录一致。两个画面从 0 秒开始，都是 24 fps、277 帧，播放一条参考原声。",
+            "可以拖到约 6 秒并暂停，核对两边捂胸时肩、肘和躯干怎样变化。捂胸与前倾在同一段对白附近出现，手指形状和脚底接触还需要结合具体帧检查。"
+          ],
+          "video": {
+            "src": "assets/project-media/digital-performance-source-vs-ue.mp4",
+            "poster": "assets/images/digital-performance-source-vs-ue-poster.webp",
+            "width": 1600,
+            "height": 518,
+            "caption": "并排对照 · H3 全身参考与 UE 成片 · 11.55 秒，含原声"
+          }
+        },
+        {
           "title": "同一份媒体怎样进入三条处理链",
           "paragraphs": [
             "媒体校验先确认参考视频可解码、原声存在，并为每帧保留显示时间戳 PTS。每条恢复链之后都回到这份时间基准。忽略音频起点会造成固定的口型错位，帧间隔变化时还要按每帧的实际时间取样。",
@@ -513,8 +527,29 @@
               "caption": "两份人脸观测记录使用相同的 64 像素短边门槛。镜头来源与时长不同。",
               "width": 1500,
               "height": 760
+            },
+            {
+              "src": "assets/images/digital-performance-face-preview.webp",
+              "width": 1366,
+              "height": 806,
+              "alt": "实际角色表演编辑器显示表情可用 1/277 帧，右侧为提眉、皱眉、眨眼和面颊调整",
+              "caption": "编辑器实拍。面部精修页显示可用帧，并支持定位后添加眉眼关键帧。"
             }
           ]
+        },
+        {
+          "title": "同一段双人输入，两版身体恢复",
+          "paragraphs": [
+            "这是项目中另一段 5.175 秒的双人验证片。三联画左边是固定的参考视频，中间是早期用 MediaPipe 逐帧恢复后的 UE 输出，右边是采用 GEM-X 时序姿态与下身接触处理的 UE 输出。两次运行记录引用同一输入指纹，均保存了 124 帧的重载骨骼取样。",
+            "约 1.25 秒时，可以看到黄色上衣角色在中间版本里的手肘偏向身后，右侧版本的双臂姿态更接近参考。两版同时涉及恢复和重定向设置的变化，画面比较的是整条身体处理链的结果。"
+          ],
+          "video": {
+            "src": "assets/project-media/digital-performance-body-variants.mp4",
+            "poster": "assets/images/digital-performance-body-variants-poster.webp",
+            "width": 1920,
+            "height": 426,
+            "caption": "三联对照 · 同一参考、早期逐帧恢复、时序恢复与下身接触处理 · 5.175 秒"
+          }
         },
         {
           "title": "把身体与表情拆开后，怎样取舍",
@@ -523,6 +558,51 @@
             "身体分支也有过方案调整。项目历史记录里，早期逐帧 MediaPipe 身体草稿出现过肘部姿态跳变和掌面翻转。后来保留 GEM-X 时序结果，并在下身派生分支中使用接触处理后的根平移和腿部旋转，上身局部姿态沿用原估计。"
           ],
           "tablesHtml": "<table class=\"project-detail-table\"><caption>表演素材方案对比</caption><thead><tr><th scope=\"col\">方案</th><th scope=\"col\">本次证据</th><th scope=\"col\">适用范围与代价</th></tr></thead><tbody><tr><th scope=\"row\">单段全身参考</th><td>1 / 277 帧通过面部尺寸门槛。UE 成片可见捂胸和前倾，保留对白与口型。</td><td>同一条媒体提供身体时序与原声，有限的面部像素难以支撑近景级表情。</td></tr><tr><th scope=\"row\">独立近景观测</th><td>112 / 130 帧通过同一门槛。</td><td>适合补充眉眼观测，接入身体表演前需要额外做时间和姿态对齐。</td></tr><tr><th scope=\"row\">把缺失的面部帧直接补满</th><td>本次实现只插补有连续锚点的短缺口，忽略孤立观测。</td><td>可以增加曲线覆盖时间。缺少连续锚点时，插补结果无法体现表情真实的变化过程。</td></tr></tbody></table>"
+        },
+        {
+          "title": "一句对白的四种表情预设",
+          "paragraphs": [
+            "面部工具另做了一组固定条件的测试。角色、机位、对白和帧数相同，在 UE 中分别渲染中性、愤怒、喜悦和悲伤。合片共用一条声音轨，可以同时看眉眼变化和发音。",
+            "这是独立的人工预设试验，展示的是在口型之外调整表情的方式。若任务要恢复这段胡亥戏的眉眼，仍需对应的画面观测或动画师的关键帧。"
+          ],
+          "video": {
+            "src": "assets/project-media/digital-performance-expression-presets.mp4",
+            "poster": "assets/images/digital-performance-expression-presets-poster.webp",
+            "width": 1280,
+            "height": 720,
+            "caption": "UE 四格实录 · 中性基线、愤怒 0.7、喜悦眉眼 0.7、悲伤 0.7 · 共用一条音轨"
+          }
+        },
+        {
+          "title": "每个阶段留下哪些可复查的记录",
+          "paragraphs": [
+            "工作流按节点保存尝试。执行前冻结参数、上游结果描述和实现版本。执行后登记产物路径及 SHA-256，并把本次结果与尝试编号关联。替换参考视频会让依赖它的媒体、身体、脸部、配准、烘焙和验证节点失效，之前的输入与结果仍能拿来对照。",
+            "复查时先追到选中的视频，再沿身体、脸部和对白的产物追到 UE 重载报告。工程界面把复查分成全身对照、面部精修和场景 Sequencer 三种视图，能分别回到动作时序、表情观测和写入位置。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/digital-performance-trace-framework.webp",
+              "width": 1500,
+              "height": 780,
+              "alt": "输入快照、尝试记录、产物索引、独立重载和场景写入的五段记录链，显示上游更改后的依赖失效",
+              "caption": "由工作流执行和校验代码整理。历史尝试留档，最新产物要通过输入和依赖核对后才能复用。"
+            },
+            {
+              "src": "assets/images/digital-performance-script-import.webp",
+              "width": 1050,
+              "height": 650,
+              "alt": "UE 角色表演编辑器导入单角色剧本后的状态，右侧有剧情和对白，下方可生成参考视频",
+              "caption": "编辑器实拍。导入剧本后确认角色、剧情与对白，再从同一界面生成参考视频。"
+            },
+            {
+              "src": "assets/images/digital-performance-sync-preview.webp",
+              "width": 1366,
+              "height": 806,
+              "alt": "角色表演编辑器左边显示参考视频，右边显示 UE 角色，两个画面停在 6.08 秒",
+              "caption": "编辑器实拍。全身对照页停在 6.08 秒，底部能看到一条原声音轨。"
+            }
+          ],
+          "tablesHtml": "<table class=\"project-detail-table\"><caption>这次全身表演的阶段记录</caption><thead><tr><th scope=\"col\">阶段</th><th scope=\"col\">留存证据</th><th scope=\"col\">本例可复核值</th></tr></thead><tbody><tr><th scope=\"row\">剧本与选片</th><td>节点输入、尝试编号与选中视频的文件指纹</td><td>工作流保留 3 次视频节点记录，可追溯当前选片。</td></tr><tr><th scope=\"row\">媒体与原声</th><td>视频帧时间戳、解码后的原声和播放时间轴</td><td>24 fps、277 帧。UE 原声重载为 32 kHz，音频 11.55 秒。</td></tr><tr><th scope=\"row\">身体与口型</th><td>时序姿态、目标骨骼重定向、原声音素对齐</td><td>独立重载后可读取 277 帧身体取样，面部控制键保留。</td></tr><tr><th scope=\"row\">眉眼观测</th><td>逐帧人脸观测与尺寸统计</td><td>检测到脸 179 帧，达到 64 px 短边门槛 1 帧。</td></tr><tr><th scope=\"row\">资产核验</th><td>独立进程重载报告</td><td>播放轨 1 条，PCM 核验通过，表现质量状态保留待审阅。</td></tr><tr><th scope=\"row\">场景写入</th><td>目标序列、子序列、起点和时长</td><td>场景入点 0 秒，子序列 11.55 秒。</td></tr></tbody></table>"
         },
         {
           "title": "保存成功之后，用什么证据验收",
@@ -537,6 +617,13 @@
               "caption": "从已公开的 UE 成片取样。三个时点对应站姿、捂胸和前倾。",
               "width": 1500,
               "height": 550
+            },
+            {
+              "src": "assets/images/digital-performance-sequence-check.webp",
+              "width": 1368,
+              "height": 808,
+              "alt": "UE Sequencer 重新打开教学场景后的角色表演轨，时间标尺从第 0 帧开始",
+              "caption": "Sequencer 实拍。重新打开目标场景后，角色子序列从零点开始，轨道范围可直接检查。"
             }
           ]
         }

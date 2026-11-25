@@ -224,5 +224,53 @@
     "type": "published-video-frames",
     "description": "从已公开的 UE 成片取样。三个时点对应站姿、捂胸和前倾。",
     "bytes": 58136
+  },
+  {
+    "file": "assets/images/digital-performance-source-vs-ue-poster.webp",
+    "type": "comparison-video-frame",
+    "description": "从本项目真实对照视频抽取的封面帧。",
+    "bytes": 54702
+  },
+  {
+    "file": "assets/images/digital-performance-body-variants-poster.webp",
+    "type": "comparison-video-frame",
+    "description": "从本项目真实对照视频抽取的封面帧。",
+    "bytes": 57164
+  },
+  {
+    "file": "assets/images/digital-performance-expression-presets-poster.webp",
+    "type": "comparison-video-frame",
+    "description": "从本项目真实对照视频抽取的封面帧。",
+    "bytes": 55662
+  },
+  {
+    "file": "assets/images/digital-performance-script-import.webp",
+    "type": "project-screenshot",
+    "description": "角色表演编辑器的实际操作截图。",
+    "bytes": 66910
+  },
+  {
+    "file": "assets/images/digital-performance-sync-preview.webp",
+    "type": "project-screenshot",
+    "description": "角色表演编辑器的实际操作截图。",
+    "bytes": 110142
+  },
+  {
+    "file": "assets/images/digital-performance-face-preview.webp",
+    "type": "project-screenshot",
+    "description": "角色表演编辑器的实际操作截图。",
+    "bytes": 104958
+  },
+  {
+    "file": "assets/images/digital-performance-sequence-check.webp",
+    "type": "project-screenshot",
+    "description": "角色表演编辑器的实际操作截图。",
+    "bytes": 75696
+  },
+  {
+    "file": "assets/images/digital-performance-trace-framework.webp",
+    "type": "original-project-diagram",
+    "description": "按角色表演工具的工作流执行、资产重载与依赖校验逻辑绘制。",
+    "bytes": 84722
   }
 ]
