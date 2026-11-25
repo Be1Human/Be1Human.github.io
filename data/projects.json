@@ -139,53 +139,6 @@
     "group": "agent"
   },
   {
-    "id": "duomind",
-    "title": "DuoMind · 双脑搭档",
-    "name": "DuoMind · 双脑搭档",
-    "kind": "人机同屏合作 Demo",
-    "category": "games",
-    "label": "游戏项目",
-    "description": "玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。",
-    "image": "assets/images/duomind-cover.svg",
-    "imageAlt": "DuoMind · 双脑搭档的项目示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
-    "tags": [
-      "LittleJS",
-      "Pi Agent",
-      "协作 NPC"
-    ],
-    "url": "projects/duomind.html",
-    "action": "查看项目介绍",
-    "documentation": "projects/duomind.html",
-    "presentation": "showcase",
-    "detail": {
-      "status": "教学 MVP",
-      "period": "2026",
-      "sections": [
-        {
-          "heading": "两位队员，一次合作",
-          "paragraphs": [
-            "玩家操作一位角色，另一位由 AI 控制。目标是清除敌人，并让双方一起抵达关卡出口。项目基于 LittleJS 的传统 NPC 示例，加入指令面板、世界状态上报和 AI 队友控制。"
-          ]
-        },
-        {
-          "heading": "让规划真正接到游戏里",
-          "paragraphs": [
-            "语言模型负责选择跟随、掩护、推进、撤退或等待等技能，逐帧控制器负责实际移动、跳跃和射击。每轮动作把位置、受伤和成功或失败结果交回规划器。",
-            "危险发生时，本地即时反应优先；版本检查阻止过期模型响应重新接管角色。离线规则模式与真实模型模式分别呈现，调用失败不会被隐藏成一次成功的智能决策。"
-          ]
-        },
-        {
-          "heading": "一个有明确边界的实验",
-          "paragraphs": [
-            "目前是单关、同屏合作的教学原型，未包含强化学习、语音或网络多人。基于 adamfk/game-fsm-examples 的 Apache-2.0 示例，并使用 LittleJS 与 Pi SDK；本项目展示的是在这些基础上的协作控制实验。"
-          ]
-        }
-      ]
-    },
-    "group": "agent"
-  },
-  {
     "id": "clawphone",
     "title": "ClawPhone",
     "name": "ClawPhone",

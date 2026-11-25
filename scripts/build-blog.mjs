@@ -231,6 +231,10 @@ for (const path of canonicalPages) {
   const target = origin + (path === 'index.html' ? '' : path);
   pages.set(`portfolio/${path}`, `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>正在前往克劳德梦见电子羊</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex"><script src="/assets/legacy-redirect.js?v=${redirectVersion}"></script><noscript><meta http-equiv="refresh" content="0;url=${target}"></noscript></head><body><p>博客已迁到新地址。<a href="${target}">继续阅读 →</a></p></body></html>\n`);
 }
+const mineClawTarget = origin + 'works.html#mineclaw';
+const mineClawRedirect = `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MineClaw</title><link rel="canonical" href="${mineClawTarget}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${mineClawTarget}"></head><body><a href="${mineClawTarget}">查看 MineClaw</a></body></html>\n`;
+pages.set('projects/duomind.html', mineClawRedirect);
+pages.set('portfolio/projects/duomind.html', mineClawRedirect);
 // Feed readers do not execute JavaScript; keep their existing subscription live.
 pages.set('portfolio/feed.xml', pages.get('feed.xml'));
 pages.set('portfolio/sitemap.xml', pages.get('sitemap.xml'));

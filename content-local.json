@@ -182,31 +182,6 @@
       "group": "agent"
     },
     {
-      "id": "duomind",
-      "title": "DuoMind · 双脑搭档",
-      "category": "games",
-      "categoryLabel": "游戏项目",
-      "subtitle": "人机同屏合作 Demo",
-      "summary": "玩家与 AI 队友一起清敌、抵达出口。用一个单关游戏，观察语言指令如何变成移动、掩护与撤退，以及即时反应如何打断模型规划。",
-      "source": "https://be1human.github.io/projects/duomind.html",
-      "image": "assets/263810aa0ad9.svg",
-      "imageAlt": "DuoMind · 双脑搭档的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
-      "tags": [
-        "LittleJS",
-        "Pi Agent",
-        "协作 NPC"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/duomind.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/duomind-cover.svg",
-      "group": "agent"
-    },
-    {
       "id": "clawphone",
       "title": "ClawPhone",
       "category": "tools",

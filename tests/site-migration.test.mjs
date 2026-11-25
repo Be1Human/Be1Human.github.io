@@ -14,7 +14,7 @@ test('old page URLs preserve deep paths, filters and anchors on the same root do
     ['/portfolio/works.html?category=tools&q=AgentMem#agentmem', '/works.html?category=tools&q=AgentMem#agentmem'],
     ['/portfolio/news.html?date=2026-10-30', '/news.html?date=2026-10-30'],
     ['/portfolio/news/2026-10-13-evening.html#item-1', '/news/2026-10-13-evening.html#item-1'],
-    ['/portfolio/projects/duomind.html', '/projects/duomind.html'],
+    ['/portfolio/projects/aixiaochu.html', '/projects/aixiaochu.html'],
     ['/portfolio/learn.html', '/learn.html'],
   ]) {
     const old = new URL(path, 'https://be1human.github.io');
@@ -56,6 +56,16 @@ test('date-style news links retain search filters and the selected item after re
   const editionSelect = {addEventListener() {}, options: [{value: 'news/2026-10-30.html'}]};
   runInNewContext(script, {URL, location, window: {location}, document: {body: {dataset: {page: 'news'}}, querySelectorAll: () => [], querySelector: () => editionSelect}});
   assert.equal(destination, 'https://be1human.github.io/news/2026-10-30.html?q=AI&category=tools#item-306fd8fd45fa4e83');
+});
+
+test('DuoMind links now open the MineClaw portfolio entry', async () => {
+  const works = await read('works.html');
+  assert.ok(works.includes('id="mineclaw"'));
+  assert.ok(!works.includes('id="duomind"'));
+  assert.ok(!(await read('sitemap.xml')).includes('projects/duomind.html'));
+  for (const path of ['projects/duomind.html', 'portfolio/projects/duomind.html']) {
+    assert.ok((await read(path)).includes('<meta http-equiv="refresh" content="0;url=https://be1human.github.io/works.html#mineclaw">'));
+  }
 });
 
 test('old homepage learning anchors open the independent learning page', async () => {

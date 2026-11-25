@@ -161,15 +161,6 @@
       "productRuntimeTestedInThisReview": false
     },
     {
-      "projectId": "duomind",
-      "reviewMode": "owner-authorized-showcase",
-      "descriptionBasis": [
-        "作者授权整理的项目介绍",
-        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
-      ],
-      "productRuntimeTestedInThisReview": false
-    },
-    {
       "projectId": "clawphone",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [

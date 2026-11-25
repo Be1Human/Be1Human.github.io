@@ -14,4 +14,6 @@ export const retiredSitePaths = new Set([
   'assets/0599db32fdea.svg',
   'assets/8d0d1c570ac3.svg',
   'assets/fe2a3729d8b9.svg',
+  'assets/images/duomind-cover.svg',
+  'assets/263810aa0ad9.svg',
 ]);
