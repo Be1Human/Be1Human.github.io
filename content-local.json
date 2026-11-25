@@ -24,20 +24,6 @@
       "page": "projects/haimian-deep-space.html"
     },
     {
-      "id": "cloudmind",
-      "title": "CloudMind",
-      "category": "tools",
-      "categoryLabel": "笔记与工具",
-      "image": "assets/images/cloudmind-cover.webp",
-      "imageAlt": "CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图",
-      "tags": [
-        "Obsidian",
-        "Markdown",
-        "思维导图"
-      ],
-      "page": "projects/cloudmind.html"
-    },
-    {
       "id": "rain-city-character-reconstruction",
       "title": "基于 3D 高斯的角色模型重建尝试",
       "category": "visuals",
@@ -248,6 +234,20 @@
         "硬件控制"
       ],
       "page": "projects/clawphone.html"
+    },
+    {
+      "id": "cloudmind",
+      "title": "CloudMind",
+      "category": "tools",
+      "categoryLabel": "笔记与工具",
+      "image": "assets/images/cloudmind-cover.webp",
+      "imageAlt": "CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图",
+      "tags": [
+        "Obsidian",
+        "Markdown",
+        "思维导图"
+      ],
+      "page": "projects/cloudmind.html"
     }
   ],
   "journal": [
