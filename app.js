@@ -118,7 +118,9 @@ async function go(next,{boot=false,instant=false}={}){
  if(!motionEnabled||instant){setPoster(config.frame)}
  else if(next==='home'){setPoster('home')}
  else{
-   let path=cameraPath(activeScene,config.frame);
+   let path=next==='works'
+     ? [{from:config.start,to:config.frame,id:config.clip,reverse:false}]
+     : cameraPath(activeScene,config.frame);
    if(!path||path.length>2||(boot&&path.length===0)){
      if(!await portalTo(config.start,version))return;
      path=config.clip?[{from:config.start,to:config.frame,id:config.clip,reverse:false}]:[];

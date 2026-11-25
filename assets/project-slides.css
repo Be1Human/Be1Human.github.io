@@ -20,8 +20,6 @@
 .project-preview video{max-height:390px}
 .project-preview.is-portrait{width:min(100%,350px);margin-inline:auto}
 .project-preview .project-video video{width:100%;object-fit:contain}
-.project-video-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.project-video-pair video{border:1px solid var(--line);border-radius:6px}
 .project-slides figcaption{font-size:12px;line-height:1.65;color:#b0c5ca;margin-top:7px}
 .project-slides .project-video figcaption{text-align:left}
 .project-chapter{padding:clamp(24px,3vw,36px) 0;border-top:1px solid #59758280;scroll-margin-top:12px}
@@ -52,7 +50,6 @@
   .slides-hero.has-preview{gap:17px}
   .project-preview .figure-open > img{max-height:300px!important}
   .project-preview video{max-height:300px}
-  .project-video-pair{grid-template-columns:1fr}
   .project-track{grid-template-columns:1fr;gap:5px}
   .project-path-with-screen{grid-template-columns:minmax(0,1fr) 76px}
 }

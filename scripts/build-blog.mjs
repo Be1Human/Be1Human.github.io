@@ -223,7 +223,7 @@ function projectLinks(project) {
   return `<section class="article-links project-links"><h2>项目链接</h2><ul>${links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>`;
 }
 
-function renderProjectSection(project, number, showHeading, previewVideos) {
+function renderProjectSection(project, number, showHeading, coverVideo) {
   const { heading, paragraphs: [lead, ...notes], images = [], steps, tables = [], diagram, detailLabel, video, workflow } =
     project.detail.sections[number - 1];
   const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
@@ -231,7 +231,7 @@ function renderProjectSection(project, number, showHeading, previewVideos) {
   const tableHtml = projectTables(tables);
   const disclosure = detailLabel ? `<details class="slide-evidence"><summary>${e(detailLabel)}</summary>${notesHtml}${tableHtml}</details>` : '';
   const diagrams = diagram ? projectDiagram(diagram, `${project.id}-page-${number}`) : '';
-  const footage = video && !previewVideos.includes(video) ? projectVideo(video) : '';
+  const footage = video && video !== coverVideo ? projectVideo(video) : '';
   const pictures = images.map(image => projectFigure(image)).join('');
   const media = diagrams + (detailLabel ? '' : tableHtml) + footage +
     (pictures ? `<div class="slide-pictures">${pictures}</div>` : '');
@@ -242,23 +242,21 @@ function renderProjectSection(project, number, showHeading, previewVideos) {
 
 function renderProject(project) {
   const { detail } = project;
-  const { purpose, mediaHint, chapters, previewVideoSections = [] } = detail.overview;
+  const { purpose, mediaHint, chapters } = detail.overview;
   const back = `<a class="back-link" href="../works.html#${project.id}">← 返回作品集</a>`;
   const coverVideo = selectedCoverVideo(project);
-  const previewVideos = coverVideo ? [coverVideo] : previewVideoSections.map(number => detail.sections[number - 1].video);
   const [width, height] = detail.coverSize ?? [1200, 706];
-  const cover = previewVideos.length ? previewVideos.map(projectVideo).join('') : projectFigure({
+  const cover = coverVideo ? projectVideo(coverVideo) : projectFigure({
     src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height,
   }, true);
-  const preview = previewVideoSections.length ? `<div class="project-video-pair">${cover}</div>` : cover;
-  const evidence = mediaHint ? `<div class="project-preview${height > width ? ' is-portrait' : ''}"><p class="project-picture-guide">${e(mediaHint)}</p>${preview}</div>` : '';
+  const evidence = mediaHint ? `<div class="project-preview${height > width ? ' is-portrait' : ''}"><p class="project-picture-guide">${e(mediaHint)}</p>${cover}</div>` : '';
   const navigation = chapters.length > 1
     ? `<nav class="project-nav" aria-label="项目章节">${chapters.map((chapter, index) =>
       `<a href="#chapter-${index + 1}">${e(chapter.title)}</a>`
     ).join('')}</nav>` : '';
   const body = chapters.map((chapter, index) =>
     `<section class="project-chapter" id="chapter-${index + 1}" aria-labelledby="chapter-title-${index + 1}"><h2 id="chapter-title-${index + 1}">${e(chapter.title)}</h2>${chapter.sections.map(number =>
-      renderProjectSection(project, number, chapter.sections.length > 1, previewVideos)
+      renderProjectSection(project, number, chapter.sections.length > 1, coverVideo)
     ).join('')}</section>`
   ).join('');
   const period = detail.period ? ` · ${e(detail.period)}` : '';

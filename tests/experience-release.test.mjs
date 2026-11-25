@@ -59,10 +59,15 @@ test('chapter navigation plays camera transitions unless motion is disabled or e
       entryAnimations:new Set(),manifestReady:Promise.resolve(),routeScenes:configs,
       labels:{},chapterEnglish:{},document:{body:{classList,dataset:{}},querySelector:()=>({classList})},
       $:id=>{if(!nodes.has(id))nodes.set(id,{});return nodes.get(id)},
-      stopAuto(){},cancelMotion(){},cameraPath:()=>null,
-      portalTo:async()=>true,
+      stopAuto(){},cancelMotion(){},
+      cameraPath:()=>{assert.notEqual(target,'works','Works must use its own clip');return null},
+      portalTo:async()=>{assert.notEqual(target,'works','Works must enter without an intermediate transition');return true},
       setPoster:frame=>{state.activeScene=frame;calls.push('poster:'+frame)},
-      moveScene:async(from,to,clip)=>{assert.equal(manifest[clip].status,'ready');state.activeScene=to;calls.push('video:'+clip);return true},
+      moveScene:async(from,to,clip,reverse)=>{
+        assert.equal(manifest[clip].status,'ready');
+        if(target==='works') assert.deepEqual([from,to,reverse],[manifest[clip].from,manifest[clip].to,false]);
+        state.activeScene=to;calls.push('video:'+clip);return true;
+      },
       mountRoute:next=>{state.route=next;calls.push('mount:'+next)},
       enterView:next=>calls.push('entrance:'+next),
       requestAnimationFrame:fn=>fn(),syncHomeScroll:()=>calls.push('home-scroll'),runJourney(){}

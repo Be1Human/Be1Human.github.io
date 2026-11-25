@@ -118,19 +118,6 @@ test('both works pages show every project once in a single list', async () => {
   }
 });
 
-test('the character reconstruction opens with both videos ready to play independently', async () => {
-  const project = projects.find(entry => entry.id === 'rain-city-character-reconstruction');
-  const html = await read(projectPagePath(project));
-  const [hero, body] = html.split('<div class="slides-body">');
-  const pair = hero.match(/<div class="project-video-pair">([\s\S]*?)<\/div>/)?.[1] ?? '';
-  const players = [...pair.matchAll(/<video src="\.\.\/([^"]+)"[^>]*\bcontrols\b[^>]*\bpreload="none"/g)];
-  assert.deepEqual(players.map(player => player[1]), [
-    'assets/project-media/character-orbit-h3.mp4',
-    'assets/project-media/character-orbit-3dgs.mp4',
-  ]);
-  assert.doesNotMatch(body, /<video\b/);
-});
-
 test('authored workflows keep their ordered steps in the project page', async () => {
   const example = projects.find(project => project.detail?.sections.some(section => section.workflow));
   const source = evidence.projects.find(entry => entry.projectId === example.id);
