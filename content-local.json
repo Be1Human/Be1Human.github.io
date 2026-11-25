@@ -281,31 +281,6 @@
       "group": "other"
     },
     {
-      "id": "rain-city",
-      "title": "雨之城",
-      "category": "games",
-      "categoryLabel": "游戏项目",
-      "subtitle": "城市驾驶游戏原型",
-      "summary": "从城市驾驶到下车步行，把一段旅程做成可玩的场景。保留了 Godot 历史原型，并继续探索角色动画、场景重建与 UE 迁移。",
-      "source": "https://be1human.github.io/projects/rain-city.html",
-      "image": "assets/904137f6e5d5.svg",
-      "imageAlt": "雨之城的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
-      "tags": [
-        "Godot",
-        "城市驾驶",
-        "3DGS"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/rain-city.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/rain-city-cover.svg",
-      "group": "other"
-    },
-    {
       "id": "rain-city-character-reconstruction",
       "title": "雨之城 · 360° 角色重建",
       "category": "visual",
@@ -1801,11 +1776,6 @@
       },
       {
         "url": "https://be1human.github.io/assets/images/petgo-cover.svg",
-        "status": 200,
-        "contentType": "image/svg+xml"
-      },
-      {
-        "url": "https://be1human.github.io/assets/images/rain-city-cover.svg",
         "status": 200,
         "contentType": "image/svg+xml"
       },
