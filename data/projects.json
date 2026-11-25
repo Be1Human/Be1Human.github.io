@@ -116,6 +116,102 @@
     }
   },
   {
+    "id": "rain-city-character-reconstruction",
+    "title": "雨之城 · 360° 角色重建",
+    "kind": "单图到 3D 角色实验",
+    "category": "visuals",
+    "label": "视觉与设计",
+    "description": "从一张角色正面图生成 360° 环绕，再重建可换角度观察的高斯模型，并抽取三角网格。",
+    "image": "assets/images/character-orbit-cover.webp",
+    "imageAlt": "3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面",
+    "imageNote": "本次实验的 3DGS 渲染 · 侧面、正面与背面",
+    "tags": [
+      "360° Orbit",
+      "3D Gaussian Splatting",
+      "COLMAP",
+      "MILo"
+    ],
+    "url": "projects/rain-city-character-reconstruction.html",
+    "action": "查看重建效果",
+    "documentation": "projects/rain-city-character-reconstruction.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "重建原型",
+      "period": "2026",
+      "coverSize": [
+        1200,
+        706
+      ],
+      "sections": [
+        {
+          "heading": "高斯重建的环绕效果",
+          "paragraphs": [
+            "以《雨之城》Sayuki 的造型为参考，测试单张正面设定图能重建出多少角色细节。高斯模型保住了贝雷帽、制服层次、双腿和鞋的整体轮廓。"
+          ],
+          "video": {
+            "src": "assets/project-media/character-orbit-3dgs.mp4",
+            "poster": "assets/images/character-orbit-3dgs-poster.webp",
+            "caption": "3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染",
+            "width": 768,
+            "height": 768
+          }
+        },
+        {
+          "heading": "用一张图生成多视角",
+          "paragraphs": [
+            "先裁掉输入图的边框和标注，分出人物前景，再在 ComfyUI 用 MiniMax-H3 和 360-Orbit LoRA 生成环绕。首尾使用同一张图，视频输出 73 帧，分辨率为 768 × 768。侧面和背面的服装细节来自模型推断。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-input.webp",
+              "alt": "灰底上的贝雷帽角色正面全身图",
+              "caption": "送入视频模型的正面设定图",
+              "width": 768,
+              "height": 768
+            }
+          ],
+          "video": {
+            "src": "assets/project-media/character-orbit-h3.mp4",
+            "poster": "assets/images/character-orbit-h3-poster.webp",
+            "caption": "MiniMax-H3 的原始环绕视频 · 高斯训练的多视角输入",
+            "width": 768,
+            "height": 768
+          }
+        },
+        {
+          "heading": "解算相机，再训练高斯",
+          "paragraphs": [
+            "对视频抽帧后，为 COLMAP 生成独立的前景特征遮罩，减少背景对特征匹配的干扰。COLMAP 注册了全部 73 帧，解得约 354° 的方位覆盖，平均重投影误差约 0.74 像素。",
+            "用求解出的相机位姿和前景图训练 MILo，做了 18,000 步高斯优化，并在训练中加入网格约束。上方视频来自这次训练的检查点，可以对照 AI 视频观察转到背面时的轮廓和衣服细节。"
+          ]
+        },
+        {
+          "heading": "抽取网格并检查细节",
+          "paragraphs": [
+            "从可学习的有符号距离场（SDF）提取三角网格，再用多视角轮廓过滤帽顶和脚下的残片。用 Blender 清理和减面，最后导出保留顶点颜色的 GLB。",
+            "输入视角集中在同一高度，手指、头顶和鞋底缺少充分的观察。提取的网格仍有粗糙表面和局部孔洞，骨骼绑定前需要手工修整。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/character-orbit-mesh.webp",
+              "alt": "Blender 斜视渲染中可见角色手部和腿部的网格缺损",
+              "caption": "清理后的网格 · Blender 斜视渲染",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "assets/images/character-orbit-wireframe.webp",
+              "alt": "角色正面的三角网格线框，衣服和四肢边缘可见不规则拓扑",
+              "caption": "同一模型的线框 · 检查拓扑与轮廓",
+              "width": 512,
+              "height": 512
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "mineclaw",
     "title": "MineClaw",
     "name": "MineClaw",

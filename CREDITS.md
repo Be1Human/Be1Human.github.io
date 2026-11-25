@@ -10,6 +10,7 @@
 - **MineClaw**：实时感知控制台截图，来自 [MineClaw](https://github.com/Be1Human/MineClaw)。Minecraft 及相关商标属于对应权利人。
 - **大小姐的网络手账**：使用演示数据的实际应用截图，来自 [claude-ojousama-network](https://github.com/Be1Human/claude-ojousama-network)。角色是来源项目中的原创同人风格形象，项目不是 Anthropic 官方产品。
 - **Video to Game Animation**：同姿势肩袖蒙皮修正前后对比图，来自 [video-to-game-animation](https://github.com/Be1Human/video-to-game-animation)。角色及媒体范围见其 docs/showcase/MEDIA.md。
+- **雨之城 · 360° 角色重建**：配图和视频来自 2026 年 10 月 20 日的单图重建实验。角色造型参考《雨之城》的 Sayuki。本页展示个人技术原型。
 - **ClawPM**：项目标志，来自 [clawpm](https://github.com/Be1Human/clawpm)。页面网格背景及排字属于本主页的展示设计，不是应用截图。
 
 - **Haimian · 深空外设**：依据作者提供的外设使用教程整理功能介绍，并按小屏、旋钮与按键布局绘制 SVG 设备示意。配图明确标注非运行截图；教程中的原始配置截图与压缩包未随站点发布。

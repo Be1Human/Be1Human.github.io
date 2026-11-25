@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232e">
+  <title>雨之城 · 360° 角色重建 — 克劳德梦见电子羊</title>
+  <meta name="description" content="从一张角色正面图生成 360° 环绕，再重建可换角度观察的高斯模型，并抽取三角网格。">
+  <link rel="canonical" href="https://be1human.github.io/projects/rain-city-character-reconstruction.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="雨之城 · 360° 角色重建 — 克劳德梦见电子羊">
+  <meta property="og:description" content="从一张角色正面图生成 360° 环绕，再重建可换角度观察的高斯模型，并抽取三角网格。">
+  <meta property="og:url" content="https://be1human.github.io/projects/rain-city-character-reconstruction.html">
+  <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/sheep.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="CLOUD BOY · 博客与每日精选" href="../feed.xml">
+  <link rel="stylesheet" href="../assets/site.css?v=4e66e2bda97a">
+  <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
+  <script src="../assets/app.js?v=e8aeca74a339" defer></script>
+  <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
+
+</head>
+<body id="top" data-page="works" data-learning-base="../">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="blog-header">
+    <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
+    <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
+  </header>
+  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#rain-city-character-reconstruction">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>2026</span></strong><p>单图到 3D 角色实验<span>·</span>重建原型</p></div></div><h1>雨之城 · 360° 角色重建</h1><p class="article-lede">从一张角色正面图生成 360° 环绕，再重建可换角度观察的高斯模型，并抽取三角网格。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/character-orbit-cover.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/character-orbit-cover.webp" alt="3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面" width="1200" height="706" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>本次实验的 3DGS 渲染 · 侧面、正面与背面</figcaption></figure><div class="prose"><section id="section-1"><h2>高斯重建的环绕效果</h2><p>以《雨之城》Sayuki 的造型为参考，测试单张正面设定图能重建出多少角色细节。高斯模型保住了贝雷帽、制服层次、双腿和鞋的整体轮廓。</p><figure class="project-video"><video src="../assets/project-media/character-orbit-3dgs.mp4" poster="../assets/images/character-orbit-3dgs-poster.webp" width="768" height="768" controls playsinline preload="none" aria-label="3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染"></video><figcaption>3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染</figcaption></figure></section><section id="section-2"><h2>用一张图生成多视角</h2><p>先裁掉输入图的边框和标注，分出人物前景，再在 ComfyUI 用 MiniMax-H3 和 360-Orbit LoRA 生成环绕。首尾使用同一张图，视频输出 73 帧，分辨率为 768 × 768。侧面和背面的服装细节来自模型推断。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/character-orbit-input.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/character-orbit-input.webp" alt="灰底上的贝雷帽角色正面全身图" width="768" height="768" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>送入视频模型的正面设定图</figcaption></figure><figure class="project-video"><video src="../assets/project-media/character-orbit-h3.mp4" poster="../assets/images/character-orbit-h3-poster.webp" width="768" height="768" controls playsinline preload="none" aria-label="MiniMax-H3 的原始环绕视频 · 高斯训练的多视角输入"></video><figcaption>MiniMax-H3 的原始环绕视频 · 高斯训练的多视角输入</figcaption></figure></section><section id="section-3"><h2>解算相机，再训练高斯</h2><p>对视频抽帧后，为 COLMAP 生成独立的前景特征遮罩，减少背景对特征匹配的干扰。COLMAP 注册了全部 73 帧，解得约 354° 的方位覆盖，平均重投影误差约 0.74 像素。</p><p>用求解出的相机位姿和前景图训练 MILo，做了 18,000 步高斯优化，并在训练中加入网格约束。上方视频来自这次训练的检查点，可以对照 AI 视频观察转到背面时的轮廓和衣服细节。</p></section><section id="section-4"><h2>抽取网格并检查细节</h2><p>从可学习的有符号距离场（SDF）提取三角网格，再用多视角轮廓过滤帽顶和脚下的残片。用 Blender 清理和减面，最后导出保留顶点颜色的 GLB。</p><p>输入视角集中在同一高度，手指、头顶和鞋底缺少充分的观察。提取的网格仍有粗糙表面和局部孔洞，骨骼绑定前需要手工修整。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/character-orbit-mesh.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/character-orbit-mesh.webp" alt="Blender 斜视渲染中可见角色手部和腿部的网格缺损" width="512" height="512" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>清理后的网格 · Blender 斜视渲染</figcaption></figure><figure class="learn-figure"><a class="figure-open" href="../assets/images/character-orbit-wireframe.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/character-orbit-wireframe.webp" alt="角色正面的三角网格线框，衣服和四肢边缘可见不规则拓扑" width="512" height="512" loading="lazy" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>同一模型的线框 · 检查拓扑与轮廓</figcaption></figure></section></div><footer class="article-end"><div class="tags"><span>360° Orbit</span><span>3D Gaussian Splatting</span><span>COLMAP</span><span>MILo</span></div><a class="back-link" href="../works.html#rain-city-character-reconstruction">← 返回作品集</a></footer></div></article></main>
+  <footer class="blog-footer">
+    <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
+    <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>
+  </footer>
+</body>
+</html>

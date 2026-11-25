@@ -161,6 +161,15 @@
       "productRuntimeTestedInThisReview": false
     },
     {
+      "projectId": "rain-city-character-reconstruction",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "2026-10-20 的 ComfyUI 工作流、生成视频、COLMAP 位姿结果和 MILo 训练日志。",
+        "同一轮实验的 RaDeGS 环绕渲染、Blender 网格检查图和 GLB 导出记录。"
+      ],
+      "productRuntimeTestedInThisReview": false
+    },
+    {
       "projectId": "clawphone",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [

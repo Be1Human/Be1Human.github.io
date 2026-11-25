@@ -92,5 +92,53 @@
     "type": "original-svg-concept",
     "description": "依据 Haimian 小屏、旋钮与按键布局绘制的设备交互示意，非实物照片或运行截图。",
     "bytes": 2053
+  },
+  {
+    "file": "assets/images/character-orbit-cover.webp",
+    "type": "authorized-project-media",
+    "description": "3DGS 的侧、正、背面渲染帧组成的封面。",
+    "bytes": 35584
+  },
+  {
+    "file": "assets/images/character-orbit-input.webp",
+    "type": "authorized-project-media",
+    "description": "环绕视频工作流使用的正面设定图。",
+    "bytes": 22194
+  },
+  {
+    "file": "assets/images/character-orbit-h3-poster.webp",
+    "type": "authorized-project-media",
+    "description": "MiniMax-H3 原始环绕视频中的一帧。",
+    "bytes": 14594
+  },
+  {
+    "file": "assets/images/character-orbit-3dgs-poster.webp",
+    "type": "authorized-project-media",
+    "description": "RaDeGS 实际渲染的正面截图。",
+    "bytes": 17846
+  },
+  {
+    "file": "assets/images/character-orbit-mesh.webp",
+    "type": "authorized-project-media",
+    "description": "导出网格在 Blender 中的斜视渲染。",
+    "bytes": 10398
+  },
+  {
+    "file": "assets/images/character-orbit-wireframe.webp",
+    "type": "authorized-project-media",
+    "description": "导出网格在 Blender 中的正面线框。",
+    "bytes": 15350
+  },
+  {
+    "file": "assets/project-media/character-orbit-h3.mp4",
+    "type": "authorized-project-media",
+    "description": "MiniMax-H3 与 360-Orbit LoRA 生成的原始环绕视频。",
+    "bytes": 504409
+  },
+  {
+    "file": "assets/project-media/character-orbit-3dgs.mp4",
+    "type": "authorized-project-media",
+    "description": "MILo 检查点通过 RaDeGS 渲染的环绕视频。",
+    "bytes": 408807
   }
 ]
