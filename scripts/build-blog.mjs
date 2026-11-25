@@ -177,13 +177,11 @@ function projectVideo({src, poster, caption, width, height}) {
   return `<figure class="project-video"><video src="../${e(src)}" poster="../${e(poster)}" width="${width}" height="${height}" controls playsinline preload="none" aria-label="${e(caption)}"></video><figcaption>${e(caption)}</figcaption></figure>`;
 }
 
-function projectSectionBody({ paragraphs, workflow }) {
-  const text = paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('');
-  if (!workflow) return text;
+function projectWorkflow(workflow) {
   const steps = workflow.map(({ title, tool, output }) =>
     `<li><strong>${e(title)}</strong><span class="workflow-tool">${e(tool)}</span><span class="workflow-output">${e(output)}</span></li>`
   ).join('');
-  return `<ol class="project-workflow" role="list">${steps}</ol>${text}`;
+  return `<ol class="project-workflow" role="list">${steps}</ol>`;
 }
 
 function projectTables(tables = []) {
@@ -219,39 +217,51 @@ function projectLinks(project) {
   return `<section class="article-links project-links"><h2>项目链接</h2><ul>${links.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>`;
 }
 
-function renderProjectSlides(project, cover) {
-  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps, tables = [], diagram, detailLabel}, index) => {
-    const layout = diagram ? ' slide-diagram' : tables.length ? ' slide-technical' : images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
-    const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
-    const details = notes.map(note => `<p class="slide-note">${e(note)}</p>`).join('');
-    const tableHtml = projectTables(tables);
-    const disclosure = detailLabel ? `<details class="slide-evidence"><summary>${e(detailLabel)}</summary>${details}${tableHtml}</details>` : '';
-    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${detailLabel ? '' : details}</div><div class="slide-media">${diagram ? projectDiagram(diagram, `${project.id}-page-${index + 1}`) : ''}${detailLabel ? '' : tableHtml}${images.map(image => projectFigure(image)).join('')}</div>${disclosure}</section>`;
-  }).join('');
-  const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
-  return `<article class="site-panel project-slides" id="${e(project.id)}"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><header class="slides-hero"><div class="slides-intro"><p class="slides-category">${e(project.detail.status)} · ${e(project.detail.period)}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p></div>${cover}</header><nav class="slides-nav" aria-label="项目章节">${links}</nav><div class="slides-body">${slides}${projectLinks(project)}</div><footer class="slides-footer"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></article>`;
+function renderProjectSection(project, number, showHeading, coverVideo) {
+  const { heading, paragraphs: [lead, ...notes], images = [], steps, tables = [], diagram, detailLabel, video, workflow } =
+    project.detail.sections[number - 1];
+  const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
+  const notesHtml = notes.map(note => `<p class="slide-note">${e(note)}</p>`).join('');
+  const tableHtml = projectTables(tables);
+  const disclosure = detailLabel ? `<details class="slide-evidence"><summary>${e(detailLabel)}</summary>${notesHtml}${tableHtml}</details>` : '';
+  const diagrams = diagram ? projectDiagram(diagram, `${project.id}-page-${number}`) : '';
+  const footage = video && video !== coverVideo ? projectVideo(video) : '';
+  const pictures = images.map(image => projectFigure(image)).join('');
+  const media = diagrams + (detailLabel ? '' : tableHtml) + footage +
+    (pictures ? `<div class="slide-pictures">${pictures}</div>` : '');
+  const wide = workflow || footage || detailLabel || tables.length || images.length > 1;
+  const title = showHeading ? `<h3>${e(heading)}</h3>` : '';
+  return `<section class="project-slide${wide ? ' slide-wide' : ''}" id="section-${number}"><div class="slide-text">${title}<p class="slide-intro">${e(lead)}</p>${sequence}${detailLabel ? '' : notesHtml}</div>${workflow ? projectWorkflow(workflow) : ''}${media ? `<div class="slide-media">${media}</div>` : ''}${disclosure}</section>`;
+}
+
+function renderProject(project) {
+  const { detail } = project;
+  const { purpose, mediaHint, chapters } = detail.overview;
+  const back = `<a class="back-link" href="../works.html#${project.id}">← 返回作品集</a>`;
+  const coverVideo = selectedCoverVideo(project);
+  const [width, height] = detail.coverSize ?? [1200, 706];
+  const cover = coverVideo ? projectVideo(coverVideo) : projectFigure({
+    src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height,
+  }, true);
+  const evidence = mediaHint ? `<div class="project-preview${height > width ? ' is-portrait' : ''}"><p class="project-picture-guide">${e(mediaHint)}</p>${cover}</div>` : '';
+  const navigation = chapters.length > 1
+    ? `<nav class="project-nav" aria-label="项目章节">${chapters.map((chapter, index) =>
+      `<a href="#chapter-${index + 1}">${e(chapter.title)}</a>`
+    ).join('')}</nav>` : '';
+  const body = chapters.map((chapter, index) =>
+    `<section class="project-chapter" id="chapter-${index + 1}" aria-labelledby="chapter-title-${index + 1}"><h2 id="chapter-title-${index + 1}">${e(chapter.title)}</h2>${chapter.sections.map(number =>
+      renderProjectSection(project, number, chapter.sections.length > 1, coverVideo)
+    ).join('')}</section>`
+  ).join('');
+  const period = detail.period ? ` · ${e(detail.period)}` : '';
+  return `<article class="site-panel project-slides" id="${project.id}"><div class="article-topbar">${back}</div><header class="slides-hero${evidence ? ' has-preview' : ''}"><div class="slides-intro"><p class="slides-category">${e(detail.status)}${period}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p><p class="project-purpose">${e(purpose)}</p>${navigation}</div>${evidence}</header><div class="slides-body">${body}${projectLinks(project)}</div><footer class="slides-footer">${back}</footer></article>`;
 }
 
 for (const project of projects) {
-  const [width, height] = project.detail.coverSize ?? [1200, 706];
-  const coverVideo = selectedCoverVideo(project);
-  const cover = coverVideo ? projectVideo(coverVideo) : project.detail.coverSize
-    ? projectFigure({src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height}, true)
-    : `<figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure>`;
-  if (project.detail.layout === 'slides') {
-    const path = projectPagePath(project);
-    render(path, `${project.title} — CLOUD BOY`, project.description, 'works', renderProjectSlides(project, cover), 'article');
-    pages.set(path, pages.get(path).replace('</head>', `<link rel="stylesheet" href="../assets/project-slides.css?v=${projectSlidesStyleVersion}">\n</head>`));
-    continue;
-  }
-  const contents = project.detail.tableOfContents
-    ? `<details class="article-links"><summary>本页目录</summary><ul>${project.detail.sections.map(({ heading }, index) => `<li><a href="#section-${index + 1}">${e(heading)}</a></li>`).join('')}</ul></details>`
-    : '';
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩${project.detail.period ? ` <span>${e(project.detail.period)}</span>` : ''}</strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${contents}${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${projectTables(section.tables)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video && section.video !== coverVideo ? projectVideo(section.video) : ''}</section>`).join('')}${projectLinks(project)}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   const workflowHead = project.detail.sections.some(section => section.workflow)
-    ? `<link rel="stylesheet" href="../${workflowStyle}?v=${workflowStyleVersion}">`
-    : '';
-  render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', body, 'article', workflowHead);
+    ? `<link rel="stylesheet" href="../${workflowStyle}?v=${workflowStyleVersion}">` : '';
+  const head = `<link rel="stylesheet" href="../assets/project-slides.css?v=${projectSlidesStyleVersion}">${workflowHead}`;
+  render(projectPagePath(project), `${project.title} — CLOUD BOY`, project.description, 'works', renderProject(project), 'article', head);
 }
 
 render('journal.html', '克劳德梦见电子羊 · 手记', '云上男孩的文字动态与长文章，按发布时间排列。', 'journal', home);

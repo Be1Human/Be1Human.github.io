@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10232e">
   <title>PetGo · 宠物梦视 — 克劳德梦见电子羊</title>
-  <meta name="description" content="围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。">
+  <meta name="description" content="PetGo 是一个宠物影像创作产品设计，围绕模板、宠物照片和 AI 生成任务组织界面。">
   <link rel="canonical" href="https://be1human.github.io/projects/petgo.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="PetGo · 宠物梦视 — 克劳德梦见电子羊">
-  <meta property="og:description" content="围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。">
+  <meta property="og:description" content="PetGo 是一个宠物影像创作产品设计，围绕模板、宠物照片和 AI 生成任务组织界面。">
   <meta property="og:url" content="https://be1human.github.io/projects/petgo.html">
   <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
   <script src="../assets/app.js?v=6caf86876420" defer></script>
   <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
-
+<link rel="stylesheet" href="../assets/project-slides.css?v=de638d1992b8">
 </head>
 <body id="top" data-page="works" data-learning-base="../">
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -28,7 +28,7 @@
     <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
     <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
   </header>
-  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#petgo">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>2026</span></strong><p>AI 宠物影像产品设计<span>·</span>产品与技术设计记录</p></div></div><h1>PetGo · 宠物梦视</h1><p class="article-lede">围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。</p></header><figure class="article-cover"><img src="../assets/images/petgo-cover.svg" alt="PetGo · 宠物梦视的项目示意图，非运行截图" width="1200" height="706"><figcaption>项目示意图 · 非运行截图</figcaption></figure><div class="prose"><section id="section-1"><h2>从一张照片开始创作</h2><p>产品围绕“浏览模板、选择同款、上传宠物素材、生成并保存结果”展开，希望让用户不用从空白提示词开始制作宠物图片或短视频。</p></section><section id="section-2"><h2>连接创意与生成任务</h2><p>设计资料覆盖多模态输入、生成任务、模板参数、模型供应商抽象，以及结果预览和历史作品管理。客户端体验与后台任务状态共同构成创作链路。</p></section><section id="section-3"><h2>当前阶段</h2><p>这份记录覆盖产品构想与技术设计，其中部分需求仍处于草案阶段。已经整理的设计包括多模态输入、任务调度和模板组织，完成的文档范围不等于功能已经全部上线。</p></section></div><footer class="article-end"><div class="tags"><span>AI 影像</span><span>产品设计</span><span>多模态</span></div><a class="back-link" href="../works.html#petgo">← 返回作品集</a></footer></div></article></main>
+  <main id="main" tabindex="-1"><article class="site-panel project-slides" id="petgo"><div class="article-topbar"><a class="back-link" href="../works.html#petgo">← 返回作品集</a></div><header class="slides-hero"><div class="slides-intro"><p class="slides-category">产品与技术设计记录 · 2026</p><h1>PetGo · 宠物梦视</h1><p class="slides-lede">PetGo 是一个宠物影像创作产品设计，围绕模板、宠物照片和 AI 生成任务组织界面。</p><p class="project-purpose">例如给宠物做一张主题照片。用户先挑模板，再传宠物素材，生成后在历史里找到这次作品。</p><nav class="project-nav" aria-label="项目章节"><a href="#chapter-1">从选模板到保存作品</a><a href="#chapter-2">模板怎样进入生成任务</a><a href="#chapter-3">目前做到哪一步</a></nav></div></header><div class="slides-body"><section class="project-chapter" id="chapter-1" aria-labelledby="chapter-title-1"><h2 id="chapter-title-1">从选模板到保存作品</h2><section class="project-slide" id="section-1"><div class="slide-text"><p class="slide-intro">产品围绕“浏览模板、选择同款、上传宠物素材、生成并保存结果”展开，希望让用户不用从空白提示词开始制作宠物图片或短视频。</p></div></section></section><section class="project-chapter" id="chapter-2" aria-labelledby="chapter-title-2"><h2 id="chapter-title-2">模板怎样进入生成任务</h2><section class="project-slide" id="section-2"><div class="slide-text"><p class="slide-intro">按设计方案，模板定义这类作品需要的素材和参数。客户端收集宠物照片等输入，提交一次生成任务。任务层保留处理状态，并通过统一的供应商接口交给生成服务。得到结果后，预览和历史记录都可以通过同一次任务找到对应的作品。</p></div></section></section><section class="project-chapter" id="chapter-3" aria-labelledby="chapter-title-3"><h2 id="chapter-title-3">目前做到哪一步</h2><section class="project-slide" id="section-3"><div class="slide-text"><p class="slide-intro">这份记录覆盖产品构想与技术设计，其中部分需求仍处于草案阶段。已经整理的设计包括多模态输入、任务调度和模板组织，完成的文档范围不等于功能已经全部上线。</p></div></section></section></div><footer class="slides-footer"><a class="back-link" href="../works.html#petgo">← 返回作品集</a></footer></article></main>
   <footer class="blog-footer">
     <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
     <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>

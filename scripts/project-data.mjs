@@ -33,10 +33,21 @@ export function validateProject(project, source) {
   }
   const detail = project.detail;
   if (!detail || !hasText(detail.status) || (detail.period !== undefined && !/^\d{4}(?:–\d{4})?$/.test(detail.period)) || !Array.isArray(detail.sections) || !detail.sections.length) throw new Error('Incomplete project overview');
-  if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website', 'coverVideo', 'tableOfContents', 'references'].includes(key))) throw new Error('Unexpected field in project overview');
-  if (detail.layout !== undefined && detail.layout !== 'slides') throw new Error('Invalid project overview layout');
+  if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'website', 'coverVideo', 'references', 'overview'].includes(key))) throw new Error('Unexpected field in project overview');
   if (detail.website !== undefined) httpsUrl(detail.website);
-  if (detail.tableOfContents !== undefined && typeof detail.tableOfContents !== 'boolean') throw new Error('Invalid project table of contents');
+  const overview = detail.overview;
+  if (!overview || Object.keys(overview).some(key => !['purpose', 'mediaHint', 'chapters'].includes(key)) ||
+      !hasText(overview.purpose) || (overview.mediaHint !== undefined && !hasText(overview.mediaHint)) ||
+      !Array.isArray(overview.chapters) || !overview.chapters.length || overview.chapters.some(chapter =>
+        !chapter || Object.keys(chapter).some(key => !['title', 'sections'].includes(key)) ||
+        !hasText(chapter.title) || !Array.isArray(chapter.sections) || !chapter.sections.length
+      )) throw new Error('Incomplete project reading order');
+  if (detail.coverVideo && !overview.mediaHint) throw new Error('Project cover video needs a viewing guide');
+  const sectionOrder = overview.chapters.flatMap(chapter => chapter.sections);
+  if (sectionOrder.length !== detail.sections.length || new Set(sectionOrder).size !== sectionOrder.length ||
+      sectionOrder.some(index => !Number.isInteger(index) || index < 1 || index > detail.sections.length)) {
+    throw new Error('Project reading order must include each section exactly once');
+  }
   if (detail.references !== undefined) {
     if (!Array.isArray(detail.references) || detail.references.some(link =>
       !link || Object.keys(link).some(key => !['title', 'url'].includes(key)) || !hasText(link.title)
@@ -52,7 +63,7 @@ export function validateProject(project, source) {
       !detail.sections.some(section => section.video?.src === detail.coverVideo))) throw new Error('Unknown project cover video');
   for (const section of detail.sections) {
     if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram', 'detailLabel'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
-    if (section.detailLabel !== undefined && (!hasText(section.detailLabel) || detail.layout !== 'slides' || (section.paragraphs.length === 1 && !section.tables?.length))) throw new Error('Invalid project detail disclosure');
+    if (section.detailLabel !== undefined && (!hasText(section.detailLabel) || (section.paragraphs.length === 1 && !section.tables?.length))) throw new Error('Invalid project detail disclosure');
     const { workflow } = section;
     const stepFields = ['title', 'tool', 'output'];
     if (workflow !== undefined && (
@@ -64,7 +75,7 @@ export function validateProject(project, source) {
     if (section.steps !== undefined && (!Array.isArray(section.steps) || !section.steps.length ||
         section.steps.some(step => typeof step !== 'string' || !step.trim()))) throw new Error('Invalid project steps');
     const diagram = section.diagram;
-    if (diagram !== undefined && (detail.layout !== 'slides' || !diagram ||
+    if (diagram !== undefined && (!diagram ||
         Object.keys(diagram).some(key => !['caption', 'switchable', 'paths'].includes(key)) ||
         !hasText(diagram.caption) || typeof diagram.switchable !== 'boolean' ||
         !Array.isArray(diagram.paths) || !diagram.paths.length || diagram.paths.some(path =>

@@ -6,7 +6,7 @@
     "kind": "科幻叙事游戏与桌面外设",
     "category": "games",
     "label": "游戏与交互硬件",
-    "description": "回应来自 2826 年的宇航员，用 Haimian 小屏接着玩。",
+    "description": "《深空》是一款通过对话影响剧情的太空游戏。Haimian 是配套的桌面小屏外设。",
     "image": "assets/images/haimian/device-game.webp",
     "imageAlt": "Haimian 运行实拍，屏幕下方是旋钮和蓝色确认键。",
     "imageNote": "Haimian 样机实拍",
@@ -388,8 +388,35 @@
         1279,
         1706
       ],
-      "layout": "slides",
-      "website": "https://dsgame.archerpeng.com/"
+      "website": "https://dsgame.archerpeng.com/",
+      "overview": {
+        "purpose": "在网页上读到 E-17 的来讯，再换到桌面小屏，用旋钮选回复、按键确认。两端接着同一局玩。",
+        "mediaHint": "实拍中先看屏幕里的回复选项，再看设备上的旋钮和确认键。",
+        "chapters": [
+          {
+            "title": "在小屏上回一条消息",
+            "sections": [
+              1
+            ]
+          },
+          {
+            "title": "剧情、存档和按键怎样连起来",
+            "sections": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "title": "样机组装与配置",
+            "sections": [
+              6,
+              7
+            ]
+          }
+        ]
+      }
     },
     "categories": [
       "games",
@@ -402,7 +429,7 @@
     "kind": "角色重建实验",
     "category": "visuals",
     "label": "AIGC",
-    "description": "用《雨之城》Sayuki 的单张正面设定图生成环绕视频，逐轮比较高斯加密、Alpha 监督、Mip 滤波和网格提取的效果。",
+    "description": "从《雨之城》Sayuki 的单张正面设定图，重建一个能旋转查看的三维角色。",
     "image": "assets/images/character-orbit-cover.webp",
     "imageAlt": "3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面",
     "imageNote": "本次实验的 3DGS 渲染 · 侧面、正面与背面",
@@ -653,7 +680,35 @@
             }
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "在投入完整建模之前，先用环绕结果检查服装轮廓，再判断脸、手和鞋底还要补哪些细节。",
+        "mediaHint": "把正面设定与环绕画面放在一起看，注意帽檐、双手和衣摆进入侧视角时的变化。",
+        "chapters": [
+          {
+            "title": "先看单图得到的三维结果",
+            "sections": [
+              1
+            ]
+          },
+          {
+            "title": "生成环绕视角并训练基线",
+            "sections": [
+              2,
+              3
+            ]
+          },
+          {
+            "title": "逐轮检查脸、手和网格",
+            "sections": [
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -662,7 +717,7 @@
     "kind": "Unreal Engine · 角色动画",
     "category": "visuals",
     "label": "AIGC",
-    "description": "以一段 11.55 秒的独白为例，拆解视频怎样变成 UE 中可编辑的角色子序列，以及身体、口型和眉眼如何分别恢复与验收。",
+    "description": "把一段表演参考视频转成 Unreal Engine 里可编辑的角色动画、表情和声音轨。",
     "image": "assets/images/digital-performance-cover.webp",
     "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
     "imageNote": "Unreal Engine · 角色全身表演",
@@ -922,7 +977,36 @@
           "url": "https://dev.epicgames.com/documentation/unreal-engine/sequences-shots-and-takes-in-unreal-engine"
         }
       ],
-      "tableOfContents": true
+      "overview": {
+        "purpose": "制片可以把角色段落移到场景的其他时间，动画师还能独立修改身体动作、嘴型和眉眼。",
+        "mediaHint": "正文有同屏视频。拖到约 6 秒，比较参考画面和 UE 输出里的捂胸动作。",
+        "chapters": [
+          {
+            "title": "先看 11.55 秒独白的交付成片",
+            "sections": [
+              1,
+              2
+            ]
+          },
+          {
+            "title": "怎样把画面和声音拆成动画轨",
+            "sections": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "title": "保存以后怎样复查",
+            "sections": [
+              8,
+              9
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -931,7 +1015,7 @@
     "kind": "视频重建 · C7 街区",
     "category": "experiments",
     "label": "研究与实验",
-    "description": "先在俯视图上读懂路线，再从行车视频里求出相机、训练街景。用一段真实驾驶录像和同机位对照，记录八秒样段怎样延长、何处接得上、为什么转身会露出空洞。",
+    "description": "用行车视频重建一小段街道，再把 3D 高斯场景接进浏览器，做成可驾驶的样段。",
     "image": "assets/images/c7-city-drive.webp",
     "imageAlt": "沿高斯重建的城市干道驾驶，树木、建筑和路面来自视频重建",
     "imageNote": "城市 3DGS 样段 · 浏览器实际驾驶",
@@ -1152,7 +1236,36 @@
             "height": 720
           }
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "沿原来的车道驾驶，再试着横移或转向，就能检查哪些地方可以自由看，哪些地方还缺拍摄视角。",
+        "mediaHint": "这是浏览器实录。先看车辆沿样段行驶，正文另有一段跨越两块场景的录像。",
+        "chapters": [
+          {
+            "title": "先看能驾驶的街区",
+            "sections": [
+              7,
+              1
+            ]
+          },
+          {
+            "title": "从视频求相机、训练和拼接",
+            "sections": [
+              2,
+              3,
+              4,
+              6
+            ]
+          },
+          {
+            "title": "偏离原路线后还剩什么",
+            "sections": [
+              5,
+              8
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1162,7 +1275,7 @@
     "kind": "Minecraft AI 伙伴",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "和 Minecraft 伙伴聊天，交给它一个游戏目标，再从调用轨迹查看它怎样行动、怎样核对结果。",
+    "description": "MineClaw 是 Minecraft Java 版里的 AI 伙伴，能对话，也能在同一个世界里执行玩家交代的目标。",
     "image": "assets/images/mineclaw-capabilities.png",
     "imageAlt": "MineClaw 伙伴能力面板，列出聊天、记忆、Minecraft 和语音能力。",
     "imageNote": "客户端实拍 · MineClawTest 的伙伴能力",
@@ -1304,7 +1417,6 @@
         }
       ],
       "period": "2026",
-      "tableOfContents": true,
       "references": [
         {
           "title": "目标执行框架 · SVG 原图",
@@ -1322,7 +1434,33 @@
           "title": "DeepSeek 前缀缓存说明",
           "url": "https://api-docs.deepseek.com/zh-cn/guides/kv_cache/"
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "玩家把取木头这类目标交给伙伴。接着可以在控制台查它调用了什么，再用背包变化核对结果。",
+        "mediaHint": "实拍的能力面板显示伙伴可用的技能。打开下面的操作录像，可以看到怎样从能力切换到历史轨迹。",
+        "chapters": [
+          {
+            "title": "先看伙伴控制台如何使用",
+            "sections": [
+              1,
+              3
+            ]
+          },
+          {
+            "title": "从玩家目标到游戏动作",
+            "sections": [
+              2
+            ]
+          },
+          {
+            "title": "怎样查进服和模型调用记录",
+            "sections": [
+              5,
+              4
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1331,7 +1469,7 @@
     "kind": "Agent 协作与项目管理",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "下一位接手的 Agent 怎么知道任务做到哪一步？ClawPM 用需求树拆目标，用工作流跟踪执行，把验收条件、测试结果和交付证据保存在 Git 工程里。",
+    "description": "ClawPM 是一套给人和编程 Agent 共用的项目管理工具，将任务、验收条件和证据放进 Git 工程。",
     "image": "assets/images/clawpm-desktop-mindmap.jpg",
     "imageAlt": "ClawPM 桌面端的需求思维导图",
     "imageNote": "桌面端 · Markdown 导出演示项目",
@@ -1412,7 +1550,26 @@
             }
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "换一个 Agent 接手 Markdown 导出时，它可以先看哪些子任务已做完、哪条回归还要跑，再接着执行。",
+        "mediaHint": "这是 Markdown 导出演示项目。先看需求树的分支和任务状态，再对照正文里的验收面板。",
+        "chapters": [
+          {
+            "title": "一次 Markdown 导出怎样交接",
+            "sections": [
+              1,
+              2
+            ]
+          },
+          {
+            "title": "任务和证据怎样落到 Git",
+            "sections": [
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1421,7 +1578,7 @@
     "kind": "Agent 自动化测试框架",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "Agent 通过 MCP 操作真机，可委派本地视觉模型，也可按固定工作流回归。",
+    "description": "SmartTest 是 Android 游戏真机测试工具。编程 Agent 可以逐步操作设备、委派视觉模型，或运行保存好的回归流程。",
     "image": "assets/images/smarttest-framework.svg",
     "imageAlt": "工作台、CLI 与 Agent 的 MCP 工具共用本地服务。服务分别调度交互会话、视觉任务和固定流程，三条路径都留下可按运行 ID 检索的证据。",
     "imageNote": "三条真机执行路径",
@@ -1442,7 +1599,6 @@
         540,
         390
       ],
-      "layout": "slides",
       "sections": [
         {
           "heading": "Agent 的设备会话",
@@ -1475,24 +1631,24 @@
               "caption": "本地视觉模型的执行循环",
               "width": 540,
               "height": 335
-            },
-            {
-              "src": "assets/images/smarttest-goal.webp",
-              "alt": "SmartTest 测试现场显示背包目标、Android 设备、步数、允许的应用、只读和录屏选项",
-              "caption": "真机目标与验收条件",
-              "width": 1600,
-              "height": 1050
             }
           ]
         },
         {
           "heading": "背包用例怎样判定",
           "paragraphs": [
-            "三项断言，一项通过",
+            "这次模型误进商城，最后一次滑动越界被拦截。验收只确认了游戏仍在前台，始终没有观察到目标分类，结束时也未返回大厅。",
             "游戏节点断言通过只读 UE 接口核对。过程检查记录曾经出现的状态，结束检查读取最后一帧。"
           ],
           "detailLabel": "逐步动作回执",
           "images": [
+            {
+              "src": "assets/images/smarttest-goal.webp",
+              "alt": "SmartTest 测试现场显示背包目标、Android 设备、步数、允许的应用、只读和录屏选项",
+              "caption": "真机目标与验收条件",
+              "width": 1600,
+              "height": 1050
+            },
             {
               "src": "assets/images/smarttest-verdict.svg",
               "alt": "79.5 秒内模型决策十次，八次触控送达。第二步误入商城，第十步滑动越界。独立验收只确认了游戏在前台。",
@@ -1711,7 +1867,35 @@
             }
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "用「打开背包、查看分类、回到大厅」举例。跑完能看到屏幕上的动作，也能从断言里找出哪一步没有达到目标。",
+        "mediaHint": "总览图是执行路线图。想看真机结果，从下方的背包用例开始。",
+        "chapters": [
+          {
+            "title": "背包测试在哪一步走偏",
+            "sections": [
+              3
+            ]
+          },
+          {
+            "title": "会话、视觉模型与固定流程",
+            "sections": [
+              1,
+              2,
+              4
+            ]
+          },
+          {
+            "title": "真机结果和证据怎么追查",
+            "sections": [
+              5,
+              6,
+              7
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1720,7 +1904,7 @@
     "kind": "网页游戏 · 回合对战",
     "category": "games",
     "label": "游戏项目",
-    "description": "把三消做成一场回合对战。双方轮流使用同一块棋盘，消除产生攻击或护盾，战斗之外则通过地图探索、灵兽配队和宗门推进冒险。",
+    "description": "这是一个仙侠主题的三消对战原型。玩家和 Boss 轮流在同一块棋盘上消除，地图串起战斗与养成。",
     "image": "assets/images/aixiaochu-showcase.webp",
     "imageAlt": "左侧是云雾地图，中间是 Boss 战斗，右侧是灵兽阵容",
     "imageNote": "原型实机 · 地图、战斗与阵容",
@@ -1798,8 +1982,39 @@
               "height": 896
             }
           ]
+        },
+        {
+          "heading": "共享棋盘在回合间传递什么",
+          "paragraphs": [
+            "棋盘结算后保留这轮留下的灵印布局。对方接手同一块棋盘，也接手这个布局带来的机会。战斗反馈同时显示攻击和护盾的变化，玩家可以据此判断这次交换是在进攻，还是先顶住对手的下一轮。"
+          ],
+          "steps": [
+            "交换相邻灵印",
+            "消除并触发连锁",
+            "结算攻击与护盾",
+            "对方接手棋盘"
+          ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "每回合要决定现在消什么、会给对手留下哪些组合，再用打出的攻击或护盾应对下一轮。",
+        "mediaHint": "对照原型里的地图、战斗和阵容三张画面。战斗中留意消除后的棋盘和攻防数值。",
+        "chapters": [
+          {
+            "title": "先打一轮，再去地图上探索",
+            "sections": [
+              1,
+              2
+            ]
+          },
+          {
+            "title": "从消除结果到战斗结算",
+            "sections": [
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1809,7 +2024,7 @@
     "kind": "跨设备 AI 编程记忆",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "让 AI 编程的上下文接着用。按项目收集会话、操作和摘要，用快捷搜索或 MCP 找回历史，也能在多台设备之间聚合记录，并通过插件整理规则、部署规范和补充桌面活动。",
+    "description": "AgentMem 是给 AI 编程会话用的项目记忆工具。它记录改动和任务进展，供人和接手的 Agent 检索。",
     "image": "assets/images/agentmem-overview.jpg",
     "imageAlt": "AgentMem 的跨设备视图，显示三条来自不同设备和编程工具的会话摘要",
     "imageNote": "跨设备记忆浏览器 · 演示数据",
@@ -1831,9 +2046,9 @@
       ],
       "sections": [
         {
-          "heading": "把断开的会话接起来",
+          "heading": "操作记录和会话摘要怎样关联",
           "paragraphs": [
-            "假设你昨天用 Codex 修了 Markdown 导出，今天换到笔记本，在 Cursor 里补测试。新会话要先弄清两件事：上次改了什么，这次还要验证什么。AgentMem 把编程过程中的操作和会话结果按项目保存，让人和接手的 Agent 都能找到这些信息。",
+            "AgentMem 按项目保存会话中的操作和总结。摘要用来快速了解任务进展。点进观察记录可以辨认哪条是定位原因、哪条是修改标题层级、哪条是补测试。接手 Markdown 导出时，先用摘要找方向，再用观察记录核对具体发生了什么。",
             "接入工具后，客户端按各平台提供的方式记录会话和操作。例如 CodeBuddy 和 Cursor 的 Hook 可以捕获工具调用与文件编辑，再将记录写入本机 SQLite。图中的演示项目在两台设备之间接续，摘要卡上的标签标记了项目、编程工具和设备。浏览器把记录分成会话、观察记录和摘要。摘要用来看任务结果和接下来的工作，观察记录用来追查具体的改动。"
           ],
           "images": [
@@ -1849,7 +2064,7 @@
         {
           "heading": "从搜索结果回到具体改动",
           "paragraphs": [
-            "忘了是哪次会话改了导出逻辑，可以在桌面快捷搜索输入「Markdown 导出」，选定 orbit-notes 项目，再从摘要或观察记录打开完整条目。快捷窗口用的是文本匹配，适合记得文件名、报错或一段原话的时候。",
+            "快捷搜索用文本匹配。在演示库查 Markdown 导出，先限定项目再选记录。摘要适合看上次做到哪，观察记录能帮你核对具体改动。",
             "Agent 也能通过 MCP 搜索历史，先看命中的索引和前后记录，再按编号读取详情。主动检索还可将 SQLite 全文搜索与向量检索的排名合并。启用了上下文注入的客户端，可以在会话开始或提交消息时带入近期的项目记忆。"
           ],
           "images": [
@@ -1860,6 +2075,11 @@
               "width": 560,
               "height": 610
             }
+          ],
+          "steps": [
+            "搜索「Markdown 导出」",
+            "选 orbit-notes 项目",
+            "打开摘要或观察记录"
           ]
         },
         {
@@ -1924,7 +2144,7 @@
           ]
         },
         {
-          "heading": "ShadowFolk Upload 单独安排工作区上传",
+          "heading": "工作区记录怎样送到 ShadowFolk",
           "paragraphs": [
             "如果某个工作区还要把记忆交给 ShadowFolk 处理，可以单独指定上传的工作区和每日时间，也可以手动上传一次。它从本地读观察记录和会话摘要，按自己的计划发送，和 AgentMem 的跨设备同步各自运行。"
           ],
@@ -1938,7 +2158,35 @@
             }
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "昨天用 Codex 修了 Markdown 导出，今天换到 Cursor 补测试。搜一下就能查到上次改了什么、接下来该验证什么。",
+        "mediaHint": "这是用演示数据运行的记忆浏览器。先看顶部标签和摘要列表，正文会沿着一次搜索走到原始观察记录。",
+        "chapters": [
+          {
+            "title": "先找回上次做到哪一步",
+            "sections": [
+              2
+            ]
+          },
+          {
+            "title": "会话怎样变成可检索记录",
+            "sections": [
+              1,
+              3,
+              6
+            ]
+          },
+          {
+            "title": "复用规则与连接其他工具",
+            "sections": [
+              4,
+              5,
+              7
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1948,7 +2196,7 @@
     "kind": "AI 宠物影像产品设计",
     "category": "visuals",
     "label": "AIGC",
-    "description": "围绕宠物照片、创作模板和 AI 生成结果，设计低门槛的宠物影像创作流程。整理了多模态输入、任务系统、模板与服务架构。",
+    "description": "PetGo 是一个宠物影像创作产品设计，围绕模板、宠物照片和 AI 生成任务组织界面。",
     "image": "assets/images/petgo-cover.svg",
     "imageAlt": "PetGo · 宠物梦视的项目示意图，非运行截图",
     "imageNote": "项目示意图 · 非运行截图",
@@ -1974,7 +2222,7 @@
         {
           "heading": "连接创意与生成任务",
           "paragraphs": [
-            "设计资料覆盖多模态输入、生成任务、模板参数、模型供应商抽象，以及结果预览和历史作品管理。客户端体验与后台任务状态共同构成创作链路。"
+            "按设计方案，模板定义这类作品需要的素材和参数。客户端收集宠物照片等输入，提交一次生成任务。任务层保留处理状态，并通过统一的供应商接口交给生成服务。得到结果后，预览和历史记录都可以通过同一次任务找到对应的作品。"
           ]
         },
         {
@@ -1983,7 +2231,30 @@
             "这份记录覆盖产品构想与技术设计，其中部分需求仍处于草案阶段。已经整理的设计包括多模态输入、任务调度和模板组织，完成的文档范围不等于功能已经全部上线。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "例如给宠物做一张主题照片。用户先挑模板，再传宠物素材，生成后在历史里找到这次作品。",
+        "chapters": [
+          {
+            "title": "从选模板到保存作品",
+            "sections": [
+              1
+            ]
+          },
+          {
+            "title": "模板怎样进入生成任务",
+            "sections": [
+              2
+            ]
+          },
+          {
+            "title": "目前做到哪一步",
+            "sections": [
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1993,7 +2264,7 @@
     "kind": "动态壁纸案例与 Skill",
     "category": "visuals",
     "label": "AIGC",
-    "description": "包含蓝天湖景列车、星空列车两个运行案例，以及分层制作、质量检查与离线导出的两份 Skill。提供 TA 拆解、Shader 实现和本地运行文档。",
+    "description": "这是两套动态列车壁纸和一套制作工作台，用来组织素材分层、实时渲染、检查和导出。",
     "image": "assets/images/starry-night.png",
     "imageAlt": "星空、云层、列车与水面倒影的实际 Shader 渲染",
     "imageNote": "实际渲染截图",
@@ -2041,7 +2312,26 @@
             "项目内的第一份 Skill 把场景拆成图层、素材与渲染职责，第二份 Skill 用基线检查画面、运行表现和离线导出。工作台可以分别查看动态合成、单层效果、独立素材和参考画面。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "把蓝天与星空两套案例放在一起，可以看清什么适合交给透明素材，什么适合由 Shader 实时计算。",
+        "mediaHint": "星空案例的运行截图。观察桥、列车与水的空间层次，再对照正文的蓝天列车。",
+        "chapters": [
+          {
+            "title": "对照看两种列车壁纸",
+            "sections": [
+              1,
+              2
+            ]
+          },
+          {
+            "title": "从拆解到可交付工程",
+            "sections": [
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2051,7 +2341,7 @@
     "kind": "浏览器游戏",
     "category": "games",
     "label": "游戏项目",
-    "description": "浏览器中的可破坏体素围城游戏。玩家使用钩索和喷气装备在小镇移动、破坏建筑、应对巨人并完成 7 个任务；支持中英文，需本地启动网页服务。",
+    "description": "Titan Town 是一个浏览器围城游戏。玩家用钩索和喷气设备在可破坏的体素小镇里完成任务。",
     "image": "assets/images/titan-town.png",
     "imageAlt": "Titan Town 的实际游戏画面，体素城镇和高墙",
     "imageNote": "实际游戏截图",
@@ -2090,7 +2380,31 @@
             "源码附带静态服务，启动后用支持 WebGL2 和 WebAssembly SIMD 的浏览器打开。主菜单可以切换简体中文与英文，游戏内的帮助面板列出完整按键。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "巨人拆掉一栋楼后，先前的落脚点可能消失。玩家要根据正在变化的地形规划绕行路线。",
+        "mediaHint": "这是实机画面。读正文时，把房顶、街道和城墙理解为几条可切换的移动路线。",
+        "chapters": [
+          {
+            "title": "在围城里跑一条路线",
+            "sections": [
+              1
+            ]
+          },
+          {
+            "title": "建筑破坏怎样改变场景",
+            "sections": [
+              2
+            ]
+          },
+          {
+            "title": "本地启动与操作",
+            "sections": [
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2100,7 +2414,7 @@
     "kind": "非商业学习 Demo",
     "category": "games",
     "label": "游戏项目",
-    "description": "基于 Godot 的三房间动作游戏学习 Demo，包含战斗、奖励与祝福选择、Boss 波次及胜负结算。提供 Windows 版本和中文游戏界面；项目非官方，仅限非商业学习。",
+    "description": "《冥界试炼》是用 Godot 制作的三房间动作游戏学习样例，包含战斗、三选一奖励和 Boss 结算。",
     "image": "assets/images/hades-combat.png",
     "imageAlt": "学习 Demo 的实际战斗截图，角色在双坑房间施展剑击",
     "imageNote": "学习 Demo 实际截图 · 非原作画面",
@@ -2139,7 +2453,31 @@
             "项目用 Godot 制作，发布包包含可执行文件和同目录的资源包，解压后即可启动中文演示。作品仅供非商业学习。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "打一局可以看到属性与祝福怎样叠加影响下一场战斗，也能单独研究冲刺、攻击和受击反馈。",
+        "mediaHint": "这是学习样例的实机战斗画面。先看攻击反馈和敌人位置，再对照正文的房间流程。",
+        "chapters": [
+          {
+            "title": "从前厅打到 Boss",
+            "sections": [
+              1
+            ]
+          },
+          {
+            "title": "属性、祝福与战斗状态",
+            "sections": [
+              2
+            ]
+          },
+          {
+            "title": "运行 Windows 演示",
+            "sections": [
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2149,7 +2487,7 @@
     "kind": "macOS / Windows 应用",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。",
+    "description": "这是一个桌面网络观察工具，用来记录 Claude Code 相关连接看到的出口 IP 和变化历史。",
     "image": "assets/images/network-diary.png",
     "imageAlt": "大小姐的网络手账实际应用界面，截图使用演示数据",
     "imageNote": "实际应用截图 · 演示数据",
@@ -2188,7 +2526,26 @@
             "应用可在 macOS 或 Windows 托盘中继续采样。历史保存在本机 SQLite 数据库，可以筛选记录或导出 CSV。地理归属采用第三方估计。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "遇到一次断连时，可以回看当时是否换了出口、连续时长何时中断，以及是哪条探测路径观测到变化。",
+        "mediaHint": "演示数据中先看当前出口、连续计时和重置记录。正文解释这些信息怎样对应到一次地址变化。",
+        "chapters": [
+          {
+            "title": "从历史里排查一次变化",
+            "sections": [
+              2
+            ]
+          },
+          {
+            "title": "出口计时与本地留档",
+            "sections": [
+              1,
+              3
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2198,7 +2555,7 @@
     "kind": "动画制作与评审 Skill",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。",
+    "description": "Video to Game Animation 是一套把参考视频做成游戏角色动画的制作与评审 Skill。",
     "image": "assets/images/animation.jpg",
     "imageAlt": "同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面",
     "imageNote": "角色肩袖修正前后对比",
@@ -2237,7 +2594,26 @@
             "封面用同一帧的正面、侧面和背面对比修订前后的蒙皮。修正肩袖时同时核对肘部、肩背和躯干，避免调整一个局部后把变形推到其他部位。仓库提供制作与评审用的脚本，也记录了这些检查的测量范围。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "当一段动作出现滑步或肩袖变形，可以回到对应处理环节，用同机位、同姿态的前后对照检查修正。",
+        "mediaHint": "对比同一姿态的正面、侧面和背面，重点看肩臂交界与袖口的轮廓。",
+        "chapters": [
+          {
+            "title": "先看一个肩袖修正结果",
+            "sections": [
+              3
+            ]
+          },
+          {
+            "title": "捕捉、重定向与足部验证",
+            "sections": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2247,7 +2623,7 @@
     "kind": "机械臂控制",
     "category": "experiments",
     "label": "硬件与交互",
-    "description": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
+    "description": "ClawPhone 是一个控制实体机械臂的项目。操作最终会变成现实中的机械动作。",
     "image": "assets/images/clawphone-cover.svg",
     "imageAlt": "ClawPhone 实体机械臂概念图",
     "imageNote": "机械臂概念示意图",
@@ -2267,13 +2643,29 @@
           "heading": "从指令到机械动作",
           "paragraphs": [
             "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
+          ],
+          "steps": [
+            "控制端发指令",
+            "实体机械臂执行",
+            "核对实际动作"
           ]
         }
       ],
       "coverSize": [
         1200,
         706
-      ]
+      ],
+      "overview": {
+        "purpose": "用控制端发起一次操作，再对照机械臂实际运动，检查指令是否执行到位。",
+        "chapters": [
+          {
+            "title": "控制指令怎样到机械臂",
+            "sections": [
+              1
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2283,7 +2675,7 @@
     "kind": "Obsidian 思维导图插件",
     "category": "tools",
     "label": "笔记与工具",
-    "description": "在 Obsidian 里，把 Markdown 笔记直接当作思维导图编辑。用节点整理层级，用双链连接已有笔记；内容、主题和样式都保存在同一份笔记中，切回文字仍然能读。",
+    "description": "CloudMind 是一个 Obsidian 插件。它把 Markdown 的标题和列表显示为可编辑的思维导图。",
     "image": "assets/images/cloudmind-cover.webp",
     "imageAlt": "CloudMind 在 Obsidian 中将《原子习惯》读书笔记展开为思维导图",
     "imageNote": "Obsidian 桌面版 · 项目演示库截图",
@@ -2322,7 +2714,8 @@
           "heading": "按内容选择结构和主题",
           "paragraphs": [
             "梳理概念可以用双向思维导图，排列步骤可以用逻辑图，整理进程可以用时间轴。插件提供 8 种结构和 10 套主题，也可以单独调整节点颜色、添加备注和标签。每篇笔记会保留自己的结构与主题。",
-            "需要发给别人时，可以导出 PNG、SVG 或 .xmind 文件；导出结果保存在当前笔记所在的文件夹。"
+            "需要发给别人时，可以导出 PNG、SVG 或 .xmind 文件；导出结果保存在当前笔记所在的文件夹。",
+            "插件从 Markdown 的标题和嵌套列表还原节点层级。编辑导图时，同一份 Markdown 保存节点内容，样式则写入注释。这样普通文本编辑器可以继续读正文，导图也能恢复之前的样式。"
           ]
         },
         {
@@ -2332,7 +2725,32 @@
             "预览已有笔记时保持文件原样。在导图里编辑后，插件会用标题和列表重新组织 Markdown，并通过注释保存节点样式。关闭插件后，笔记仍可用普通 Markdown 编辑器打开。"
           ]
         }
-      ]
+      ],
+      "overview": {
+        "purpose": "记完读书笔记后，可以拖动分支重组要点，再切回同一份 Markdown 继续写，或从节点打开关联笔记。",
+        "mediaHint": "在 Obsidian 演示库截图里，看笔记的标题和列表如何出现在导图节点中。",
+        "chapters": [
+          {
+            "title": "把已经写好的笔记变成导图",
+            "sections": [
+              1,
+              2
+            ]
+          },
+          {
+            "title": "节点、结构和样式怎样保存",
+            "sections": [
+              3
+            ]
+          },
+          {
+            "title": "安装与复用笔记",
+            "sections": [
+              4
+            ]
+          }
+        ]
+      }
     }
   }
 ]

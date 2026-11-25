@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10232e">
   <title>Video to Game Animation — 克劳德梦见电子羊</title>
-  <meta name="description" content="面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。">
+  <meta name="description" content="Video to Game Animation 是一套把参考视频做成游戏角色动画的制作与评审 Skill。">
   <link rel="canonical" href="https://be1human.github.io/projects/animation-workflow.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="Video to Game Animation — 克劳德梦见电子羊">
-  <meta property="og:description" content="面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。">
+  <meta property="og:description" content="Video to Game Animation 是一套把参考视频做成游戏角色动画的制作与评审 Skill。">
   <meta property="og:url" content="https://be1human.github.io/projects/animation-workflow.html">
   <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
   <script src="../assets/app.js?v=6caf86876420" defer></script>
   <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
-
+<link rel="stylesheet" href="../assets/project-slides.css?v=de638d1992b8">
 </head>
 <body id="top" data-page="works" data-learning-base="../">
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -28,7 +28,7 @@
     <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
     <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
   </header>
-  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#animation-workflow">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩</strong><p>动画制作与评审 Skill<span>·</span>制作与评审 Skill</p></div></div><h1>Video to Game Animation</h1><p class="article-lede">面向 Agent 的视频参考转游戏角色动画 Skill，包含姿态估计、动作重定向、步态协调、蒙皮诊断和 Blender 复验。提供脚本、修订对比与测量数据，需结合具体角色配置和验证。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/animation.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/animation.jpg" alt="同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面" width="1200" height="704" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>角色肩袖修正前后对比</figcaption></figure><div class="prose"><section id="section-1"><h2>从关节点估计到角色骨架</h2><p>流程从视频估计关节点，先复核捕捉置信度和肢体方向，再切分动作。把动作放到游戏角色上前，需要对齐静止姿态和骨轴，并用参考动作补足单目视频里难以判断的扭转。</p></section><section id="section-2"><h2>先确认脚何时接触地面</h2><p>步跑和起停切换用同一侧脚的接触事件对齐相位。Blender 可以回看支撑阶段的脚掌路径，游戏里则要结合碰撞后的位移核对滑步、收脚和停步效果。</p></section><section id="section-3"><h2>同一个姿势比较肩袖变形</h2><p>封面用同一帧的正面、侧面和背面对比修订前后的蒙皮。修正肩袖时同时核对肘部、肩背和躯干，避免调整一个局部后把变形推到其他部位。仓库提供制作与评审用的脚本，也记录了这些检查的测量范围。</p></section><section class="article-links project-links"><h2>项目链接</h2><ul><li><a href="https://github.com/Be1Human/video-to-game-animation#实际效果与过程" target="_blank" rel="noopener noreferrer">查看 Skill ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span>Blender</span><span>动画</span><span>Agent Skill</span></div><a class="back-link" href="../works.html#animation-workflow">← 返回作品集</a></footer></div></article></main>
+  <main id="main" tabindex="-1"><article class="site-panel project-slides" id="animation-workflow"><div class="article-topbar"><a class="back-link" href="../works.html#animation-workflow">← 返回作品集</a></div><header class="slides-hero has-preview"><div class="slides-intro"><p class="slides-category">制作与评审 Skill</p><h1>Video to Game Animation</h1><p class="slides-lede">Video to Game Animation 是一套把参考视频做成游戏角色动画的制作与评审 Skill。</p><p class="project-purpose">当一段动作出现滑步或肩袖变形，可以回到对应处理环节，用同机位、同姿态的前后对照检查修正。</p><nav class="project-nav" aria-label="项目章节"><a href="#chapter-1">先看一个肩袖修正结果</a><a href="#chapter-2">捕捉、重定向与足部验证</a></nav></div><div class="project-preview"><p class="project-picture-guide">对比同一姿态的正面、侧面和背面，重点看肩臂交界与袖口的轮廓。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/animation.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/animation.jpg" alt="同一姿势的角色肩袖蒙皮修正前后对比，含正面、侧面和背面" width="1200" height="704" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>角色肩袖修正前后对比</figcaption></figure></div></header><div class="slides-body"><section class="project-chapter" id="chapter-1" aria-labelledby="chapter-title-1"><h2 id="chapter-title-1">先看一个肩袖修正结果</h2><section class="project-slide" id="section-3"><div class="slide-text"><p class="slide-intro">封面用同一帧的正面、侧面和背面对比修订前后的蒙皮。修正肩袖时同时核对肘部、肩背和躯干，避免调整一个局部后把变形推到其他部位。仓库提供制作与评审用的脚本，也记录了这些检查的测量范围。</p></div></section></section><section class="project-chapter" id="chapter-2" aria-labelledby="chapter-title-2"><h2 id="chapter-title-2">捕捉、重定向与足部验证</h2><section class="project-slide" id="section-1"><div class="slide-text"><h3>从关节点估计到角色骨架</h3><p class="slide-intro">流程从视频估计关节点，先复核捕捉置信度和肢体方向，再切分动作。把动作放到游戏角色上前，需要对齐静止姿态和骨轴，并用参考动作补足单目视频里难以判断的扭转。</p></div></section><section class="project-slide" id="section-2"><div class="slide-text"><h3>先确认脚何时接触地面</h3><p class="slide-intro">步跑和起停切换用同一侧脚的接触事件对齐相位。Blender 可以回看支撑阶段的脚掌路径，游戏里则要结合碰撞后的位移核对滑步、收脚和停步效果。</p></div></section></section><section class="article-links project-links"><h2>项目链接</h2><ul><li><a href="https://github.com/Be1Human/video-to-game-animation#实际效果与过程" target="_blank" rel="noopener noreferrer">查看 Skill ↗</a></li></ul></section></div><footer class="slides-footer"><a class="back-link" href="../works.html#animation-workflow">← 返回作品集</a></footer></article></main>
   <footer class="blog-footer">
     <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
     <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10232e">
   <title>大小姐的网络手账 — 克劳德梦见电子羊</title>
-  <meta name="description" content="面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。">
+  <meta name="description" content="这是一个桌面网络观察工具，用来记录 Claude Code 相关连接看到的出口 IP 和变化历史。">
   <link rel="canonical" href="https://be1human.github.io/projects/network-diary.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="大小姐的网络手账 — 克劳德梦见电子羊">
-  <meta property="og:description" content="面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。">
+  <meta property="og:description" content="这是一个桌面网络观察工具，用来记录 Claude Code 相关连接看到的出口 IP 和变化历史。">
   <meta property="og:url" content="https://be1human.github.io/projects/network-diary.html">
   <meta property="og:image" content="https://be1human.github.io/assets/images/blue-sky-train.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../assets/reading.css?v=6a99a3f45383">
   <script src="../assets/app.js?v=6caf86876420" defer></script>
   <script src="../assets/reading.js?v=a4bf853c3f9a" defer></script>
-
+<link rel="stylesheet" href="../assets/project-slides.css?v=de638d1992b8">
 </head>
 <body id="top" data-page="works" data-learning-base="../">
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -28,7 +28,7 @@
     <a class="blog-brand" href="../index.html#home" aria-label="克劳德梦见电子羊 首页"><img class="blog-mark" src="../assets/sheep.svg" width="54" height="43" alt=""><span>克劳德梦见电子羊<small>CLOUD BOY / KEEP CREATING</small></span></a>
     <nav aria-label="主导航"><a href="../index.html#home">首页</a><a href="../index.html#journal">手记</a><a href="../index.html#works" aria-current="page">作品</a><a href="../learn.html">Agent 学习</a><a href="../index.html#news">新闻</a><a href="../index.html#about">关于</a></nav>
   </header>
-  <main id="main" tabindex="-1"><article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#network-diary">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩</strong><p>macOS / Windows 应用<span>·</span>桌面网络观察工具</p></div></div><h1>大小姐的网络手账</h1><p class="article-lede">面向 Claude Code 的 macOS / Windows 网络观察工具。按采样记录候选出口 IP、变化历史和同一非中国 / 非香港出口 IP 的连续稳定时长，支持本地历史、托盘常驻与 CSV 导出。</p></header><figure class="learn-figure"><a class="figure-open" href="../assets/images/network-diary.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/network-diary.png" alt="大小姐的网络手账实际应用界面，截图使用演示数据" width="2800" height="2092" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>实际应用截图 · 演示数据</figcaption></figure><div class="prose"><section id="section-1"><h2>同一个出口维持了多久</h2><p>总览记录 Claude Code 模型服务探测路径观测到的出口 IP。地址归属明确且符合计时条件时，同一个 IP 连续出现才累计时长。换 IP、探测失败或休眠造成采样缺口时，记录会停在最后一次确认的时间。</p></section><section id="section-2"><h2>遇到一次变化时怎么查</h2><p>在历史里查看变化发生的时间、所用探测路径和前后地址。浏览器近似路径与模型服务探测结果分别显示，便于判断两条路径在同一时段看到的出口是否一致。</p></section><section id="section-3"><h2>本机保存与导出</h2><p>应用可在 macOS 或 Windows 托盘中继续采样。历史保存在本机 SQLite 数据库，可以筛选记录或导出 CSV。地理归属采用第三方估计。</p></section><section class="article-links project-links"><h2>项目链接</h2><ul><li><a href="https://github.com/Be1Human/claude-ojousama-network/releases/latest" target="_blank" rel="noopener noreferrer">下载桌面版 ↗</a></li></ul></section></div><footer class="article-end"><div class="tags"><span>Electron</span><span>macOS / Windows</span><span>本地优先</span></div><a class="back-link" href="../works.html#network-diary">← 返回作品集</a></footer></div></article></main>
+  <main id="main" tabindex="-1"><article class="site-panel project-slides" id="network-diary"><div class="article-topbar"><a class="back-link" href="../works.html#network-diary">← 返回作品集</a></div><header class="slides-hero has-preview"><div class="slides-intro"><p class="slides-category">桌面网络观察工具</p><h1>大小姐的网络手账</h1><p class="slides-lede">这是一个桌面网络观察工具，用来记录 Claude Code 相关连接看到的出口 IP 和变化历史。</p><p class="project-purpose">遇到一次断连时，可以回看当时是否换了出口、连续时长何时中断，以及是哪条探测路径观测到变化。</p><nav class="project-nav" aria-label="项目章节"><a href="#chapter-1">从历史里排查一次变化</a><a href="#chapter-2">出口计时与本地留档</a></nav></div><div class="project-preview"><p class="project-picture-guide">演示数据中先看当前出口、连续计时和重置记录。正文解释这些信息怎样对应到一次地址变化。</p><figure class="learn-figure"><a class="figure-open" href="../assets/images/network-diary.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看图解"><img src="../assets/images/network-diary.png" alt="大小姐的网络手账实际应用界面，截图使用演示数据" width="2800" height="2092" fetchpriority="high" decoding="async"><span class="figure-zoom-hint">放大查看 ↗</span></a><figcaption>实际应用截图 · 演示数据</figcaption></figure></div></header><div class="slides-body"><section class="project-chapter" id="chapter-1" aria-labelledby="chapter-title-1"><h2 id="chapter-title-1">从历史里排查一次变化</h2><section class="project-slide" id="section-2"><div class="slide-text"><p class="slide-intro">在历史里查看变化发生的时间、所用探测路径和前后地址。浏览器近似路径与模型服务探测结果分别显示，便于判断两条路径在同一时段看到的出口是否一致。</p></div></section></section><section class="project-chapter" id="chapter-2" aria-labelledby="chapter-title-2"><h2 id="chapter-title-2">出口计时与本地留档</h2><section class="project-slide" id="section-1"><div class="slide-text"><h3>同一个出口维持了多久</h3><p class="slide-intro">总览记录 Claude Code 模型服务探测路径观测到的出口 IP。地址归属明确且符合计时条件时，同一个 IP 连续出现才累计时长。换 IP、探测失败或休眠造成采样缺口时，记录会停在最后一次确认的时间。</p></div></section><section class="project-slide" id="section-3"><div class="slide-text"><h3>本机保存与导出</h3><p class="slide-intro">应用可在 macOS 或 Windows 托盘中继续采样。历史保存在本机 SQLite 数据库，可以筛选记录或导出 CSV。地理归属采用第三方估计。</p></div></section></section><section class="article-links project-links"><h2>项目链接</h2><ul><li><a href="https://github.com/Be1Human/claude-ojousama-network/releases/latest" target="_blank" rel="noopener noreferrer">下载桌面版 ↗</a></li></ul></section></div><footer class="slides-footer"><a class="back-link" href="../works.html#network-diary">← 返回作品集</a></footer></article></main>
   <footer class="blog-footer">
     <p>© 2026 克劳德梦见电子羊<span>保持好奇，慢慢创造。</span></p>
     <nav aria-label="更多链接"><a href="https://github.com/Be1Human" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="../feed.xml">RSS ↗</a></nav>

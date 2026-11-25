@@ -51,11 +51,19 @@ test('every project opens a complete local overview and can return to its portfo
     assert.ok(html.includes(`href="../works.html#${project.id}"`));
     assert.ok(html.includes(project.detail.status));
     assert.ok(html.includes(project.detail.sections[0].paragraphs[0]));
-    assert.ok(html.includes(project.imageNote));
+    assert.ok(html.includes(project.detail.overview.purpose), path);
+    const order = [...html.matchAll(/<section class="project-slide[^"]*" id="section-(\d+)"/g)].map(match => Number(match[1]));
+    assert.deepEqual(order, project.detail.overview.chapters.flatMap(chapter => chapter.sections), path);
+    if (project.detail.overview.mediaHint) {
+      assert.ok(html.includes(project.detail.overview.mediaHint), path);
+      assert.ok(html.includes(project.imageNote), path);
+    } else {
+      assert.ok(!/class="project-preview\b/.test(html), path);
+    }
     if (project.detail.coverVideo) {
       const card = works.split(`id="${project.id}"`)[1].split('</article>')[0];
       assert.ok(card.includes(`<video src="${project.detail.coverVideo}"`));
-      assert.ok(html.indexOf('<video ') < html.indexOf('<div class="prose">'));
+      assert.ok(html.indexOf('<video ') < html.indexOf('<div class="slides-body">'));
       assert.equal(html.split(`src="../${project.detail.coverVideo}"`).length, 2);
     }
     for (const section of project.detail.sections) {
@@ -120,6 +128,9 @@ test('authored workflows keep their ordered steps in the project page', async ()
     const content = page.split(`id="section-${index + 1}"`)[1].split("</section>")[0].match(/<ol class="project-workflow"[^>]*>([\s\S]*?)<\/ol>/)[1];
     assert.equal([...content.matchAll(/<li>/g)].length, section.workflow.length);
   }
+  const overview = example.detail.overview;
+  const repeated = {...overview, chapters: [...overview.chapters, {title: '重复步骤', sections: [1]}]};
+  assert.throws(() => validateProject({...example, detail: {...example.detail, overview: repeated}}, source), /each section exactly once/);
   const sections = example.detail.sections.map(section => section.workflow
     ? {...section, workflow: [{...section.workflow[0], html: '<a href="private">other</a>'}, ...section.workflow.slice(1)]}
     : section);
