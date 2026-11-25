@@ -9,6 +9,7 @@
 - **Hades Learning Demo**：学习 Demo 的实际游戏截图，来自 [hades-learning-demo](https://github.com/Be1Human/hades-learning-demo)。这是非官方、非商业学习项目；Hades 及相关商标属于 Supergiant Games 和相应权利人。该截图不是原版游戏画面，使用边界见来源项目的 LICENSE、NOTICE.md 和资源来源文档。
 - **MineClaw**：实时感知控制台截图，来自 [MineClaw](https://github.com/Be1Human/MineClaw)。Minecraft 及相关商标属于对应权利人。
 - **大小姐的网络手账**：使用演示数据的实际应用截图，来自 [claude-ojousama-network](https://github.com/Be1Human/claude-ojousama-network)。角色是来源项目中的原创同人风格形象，项目不是 Anthropic 官方产品。
+- **C7 城市高斯重建**：路线图、求解轨迹、遮罩、同机位对照和高斯渲染取自《雨之城》C7 实验。原片参照来自《Varsapura》宣传视频；键盘驾驶为本机实录。四幅技术原理图为本篇生成的教学插画。
 - **Video to Game Animation**：同姿势肩袖蒙皮修正前后对比图，来自 [video-to-game-animation](https://github.com/Be1Human/video-to-game-animation)。角色及媒体范围见其 docs/showcase/MEDIA.md。
 - **基于 3D 高斯的角色模型重建尝试**：效果对比图和视频来自实际实验，角色造型参考《雨之城》的 Sayuki。三张原理图由 ImageGen 生成并在项目页标注。
 - **ClawPM**：项目标志，来自 [clawpm](https://github.com/Be1Human/clawpm)。页面网格背景及排字属于本主页的展示设计，不是应用截图。

@@ -30,7 +30,7 @@ export function validateProject(project, source) {
     if (source.reviewMode !== 'owner-authorized-showcase' || Object.keys(source).some(key => !evidenceKeys.has(key))) throw new Error('Private source evidence must remain outside the public data');
     const detail = project.detail;
     if (!detail || !detail.status || !/^\d{4}(?:–\d{4})?$/.test(detail.period) || !Array.isArray(detail.sections) || !detail.sections.length) throw new Error('Incomplete project overview');
-    if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website'].includes(key))) throw new Error('Unexpected field in project overview');
+    if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website', 'coverVideo'].includes(key))) throw new Error('Unexpected field in project overview');
     if (detail.layout !== undefined && detail.layout !== 'slides') throw new Error('Invalid project overview layout');
     if (detail.website !== undefined) httpsUrl(detail.website);
     const validSize = (width, height) => [width, height].every(value => Number.isInteger(value) && value > 0);
@@ -38,6 +38,8 @@ export function validateProject(project, source) {
         (!Array.isArray(detail.coverSize) || detail.coverSize.length !== 2 || !validSize(...detail.coverSize))) {
       throw new Error('Invalid project cover dimensions');
     }
+    if (detail.coverVideo !== undefined && (!detail.coverSize || typeof detail.coverVideo !== 'string' ||
+        !detail.sections.some(section => section.video?.src === detail.coverVideo))) throw new Error('Unknown project cover video');
     for (const section of detail.sections) {
       if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
       const { workflow } = section;

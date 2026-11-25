@@ -37,6 +37,12 @@ test('every showcased project opens a complete local overview and can return to 
     assert.ok(html.includes(project.detail.status));
     assert.ok(html.includes(project.detail.sections[0].paragraphs[0]));
     assert.ok(html.includes(project.imageNote));
+    if (project.detail.coverVideo) {
+      const card = works.split(`id="${project.id}"`)[1].split('</article>')[0];
+      assert.ok(card.includes(`<video src="${project.detail.coverVideo}"`));
+      assert.ok(html.indexOf('<video ') < html.indexOf('<div class="prose">'));
+      assert.equal(html.split(`src="../${project.detail.coverVideo}"`).length, 2);
+    }
     for (const section of project.detail.sections) {
       for (const image of section.images ?? []) {
         assert.ok(html.includes(`href="../${image.src}"`));

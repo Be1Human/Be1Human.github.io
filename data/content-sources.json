@@ -219,6 +219,17 @@
       "productRuntimeTestedInThisReview": false
     },
     {
+      "projectId": "c7-video-city-3dgs",
+      "reviewMode": "owner-authorized-showcase",
+      "descriptionBasis": [
+        "C7 路线俯视规划与相机轨迹",
+        "分块训练及留出、接缝验证",
+        "同机位与偏视角渲染对照",
+        "本机浏览器实际键盘驾驶录像"
+      ],
+      "productRuntimeTestedInThisReview": true
+    },
+    {
       "projectId": "aixiaochu",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [

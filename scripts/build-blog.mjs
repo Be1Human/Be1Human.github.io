@@ -81,13 +81,16 @@ for (const project of projects) {
   }
   if (!entry) continue;
   const [imageWidth, imageHeight] = project.detail.coverSize ?? [1200, 706];
+  const coverVideo = selectedCoverVideo(project);
+  if (coverVideo) entry.coverVideo = coverVideo;
+  else delete entry.coverVideo;
   Object.assign(entry, {
     summary: project.description, image: project.image, imageAlt: project.imageAlt, imageNote: project.imageNote,
     imageWidth, imageHeight, sourceImage: origin + project.image,
     sections: project.detail.sections.map((section, index) => {
       const { heading, paragraphs, images, video, workflow, steps, tables, diagram } = section;
       return {
-        title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
+        title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video && video !== coverVideo ? { video } : {}),
         ...(workflow ? { body: projectSectionBody(section) } : {}), ...(steps ? { steps } : {}),
         ...(tables ? { tablesHtml: projectTables(tables) } : {}),
         ...(diagram ? { diagramHtml: projectDiagram(diagram, `${project.id}-reader-${index + 1}`) } : {}),
@@ -147,13 +150,24 @@ function heading(id, title, description, extra = '') {
   return `<header class="panel-heading"><div><h1 id="${id}">${title}</h1><p>${description}</p></div>${extra}</header>`;
 }
 
+function selectedCoverVideo(project) {
+  return project.detail?.coverVideo
+    ? project.detail.sections.find(section => section.video?.src === project.detail.coverVideo).video
+    : null;
+}
+
 function projectCard(project) {
+  const [width, height] = project.detail?.coverSize ?? [1200, 706];
+  const preview = selectedCoverVideo(project);
+  const media = preview
+    ? `<project-preview><video src="${e(preview.src)}" poster="${e(preview.poster)}" muted playsinline preload="none" width="${preview.width}" height="${preview.height}" style="width:100%;height:100%;object-fit:contain;display:block;background:#20292e" aria-hidden="true"></video></project-preview>`
+    : `<img src="${e(project.image)}" alt="${e(project.imageAlt)}" title="${e(project.imageNote)}" loading="lazy" decoding="async" width="${width}" height="${height}">`;
   const local = project.presentation === 'showcase';
   const linkAttributes = local ? '' : external;
   const arrow = local ? '→' : '↗';
-  const [width, height] = project.detail?.coverSize ?? [1200, 706];
+
   return `<article class="project-card" id="${e(project.id)}" data-filter-item data-category="${e(project.category)}"${project.categories ? ` data-categories="${e(project.categories.join(' '))}"` : ''} data-search="${e([project.title, project.description, project.kind, ...project.tags].join(' '))}">
-    <a class="project-image-link" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}"><img src="${e(project.image)}" alt="${e(project.imageAlt)}" title="${e(project.imageNote)}" loading="lazy" decoding="async" width="${width}" height="${height}"></a>
+    <a class="project-image-link" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}">${media}</a>
     <div class="project-body"><div class="meta"><span class="category-label">${e(project.label)}</span><span>${e(project.kind)}</span></div><h3><a href="${e(project.url)}" ${linkAttributes}>${e(project.title)} <span aria-hidden="true">${arrow}</span></a></h3><p>${e(project.description)}</p><div class="project-bottom"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="subtle-link" href="${e(project.documentation)}" ${linkAttributes}>${local ? '查看项目' : '项目说明'} ${arrow}</a></div></div>
   </article>`;
 }
@@ -185,7 +199,7 @@ const projectSections = Object.entries(projectGroups).map(([group, label]) => {
   const cards = projects.filter(project => (project.group ?? 'other') === group).map(projectCard).join('');
   return `<section class="project-group" aria-labelledby="group-${group}" data-filter-section><h2 id="group-${group}">${label}</h2><div class="project-grid">${cards}</div></section>`;
 }).join('');
-render('works.html', '作品集 — CLOUD BOY · 云上男孩', `Agent、游戏、视觉与研究实验，共 ${projects.length} 件作品及项目记录。`, 'works', `<section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}${projectSections}${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
+render('works.html', '作品集 — CLOUD BOY · 云上男孩', `Agent、游戏、视觉与研究实验，共 ${projects.length} 件作品及项目记录。`, 'works', `<script type="module" src="assets/project-preview.js"></script><section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}${projectSections}${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
 
 function projectFigure({src, alt, caption, width, height}, cover = false) {
   return renderRichContent(`<figure class="learn-figure"><img src="../${e(src)}" alt="${e(alt)}" width="${width}" height="${height}" ${cover ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"><figcaption>${e(caption)}</figcaption></figure>`);
@@ -243,7 +257,8 @@ function renderProjectSlides(project, cover) {
 
 for (const project of projects.filter(project => project.presentation === 'showcase')) {
   const [width, height] = project.detail.coverSize ?? [1200, 706];
-  const cover = project.detail.coverSize
+  const coverVideo = selectedCoverVideo(project);
+  const cover = coverVideo ? projectVideo(coverVideo) : project.detail.coverSize
     ? projectFigure({src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height}, true)
     : `<figure class="article-cover"><img src="../${e(project.image)}" alt="${e(project.imageAlt)}" width="1200" height="706"><figcaption>${e(project.imageNote)}</figcaption></figure>`;
   if (project.detail.layout === 'slides') {
@@ -254,7 +269,7 @@ for (const project of projects.filter(project => project.presentation === 'showc
   }
   const articlePath = projectArticles.get(project.id);
   const articleLink = articlePath ? `<p><a class="back-link" href="../${e(articlePath)}">阅读技术复盘 ↗</a></p>` : '';
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p>${articleLink}</header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p>${articleLink}</header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video && section.video !== coverVideo ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   const workflowHead = project.detail.sections.some(section => section.workflow)
     ? `<link rel="stylesheet" href="../${workflowStyle}?v=${workflowStyleVersion}">`
     : '';
