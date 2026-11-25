@@ -212,8 +212,9 @@
       "projectId": "digital-performance",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
-        "角色表演流程图",
-        "Unreal Engine 角色表演实录"
+        "UE 角色表演原工程的恢复、对齐、烘焙和重载实现",
+        "单角色全身参考与原片近景的人脸观测统计",
+        "已保存的场景写入与独立重载报告，以及公开 UE 成片"
       ],
       "productRuntimeTestedInThisReview": false
     },

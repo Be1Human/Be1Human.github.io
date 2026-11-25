@@ -48,7 +48,7 @@ for (const entry of experienceContent.journal) {
   const post=posts.find(post=>post.id===entry.id);
   if (!post) continue;
   entry.title=post.title;entry.summary=post.summary;entry.updatedAt=post.updatedAt;entry.hideCover=post.hideCover;entry.image=post.image;entry.imageAlt=post.imageAlt;
-  entry.sections=post.sections.map(section=>({title:section.heading,paragraphs:section.paragraphs,...(section.body?{body:renderRichContent(section.body)}:{})}));
+  entry.sections=post.sections.map(section=>({title:section.heading,paragraphs:section.paragraphs,...(section.body?{body:renderRichContent(section.body).replaceAll('="../assets/', '="assets/')}:{})}));
 }
 // The interactive homepage fetches the small index and just one edition at a
 // time; keep it synchronized with the same authoritative public archive.
@@ -58,6 +58,13 @@ function unique(items, key) {
   if (new Set(items.map(item => item[key])).size !== items.length) throw new Error(`Duplicate ${key}`);
 }
 unique(projects, 'id'); unique(posts, 'id'); unique(news.editions, 'id');
+const projectArticles = new Map();
+for (const post of posts) {
+  if (post.projectId === undefined) continue;
+  if (!projects.some(project => project.id === post.projectId && project.presentation === 'showcase') ||
+      projectArticles.has(post.projectId)) throw new Error('Invalid project article link');
+  projectArticles.set(post.projectId, `posts/${post.id}.html`);
+}
 for (const project of projects) {
   const source = evidence.projects.find(source => source.projectId === project.id);
   validateProject(project, source);
@@ -88,6 +95,11 @@ for (const project of projects) {
   });
   if (project.detail.layout === 'slides') entry.layout = 'slides';
   if (project.detail.website) entry.links = [{ label: '打开游戏', url: project.detail.website }];
+  const articlePath = projectArticles.get(project.id);
+  if (articlePath) {
+    const url = origin + articlePath;
+    entry.links = [{ label: '阅读技术复盘', url }, ...(entry.links ?? []).filter(link => link.url !== url)];
+  }
   if (experienceContent.featuredProject?.id === entry.id) Object.assign(experienceContent.featuredProject, entry);
 }
 pages.set('content-local.json',JSON.stringify(experienceContent,null,2)+'\n');
@@ -222,7 +234,9 @@ for (const project of projects.filter(project => project.presentation === 'showc
     pages.set(path, pages.get(path).replace('</head>', `<link rel="stylesheet" href="../assets/project-slides.css?v=${projectSlidesStyleVersion}">\n</head>`));
     continue;
   }
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  const articlePath = projectArticles.get(project.id);
+  const articleLink = articlePath ? `<p><a class="back-link" href="../${e(articlePath)}">阅读技术复盘 ↗</a></p>` : '';
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p>${articleLink}</header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   const workflowHead = project.detail.sections.some(section => section.workflow)
     ? `<link rel="stylesheet" href="../${workflowStyle}?v=${workflowStyleVersion}">`
     : '';

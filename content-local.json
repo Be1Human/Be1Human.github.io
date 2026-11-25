@@ -447,7 +447,7 @@
       "category": "visuals",
       "categoryLabel": "视觉与设计",
       "subtitle": "Unreal Engine · 角色动画",
-      "summary": "用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。",
+      "summary": "从参考视频恢复身体动作和眉眼表情，从原声生成口型，把它们写入可在 Unreal Engine 中继续编辑的角色表演子序列。",
       "source": "https://be1human.github.io/projects/digital-performance.html",
       "image": "assets/images/digital-performance-cover.webp",
       "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
@@ -457,32 +457,36 @@
         "动作重定向",
         "数字人"
       ],
-      "links": [],
+      "links": [
+        {
+          "label": "阅读技术复盘",
+          "url": "https://be1human.github.io/posts/ue-character-performance-pipeline.html"
+        }
+      ],
       "group": "other",
       "imageWidth": 1280,
       "imageHeight": 720,
       "sourceImage": "https://be1human.github.io/assets/images/digital-performance-cover.webp",
       "sections": [
         {
-          "title": "先让参考视频覆盖整段戏",
+          "title": "从参考视频生成角色子序列",
           "paragraphs": [
-            "先在单人剧本里定下台词、情绪和时长，再生成一条固定构图的全身表演作为参考。身体动作和对白来自同一条视频，后面就能沿用相同的时间点检查动作与台词。"
+            "以胡亥的一段独白为例。全身视频交给 GEM-X 恢复身体姿态，原声先核对台词再对齐音素，用于生成口型。眉眼来自单独的人脸观测。三路数据沿原片时间轴处理，最后写入 UE Sequencer。"
           ],
           "images": [
             {
-              "src": "assets/images/digital-performance-workflow.png",
-              "alt": "单人剧本经过参考视频、身体动作、眉眼和口型，最终写入场景序列",
-              "caption": "制作流程 · 动作、表情和口型汇入同一条角色时间轴。",
-              "width": 1672,
-              "height": 941
+              "src": "assets/images/digital-performance-architecture.webp",
+              "alt": "剧本经 MiniMax H3 生成参考视频，媒体校验后分三路处理身体、眉眼和对白，最后进入角色子序列和场景 Sequence",
+              "caption": "工程流程图。身体、眉眼、口型分别生成控制数据，播放原声沿用原视频的音轨。",
+              "width": 1500,
+              "height": 1040
             }
           ]
         },
         {
-          "title": "把动作和对白放进 UE 场景",
+          "title": "为什么这段全身成片没有连续哭相",
           "paragraphs": [
-            "从参考画面提取人体姿态，再重定向到 UE 角色骨架。从原声对齐音素，生成口型轨。表情曲线需要连续、可用的眉眼画面，这次全身参考提供的面部信息有限，演示主要呈现了身体动作和口型。",
-            "各条轨道在角色时间轴里对齐后，把子序列写入目标场景的 Sequence。播放时可以检查捂胸、弯腰与台词是否同拍。"
+            "人脸恢复报告中，277 帧只有 1 帧达到原画的面部尺寸门槛，无法形成连续眉眼曲线。成片保留了捂胸、前倾和原声对白。保存后由独立 UE 进程重载，验证了一条原声轨和面部控制键，并对身体轨做了 277 帧取样。"
           ],
           "video": {
             "src": "assets/project-media/digital-performance.mp4",
@@ -1152,6 +1156,82 @@
   ],
   "journal": [
     {
+      "id": "ue-character-performance-pipeline",
+      "title": "从参考视频到 UE 角色表演：动作、口型与表情的三条链路",
+      "date": "2026-11-25",
+      "summary": "以一段 11.55 秒的数字人独白为例，拆解参考视频怎样变成可编辑的 UE 子序列，并用人脸覆盖率和 UE 重载报告解释口型、身体动作与眉眼表情为什么会有不同结果。",
+      "source": "https://be1human.github.io/posts/ue-character-performance-pipeline.html",
+      "sourceLabel": "打开独立文章页",
+      "image": "assets/images/digital-performance-architecture.webp",
+      "imageAlt": "剧本经 MiniMax H3 生成参考视频，媒体校验后分三路处理身体、眉眼和对白，最后进入角色子序列和场景 Sequence",
+      "tags": [
+        "Unreal Engine",
+        "GEM-X",
+        "角色动画"
+      ],
+      "sections": [
+        {
+          "title": "这场戏交付的是可编辑的序列",
+          "paragraphs": [
+            "胡亥有一段约 11.55 秒的独白。项目把这场戏拆成单角色剧本，保留台词、动作提示和角色造型参考，再用 MiniMax H3 生成固定机位的单人全身参考。参考视频提供了捂胸、前倾和对白的节奏。",
+            "目标产物是 UE Sequencer 能编辑和重载的角色子序列。制片可以改变这个片段在场景中的起点，动画师也能分别处理身体轨、面部轨和原声音轨。要做到这一点，生成的视频要先拆回带时间信息的动画数据。"
+          ],
+          "body": "<p>胡亥有一段约 11.55 秒的独白。项目把这场戏拆成单角色剧本，保留台词、动作提示和角色造型参考，再用 MiniMax H3 生成固定机位的单人全身参考。参考视频提供了捂胸、前倾和对白的节奏。</p><figure class=\"project-video\"><video src=\"assets/project-media/digital-performance.mp4\" poster=\"assets/images/digital-performance-cover.webp\" width=\"960\" height=\"544\" controls playsinline preload=\"none\" aria-label=\"UE 单角色表演成片\"></video><figcaption>UE 成片，11.55 秒，含参考视频原声。</figcaption></figure><p>目标产物是 UE Sequencer 能编辑和重载的角色子序列。制片可以改变这个片段在场景中的起点，动画师也能分别处理身体轨、面部轨和原声音轨。要做到这一点，生成的视频要先拆回带时间信息的动画数据。</p>"
+        },
+        {
+          "title": "同一份媒体怎样进入三条处理链",
+          "paragraphs": [
+            "媒体校验先确认参考视频可解码、原声存在，并为每帧保留显示时间戳 PTS。每条恢复链之后都回到这份时间基准。忽略音频起点会造成固定的口型错位，帧间隔变化时还要按每帧的实际时间取样。",
+            "项目另做了一次带偏移的原声导入验证。音频比画面晚 0.1375 秒，在 24 fps 下相当于第 3.3 帧。若直接写到第 3 帧，声音会提前 12.5 毫秒。导入器用更细的 Sequencer tick 保存入点，重载后仍保持了 0.1375 秒的偏移。",
+            "身体由 GEM-X 的时序人体模型估计 SOMA77 骨骼姿态。重定向要对齐源骨架和目标骨架的参考姿态，再把姿态写进 UE 的 AnimSequence。中间轨按源时间戳取样，旋转用四元数插值，平移单独插值。",
+            "对白先用语音识别核对台词和词边界，再用强制对齐找出每个音素的时间段。项目把音素转成用于表现发音的口型控制曲线，落到 Face Control Rig。用于识别和对齐的分析音频只参与计算，播放轨沿用参考视频原声。",
+            "眉眼从画面中的人脸恢复得到。检测器的观测需要满足源画尺寸和时间连续性要求，才能形成可烘焙的眉眼曲线。眉眼控制和发音控制各自有写入范围，眉眼素材不足时仍可保存音频驱动的口型。"
+          ],
+          "body": "<p>媒体校验先确认参考视频可解码、原声存在，并为每帧保留显示时间戳 PTS。每条恢复链之后都回到这份时间基准。忽略音频起点会造成固定的口型错位，帧间隔变化时还要按每帧的实际时间取样。</p><p>项目另做了一次带偏移的原声导入验证。音频比画面晚 0.1375 秒，在 24 fps 下相当于第 3.3 帧。若直接写到第 3 帧，声音会提前 12.5 毫秒。导入器用更细的 Sequencer tick 保存入点，重载后仍保持了 0.1375 秒的偏移。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/digital-performance-architecture.webp\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/digital-performance-architecture.webp\" alt=\"剧本经 MiniMax H3 生成参考视频，媒体校验后分三路处理身体、眉眼和对白，最后进入角色子序列和场景 Sequence\" width=\"1500\" height=\"1040\" loading=\"lazy\" decoding=\"async\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>工程流程图。身体、眉眼、口型分别生成控制数据，播放原声沿用原视频的音轨。</figcaption></figure><p>身体由 GEM-X 的时序人体模型估计 SOMA77 骨骼姿态。重定向要对齐源骨架和目标骨架的参考姿态，再把姿态写进 UE 的 AnimSequence。中间轨按源时间戳取样，旋转用四元数插值，平移单独插值。</p><p>对白先用语音识别核对台词和词边界，再用强制对齐找出每个音素的时间段。项目把音素转成用于表现发音的口型控制曲线，落到 Face Control Rig。用于识别和对齐的分析音频只参与计算，播放轨沿用参考视频原声。</p><p>眉眼从画面中的人脸恢复得到。检测器的观测需要满足源画尺寸和时间连续性要求，才能形成可烘焙的眉眼曲线。眉眼控制和发音控制各自有写入范围，眉眼素材不足时仍可保存音频驱动的口型。</p>"
+        },
+        {
+          "title": "为什么能跟上对白，却没有连续哭相",
+          "paragraphs": [
+            "全身参考有 277 帧。人脸恢复报告显示，179 帧检测到了脸，被检测到的脸部尺寸中位数约为 38.5 × 44.9 像素。恢复逻辑在放大局部图像做推理后，把检测结果换算回原画坐标，再使用原画短边至少 64 像素的项目阈值判断观测是否可用。最终只有 1 帧达到门槛。",
+            "时间连续性是另一道检查。实现允许在前后都有连续观测时沿源时间戳插补短缺口，长时间遮挡则向中性过渡。只有一个孤立观测时，这一帧无法给出动作的起止和变化过程，所以这版不输出连续眉眼表情。口型取自音素时间段，仍能按对白工作。",
+            "独立的原片近景中，130 帧有 112 帧过了相同的尺寸门槛。全身取景保留了重心、捂胸和弯腰，近景让眉眼占据更多源像素。两条素材的镜头和时长不同，这个对比用于判断观测可用性。"
+          ],
+          "body": "<p>全身参考有 277 帧。人脸恢复报告显示，179 帧检测到了脸，被检测到的脸部尺寸中位数约为 38.5 × 44.9 像素。恢复逻辑在放大局部图像做推理后，把检测结果换算回原画坐标，再使用原画短边至少 64 像素的项目阈值判断观测是否可用。最终只有 1 帧达到门槛。</p><p>时间连续性是另一道检查。实现允许在前后都有连续观测时沿源时间戳插补短缺口，长时间遮挡则向中性过渡。只有一个孤立观测时，这一帧无法给出动作的起止和变化过程，所以这版不输出连续眉眼表情。口型取自音素时间段，仍能按对白工作。</p><p>独立的原片近景中，130 帧有 112 帧过了相同的尺寸门槛。全身取景保留了重心、捂胸和弯腰，近景让眉眼占据更多源像素。两条素材的镜头和时长不同，这个对比用于判断观测可用性。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/digital-performance-face-coverage.webp\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/digital-performance-face-coverage.webp\" alt=\"全身样本 277 帧中 1 帧通过源画尺寸门槛，独立的连续近景样本 130 帧中 112 帧通过\" width=\"1500\" height=\"760\" loading=\"lazy\" decoding=\"async\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>两份人脸观测记录使用相同的 64 像素短边门槛。镜头来源与时长不同。</figcaption></figure>"
+        },
+        {
+          "title": "把身体与表情拆开后，怎样取舍",
+          "paragraphs": [
+            "单段全身参考已经能为同一套时间轴提供身体和原声。若交付目标加上细微哭相，近景可以作为额外的眉眼观测来源。接入前要对齐角色、台词时间点和姿势，并核对表情控制是否覆盖了口型控制。这里的近景用于验证观测条件，本次成片的配方仍是全身参考加原声。",
+            "身体分支也有过方案调整。项目历史记录里，早期逐帧 MediaPipe 身体草稿出现过肘部姿态跳变和掌面翻转。后来保留 GEM-X 时序结果，并在下身派生分支中使用接触处理后的根平移和腿部旋转，上身局部姿态沿用原估计。"
+          ],
+          "body": "<p>单段全身参考已经能为同一套时间轴提供身体和原声。若交付目标加上细微哭相，近景可以作为额外的眉眼观测来源。接入前要对齐角色、台词时间点和姿势，并核对表情控制是否覆盖了口型控制。这里的近景用于验证观测条件，本次成片的配方仍是全身参考加原声。</p><table><caption>表演素材方案对比</caption><thead><tr><th scope=\"col\">方案</th><th scope=\"col\">本次证据</th><th scope=\"col\">适用范围与代价</th></tr></thead><tbody><tr><th scope=\"row\">单段全身参考</th><td>1 / 277 帧通过面部尺寸门槛。UE 成片可见捂胸和前倾，保留对白与口型。</td><td>同一条媒体提供身体时序与原声，有限的面部像素难以支撑近景级表情。</td></tr><tr><th scope=\"row\">独立近景观测</th><td>112 / 130 帧通过同一门槛。</td><td>适合补充眉眼观测，接入身体表演前需要额外做时间和姿态对齐。</td></tr><tr><th scope=\"row\">把缺失的面部帧直接补满</th><td>本次实现只插补有连续锚点的短缺口，忽略孤立观测。</td><td>可以增加曲线覆盖时间。缺少连续锚点时，插补结果无法体现表情真实的变化过程。</td></tr></tbody></table><p>身体分支也有过方案调整。项目历史记录里，早期逐帧 MediaPipe 身体草稿出现过肘部姿态跳变和掌面翻转。后来保留 GEM-X 时序结果，并在下身派生分支中使用接触处理后的根平移和腿部旋转，上身局部姿态沿用原估计。</p>"
+        },
+        {
+          "title": "保存成功之后，用什么证据验收",
+          "paragraphs": [
+            "这一版把角色子序列放到场景的第 0 秒，写入记录给出的时长是 11.55 秒。随后由独立 UE 进程重新打开保存的资产，验证原声 PCM 内容一致、播放轨只有一条，以及身体动画烘焙后面部控制键仍可读取。重载报告保存了 277 帧骨骼取样，能把动作异常定位到具体时间点。",
+            "实际成片能看出角色由站姿进入捂胸和前倾。原片有低位仰脸的姿态，生成参考从站姿进入弯腰，重定向沿用了参考视频的动作。工程记录把这版质量留在待审阅，连续哭相、与原片逐动作一致以及精确接触还要单独检验。"
+          ],
+          "body": "<p>这一版把角色子序列放到场景的第 0 秒，写入记录给出的时长是 11.55 秒。随后由独立 UE 进程重新打开保存的资产，验证原声 PCM 内容一致、播放轨只有一条，以及身体动画烘焙后面部控制键仍可读取。重载报告保存了 277 帧骨骼取样，能把动作异常定位到具体时间点。</p><p>实际成片能看出角色由站姿进入捂胸和前倾。原片有低位仰脸的姿态，生成参考从站姿进入弯腰，重定向沿用了参考视频的动作。工程记录把这版质量留在待审阅，连续哭相、与原片逐动作一致以及精确接触还要单独检验。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/digital-performance-render-samples.webp\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/digital-performance-render-samples.webp\" alt=\"UE 同一段成片的 0.50、4.00 和 9.75 秒画面，角色由站姿进入捂胸和前倾\" width=\"1500\" height=\"550\" loading=\"lazy\" decoding=\"async\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>从已公开的 UE 成片取样。三个时点对应站姿、捂胸和前倾。</figcaption></figure>"
+        }
+      ],
+      "links": [
+        {
+          "label": "项目成片与作品详情",
+          "url": "https://be1human.github.io/projects/digital-performance.html"
+        },
+        {
+          "label": "GEM-X 官方仓库",
+          "url": "https://github.com/NVlabs/GEM-X"
+        },
+        {
+          "label": "Unreal Engine Sequencer 子序列文档",
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/sequences-shots-and-takes-in-unreal-engine"
+        }
+      ],
+      "hideCover": true
+    },
+    {
       "id": "softmax-attention",
       "title": "Softmax 与 Attention 原理：公式、计算与注意力稀释",
       "date": "2026-11-08",
@@ -1171,7 +1251,7 @@
           "paragraphs": [
             "Attention 决定从各处取多少信息；Softmax 把一组分数换成加起来为 1 的比例。"
           ],
-          "body": "<p>Attention 可以理解为按比例从不同位置取信息。Query 表示当前要找什么，Key 用来与它比较，Value 是实际取出的信息。先比较 Query 和各个 Key，再用 Softmax 把分数换成比例，最后按这些比例把 Value 合在一起。</p><p>所以，Softmax 算出的比例只是中间一步，还不是 Attention 最后交出的信息。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/learning/attention-qkv-flow.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/learning/attention-qkv-flow.svg\" alt=\"单个查询与三个键计算分数，经过Softmax后聚合对应值向量\" width=\"1200\" height=\"825\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>原创教学图。图中演示一组数怎样依次算出分数、比例和结果，完整公式与代码见学习页。</figcaption></figure>"
+          "body": "<p>Attention 可以理解为按比例从不同位置取信息。Query 表示当前要找什么，Key 用来与它比较，Value 是实际取出的信息。先比较 Query 和各个 Key，再用 Softmax 把分数换成比例，最后按这些比例把 Value 合在一起。</p><p>所以，Softmax 算出的比例只是中间一步，还不是 Attention 最后交出的信息。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/attention-qkv-flow.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/attention-qkv-flow.svg\" alt=\"单个查询与三个键计算分数，经过Softmax后聚合对应值向量\" width=\"1200\" height=\"825\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>原创教学图。图中演示一组数怎样依次算出分数、比例和结果，完整公式与代码见学习页。</figcaption></figure>"
         },
         {
           "title": "内容多了，比例为什么可能变小",
@@ -1262,7 +1342,7 @@
           "paragraphs": [
             "ReAct 解释新资料怎样改变下一步；Loop 解释任务怎样继续或恢复；Eval 检查是否做成、再试一次是否还行。"
           ],
-          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/learning/notes-reading-map.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/learning/notes-reading-map.svg\" alt=\"同一文档比较任务在ReAct、Loop与Eval三个观察角度的阅读地图\" width=\"1200\" height=\"590\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>图中用比较两份版本文档的教学任务，说明三个不同问题：看到新资料后怎么办，任务中断后怎么办，最后怎样检查有没有做好。</figcaption></figure>"
+          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/notes-reading-map.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/notes-reading-map.svg\" alt=\"同一文档比较任务在ReAct、Loop与Eval三个观察角度的阅读地图\" width=\"1200\" height=\"590\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>图中用比较两份版本文档的教学任务，说明三个不同问题：看到新资料后怎么办，任务中断后怎么办，最后怎样检查有没有做好。</figcaption></figure>"
         },
         {
           "title": "按想弄明白的问题找文章",
@@ -1314,7 +1394,7 @@
           "paragraphs": [
             "“属于哪类”和“能否发布”是两个问题，不能只选中一个标签就直接发布。"
           ],
-          "body": "<p>一条关于 Minecraft AI 伙伴的更新，既与游戏有关，也像开发工具。如果只能选一个主分类，就要先定规则：按使用场景分，还是按产品形态分？规则不同，模型和人都可能给出不同答案。</p><p>Jev 课程介绍了“有限答案”的做法，也就是先列好允许选择的答案。把这次判断能用的材料放进 <code>state</code>，可以把它理解为一包资料；再写清问题和选项。这样返回的答案方便程序读取，但能不能发布，仍要由程序检查。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/learning/notes-decision.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/learning/notes-decision.svg\" alt=\"新闻进入标签判断后，再由程序根据规则决定发布或复核\" width=\"1200\" height=\"620\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>两组结果选中的类别相同，但给各类别的概率不同。数字只是教学设定，不能当成接口准确率、速度或概率是否可信的实测结果。</figcaption></figure>"
+          "body": "<p>一条关于 Minecraft AI 伙伴的更新，既与游戏有关，也像开发工具。如果只能选一个主分类，就要先定规则：按使用场景分，还是按产品形态分？规则不同，模型和人都可能给出不同答案。</p><p>Jev 课程介绍了“有限答案”的做法，也就是先列好允许选择的答案。把这次判断能用的材料放进 <code>state</code>，可以把它理解为一包资料；再写清问题和选项。这样返回的答案方便程序读取，但能不能发布，仍要由程序检查。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/notes-decision.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/notes-decision.svg\" alt=\"新闻进入标签判断后，再由程序根据规则决定发布或复核\" width=\"1200\" height=\"620\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>两组结果选中的类别相同，但给各类别的概率不同。数字只是教学设定，不能当成接口准确率、速度或概率是否可信的实测结果。</figcaption></figure>"
         },
         {
           "title": "State 这包资料里放什么",
@@ -1360,7 +1440,7 @@
           "paragraphs": [
             "蓝天列车把透明图片与 Shader 绘图程序合在一起；星空列车用 GLSL 语言实时绘制。"
           ],
-          "body": "<p>Shader 可以理解为负责画面效果的绘图程序，GLSL 是编写这类程序的语言。蓝天案例把透明图片与 Shader 合在一起；星空案例则用 GLSL 绘出场景。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/images/blue-sky-train.png\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/images/blue-sky-train.png\" alt=\"蓝天湖景列车的实际画面\" width=\"2048\" height=\"768\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>蓝天湖景列车：先用透明图片组成场景，再分别处理远近层的移动、前后遮挡、水面和小幅运动。</figcaption></figure><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/images/starry-night.png\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/images/starry-night.png\" alt=\"星空列车桥梁与水面的实际渲染\" width=\"1920\" height=\"1080\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>星空列车：星空、云、桥、列车、蒸汽和水面由 GLSL 绘出。这是项目已有的实际画面截图。</figcaption></figure>"
+          "body": "<p>Shader 可以理解为负责画面效果的绘图程序，GLSL 是编写这类程序的语言。蓝天案例把透明图片与 Shader 合在一起；星空案例则用 GLSL 绘出场景。</p><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/blue-sky-train.png\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/blue-sky-train.png\" alt=\"蓝天湖景列车的实际画面\" width=\"2048\" height=\"768\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>蓝天湖景列车：先用透明图片组成场景，再分别处理远近层的移动、前后遮挡、水面和小幅运动。</figcaption></figure><figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/starry-night.png\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/starry-night.png\" alt=\"星空列车桥梁与水面的实际渲染\" width=\"1920\" height=\"1080\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>星空列车：星空、云、桥、列车、蒸汽和水面由 GLSL 绘出。这是项目已有的实际画面截图。</figcaption></figure>"
         },
         {
           "title": "为什么远山和近景不能移动得一样快",
@@ -1411,14 +1491,14 @@
           "paragraphs": [
             "控制台能显示任务、背包和日志；这张截图还没有背包数据，不能据此判断任务成功。"
           ],
-          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/images/mineclaw.jpg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/images/mineclaw.jpg\" alt=\"MineClaw 控制台待连接界面，背包栏显示暂无背包数据\" width=\"1440\" height=\"900\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>项目现有控制台截图。背包栏写着“暂无背包数据”，可以看到界面布局，还看不到一次任务成功的结果。</figcaption></figure><p>公开版本把聊天和做任务分开：MainBrain 负责日常对话，GoalAgent 负责推进目标任务；基于 Mineflayer 的连接程序负责与游戏交流。控制台显示工具调用、发生的事件，以及完成任务的依据。是否完成，要检查背包、方块、容器或距离等实际结果。</p>"
+          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/images/mineclaw.jpg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/images/mineclaw.jpg\" alt=\"MineClaw 控制台待连接界面，背包栏显示暂无背包数据\" width=\"1440\" height=\"900\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>项目现有控制台截图。背包栏写着“暂无背包数据”，可以看到界面布局，还看不到一次任务成功的结果。</figcaption></figure><p>公开版本把聊天和做任务分开：MainBrain 负责日常对话，GoalAgent 负责推进目标任务；基于 Mineflayer 的连接程序负责与游戏交流。控制台显示工具调用、发生的事件，以及完成任务的依据。是否完成，要检查背包、方块、容器或距离等实际结果。</p>"
         },
         {
           "title": "挖掘成功后，为什么还要看背包",
           "paragraphs": [
             "目标是背包至少有四个原木。挖掘成功时，原木可能还掉在地上，并没进背包。"
           ],
-          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"../assets/learning/notes-inventory.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"../assets/learning/notes-inventory.svg\" alt=\"目标为背包四个原木，工具成功时背包仍为一，拾取后达到四才通过\" width=\"1200\" height=\"620\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>这是教学检查过程，用来说明项目 README 所说的“用游戏实际状态确认结果”，不是一次真实游戏测试记录。</figcaption></figure><p>如果方块消失了，背包数量却没增加，下一步应该检查掉落物有没有被拾取、背包有没有更新。如果原木已经够了，就该停止。工具返回“成功”和用户的目标完成，是两件需要分别检查的事。</p><div class=\"code-frame\"><div class=\"code-toolbar\"><span>JSON</span><small>14 行</small><button type=\"button\" data-copy-code aria-label=\"复制代码\">复制</button></div><pre><code class=\"language-json\"><span class=\"token punctuation\">{</span>\n  <span class=\"token property\">\"goal\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"item\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"oak_log\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token property\">\"inventory_at_least\"</span><span class=\"token operator\">:</span> <span class=\"token number\">4</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"tool_result\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"dig\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"success\"</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"observation\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"oak_log\"</span><span class=\"token operator\">:</span> <span class=\"token number\">1</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"verdict\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"not_complete\"</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"next_check\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"掉落物与拾取结果\"</span>\n<span class=\"token punctuation\">}</span></code></pre></div>"
+          "body": "<figure class=\"learn-figure\"><a class=\"figure-open\" href=\"assets/learning/notes-inventory.svg\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"放大查看图解\"><img src=\"assets/learning/notes-inventory.svg\" alt=\"目标为背包四个原木，工具成功时背包仍为一，拾取后达到四才通过\" width=\"1200\" height=\"620\"><span class=\"figure-zoom-hint\">放大查看 ↗</span></a><figcaption>这是教学检查过程，用来说明项目 README 所说的“用游戏实际状态确认结果”，不是一次真实游戏测试记录。</figcaption></figure><p>如果方块消失了，背包数量却没增加，下一步应该检查掉落物有没有被拾取、背包有没有更新。如果原木已经够了，就该停止。工具返回“成功”和用户的目标完成，是两件需要分别检查的事。</p><div class=\"code-frame\"><div class=\"code-toolbar\"><span>JSON</span><small>14 行</small><button type=\"button\" data-copy-code aria-label=\"复制代码\">复制</button></div><pre><code class=\"language-json\"><span class=\"token punctuation\">{</span>\n  <span class=\"token property\">\"goal\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"item\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"oak_log\"</span><span class=\"token punctuation\">,</span>\n    <span class=\"token property\">\"inventory_at_least\"</span><span class=\"token operator\">:</span> <span class=\"token number\">4</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"tool_result\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"dig\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"success\"</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"observation\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token property\">\"oak_log\"</span><span class=\"token operator\">:</span> <span class=\"token number\">1</span>\n  <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"verdict\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"not_complete\"</span><span class=\"token punctuation\">,</span>\n  <span class=\"token property\">\"next_check\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"掉落物与拾取结果\"</span>\n<span class=\"token punctuation\">}</span></code></pre></div>"
         },
         {
           "title": "项目包含什么，怎样判断实际能力",

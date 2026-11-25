@@ -569,7 +569,7 @@
     "kind": "Unreal Engine · 角色动画",
     "category": "visuals",
     "label": "视觉与设计",
-    "description": "用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。",
+    "description": "从参考视频恢复身体动作和眉眼表情，从原声生成口型，把它们写入可在 Unreal Engine 中继续编辑的角色表演子序列。",
     "image": "assets/images/digital-performance-cover.webp",
     "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
     "imageNote": "Unreal Engine · 角色全身表演",
@@ -583,7 +583,7 @@
     "documentation": "projects/digital-performance.html",
     "presentation": "showcase",
     "detail": {
-      "status": "角色动画工作流演示",
+      "status": "UE 角色表演 · 技术复盘",
       "period": "2026",
       "coverSize": [
         1280,
@@ -591,25 +591,24 @@
       ],
       "sections": [
         {
-          "heading": "先让参考视频覆盖整段戏",
+          "heading": "从参考视频生成角色子序列",
           "paragraphs": [
-            "先在单人剧本里定下台词、情绪和时长，再生成一条固定构图的全身表演作为参考。身体动作和对白来自同一条视频，后面就能沿用相同的时间点检查动作与台词。"
+            "以胡亥的一段独白为例。全身视频交给 GEM-X 恢复身体姿态，原声先核对台词再对齐音素，用于生成口型。眉眼来自单独的人脸观测。三路数据沿原片时间轴处理，最后写入 UE Sequencer。"
           ],
           "images": [
             {
-              "src": "assets/images/digital-performance-workflow.png",
-              "alt": "单人剧本经过参考视频、身体动作、眉眼和口型，最终写入场景序列",
-              "caption": "制作流程 · 动作、表情和口型汇入同一条角色时间轴。",
-              "width": 1672,
-              "height": 941
+              "src": "assets/images/digital-performance-architecture.webp",
+              "alt": "剧本经 MiniMax H3 生成参考视频，媒体校验后分三路处理身体、眉眼和对白，最后进入角色子序列和场景 Sequence",
+              "caption": "工程流程图。身体、眉眼、口型分别生成控制数据，播放原声沿用原视频的音轨。",
+              "width": 1500,
+              "height": 1040
             }
           ]
         },
         {
-          "heading": "把动作和对白放进 UE 场景",
+          "heading": "为什么这段全身成片没有连续哭相",
           "paragraphs": [
-            "从参考画面提取人体姿态，再重定向到 UE 角色骨架。从原声对齐音素，生成口型轨。表情曲线需要连续、可用的眉眼画面，这次全身参考提供的面部信息有限，演示主要呈现了身体动作和口型。",
-            "各条轨道在角色时间轴里对齐后，把子序列写入目标场景的 Sequence。播放时可以检查捂胸、弯腰与台词是否同拍。"
+            "人脸恢复报告中，277 帧只有 1 帧达到原画的面部尺寸门槛，无法形成连续眉眼曲线。成片保留了捂胸、前倾和原声对白。保存后由独立 UE 进程重载，验证了一条原声轨和面部控制键，并对身体轨做了 277 帧取样。"
           ],
           "video": {
             "src": "assets/project-media/digital-performance.mp4",

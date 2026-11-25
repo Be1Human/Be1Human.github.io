@@ -206,5 +206,23 @@
     "type": "ai-generated-explanatory-illustration",
     "description": "ImageGen 生成的高斯、场边界和三角网格提取原理图。",
     "bytes": 72932
+  },
+  {
+    "file": "assets/images/digital-performance-architecture.webp",
+    "type": "original-project-diagram",
+    "description": "工程流程图。身体、眉眼、口型分别生成控制数据，播放原声沿用原视频的音轨。",
+    "bytes": 102594
+  },
+  {
+    "file": "assets/images/digital-performance-face-coverage.webp",
+    "type": "original-project-diagram",
+    "description": "两份人脸观测记录使用相同的 64 像素短边门槛。镜头来源与时长不同。",
+    "bytes": 54066
+  },
+  {
+    "file": "assets/images/digital-performance-render-samples.webp",
+    "type": "published-video-frames",
+    "description": "从已公开的 UE 成片取样。三个时点对应站姿、捂胸和前倾。",
+    "bytes": 58136
   }
 ]
