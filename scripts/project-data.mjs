@@ -38,7 +38,7 @@ export function validateProject(project, source) {
       throw new Error('Invalid project cover dimensions');
     }
     for (const section of detail.sections) {
-      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
       const { workflow } = section;
       const stepFields = ['title', 'tool', 'output'];
       if (workflow !== undefined && (
@@ -47,6 +47,8 @@ export function validateProject(project, source) {
           stepFields.some(key => typeof step[key] !== 'string' || !step[key].trim())
         )
       )) throw new Error('Invalid project workflow');
+      if (section.steps !== undefined && (!Array.isArray(section.steps) || !section.steps.length ||
+          section.steps.some(step => typeof step !== 'string' || !step.trim()))) throw new Error('Invalid project steps');
       const video = section.video;
       if (video !== undefined && (
         !video || Object.keys(video).some(key => !['src', 'poster', 'caption', 'width', 'height'].includes(key)) ||

@@ -7,9 +7,9 @@
     "category": "games",
     "label": "游戏与交互硬件",
     "description": "在《深空》中，你通过虫洞回应来自 2826 年的宇航员 E-17，帮他做出选择。Haimian 把这段对话搬到桌面，小屏显示来讯，旋钮选择，按键回复。",
-    "image": "assets/images/haimian/game-device-cover.webp",
-    "imageAlt": "左边为深空游戏宣传图，右边为显示游戏对话的 Haimian 实体样机。",
-    "imageNote": "游戏宣传图与样机",
+    "image": "assets/images/haimian/device-game.webp",
+    "imageAlt": "Haimian 运行实拍，屏幕下方是旋钮和蓝色确认键。",
+    "imageNote": "Haimian 样机实拍",
     "tags": [
       "科幻叙事",
       "旋钮交互",
@@ -26,24 +26,22 @@
         {
           "heading": "一条跨时空来讯",
           "paragraphs": [
-            "2826 年的宇航员 E-17 通过虫洞联系到 2026 年的你。他会告诉你眼前发生了什么，你可以从建议回复中选择，也能在网页端自由打字。",
-            "选择会影响燃料、氧气、信号和信任。部分行动要等一段时间才有结果，回到游戏后再看 E-17 的回联。"
+            "E-17 从 2826 年接通了你的手机。用选项或自己的话回复他，决定下一步行动。有些行动会消耗燃料或氧气，有些要等一段时间才收到回联。",
+            "剧情会随选择改变燃料、氧气、信号和信任。《深空》会保存对话和行动结果，离开后仍能从原处继续。"
           ],
           "images": [
             {
-              "src": "assets/images/haimian/game-loop.webp",
-              "alt": "阅读 E-17 来讯、发送回复、查看结果或等待回联。四项资源包括燃料、氧气、信号、信任。",
-              "caption": "游戏回合",
-              "width": 1200,
-              "height": 566
-            },
-            {
-              "src": "assets/images/haimian/game-opening.webp",
-              "alt": "深空网页游戏界面，显示航行员 E-17 的对话与回复入口",
-              "caption": "游戏实机",
-              "width": 760,
-              "height": 1560
+              "src": "assets/images/haimian/game-opening-compact.webp",
+              "alt": "《深空》网页实机，E-17 发来消息，底部提供三条建议回复和输入框。",
+              "caption": "游戏实机截图",
+              "width": 840,
+              "height": 1200
             }
+          ],
+          "steps": [
+            "读 E-17 来讯",
+            "选择或输入",
+            "查看回联"
           ]
         },
         {
@@ -75,13 +73,6 @@
               "caption": "跨端续玩",
               "width": 1200,
               "height": 640
-            },
-            {
-              "src": "assets/images/haimian/device-game.webp",
-              "alt": "桌面设备实拍，240 × 240 彩屏上已显示深空对话，底部是旋钮和确认键。",
-              "caption": "外设运行实拍",
-              "width": 1279,
-              "height": 1706
             }
           ]
         },
@@ -155,13 +146,6 @@
           ],
           "images": [
             {
-              "src": "assets/images/haimian/usb-console.webp",
-              "alt": "Windows 控制台经 USB 连接桌面设备，在本地切换应用、调整主题和同步时间。",
-              "caption": "USB 配置链路",
-              "width": 1200,
-              "height": 570
-            },
-            {
               "src": "assets/images/haimian/pc-console.webp",
               "alt": "Windows 控制台截图，展示 USB 状态、应用切换和额度屏主题。",
               "caption": "控制台截图",
@@ -172,8 +156,8 @@
         }
       ],
       "coverSize": [
-        1440,
-        860
+        1279,
+        1706
       ],
       "layout": "slides",
       "website": "https://dsgame.archerpeng.com/"

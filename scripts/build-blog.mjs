@@ -78,10 +78,10 @@ for (const project of projects) {
     summary: project.description, image: project.image, imageAlt: project.imageAlt, imageNote: project.imageNote,
     imageWidth, imageHeight, sourceImage: origin + project.image,
     sections: project.detail.sections.map(section => {
-      const { heading, paragraphs, images, video, workflow } = section;
+      const { heading, paragraphs, images, video, workflow, steps } = section;
       return {
         title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
-        ...(workflow ? { body: projectSectionBody(section) } : {}),
+        ...(workflow ? { body: projectSectionBody(section) } : {}), ...(steps ? { steps } : {}),
       };
     }),
   });
@@ -191,10 +191,11 @@ function projectSectionBody({ paragraphs, workflow }) {
 }
 
 function renderProjectSlides(project, cover) {
-  const slides = project.detail.sections.map(({heading, paragraphs, images = []}, index) => {
-    const hasPortrait = images.length === 2 && images[0].width > images[0].height && images[1].width < images[1].height;
-    const layout = hasPortrait ? ' slide-pair' : images.length > 1 ? ' slide-grid' : '';
-    return `<section class="project-slide" id="section-${index + 1}"><h2>${e(heading)}</h2><div class="slide-media${layout}">${images.map(image => projectFigure(image)).join('')}</div><details class="slide-notes"><summary>实现细节</summary><div>${paragraphs.map(paragraph => `<p>${e(paragraph)}</p>`).join('')}</div></details></section>`;
+  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps}, index) => {
+    const layout = images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
+    const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
+    const details = notes.length ? `<details class="slide-notes"><summary>实现细节</summary>${notes.map(note => `<p>${e(note)}</p>`).join('')}</details>` : '';
+    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${details}</div><div class="slide-media">${images.map(image => projectFigure(image)).join('')}</div></section>`;
   }).join('');
   const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
   const play = project.detail.website ? `<a class="slide-play" href="${e(project.detail.website)}" ${external}>打开游戏 ↗</a>` : '';
