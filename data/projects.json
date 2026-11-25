@@ -1359,10 +1359,10 @@
     "kind": "Agent 自动化测试框架",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "SmartTest 是面向 Agent 的自动化测试框架。Agent 通过 MCP 操作真机，把已验证的步骤编排成可重复运行的工作流，也可以把视觉操作交给本地 GUI-Owl 1.5 4B。每次运行都能查到动作回执和验收结果。",
-    "image": "assets/images/smarttest-cover.webp",
-    "imageAlt": "SmartTest 背包测试目标及 Android 真机任务的回放时间轴",
-    "imageNote": "SmartTest 测试场景。左侧是背包目标，右侧是另一条真机任务的动作回放。",
+    "description": "Agent 通过 MCP 操作真机，可委派本地视觉模型，也可按固定工作流回归。",
+    "image": "assets/images/smarttest-framework.svg",
+    "imageAlt": "工作台、CLI 与 Agent 的 MCP 工具共用本地服务。服务分别调度交互会话、视觉任务和固定流程，三条路径都留下可按运行 ID 检索的证据。",
+    "imageNote": "三条真机执行路径",
     "tags": [
       "MCP",
       "工作流编排",
@@ -1377,51 +1377,67 @@
       "status": "Agent 自动化测试框架",
       "period": "2026",
       "coverSize": [
-        1280,
-        720
+        540,
+        390
       ],
       "layout": "slides",
       "sections": [
         {
-          "heading": "Agent 怎样接手真机测试",
+          "heading": "Agent 的设备会话",
           "paragraphs": [
-            "以「打开游戏背包、找到时装、返回大厅」为例。外部 Agent 可以通过 MCP 申请一个独占设备会话，读取屏幕，决定下一步操作，再从新截图确认落点。它也可以一次提交目标、允许操作的应用和验收条件，让本地视觉模型逐步操作手机。",
-            "路线确定后，Agent 可以把设备操作和断言写成节点图，测试人员也可以在工作台画布上编排。同一份流程按版本保存。下一次换包做回归时，执行器沿已保存的连线重跑，用同一组条件验收。",
-            "动作有没有发到手机、游戏有没有达到目标，是两项单独记录的结果。即使点击已发送，若游戏只读接口没有观察到「时装」节点，背包检查仍无法通过。Agent 可以按任务 ID 取回失败步骤和截图，定位哪一步走偏。"
+            "一台真机，一个控制方",
+            "open_device_session 取得控制权。observe_device 返回画面和观察 ID，device_action 提交动作。交还控制权后，原观察失效。"
           ],
+          "detailLabel": "会话接口",
           "images": [
             {
-              "src": "assets/images/smarttest-architecture.webp",
-              "alt": "工作台、CLI 和 MCP 进入同一个本地服务，分别进入视觉任务与固定回归，结果汇入同一任务记录",
-              "caption": "框架架构图。两条路径共用任务记录，在各自的执行进程中独占设备。",
-              "width": 1440,
-              "height": 1000
+              "src": "assets/images/smarttest-session.svg",
+              "alt": "外部 Agent 通过 MCP 打开独占会话，观察返回截图和观察 ID。动作经过会话校验后发往设备，之后重新观察。",
+              "caption": "Agent 与设备会话",
+              "width": 540,
+              "height": 355
             }
           ]
         },
         {
-          "heading": "本地视觉模型 GUI-Owl",
+          "heading": "视觉模型怎样操作",
           "paragraphs": [
-            "框架内置 GUI-Owl 的调用接口，真机评测使用 GUI-Owl 1.5 4B Instruct 的 Q8_0 量化版本。模型权重单独安装，Ollama 在本机运行推理。外部 Agent 可以通过 run_local_model_test 委派视觉任务。固定工作流可独立运行。",
-            "Android 执行器通过 ADB 采集屏幕。模型读取当前画面、最多三张历史截图和最近的动作回执，每轮通过 mobile_use 提议一个动作，例如点击、滑动、输入、按返回键或等待。点击和滑动使用 0–1000 的归一化坐标，执行器再换算成设备像素。",
-            "动作发送前检查前台应用范围、只读约束和坐标，设备会话再次核对会话控制权和观察状态。等待只消耗时间。每次操作后重新观察，截图、观察 ID、模型动作及回执共同记录。",
-            "过程断言保留曾出现的目标证据，结束断言检查最后一帧的状态。模型报告完成时，已配置的独立断言必须全部通过才算成功。游戏状态无法读取时可以得到未能确认的结果。"
+            "每次只提议一个动作",
+            "本机 Ollama 加载 GUI-Owl 1.5 4B Instruct 的 Q8_0 权重。模型看到当前截图、最多三张历史截图和近期动作回执。执行器将 0–1000 的坐标换算成屏幕像素。"
           ],
+          "detailLabel": "查看模型配置",
           "images": [
+            {
+              "src": "assets/images/smarttest-vision.svg",
+              "alt": "当前帧和最多三张历史截图送入本机 Ollama 的 GUI-Owl。模型提议动作，执行器检查范围和坐标，通过独占会话操作真机，随后重新截图。",
+              "caption": "本地视觉模型的执行循环",
+              "width": 540,
+              "height": 335
+            },
             {
               "src": "assets/images/smarttest-goal.webp",
               "alt": "SmartTest 测试现场显示背包目标、Android 设备、步数、允许的应用、只读和录屏选项",
-              "caption": "测试现场的真实界面。这里为一轮视觉任务配置目标、动作范围和独立验收条件。",
+              "caption": "真机目标与验收条件",
               "width": 1600,
               "height": 1050
             }
           ]
         },
         {
-          "heading": "背包测试失败复盘",
+          "heading": "背包用例怎样判定",
           "paragraphs": [
-            "这轮真机校准耗时 79.5 秒。模型做了 10 次决策，8 次触控送到手机。第 2 步点进商城，后续连续滑动也没回到背包。",
-            "第 10 步的滑动终点越界，执行器拦截了动作。最终只有「游戏仍在前台」通过，未观察到「时装」分类，也未回到大厅。"
+            "三项断言，一项通过",
+            "游戏节点断言通过只读 UE 接口核对。过程检查记录曾经出现的状态，结束检查读取最后一帧。"
+          ],
+          "detailLabel": "逐步动作回执",
+          "images": [
+            {
+              "src": "assets/images/smarttest-verdict.svg",
+              "alt": "79.5 秒内模型决策十次，八次触控送达。第二步误入商城，第十步滑动越界。独立验收只确认了游戏在前台。",
+              "caption": "背包测试的动作与验收",
+              "width": 540,
+              "height": 342
+            }
           ],
           "tables": [
             {
@@ -1459,54 +1475,54 @@
                 ]
               ]
             }
-          ],
-          "diagram": {
-            "caption": "背包用例的三个关键步骤",
-            "switchable": false,
-            "paths": [
-              {
-                "name": "关键步骤",
-                "nodes": [
-                  {
-                    "title": "第 1 步",
-                    "note": "尝试打开背包"
-                  },
-                  {
-                    "title": "第 2 步",
-                    "note": "误入商城"
-                  },
-                  {
-                    "title": "第 10 步",
-                    "note": "滑动越界被拦截"
-                  }
-                ]
-              }
-            ]
-          }
+          ]
         },
         {
-          "heading": "把测试步骤编排成回归用例",
+          "heading": "工作流怎样连线",
           "paragraphs": [
-            "工作流有两类连线。执行线决定先做哪一步、在哪处分支。数据线把上一步的结果送到下一个节点。例如制品校验输出 VerifiedPackageRef，安装节点据此选择已校验的包。UI 定位输出 ElementRef，点击时还要检查这个控件引用对当前页面是否有效。",
-            "外部 Agent 先用 capabilities 读取支持的节点和参数，再用 validate_workflow 检查连线、端口类型和引用，校验通过后用 save_workflow 保存。更新已有流程需要提交当前修订号，避免覆盖别人的编辑。",
-            "回归时，run_saved_workflow 接收流程 ID、修订号和目标设备。独立工作进程执行当时的图，逐节点记录耗时、断言和产物。即使后来调整了画布，仍能查回此前那一轮实际执行的版本。"
+            "节点之间传什么",
+            "Agent 用 capabilities 发现节点，用 validate_workflow 校验连线和类型，再用 save_workflow 保存。run_saved_workflow 按指定修订执行，运行时冻结节点图、画布分组与资料引用。"
           ],
+          "detailLabel": "版本与运行快照",
           "images": [
+            {
+              "src": "assets/images/smarttest-ports.svg",
+              "alt": "实线决定执行顺序，虚线传递带类型的结果。取包校验把 VerifiedPackageRef 交给安装节点，定位控件把 ElementRef 交给点击节点。",
+              "caption": "编排中的执行线与数据线",
+              "width": 540,
+              "height": 354
+            },
             {
               "src": "assets/images/smarttest-workflow.webp",
               "alt": "SmartTest 工作流编辑器中的节点库、设备会话和应用准备分组，以及端口检查面板",
-              "caption": "工作流编辑器实录。图中运行环境为本地验收靶场，真机启动回归的结果见下一节。",
+              "caption": "工作流编辑器实录",
               "width": 1905,
               "height": 1072
             }
           ]
         },
         {
-          "heading": "五轮冷启动回归",
+          "heading": "同一流程跑五轮",
           "paragraphs": [
-            "Android 游戏启动模板由 22 个业务节点组成，从取包校验、安装与资源准备、登录进大厅，走到冷启动、Trace 导出、解析和清理。",
-            "录制能力在取包前校验。能安装并进入大厅的构建也可能关闭 Unreal Insights，提前检查可以避免五轮都跑完才拿到无效产物。",
-            "在开启录制的构建上，五轮冷启动均重新满足大厅断言，共得到 5 份 Trace，解码 6,092,247 个事件，解码错误为 0。该轮验收覆盖本地 Trace 内容核验与清理。"
+            "启动性能回归",
+            "Android 启动模板含 22 个业务节点。取包前先检查构建的 Unreal Insights 录制能力。五轮均重新确认大厅，导出的 Trace 在本地完成解析与清理。"
+          ],
+          "detailLabel": "回归验收记录",
+          "images": [
+            {
+              "src": "assets/images/smarttest-snapshot.svg",
+              "alt": "工作台或 Agent 编辑节点图。保存前校验图和端口类型，得到修订号。运行时按修订复制节点图、画布及资料引用，独立进程执行这份图，并逐节点返回回执。",
+              "caption": "图定义与运行快照",
+              "width": 540,
+              "height": 335
+            },
+            {
+              "src": "assets/images/smarttest-regression.svg",
+              "alt": "固定的流程版本进入独立工作进程。五轮均冷启动、检查大厅并采集，每轮导出一份 Trace，最终解析六百零九万余事件，解码错误为零。",
+              "caption": "五轮冷启动的固定回归",
+              "width": 540,
+              "height": 335
+            }
           ],
           "tables": [
             {
@@ -1537,11 +1553,27 @@
           ]
         },
         {
-          "heading": "真机评测结果",
+          "heading": "真机校准结果",
           "paragraphs": [
-            "2026 年 10 月 30 日的六项游戏界面校准跨实现版本，每个目标单独运行一次。共 49 次决策、40 次动作发送，只有大厅满足当时配置的条件。",
-            "另一次基础手机评测中，三个目标各运行两次。设备信息查询和游戏启动状态各完整通过一次，设置搜索未通过，两批都属于小样本真机记录。",
-            "有阶段回执的校准样本中，观察、推理、独立校验和动作处理的中位数分别是 1.906、2.297、0.531 和 1.953 秒。各阶段样本数有差异，单个任务的总耗时见表。"
+            "六个目标各跑一次",
+            "这组六项游戏界面校准跨实现版本。设备查询结果卡来自另一组手机基础评测中的设备信息查询。"
+          ],
+          "detailLabel": "各项目标与耗时",
+          "images": [
+            {
+              "src": "assets/images/smarttest-calibration.svg",
+              "alt": "六个目标各运行一次，跨实现版本。六项中只有大厅满足该轮验收条件。条形长度表示模型决策次数，右列为实际发送数。",
+              "caption": "六项游戏界面的真机校准",
+              "width": 540,
+              "height": 348
+            },
+            {
+              "src": "assets/images/smarttest-accepted.webp",
+              "alt": "Android 设备信息查询结果卡，列出五项过程和结束检查",
+              "caption": "另一组设备查询实测",
+              "width": 1304,
+              "height": 716
+            }
           ],
           "tables": [
             {
@@ -1591,28 +1623,27 @@
                 ]
               ]
             }
-          ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-accepted.webp",
-              "alt": "Android 设备信息查询结果卡，列出五项过程和结束检查",
-              "caption": "另一组真机评测的通过记录。设备型号、系统版本、处理器与分辨率属于过程检查，返回桌面属于结束检查。",
-              "width": 1304,
-              "height": 716
-            }
           ]
         },
         {
-          "heading": "Agent 怎样读取测试证据",
+          "heading": "Agent 怎样查证据",
           "paragraphs": [
-            "工作台、CLI 和 MCP 共用本地服务。Agent 通过 read_run_events 从上次的游标继续读事件，用 run_status 查节点回执、断言结果和设备清理状态，再用 read_artifact 按需取回截图或录屏。一次背包测试失败后，Agent 和工作台上的测试人员可以检查同一条运行记录。",
-            "知识库保存操作方法和判定标准。Agent 可以列出资料目录、通过 SQLite FTS5 按关键词检索，再按版本读取文档片段。用于固定流程的资料引用随运行一起保存，便于查回当时的判定依据。"
+            "从运行追到原始产物",
+            "知识库以 SQLite FTS5 检索测试方法和判定标准。固定流程可以绑定资料版本，按运行 ID 查回当时的依据。"
           ],
+          "detailLabel": "证据与资料版本",
           "images": [
+            {
+              "src": "assets/images/smarttest-evidence.svg",
+              "alt": "同一运行 ID 可供 Agent 续读事件、检查断言与清理状态，或按产物 ID 读取截图和录像。使用工作流时可以追溯快照和资料版本。",
+              "caption": "Agent 按运行 ID 读取证据",
+              "width": 540,
+              "height": 330
+            },
             {
               "src": "assets/images/smarttest-library.webp",
               "alt": "SmartTest 本地知识库的资料分类、标题和别名搜索框",
-              "caption": "知识库工作台。资料按测试用途分类，MCP 可读取指定版本。",
+              "caption": "测试方法与判定资料",
               "width": 1600,
               "height": 1050
             }

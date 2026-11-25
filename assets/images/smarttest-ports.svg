@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="354" viewBox="0 0 540 354" role="img" aria-labelledby="title desc">
+<title id="title">编排中的执行线与数据线</title><desc id="desc">实线决定执行顺序，虚线传递带类型的结果。取包校验把 VerifiedPackageRef 交给安装节点，定位控件把 ElementRef 交给点击节点。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="354" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><path d="M24 30 H78" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<text x="91" y="36" font-size="18" fill="#80dfc6" text-anchor="start" font-weight="500">执行顺序</text>
+<path d="M287 30 H341" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#mf9c589)" stroke-dasharray="5 6"/>
+<text x="354" y="36" font-size="18" fill="#f9c589" text-anchor="start" font-weight="500">类型化数据</text>
+<rect x="22" y="71" width="163" height="65" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="103.5" y="100.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">校验包</text>
+<text x="103.5" y="123.5" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">package.verify</text>
+<rect x="355" y="71" width="163" height="65" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="436.5" y="100.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">安装包</text>
+<text x="436.5" y="123.5" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">app.install</text>
+<path d="M186 100 H351" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<path d="M105 137 V162 H436 V139" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#mf9c589)" stroke-dasharray="5 6"/>
+<text x="270" y="186" font-size="18" fill="#f9c589" text-anchor="middle" font-weight="550">VerifiedPackageRef</text>
+<rect x="22" y="217" width="163" height="65" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="103.5" y="246.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">定位控件</text>
+<text x="103.5" y="269.5" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">ui.find</text>
+<rect x="355" y="217" width="163" height="65" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="436.5" y="246.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">点击控件</text>
+<text x="436.5" y="269.5" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">ui.click</text>
+<path d="M186 246 H351" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<path d="M105 283 V308 H436 V285" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#mf9c589)" stroke-dasharray="5 6"/>
+<text x="270" y="332" font-size="18" fill="#f9c589" text-anchor="middle" font-weight="550">ElementRef</text></g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="390" viewBox="0 0 540 390" role="img" aria-labelledby="title desc">
+<title id="title">SmartTest 框架总览</title><desc id="desc">工作台、CLI 与 Agent 的 MCP 工具共用本地服务。服务分别调度交互会话、视觉任务和固定流程，三条路径都留下可按运行 ID 检索的证据。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="390" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><rect x="20" y="20" width="146" height="50" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="93" y="52" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">测试工作台</text>
+<rect x="197" y="20" width="146" height="50" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="270" y="52" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">CLI</text>
+<rect x="374" y="20" width="146" height="50" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="447" y="52" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">Agent / MCP</text>
+<path d="M93 70 V91 H447 V70" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M270 70 V109" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<rect x="130" y="111" width="280" height="53" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="270" y="144.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">SmartTest 本地服务</text>
+<path d="M270 164 V187" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M94 187 H446" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M94 187 V208" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<path d="M270 187 V208" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<path d="M446 187 V208" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<rect x="17" y="210" width="154" height="71" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="94" y="242.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">交互会话</text>
+<text x="94" y="265.5" font-size="16" fill="#80dfc6" text-anchor="middle" font-weight="550">Agent 逐步操作</text>
+<rect x="193" y="210" width="154" height="71" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="270" y="242.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">视觉任务</text>
+<text x="270" y="265.5" font-size="16" fill="#80dfc6" text-anchor="middle" font-weight="550">GUI-Owl 决策</text>
+<rect x="369" y="210" width="154" height="71" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="446" y="242.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">固定流程</text>
+<text x="446" y="265.5" font-size="16" fill="#80dfc6" text-anchor="middle" font-weight="550">独立进程执行</text>
+<path d="M94 282 V308 H446 V282" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M270 282 V325" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#mf9c589)"/>
+<rect x="95" y="328" width="350" height="45" rx="9" fill="#182d38" stroke="#f9c589" stroke-width="1.5"/>
+<text x="270" y="357.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">运行 ID · 回执与证据</text></g>
+</svg>

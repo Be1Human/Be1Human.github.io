@@ -220,11 +220,13 @@ function projectLinks(project) {
 }
 
 function renderProjectSlides(project, cover) {
-  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps, tables = [], diagram}, index) => {
+  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps, tables = [], diagram, detailLabel}, index) => {
     const layout = diagram ? ' slide-diagram' : tables.length ? ' slide-technical' : images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
     const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
     const details = notes.map(note => `<p class="slide-note">${e(note)}</p>`).join('');
-    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${details}</div><div class="slide-media">${diagram ? projectDiagram(diagram, `${project.id}-page-${index + 1}`) : ''}${projectTables(tables)}${images.map(image => projectFigure(image)).join('')}</div></section>`;
+    const tableHtml = projectTables(tables);
+    const disclosure = detailLabel ? `<details class="slide-evidence"><summary>${e(detailLabel)}</summary>${details}${tableHtml}</details>` : '';
+    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${detailLabel ? '' : details}</div><div class="slide-media">${diagram ? projectDiagram(diagram, `${project.id}-page-${index + 1}`) : ''}${detailLabel ? '' : tableHtml}${images.map(image => projectFigure(image)).join('')}</div>${disclosure}</section>`;
   }).join('');
   const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
   return `<article class="site-panel project-slides" id="${e(project.id)}"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><header class="slides-hero"><div class="slides-intro"><p class="slides-category">${e(project.detail.status)} · ${e(project.detail.period)}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p></div>${cover}</header><nav class="slides-nav" aria-label="项目章节">${links}</nav><div class="slides-body">${slides}${projectLinks(project)}</div><footer class="slides-footer"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></article>`;

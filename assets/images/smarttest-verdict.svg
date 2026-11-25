@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="342" viewBox="0 0 540 342" role="img" aria-labelledby="title desc">
+<title id="title">背包测试的动作与验收</title><desc id="desc">79.5 秒内模型决策十次，八次触控送达。第二步误入商城，第十步滑动越界。独立验收只确认了游戏在前台。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="342" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><text x="22" y="37" font-size="28" fill="#f0f5ef" text-anchor="start" font-weight="700">79.5 秒</text>
+<text x="173" y="37" font-size="22" fill="#a9c5ff" text-anchor="start" font-weight="500">10 次决策</text>
+<text x="358" y="37" font-size="22" fill="#80dfc6" text-anchor="start" font-weight="500">8 次触控送达</text>
+<rect x="18" y="68" width="144" height="69" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="90" y="99.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">尝试点背包</text>
+<text x="90" y="122.5" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">第 1 步</text>
+<rect x="198" y="68" width="144" height="69" rx="9" fill="#182d38" stroke="#f9c589" stroke-width="1.5"/>
+<text x="270" y="99.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">误入商城</text>
+<text x="270" y="122.5" font-size="16" fill="#f9c589" text-anchor="middle" font-weight="550">第 2 步</text>
+<rect x="378" y="68" width="144" height="69" rx="9" fill="#182d38" stroke="#ffad9c" stroke-width="1.5"/>
+<text x="450" y="99.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">越界拦截</text>
+<text x="450" y="122.5" font-size="16" fill="#ffad9c" text-anchor="middle" font-weight="550">第 10 步</text>
+<path d="M163 103 H194" fill="none" stroke="#aec3ca" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#maec3ca)"/>
+<path d="M343 103 H374" fill="none" stroke="#aec3ca" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#maec3ca)"/>
+<text x="23" y="177" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="650">独立验收</text>
+<path d="M22 189 H518" fill="none" stroke="#aec3ca" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="32" y="223" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">游戏仍在前台</text>
+<text x="503" y="223" font-size="20" fill="#80dfc6" text-anchor="end" font-weight="650">通过</text>
+<text x="32" y="268" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">观察到时装分类</text>
+<text x="503" y="268" font-size="20" fill="#ffad9c" text-anchor="end" font-weight="650">未满足</text>
+<text x="32" y="313" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">最终返回大厅</text>
+<text x="503" y="313" font-size="20" fill="#ffad9c" text-anchor="end" font-weight="650">未满足</text></g>
+</svg>

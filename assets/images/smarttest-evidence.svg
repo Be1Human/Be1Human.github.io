@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="330" viewBox="0 0 540 330" role="img" aria-labelledby="title desc">
+<title id="title">Agent 按运行 ID 读取证据</title><desc id="desc">同一运行 ID 可供 Agent 续读事件、检查断言与清理状态，或按产物 ID 读取截图和录像。使用工作流时可以追溯快照和资料版本。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="330" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><rect x="154" y="20" width="232" height="54" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="270" y="54" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">运行 ID</text>
+<path d="M270 74 V101 H85 V282" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M85 121 H124" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<rect x="128" y="99" width="390" height="58" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="144" y="134" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="650">read_run_events</text>
+<text x="503" y="134" font-size="17" fill="#80dfc6" text-anchor="end" font-weight="500">按游标续读事件</text>
+<path d="M85 202 H124" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<rect x="128" y="180" width="390" height="58" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="144" y="215" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="650">run_status</text>
+<text x="503" y="215" font-size="17" fill="#80dfc6" text-anchor="end" font-weight="500">断言与清理状态</text>
+<path d="M85 283 H124" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<rect x="128" y="261" width="390" height="58" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="144" y="296" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="650">read_artifact</text>
+<text x="503" y="296" font-size="17" fill="#80dfc6" text-anchor="end" font-weight="500">按 ID 读取产物</text></g>
+</svg>

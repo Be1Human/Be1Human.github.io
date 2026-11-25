@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="355" viewBox="0 0 540 355" role="img" aria-labelledby="title desc">
+<title id="title">Agent 与设备会话</title><desc id="desc">外部 Agent 通过 MCP 打开独占会话，观察返回截图和观察 ID。动作经过会话校验后发往设备，之后重新观察。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="355" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><text x="106" y="39" font-size="24" fill="#a9c5ff" text-anchor="middle" font-weight="550">外部 Agent</text>
+<text x="431" y="39" font-size="24" fill="#80dfc6" text-anchor="middle" font-weight="550">真机会话</text>
+<path d="M106 56 V303" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 6"/>
+<path d="M431 56 V303" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 6"/>
+<text x="267" y="77" font-size="19" fill="#f0f5ef" text-anchor="middle" font-weight="550">申请独占会话</text>
+<path d="M107 91 H428" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<text x="267" y="130" font-size="19" fill="#f0f5ef" text-anchor="middle" font-weight="550">请求观察</text>
+<path d="M107 144 H428" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<text x="267" y="183" font-size="19" fill="#f0f5ef" text-anchor="middle" font-weight="550">截图 + 观察 ID</text>
+<path d="M430 197 H109" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<text x="267" y="238" font-size="19" fill="#f0f5ef" text-anchor="middle" font-weight="550">提交单步动作</text>
+<path d="M107 252 H428" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<text x="267" y="289" font-size="19" fill="#f0f5ef" text-anchor="middle" font-weight="550">返回动作回执</text>
+<path d="M430 303 H109" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<text x="270" y="337" font-size="19" fill="#f9c589" text-anchor="middle" font-weight="550">操作后重新观察</text></g>
+</svg>

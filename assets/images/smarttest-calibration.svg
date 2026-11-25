@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="348" viewBox="0 0 540 348" role="img" aria-labelledby="title desc">
+<title id="title">六项游戏界面的真机校准</title><desc id="desc">六个目标各运行一次，跨实现版本。六项中只有大厅满足该轮验收条件。条形长度表示模型决策次数，右列为实际发送数。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="348" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><text x="22" y="39" font-size="18" fill="#aec3ca" text-anchor="start" font-weight="500">游戏界面</text>
+<text x="140" y="39" font-size="18" fill="#aec3ca" text-anchor="start" font-weight="500">模型决策次数</text>
+<text x="510" y="39" font-size="18" fill="#aec3ca" text-anchor="end" font-weight="500">动作发送数</text>
+<text x="22" y="81" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">大厅</text>
+<rect x="140" y="63" width="24" height="18" rx="3" fill="#80dfc6"/>
+<text x="173" y="79" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="500">2</text>
+<text x="484" y="80" font-size="20" fill="#aec3ca" text-anchor="end" font-weight="500">0</text>
+<text x="22" y="121" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">背包</text>
+<rect x="140" y="103" width="120" height="18" rx="3" fill="#a9c5ff"/>
+<text x="269" y="119" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="500">10</text>
+<text x="484" y="120" font-size="20" fill="#aec3ca" text-anchor="end" font-weight="500">8</text>
+<text x="22" y="161" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">邮箱</text>
+<rect x="140" y="143" width="168" height="18" rx="3" fill="#a9c5ff"/>
+<text x="317" y="159" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="500">14</text>
+<text x="484" y="160" font-size="20" fill="#aec3ca" text-anchor="end" font-weight="500">13</text>
+<text x="22" y="201" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">活动</text>
+<rect x="140" y="183" width="48" height="18" rx="3" fill="#a9c5ff"/>
+<text x="197" y="199" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="500">4</text>
+<text x="484" y="200" font-size="20" fill="#aec3ca" text-anchor="end" font-weight="500">2</text>
+<text x="22" y="241" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">设置</text>
+<rect x="140" y="223" width="132" height="18" rx="3" fill="#a9c5ff"/>
+<text x="281" y="239" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="500">11</text>
+<text x="484" y="240" font-size="20" fill="#aec3ca" text-anchor="end" font-weight="500">9</text>
+<text x="22" y="281" font-size="20" fill="#f0f5ef" text-anchor="start" font-weight="500">更多</text>
+<rect x="140" y="263" width="96" height="18" rx="3" fill="#a9c5ff"/>
+<text x="245" y="279" font-size="17" fill="#f0f5ef" text-anchor="start" font-weight="500">8</text>
+<text x="484" y="280" font-size="20" fill="#aec3ca" text-anchor="end" font-weight="500">8</text>
+<text x="270" y="326" font-size="19" fill="#80dfc6" text-anchor="middle" font-weight="550">每项各测一次 · 仅大厅通过</text></g>
+</svg>

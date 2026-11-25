@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="335" viewBox="0 0 540 335" role="img" aria-labelledby="title desc">
+<title id="title">本地视觉模型的执行循环</title><desc id="desc">当前帧和最多三张历史截图送入本机 Ollama 的 GUI-Owl。模型提议动作，执行器检查范围和坐标，通过独占会话操作真机，随后重新截图。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="335" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><rect x="18" y="24" width="182" height="79" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="109" y="60.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">目标与截图</text>
+<text x="109" y="83.5" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">当前帧 + 历史帧</text>
+<rect x="281" y="24" width="241" height="79" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="401.5" y="60.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">GUI-Owl 1.5 4B</text>
+<text x="401.5" y="83.5" font-size="16" fill="#80dfc6" text-anchor="middle" font-weight="550">Instruct · Q8_0</text>
+<path d="M201 64 H277" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<path d="M401 104 V177" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<text x="412" y="145" font-size="16" fill="#80dfc6" text-anchor="start" font-weight="500">动作提议</text>
+<rect x="279" y="181" width="243" height="80" rx="9" fill="#182d38" stroke="#f9c589" stroke-width="1.5"/>
+<text x="400.5" y="218" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">执行器检查</text>
+<text x="400.5" y="241" font-size="16" fill="#f9c589" text-anchor="middle" font-weight="550">范围 · 坐标 · 会话</text>
+<rect x="18" y="181" width="182" height="80" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="109" y="218" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">Android 真机</text>
+<text x="109" y="241" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">点击或滑动</text>
+<path d="M277 221 H205" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#mf9c589)"/>
+<path d="M108 180 V108" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<text x="119" y="147" font-size="16" fill="#a9c5ff" text-anchor="start" font-weight="500">新截图</text>
+<text x="270" y="309" font-size="19" fill="#aec3ca" text-anchor="middle" font-weight="550">本机 Ollama 推理 · 权重单独安装</text></g>
+</svg>

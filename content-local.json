@@ -114,8 +114,8 @@
       "title": "SmartTest",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "image": "assets/images/smarttest-cover.webp",
-      "imageAlt": "SmartTest 背包测试目标及 Android 真机任务的回放时间轴",
+      "image": "assets/images/smarttest-framework.svg",
+      "imageAlt": "工作台、CLI 与 Agent 的 MCP 工具共用本地服务。服务分别调度交互会话、视觉任务和固定流程，三条路径都留下可按运行 ID 检索的证据。",
       "tags": [
         "MCP",
         "工作流编排",

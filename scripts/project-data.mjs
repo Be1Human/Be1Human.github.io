@@ -51,7 +51,8 @@ export function validateProject(project, source) {
   if (detail.coverVideo !== undefined && (!detail.coverSize || typeof detail.coverVideo !== 'string' ||
       !detail.sections.some(section => section.video?.src === detail.coverVideo))) throw new Error('Unknown project cover video');
   for (const section of detail.sections) {
-    if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+    if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram', 'detailLabel'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+    if (section.detailLabel !== undefined && (!hasText(section.detailLabel) || detail.layout !== 'slides' || (section.paragraphs.length === 1 && !section.tables?.length))) throw new Error('Invalid project detail disclosure');
     const { workflow } = section;
     const stepFields = ['title', 'tool', 'output'];
     if (workflow !== undefined && (

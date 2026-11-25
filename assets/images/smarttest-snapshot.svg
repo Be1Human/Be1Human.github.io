@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="335" viewBox="0 0 540 335" role="img" aria-labelledby="title desc">
+<title id="title">图定义与运行快照</title><desc id="desc">工作台或 Agent 编辑节点图。保存前校验图和端口类型，得到修订号。运行时按修订复制节点图、画布及资料引用，独立进程执行这份图，并逐节点返回回执。</desc>
+<defs><marker id="m80dfc6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#80dfc6" stroke-width="1.8"/></marker><marker id="ma9c5ff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#a9c5ff" stroke-width="1.8"/></marker><marker id="mf9c589" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#f9c589" stroke-width="1.8"/></marker><marker id="mffad9c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#ffad9c" stroke-width="1.8"/></marker><marker id="maec3ca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#aec3ca" stroke-width="1.8"/></marker></defs>
+<rect width="540" height="335" rx="12" fill="#10242f"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, system-ui, sans-serif"><rect x="20" y="22" width="146" height="62" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="93" y="50" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">编辑节点图</text>
+<text x="93" y="73" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">画布 / MCP</text>
+<rect x="197" y="22" width="146" height="62" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="270" y="50" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">校验端口</text>
+<text x="270" y="73" font-size="16" fill="#80dfc6" text-anchor="middle" font-weight="550">连接与类型</text>
+<rect x="374" y="22" width="146" height="62" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="447" y="50" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">保存修订</text>
+<text x="447" y="73" font-size="16" fill="#a9c5ff" text-anchor="middle" font-weight="550">修订号</text>
+<path d="M167 53 H192" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<path d="M344 53 H370" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/>
+<path d="M447 85 V111" fill="none" stroke="#a9c5ff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ma9c5ff)"/>
+<rect x="20" y="114" width="500" height="112" rx="9" fill="#182d38" stroke="#f9c589" stroke-width="1.5"/>
+<text x="36" y="146" font-size="22" fill="#f9c589" text-anchor="start" font-weight="650">运行快照</text>
+<path d="M36 157 H502" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 6"/>
+<text x="96" y="195" font-size="20" fill="#f0f5ef" text-anchor="middle" font-weight="550">节点图</text>
+<text x="267" y="195" font-size="20" fill="#f0f5ef" text-anchor="middle" font-weight="550">画布分组</text>
+<text x="443" y="195" font-size="20" fill="#f0f5ef" text-anchor="middle" font-weight="550">资料版本</text>
+<path d="M130 227 V250" fill="none" stroke="#f9c589" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#mf9c589)"/>
+<rect x="20" y="254" width="222" height="59" rx="9" fill="#182d38" stroke="#80dfc6" stroke-width="1.5"/>
+<text x="131" y="290.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">独立进程执行</text>
+<rect x="299" y="254" width="221" height="59" rx="9" fill="#182d38" stroke="#a9c5ff" stroke-width="1.5"/>
+<text x="409.5" y="290.5" font-size="22" fill="#f0f5ef" text-anchor="middle" font-weight="650">逐节点回执</text>
+<path d="M244 284 H294" fill="none" stroke="#80dfc6" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#m80dfc6)"/></g>
+</svg>
