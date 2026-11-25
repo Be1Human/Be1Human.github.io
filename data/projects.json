@@ -1459,10 +1459,10 @@
     "kind": "Minecraft AI 伙伴",
     "category": "tools",
     "label": "AI 与工具",
-    "description": "MineClaw 是 Minecraft Java 版里的 AI 伙伴，能对话，也能在同一个世界里执行玩家交代的目标。",
-    "image": "assets/images/mineclaw-capabilities.png",
-    "imageAlt": "MineClaw 伙伴能力面板，列出聊天、记忆、Minecraft 和语音能力。",
-    "imageNote": "客户端实拍 · MineClawTest 的伙伴能力",
+    "description": "MineClaw 是 Minecraft Java 版里的 AI 伙伴。玩家可以和它聊天，也可以让它在同一个世界里制作、放置和交付物品。",
+    "image": "assets/images/mineclaw-workbench.jpg",
+    "imageAlt": "Minecraft 测试画面中，LanYi 站在玩家旁边，新放置的工作台就在玩家脚边。",
+    "imageNote": "历史游戏实录截帧 · LanYi 放下工作台",
     "tags": [
       "TypeScript",
       "Minecraft",
@@ -1476,28 +1476,38 @@
     "detail": {
       "status": "持续开发",
       "coverSize": [
-        1500,
-        900
+        1280,
+        720
       ],
       "sections": [
         {
-          "heading": "能力与轨迹视图的运行留档",
+          "heading": "一句指令如何变成游戏动作？",
           "paragraphs": [
-            "这段约 10 秒的录像记录了 MineClawTest 的能力面板与历史调用轨迹。录制时伙伴尚未进服，运行时坐标与生命值来自本章另一份进服留档。"
+            "MainBrain 接收玩家原话。需要改变游戏世界时，它通过 submit_goal_request 把目标交给 GoalAgent。普通对话留在主脑处理。",
+            "以交付铁镐为例，目标编译器固定物品、数量和完成条件。GoalAgent 结合容器位置与现有物品选择动作。身体执行层校验权限和所需资源，再由 Mineflayer 与游戏交互。",
+            "动作失败时，任务执行器按失败原因和重试次数决定能否恢复。重试耗尽时，把现场和进展交回主脑。"
           ],
-          "video": {
-            "src": "assets/project-media/mineclaw-workspace-tour.mp4",
-            "poster": "assets/images/mineclaw-capabilities.png",
-            "caption": "客户端操作实录 · 伙伴能力与历史调用",
-            "width": 1500,
-            "height": 900
-          }
-        },
-        {
-          "heading": "主脑、目标队列与游戏执行",
-          "paragraphs": [
-            "主脑提交目标，GoalQueue 逐个交给 GoalAgent。GoalAgent 通过计划编排器推进步骤；失败时根据原因和重试次数决定恢复，达到上限后交回主脑请求协助。",
-            "例如「取木头」要落到世界里的具体动作。位置和附近方块限定行动对象，动作回执说明执行经过，背包变化才能说明木头是否真正入袋。"
+          "workflow": [
+            {
+              "title": "接收指令",
+              "tool": "MainBrain",
+              "output": "玩家想要一把铁镐"
+            },
+            {
+              "title": "确定目标",
+              "tool": "GoalCompiler",
+              "output": "固定物品与交付条件"
+            },
+            {
+              "title": "选择动作",
+              "tool": "GoalAgent",
+              "output": "从指定箱子取物，再交付"
+            },
+            {
+              "title": "在游戏中执行",
+              "tool": "BodyExecutionRuntime",
+              "output": "提交动作并记录回执"
+            }
           ],
           "images": [
             {
@@ -1506,7 +1516,16 @@
               "caption": "目标执行框架 · 点击图片可放大查看。",
               "width": 2240,
               "height": 1820
-            },
+            }
+          ]
+        },
+        {
+          "heading": "伙伴怎样知道铁镐交到了？",
+          "paragraphs": [
+            "开箱取出铁镐只完成了取物步骤。任务结束前，框架还要读取目标对应的证据，判断交付条件是否满足。",
+            "核对结果有三种。证据满足时提交完成。未满足时继续规划。读数缺失时重新观察，并在预算用尽时退出。"
+          ],
+          "images": [
             {
               "src": "assets/images/mineclaw/evidence.png",
               "alt": "结果验真流程，标出完成、继续规划和重新观察的条件。",
@@ -1517,9 +1536,37 @@
           ]
         },
         {
-          "heading": "客户端如何呈现两种状态",
+          "heading": "制作并放置工作台",
           "paragraphs": [
-            "互动页呈现当前伙伴、游戏预览和对话；轨迹页按回合聚合模型与工具调用。留档的会话包含 37 个回合、190 次调用，单个事件仍可追溯。"
+            "玩家说「用你身上的木板做一个工作台，放在我脚边。」LanYi 起初带着 4 块橡木木板。录像后半段可以看到它走到玩家身边，工作台出现在脚边。",
+            "合成和放置是两个动作。这次测试还检查了放置后的世界方块，确认工作台已经落地。"
+          ],
+          "video": {
+            "src": "assets/project-media/mineclaw-workbench.mp4",
+            "poster": "assets/images/mineclaw-workbench.jpg",
+            "caption": "用木板制作工作台并放到玩家脚边 · 2026 年 10 月 20 日游戏窗口实录，21.8 秒。",
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "heading": "从左侧箱子取出铁镐并交付",
+          "paragraphs": [
+            "玩家站在两个箱子之间，要求 LanYi 从左边取一把铁镐交给自己。录像中可以看到伙伴走向左箱，最后铁镐出现在玩家的快捷栏。",
+            "这次验收同时读取了物品去向。左箱里的铁镐从 1 把变成 0 把，玩家从 0 把变成 1 把，伙伴身上和地面都没有剩余铁镐。两段历史录像均按实际经过时间采样，约每秒 2 至 3 帧。"
+          ],
+          "video": {
+            "src": "assets/project-media/mineclaw-chest-handoff.mp4",
+            "poster": "assets/images/mineclaw-chest-handoff.jpg",
+            "caption": "从左侧箱子取出铁镐并交给玩家 · 2026 年 10 月 20 日游戏窗口实录，21.8 秒。",
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "heading": "从伙伴面板走到调用轨迹",
+          "paragraphs": [
+            "在新版工作区客户端选中 MineClawTest，打开「大脑 → 能力」查看启用的功能，再切到「轨迹」按回合查看模型调用和工具结果。下面这段操作录像展示的是保存的会话。"
           ],
           "images": [
             {
@@ -1536,51 +1583,19 @@
               "width": 1500,
               "height": 900
             }
-          ]
-        },
-        {
-          "heading": "哪些调用复用了模型输入？",
-          "paragraphs": [
-            "2026 年 10 月 19 日至 11 月 6 日，工作区记录了 190 次 DeepSeek 调用。647,940 个可缓存输入 token 中，有 476,156 个命中缓存，合计 73.5%。",
-            "主脑的 19 对相邻请求使用了相同工具，其中 8 对最早在「最近对话记录」处分叉。较早的消息一旦被改写，后续相同的内容也难以复用。",
-            "待验证的优化是保留原始对话和工具结果，将本轮游戏状态与新问题追加在末尾。重放同一段追问，比较每个成功任务的未命中 token，同时核对回答里的最新进度。"
           ],
-          "tables": [
-            {
-              "caption": "按调用方统计 · deepseek-v4-flash",
-              "columns": [
-                "调用方",
-                "调用次数",
-                "输入命中率",
-                "未命中 token"
-              ],
-              "rows": [
-                [
-                  "主脑",
-                  "34",
-                  "42.7%",
-                  "72,271"
-                ],
-                [
-                  "任务执行",
-                  "42",
-                  "80.2%",
-                  "66,223"
-                ],
-                [
-                  "记忆整理",
-                  "114",
-                  "82.2%",
-                  "33,290"
-                ]
-              ]
-            }
-          ]
+          "video": {
+            "src": "assets/project-media/mineclaw-workspace-tour.mp4",
+            "poster": "assets/images/mineclaw-capabilities.png",
+            "caption": "客户端操作实录 · 伙伴能力与历史调用",
+            "width": 1500,
+            "height": 900
+          }
         },
         {
-          "heading": "调用事件和进服记录",
+          "heading": "把事件与游戏状态对照起来",
           "paragraphs": [
-            "下面两张工作区留档记录了不同的时刻。LanYi 的截图选中了一个调用事件，MineClawTest 的截图则显示了伙伴进服后的坐标和生命值。运行游戏行动需要配置 Minecraft Java 版服务器与模型接口。"
+            "轨迹页可展开单个事件，对照它的输入与结果。角色进服后，还能从状态卡查看位置、生命和饥饿值。下面是两次独立留档。"
           ],
           "images": [
             {
@@ -1611,36 +1626,41 @@
           "url": "https://be1human.github.io/assets/images/mineclaw/evidence.svg"
         },
         {
-          "title": "客户端实录 · MP4",
-          "url": "https://be1human.github.io/assets/project-media/mineclaw-workspace-tour.mp4"
+          "title": "目标编译器源码",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/task/goalAgent/goalCompiler.ts"
         },
         {
-          "title": "DeepSeek 前缀缓存说明",
-          "url": "https://api-docs.deepseek.com/zh-cn/guides/kv_cache/"
+          "title": "身体执行层源码",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/task/execution/bodyExecutionRuntime.ts"
+        },
+        {
+          "title": "目标判据源码",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/task/goalRunner/goalCriteriaEvaluator.ts"
         }
       ],
       "overview": {
-        "purpose": "对话可以马上回复，采集却需要排队、执行和验收。主脑提交目标后，任务系统在游戏世界里推进它，背包或位置的变化决定目标是否达成。",
-        "mediaHint": "客户端保留伙伴能力与调用轨迹。正文区分了历史会话录像和真实进服时的状态留档。",
+        "purpose": "用「从左边的箱子拿一把铁镐给我」看清整个过程。主脑接下指令，任务执行器安排动作，最后用箱子和玩家背包的变化核对交付。",
+        "mediaHint": "工作台出现的位置就是本次指令的验收条件。下方两段游戏录像保留了从指令到结果的过程。",
         "chapters": [
           {
-            "title": "目标编排与世界状态验收",
+            "title": "项目框架与实现",
             "sections": [
+              1,
               2
             ]
           },
           {
-            "title": "对话、能力与事件轨迹",
+            "title": "两段游戏实录",
             "sections": [
               3,
-              1,
-              5
+              4
             ]
           },
           {
-            "title": "模型调用的缓存表现",
+            "title": "客户端如何查看执行过程",
             "sections": [
-              4
+              5,
+              6
             ]
           }
         ],

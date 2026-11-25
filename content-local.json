@@ -72,8 +72,8 @@
       "title": "MineClaw",
       "category": "tools",
       "categoryLabel": "AI 与工具",
-      "image": "assets/images/mineclaw-capabilities.png",
-      "imageAlt": "MineClaw 伙伴能力面板，列出聊天、记忆、Minecraft 和语音能力。",
+      "image": "assets/images/mineclaw-workbench.jpg",
+      "imageAlt": "Minecraft 测试画面中，LanYi 站在玩家旁边，新放置的工作台就在玩家脚边。",
       "tags": [
         "TypeScript",
         "Minecraft",
