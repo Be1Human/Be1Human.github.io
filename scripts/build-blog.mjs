@@ -58,13 +58,6 @@ function unique(items, key) {
   if (new Set(items.map(item => item[key])).size !== items.length) throw new Error(`Duplicate ${key}`);
 }
 unique(projects, 'id'); unique(posts, 'id'); unique(news.editions, 'id');
-const projectArticles = new Map();
-for (const post of posts) {
-  if (post.projectId === undefined) continue;
-  if (!projects.some(project => project.id === post.projectId && project.presentation === 'showcase') ||
-      projectArticles.has(post.projectId)) throw new Error('Invalid project article link');
-  projectArticles.set(post.projectId, `posts/${post.id}.html`);
-}
 for (const project of projects) {
   const source = evidence.projects.find(source => source.projectId === project.id);
   validateProject(project, source);
@@ -99,11 +92,8 @@ for (const project of projects) {
   });
   if (project.detail.layout === 'slides') entry.layout = 'slides';
   if (project.detail.website) entry.links = [{ label: '打开游戏', url: project.detail.website }];
-  const articlePath = projectArticles.get(project.id);
-  if (articlePath) {
-    const url = origin + articlePath;
-    entry.links = [{ label: '阅读技术复盘', url }, ...(entry.links ?? []).filter(link => link.url !== url)];
-  }
+  if (project.detail.directPage) entry.page = projectPagePath(project);
+  else delete entry.page;
   if (experienceContent.featuredProject?.id === entry.id) Object.assign(experienceContent.featuredProject, entry);
 }
 pages.set('content-local.json',JSON.stringify(experienceContent,null,2)+'\n');
@@ -218,7 +208,7 @@ function projectSectionBody({ paragraphs, workflow }) {
   return `<ol class="project-workflow" role="list">${steps}</ol>${text}`;
 }
 
-function projectTables(tables) {
+function projectTables(tables = []) {
   return tables.map(({ caption, columns, rows }) => {
     const header = columns.map(column => `<th scope="col">${e(column)}</th>`).join('');
     const body = rows.map(([label, ...values]) => `<tr><th scope="row">${e(label)}</th>${values.map(value => `<td>${e(value)}</td>`).join('')}</tr>`).join('');
@@ -267,9 +257,10 @@ for (const project of projects.filter(project => project.presentation === 'showc
     pages.set(path, pages.get(path).replace('</head>', `<link rel="stylesheet" href="../assets/project-slides.css?v=${projectSlidesStyleVersion}">\n</head>`));
     continue;
   }
-  const articlePath = projectArticles.get(project.id);
-  const articleLink = articlePath ? `<p><a class="back-link" href="../${e(articlePath)}">阅读技术复盘 ↗</a></p>` : '';
-  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p>${articleLink}</header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video && section.video !== coverVideo ? projectVideo(section.video) : ''}</section>`).join('')}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
+  const references = project.detail.references?.length
+    ? `<section class="article-links"><h2>技术文档</h2><ul>${project.detail.references.map(link => `<li><a href="${e(link.url)}" ${external}>${e(link.title)} ↗</a></li>`).join('')}</ul></section>`
+    : '';
+  const body = `<article class="site-panel article-page"><div class="article-topbar"><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a><span>项目记录</span></div><div class="article-content"><header class="article-header"><div class="article-author"><div><strong>云上男孩 <span>${e(project.detail.period)}</span></strong><p>${e(project.kind)}<span>·</span>${e(project.detail.status)}</p></div></div><h1>${e(project.title)}</h1><p class="article-lede">${e(project.description)}</p></header>${cover}<div class="prose">${project.detail.sections.map((section, index) => `<section id="section-${index + 1}"><h2>${e(section.heading)}</h2>${projectSectionBody(section)}${projectTables(section.tables)}${(section.images ?? []).map(image => projectFigure(image)).join('')}${section.video && section.video !== coverVideo ? projectVideo(section.video) : ''}</section>`).join('')}${references}</div><footer class="article-end"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="back-link" href="../works.html#${project.id}">← 返回作品集</a></footer></div></article>`;
   const workflowHead = project.detail.sections.some(section => section.workflow)
     ? `<link rel="stylesheet" href="../${workflowStyle}?v=${workflowStyleVersion}">`
     : '';
@@ -334,6 +325,10 @@ const mineClawTarget = origin + 'works.html#mineclaw';
 const mineClawRedirect = `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MineClaw</title><link rel="canonical" href="${mineClawTarget}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${mineClawTarget}"></head><body><a href="${mineClawTarget}">查看 MineClaw</a></body></html>\n`;
 pages.set('projects/duomind.html', mineClawRedirect);
 pages.set('portfolio/projects/duomind.html', mineClawRedirect);
+const performanceTarget = origin + 'projects/digital-performance.html';
+const performanceRedirect = `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>数字人表演生成</title><link rel="canonical" href="${performanceTarget}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${performanceTarget}"></head><body><a href="${performanceTarget}">查看数字人表演生成</a></body></html>\n`;
+pages.set('posts/ue-character-performance-pipeline.html', performanceRedirect);
+pages.set('portfolio/posts/ue-character-performance-pipeline.html', performanceRedirect);
 // Feed readers do not execute JavaScript; keep their existing subscription live.
 pages.set('portfolio/feed.xml', pages.get('feed.xml'));
 pages.set('portfolio/sitemap.xml', pages.get('sitemap.xml'));

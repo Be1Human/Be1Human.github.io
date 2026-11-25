@@ -9,6 +9,22 @@ const evidence = JSON.parse(await read('data/content-sources.json'));
 const showcase = projects.find(project => project.presentation === 'showcase');
 const source = evidence.projects.find(entry => entry.projectId === showcase.id);
 
+test('the digital performance case study lives on one project page', async () => {
+  const id = 'ue-character-performance-pipeline';
+  const project = projects.find(entry => entry.id === 'digital-performance');
+  const destination = projectPagePath(project);
+  const page = await read(destination);
+  const experience = JSON.parse(await read('content-local.json'));
+  assert.equal(experience.projects.find(entry => entry.id === project.id).page, destination);
+  assert.ok(!experience.journal.some(entry => entry.id === id));
+  assert.ok(!JSON.parse(await read('data/posts.json')).some(entry => entry.id === id));
+  assert.ok(!(await read('sitemap.xml')).includes(`posts/${id}.html`));
+  assert.ok(page.includes('<caption>表演素材方案对比</caption>'));
+  const redirect = await read(`posts/${id}.html`);
+  assert.ok(redirect.includes(`content="0;url=https://be1human.github.io/${destination}"`));
+  assert.equal(await read(`portfolio/posts/${id}.html`), redirect);
+});
+
 test('project overviews cannot publish private repository links, configuration or raw source metadata', () => {
   assert.equal(validateProject(showcase, source), showcase);
   for (const patch of [

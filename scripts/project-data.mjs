@@ -30,9 +30,16 @@ export function validateProject(project, source) {
     if (source.reviewMode !== 'owner-authorized-showcase' || Object.keys(source).some(key => !evidenceKeys.has(key))) throw new Error('Private source evidence must remain outside the public data');
     const detail = project.detail;
     if (!detail || !detail.status || !/^\d{4}(?:–\d{4})?$/.test(detail.period) || !Array.isArray(detail.sections) || !detail.sections.length) throw new Error('Incomplete project overview');
-    if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website', 'coverVideo'].includes(key))) throw new Error('Unexpected field in project overview');
+    if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'layout', 'website', 'coverVideo', 'directPage', 'references'].includes(key))) throw new Error('Unexpected field in project overview');
     if (detail.layout !== undefined && detail.layout !== 'slides') throw new Error('Invalid project overview layout');
     if (detail.website !== undefined) httpsUrl(detail.website);
+    if (detail.directPage !== undefined && typeof detail.directPage !== 'boolean') throw new Error('Invalid project page preference');
+    if (detail.references !== undefined) {
+      if (!Array.isArray(detail.references) || detail.references.some(link =>
+        !link || Object.keys(link).some(key => !['title', 'url'].includes(key)) || !hasText(link.title)
+      )) throw new Error('Invalid project references');
+      for (const link of detail.references) httpsUrl(link.url);
+    }
     const validSize = (width, height) => [width, height].every(value => Number.isInteger(value) && value > 0);
     if (detail.coverSize !== undefined &&
         (!Array.isArray(detail.coverSize) || detail.coverSize.length !== 2 || !validSize(...detail.coverSize))) {
@@ -63,7 +70,7 @@ export function validateProject(project, source) {
               !hasText(node.title) || !hasText(node.note)) ||
             (path.screen !== undefined && !['all', 'chat', 'options', 'status'].includes(path.screen))
           ))) throw new Error('Invalid project diagram');
-      if (section.tables !== undefined && (detail.layout !== 'slides' || !Array.isArray(section.tables) ||
+      if (section.tables !== undefined && (!Array.isArray(section.tables) ||
           !section.tables.length || section.tables.some(table =>
             !table || Object.keys(table).some(key => !['caption', 'columns', 'rows'].includes(key)) ||
             !hasText(table.caption) || !Array.isArray(table.columns) || table.columns.length < 2 ||
