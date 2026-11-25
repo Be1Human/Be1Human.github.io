@@ -5,6 +5,19 @@ export const projectPagePath = project => `projects/${project.id}.html`;
 const imagePath = /^assets\/images\/(?:[\w-]+\/)*[\w.-]+\.(?:webp|png|jpe?g|svg)$/;
 const hasText = value => typeof value === 'string' && Boolean(value.trim());
 
+function validateDiagram(diagram) {
+  if (!diagram ||
+      Object.keys(diagram).some(key => !['caption', 'switchable', 'paths'].includes(key)) ||
+      !hasText(diagram.caption) || typeof diagram.switchable !== 'boolean' ||
+      !Array.isArray(diagram.paths) || !diagram.paths.length || diagram.paths.some(path =>
+        !path || Object.keys(path).some(key => !['name', 'nodes', 'screen'].includes(key)) ||
+        !hasText(path.name) || !Array.isArray(path.nodes) || !path.nodes.length ||
+        path.nodes.some(node => !node || Object.keys(node).some(key => !['title', 'note'].includes(key)) ||
+          !hasText(node.title) || !hasText(node.note)) ||
+        (path.screen !== undefined && !['all', 'chat', 'options', 'status'].includes(path.screen))
+      )) throw new Error('Invalid project diagram');
+}
+
 export function validateProject(project, source) {
   if (!/^[a-z0-9-]+$/.test(project.id) || !projectCategories[project.category] || project.category === 'all') throw new Error('Invalid project');
   if (project.categories !== undefined && (!Array.isArray(project.categories) ||
@@ -36,12 +49,14 @@ export function validateProject(project, source) {
   if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'website', 'coverVideo', 'references', 'overview'].includes(key))) throw new Error('Unexpected field in project overview');
   if (detail.website !== undefined) httpsUrl(detail.website);
   const overview = detail.overview;
-  if (!overview || Object.keys(overview).some(key => !['purpose', 'mediaHint', 'chapters'].includes(key)) ||
+  if (!overview || Object.keys(overview).some(key => !['purpose', 'architecture', 'mediaHint', 'chapters'].includes(key)) ||
       !hasText(overview.purpose) || (overview.mediaHint !== undefined && !hasText(overview.mediaHint)) ||
       !Array.isArray(overview.chapters) || !overview.chapters.length || overview.chapters.some(chapter =>
         !chapter || Object.keys(chapter).some(key => !['title', 'sections'].includes(key)) ||
         !hasText(chapter.title) || !Array.isArray(chapter.sections) || !chapter.sections.length
       )) throw new Error('Incomplete project reading order');
+  validateDiagram(overview.architecture);
+  if (overview.architecture.switchable) throw new Error('The project architecture must show all its paths together');
   if (detail.coverVideo && !overview.mediaHint) throw new Error('Project cover video needs a viewing guide');
   const sectionOrder = overview.chapters.flatMap(chapter => chapter.sections);
   if (sectionOrder.length !== detail.sections.length || new Set(sectionOrder).size !== sectionOrder.length ||
@@ -74,17 +89,7 @@ export function validateProject(project, source) {
     )) throw new Error('Invalid project workflow');
     if (section.steps !== undefined && (!Array.isArray(section.steps) || !section.steps.length ||
         section.steps.some(step => typeof step !== 'string' || !step.trim()))) throw new Error('Invalid project steps');
-    const diagram = section.diagram;
-    if (diagram !== undefined && (!diagram ||
-        Object.keys(diagram).some(key => !['caption', 'switchable', 'paths'].includes(key)) ||
-        !hasText(diagram.caption) || typeof diagram.switchable !== 'boolean' ||
-        !Array.isArray(diagram.paths) || !diagram.paths.length || diagram.paths.some(path =>
-          !path || Object.keys(path).some(key => !['name', 'nodes', 'screen'].includes(key)) ||
-          !hasText(path.name) || !Array.isArray(path.nodes) || !path.nodes.length ||
-          path.nodes.some(node => !node || Object.keys(node).some(key => !['title', 'note'].includes(key)) ||
-            !hasText(node.title) || !hasText(node.note)) ||
-          (path.screen !== undefined && !['all', 'chat', 'options', 'status'].includes(path.screen))
-        ))) throw new Error('Invalid project diagram');
+    if (section.diagram !== undefined) validateDiagram(section.diagram);
     if (section.tables !== undefined && (!Array.isArray(section.tables) ||
         !section.tables.length || section.tables.some(table =>
           !table || Object.keys(table).some(key => !['caption', 'columns', 'rows'].includes(key)) ||

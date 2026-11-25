@@ -249,7 +249,8 @@ function renderProject(project) {
   const cover = coverVideo ? projectVideo(coverVideo) : projectFigure({
     src: project.image, alt: project.imageAlt, caption: project.imageNote, width, height,
   }, true);
-  const evidence = mediaHint ? `<div class="project-preview${height > width ? ' is-portrait' : ''}"><p class="project-picture-guide">${e(mediaHint)}</p>${cover}</div>` : '';
+  const evidence = mediaHint ? `<div class="project-preview${height > width ? ' is-portrait' : ''}">${cover}<p class="project-picture-guide">${e(mediaHint)}</p></div>` : '';
+  const architecture = `<section class="project-architecture" aria-labelledby="architecture-title"><h2 id="architecture-title">${e(detail.overview.architecture.caption)}</h2>${projectDiagram(detail.overview.architecture, 'architecture')}</section>`;
   const navigation = chapters.length > 1
     ? `<nav class="project-nav" aria-label="项目章节">${chapters.map((chapter, index) =>
       `<a href="#chapter-${index + 1}">${e(chapter.title)}</a>`
@@ -260,7 +261,7 @@ function renderProject(project) {
     ).join('')}</section>`
   ).join('');
   const period = detail.period ? ` · ${e(detail.period)}` : '';
-  return `<article class="site-panel project-slides" id="${project.id}"><div class="article-topbar">${back}</div><header class="slides-hero${evidence ? ' has-preview' : ''}"><div class="slides-intro"><p class="slides-category">${e(detail.status)}${period}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p><p class="project-purpose">${e(purpose)}</p>${navigation}</div>${evidence}</header><div class="slides-body">${body}${projectLinks(project)}</div><footer class="slides-footer">${back}</footer></article>`;
+  return `<article class="site-panel project-slides" id="${project.id}"><div class="article-topbar">${back}</div><header class="slides-hero${evidence ? ' has-preview' : ''}"><div class="slides-intro"><p class="slides-category">${e(detail.status)}${period}</p><h1>${e(project.title)}</h1><p class="slides-lede">${e(project.description)}</p><p class="project-purpose">${e(purpose)}</p>${architecture}</div>${evidence}${navigation}</header><div class="slides-body">${body}${projectLinks(project)}</div><footer class="slides-footer">${back}</footer></article>`;
 }
 
 for (const project of projects) {

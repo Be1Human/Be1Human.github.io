@@ -20,6 +20,7 @@
       "descriptionBasis": [
         "中文 README：Markdown 存储、导图编辑、双链、主题结构、导出与手动安装",
         "manifest.json：版本 0.4.3、最低 Obsidian 1.5.0、仅桌面版",
+        "Markdown 转换器与画布视图：标题和列表解析、备注转义、节点元数据及序列化",
         "项目 docs/images：Obsidian 演示库及功能演示截图"
       ],
       "productRuntimeTestedInThisReview": false
@@ -42,6 +43,7 @@
         "README：为什么是 MineClaw、核心能力、快速开始、开发状态",
         "运行时 package.json：Mineflayer 依赖与应用目录",
         "作者提供的 MineClaw-workspace 客户端实录、界面截图与执行框架图",
+        "伙伴目标队列与求解器：逐目标调度、计划推进、失败恢复和移交",
         "2026-10-19 至 2026-11-06 的模型调用轨迹汇总，190 次调用"
       ]
     },
@@ -239,6 +241,7 @@
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
         "三消玩法原型实机截图",
+        "原型的棋盘与战斗实现：障碍分段掉落、连锁结果、Boss 意图缓存与回合交接",
         "Boss 战实机录屏节选"
       ],
       "productRuntimeTestedInThisReview": false

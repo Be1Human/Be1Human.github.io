@@ -93,6 +93,24 @@ test('every project opens a complete local overview and can return to its portfo
   }
 });
 
+test('each project exposes its own design paths before chapter navigation', async () => {
+  for (const project of projects) {
+    const html = await read(projectPagePath(project));
+    const hero = html.split('<header class="slides-hero')[1].split('</header>')[0];
+    const diagram = project.detail.overview.architecture;
+    const title = hero.indexOf(`<h2 id="architecture-title">${diagram.caption}</h2>`);
+    assert.ok(title > 0, project.id);
+    const nav = hero.indexOf('class="project-nav"');
+    assert.ok(nav === -1 || nav > title, project.id);
+    for (const path of diagram.paths) {
+      const lane = hero.split(`class="project-track-label">${path.name}</strong>`)[1]?.split('</ol>')[0];
+      assert.ok(lane, project.id);
+      assert.deepEqual([...lane.matchAll(/<strong>([^<]+)<\/strong><span>([^<]+)<\/span>/g)].map(m => [m[1], m[2]]),
+        path.nodes.map(({title, note}) => [title, note]), project.id);
+    }
+  }
+});
+
 test('both works pages show every project once in a single list', async () => {
   const experience = JSON.parse(await read('content-local.json'));
   const ids = projects.map(project => project.id);
