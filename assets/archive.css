@@ -26,8 +26,6 @@
 .project-card h3 span{font:15px var(--sans);color:var(--cyan);white-space:nowrap}
 .project-body>p{font-size:14px;line-height:1.95;color:var(--muted)}
 .project-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:15px}
-.works-list .project-group:not([hidden]) + .project-group{margin-top:64px}
-.works-list .project-group > h2{border-bottom:1px solid var(--line);margin:0 0 22px;padding-bottom:12px;font-size:clamp(19px,3vw,26px)}
 .works-list .meta{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:var(--muted);font:11px/1.7 var(--mono)}
 .works-list .category-label{color:var(--cyan)}
 .works-list .tags{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--muted)}

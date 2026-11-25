@@ -38,7 +38,6 @@
         "games",
         "experiments"
       ],
-      "group": "other",
       "sections": [
         {
           "title": "一轮怎样玩",
@@ -234,8 +233,7 @@
             }
           ]
         }
-      ],
-      "group": "other"
+      ]
     },
     {
       "id": "rain-city-character-reconstruction",
@@ -255,7 +253,6 @@
         "MILo"
       ],
       "links": [],
-      "group": "other",
       "imageWidth": 1200,
       "imageHeight": 706,
       "sourceImage": "https://be1human.github.io/assets/images/character-orbit-cover.webp",
@@ -461,7 +458,6 @@
         "数字人"
       ],
       "links": [],
-      "group": "other",
       "imageWidth": 1280,
       "imageHeight": 720,
       "sourceImage": "https://be1human.github.io/assets/images/digital-performance-cover.webp",
@@ -648,7 +644,6 @@
         "PlayCanvas"
       ],
       "links": [],
-      "group": "other",
       "coverVideo": {
         "src": "assets/project-media/c7-city-drive.mp4",
         "poster": "assets/images/c7-city-drive.webp",
@@ -854,8 +849,7 @@
           "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/mineclaw.jpg",
-      "group": "agent"
+      "sourceImage": "https://be1human.github.io/assets/images/mineclaw.jpg"
     },
     {
       "id": "clawpm",
@@ -880,7 +874,6 @@
         }
       ],
       "sourceImage": "https://be1human.github.io/assets/images/clawpm-desktop-mindmap.jpg",
-      "group": "agent",
       "imageWidth": 1280,
       "imageHeight": 720,
       "sections": [
@@ -964,7 +957,6 @@
         "Android 真机"
       ],
       "links": [],
-      "group": "agent",
       "imageWidth": 1280,
       "imageHeight": 720,
       "sourceImage": "https://be1human.github.io/assets/images/smarttest-cover.webp",
@@ -1093,7 +1085,6 @@
         "地图探索"
       ],
       "links": [],
-      "group": "other",
       "imageWidth": 1200,
       "imageHeight": 720,
       "sourceImage": "https://be1human.github.io/assets/images/aixiaochu-showcase.webp",
@@ -1292,8 +1283,7 @@
             }
           ]
         }
-      ],
-      "group": "agent"
+      ]
     },
     {
       "id": "petgo",
@@ -1317,8 +1307,7 @@
           "url": "https://be1human.github.io/projects/petgo.html"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/petgo-cover.svg",
-      "group": "other"
+      "sourceImage": "https://be1human.github.io/assets/images/petgo-cover.svg"
     },
     {
       "id": "wallpaper-workshop",
@@ -1342,8 +1331,7 @@
           "url": "https://github.com/Be1Human/starry-night-train/blob/e380e56299bb27e23ad7f63f047cb4fdd3c0dc24/README.md"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/starry-night.png",
-      "group": "other"
+      "sourceImage": "https://be1human.github.io/assets/images/starry-night.png"
     },
     {
       "id": "titan-town",
@@ -1367,8 +1355,7 @@
           "url": "https://github.com/Be1Human/titan-town/blob/019dc53d330a5598411ba518e207ad2f0e33ea6c/README.zh-CN.md"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/titan-town.png",
-      "group": "other"
+      "sourceImage": "https://be1human.github.io/assets/images/titan-town.png"
     },
     {
       "id": "hades-study",
@@ -1392,8 +1379,7 @@
           "url": "https://github.com/Be1Human/hades-learning-demo/blob/20ffe7ca2a17662e124af8d3d8307cc9c1022fe6/README.zh-CN.md"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/hades-combat.png",
-      "group": "other"
+      "sourceImage": "https://be1human.github.io/assets/images/hades-combat.png"
     },
     {
       "id": "network-diary",
@@ -1417,8 +1403,7 @@
           "url": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/network-diary.png",
-      "group": "other"
+      "sourceImage": "https://be1human.github.io/assets/images/network-diary.png"
     },
     {
       "id": "animation-workflow",
@@ -1442,8 +1427,7 @@
           "url": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
         }
       ],
-      "sourceImage": "https://be1human.github.io/assets/images/animation.jpg",
-      "group": "agent"
+      "sourceImage": "https://be1human.github.io/assets/images/animation.jpg"
     },
     {
       "id": "clawphone",
@@ -1467,7 +1451,6 @@
         }
       ],
       "sourceImage": "https://be1human.github.io/assets/images/clawphone-cover.svg",
-      "group": "agent",
       "imageWidth": 1200,
       "imageHeight": 706,
       "sections": [
@@ -2134,7 +2117,6 @@
     ],
     "categoryLabel": "游戏与交互硬件",
     "subtitle": "科幻叙事游戏与桌面外设",
-    "group": "other",
     "layout": "slides"
   },
   "provenance": {

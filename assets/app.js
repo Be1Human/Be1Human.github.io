@@ -16,7 +16,6 @@ for (const root of document.querySelectorAll('[data-filterable]')) {
       if (show) visible++;
     }
     for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.filter === selected));
-    for (const section of root.querySelectorAll('[data-filter-section]')) section.hidden = ![...section.querySelectorAll('[data-filter-item]')].some(card => !card.hidden);
     counter.textContent = selected === 'all' && !query ? `共 ${visible} ${counter.dataset.noun}` : `找到 ${visible} / ${cards.length} ${counter.dataset.noun}`;
     empty.hidden = visible !== 0;
   }

@@ -952,7 +952,6 @@
     "title": "从行车视频到可驾驶的 3D 高斯城市",
     "kind": "视频重建 · C7 街区",
     "category": "experiments",
-    "group": "other",
     "label": "研究与实验",
     "description": "先在俯视图上读懂路线，再从行车视频里求出相机、训练街景。用一段真实驾驶录像和同机位对照，记录八秒样段怎样延长、何处接得上、为什么转身会露出空洞。",
     "image": "assets/images/c7-city-drive.webp",
@@ -1198,8 +1197,7 @@
     "action": "了解项目",
     "repository": "https://github.com/Be1Human/MineClaw",
     "accent": "green",
-    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md",
-    "group": "agent"
+    "documentation": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/README.md"
   },
   {
     "id": "clawpm",
@@ -1289,8 +1287,7 @@
           ]
         }
       ]
-    },
-    "group": "agent"
+    }
   },
   {
     "id": "smarttest",
@@ -1558,8 +1555,7 @@
           ]
         }
       ]
-    },
-    "group": "agent"
+    }
   },
   {
     "id": "aixiaochu",
@@ -1786,8 +1782,7 @@
           ]
         }
       ]
-    },
-    "group": "agent"
+    }
   },
   {
     "id": "petgo",
@@ -1942,8 +1937,7 @@
     "action": "查看 Skill",
     "repository": "https://github.com/Be1Human/video-to-game-animation",
     "accent": "gray",
-    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md",
-    "group": "agent"
+    "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md"
   },
   {
     "id": "clawphone",
@@ -1979,7 +1973,6 @@
         1200,
         706
       ]
-    },
-    "group": "agent"
+    }
   }
 ]

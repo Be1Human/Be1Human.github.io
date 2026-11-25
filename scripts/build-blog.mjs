@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { httpsUrl, validateEditionId } from './news-data.mjs';
 import { buildFeed, renderStatusText } from './blog-feed.mjs';
-import { projectCategories, projectGroups, projectPagePath, validateProject } from './project-data.mjs';
+import { projectCategories, projectPagePath, validateProject } from './project-data.mjs';
 import { buildExperienceNews } from './experience-news.mjs';
 import { readLearning, learningPages } from './learning.mjs';
 import { renderRichContent } from './rich-content.mjs';
@@ -65,7 +65,6 @@ for (const project of projects) {
   validateProject(project, source);
   await access(resolve(root, project.image));
   const entry = experienceContent.projects.find(entry => entry.id === project.id);
-  if (entry) entry.group = project.group ?? 'other';
   if (!project.detail?.coverSize && !project.detail?.sections.some(section => section.workflow)) continue;
   for (const section of project.detail.sections) {
     for (const image of section.images ?? []) await access(resolve(root, image.src));
@@ -177,11 +176,7 @@ function feedEntry(entry) {
     : `<a class="feed-article" href="${entry.permalink}" aria-labelledby="feed-title-${entry.id}">${entry.image ? `<div class="feed-cover"><img src="${e(entry.image)}" alt="${e(entry.imageAlt)}" width="1200" height="675" loading="lazy"></div>` : ''}<div class="feed-article-copy"><p class="feed-article-label">${e(entry.category)}<span>·</span>${minutes(entry)} 分钟阅读</p><h2 id="feed-title-${entry.id}">${e(entry.title).replaceAll('：', '：<wbr>')}</h2><p class="feed-excerpt">${e(entry.summary)}</p><span class="feed-readline">阅读全文 <span aria-hidden="true">↗</span></span></div></a>`;
   return `<article class="feed-entry" id="${id}" data-entry-type="${entry.type}">${meta}<div class="feed-entry-main">${content}</div></article>`;
 }
-const projectSections = Object.entries(projectGroups).map(([group, label]) => {
-  const cards = projects.filter(project => (project.group ?? 'other') === group).map(projectCard).join('');
-  return `<section class="project-group" aria-labelledby="group-${group}" data-filter-section><h2 id="group-${group}">${label}</h2><div class="project-grid">${cards}</div></section>`;
-}).join('');
-const projectList = `<div class="works-list" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}${projectSections}${empty}</div>`;
+const projectList = `<div class="works-list" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}<div class="project-grid">${projects.map(projectCard).join('')}</div>${empty}</div>`;
 
 const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
 // Preserve the approved interactive homepage when rebuilding news and archives.

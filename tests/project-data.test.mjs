@@ -28,7 +28,6 @@ test('the digital performance case study lives on one project page', async () =>
 test('project overviews cannot publish private repository links, configuration or raw source metadata', () => {
   assert.equal(validateProject(showcase, source), showcase);
   for (const patch of [
-    {group: 'unknown'},
     {repository: 'https://github.com/example/private'},
     {token: 'not-a-real-credential'},
     {url: 'https://github.com/example/private'},
@@ -75,16 +74,15 @@ test('every showcased project opens a complete local overview and can return to 
   }
 });
 
-test('personal site project lists agree on group membership', async () => {
+test('both works pages show every project once in a single list', async () => {
   const experience = JSON.parse(await read('content-local.json'));
-  const works = await read('works.html');
-  assert.equal(experience.projects.length, projects.length);
-  for (const group of ['agent', 'other']) {
-    const section = works.split(`aria-labelledby="group-${group}"`)[1].split('</section>')[0];
-    const expected = projects.filter(project => (project.group ?? 'other') === group).map(project => project.id).sort();
-    assert.ok(expected.length > 0);
-    assert.deepEqual([...section.matchAll(/<article class="project-card" id="([^"]+)"/g)].map(match => match[1]).sort(), expected);
-    assert.deepEqual(experience.projects.filter(project => project.group === group).map(project => project.id).sort(), expected);
+  const ids = projects.map(project => project.id);
+  assert.deepEqual(experience.projects.map(project => project.id).sort(), [...ids].sort());
+  for (const path of ['index.html', 'works.html']) {
+    const html = await read(path);
+    assert.equal([...html.matchAll(/class="project-grid"/g)].length, 1);
+    assert.doesNotMatch(html, /class="project-group"/);
+    assert.deepEqual([...html.matchAll(/<article class="project-card" id="([^"]+)"/g)].map(match => match[1]), ids);
   }
 });
 

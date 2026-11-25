@@ -1,14 +1,12 @@
 import { httpsUrl } from './news-data.mjs';
 
 export const projectCategories = {all: '全部作品', games: '游戏项目', visuals: '视觉与设计', tools: 'AI 与工具', experiments: '研究与实验'};
-export const projectGroups = {agent: 'AI 项目', other: '其他作品'};
 export const projectPagePath = project => `projects/${project.id}.html`;
 const imagePath = /^assets\/images\/(?:[\w-]+\/)*[\w.-]+\.(?:webp|png|jpe?g|svg)$/;
 const hasText = value => typeof value === 'string' && Boolean(value.trim());
 
 export function validateProject(project, source) {
   if (!/^[a-z0-9-]+$/.test(project.id) || !projectCategories[project.category] || project.category === 'all') throw new Error('Invalid project');
-  if (project.group !== undefined && !Object.hasOwn(projectGroups, project.group)) throw new Error('Invalid project group');
   if (project.categories !== undefined && (!Array.isArray(project.categories) ||
       !project.categories.includes(project.category) ||
       project.categories.some(category => category === 'all' || !Object.hasOwn(projectCategories, category)))) {
@@ -23,7 +21,7 @@ export function validateProject(project, source) {
 
   if (project.presentation === 'showcase') {
     // Only an authored overview is published for a project whose source stays private.
-    const allowed = new Set(['id', 'title', 'name', 'kind', 'category', 'categories', 'group', 'label', 'description', 'image', 'imageAlt', 'imageNote', 'tags', 'url', 'action', 'documentation', 'presentation', 'detail']);
+    const allowed = new Set(['id', 'title', 'name', 'kind', 'category', 'categories', 'label', 'description', 'image', 'imageAlt', 'imageNote', 'tags', 'url', 'action', 'documentation', 'presentation', 'detail']);
     if (Object.keys(project).some(key => !allowed.has(key))) throw new Error('Unexpected field in project showcase');
     if (project.url !== projectPagePath(project) || project.documentation !== projectPagePath(project)) throw new Error('Showcase must link to its local overview');
     const evidenceKeys = new Set(['projectId', 'reviewMode', 'descriptionBasis', 'productRuntimeTestedInThisReview']);
