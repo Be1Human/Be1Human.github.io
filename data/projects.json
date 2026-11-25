@@ -1613,6 +1613,51 @@
               "height": 900
             }
           ]
+        },
+        {
+          "heading": "主脑和任务 Agent 怎么交接？",
+          "paragraphs": [
+            "主脑处理对话。遇到取物这类游戏任务，它通过 GoalAgentPort 提交请求，先拿到受理回执。任务会话随后独立推进，完成、失败或需要澄清时再带着证据回到主脑。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/mineclaw/agent-loop-handoff.svg",
+              "width": 680,
+              "height": 680,
+              "alt": "主脑提交玩家目标，任务会话返回受理回执，运行多个工具回合后再回传结果和证据。",
+              "caption": "两个循环交接的是不同消息。先受理任务，再报告发生了什么。"
+            }
+          ]
+        },
+        {
+          "heading": "GoalAgent 怎样运行下一轮？",
+          "paragraphs": [
+            "每一轮都从已提交的会话读取上下文。模型选择工具，运行时顺序执行、收集回执并检查进展，然后把状态和消息一起提交。若需等待世界变化，定时器会唤醒会话并重查事实。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/mineclaw/agent-loop-round.svg",
+              "width": 680,
+              "height": 808,
+              "alt": "四个步骤形成循环，依次组装输入、模型选择、工具执行和提交状态。循环可继续、等待世界或玩家，也可带着证据结束。",
+              "caption": "蓝色回线表示继续下一轮。等待世界时可以直接重查事实，玩家补充信息后则恢复原会话。"
+            }
+          ]
+        },
+        {
+          "heading": "对照录像，铁镐交付走了哪七轮？",
+          "paragraphs": [
+            "这是上面左箱取物录像对应的执行轨迹。第 5 轮取出铁镐后，伙伴重新查询可执行动作。第 7 轮才执行交付，验收记录里的铁镐从左箱转移到了玩家背包。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/mineclaw/agent-loop-iron-pickaxe.svg",
+              "width": 680,
+              "height": 815,
+              "alt": "七轮真实轨迹，从观察世界和建立目标，经列举候选、读取技能、取物和重新列举，到向玩家交付铁镐。",
+              "caption": "时间线取自 TC-SC-06 第二次正式复测。绿色标出实际改变游戏世界的两轮。"
+            }
+          ]
         }
       ],
       "period": "2026",
@@ -1636,6 +1681,18 @@
         {
           "title": "目标判据源码",
           "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/task/goalRunner/goalCriteriaEvaluator.ts"
+        },
+        {
+          "title": "主脑对话循环源码",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/decision/llmLoop.ts"
+        },
+        {
+          "title": "GoalAgent 回合循环源码",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/task/goalAgent/goalAgentRoundLoop.ts"
+        },
+        {
+          "title": "工具执行与结果验真源码",
+          "url": "https://github.com/Be1Human/MineClaw/blob/6674882648e1d45df7ad40429c06a3a28ccb3674/apps/minecraft-companion/src/bot/v2/task/goalAgent/goalAgentRoundTools.ts"
         }
       ],
       "overview": {
@@ -1643,8 +1700,10 @@
         "mediaHint": "工作台出现的位置就是本次指令的验收条件。下方两段游戏录像保留了从指令到结果的过程。",
         "chapters": [
           {
-            "title": "项目框架与实现",
+            "title": "Agent Loop 与执行框架",
             "sections": [
+              7,
+              8,
               1,
               2
             ]
@@ -1653,7 +1712,8 @@
             "title": "两段游戏实录",
             "sections": [
               3,
-              4
+              4,
+              9
             ]
           },
           {
@@ -1672,16 +1732,16 @@
               "name": "调度",
               "nodes": [
                 {
-                  "title": "主脑",
+                  "title": "MainBrain",
                   "note": "提交玩家目标"
                 },
                 {
-                  "title": "GoalQueue",
-                  "note": "逐个调度"
+                  "title": "GoalAgentPort",
+                  "note": "接收请求并交给能力路由"
                 },
                 {
                   "title": "GoalAgent",
-                  "note": "组织执行计划"
+                  "note": "在任务会话中运行工具循环"
                 }
               ]
             },

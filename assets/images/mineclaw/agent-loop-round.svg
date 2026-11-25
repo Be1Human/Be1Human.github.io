@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="808" viewBox="0 0 680 808" role="img" aria-labelledby="title desc">
+<title id="title">GoalAgent 一轮怎样运行</title><desc id="desc">读取已提交的会话状态，组装输入并调用模型。顺序执行模型提出的工具，将工具结果与证据回填，经进展守卫后提交新状态。仍在运行就进入下一轮，等待与终态分别处理。</desc>
+<defs>
+<marker id="arr-teal" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#00685d" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arr-blue" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#275697" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arr-ochre" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#91511f" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arr-muted" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#465e67" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs><g font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif">
+<rect x="0" y="0" width="680" height="808" rx="0" fill="#faf9f3"/>
+<text x="30" y="37" fill="#00685d" font-size="16" font-weight="650" text-anchor="start">GoalAgentRoundLoop  /  runInternal</text>
+<text x="28" y="82" fill="#173341" font-size="36" font-weight="700" text-anchor="start">任务循环的一轮</text>
+<text x="30" y="117" fill="#465e67" font-size="20" font-weight="450" text-anchor="start">同一份目标会话贯穿每轮。新回执会成为下一轮的输入。</text>
+<path d="M 554 501 H 641 V 190 H 559" fill="none" stroke="#275697" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-blue)"/>
+<text x="606" y="167" fill="#275697" font-size="17" font-weight="600" text-anchor="middle">下一轮</text>
+<rect x="44" y="152" width="514" height="76" rx="12" fill="#ffffff" stroke="#bccdc9" stroke-width="1.5"/>
+<rect x="58" y="169" width="42" height="41" rx="9" fill="#def1e9"/>
+<text x="79" y="198" fill="#00685d" font-size="24" font-weight="690" text-anchor="middle">1</text>
+<text x="118" y="184" fill="#173341" font-size="24" font-weight="655" text-anchor="start">编译本轮上下文</text>
+<text x="118" y="211" fill="#465e67" font-size="18" font-weight="450" text-anchor="start">目标、会话历史、当前状态和可用工具</text>
+<path d="M 285 229 V 253" fill="none" stroke="#00685d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-teal)"/>
+<rect x="44" y="255" width="514" height="76" rx="12" fill="#ffffff" stroke="#bccdc9" stroke-width="1.5"/>
+<rect x="58" y="272" width="42" height="41" rx="9" fill="#def1e9"/>
+<text x="79" y="301" fill="#00685d" font-size="24" font-weight="690" text-anchor="middle">2</text>
+<text x="118" y="287" fill="#173341" font-size="24" font-weight="655" text-anchor="start">模型决定下一步</text>
+<text x="118" y="314" fill="#465e67" font-size="18" font-weight="450" text-anchor="start">提出工具调用。纯文本答复触发纠正提示</text>
+<path d="M 285 332 V 356" fill="none" stroke="#00685d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-teal)"/>
+<rect x="44" y="358" width="514" height="76" rx="12" fill="#ffffff" stroke="#bccdc9" stroke-width="1.5"/>
+<rect x="58" y="375" width="42" height="41" rx="9" fill="#def1e9"/>
+<text x="79" y="404" fill="#00685d" font-size="24" font-weight="690" text-anchor="middle">3</text>
+<text x="118" y="390" fill="#173341" font-size="24" font-weight="655" text-anchor="start">依次执行所选工具</text>
+<text x="118" y="417" fill="#465e67" font-size="18" font-weight="450" text-anchor="start">逐个回填工具回执、调用 ID 和证据引用</text>
+<path d="M 285 435 V 459" fill="none" stroke="#00685d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-teal)"/>
+<rect x="44" y="461" width="514" height="76" rx="12" fill="#ffffff" stroke="#bccdc9" stroke-width="1.5"/>
+<rect x="58" y="478" width="42" height="41" rx="9" fill="#def1e9"/>
+<text x="79" y="507" fill="#00685d" font-size="24" font-weight="690" text-anchor="middle">4</text>
+<text x="118" y="493" fill="#173341" font-size="24" font-weight="655" text-anchor="start">检查进展并提交</text>
+<text x="118" y="520" fill="#465e67" font-size="18" font-weight="450" text-anchor="start">按 revision 与 epoch 检查后写入会话</text>
+<path d="M 285 538 V 566" fill="none" stroke="#00685d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-teal)"/>
+<path d="M 129 580 V 567 H 549 V 580" fill="none" stroke="#465e67" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 339 567 V 580" fill="none" stroke="#465e67" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="580" width="200" height="110" rx="11" fill="#f9ead6"/>
+<text x="38" y="615" fill="#91511f" font-size="23" font-weight="650" text-anchor="start">等待世界</text>
+<text x="38" y="646" fill="#173341" font-size="18" font-weight="450" text-anchor="start">到点重查事实</text>
+<text x="38" y="673" fill="#173341" font-size="17" font-weight="450" text-anchor="start">再决定是否推进</text>
+<rect x="240" y="580" width="200" height="110" rx="11" fill="#e9effa"/>
+<text x="254" y="615" fill="#275697" font-size="23" font-weight="650" text-anchor="start">等待玩家</text>
+<text x="254" y="646" fill="#173341" font-size="18" font-weight="450" text-anchor="start">报告待澄清</text>
+<text x="254" y="673" fill="#173341" font-size="17" font-weight="450" text-anchor="start">答复后恢复原会话</text>
+<rect x="456" y="580" width="200" height="110" rx="11" fill="#def1e9"/>
+<text x="470" y="615" fill="#00685d" font-size="23" font-weight="650" text-anchor="start">结束会话</text>
+<text x="470" y="646" fill="#173341" font-size="18" font-weight="450" text-anchor="start">完成需根目标证据</text>
+<text x="470" y="673" fill="#173341" font-size="17" font-weight="450" text-anchor="start">也可失败、超时或取消</text>
+<rect x="24" y="712" width="632" height="72" rx="9" fill="#edf0e9"/>
+<text x="41" y="743" fill="#00685d" font-size="19" font-weight="650" text-anchor="start">取铁镐时</text>
+<text x="41" y="770" fill="#173341" font-size="17" font-weight="450" text-anchor="start">铁镐到了伙伴背包，任务继续。玩家收到铁镐后，才满足交付目标。</text>
+</g></svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="815" viewBox="0 0 680 815" role="img" aria-labelledby="title desc">
+<title id="title">铁镐交付的七轮工具轨迹</title><desc id="desc">这是 2026 年 10 月 20 日第二次左箱取物交付实录的七个执行回合。先观察、建立目标、查询候选和技能，再取出铁镐，重查候选并向玩家交付。</desc>
+<defs>
+<marker id="arr-teal" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#00685d" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arr-blue" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#275697" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arr-ochre" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#91511f" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arr-muted" orient="auto" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="12" refX="9" refY="6"><path d="M 1 2 L 9 6 L 1 10" fill="none" stroke="#465e67" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs><g font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif">
+<rect x="0" y="0" width="680" height="815" rx="0" fill="#faf9f3"/>
+<text x="30" y="37" fill="#00685d" font-size="16" font-weight="650" text-anchor="start">TC-SC-06  /  2026.10.20</text>
+<text x="28" y="82" fill="#173341" font-size="36" font-weight="700" text-anchor="start">一把铁镐经历了七轮</text>
+<text x="30" y="117" fill="#465e67" font-size="20" font-weight="450" text-anchor="start">下列工具顺序来自同一段 21.8 秒游戏录像的会话记录。</text>
+<path d="M 57 172 V 650" fill="none" stroke="#465e67" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="84" y="146" width="570" height="65" rx="10" fill="#ffffff" stroke="#d1d9d2" stroke-width="1.5"/>
+<rect x="34" y="155" width="45" height="45" rx="23" fill="#edf0e9" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="185" fill="#465e67" font-size="23" font-weight="670" text-anchor="middle">1</text>
+<text x="100" y="174" fill="#173341" font-size="22" font-weight="650" text-anchor="start">观察世界并查找目标</text>
+<text x="100" y="199" fill="#465e67" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">world_observe  +  goal_search_targets</text>
+<rect x="84" y="222" width="570" height="65" rx="10" fill="#ffffff" stroke="#d1d9d2" stroke-width="1.5"/>
+<rect x="34" y="231" width="45" height="45" rx="23" fill="#edf0e9" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="261" fill="#465e67" font-size="23" font-weight="670" text-anchor="middle">2</text>
+<text x="100" y="250" fill="#173341" font-size="22" font-weight="650" text-anchor="start">建立交付目标</text>
+<text x="100" y="275" fill="#465e67" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">goal_create</text>
+<rect x="84" y="298" width="570" height="65" rx="10" fill="#ffffff" stroke="#d1d9d2" stroke-width="1.5"/>
+<rect x="34" y="307" width="45" height="45" rx="23" fill="#edf0e9" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="337" fill="#465e67" font-size="23" font-weight="670" text-anchor="middle">3</text>
+<text x="100" y="326" fill="#173341" font-size="22" font-weight="650" text-anchor="start">列出动作候选、检索技能</text>
+<text x="100" y="351" fill="#465e67" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">action_list  +  skill_search</text>
+<rect x="84" y="374" width="570" height="65" rx="10" fill="#ffffff" stroke="#d1d9d2" stroke-width="1.5"/>
+<rect x="34" y="383" width="45" height="45" rx="23" fill="#edf0e9" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="413" fill="#465e67" font-size="23" font-weight="670" text-anchor="middle">4</text>
+<text x="100" y="402" fill="#173341" font-size="22" font-weight="650" text-anchor="start">读取技能说明</text>
+<text x="100" y="427" fill="#465e67" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">skill_get</text>
+<rect x="84" y="450" width="570" height="65" rx="10" fill="#def1e9"/>
+<rect x="34" y="459" width="45" height="45" rx="23" fill="#00685d" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="489" fill="#ffffff" font-size="23" font-weight="670" text-anchor="middle">5</text>
+<text x="100" y="478" fill="#173341" font-size="22" font-weight="650" text-anchor="start">从左箱取出铁镐</text>
+<text x="100" y="503" fill="#00685d" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">action_execute  →  withdraw</text>
+<rect x="84" y="526" width="570" height="65" rx="10" fill="#ffffff" stroke="#d1d9d2" stroke-width="1.5"/>
+<rect x="34" y="535" width="45" height="45" rx="23" fill="#edf0e9" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="565" fill="#465e67" font-size="23" font-weight="670" text-anchor="middle">6</text>
+<text x="100" y="554" fill="#173341" font-size="22" font-weight="650" text-anchor="start">重新列出可执行动作</text>
+<text x="100" y="579" fill="#465e67" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">action_list</text>
+<rect x="84" y="602" width="570" height="65" rx="10" fill="#def1e9"/>
+<rect x="34" y="611" width="45" height="45" rx="23" fill="#00685d" stroke="#a9bdb7" stroke-width="1.5"/>
+<text x="56.5" y="641" fill="#ffffff" font-size="23" font-weight="670" text-anchor="middle">7</text>
+<text x="100" y="630" fill="#173341" font-size="22" font-weight="650" text-anchor="start">把铁镐交给玩家</text>
+<text x="100" y="655" fill="#00685d" font-size="17" font-weight="500" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">action_execute  →  toss_item</text>
+<text x="30" y="711" fill="#00685d" font-size="21" font-weight="650" text-anchor="start">交付后的验收读数</text>
+<rect x="26" y="731" width="200" height="62" rx="9" fill="#edf0e9"/>
+<text x="38" y="768" fill="#173341" font-size="18" font-weight="550" text-anchor="start">左箱</text>
+<text x="210" y="771" fill="#00685d" font-size="25" font-weight="680" text-anchor="end">1 → 0</text>
+<rect x="239" y="731" width="200" height="62" rx="9" fill="#edf0e9"/>
+<text x="251" y="768" fill="#173341" font-size="18" font-weight="550" text-anchor="start">玩家背包</text>
+<text x="423" y="771" fill="#00685d" font-size="25" font-weight="680" text-anchor="end">0 → 1</text>
+<rect x="452" y="731" width="200" height="62" rx="9" fill="#edf0e9"/>
+<text x="464" y="768" fill="#173341" font-size="18" font-weight="550" text-anchor="start">伙伴背包</text>
+<text x="636" y="771" fill="#00685d" font-size="25" font-weight="680" text-anchor="end">0</text>
+</g></svg>
