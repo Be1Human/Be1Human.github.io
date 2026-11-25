@@ -142,44 +142,35 @@
     "id": "clawphone",
     "title": "ClawPhone",
     "name": "ClawPhone",
-    "kind": "AI 手机桥接服务",
-    "category": "tools",
-    "label": "AI 与工具",
-    "description": "把 Android 手机接入 OpenClaw，让 Agent 通过桥接服务观察屏幕、调用手机操作，并获得动作结果。与 App-Control 手机端配合使用。",
+    "kind": "机械臂控制",
+    "category": "experiments",
+    "label": "硬件与交互",
+    "description": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
     "image": "assets/images/clawphone-cover.svg",
-    "imageAlt": "ClawPhone的项目示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
+    "imageAlt": "ClawPhone 实体机械臂概念图",
+    "imageNote": "机械臂概念示意图",
     "tags": [
-      "OpenClaw",
-      "WebSocket",
-      "MCP"
+      "机械臂",
+      "硬件控制"
     ],
     "url": "projects/clawphone.html",
     "action": "查看项目介绍",
     "documentation": "projects/clawphone.html",
     "presentation": "showcase",
     "detail": {
-      "status": "桥接与工具集成",
+      "status": "实体硬件项目",
       "period": "2026",
       "sections": [
         {
-          "heading": "让手机成为 Agent 的操作端",
+          "heading": "从指令到机械动作",
           "paragraphs": [
-            "ClawPhone 负责服务器侧的桥接、安装和兼容层，Android 执行端由 App-Control 提供。手机主动建立长连接，桥接层维护设备状态并转发工具调用。"
-          ]
-        },
-        {
-          "heading": "工具之外，还需要操作经验",
-          "paragraphs": [
-            "工程整理了屏幕信息、文字定位、点击、输入、启动应用、滚动和批量操作等工具。配套的能力索引与 Skill 说明操作顺序、文字节点与坐标的选择，以及动作后的结果确认。"
-          ]
-        },
-        {
-          "heading": "工程边界",
-          "paragraphs": [
-            "这是需要手机端、设备授权和自行部署服务配合的集成项目。桥接服务与手机执行端分工，工具层负责能力调用，经验层负责操作方法。"
+            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
           ]
         }
+      ],
+      "coverSize": [
+        1200,
+        706
       ]
     },
     "group": "agent"

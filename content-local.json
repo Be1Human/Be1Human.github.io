@@ -184,18 +184,17 @@
     {
       "id": "clawphone",
       "title": "ClawPhone",
-      "category": "tools",
-      "categoryLabel": "AI 与工具",
-      "subtitle": "AI 手机桥接服务",
-      "summary": "把 Android 手机接入 OpenClaw，让 Agent 通过桥接服务观察屏幕、调用手机操作，并获得动作结果。与 App-Control 手机端配合使用。",
+      "category": "experiments",
+      "categoryLabel": "硬件与交互",
+      "subtitle": "机械臂控制",
+      "summary": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
       "source": "https://be1human.github.io/projects/clawphone.html",
-      "image": "assets/52a162df6140.svg",
-      "imageAlt": "ClawPhone的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
+      "image": "assets/images/clawphone-cover.svg",
+      "imageAlt": "ClawPhone 实体机械臂概念图",
+      "imageNote": "机械臂概念示意图",
       "tags": [
-        "OpenClaw",
-        "WebSocket",
-        "MCP"
+        "机械臂",
+        "硬件控制"
       ],
       "links": [
         {
@@ -204,7 +203,17 @@
         }
       ],
       "sourceImage": "https://be1human.github.io/assets/images/clawphone-cover.svg",
-      "group": "agent"
+      "group": "agent",
+      "imageWidth": 1200,
+      "imageHeight": 706,
+      "sections": [
+        {
+          "title": "从指令到机械动作",
+          "paragraphs": [
+            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
+          ]
+        }
+      ]
     },
     {
       "id": "clawpm",
