@@ -488,6 +488,59 @@
       ]
     },
     {
+      "id": "digital-performance",
+      "title": "数字人表演生成",
+      "category": "visuals",
+      "categoryLabel": "视觉与设计",
+      "subtitle": "Unreal Engine · 角色动画",
+      "summary": "用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。",
+      "source": "https://be1human.github.io/projects/digital-performance.html",
+      "image": "assets/images/digital-performance-cover.webp",
+      "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
+      "imageNote": "Unreal Engine · 角色全身表演",
+      "tags": [
+        "UE",
+        "动作重定向",
+        "数字人"
+      ],
+      "links": [],
+      "group": "other",
+      "imageWidth": 1280,
+      "imageHeight": 720,
+      "sourceImage": "https://be1human.github.io/assets/images/digital-performance-cover.webp",
+      "sections": [
+        {
+          "title": "先让参考视频覆盖整段戏",
+          "paragraphs": [
+            "先在单人剧本里定下台词、情绪和时长，再生成一条固定构图的全身表演作为参考。身体动作和对白来自同一条视频，后面就能沿用相同的时间点检查动作与台词。"
+          ],
+          "images": [
+            {
+              "src": "assets/images/digital-performance-workflow.png",
+              "alt": "单人剧本经过参考视频、身体动作、眉眼和口型，最终写入场景序列",
+              "caption": "制作流程 · 动作、表情和口型汇入同一条角色时间轴。",
+              "width": 1672,
+              "height": 941
+            }
+          ]
+        },
+        {
+          "title": "把动作和对白放进 UE 场景",
+          "paragraphs": [
+            "从参考画面提取人体姿态，再重定向到 UE 角色骨架。从原声对齐音素，生成口型轨。表情曲线需要连续、可用的眉眼画面，这次全身参考提供的面部信息有限，演示主要呈现了身体动作和口型。",
+            "各条轨道在角色时间轴里对齐后，把子序列写入目标场景的 Sequence。播放时可以检查捂胸、弯腰与台词是否同拍。"
+          ],
+          "video": {
+            "src": "assets/project-media/digital-performance.mp4",
+            "poster": "assets/images/digital-performance-cover.webp",
+            "caption": "UE 角色表演实录 · 约 12 秒，含对白",
+            "width": 960,
+            "height": 544
+          }
+        }
+      ]
+    },
+    {
       "id": "mineclaw",
       "title": "MineClaw",
       "category": "tools",
@@ -692,59 +745,6 @@
           "paragraphs": [
             "测试界面、CLI 和 MCP 共用运行记录。调用方可以提交目标、等待结果，再读取这次运行的证据。遇到需要反复重现的步骤，也可以保存工作流的指定版本，沿同一套步骤复跑。"
           ]
-        }
-      ]
-    },
-    {
-      "id": "digital-performance",
-      "title": "数字人表演生成",
-      "category": "visuals",
-      "categoryLabel": "视觉与设计",
-      "subtitle": "Unreal Engine · 角色动画",
-      "summary": "用一条参考视频，把身体动作、对白口型和可用的眉眼表情对到同一个时间轴。最终写入 Unreal Engine 的角色表演序列，放进场景里检查。",
-      "source": "https://be1human.github.io/projects/digital-performance.html",
-      "image": "assets/images/digital-performance-cover.webp",
-      "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
-      "imageNote": "Unreal Engine · 角色全身表演",
-      "tags": [
-        "UE",
-        "动作重定向",
-        "数字人"
-      ],
-      "links": [],
-      "group": "other",
-      "imageWidth": 1280,
-      "imageHeight": 720,
-      "sourceImage": "https://be1human.github.io/assets/images/digital-performance-cover.webp",
-      "sections": [
-        {
-          "title": "先让参考视频覆盖整段戏",
-          "paragraphs": [
-            "先在单人剧本里定下台词、情绪和时长，再生成一条固定构图的全身表演作为参考。身体动作和对白来自同一条视频，后面就能沿用相同的时间点检查动作与台词。"
-          ],
-          "images": [
-            {
-              "src": "assets/images/digital-performance-workflow.png",
-              "alt": "单人剧本经过参考视频、身体动作、眉眼和口型，最终写入场景序列",
-              "caption": "制作流程 · 动作、表情和口型汇入同一条角色时间轴。",
-              "width": 1672,
-              "height": 941
-            }
-          ]
-        },
-        {
-          "title": "把动作和对白放进 UE 场景",
-          "paragraphs": [
-            "从参考画面提取人体姿态，再重定向到 UE 角色骨架。从原声对齐音素，生成口型轨。表情曲线需要连续、可用的眉眼画面，这次全身参考提供的面部信息有限，演示主要呈现了身体动作和口型。",
-            "各条轨道在角色时间轴里对齐后，把子序列写入目标场景的 Sequence。播放时可以检查捂胸、弯腰与台词是否同拍。"
-          ],
-          "video": {
-            "src": "assets/project-media/digital-performance.mp4",
-            "poster": "assets/images/digital-performance-cover.webp",
-            "caption": "UE 角色表演实录 · 约 12 秒，含对白",
-            "width": 960,
-            "height": 544
-          }
         }
       ]
     },
