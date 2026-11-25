@@ -481,52 +481,6 @@
     }
   },
   {
-    "id": "app-control",
-    "title": "App-Control",
-    "name": "App-Control",
-    "kind": "Android 自动化原型",
-    "category": "tools",
-    "label": "AI 与工具",
-    "description": "在手机上接收任务，通过无障碍服务连接页面识别与动作执行，并在界面中观察任务、服务状态和日志。重点是单设备流程与调试。",
-    "image": "assets/images/app-control-cover.svg",
-    "imageAlt": "App-Control的项目示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
-    "tags": [
-      "Kotlin",
-      "Android",
-      "无障碍服务"
-    ],
-    "url": "projects/app-control.html",
-    "action": "查看项目介绍",
-    "documentation": "projects/app-control.html",
-    "presentation": "showcase",
-    "detail": {
-      "status": "单设备 MVP",
-      "period": "2026",
-      "sections": [
-        {
-          "heading": "把任务送到手机上",
-          "paragraphs": [
-            "项目以 Android 手机为执行端，控制端通过任务入口发出请求。手机端工程包含任务仓库、无障碍服务、执行协调器、页面识别器和本地 HTTP 接口。"
-          ]
-        },
-        {
-          "heading": "让执行过程可以观察",
-          "paragraphs": [
-            "原型将任务入口、流程编排、页面识别、动作执行和状态展示分开。调试重点是确认权限与服务是否就绪、目标页面是否识别，以及某一步操作实际发生了什么。"
-          ]
-        },
-        {
-          "heading": "当前范围",
-          "paragraphs": [
-            "工程处于单设备自动化 MVP 阶段，部分业务流程仍是骨架和待补齐的分支。页面识别、异常回退与具体应用适配需要逐项验证，尚不是通用多设备控制产品。"
-          ]
-        }
-      ]
-    },
-    "group": "agent"
-  },
-  {
     "id": "agentmem",
     "title": "AgentMem",
     "name": "AgentMem",

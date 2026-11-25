@@ -500,31 +500,6 @@
       ]
     },
     {
-      "id": "app-control",
-      "title": "App-Control",
-      "category": "tools",
-      "categoryLabel": "AI 与工具",
-      "subtitle": "Android 自动化原型",
-      "summary": "在手机上接收任务，通过无障碍服务连接页面识别与动作执行，并在界面中观察任务、服务状态和日志。重点是单设备流程与调试。",
-      "source": "https://be1human.github.io/projects/app-control.html",
-      "image": "assets/99818e8d7563.svg",
-      "imageAlt": "App-Control的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
-      "tags": [
-        "Kotlin",
-        "Android",
-        "无障碍服务"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/app-control.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/app-control-cover.svg",
-      "group": "agent"
-    },
-    {
       "id": "agentmem",
       "title": "AgentMem",
       "category": "tools",
@@ -1531,11 +1506,6 @@
         "url": "https://be1human.github.io/assets/images/animation.jpg",
         "status": 200,
         "contentType": "image/jpeg"
-      },
-      {
-        "url": "https://be1human.github.io/assets/images/app-control-cover.svg",
-        "status": 200,
-        "contentType": "image/svg+xml"
       },
       {
         "url": "https://be1human.github.io/assets/images/clawphone-cover.svg",
