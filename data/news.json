@@ -2,9 +2,249 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "08af7023d912a4a28ff9b9105904c24af6b7bc94",
-  "syncedAt": "2026-11-24T12:51:21.026Z",
+  "sourceRevision": "3ceac2b5c713f0adca3e11f369045fbd7ed46ab2",
+  "syncedAt": "2026-11-25T13:06:00.231Z",
   "editions": [
+    {
+      "id": "2026-11-25",
+      "date": "2026-11-25",
+      "label": "11 月 25 日 · 10 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-25",
+      "items": [
+        {
+          "id": "b04d6eee88f6ed0c",
+          "rank": 1,
+          "title": "Editroom：手动和 AI 都能操作的剪辑器",
+          "summary": "Robbie Tilton 发布 Editroom，除手动剪辑外，还能按语音或画面内容查找素材，并通过内置 MCP 让 AI 参与编辑。作者介绍应用免费开源。",
+          "category": "内容制作",
+          "author": "@robbietilton",
+          "url": "https://x.com/robbietilton/status/2125248682710954080",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/robbietilton/status/2125248682710954080"
+            }
+          ],
+          "publishedAtISO": "2026-11-24T15:22:25.000Z",
+          "observedAt": "2026-11-25T12:50:02.729Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125247574374522880/img/4WcEH2tq_zV6CLyt.jpg",
+            "alt": "Editroom：手动和 AI 都能操作的剪辑器",
+            "type": "video"
+          }
+        },
+        {
+          "id": "e84cb57aa219f14c",
+          "rank": 2,
+          "title": "Angelo 2.1：重拓扑、绑骨和先规划再改场景",
+          "summary": "这个内置 AI 的 Blender 分支基于 Blender 5.3.0。2.1 版支持四边面重拓扑、碰撞体拟合、动画重定向和多游戏引擎骨架；规划模式在讨论阶段不改场景。",
+          "category": "3D建模",
+          "author": "@juminoz",
+          "url": "https://x.com/juminoz/status/2125475649632829552",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/juminoz/status/2125475649632829552"
+            },
+            {
+              "title": "官方 2.1 发布说明",
+              "url": "https://angelo.studio/releases"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T06:24:18.000Z",
+          "observedAt": "2026-11-25T12:49:39.005Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125475480245784576/img/dm4vdp6AEiSpYlHb.jpg",
+            "alt": "Angelo 2.1：重拓扑、绑骨和先规划再改场景",
+            "type": "video"
+          }
+        },
+        {
+          "id": "af4161a4bf27f83c",
+          "rank": 3,
+          "title": "M5Burner Duo：把刷机和串口调试放进双屏手持设备",
+          "summary": "创作者展示给开源双屏手持设备做的工具，用于浏览及烧录 M5Stack 固件，并进行 UART 串口调试。演示目标是不带电脑也能完成这些动作。",
+          "category": "硬件创客",
+          "author": "@Tinker_Zhang",
+          "url": "https://x.com/Tinker_Zhang/status/2124885243757040123",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Tinker_Zhang/status/2124885243757040123"
+            }
+          ],
+          "publishedAtISO": "2026-11-23T15:18:15.000Z",
+          "observedAt": "2026-11-25T12:51:22.796Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124885215386718208/img/bKQ4SQ661JiAdym-.jpg",
+            "alt": "M5Burner Duo：把刷机和串口调试放进双屏手持设备",
+            "type": "video"
+          }
+        },
+        {
+          "id": "7b5f326d51cf20d3",
+          "rank": 4,
+          "title": "Blender 雕刻实验：脚本执行 32,139 笔",
+          "summary": "作者用 Fable 5.2 和 Hermes Agent 编排 Blender 4.5 自带雕刻笔刷。脚本堆出基础体，再参照由概念图生成的三维引导塑形和上色。",
+          "category": "3D建模",
+          "author": "@Stefan_3D_AI",
+          "url": "https://x.com/Stefan_3D_AI/status/2125493150517268588",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Stefan_3D_AI/status/2125493150517268588"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T07:33:51.000Z",
+          "observedAt": "2026-11-25T12:49:30.503Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125489454278430720/img/nwzsyvJtx6TBzDqc.jpg",
+            "alt": "Blender 雕刻实验：脚本执行 32,139 笔",
+            "type": "video"
+          }
+        },
+        {
+          "id": "73a70c52b9a8c302",
+          "rank": 5,
+          "title": "Blender 火焰到 Unreal：现有求解器与 AI 调度",
+          "summary": "作者让 Fable 5.2 协作搭建有角色打电话的镜头。火焰来自作者之前开发的 Blender 求解器，最终渲染和合成在 Unreal Engine 完成。",
+          "category": "游戏开发",
+          "author": "@hectorVFX",
+          "url": "https://x.com/hectorVFX/status/2125250192773390610",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/hectorVFX/status/2125250192773390610"
+            }
+          ],
+          "publishedAtISO": "2026-11-24T15:28:25.000Z",
+          "observedAt": "2026-11-25T12:49:46.661Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125250151765639168/img/xa2Ze7W4c7kKEd1l.jpg",
+            "alt": "Blender 火焰到 Unreal：现有求解器与 AI 调度",
+            "type": "video"
+          }
+        },
+        {
+          "id": "a9701fc10fabf279",
+          "rank": 6,
+          "title": "Neon 2.5D：让霓虹沿道具轮廓流动",
+          "summary": "作者为 Blender 插件 Neon 2.5D 加入 Flow Rim。演示中光沿售货机和街机外缘流动，同色出现在地面和积水反光中。",
+          "category": "3D建模",
+          "author": "@KanaWorks_AI",
+          "url": "https://x.com/KanaWorks_AI/status/2125054141638770878",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/KanaWorks_AI/status/2125054141638770878"
+            }
+          ],
+          "publishedAtISO": "2026-11-24T02:29:23.000Z",
+          "observedAt": "2026-11-25T12:49:50.790Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125054010235531264/img/d84GU0ZXdXovnloV.jpg",
+            "alt": "Neon 2.5D：让霓虹沿道具轮廓流动",
+            "type": "video"
+          }
+        },
+        {
+          "id": "dec27106f90b9e61",
+          "rank": 7,
+          "title": "18 段生成素材用代码剪成音乐短片",
+          "summary": "作者把 18 段 AI 视频用代码剪成日式动画短片，让和风纹样与能面随音乐切换。这里不用常规剪辑软件的是剪辑步骤，而非原始素材生成。",
+          "category": "内容制作",
+          "author": "@aidoga_lab",
+          "url": "https://x.com/aidoga_lab/status/2125416934879502583",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/aidoga_lab/status/2125416934879502583"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T02:31:00.000Z",
+          "observedAt": "2026-11-25T12:50:07.088Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125393218443591680/img/NeMCfqkeBKnCrSko.jpg",
+            "alt": "18 段生成素材用代码剪成音乐短片",
+            "type": "video"
+          }
+        },
+        {
+          "id": "6901cebeb46b652a",
+          "rank": 8,
+          "title": "MAGI-2：最长 30 秒的 1080p 有声视频接口",
+          "summary": "Sand.ai 发布 MAGI-2，Higgsfield 的文生视频 API 文档列明了 4–30 秒、可生成声音及 0.08 美元/请求秒。400B 权重只是后续预告。",
+          "category": "内容制作",
+          "author": "@magiai_hq",
+          "url": "https://x.com/magiai_hq/status/2125290721003680155",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/magiai_hq/status/2125290721003680155"
+            },
+            {
+              "title": "Higgsfield 官方 API",
+              "url": "https://open.higgsfield.ai/models/sand/magi-2/text-to-video/api-reference"
+            }
+          ],
+          "publishedAtISO": "2026-11-24T18:09:28.000Z",
+          "observedAt": "2026-11-25T12:50:41.707Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125263177428647940/img/HXMqd5cySXl9RdHg.jpg",
+            "alt": "MAGI-2：最长 30 秒的 1080p 有声视频接口",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c0ee918ce2d40567",
+          "rank": 9,
+          "title": "机器人入门路线：八关从向量到真机数据",
+          "summary": "作者把公开浏览器互动教材排成八步，包括电路、机械、逆运动学、规划模拟、强化学习及真实机器人数据。这是资源路线，不是八个自研工具。",
+          "category": "硬件创客",
+          "author": "@0x_meden",
+          "url": "https://x.com/0x_meden/status/2124933140485402867",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/0x_meden/status/2124933140485402867"
+            }
+          ],
+          "publishedAtISO": "2026-11-23T18:28:34.000Z",
+          "observedAt": "2026-11-25T12:50:25.047Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2124932977251565568/img/i-ixroEXJ8BsuACd.jpg",
+            "alt": "机器人入门路线：八关从向量到真机数据",
+            "type": "video"
+          }
+        },
+        {
+          "id": "bd4d37a221b92e9b",
+          "rank": 10,
+          "title": "Blender 5.3：RTX 5080 上的 Cycles 视口降噪",
+          "summary": "创作者展示 RTX 5080 上 Blender 5.3 的 Cycles 视口。官方确认 DLSS Ray Reconstruction 用到放大和历史帧样本，原帖未报 FPS。",
+          "category": "3D建模",
+          "author": "@DemNikoArt",
+          "url": "https://x.com/DemNikoArt/status/2125360412237705448",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/DemNikoArt/status/2125360412237705448"
+            },
+            {
+              "title": "Blender 5.3 官方说明",
+              "url": "https://www.blender.org/download/releases/5-3/"
+            }
+          ],
+          "publishedAtISO": "2026-11-24T22:46:24.000Z",
+          "observedAt": "2026-11-25T12:50:50.627Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125359846371246080/img/w63iroA2AO6E-NAU.jpg",
+            "alt": "Blender 5.3：RTX 5080 上的 Cycles 视口降噪",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-24",
       "date": "2026-11-24",
