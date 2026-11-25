@@ -1,7 +1,7 @@
 import { httpsUrl } from './news-data.mjs';
 
 export const projectCategories = {all: '全部作品', games: '游戏项目', visuals: '视觉与设计', tools: 'AI 与工具', experiments: '研究与实验'};
-export const projectGroups = {agent: 'Agent 项目', other: '其他作品'};
+export const projectGroups = {agent: 'AI 项目', other: '其他作品'};
 export const projectPagePath = project => `projects/${project.id}.html`;
 const imagePath = /^assets\/images\/(?:[\w-]+\/)*[\w.-]+\.(?:webp|png|jpe?g|svg)$/;
 

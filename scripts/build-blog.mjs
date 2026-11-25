@@ -139,7 +139,7 @@ function projectCard(project) {
   const arrow = local ? '→' : '↗';
   const [width, height] = project.detail?.coverSize ?? [1200, 706];
   return `<article class="project-card" id="${e(project.id)}" data-filter-item data-category="${e(project.category)}"${project.categories ? ` data-categories="${e(project.categories.join(' '))}"` : ''} data-search="${e([project.title, project.description, project.kind, ...project.tags].join(' '))}">
-    <a class="project-image-link ${project.artwork === 'clawpm' ? 'logo-art' : ''}" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}"><img src="${e(project.image)}" alt="${e(project.imageAlt)}" loading="lazy" width="${width}" height="${height}"><span class="image-note">${e(project.imageNote)}</span><span class="image-arrow" aria-hidden="true">${arrow}</span></a>
+    <a class="project-image-link" href="${e(project.url)}" ${linkAttributes} aria-label="${e(project.title)}：${e(project.action)}${local ? '' : '（新窗口）'}"><img src="${e(project.image)}" alt="${e(project.imageAlt)}" title="${e(project.imageNote)}" loading="lazy" decoding="async" width="${width}" height="${height}"></a>
     <div class="project-body"><div class="meta"><span class="category-label">${e(project.label)}</span><span>${e(project.kind)}</span></div><h3><a href="${e(project.url)}" ${linkAttributes}>${e(project.title)} <span aria-hidden="true">${arrow}</span></a></h3><p>${e(project.description)}</p><div class="project-bottom"><div class="tags">${project.tags.map(tag => `<span>${e(tag)}</span>`).join('')}</div><a class="subtle-link" href="${e(project.documentation)}" ${linkAttributes}>${local ? '查看项目' : '项目说明'} ${arrow}</a></div></div>
   </article>`;
 }
