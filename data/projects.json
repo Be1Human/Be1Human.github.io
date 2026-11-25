@@ -721,52 +721,6 @@
     }
   },
   {
-    "id": "workflow-skills",
-    "title": "个人工作流 Skill 库",
-    "name": "个人工作流 Skill 库",
-    "kind": "可检索的工作方法库",
-    "category": "tools",
-    "label": "AI 与工具",
-    "description": "把设计、研发、动画、游戏制作和搜索研究中的方法整理成可复用的 Skill。通过分类、关键词和统一目录，找到当前任务需要的完整工作流程。",
-    "image": "assets/images/workflow-skills-cover.svg",
-    "imageAlt": "个人工作流 Skill 库的项目示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
-    "tags": [
-      "Agent Skill",
-      "工作流",
-      "Python"
-    ],
-    "url": "projects/workflow-skills.html",
-    "action": "查看项目介绍",
-    "documentation": "projects/workflow-skills.html",
-    "presentation": "showcase",
-    "detail": {
-      "status": "持续维护",
-      "period": "2026",
-      "sections": [
-        {
-          "heading": "把经验变成可复用的方法",
-          "paragraphs": [
-            "这份库集中维护工作流技能、参考资料与协作规范，覆盖设计与文档、研发与运维、动画质量、游戏制作、搜索与研究。当前目录整理了 19 项技能。"
-          ]
-        },
-        {
-          "heading": "先找到，再完整使用",
-          "paragraphs": [
-            "检索脚本按关键词或类别定位候选技能，再读取对应的完整说明和参考文件。机器可读目录、分类索引与技能正文分开维护，避免同一方法出现多个互相冲突的副本。"
-          ]
-        },
-        {
-          "heading": "维护也是工作流的一部分",
-          "paragraphs": [
-            "库中包含索引生成和一致性检查。带依赖的技能组需要一起迁移；技能文件本身不会自动安装工具、连接插件或启用账户权限。"
-          ]
-        }
-      ]
-    },
-    "group": "agent"
-  },
-  {
     "id": "wallpaper-workshop",
     "title": "AI Wallpaper Workshop",
     "name": "AI Wallpaper Workshop",

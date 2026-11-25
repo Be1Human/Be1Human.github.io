@@ -678,31 +678,6 @@
       "group": "other"
     },
     {
-      "id": "workflow-skills",
-      "title": "个人工作流 Skill 库",
-      "category": "tools",
-      "categoryLabel": "AI 与工具",
-      "subtitle": "可检索的工作方法库",
-      "summary": "把设计、研发、动画、游戏制作和搜索研究中的方法整理成可复用的 Skill。通过分类、关键词和统一目录，找到当前任务需要的完整工作流程。",
-      "source": "https://be1human.github.io/projects/workflow-skills.html",
-      "image": "assets/231e0750ef8f.svg",
-      "imageAlt": "个人工作流 Skill 库的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
-      "tags": [
-        "Agent Skill",
-        "工作流",
-        "Python"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/workflow-skills.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/workflow-skills-cover.svg",
-      "group": "agent"
-    },
-    {
       "id": "wallpaper-workshop",
       "title": "AI Wallpaper Workshop",
       "category": "visuals",
