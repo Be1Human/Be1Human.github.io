@@ -524,40 +524,6 @@
       "group": "agent"
     },
     {
-      "id": "clawphone",
-      "title": "ClawPhone",
-      "category": "experiments",
-      "categoryLabel": "硬件与交互",
-      "subtitle": "机械臂控制",
-      "summary": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
-      "source": "https://be1human.github.io/projects/clawphone.html",
-      "image": "assets/images/clawphone-cover.svg",
-      "imageAlt": "ClawPhone 实体机械臂概念图",
-      "imageNote": "机械臂概念示意图",
-      "tags": [
-        "机械臂",
-        "硬件控制"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/clawphone.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/clawphone-cover.svg",
-      "group": "agent",
-      "imageWidth": 1200,
-      "imageHeight": 706,
-      "sections": [
-        {
-          "title": "从指令到机械动作",
-          "paragraphs": [
-            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
-          ]
-        }
-      ]
-    },
-    {
       "id": "clawpm",
       "title": "ClawPM",
       "category": "tools",
@@ -1152,6 +1118,40 @@
       ],
       "sourceImage": "https://be1human.github.io/assets/images/animation.jpg",
       "group": "agent"
+    },
+    {
+      "id": "clawphone",
+      "title": "ClawPhone",
+      "category": "experiments",
+      "categoryLabel": "硬件与交互",
+      "subtitle": "机械臂控制",
+      "summary": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
+      "source": "https://be1human.github.io/projects/clawphone.html",
+      "image": "assets/images/clawphone-cover.svg",
+      "imageAlt": "ClawPhone 实体机械臂概念图",
+      "imageNote": "机械臂概念示意图",
+      "tags": [
+        "机械臂",
+        "硬件控制"
+      ],
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://be1human.github.io/projects/clawphone.html"
+        }
+      ],
+      "sourceImage": "https://be1human.github.io/assets/images/clawphone-cover.svg",
+      "group": "agent",
+      "imageWidth": 1200,
+      "imageHeight": 706,
+      "sections": [
+        {
+          "title": "从指令到机械动作",
+          "paragraphs": [
+            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
+          ]
+        }
+      ]
     }
   ],
   "journal": [

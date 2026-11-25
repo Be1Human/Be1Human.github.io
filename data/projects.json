@@ -645,43 +645,6 @@
     "group": "agent"
   },
   {
-    "id": "clawphone",
-    "title": "ClawPhone",
-    "name": "ClawPhone",
-    "kind": "机械臂控制",
-    "category": "experiments",
-    "label": "硬件与交互",
-    "description": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
-    "image": "assets/images/clawphone-cover.svg",
-    "imageAlt": "ClawPhone 实体机械臂概念图",
-    "imageNote": "机械臂概念示意图",
-    "tags": [
-      "机械臂",
-      "硬件控制"
-    ],
-    "url": "projects/clawphone.html",
-    "action": "查看项目介绍",
-    "documentation": "projects/clawphone.html",
-    "presentation": "showcase",
-    "detail": {
-      "status": "实体硬件项目",
-      "period": "2026",
-      "sections": [
-        {
-          "heading": "从指令到机械动作",
-          "paragraphs": [
-            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
-          ]
-        }
-      ],
-      "coverSize": [
-        1200,
-        706
-      ]
-    },
-    "group": "agent"
-  },
-  {
     "id": "clawpm",
     "title": "ClawPM",
     "kind": "Agent 协作与项目管理",
@@ -1409,6 +1372,43 @@
     "repository": "https://github.com/Be1Human/video-to-game-animation",
     "accent": "gray",
     "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md",
+    "group": "agent"
+  },
+  {
+    "id": "clawphone",
+    "title": "ClawPhone",
+    "name": "ClawPhone",
+    "kind": "机械臂控制",
+    "category": "experiments",
+    "label": "硬件与交互",
+    "description": "ClawPhone 是一个实体机械臂控制项目。它把控制指令转化为机械臂在现实中的动作。",
+    "image": "assets/images/clawphone-cover.svg",
+    "imageAlt": "ClawPhone 实体机械臂概念图",
+    "imageNote": "机械臂概念示意图",
+    "tags": [
+      "机械臂",
+      "硬件控制"
+    ],
+    "url": "projects/clawphone.html",
+    "action": "查看项目介绍",
+    "documentation": "projects/clawphone.html",
+    "presentation": "showcase",
+    "detail": {
+      "status": "实体硬件项目",
+      "period": "2026",
+      "sections": [
+        {
+          "heading": "从指令到机械动作",
+          "paragraphs": [
+            "控制端发出指令，由实体机械臂执行。一次操作有没有按预期完成，要看机械臂实际做出的动作。"
+          ]
+        }
+      ],
+      "coverSize": [
+        1200,
+        706
+      ]
+    },
     "group": "agent"
   }
 ]
