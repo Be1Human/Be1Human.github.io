@@ -78,10 +78,11 @@ for (const project of projects) {
     summary: project.description, image: project.image, imageAlt: project.imageAlt, imageNote: project.imageNote,
     imageWidth, imageHeight, sourceImage: origin + project.image,
     sections: project.detail.sections.map(section => {
-      const { heading, paragraphs, images, video, workflow, steps } = section;
+      const { heading, paragraphs, images, video, workflow, steps, tables } = section;
       return {
         title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
         ...(workflow ? { body: projectSectionBody(section) } : {}), ...(steps ? { steps } : {}),
+        ...(tables ? { tablesHtml: projectTables(tables) } : {}),
       };
     }),
   });
@@ -161,7 +162,7 @@ const home = `<section class="site-panel activity-feed" aria-labelledby="home-ti
 // Preserve the approved interactive homepage when rebuilding news and archives.
 const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
 const homepageAssets = new Map([
-  ['assets/reading.css', readingStyleVersion], ['assets/reading.js', readingScriptVersion], [workflowStyle, workflowStyleVersion],
+  ['assets/reading.css', readingStyleVersion], ['assets/reading.js', readingScriptVersion], [workflowStyle, workflowStyleVersion], ['assets/project-slides.css', projectSlidesStyleVersion],
 ]);
 let homepage = homepageTemplate.replace('<!--SITE_NAVIGATION-->',`<!--HOME_NAV_START-->${renderSiteNavigation({interactive:true})}<!--HOME_NAV_END-->`);
 for (const [path,version] of homepageAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
@@ -190,12 +191,20 @@ function projectSectionBody({ paragraphs, workflow }) {
   return `<ol class="project-workflow" role="list">${steps}</ol>${text}`;
 }
 
+function projectTables(tables) {
+  return tables.map(({ caption, columns, rows }) => {
+    const header = columns.map(column => `<th scope="col">${e(column)}</th>`).join('');
+    const body = rows.map(([label, ...values]) => `<tr><th scope="row">${e(label)}</th>${values.map(value => `<td>${e(value)}</td>`).join('')}</tr>`).join('');
+    return `<table class="project-detail-table"><caption>${e(caption)}</caption><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>`;
+  }).join('');
+}
+
 function renderProjectSlides(project, cover) {
-  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps}, index) => {
-    const layout = images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
+  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps, tables = []}, index) => {
+    const layout = tables.length ? ' slide-technical' : images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
     const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
-    const details = notes.length ? `<details class="slide-notes"><summary>实现细节</summary>${notes.map(note => `<p>${e(note)}</p>`).join('')}</details>` : '';
-    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${details}</div><div class="slide-media">${images.map(image => projectFigure(image)).join('')}</div></section>`;
+    const details = notes.map(note => `<p class="slide-note">${e(note)}</p>`).join('');
+    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${details}</div><div class="slide-media">${projectTables(tables)}${images.map(image => projectFigure(image)).join('')}</div></section>`;
   }).join('');
   const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
   const play = project.detail.website ? `<a class="slide-play" href="${e(project.detail.website)}" ${external}>打开游戏 ↗</a>` : '';

@@ -236,10 +236,10 @@ function readerVideo({src, poster, caption, width, height}) {
 }
 function readerSlide(section) {
  const [lead, ...details] = section.paragraphs;
- const gallery = (section.images || []).map(readerImage).join('');
+ const gallery = section.images?.length ? `<div class="reader-gallery">${section.images.map(readerImage).join('')}</div>` : '';
  const steps = section.steps ? `<ol class="reader-slide-steps">${section.steps.map(step => `<li>${esc(step)}</li>`).join('')}</ol>` : '';
- const notes = details.length ? `<details><summary>实现细节</summary>${details.map(paragraph => `<p>${esc(paragraph)}</p>`).join('')}</details>` : '';
- return `<section class="reader-slide"><h2>${esc(section.title)}</h2><p>${esc(lead)}</p>${steps}<div class="reader-gallery">${gallery}</div>${notes}</section>`;
+ const notes = details.map(paragraph => `<p>${esc(paragraph)}</p>`).join('');
+ return `<section class="reader-slide"><h2>${esc(section.title)}</h2><p>${esc(lead)}</p>${steps}${notes}${section.tablesHtml || ''}${gallery}</section>`;
 }
 function readerContent(type,id){
  let item=type==='journal'?data.journal.find(x=>x.id===id):data.projects.find(x=>x.id===id);if(!item)return false;
@@ -271,5 +271,5 @@ $('journey-start').onclick=()=>{journeyStep=0;location.hash='journey'};$('journe
 window.addEventListener('wheel',e=>{if(routeTransitioning||reader.open||route!=='journey'||small.matches||!motionEnabled)return;if(Math.abs(e.deltaY)<Math.abs(e.deltaX))return;e.preventDefault();stopAuto();if(transitioning)return;wheelTotal+=e.deltaY;clearTimeout(wheelTimer);wheelTimer=setTimeout(()=>wheelTotal=0,150);if(Math.abs(wheelTotal)>65){const d=Math.sign(wheelTotal);wheelTotal=0;stepJourney(d)}},{passive:false});
 document.addEventListener('keydown',e=>{if(routeTransitioning||reader.open||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,textarea,select'))return;if(e.key==='Escape'&&route==='journey'){location.hash='works';return}if(['ArrowDown','ArrowUp'].includes(e.key)&&route==='journey'){e.preventDefault();stopAuto();const d=e.key==='ArrowDown'?1:-1;stepJourney(d)}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stopAuto();cancelMotion();if(routeTransitioning)go(requestedRoute,{instant:true});else setPoster(activeScene)}else if(route==='home')syncHomeScroll()});
-fetch('content-local.json?v=deep-space-layout',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('content');return r.json()}).then(d=>{data=d;populateView();if(!routeTransitioning&&['works','journal','news'].includes(route))enterView(route)}).catch(()=>{$('content-error').hidden=false});
+fetch('content-local.json?v=deep-space-tables',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('content');return r.json()}).then(d=>{data=d;populateView();if(!routeTransitioning&&['works','journal','news'].includes(route))enterView(route)}).catch(()=>{$('content-error').hidden=false});
 })();
