@@ -34,6 +34,18 @@ for (const root of document.querySelectorAll('[data-filterable]')) {
     filter();
   }
   for (const button of buttons) button.addEventListener('click', () => { selected = button.dataset.filter; saveState(); });
+  if (root.classList.contains('works-list')) {
+    for (const link of document.querySelectorAll('[data-filter-link]')) {
+      link.addEventListener('click', event => {
+        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        const category = link.dataset.filterLink;
+        if (!allowed.has(category)) return;
+        selected = category;
+        input.value = '';
+        saveState();
+      });
+    }
+  }
   input.addEventListener('input', saveState);
   root.querySelector('[data-clear]').addEventListener('click', () => { selected = 'all'; input.value = ''; saveState(); input.focus(); });
   window.addEventListener('popstate', loadState);

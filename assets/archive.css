@@ -1,0 +1,43 @@
+/* Search and archive controls retain the existing data hooks. */
+.filter-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:29px 0 15px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font-size:12px;padding:8px 13px;background:transparent;border:1px solid var(--line);border-radius:2px;min-height:38px;color:var(--muted)}
+.filters button[aria-pressed=true]{border-color:var(--coral);color:var(--coral);background:#ff918b0b}
+.filters button:hover{border-color:var(--cyan);color:var(--paper)}
+.search-box{display:flex;align-items:center;gap:9px;border:1px solid #8bccce66;background:var(--soft);padding:8px 12px;color:var(--cyan)}
+.search-box input{width:174px;min-width:0;border:0;background:transparent;color:var(--paper);font-size:12px;line-height:1.8;outline-offset:3px}
+.search-box input::placeholder{color:var(--muted);opacity:1}
+.search-box:focus-within{border-color:var(--coral)}
+.result-count{font:11px/1.8 var(--mono);color:var(--muted);margin-bottom:29px}
+.empty-state{text-align:center;padding:60px 20px;border-block:1px solid var(--line)}
+.empty-state>span{font-size:40px;color:var(--cyan)}
+.empty-state h2{font:600 25px/1.6 var(--sans);margin:8px 0}
+.empty-state p{color:var(--muted);font-size:14px;margin-bottom:22px}
+
+/* The same flat project grid on the works chapter and the standalone archive. */
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 24px}
+.project-card{min-width:0;scroll-margin-top:130px;display:flex;flex-direction:column}
+.project-image-link{display:block;aspect-ratio:16/10;border:1px solid var(--line);overflow:hidden;background:#0b1820;border-radius:10px;padding:6px;transition:border-color .2s,box-shadow .2s}
+.project-image-link img{display:block;width:100%;height:100%;object-fit:contain;border-radius:5px}
+.project-image-link:is(:hover,:focus-visible){border-color:var(--cyan);box-shadow:0 8px 22px #060d164d}
+.project-body{display:flex;flex:1;flex-direction:column;padding-top:15px}
+.project-card h3{font:600 21px/1.4 var(--sans);letter-spacing:-.02em;margin:8px 0 11px;overflow-wrap:anywhere}
+.project-card h3 a:hover{color:var(--coral)}
+.project-card h3 span{font:15px var(--sans);color:var(--cyan);white-space:nowrap}
+.project-body>p{font-size:14px;line-height:1.95;color:var(--muted)}
+.project-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:15px}
+.works-list .project-group:not([hidden]) + .project-group{margin-top:64px}
+.works-list .project-group > h2{border-bottom:1px solid var(--line);margin:0 0 22px;padding-bottom:12px;font-size:clamp(19px,3vw,26px)}
+.works-list .meta{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:var(--muted);font:11px/1.7 var(--mono)}
+.works-list .category-label{color:var(--cyan)}
+.works-list .tags{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
+.works-list .tags span+span:before{content:"·";margin-right:8px;color:var(--cyan)}
+.works-list .subtle-link{font-size:12px;color:var(--coral);white-space:nowrap}
+.works-list .subtle-link:hover{text-decoration:underline;text-underline-offset:4px}
+.empty-state [data-clear]{padding:10px 18px;border:1px solid var(--coral);border-radius:2px;min-height:42px;font:inherit;font-size:12px;background:#ff918b0d;color:var(--coral)}
+.empty-state [data-clear]:hover{background:var(--coral);color:var(--ink)}
+@media(max-width:560px){.works-list .meta{font-size:10px;gap:9px}}
+@media(max-width:1100px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.filter-toolbar{margin-top:24px;gap:15px}.filters{gap:6px}.filters button{font-size:11px;padding:7px 10px;min-height:36px}.search-box{width:100%}.search-box input{width:100%;font-size:13px}.result-count{margin-bottom:25px}.project-grid{grid-template-columns:1fr;gap:34px}.project-card{scroll-margin-top:190px}.project-body{padding-top:17px}.project-card h3{font-size:25px}.project-body>p{font-size:14px}}
+@media(max-width:374px){.filters button{padding-inline:8px}}
+@media print{.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

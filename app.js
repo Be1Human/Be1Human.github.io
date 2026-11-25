@@ -8,7 +8,7 @@ const validURL=u=>/^https:\/\//.test(u||'')?u:'#';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)'),small=matchMedia('(max-width: 700px)');
 let preferred;try{preferred=localStorage.getItem('cloudboy-motion')}catch{}
 let motionEnabled=preferred===null||preferred===undefined?!reduced.matches&&!navigator.connection?.saveData:preferred==='on';
-let route='home',data=null,filmIndex=0,filter='all',heroStep=0,journeyStep=0,transitioning=false,transitionToken=0,returnFocus=null,videoManifest={},readerStack=[],wheelTotal=0,wheelTimer=0,cancelPlayback=null;
+let route='home',data=null,filmIndex=0,heroStep=0,journeyStep=0,transitioning=false,transitionToken=0,returnFocus=null,videoManifest={},readerStack=[],wheelTotal=0,wheelTimer=0,cancelPlayback=null;
 let activeScene='home',routeVersion=0,sequenceVersion=0,routeTransitioning=false,autoRunning=false,requestedRoute='home';
 const entryAnimations=new Set();
 let idleCleanup=null;
@@ -17,7 +17,7 @@ const heroStates=['home','half','screens'],heroClips=['home-half','half-screens'
 const heroLastStep=heroStates.length-1;
 const journeyStates=['entry','panels','near','street','arrival','symbol'],journeyClips=['entry-panels','panels-near','near-street','street-arrival','arrival-symbol'];
 const renderedViews=new Set();
-function populateView(){if(data){if(route==='news')renderNews();else if(!renderedViews.has(route)){if(route==='works'){renderProjects();renderFilm()}if(route==='journal')renderJournal();renderedViews.add(route)}}document.querySelectorAll('#'+route+' img[data-src]').forEach(im=>{im.src=im.dataset.src;delete im.dataset.src})}
+function populateView(){if(data){if(route==='news')renderNews();else if(!renderedViews.has(route)){if(route==='works')renderFilm();if(route==='journal')renderJournal();renderedViews.add(route)}}document.querySelectorAll('#'+route+' img[data-src]').forEach(im=>{im.src=im.dataset.src;delete im.dataset.src})}
 const routes=['home','about','works','journal','news','journey','contact'];
 const labels={home:'首页',about:'关于',works:'作品',journal:'创作手记',news:'科技新闻',journey:'创作世界',contact:'联系'};
 const imageCache=new Map();
@@ -89,7 +89,7 @@ function enterView(next){
  animate($(next+'-title')||document.querySelector('#'+next+' h1'),[{opacity:0,clipPath:'inset(0 0 100% 0)',transform:'translateY(35px)'},{opacity:1,clipPath:'inset(0 0 0 0)',transform:'none'}],{duration:850});
  if(next==='home'){stagger('.hero-copy>.eyebrow,.hero-copy>.hero-sub,.hero-actions',rise,{delay:140});animate(document.querySelector('.hero-copy'),rise)}
  if(next==='about'){animate(document.querySelector('.portrait-card'),[{opacity:0,transform:'perspective(1100px) translateX(170px) rotateY(-48deg) rotate(8deg)'},{opacity:1,transform:'rotate(3deg)'}],{duration:1000});stagger('.profile-facts>div,.fields>a',rise);}
- if(next==='works'){dealWorks();stagger('.project-card',rise,{delay:55});}
+ if(next==='works')dealWorks();
  if(next==='journal')stagger('.journal-card',[{opacity:0,transform:'perspective(1200px) translateX(140px) rotateY(-24deg)'},{opacity:1,transform:'none'}],{delay:140,duration:950});
  if(next==='news')stagger('.news-item',[{opacity:0,clipPath:'inset(0 100% 0 0)',transform:'translateX(45px)'},{opacity:1,clipPath:'inset(0 0 0 0)',transform:'none'}],{delay:65,duration:700});
  if(next==='contact'){animate(document.querySelector('.contact-panel'),[{opacity:0,transform:'perspective(1200px) translateY(100px) rotateX(18deg) scale(.8)'},{opacity:1,transform:'none'}],{duration:900});stagger('.contact-panel>a',rise,{delay:90});}
@@ -142,25 +142,6 @@ $('cinema-skip').onclick=()=>go(requestedRoute,{instant:true});
 $('motion-retry').onclick=()=>{$('motion-retry').hidden=true;if(route==='home')syncHomeScroll();else go(route,{boot:true})};
 $('tour-toggle').onclick=()=>{if(autoRunning){stopAuto();cancelMotion();setPoster(journeyStates[journeyStep])}else if(journeyStep===5){journeyStep=0;go('journey',{boot:true})}else runJourney()};
 go(location.hash.slice(1)||'home',{boot:true});
-document.querySelectorAll('[data-filter-link]').forEach(a=>a.addEventListener('click',()=>{filter=a.dataset.filterLink;if(data)renderProjects()}));
-const categories=[['all','全部'],['games','游戏'],['tools','AI 工具'],['visual','视觉'],['experiments','硬件 / 实验']];
-function categoryMatch(p){if(filter==='all'||(p.categories||[p.category]).includes(filter))return true;const text=(p.category+' '+p.categoryLabel+' '+p.tags.join(' ')).toLowerCase();if(filter==='visual')return /visual|视觉|壁纸|shader/.test(text);if(filter==='tools')return /tool|工具|workflow|效率/.test(text);return p.category===filter}
-function renderProjects() {
- if (!data) return;
- $('filters').innerHTML = categories.map(([id, name]) => `<button data-filter="${id}" class="${filter === id ? 'active' : ''}" aria-pressed="${filter === id}">${name}</button>`).join('');
- const projects = data.projects.filter(categoryMatch);
- $('project-count').textContent = String(projects.length).padStart(2, '0');
- for (const group of ['agent', 'other']) {
-  const entries = projects.filter(project => (project.group || 'other') === group);
-  $(group + '-projects').hidden = entries.length === 0;
-  $(group + '-project-grid').innerHTML = entries.map(p => {
-   const element = p.page ? 'a' : 'button';
-   const href = p.page ? ` href="${esc(p.page)}"` : '';
-   return `<${element} class="project-card" data-project="${esc(p.id)}"${href}><span class="cover">${p.coverVideo ? `<project-preview><video src="${esc(p.coverVideo.src)}" poster="${esc(p.coverVideo.poster)}" muted playsinline preload="none" style="width:100%;height:100%;object-fit:contain;display:block;background:#20292e" aria-hidden="true"></video></project-preview>` : `<img src="${esc(p.image)}" alt="${esc(p.imageAlt)}" loading="lazy" decoding="async" width="640" height="400">`}</span><span class="meta">${esc(p.categoryLabel)} / ${esc(p.tags.slice(0, 2).join(' · '))}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><span class="open">打开项目 ↗</span></${element}>`;
-  }).join('');
- }
-}
-$('filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(b){filter=b.dataset.filter;renderProjects()}});
 function renderFilm(){const featured=data.projects.slice(0,6),suits=['◆','♠','✦','♥','♣','♦'];$('film-strip').innerHTML=featured.map((p,i)=>`<button class="work-card" data-film="${i}" aria-label="查看 ${esc(p.title)}"><span class="card-corner">${String(i+1).padStart(2,'0')}<b>${suits[i]}</b></span><span class="card-edition">CLOUD BOY<br>SELECTED / 2026</span><img src="${esc(p.image)}" alt="${esc(p.imageAlt)}" width="640" height="400" decoding="async"><span class="card-copy"><small>${esc(p.categoryLabel)}</small><strong>${esc(p.title)}</strong></span><span class="card-bottom">EXPLORE PROJECT <b>↗</b></span><span class="card-corner mirrored">${String(i+1).padStart(2,'0')}<b>${suits[i]}</b></span></button>`).join('');updateFilm()}
 function updateFilm(){if(!data)return;const featured=data.projects.slice(0,6),p=featured[filmIndex];$('film-title').textContent=p.title;$('film-category').textContent=p.categoryLabel+' / '+p.tags.slice(0,2).join(' · ');$('film-count').textContent=String(filmIndex+1).padStart(2,'0')+' / '+featured.length;const width=document.querySelector('.film-window').clientWidth,spacing=small.matches?24:Math.max(36,Math.min(154,(width-650)/6));document.querySelectorAll('.work-card').forEach((card,i)=>{let d=i-filmIndex;if(d>2)d-=6;if(d< -3)d+=6;const active=d===0,y=active?-65:Math.pow(Math.abs(d),1.55)*17,angle=d*11;card.style.setProperty('--card-x',d*spacing+'px');card.style.setProperty('--card-y',y+'px');card.style.setProperty('--card-angle',angle+'deg');card.style.setProperty('--card-scale',active?'1.08':'.94');card.style.setProperty('--card-z',active?'20':String(10-Math.abs(d)));card.classList.toggle('active',active);card.setAttribute('aria-pressed',String(active));card.style.setProperty('--card-pose',`translate3d(${d*spacing}px,${y}px,0) rotate(${angle}deg) scale(${active?1.08:.94})`);})}
 function dealWorks(){if(!data||route!=='works')return;updateFilm();const cards=[...document.querySelectorAll('.work-card')];cards.forEach((card,i)=>{card.getAnimations().forEach(a=>a.cancel());const final=card.style.getPropertyValue('--card-pose');animate(card,[{opacity:0,transform:`translate3d(${i*2}px,160px,-180px) rotate(-9deg) scale(.72)`,offset:0},{opacity:1,transform:`translate3d(${i*3}px,30px,0) rotate(-9deg) scale(.85)`,offset:.28},{opacity:1,transform:final,offset:1}],{duration:1150,delay:i*85,fill:'backwards',easing:'cubic-bezier(.16,1,.3,1)'})})}
@@ -271,7 +252,7 @@ function openProject(project) {
  else openReader('project', project.id);
 }
 
-document.addEventListener('click',e=>{const p=e.target.closest('button[data-project]'),j=e.target.closest('[data-journal]');if(p)openReader('project',p.dataset.project);else if(j)openReader('journal',j.dataset.journal)});
+document.addEventListener('click',e=>{const j=e.target.closest('[data-journal]');if(j)openReader('journal',j.dataset.journal)});
 async function closeReader(){if(reader.dataset.closing)return;reader.dataset.closing='true';await animate(reader,[{opacity:1,transform:'none'},{opacity:0,transform:'perspective(1200px) translateY(100px) rotateX(12deg) scale(.86)'}],{duration:220,easing:'ease-in'});reader.close();delete reader.dataset.closing}reader.addEventListener('cancel',e=>{e.preventDefault();closeReader()});$('reader-close').onclick=closeReader;$('reader-back').onclick=()=>{readerStack.pop();const v=readerStack.at(-1);if(v){readerContent(v.type,v.id);animate($('reader-body'),[{opacity:0,transform:'perspective(1200px) translateX(-70px) rotateY(12deg)'},{opacity:1,transform:'none'}],{duration:500})}};reader.addEventListener('close',()=>{reader.querySelectorAll('video').forEach(video => video.pause());document.body.style.overflow='';readerStack=[];returnFocus?.focus({preventScroll:true})});reader.addEventListener('click',e=>{if(e.target===reader){const r=reader.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeReader()}});
 function updateJourney(){$('journey-count').textContent=String(journeyStep+1).padStart(2,'0')+' / 06';$('journey-next').textContent=journeyStep===5?'继续聊聊 ↗':'继续穿梭 →';$('journey-back').textContent=journeyStep===0?'← 返回作品':'← 上一幕';$('journey-title').innerHTML=journeyStep>=4?'让想法，成为<br><em>可玩的世界。</em>':'想法，<br>有自己的<em>世界。</em>';}
 // Keep journey controls outside the movie so they remain interactive on every frame.

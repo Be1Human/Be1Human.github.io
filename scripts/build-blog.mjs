@@ -34,6 +34,8 @@ const workflowStyle = 'assets/project-workflow.css';
 const workflowStyleVersion = await assetVersion(workflowStyle);
 const attentionScriptVersion = await assetVersion('assets/attention.js');
 const projectSlidesStyleVersion = await assetVersion('assets/project-slides.css');
+const archiveStyleVersion = await assetVersion('assets/archive.css');
+const archiveHead = (base = '') => `<link rel="stylesheet" href="${base}assets/archive.css?v=${archiveStyleVersion}">`;
 const e = value => String(value).replace(/[&<>"']/g, char => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]));
 const external = 'target="_blank" rel="noopener noreferrer"';
 const number = value => String(value).padStart(2, '0');
@@ -175,21 +177,24 @@ function feedEntry(entry) {
     : `<a class="feed-article" href="${entry.permalink}" aria-labelledby="feed-title-${entry.id}">${entry.image ? `<div class="feed-cover"><img src="${e(entry.image)}" alt="${e(entry.imageAlt)}" width="1200" height="675" loading="lazy"></div>` : ''}<div class="feed-article-copy"><p class="feed-article-label">${e(entry.category)}<span>·</span>${minutes(entry)} 分钟阅读</p><h2 id="feed-title-${entry.id}">${e(entry.title).replaceAll('：', '：<wbr>')}</h2><p class="feed-excerpt">${e(entry.summary)}</p><span class="feed-readline">阅读全文 <span aria-hidden="true">↗</span></span></div></a>`;
   return `<article class="feed-entry" id="${id}" data-entry-type="${entry.type}">${meta}<div class="feed-entry-main">${content}</div></article>`;
 }
-const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
-// Preserve the approved interactive homepage when rebuilding news and archives.
-const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
-const homepageAssets = new Map([
-  ['assets/reading.css', readingStyleVersion], ['assets/reading.js', readingScriptVersion], [workflowStyle, workflowStyleVersion], ['assets/project-slides.css', projectSlidesStyleVersion],
-]);
-let homepage = homepageTemplate.replace('<!--SITE_NAVIGATION-->',`<!--HOME_NAV_START-->${renderSiteNavigation({interactive:true})}<!--HOME_NAV_END-->`);
-for (const [path,version] of homepageAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
-pages.set('index.html', homepage);
-
 const projectSections = Object.entries(projectGroups).map(([group, label]) => {
   const cards = projects.filter(project => (project.group ?? 'other') === group).map(projectCard).join('');
   return `<section class="project-group" aria-labelledby="group-${group}" data-filter-section><h2 id="group-${group}">${label}</h2><div class="project-grid">${cards}</div></section>`;
 }).join('');
-render('works.html', '作品集 — CLOUD BOY · 云上男孩', `Agent、游戏、视觉与研究实验，共 ${projects.length} 件作品及项目记录。`, 'works', `<script type="module" src="assets/project-preview.js"></script><section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}${projectSections}${empty}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`);
+const projectList = `<div class="works-list" data-filterable>${controls(Object.entries(categories), '搜索作品或技术…', projects.length, '件作品')}${projectSections}${empty}</div>`;
+
+const home = `<section class="site-panel activity-feed" aria-labelledby="home-title">${heading('home-title', '动态', '日常的记录，与慢慢写下的长文。', '<a class="heading-link" href="feed.xml" aria-label="通过 RSS 订阅动态">RSS <span aria-hidden="true">↗</span></a>')}<div class="feed-entries">${feed.map(feedEntry).join('')}</div></section>`;
+// Preserve the approved interactive homepage when rebuilding news and archives.
+const homepageTemplate = await readFile(resolve(root, 'src/experience/index.html'), 'utf8');
+const homepageAssets = new Map([
+  ['assets/archive.css', archiveStyleVersion], ['assets/app.js', scriptVersion], ['assets/reading.css', readingStyleVersion], ['assets/reading.js', readingScriptVersion], [workflowStyle, workflowStyleVersion], ['assets/project-slides.css', projectSlidesStyleVersion],
+]);
+let homepage = homepageTemplate.replace('<!--SITE_NAVIGATION-->',`<!--HOME_NAV_START-->${renderSiteNavigation({interactive:true})}<!--HOME_NAV_END-->`);
+homepage = homepage.replace('<!--WORKS_LIST-->', `<!--WORKS_LIST_START-->${projectList}<!--WORKS_LIST_END-->`);
+for (const [path,version] of homepageAssets) homepage=homepage.replaceAll(`"${path}"`,`"${path}?v=${version}"`);
+pages.set('index.html', homepage);
+
+render('works.html', '作品集 — CLOUD BOY · 云上男孩', `Agent、游戏、视觉与研究实验，共 ${projects.length} 件作品及项目记录。`, 'works', `<script type="module" src="assets/project-preview.js"></script><section class="site-panel works-page" aria-labelledby="works-title">${heading('works-title', '作品集', '做过的作品，正在进行的尝试。')}<div class="panel-content" id="works">${projectList}<div class="endnote"><span>更多创作，慢慢更新</span><a href="https://github.com/Be1Human?tab=repositories" ${external}>公开源码项目 ↗</a></div></div></section>`, 'website', archiveHead());
 
 function projectFigure({src, alt, caption, width, height}, cover = false) {
   return renderRichContent(`<figure class="learn-figure"><img src="../${e(src)}" alt="${e(alt)}" width="${width}" height="${height}" ${cover ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"><figcaption>${e(caption)}</figcaption></figure>`);
@@ -290,8 +295,8 @@ function newsPage(edition, base) {
   const syncDate = new Intl.DateTimeFormat('zh-CN', {timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false}).format(new Date(news.syncedAt));
   return `<section class="site-panel news-page" aria-labelledby="news-title">${heading('news-title', '科技新闻', '来自 Dot「AI 热门 20」的每日精选')}<div class="edition-banner"><div class="edition-heading"><p>每日归档</p><h2>${dateLabel(edition.date)}<span>${edition.id.includes('evening') ? '晚间精选' : edition.date.slice(0, 4)}</span></h2><p>${edition.items.length} 条资讯 · 保留原作者与来源</p></div><div class="edition-picker"><label for="edition-select">选择日期</label><select id="edition-select" data-edition-select>${news.editions.map(entry => `<option value="${link(entry)}"${entry.id === edition.id ? ' selected' : ''}>${entry.id.replace('-evening', ' 晚间')} · ${entry.items.length} 条</option>`).join('')}</select><div class="edition-controls">${prev ? `<a href="${link(prev)}">← 上一期</a>` : '<span>已到最早一期</span>'}${next ? `<a href="${link(next)}">下一期 →</a>` : '<span>当前为最新一期</span>'}</div></div></div><div class="panel-content news-main" data-filterable>${controls([['all', '全部'], ...cats.map(category => [category, category])], '搜索话题、作者或工具…', edition.items.length, '条资讯')}<div class="news-list">${edition.items.map(newsCard).join('')}</div>${empty}</div><footer class="news-notes"><details class="source-details"><summary>关于这份精选与同步</summary><div class="source-content"><p>每日精选来自我的 Dot「AI 热门 20」，在这里持续同步并按日期归档。</p><dl><div><dt>已归档</dt><dd>${news.editions.length} 期</dd></div><div><dt>最新一期</dt><dd>${latest.date.replaceAll('-', '.')}</dd></div><div><dt>同步时间</dt><dd>${e(syncDate)}（洛杉矶）</dd></div></dl><a href="${e(edition.sourceUrl)}" ${external}>查看 Dot 原始精选 ↗</a><p class="source-access-note">原始阅览室需要所有者登录，本页原帖链接可直接访问。</p><p>摘要沿用每日精选的整理结果，不代表已独立实测产品。请结合原作者与官方资料阅读；图片版权归原作者，视频在原帖观看。</p></div></details><details class="archive-list"><summary>全部日期归档 · ${news.editions.length} 期</summary><nav aria-label="新闻日期归档">${news.editions.map(entry => `<a href="${link(entry)}"${entry.id === edition.id ? ' aria-current="page"' : ''}>${entry.id.replace('-evening', ' 晚间')}<span>${entry.items.length} 条</span></a>`).join('')}</nav></details></footer></section>`;
 }
-render('news.html', '科技新闻 — CLOUD BOY · 云上男孩', '从 Dot AI 热门 20 同步的每日科技精选，按日期归档，支持分类与搜索。', 'news', newsPage(latest, ''));
-for (const edition of news.editions) render(`news/${edition.id}.html`, `${edition.date} 科技精选 — CLOUD BOY`, `${edition.date} 的 ${edition.items.length} 条科技精选，保留原作者和来源。`, 'news', newsPage(edition, '../'));
+render('news.html', '科技新闻 — CLOUD BOY · 云上男孩', '从 Dot AI 热门 20 同步的每日科技精选，按日期归档，支持分类与搜索。', 'news', newsPage(latest, ''), 'website', archiveHead());
+for (const edition of news.editions) render(`news/${edition.id}.html`, `${edition.date} 科技精选 — CLOUD BOY`, `${edition.date} 的 ${edition.items.length} 条科技精选，保留原作者和来源。`, 'news', newsPage(edition, '../'), 'website', archiveHead('../'));
 
 for (const page of learningOutput.pages) render(page.path, page.title, page.summary, 'learning', page.body, page.path === 'learn.html' ? 'website' : 'article');
 pages.set('assets/learning-search.json', JSON.stringify(learningOutput.searchIndex));
