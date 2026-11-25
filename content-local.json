@@ -828,31 +828,6 @@
       "group": "other"
     },
     {
-      "id": "codebuddy-memory",
-      "title": "CodeBuddy Memory · 发布站",
-      "category": "tools",
-      "categoryLabel": "AI 与工具",
-      "subtitle": "桌面应用发布工作台",
-      "summary": "把产品介绍、安装包下载、更新日志和构建发布放到一个网站中。管理端将拉取代码、应用打包和版本发布组织成一条流程。",
-      "source": "https://be1human.github.io/projects/codebuddy-memory.html",
-      "image": "assets/8d0d1c570ac3.svg",
-      "imageAlt": "CodeBuddy Memory · 发布站的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
-      "tags": [
-        "Node.js",
-        "Express",
-        "应用发布"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/codebuddy-memory.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/codebuddy-memory-cover.svg",
-      "group": "other"
-    },
-    {
       "id": "animation-workflow",
       "title": "Video to Game Animation",
       "category": "tools",
@@ -876,31 +851,6 @@
       ],
       "sourceImage": "https://be1human.github.io/assets/images/animation.jpg",
       "group": "agent"
-    },
-    {
-      "id": "voxelspace",
-      "title": "VoxelSpace",
-      "category": "games",
-      "categoryLabel": "游戏项目",
-      "subtitle": "游戏引擎学习工程",
-      "summary": "从窗口、输入和渲染循环开始，搭建自己的游戏引擎骨架。已保存的早期实现主要围绕 2D 精灵、动画、组件和游戏世界展开。",
-      "source": "https://be1human.github.io/projects/voxelspace.html",
-      "image": "assets/fe2a3729d8b9.svg",
-      "imageAlt": "VoxelSpace的项目示意图，非运行截图",
-      "imageNote": "项目示意图 · 非运行截图",
-      "tags": [
-        "C++",
-        "OpenGL",
-        "GLFW"
-      ],
-      "links": [
-        {
-          "label": "查看项目",
-          "url": "https://be1human.github.io/projects/voxelspace.html"
-        }
-      ],
-      "sourceImage": "https://be1human.github.io/assets/images/voxelspace-cover.svg",
-      "group": "other"
     }
   ],
   "journal": [

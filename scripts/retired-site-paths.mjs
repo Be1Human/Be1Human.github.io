@@ -1,4 +1,4 @@
-const retiredProjects = ['interactive-cube', 'network-lab', 'game-system-notes'];
+const retiredProjects = ['interactive-cube', 'network-lab', 'game-system-notes', 'codebuddy-memory', 'voxelspace'];
 
 // These public copies were explicitly removed by the site owner.
 export const retiredSitePaths = new Set([
@@ -12,4 +12,6 @@ export const retiredSitePaths = new Set([
   'assets/bdc88ee68c51.svg',
   'assets/6f28a0abf4e4.svg',
   'assets/0599db32fdea.svg',
+  'assets/8d0d1c570ac3.svg',
+  'assets/fe2a3729d8b9.svg',
 ]);

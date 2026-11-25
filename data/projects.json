@@ -902,51 +902,6 @@
     "documentation": "https://github.com/Be1Human/claude-ojousama-network/blob/19a1470614f38e99b7dafdaddd4603095919c244/README.md"
   },
   {
-    "id": "codebuddy-memory",
-    "title": "CodeBuddy Memory · 发布站",
-    "name": "CodeBuddy Memory · 发布站",
-    "kind": "桌面应用发布工作台",
-    "category": "tools",
-    "label": "AI 与工具",
-    "description": "把产品介绍、安装包下载、更新日志和构建发布放到一个网站中。管理端将拉取代码、应用打包和版本发布组织成一条流程。",
-    "image": "assets/images/codebuddy-memory-cover.svg",
-    "imageAlt": "CodeBuddy Memory · 发布站的项目示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
-    "tags": [
-      "Node.js",
-      "Express",
-      "应用发布"
-    ],
-    "url": "projects/codebuddy-memory.html",
-    "action": "查看项目介绍",
-    "documentation": "projects/codebuddy-memory.html",
-    "presentation": "showcase",
-    "detail": {
-      "status": "网站与发布工具",
-      "period": "2026",
-      "sections": [
-        {
-          "heading": "把发布过程串起来",
-          "paragraphs": [
-            "网站承担产品介绍、下载和更新日志展示；管理端可以发起构建，将拉取应用源码、安装依赖、打包和整理更新内容连接起来。"
-          ]
-        },
-        {
-          "heading": "既能自动构建，也能管理版本",
-          "paragraphs": [
-            "工程包含构建日志查看、安装包上传、更新日志编辑和版本管理。自动构建依赖桌面应用源码和对应平台的打包环境，手动上传用于补充发布流程。"
-          ]
-        },
-        {
-          "heading": "项目的职责",
-          "paragraphs": [
-            "这是围绕 CodeBuddy Memory 建立的介绍与发布网站，与客户端本体、记忆聚合服务分别承担不同职责。构建和发布能力需要部署环境与应用源码配合。"
-          ]
-        }
-      ]
-    }
-  },
-  {
     "id": "animation-workflow",
     "title": "Video to Game Animation",
     "name": "Video to Game Animation",
@@ -968,50 +923,5 @@
     "accent": "gray",
     "documentation": "https://github.com/Be1Human/video-to-game-animation/blob/e7109e157facc2e174d67e6567893d460ced9ea1/README.md",
     "group": "agent"
-  },
-  {
-    "id": "voxelspace",
-    "title": "VoxelSpace",
-    "name": "VoxelSpace",
-    "kind": "游戏引擎学习工程",
-    "category": "games",
-    "label": "游戏项目",
-    "description": "从窗口、输入和渲染循环开始，搭建自己的游戏引擎骨架。已保存的早期实现主要围绕 2D 精灵、动画、组件和游戏世界展开。",
-    "image": "assets/images/voxelspace-cover.svg",
-    "imageAlt": "VoxelSpace的项目示意图，非运行截图",
-    "imageNote": "项目示意图 · 非运行截图",
-    "tags": [
-      "C++",
-      "OpenGL",
-      "GLFW"
-    ],
-    "url": "projects/voxelspace.html",
-    "action": "查看项目介绍",
-    "documentation": "projects/voxelspace.html",
-    "presentation": "showcase",
-    "detail": {
-      "status": "早期学习原型",
-      "period": "2021",
-      "sections": [
-        {
-          "heading": "从底层循环理解游戏",
-          "paragraphs": [
-            "项目把初始化、输入处理、逐帧更新和绘制拆成引擎的基础循环，并通过窗口、Shader、纹理和顶点数组组织渲染。"
-          ]
-        },
-        {
-          "heading": "组件与游戏世界",
-          "paragraphs": [
-            "代码包含 Actor、组件、移动、输入、精灵和动画精灵等结构，以及独立的游戏世界与关卡实验。项目希望从这些小模块逐步理解引擎如何支撑一段可玩的内容。"
-          ]
-        },
-        {
-          "heading": "保留早期尝试的真实样子",
-          "paragraphs": [
-            "仓库名称提出了体素引擎与编辑器的方向，但已记录的阶段成果主要是基础 2D 渲染和引擎框架。这里按学习原型展示，不将其描述为已经完成的体素编辑器。"
-          ]
-        }
-      ]
-    }
   }
 ]

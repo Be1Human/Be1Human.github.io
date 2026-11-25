@@ -216,24 +216,6 @@
       "productRuntimeTestedInThisReview": false
     },
     {
-      "projectId": "codebuddy-memory",
-      "reviewMode": "owner-authorized-showcase",
-      "descriptionBasis": [
-        "作者授权整理的项目介绍",
-        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
-      ],
-      "productRuntimeTestedInThisReview": false
-    },
-    {
-      "projectId": "voxelspace",
-      "reviewMode": "owner-authorized-showcase",
-      "descriptionBasis": [
-        "作者授权整理的项目介绍",
-        "已核对项目说明、工程结构或设计资料，并注明阶段边界"
-      ],
-      "productRuntimeTestedInThisReview": false
-    },
-    {
       "projectId": "haimian-deep-space",
       "reviewMode": "owner-authorized-showcase",
       "descriptionBasis": [
