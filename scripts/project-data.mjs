@@ -36,13 +36,19 @@ export function validateProject(project, source) {
   if (Object.keys(detail).some(key => !['status', 'period', 'sections', 'coverSize', 'website', 'coverVideo', 'references', 'overview'].includes(key))) throw new Error('Unexpected field in project overview');
   if (detail.website !== undefined) httpsUrl(detail.website);
   const overview = detail.overview;
-  if (!overview || Object.keys(overview).some(key => !['purpose', 'mediaHint', 'chapters'].includes(key)) ||
+  if (!overview || Object.keys(overview).some(key => !['purpose', 'mediaHint', 'chapters', 'previewVideoSections'].includes(key)) ||
       !hasText(overview.purpose) || (overview.mediaHint !== undefined && !hasText(overview.mediaHint)) ||
       !Array.isArray(overview.chapters) || !overview.chapters.length || overview.chapters.some(chapter =>
         !chapter || Object.keys(chapter).some(key => !['title', 'sections'].includes(key)) ||
         !hasText(chapter.title) || !Array.isArray(chapter.sections) || !chapter.sections.length
       )) throw new Error('Incomplete project reading order');
   if (detail.coverVideo && !overview.mediaHint) throw new Error('Project cover video needs a viewing guide');
+  const { previewVideoSections } = overview;
+  if (previewVideoSections !== undefined && (
+    !overview.mediaHint || detail.coverVideo || !Array.isArray(previewVideoSections) || previewVideoSections.length !== 2 ||
+    new Set(previewVideoSections).size !== previewVideoSections.length ||
+    previewVideoSections.some(number => !Number.isInteger(number) || !detail.sections[number - 1]?.video)
+  )) throw new Error('Project video pair must reference two different footage sections');
   const sectionOrder = overview.chapters.flatMap(chapter => chapter.sections);
   if (sectionOrder.length !== detail.sections.length || new Set(sectionOrder).size !== sectionOrder.length ||
       sectionOrder.some(index => !Number.isInteger(index) || index < 1 || index > detail.sections.length)) {

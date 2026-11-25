@@ -485,6 +485,13 @@
           ],
           "images": [
             {
+              "src": "assets/images/character-orbit-cover.webp",
+              "alt": "3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面",
+              "caption": "本次实验的 3DGS 渲染 · 侧面、正面与背面",
+              "width": 1200,
+              "height": 706
+            },
+            {
               "src": "assets/images/character-orbit-diagram-workflow.webp",
               "alt": "单张正面设定图、多张环绕视角卡片与椭球高斯模型",
               "caption": "原理示意 · 单图经环绕生成多视角，再进行三维拟合。",
@@ -532,7 +539,7 @@
           "video": {
             "src": "assets/project-media/character-orbit-h3.mp4",
             "poster": "assets/images/character-orbit-h3-poster.webp",
-            "caption": "MiniMax-H3 的原始环绕视频 · 高斯训练的多视角输入",
+            "caption": "MiniMax-H3 环绕原片 · 高斯训练输入",
             "width": 768,
             "height": 768
           }
@@ -541,7 +548,7 @@
           "heading": "第一轮｜带网格约束的高斯基线",
           "paragraphs": [
             "将视频解码成帧，对每帧生成前景图和特征遮罩，再通过 COLMAP 求相机位姿。实跑注册 73/73 帧，方位覆盖约 354°，平均重投影误差约 0.74 像素。",
-            "用 MILo 训练 18,000 步，启用训练中的网格约束，最后得到 88,286 个高斯。相同视角下，贝雷帽、制服和双腿的轮廓可辨认，眼睛、手指和细小饰物仍偏模糊。下方环绕来自这轮基线的 RaDeGS 渲染。"
+            "用 MILo 训练 18,000 步，启用训练中的网格约束，最后得到 88,286 个高斯。相同视角下，贝雷帽、制服和双腿的轮廓可辨认，眼睛、手指和细小饰物仍偏模糊。页首的 3DGS 重建实录来自这轮基线的 RaDeGS 渲染。"
           ],
           "images": [
             {
@@ -562,7 +569,7 @@
           "video": {
             "src": "assets/project-media/character-orbit-3dgs.mp4",
             "poster": "assets/images/character-orbit-3dgs-poster.webp",
-            "caption": "3DGS 重建实录 · RaDeGS 沿求解出的相机轨迹渲染",
+            "caption": "3DGS 重建实录 · RaDeGS 渲染",
             "width": 768,
             "height": 768
           }
@@ -683,7 +690,8 @@
       ],
       "overview": {
         "purpose": "在投入完整建模之前，先用环绕结果检查服装轮廓，再判断脸、手和鞋底还要补哪些细节。",
-        "mediaHint": "把正面设定与环绕画面放在一起看，注意帽檐、双手和衣摆进入侧视角时的变化。",
+        "mediaHint": "对比环绕原片和重建结果，观察帽檐、双手和衣摆在侧视角的变化。",
+        "previewVideoSections": [2, 3],
         "chapters": [
           {
             "title": "先看单图得到的三维结果",
