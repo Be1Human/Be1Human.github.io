@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { lstat, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { retiredSitePaths } from './retired-site-paths.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const args = process.argv.slice(2);
@@ -33,8 +34,6 @@ const git = (...gitArgs) => run('git', gitArgs, {capture: true, label: `git ${gi
 const splitNul = value => value.split('\0').filter(Boolean);
 const badPart = /(?:^|[._-])(?:private|secrets?|credentials?|api[-_]?keys?|keys?|tokens?)(?:[._-]|$)/i;
 const textFile = /\.(?:html|css|js|mjs|cjs|json|xml|md|txt|svg|ya?ml|toml|ini|conf)$/i;
-// The user explicitly requested removal of the retired archive theme.
-const retiredThemePaths = new Set(['assets/styles.css', 'assets/mark.svg']);
 const strongSecret = /-----BEGIN (?:[A-Z ]* )?PRIVATE KEY-----|\bsk-(?:cp-|proj-)?[A-Za-z0-9_-]{24,}\b|\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{30,}\b|\bgithub_pat_[A-Za-z0-9_]{40,}\b|\bAKIA[A-Z0-9]{16}\b|\bxox[baprs]-[A-Za-z0-9-]{20,}\b/;
 
 function allowedPath(path) {
@@ -55,11 +54,11 @@ function changedPaths() {
   for (let i = 0; i < records.length; i++) {
     const status = records[i].slice(0, 2);
     if (status.includes('U') || ['AA', 'DD'].includes(status)) throw new Error('Resolve existing merge conflicts before publishing.');
-    if (status.includes('D') && !retiredThemePaths.has(records[i].slice(3))) throw new Error('Release contains unapproved deletions.');
+    if (status.includes('D') && !retiredSitePaths.has(records[i].slice(3))) throw new Error('Release contains unapproved deletions.');
     paths.add(records[i].slice(3));
     if (/[RC]/.test(status)) paths.add(records[++i]);
   }
-  if (git('diff', 'HEAD', '--name-only', '--diff-filter=D').split('\n').filter(Boolean).some(path=>!retiredThemePaths.has(path))) throw new Error('Release contains unapproved deletions.');
+  if (git('diff', 'HEAD', '--name-only', '--diff-filter=D').split('\n').filter(Boolean).some(path=>!retiredSitePaths.has(path))) throw new Error('Release contains unapproved deletions.');
   const changed = [...paths].sort();
   if (changed.some(path => !allowedPath(path))) throw new Error('Release contains a path outside the approved public site directories.');
   return changed;
