@@ -9,6 +9,8 @@
 .slides-hero img{aspect-ratio:5/4;object-fit:cover;object-position:50% 64%}
 #smarttest .slides-hero img{aspect-ratio:auto;object-fit:contain;object-position:center}
 #smarttest .project-detail-table th:first-child{white-space:nowrap}
+#smarttest .project-slide.slide-diagram{grid-template-columns:minmax(0,1fr);max-width:780px;margin-inline:auto}
+#smarttest .slide-diagram .slide-text :is(.slide-intro,.slide-note){max-width:none}
 .slides-nav{border-block:1px solid #55727f70;margin-top:35px;padding:12px 0;display:flex;flex-wrap:wrap;gap:8px 21px}
 .slides-nav a{font-size:13px;color:#bed5db;text-decoration:none;padding:6px 0}
 .slides-nav a:hover,.slides-nav a:focus-visible{color:#fff;text-decoration:underline}

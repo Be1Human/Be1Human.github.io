@@ -877,20 +877,11 @@
         {
           "title": "背包测试失败复盘",
           "paragraphs": [
-            "这轮真机校准耗时 79.5 秒。模型做了 10 次决策，其中 8 次触控送到手机。第 2 步选择了商城入口，后续都在商城里尝试寻找分类。",
-            "最终只有「游戏仍在前台」通过。过程中没观察到目标分类「时装」，结束时也没回到大厅，因此整条用例失败。",
-            "Android 原生录屏与动作时间轴按主机回执时间近似对齐。点时间轴可以跳到对应画面，核对模型意图、动作有没有送达，以及画面实际发生了什么。"
+            "这轮真机校准耗时 79.5 秒。模型做了 10 次决策，8 次触控送到手机。第 2 步点进商城，后续连续滑动也没回到背包。",
+            "第 10 步的滑动终点越界，执行器拦截了动作。最终只有「游戏仍在前台」通过，未观察到「时装」分类，也未回到大厅。"
           ],
-          "images": [
-            {
-              "src": "assets/images/smarttest-timeline.webp",
-              "alt": "另一条 Android 真机任务的点击和等待回放时间轴",
-              "caption": "另一条真机任务的回放界面局部，展示时间点、推理耗时和动作回执。上表来自背包用例。",
-              "width": 310,
-              "height": 545
-            }
-          ],
-          "tablesHtml": "<table class=\"project-detail-table\"><caption>背包用例的模型决策和设备回执</caption><thead><tr><th scope=\"col\">步骤</th><th scope=\"col\">模型动作</th><th scope=\"col\">执行情况</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>试图点击底栏的「背包」</td><td>已发送</td></tr><tr><th scope=\"row\">2</th><td>点击「商场逛逛」</td><td>已发送，进入商城</td></tr><tr><th scope=\"row\">3</th><td>等待页面加载</td><td>本地等待 2 秒</td></tr><tr><th scope=\"row\">4–9</th><td>连续六次滑动分类栏</td><td>六次均已发送</td></tr><tr><th scope=\"row\">10</th><td>滑动终点纵坐标为 1035</td><td>超出 0–1000 范围，拦截并结束任务</td></tr></tbody></table>"
+          "tablesHtml": "<table class=\"project-detail-table\"><caption>背包用例的模型决策和设备回执</caption><thead><tr><th scope=\"col\">步骤</th><th scope=\"col\">模型动作</th><th scope=\"col\">执行情况</th></tr></thead><tbody><tr><th scope=\"row\">1</th><td>试图点击底栏的「背包」</td><td>已发送</td></tr><tr><th scope=\"row\">2</th><td>点击「商场逛逛」</td><td>已发送，进入商城</td></tr><tr><th scope=\"row\">3</th><td>等待页面加载</td><td>本地等待 2 秒</td></tr><tr><th scope=\"row\">4–9</th><td>连续六次滑动分类栏</td><td>六次均已发送</td></tr><tr><th scope=\"row\">10</th><td>滑动终点纵坐标为 1035</td><td>超出 0–1000 范围，拦截并结束任务</td></tr></tbody></table>",
+          "diagramHtml": "<div class=\"project-diagram\" role=\"group\" aria-label=\"背包用例的三个关键步骤\"><div class=\"project-track\"><strong class=\"project-track-label\">关键步骤</strong><div class=\"project-path\"><ol role=\"list\"><li><strong>第 1 步</strong><span>尝试打开背包</span></li><li><strong>第 2 步</strong><span>误入商城</span></li><li><strong>第 10 步</strong><span>滑动越界被拦截</span></li></ol></div></div></div>"
         },
         {
           "title": "工作流图怎样执行",
