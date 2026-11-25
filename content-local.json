@@ -27,7 +27,7 @@
       "id": "rain-city-character-reconstruction",
       "title": "基于 3D 高斯的角色模型重建尝试",
       "category": "visuals",
-      "categoryLabel": "视觉与设计",
+      "categoryLabel": "AIGC",
       "image": "assets/images/character-orbit-cover.webp",
       "imageAlt": "3DGS 重建的贝雷帽角色，依次呈现侧面、正面和背面",
       "tags": [
@@ -42,7 +42,7 @@
       "id": "digital-performance",
       "title": "数字人表演生成",
       "category": "visuals",
-      "categoryLabel": "视觉与设计",
+      "categoryLabel": "AIGC",
       "image": "assets/images/digital-performance-cover.webp",
       "imageAlt": "Unreal Engine 场景中正在表演的数字角色",
       "tags": [
@@ -142,7 +142,7 @@
       "id": "petgo",
       "title": "PetGo · 宠物梦视",
       "category": "visuals",
-      "categoryLabel": "视觉与设计",
+      "categoryLabel": "AIGC",
       "image": "assets/images/petgo-cover.svg",
       "imageAlt": "PetGo · 宠物梦视的项目示意图，非运行截图",
       "tags": [
@@ -156,7 +156,7 @@
       "id": "wallpaper-workshop",
       "title": "AI Wallpaper Workshop",
       "category": "visuals",
-      "categoryLabel": "动态视觉",
+      "categoryLabel": "AIGC",
       "image": "assets/images/starry-night.png",
       "imageAlt": "星空、云层、列车与水面倒影的实际 Shader 渲染",
       "tags": [

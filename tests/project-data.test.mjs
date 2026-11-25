@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { validateProject, projectPagePath } from '../scripts/project-data.mjs';
+import { projectCategories, validateProject, projectPagePath } from '../scripts/project-data.mjs';
 
 const read = path => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 const projects = JSON.parse(await read('data/projects.json'));
@@ -88,7 +88,12 @@ test('every project opens a complete local overview and can return to its portfo
 test('both works pages show every project once in a single list', async () => {
   const experience = JSON.parse(await read('content-local.json'));
   const ids = projects.map(project => project.id);
+  const aigcIds = new Set(projects.filter(project => project.category === 'visuals').map(project => project.id));
+  const aigcLabel = projectCategories.visuals;
   assert.deepEqual(experience.projects.map(({id, page}) => [id, page]), projects.map(project => [project.id, projectPagePath(project)]));
+  for (const project of experience.projects.filter(project => aigcIds.has(project.id))) {
+    assert.equal(project.categoryLabel, aigcLabel, project.id);
+  }
   assert.ok(!('featuredProject' in experience));
   assert.ok(experience.projects.every(project => !('sections' in project) && !('source' in project)));
   for (const entry of experience.journal) assert.match(entry.page, /^(?:posts|learn)\/[a-z0-9-]+\.html$/);
@@ -100,6 +105,7 @@ test('both works pages show every project once in a single list', async () => {
     for (const card of html.matchAll(/<article class="project-card" id="([^"]+)"[\s\S]*?<\/article>/g)) {
       const hrefs = [...card[0].matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(link => link[1]);
       assert.ok(hrefs.length && hrefs.every(href => href === projectPagePath({id:card[1]})), path);
+      if (aigcIds.has(card[1])) assert.ok(card[0].includes(`<span class="category-label">${aigcLabel}</span>`), `${path}: ${card[1]}`);
     }
   }
 });
