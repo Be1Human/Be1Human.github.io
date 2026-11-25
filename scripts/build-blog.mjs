@@ -84,12 +84,13 @@ for (const project of projects) {
   Object.assign(entry, {
     summary: project.description, image: project.image, imageAlt: project.imageAlt, imageNote: project.imageNote,
     imageWidth, imageHeight, sourceImage: origin + project.image,
-    sections: project.detail.sections.map(section => {
-      const { heading, paragraphs, images, video, workflow, steps, tables } = section;
+    sections: project.detail.sections.map((section, index) => {
+      const { heading, paragraphs, images, video, workflow, steps, tables, diagram } = section;
       return {
         title: heading, paragraphs, ...(images?.length ? { images } : {}), ...(video ? { video } : {}),
         ...(workflow ? { body: projectSectionBody(section) } : {}), ...(steps ? { steps } : {}),
         ...(tables ? { tablesHtml: projectTables(tables) } : {}),
+        ...(diagram ? { diagramHtml: projectDiagram(diagram, `${project.id}-reader-${index + 1}`) } : {}),
       };
     }),
   });
@@ -211,12 +212,29 @@ function projectTables(tables) {
   }).join('');
 }
 
+function projectDiagram({ caption, switchable, paths }, id) {
+  const route = ({ nodes, screen }) => {
+    const steps = nodes.map(({ title, note }) => `<li><strong>${e(title)}</strong><span>${e(note)}</span></li>`).join('');
+    const regions = screen ? `<div class="project-screen" data-region="${screen}" aria-hidden="true"><span>状态栏</span><span>聊天视口</span><span>选项卡片</span></div>` : '';
+    return `<div class="project-path${screen ? ' project-path-with-screen' : ''}"><ol role="list">${steps}</ol>${regions}</div>`;
+  };
+  if (!switchable) {
+    const tracks = paths.map(path => `<div class="project-track"><strong class="project-track-label">${e(path.name)}</strong>${route(path)}</div>`).join('');
+    return `<div class="project-diagram" role="group" aria-label="${e(caption)}">${tracks}</div>`;
+  }
+  const choices = paths.map((path, index) => {
+    const choice = `${id}-${index + 1}`;
+    return `<input type="radio" class="project-choice sr-only" name="${id}" id="${choice}" aria-controls="${choice}-result"${index === 0 ? ' checked' : ''}><label for="${choice}">${e(path.name)}</label><div class="project-choice-panel" id="${choice}-result">${route(path)}</div>`;
+  }).join('');
+  return `<fieldset class="project-diagram project-switchboard"><legend>${e(caption)}</legend><div class="project-choices">${choices}</div></fieldset>`;
+}
+
 function renderProjectSlides(project, cover) {
-  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps, tables = []}, index) => {
-    const layout = tables.length ? ' slide-technical' : images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
+  const slides = project.detail.sections.map(({heading, paragraphs: [lead, ...notes], images = [], steps, tables = [], diagram}, index) => {
+    const layout = diagram ? ' slide-diagram' : tables.length ? ' slide-technical' : images.length > 1 ? ' slide-gallery' : images[0]?.height > images[0]?.width ? ' slide-portrait' : '';
     const sequence = steps ? `<ol class="slide-steps">${steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>` : '';
     const details = notes.map(note => `<p class="slide-note">${e(note)}</p>`).join('');
-    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${details}</div><div class="slide-media">${projectTables(tables)}${images.map(image => projectFigure(image)).join('')}</div></section>`;
+    return `<section class="project-slide${layout}" id="section-${index + 1}"><div class="slide-text"><h2>${e(heading)}</h2><p class="slide-intro">${e(lead)}</p>${sequence}${details}</div><div class="slide-media">${diagram ? projectDiagram(diagram, `${project.id}-page-${index + 1}`) : ''}${projectTables(tables)}${images.map(image => projectFigure(image)).join('')}</div></section>`;
   }).join('');
   const links = project.detail.sections.map(({heading}, index) => `<a href="#section-${index + 1}">${e(heading)}</a>`).join('');
   const play = project.detail.website ? `<a class="slide-play" href="${e(project.detail.website)}" ${external}>打开游戏 ↗</a>` : '';

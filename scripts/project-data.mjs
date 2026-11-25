@@ -4,6 +4,7 @@ export const projectCategories = {all: '全部作品', games: '游戏项目', vi
 export const projectGroups = {agent: 'AI 项目', other: '其他作品'};
 export const projectPagePath = project => `projects/${project.id}.html`;
 const imagePath = /^assets\/images\/(?:[\w-]+\/)*[\w.-]+\.(?:webp|png|jpe?g|svg)$/;
+const hasText = value => typeof value === 'string' && Boolean(value.trim());
 
 export function validateProject(project, source) {
   if (!/^[a-z0-9-]+$/.test(project.id) || !projectCategories[project.category] || project.category === 'all') throw new Error('Invalid project');
@@ -38,7 +39,7 @@ export function validateProject(project, source) {
       throw new Error('Invalid project cover dimensions');
     }
     for (const section of detail.sections) {
-      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
+      if (Object.keys(section).some(key => !['heading', 'paragraphs', 'images', 'video', 'workflow', 'steps', 'tables', 'diagram'].includes(key)) || !section.heading || !Array.isArray(section.paragraphs) || !section.paragraphs.length || section.paragraphs.some(p => typeof p !== 'string' || !p.trim())) throw new Error('Invalid project overview section');
       const { workflow } = section;
       const stepFields = ['title', 'tool', 'output'];
       if (workflow !== undefined && (
@@ -49,7 +50,17 @@ export function validateProject(project, source) {
       )) throw new Error('Invalid project workflow');
       if (section.steps !== undefined && (!Array.isArray(section.steps) || !section.steps.length ||
           section.steps.some(step => typeof step !== 'string' || !step.trim()))) throw new Error('Invalid project steps');
-      const hasText = value => typeof value === 'string' && Boolean(value.trim());
+      const diagram = section.diagram;
+      if (diagram !== undefined && (detail.layout !== 'slides' || !diagram ||
+          Object.keys(diagram).some(key => !['caption', 'switchable', 'paths'].includes(key)) ||
+          !hasText(diagram.caption) || typeof diagram.switchable !== 'boolean' ||
+          !Array.isArray(diagram.paths) || !diagram.paths.length || diagram.paths.some(path =>
+            !path || Object.keys(path).some(key => !['name', 'nodes', 'screen'].includes(key)) ||
+            !hasText(path.name) || !Array.isArray(path.nodes) || !path.nodes.length ||
+            path.nodes.some(node => !node || Object.keys(node).some(key => !['title', 'note'].includes(key)) ||
+              !hasText(node.title) || !hasText(node.note)) ||
+            (path.screen !== undefined && !['all', 'chat', 'options', 'status'].includes(path.screen))
+          ))) throw new Error('Invalid project diagram');
       if (section.tables !== undefined && (detail.layout !== 'slides' || !Array.isArray(section.tables) ||
           !section.tables.length || section.tables.some(table =>
             !table || Object.keys(table).some(key => !['caption', 'columns', 'rows'].includes(key)) ||

@@ -38,6 +38,31 @@
 .project-detail-table tbody th{color:#e5ecec;font-weight:550}
 .project-detail-table tbody td{color:#bcd0d4}
 .reader-slide .project-detail-table{display:table;margin:16px 0 0}
+.slide-diagram{align-items:start;padding-block:30px}
+.project-diagram{min-inline-size:0;margin:0;padding:0;border:0}
+.reader-slide .project-diagram{margin-block:16px}
+.project-track{display:grid;grid-template-columns:5em minmax(0,1fr);align-items:center;gap:13px;padding-block:7px}
+.project-track + .project-track{border-top:1px solid #48677378}
+.project-track-label,.project-switchboard legend{color:#bbd8dd;font-size:13px;font-weight:650}
+.project-switchboard legend{padding:0 0 10px}
+.project-path{min-width:0}
+.project-path ol{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:17px;list-style:none;margin:0;padding:0}
+.project-path li{position:relative;min-width:0;padding:9px 8px;background:#1b303d;border-top:1px solid #56808d;line-height:1.4;overflow-wrap:anywhere}
+.project-path li + li::before{content:"→";position:absolute;inset-inline-start:-15px;top:50%;transform:translateY(-50%);color:#83abb3}
+.project-path strong,.project-path li span{display:block}
+.project-path strong{color:#edf3ef;font-size:13px}
+.project-path li span{margin-top:4px;color:#b2cbcf;font-size:12px}
+.project-choices{position:relative;display:flex;flex-wrap:wrap;gap:7px}
+.project-choice{position:absolute;inline-size:1px;block-size:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.project-choice + label{display:inline-flex;align-items:center;min-height:34px;padding:4px 10px;border:1px solid #517480;color:#c2d8dc;font-size:12px;cursor:pointer}
+.project-choice:checked + label{border-color:#9ed4d5;background:#24434a;color:#ebf7f2}
+.project-choice:focus-visible + label{outline:2px solid #a5d9d7;outline-offset:2px}
+.project-choice-panel{display:none;order:1;flex:1 0 100%;min-width:0;padding-top:3px}
+.project-choice:checked + label + .project-choice-panel{display:block}
+.project-path-with-screen{display:grid;grid-template-columns:minmax(0,1fr) minmax(80px,105px);align-items:center;gap:11px}
+.project-screen{display:grid;grid-template-rows:1fr 2fr 1fr;aspect-ratio:1;gap:3px;padding:5px;border:1px solid #52727c;background:#102631;color:#a8c2c7;font-size:10px;line-height:1.25;text-align:center}
+.project-screen span{display:grid;place-items:center;background:#1c303b;padding:3px}
+.project-screen[data-region="chat"] span:nth-child(2),.project-screen[data-region="options"] span:nth-child(3),.project-screen[data-region="status"] span:first-child,.project-screen[data-region="all"] span{background:#356167;color:#f0faf5}
 .slides-footer{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:34px}
 @media(min-width:1000px){
   .slides-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);align-items:center;gap:clamp(30px,4vw,60px)}
@@ -47,13 +72,16 @@
 @media(min-width:760px){
   .project-slide:not(.slide-gallery){grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
   .project-slide.slide-portrait{grid-template-columns:minmax(0,480px) minmax(0,280px);justify-content:center;column-gap:clamp(28px,6vw,84px)}
-  .project-slide:nth-child(even):not(.slide-portrait,.slide-gallery){grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
-  .project-slide:nth-child(even):not(.slide-portrait,.slide-gallery) .slide-text{grid-column:2;grid-row:1}
-  .project-slide:nth-child(even):not(.slide-portrait,.slide-gallery) .slide-media{grid-column:1;grid-row:1}
+  .project-slide.slide-diagram{grid-template-columns:minmax(0,0.72fr) minmax(0,1.75fr)}
+  .project-slide:nth-child(even):not(.slide-portrait,.slide-gallery,.slide-diagram){grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+  .project-slide:nth-child(even):not(.slide-portrait,.slide-gallery,.slide-diagram) .slide-text{grid-column:2;grid-row:1}
+  .project-slide:nth-child(even):not(.slide-portrait,.slide-gallery,.slide-diagram) .slide-media{grid-column:1;grid-row:1}
 }
 @media(max-width:640px){
   .project-slides{width:calc(100% - 32px)}
   .project-slide{scroll-margin-top:190px}
   .slide-gallery .slide-media{grid-template-columns:1fr}
   .slide-portrait .learn-figure{width:min(100%,236px)}
+  .project-track{grid-template-columns:1fr;gap:5px}
+  .project-path-with-screen{grid-template-columns:minmax(0,1fr) 72px}
 }
