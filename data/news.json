@@ -2,9 +2,269 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "3ceac2b5c713f0adca3e11f369045fbd7ed46ab2",
-  "syncedAt": "2026-11-25T13:06:00.231Z",
+  "sourceRevision": "a2d32f9c8d275b48c365f754a41843e37836bf4b",
+  "syncedAt": "2026-11-26T12:36:12.628Z",
   "editions": [
+    {
+      "id": "2026-11-26",
+      "date": "2026-11-26",
+      "label": "11 月 26 日 · 11 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-26",
+      "items": [
+        {
+          "id": "c40619d58edbfd31",
+          "rank": 1,
+          "title": "Godot 程序化苔庭：画一条线就生成石桥",
+          "summary": "作者用 Godot 4.7.2 的 Forward+ 做庭院。脚本生成地形、石桥、建筑和植物网格；曲线过水段变成拱桥，石块以阻尼弹簧做入场动画。",
+          "category": "游戏开发",
+          "author": "@KanaWorks_AI",
+          "url": "https://x.com/KanaWorks_AI/status/2125773511738511621",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/KanaWorks_AI/status/2125773511738511621"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T02:07:54.000Z",
+          "observedAt": "2026-11-26T12:16:34.935Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125772983239401472/img/YT2IamfICwvNAE0z.jpg",
+            "alt": "Godot 程序化苔庭：画一条线就生成石桥",
+            "type": "video"
+          }
+        },
+        {
+          "id": "4c6cd445e8c8d737",
+          "rank": 2,
+          "title": "LivLiv Player 0.6：网站里嵌入可动虚拟角色",
+          "summary": "LivLiv 是 2.5D 网页角色播放器，支持音频口型和摄像头面捕。0.6 版加入全身展示、长发摆动及 Blender 导出的 VRM 兼容。",
+          "category": "实用工作流",
+          "author": "@yeko_L",
+          "url": "https://x.com/yeko_L/status/2125487847784542304",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/yeko_L/status/2125487847784542304"
+            },
+            {
+              "title": "官方播放器源码",
+              "url": "https://github.com/livliv-dev/player"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T07:12:47.000Z",
+          "observedAt": "2026-11-26T12:16:08.989Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125487332132597760/img/DjUwLI-U42vMp9I-.jpg",
+            "alt": "LivLiv Player 0.6：网站里嵌入可动虚拟角色",
+            "type": "video"
+          }
+        },
+        {
+          "id": "3452f802bf002c65",
+          "rank": 3,
+          "title": "EXOware：把运动模组外挂在人偶外面",
+          "summary": "Smart Doll 的 EXOware 设计可把运动组件外挂在已有的人偶上，无需拆开身体装马达。驱动部件解耦后可继续手动摆姿势。",
+          "category": "硬件创客",
+          "author": "@SmartdollLand",
+          "url": "https://x.com/SmartdollLand/status/2125596038149071111",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/SmartdollLand/status/2125596038149071111"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T14:22:41.000Z",
+          "observedAt": "2026-11-26T12:16:49.781Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125595971648454656/img/h4yObANmCPga4Na_.jpg",
+            "alt": "EXOware：把运动模组外挂在人偶外面",
+            "type": "video"
+          }
+        },
+        {
+          "id": "6c6e83c4bf264bc3",
+          "rank": 4,
+          "title": "AuroCiel：AI 辅助的网页 MMO RPG 试玩",
+          "summary": "开发者展示 AI 辅助服务端、客户端和美术的 MMO RPG。作者说试用免下载和注册，服务器只计划开放到 11 月 30 日。",
+          "category": "游戏开发",
+          "author": "@RevStudioGames",
+          "url": "https://x.com/RevStudioGames/status/2125415222655811725",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/RevStudioGames/status/2125415222655811725"
+            },
+            {
+              "title": "作者提供的试玩地址",
+              "url": "https://aurociel.jurevstudio.com/play/"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T02:24:12.000Z",
+          "observedAt": "2026-11-26T12:15:51.920Z"
+        },
+        {
+          "id": "daacf17736c4319a",
+          "rank": 5,
+          "title": "Wanderer CAD：让 AI 用 Blender 后台出三视图",
+          "summary": "作者用 Gemini 4 Neon 在自己的 Blender 5.1 项目尝试脚本调用 Wanderer CAD，无需常驻界面。官方扩展说明支持 PDF、SVG、DXF 图纸输出。",
+          "category": "3D建模",
+          "author": "@shion_takk",
+          "url": "https://x.com/shion_takk/status/2125527126787096898",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/shion_takk/status/2125527126787096898"
+            },
+            {
+              "title": "Blender 官方扩展页",
+              "url": "https://extensions.blender.org/add-ons/wanderer/"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T09:48:52.000Z",
+          "observedAt": "2026-11-26T12:16:26.044Z"
+        },
+        {
+          "id": "c0ff12e3e4bb5e9a",
+          "rank": 6,
+          "title": "AI 动画分层：拆镜头后再合成",
+          "summary": "作者按动画分层合成思路处理单个镜头：SAM 3 分层，Krea 2 生成关键帧与背景，H3 生成动画，再合回最终镜头。",
+          "category": "内容制作",
+          "author": "@tazmannner",
+          "url": "https://x.com/tazmannner/status/2125573892974760313",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/tazmannner/status/2125573892974760313"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T12:54:41.000Z",
+          "observedAt": "2026-11-26T12:15:07.032Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125569755147091968/img/tA0xW_Bsht169fNU.jpg",
+            "alt": "AI 动画分层：拆镜头后再合成",
+            "type": "video"
+          }
+        },
+        {
+          "id": "735babc3323eb937",
+          "rank": 7,
+          "title": "ComfyUI 实验：给 MiniMax-H3 换 9B 编码器",
+          "summary": "作者用投影层把 Qwen3.5-9B 接到原用 32B 编码器的 MiniMax-H3 流程。原帖区分稳定版与仍训练的实验检查点，复杂提示和取景仍有限。",
+          "category": "实用工作流",
+          "author": "@Alissonerdx",
+          "url": "https://x.com/Alissonerdx/status/2125643190669820382",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Alissonerdx/status/2125643190669820382"
+            },
+            {
+              "title": "作者 ComfyUI 节点",
+              "url": "https://github.com/alisson-anjos/ComfyUI-Qwen3.5-H3"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T17:30:03.000Z",
+          "observedAt": "2026-11-26T12:15:43.050Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125640611038437376/img/F83GjbvFBzQLpcnP.jpg",
+            "alt": "ComfyUI 实验：给 MiniMax-H3 换 9B 编码器",
+            "type": "video"
+          }
+        },
+        {
+          "id": "8c95f59249753277",
+          "rank": 8,
+          "title": "Blender：跨服装与配件同步形态键",
+          "summary": "作者为自己的虚拟角色做了形态键插件，用来同步服装及配件的 shape keys，并一键清理无用项。作者称可免费获得。",
+          "category": "3D建模",
+          "author": "@_Hyroe_",
+          "url": "https://x.com/_Hyroe_/status/2125869073674146128",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/_Hyroe_/status/2125869073674146128"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T08:27:38.000Z",
+          "observedAt": "2026-11-26T12:16:18.149Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/tweet_video_thumb/HYCaUSoXgAE2Iw9.jpg",
+            "alt": "Blender：跨服装与配件同步形态键",
+            "type": "video"
+          }
+        },
+        {
+          "id": "ecd9e2360a34da7e",
+          "rank": 9,
+          "title": "DeNA 发布三个面向日语对话的语音识别权重",
+          "summary": "DeNA 公告在 Hugging Face 发布三种日语 ASR 模型。它们进一步针对口语对话训练，目标是识别短应答，并减少把噪声听成词的情况。",
+          "category": "实用工作流",
+          "author": "@DeNAxAI_NEWS",
+          "url": "https://x.com/DeNAxAI_NEWS/status/2125881363685618150",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/DeNAxAI_NEWS/status/2125881363685618150"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T09:16:28.000Z",
+          "observedAt": "2026-11-26T12:16:55.420Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125876109107691520/img/3aq9I6VvQx60oYzW.jpg",
+            "alt": "DeNA 发布三个面向日语对话的语音识别权重",
+            "type": "video"
+          }
+        },
+        {
+          "id": "83aec0cce4769510",
+          "rank": 10,
+          "title": "Conduit 3：用 iPhone 做 ROS 2 机器人控制台",
+          "summary": "作者推出 Conduit 3：可通过机器人相机和地图查看并遥控，也支持以手机运动操控机械臂。原帖列出 ROS 2 的 Zenoh 或 DDS 接入选项。",
+          "category": "硬件创客",
+          "author": "@youtalk",
+          "url": "https://x.com/youtalk/status/2125253413172879459",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/youtalk/status/2125253413172879459"
+            }
+          ],
+          "publishedAtISO": "2026-11-24T15:41:13.000Z",
+          "observedAt": "2026-11-26T12:17:41.631Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125253186877591552/img/At1Sqfs0Dp44Vvts.jpg",
+            "alt": "Conduit 3：用 iPhone 做 ROS 2 机器人控制台",
+            "type": "video"
+          }
+        },
+        {
+          "id": "e53017e3c667fb15",
+          "rank": 11,
+          "title": "video-explainer：三种讲解短片样式，带旁白字幕",
+          "summary": "Peter Yang 开源了自己的讲解短片技能。可用动画图形、手绘插画或电影感三维样式组织话题，并加上旁白与字幕。",
+          "category": "内容制作",
+          "author": "@petergyang",
+          "url": "https://x.com/petergyang/status/2125609241264456150",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/petergyang/status/2125609241264456150"
+            },
+            {
+              "title": "作者项目",
+              "url": "https://github.com/petergyang/video-explainer"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T15:15:09.000Z",
+          "observedAt": "2026-11-26T12:17:50.462Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125609207407992832/img/j9AXuCEzc68lU9tt.jpg",
+            "alt": "video-explainer：三种讲解短片样式，带旁白字幕",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-25",
       "date": "2026-11-25",
