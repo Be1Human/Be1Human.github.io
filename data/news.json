@@ -2,9 +2,243 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "a2d32f9c8d275b48c365f754a41843e37836bf4b",
-  "syncedAt": "2026-11-26T12:36:12.628Z",
+  "sourceRevision": "ed1c78941d578657b70937472d4c2d01b10ec0de",
+  "syncedAt": "2026-11-27T13:06:36.777Z",
   "editions": [
+    {
+      "id": "2026-11-27",
+      "date": "2026-11-27",
+      "label": "11 月 27 日 · 10 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-27",
+      "items": [
+        {
+          "id": "d817e8f21bf7fa6c",
+          "rank": 1,
+          "title": "在 Sharp PC-E500 上做赛车游戏",
+          "summary": "作者用 AI 反复打磨一款针对 Sharp PC-E500 的赛车小游戏，并称已在真实设备上运行。原帖附实机视频。",
+          "category": "硬件创客",
+          "author": "@litchi_dev",
+          "url": "https://x.com/litchi_dev/status/2126152588177641911",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/litchi_dev/status/2126152588177641911"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T03:14:13.000Z",
+          "observedAt": "2026-11-27T12:49:39.431Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126152285856428032/img/Mc9owGusDOFZg-pr.jpg",
+            "alt": "在 Sharp PC-E500 上做赛车游戏",
+            "type": "video"
+          }
+        },
+        {
+          "id": "124543f40d59721e",
+          "rank": 2,
+          "title": "从参考图到 Unreal 里的鳄鱼 NPC",
+          "summary": "Atlas 展示一条三维资产到游戏角色的路径：Meshy 出基础网格，Hyper3D 给初始骨架权重，Blender 修整，Unreal 动画蓝图处理动作和尾巴跟随。",
+          "category": "游戏开发",
+          "author": "@Atlas3DAI",
+          "url": "https://x.com/Atlas3DAI/status/2125634655072186424",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Atlas3DAI/status/2125634655072186424"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T16:56:08.000Z",
+          "observedAt": "2026-11-27T12:49:05.716Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125634475430219776/img/cllKqgjMpMsMS_-W.jpg",
+            "alt": "从参考图到 Unreal 里的鳄鱼 NPC",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b9d55f648db4d213",
+          "rank": 3,
+          "title": "Blender 5.3：着色器按灯调整非写实灯光",
+          "summary": "作者演示在 Blender 5.3 中给角色做非写实打光，着色器可读取灯光属性，并通过每盏灯的自定义属性单独调节。",
+          "category": "3D建模",
+          "author": "@Thejudsub",
+          "url": "https://x.com/Thejudsub/status/2126015377884996025",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Thejudsub/status/2126015377884996025"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T18:09:00.000Z",
+          "observedAt": "2026-11-27T12:49:01.088Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125448565849763840/img/DHSvTolag0o38JTv.jpg",
+            "alt": "Blender 5.3：着色器按灯调整非写实灯光",
+            "type": "video"
+          }
+        },
+        {
+          "id": "d79b625cfdd13401",
+          "rank": 4,
+          "title": "ImitationLab：给 Unitree G1 训练全身运动跟踪",
+          "summary": "开源项目用 Isaac Lab 搭配 Newton/MJWarp 训练 G1 的全身运动跟踪，提供代码、文档和权重。作者报告单卡约 30 分钟的一个训练配置。",
+          "category": "硬件创客",
+          "author": "@fei_yang_wu",
+          "url": "https://x.com/fei_yang_wu/status/2125724633940811931",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/fei_yang_wu/status/2125724633940811931"
+            },
+            {
+              "title": "项目仓库",
+              "url": "https://github.com/GTLIDAR/ImitationLab"
+            }
+          ],
+          "publishedAtISO": "2026-11-25T22:53:41.000Z",
+          "observedAt": "2026-11-27T12:50:09.252Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125722080670871552/img/IbWfn3ojVzYW1iSd.jpg",
+            "alt": "ImitationLab：给 Unitree G1 训练全身运动跟踪",
+            "type": "video"
+          }
+        },
+        {
+          "id": "56e1b3d7c8bfbf0e",
+          "rank": 5,
+          "title": "Tripo Studio MCP：让代理调用建模、贴图和绑骨",
+          "summary": "Tripo Studio 的官方 MCP 可接入支持 MCP 的代理，用文字或图片生成模型，继续做网格处理、贴图、绑骨或动画。Studio 这条接入方式使用账号登录。",
+          "category": "3D建模",
+          "author": "@TripoKorea",
+          "url": "https://x.com/TripoKorea/status/2126252438047068161",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/TripoKorea/status/2126252438047068161"
+            },
+            {
+              "title": "Tripo 官方接入说明",
+              "url": "https://developers.tripo3d.com/en/mcp"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T09:50:59.000Z",
+          "observedAt": "2026-11-27T12:49:52.091Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126252021036761089/img/DxtA_3-VpB3celwW.jpg",
+            "alt": "Tripo Studio MCP：让代理调用建模、贴图和绑骨",
+            "type": "video"
+          }
+        },
+        {
+          "id": "dedc238fe99af219",
+          "rank": 6,
+          "title": "机械臂装配动画：同镜头并排看骨架和成品",
+          "summary": "作者用 Blender 演示机器人组装自己的前臂。两侧匹配机位和姿势，一侧保留骨架和关节轴，另一侧展示外壳如何闭合并做动作测试。",
+          "category": "内容制作",
+          "author": "@Lummox_eth",
+          "url": "https://x.com/Lummox_eth/status/2125978784868233708",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/Lummox_eth/status/2125978784868233708"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T15:43:35.000Z",
+          "observedAt": "2026-11-27T12:48:53.131Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125978122533138432/img/5g0ek8pWn6nnBs5C.jpg",
+            "alt": "机械臂装配动画：同镜头并排看骨架和成品",
+            "type": "video"
+          }
+        },
+        {
+          "id": "709ff5b17679b943",
+          "rank": 7,
+          "title": "Blender 骨架与 WebGPU：机械章鱼动画原型",
+          "summary": "作者让 Gemini 4 Neon 生成机械章鱼演示，在 Blender 用程序化骨架，并在 Three.js/WebGPU 中呈现，包含适应地形的 IK 和游动动画。",
+          "category": "游戏开发",
+          "author": "@thebuggeddev",
+          "url": "https://x.com/thebuggeddev/status/2126004214560383328",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/thebuggeddev/status/2126004214560383328"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T17:24:38.000Z",
+          "observedAt": "2026-11-27T12:50:49.475Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126003187874512896/img/S58idkTVvQHP2nlz.jpg",
+            "alt": "Blender 骨架与 WebGPU：机械章鱼动画原型",
+            "type": "video"
+          }
+        },
+        {
+          "id": "3978576586b53f9a",
+          "rank": 8,
+          "title": "Amsterdam Racer：从参考资料到网页赛车和预告片",
+          "summary": "作者为阿姆斯特丹活动做了网页赛车。Neon 收集参考并协作搭建 Blender/Three.js 项目；音乐走 Gemini API CLI，预告片也由代理协助剪辑。",
+          "category": "游戏开发",
+          "author": "@genevieve__h",
+          "url": "https://x.com/genevieve__h/status/2125998998897197404",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/genevieve__h/status/2125998998897197404"
+            },
+            {
+              "title": "作者给出的体验地址",
+              "url": "https://amsterdam-racer.ai.studio/"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T17:03:55.000Z",
+          "observedAt": "2026-11-27T12:50:28.865Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2125993414718091264/img/65ZuxGkvPsUnVSu1.jpg",
+            "alt": "Amsterdam Racer：从参考资料到网页赛车和预告片",
+            "type": "video"
+          }
+        },
+        {
+          "id": "cf5e73567eed00b3",
+          "rank": 9,
+          "title": "Chatarunga：多模型协作做 Rust 国际象棋引擎",
+          "summary": "作者公布无外部依赖的 Rust 引擎 Chatarunga，称用 Fable、Neon、Astra 和 Modal 做开发训练，并分享先小规模验证再启动长训练的流程。",
+          "category": "游戏开发",
+          "author": "@deedydas",
+          "url": "https://x.com/deedydas/status/2126140365208224057",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/deedydas/status/2126140365208224057"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T02:25:39.000Z",
+          "observedAt": "2026-11-27T12:49:55.421Z"
+        },
+        {
+          "id": "ef22507ede4792ed",
+          "rank": 10,
+          "title": "DFly2：复用目标模型数据的推测解码",
+          "summary": "腾讯发布针对稀疏模型的推测解码方法 DFly2。草稿直接利用目标模型的 KV 缓存和候选词，团队报告长上下文下的服务吞吐改善。",
+          "category": "实用工作流",
+          "author": "@TencentAI_News",
+          "url": "https://x.com/TencentAI_News/status/2125968859450802415",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/TencentAI_News/status/2125968859450802415"
+            },
+            {
+              "title": "作者论文",
+              "url": "https://arxiv.org/abs/2611.34776"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T15:04:09.000Z",
+          "observedAt": "2026-11-27T12:49:57.999Z"
+        }
+      ]
+    },
     {
       "id": "2026-11-26",
       "date": "2026-11-26",
