@@ -2,9 +2,157 @@
   "version": 1,
   "sourceName": "AI 热门 20 · 每日精选",
   "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site",
-  "sourceRevision": "ed1c78941d578657b70937472d4c2d01b10ec0de",
-  "syncedAt": "2026-11-27T13:06:36.777Z",
+  "sourceRevision": "e06d66e7c4a9e1993a893e67c7b066a91ce30ca9",
+  "syncedAt": "2026-11-28T12:21:54.555Z",
   "editions": [
+    {
+      "id": "2026-11-28",
+      "date": "2026-11-28",
+      "label": "11 月 28 日 · 6 条非中文原帖",
+      "sourceUrl": "https://ai-hot20-daily.next-ace-help.chatgpt.site/?date=2026-11-28",
+      "items": [
+        {
+          "id": "bd3680cf4e81f3eb",
+          "rank": 1,
+          "title": "本地模型接 Blender、Unity 和 Unreal Engine",
+          "summary": "Unsloth 演示用 Inkling 2 Mini GGUF 加 MCP，让本地模型调用 Blender、Unity 与 Unreal Engine，产出新的资产。重点是本地模型和编辑器串起来，而非新发布模型。",
+          "category": "游戏开发",
+          "author": "@UnslothAI",
+          "url": "https://x.com/UnslothAI/status/2126322382239649959",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/UnslothAI/status/2126322382239649959"
+            },
+            {
+              "title": "原帖所附 Unsloth 指南",
+              "url": "https://unsloth.ai/docs/basics/mcp/mcp-engines"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T14:28:55.000Z",
+          "observedAt": "2026-11-28T12:15:21.774Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126322233576755200/img/n-j-yV5kR4rAC9TK.jpg",
+            "alt": "本地模型接 Blender、Unity 和 Unreal Engine",
+            "type": "video"
+          }
+        },
+        {
+          "id": "1f6193c23a03f502",
+          "rank": 2,
+          "title": "Lumina SFX 1.5：按距离和视角给场景配音效",
+          "summary": "发布者称 1.5 版覆盖 2,882 个双耳空间音效，并改进视角和距离判断、演示同步及场景混音。",
+          "category": "内容制作",
+          "author": "@LuminaBench",
+          "url": "https://x.com/LuminaBench/status/2126307765500932469",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/LuminaBench/status/2126307765500932469"
+            },
+            {
+              "title": "原帖所附项目",
+              "url": "https://github.com/LuminaBench/lumina-sfx"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T13:30:50.000Z",
+          "observedAt": "2026-11-28T12:15:39.416Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126301722242924545/img/sNd3HkkviwvLeZE8.jpg",
+            "alt": "Lumina SFX 1.5：按距离和视角给场景配音效",
+            "type": "video"
+          }
+        },
+        {
+          "id": "b2ff2176d8100feb",
+          "rank": 3,
+          "title": "四支记号笔，让 SO-101 机械臂画人像",
+          "summary": "作者把 Claude Fable 5.2 接到 SO-101 机械臂，给四支记号笔让它画一幅人像。原帖展示了成品过程，并指向回复里的代码和仿真。",
+          "category": "硬件创客",
+          "author": "@LongLeRobot",
+          "url": "https://x.com/LongLeRobot/status/2126094850835534049",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/LongLeRobot/status/2126094850835534049"
+            }
+          ],
+          "publishedAtISO": "2026-11-26T23:24:48.000Z",
+          "observedAt": "2026-11-28T12:17:04.233Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126094649597071360/img/mpipPaUUAlq8euBa.jpg",
+            "alt": "四支记号笔，让 SO-101 机械臂画人像",
+            "type": "video"
+          }
+        },
+        {
+          "id": "81aa418a3bee1551",
+          "rank": 4,
+          "title": "ESP32-P4：单目相机与惯性传感器的定位演示",
+          "summary": "作者在已有 ESP32-P4 电路板上演示单目视觉惯性里程计，结合全局快门相机和 IMU 估计运动。原帖呈现小型设备保持位置的实验。",
+          "category": "硬件创客",
+          "author": "@marurur",
+          "url": "https://x.com/marurur/status/2126294393611321644",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/marurur/status/2126294393611321644"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T12:37:42.000Z",
+          "observedAt": "2026-11-28T12:15:47.014Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126294301114249216/img/GY50lrvdaN9hcNQ0.jpg",
+            "alt": "ESP32-P4：单目相机与惯性传感器的定位演示",
+            "type": "video"
+          }
+        },
+        {
+          "id": "c30c78375c3ec912",
+          "rank": 5,
+          "title": "用 Three.js 代码建模，GLSL 做盾面发光",
+          "summary": "作者用 Astra 让 Three.js 代码生成三维对象，盾面发光由 GLSL 着色器处理。这是直接构建网页场景，不是把 Blender 文件导出后展示。",
+          "category": "3D建模",
+          "author": "@vib3coded",
+          "url": "https://x.com/vib3coded/status/2126372944746082391",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/vib3coded/status/2126372944746082391"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T17:49:50.000Z",
+          "observedAt": "2026-11-28T12:17:11.602Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126372620211818496/img/8M9FwrmxqItSe5Ju.jpg",
+            "alt": "用 Three.js 代码建模，GLSL 做盾面发光",
+            "type": "video"
+          }
+        },
+        {
+          "id": "02b5ae39a43e1d5a",
+          "rank": 6,
+          "title": "Beancat 动画制作案例：先公开片段，再合成单集",
+          "summary": "作者以 Beancat 代理工作流制作一部动画系列，计划在 X 分批公开短片段，积累足够素材后再剪为完整单集。",
+          "category": "内容制作",
+          "author": "@suji_pop",
+          "url": "https://x.com/suji_pop/status/2126259252515979501",
+          "sources": [
+            {
+              "title": "原帖",
+              "url": "https://x.com/suji_pop/status/2126259252515979501"
+            }
+          ],
+          "publishedAtISO": "2026-11-27T10:18:04.000Z",
+          "observedAt": "2026-11-28T12:16:18.482Z",
+          "preview": {
+            "url": "https://pbs.twimg.com/amplify_video_thumb/2126256974425886720/img/-efyxViEba2EisVY.jpg",
+            "alt": "Beancat 动画制作案例：先公开片段，再合成单集",
+            "type": "video"
+          }
+        }
+      ]
+    },
     {
       "id": "2026-11-27",
       "date": "2026-11-27",
